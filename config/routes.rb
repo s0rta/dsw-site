@@ -1,4 +1,7 @@
 Denverstartupweek::Application.routes.draw do
+  #this route should always be last
+  mount Cmsimple::Engine => '/'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

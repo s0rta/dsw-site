@@ -6,6 +6,8 @@ gem 'thin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'utensils', github: 'modeset/utensils'
+gem 'haml'
 
 gem 'simple_form'
 gem 'cmsimple', github: 'modeset/cmsimple'
