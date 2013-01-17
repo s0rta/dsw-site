@@ -1,0 +1,7 @@
+= simple_form_for NewsletterSignup.new, html: { class: 'form-stack', data: { bindable: 'newsletter-signup' } } do |f|
+  %fieldset
+    = f.input   :first_name, label: 'First Name'
+    = f.input   :last_name, label: 'Last Name'
+    = f.input   :email, label: 'E-mail Address'
+  .form-actions
+    = f.button :submit, @submit_text, html: { class: 'btn primary' }
