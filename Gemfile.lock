@@ -148,6 +148,7 @@ GEM
     neat (1.1.0)
       bourbon (>= 2.1)
       sass (>= 3.2)
+    newrelic_rpm (3.5.3.25)
     nokogiri (1.5.6)
     pg (0.14.1)
     polyglot (0.3.3)
@@ -248,6 +249,7 @@ DEPENDENCIES
   haml
   jquery-rails
   neat
+  newrelic_rpm
   pg
   pry-rails
   rails (= 3.2.11)
