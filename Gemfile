@@ -9,6 +9,7 @@ gem 'bourbon'
 gem 'neat'
 gem 'haml'
 
+gem 'gibbon'
 gem 'simple_form'
 gem 'cmsimple', github: 'modeset/cmsimple'
 
