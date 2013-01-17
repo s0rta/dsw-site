@@ -1,0 +1,19 @@
+.grid-center-pane
+  %section#header_image
+    = render_region :header_image, tag: :article
+.grid-wide-center-pane
+  %section#header_text
+    = render_region :header_text, tag: 'h2', region_type: 'simple', html: { id: 'header' } do
+      %p
+        The Second Annual Denver Startup Week is coming
+      %p
+        October 2013
+.grid-center-pane
+  %section#upper_content
+    = render_region :upper_content, tag: :article do
+      The first-ever Denver Startup Week in 2012 was a resounding success - more than 5,000 members of the community turned out to organize and attend six days of sessions, office hours, parties, mentorship, networking, and more encompassing over 70 events.
+      We're proud to announce that Denver Startup Week will be returning bigger and better in October 2013! More participants, more companies, more events, more community, and that's just to start.
+.grid-center-pane
+  %section#lower_content
+    = render_region :lower_content, tag: :article
+
