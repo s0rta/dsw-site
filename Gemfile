@@ -5,6 +5,8 @@ gem 'pg'
 gem 'thin'
 
 gem 'utensils', github: 'modeset/utensils'
+gem 'bourbon'
+gem 'neat'
 gem 'haml'
 
 gem 'simple_form'
