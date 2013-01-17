@@ -9,9 +9,11 @@ gem 'bourbon'
 gem 'neat'
 gem 'haml'
 
-gem 'gibbon'
-gem 'simple_form'
 gem 'cmsimple', github: 'modeset/cmsimple'
+gem 'cloudinary'
+gem 'simple_form'
+
+gem 'gibbon'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
