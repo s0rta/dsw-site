@@ -5,7 +5,7 @@ class NewsletterSignupsController < ApplicationController
   def create
     @newsletter_signup = NewsletterSignup.new(params[:newsletter_signup])
     if @newsletter_signup.save
-      head :ok
+      render json: nil, status: :ok
     else
       render json: @newsletter_signup.errors, status: :unprocessable_entity
     end

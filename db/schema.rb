@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116164748) do
+ActiveRecord::Schema.define(:version => 20130117040102) do
 
   create_table "cmsimple_images", :force => true do |t|
     t.string   "attachment"
@@ -64,5 +64,13 @@ ActiveRecord::Schema.define(:version => 20130116164748) do
 
   add_index "cmsimple_versions", ["page_id"], :name => "index_cmsimple_versions_on_page_id"
   add_index "cmsimple_versions", ["published_at"], :name => "index_cmsimple_versions_on_published_at"
+
+  create_table "newsletter_signups", :force => true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
