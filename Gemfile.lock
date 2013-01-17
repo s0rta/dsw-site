@@ -26,6 +26,14 @@ GIT
       railties (>= 3.2.5)
       sass-rails
 
+GIT
+  remote: git://github.com/ndbroadbent/turbo-sprockets-rails3.git
+  revision: 183ec2b715f94895cc72a86d1bf0bd888c7da46e
+  specs:
+    turbo-sprockets-rails3 (0.3.6)
+      railties (> 3.2.8, < 4.0.0)
+      sprockets (>= 2.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -247,5 +255,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   simple_form
   thin
+  turbo-sprockets-rails3!
   uglifier (>= 1.0.3)
   utensils!
