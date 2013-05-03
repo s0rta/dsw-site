@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/modeset/utensils.git
-  revision: f312fc16ae7d8749da8c11061d50438c441d6f7e
+  revision: 03e3cf08951d16a0492ab34f578da9a9089fe90c
   specs:
     utensils (0.0.1)
       bourbon

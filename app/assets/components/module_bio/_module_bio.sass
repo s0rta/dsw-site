@@ -1,0 +1,42 @@
+.module-bios
+  @extend %section-container
+
+.bio-list
+  @extend %clearfix
+  @extend %unstyled-list
+  margin-top: em(20)
+
+.bio
+  background-color: #546574
+  padding: em(30)
+  margin-bottom: 1em
+
+.bio-img
+  border-radius: 100px
+  width: 100px
+  height: 100px
+  overflow: hidden
+
+.bio-heading
+  margin-bottom: em(8)
+
+
+@media (max-width: 50em)
+  .bio-img-cell,
+  .bio-content-cell
+    display: table-cell
+    vertical-align: top
+    text-align: left
+  .bio-content-cell
+    padding-left: 1em
+
+@media (min-width: 50em)
+  .bio
+    float: left
+    width: 30.333%
+    margin-left: 0.5%
+    margin-right: 0.5%
+  .bio-img-cell
+    margin-bottom: em(25)
+
+

@@ -1,0 +1,26 @@
+.main
+  @extend %clearfix
+  padding-left: 1%
+  padding-right: 1%
+
+.container
+  @extend %clearfix
+  margin-left: auto
+  margin-right: auto
+  max-width: 1000px
+
+.container-justified
+  text-align: center
+
+%section-container
+  @extend .container
+  @extend .container-justified
+  padding-top: em(20)
+  padding-bottom: em(48)
+
+
+@media (min-width: 50em)
+  .main
+    padding-left: 0
+    padding-right: 0
+

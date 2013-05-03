@@ -1,0 +1,21 @@
+.module-tab
+  @extend %section-container
+
+.tab-navigation .btn
+  display: block
+.tab-navigation .btn + .btn
+  margin-top: 1em
+
+.tab-panel
+  display: none
+  margin-bottom: em(50)
+
+.tab-panel.active
+  display: block
+
+@media (min-width: 50em)
+  .tab-navigation .btn
+    display: inline-block
+  .tab-navigation .btn + .btn
+    margin-top: 0
+

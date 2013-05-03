@@ -1,0 +1,37 @@
+%hr
+%section.module-tab(data-bindable="module-tab")
+  %h2.module-primary-heading About Denver Startup Week
+  %article#dsw_what.tab-panel.fade.in.active
+    %h3.module-secondary-heading What is Denver Startup Week?
+    %div.p-copy Denver Startup Week is a celebration of everything entrepreneurial in Denver. Denver has a rich history of entrepreneurship and this week long event will showcase Denver’s entrepreneurial community with an emphasis on technology, design, social entrepreneurship and business. The event is intended to unite the entrepreneurial community in Denver and will celebrate the great companies, innovation and ideas happening in the City and the people and inspiration behind them.
+
+  %article#dsw_why.tab-panel.fade
+    %h3.module-secondary-heading Why Denver Startup Week?
+    %div.p-copy Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+  %article#dsw_when.tab-panel.fade
+    %h3.module-secondary-heading When is Denver Startup Week?
+    %div.p-copy Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+  %nav.tab-navigation
+    %a.btn.active(href="#dsw_what") What is Denver Startup Week?
+    %a.btn(href="#dsw_why") Why Denver Startup Week?
+    %a.btn(href="#dsw_when") When is Denver Startup Week?
+
+%hr
+
+%section.module-bios
+  %h2.module-primary-heading Those Involved
+  %ol.bio-list
+    -(1..5).each do |i|
+      %li.bio
+        %div.bio-img-cell
+          = image_tag "fpo-bio.jpg", alt: "hi", class: "bio-img"
+        %div.bio-content-cell
+          %h3.bio-heading Jimmy Twoshoes
+          %div.bio-copy Company Name
+          %div.bio-copy Title
+          %div.bio-copy In Denver Since 2000
+
+%hr
+

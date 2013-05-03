@@ -7,29 +7,29 @@ $prefix-for-opera: true
 $prefix-for-spec: true
 $legacy-for-ie: true
 
+// Libraries
 @import bourbon
 @import utensils/lib
-
-// Core base styles
 @import config
 @import utensils/normalize
-@import utensils/scaffold
-@import utensils/typography
-@import utensils/container
+
+// Components
+@import components/scaffold
 @import utensils/transition
 @import utensils/collapse
-@import utensils/notification
+@import components/typography
+@import components/iconography
+@import components/container
+@import components/button
+@import components/module_tab
+@import components/module_bio
 
-// Component styles
-@import utensils/button_semigloss
-@import utensils/form_controls
-@import utensils/form_stack
-
+// Layouts
+@import components/masthead
 
 
 // Layouts and application specific imports
-@import utensils/upgrade
+// @import utensils/upgrade
 
 // Let them print
-@import utensils/print
-
+// @import utensils/print

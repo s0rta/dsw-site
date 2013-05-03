@@ -34,7 +34,7 @@
     = csrf_meta_tag
 
   %body(id="#{'mercury_invasion' if in_editor_iframe?}" class="body-#{current_page.template || controller_name}" role="document")
-    -# = render partial: 'layouts/shared/masthead'
+    = render partial: 'layouts/shared/masthead'
     -# = render partial: 'layouts/shared/navigation'
     %section.main(role="main")
       = yield

@@ -1,0 +1,33 @@
+$btn-bgc: $primary
+$btn-active: #2178c1
+
+.btn
+  +transition(all $speed ease)
+  background-color: $btn-bgc
+  color: rgba(white, 0.7)
+  cursor: pointer
+  display: inline-block
+  text-align: center
+  padding: em(18) em(26)
+  &:hover
+    background-color: $btn-active
+    color: white
+    text-decoration: none
+  &:focus
+    +tab-focus
+  &.active, &:active
+    background-color: $btn-active
+    color: white
+    outline: 0
+  &.active
+    cursor: default
+  &.error
+    outline: 1px solid $error
+    color: white
+  &.disabled, &[disabled], &[readonly]
+    +opacity($disabled-opacity)
+    background-color: $btn-bgc
+    color: rgba(white, 0.7)
+    cursor: default
+    outline: 0
+

@@ -1,0 +1,25 @@
+.masthead
+  @extend .container
+  @extend .container-justified
+
+// Combine the logo
+.dsw-logo
+  color: white
+  display: inline-block
+  margin-bottom: 1.3em
+
+.dsw-logo:before
+  @extend %dswacon
+  @extend .dswacon-logo:before
+  +font-size(180)
+  display: block
+  margin-bottom: -0.2em
+
+.dsw-logotype
+  +font-size(32)
+  color: white
+  font-weight: bold
+  display: block
+.dsw-logotype span
+  font-weight: normal
+
