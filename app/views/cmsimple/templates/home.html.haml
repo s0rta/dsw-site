@@ -35,3 +35,22 @@
 
 %hr
 
+%section.module-involved
+  %h2.module-primary-heading Get Involved
+  %form.dsw-form(role="form")
+    %fieldset
+      .control-group
+        %label.control-label(for="involve_name") Name
+        .controls
+          %input#involve_name(type="text" placeholder="Name")
+      .control-group
+        %label.control-label(for="involve_email") Email
+        .controls
+          %input#involve_email(type="email" placeholder="Email Address")
+      .control-group
+        %label.control-label(for="involve_company") Company
+        .controls
+          %input#involve_company(type="text" placeholder="Company")
+    .form-actions
+      %input.btn(type="submit" value="Get Involved")
+
