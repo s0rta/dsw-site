@@ -1,33 +1,48 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.13'
+gem 'jquery-rails'
+gem 'jquery-rails-cdn'
+gem 'haml-rails'
+gem 'cmsimple', github: 'modeset/cmsimple'
+gem 'navigasmic'
+gem 'turbolinks'
+gem 'font_assets', '0.1.1' # Lock until https://github.com/rubymaverick/font_assets/pull/14 is merged
+
 gem 'pg'
 gem 'thin'
 
-gem 'utensils', github: 'modeset/utensils'
-gem 'bourbon'
-gem 'neat'
-gem 'haml'
-
-gem 'cmsimple', github: 'modeset/cmsimple'
 gem 'cloudinary'
 gem 'simple_form'
 
 gem 'gibbon'
-
 gem 'newrelic_rpm'
 
+
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'bourbon'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'underscore-rails'
+  gem 'uglifier'
+  gem 'utensils', github: 'modeset/utensils'
   gem 'turbo-sprockets-rails3', github: 'ndbroadbent/turbo-sprockets-rails3'
 end
 
-gem 'jquery-rails'
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 
 group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'teabag'
+  gem 'guard-teabag'
+  gem 'terminal-notifier-guard'
+  gem 'rb-fsevent'
 end
+
