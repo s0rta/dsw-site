@@ -1,0 +1,8 @@
+%li.bio
+  %div.bio-img-cell
+    = image_tag "fpo-bio.jpg", alt: "hi", class: "bio-img"
+  %div.bio-content-cell
+    %h3.bio-heading= @full_name
+    %div.bio-copy= @company
+    %div.bio-copy= @title
+    %div.bio-copy= @copy
