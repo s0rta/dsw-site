@@ -2,6 +2,7 @@
   = form_for @snippet, :url => '#', html: { class: 'form-horizontal'} do |f|
     %fieldset
       %legend Bio Snippet
+      = f.hidden_field :image
       .control-group
         = f.label :full_name, class: 'control-label'
         .controls
