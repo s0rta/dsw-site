@@ -1,11 +1,23 @@
+@mixin circle_icon($size, $font_size)
+  display: inline-block
+  border-radius: $size
+  line-height: $size
+  text-align: center
+  width: $size
+  height: $size
+  &:before
+    font-size: $font_size
+    line-height: $size
+
 %dswacon
+  color: white
   font-family: 'dsw'
-  speak: none
   font-style: normal
-  font-weight: normal
   font-variant: normal
-  text-transform: none
+  font-weight: normal
   line-height: 1
+  text-transform: none
+  speak: none
   -webkit-font-smoothing: antialiased
 
 .dswacon
@@ -13,8 +25,41 @@
   &:before
     @extend %dswacon
 
+
+// IcoMoon output
 .dswacon-logo:before
   content: "\e000"
-  color: white
 
+.dswacon-circle:before
+  content: "\e001"
+
+.dswacon-circle-border:before
+  content: "\e002"
+
+.dswacon-plus:before
+  content: "\e003"
+
+.dswacon-minus:before
+  content: "\e004"
+
+
+// Combinations
+%icon-circle-combo
+  +circle_icon(70px, 2em)
+
+%icon-circle-combo-track
+  +circle_icon(100px, 3em)
+
+.dswacon-combo-primary
+  @extend %icon-circle-combo
+  background-color: $primary
+.dswacon-combo-secondary
+  @extend %icon-circle-combo
+  background-color: $secondary
+
+.dswacon-track-icon
+  @extend %icon-circle-combo-track
+  background-color: white
+  &:before
+    color: #546574
 
