@@ -1,6 +1,6 @@
 %li.bio
   %div.bio-img-cell
-    %img(src="#{@image.presence || 'http://placehold.it/100x100'}" data-snippet-image='image' alt="#{@full_name}" class="bio-img")
+    %img.bio-img(src="#{@image.presence || 'http://placehold.it/100x100'}" data-snippet-image='image' alt="#{@full_name}" width="100" height="100")
   %div.bio-content-cell
     %h3.bio-heading= @full_name
     %div.bio-copy= @company
