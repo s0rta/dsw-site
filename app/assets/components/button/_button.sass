@@ -32,3 +32,14 @@ $btn-active: #2178c1
     cursor: default
     outline: 0
 
+.btn-secondary
+  background-color: $secondary
+  &:hover,
+  &.active,
+  &:active
+    background-color: darken($secondary, 10%)
+  &.disabled,
+  &[disabled],
+  &[readonly]
+    background-color: $secondary
+
