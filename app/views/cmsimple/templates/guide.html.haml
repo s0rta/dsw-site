@@ -1,0 +1,70 @@
+%hr
+%section.container.container-justified
+  %h2.module-primary-heading Color Swatches
+  %div.swatch
+  %div.swatch(style="background-color:#e77003;")
+  %div.swatch(style="background-color:#b22222;")
+  %div.swatch(style="background-color:#46a546;")
+
+  %div.swatch(style="background-color:#1c262e;")
+  %div.swatch(style="background-color:#546574;")
+  %div.swatch(style="background-color:#677683;")
+  %div.swatch(style="background-color:#768490;")
+  %div.swatch(style="background-color:#c6ccd1;")
+
+
+%hr
+%section.container.container-justified
+  %h2.module-primary-heading Iconography
+  %span.dswacon.dswacon-logo
+  %span.dswacon.dswacon-circle
+  %span.dswacon.dswacon-circle-border
+  %span.dswacon.dswacon-plus
+  %span.dswacon.dswacon-minus
+  %p Combo Icons
+  %div.dswacon.dswacon-plus.dswacon-combo-primary
+  %div.dswacon.dswacon-minus.dswacon-combo-secondary
+  %div.dswacon.dswacon-plus.dswacon-track-icon
+
+%hr
+%section.container.container-justified
+  %h2.module-primary-heading Buttons
+  %button.btn(href="#") Primary Button
+  %button.btn.active(href="#") Primary Button (Active)
+  %button.btn.btn-secondary(href="#") Secondary Button
+  %button.btn.btn-secondary.active(href="#") Secondary Button (Active)
+
+%hr
+
+%section.module-bios
+  %h2.module-primary-heading Bio Modules
+  %ol.bio-list
+    -(1..5).each do |i|
+      %li.bio
+        %div.bio-img-cell
+          = image_tag "http://placehold.it/100x100", alt: "hi", class: "bio-img", width: 100, height: 100
+        %div.bio-content-cell
+          %h3.bio-heading Jimmy Twoshoes
+          %div.bio-copy Company Name
+          %div.bio-copy Title
+          %div.bio-copy In Denver Since 2000
+
+%hr
+
+%section.module-ctas
+  %h2.module-primary-heading Call To Action Modules
+  %ul.cta-list
+    %li.cta
+      %div.cta-content-cell
+        %div.dswacon.dswacon-plus.dswacon-combo-primary
+        %h3.module-primary-heading.cta-heading Submit Idea
+        %div.cta-copy Have an idea for a panel or workshop?
+      %button.btn.cta-btn(href="#") Get Started
+
+    %li.cta
+      %div.cta-content-cell
+        %div.dswacon.dswacon-plus.dswacon-combo-secondary
+        %h3.module-primary-heading.cta-heading View / Vote
+        %div.cta-copy View and vote on panel/workshop ideas.
+      %button.btn.btn-secondary.cta-btn(href="#") Get Started
+

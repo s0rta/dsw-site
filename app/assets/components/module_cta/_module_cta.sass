@@ -1,0 +1,33 @@
+.module-ctas
+  @extend %section-container
+
+.cta-list
+  @extend %clearfix
+  @extend %unstyled-list
+  margin-top: em(20)
+
+.cta
+  margin-bottom: 1em
+
+.cta-content-cell
+  background-color: #546574
+  padding: 3em 1.875em
+
+.cta-content-cell .dswacon
+  margin-bottom: 2.5em
+
+.cta-btn
+  +font-size(20)
+  color: white
+  display: block
+  margin-top: 1px
+  width: 100%
+
+
+@media (min-width: 50em)
+  .cta
+    float: left
+    width: 42%
+    margin-left: 3%
+    margin-right: 3%
+
