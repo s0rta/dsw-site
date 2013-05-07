@@ -1,6 +1,6 @@
 %hr
-%section.container.container-justified
-  %h2.module-primary-heading Color Swatches
+%section.section-container
+  %h2.primary-heading Color Swatches
   %div.swatch
   %div.swatch(style="background-color:#e77003;")
   %div.swatch(style="background-color:#b22222;")
@@ -14,8 +14,8 @@
 
 
 %hr
-%section.container.container-justified
-  %h2.module-primary-heading Iconography
+%section.section-container
+  %h2.primary-heading Iconography
   %span.dswacon.dswacon-logo
   %span.dswacon.dswacon-circle
   %span.dswacon.dswacon-circle-border
@@ -24,47 +24,63 @@
   %p Combo Icons
   %div.dswacon.dswacon-plus.dswacon-combo-primary
   %div.dswacon.dswacon-minus.dswacon-combo-secondary
-  %div.dswacon.dswacon-plus.dswacon-track-icon
+  %div.dswacon.dswacon-plus.dswacon-panel-icon
 
 %hr
-%section.container.container-justified
-  %h2.module-primary-heading Buttons
+%section.section-container
+  %h2.primary-heading Buttons
   %button.btn(href="#") Primary Button
   %button.btn.active(href="#") Primary Button (Active)
   %button.btn.btn-secondary(href="#") Secondary Button
   %button.btn.btn-secondary.active(href="#") Secondary Button (Active)
 
 %hr
-
-%section.module-bios
-  %h2.module-primary-heading Bio Modules
-  %ol.bio-list
-    -(1..5).each do |i|
-      %li.bio
-        %div.bio-img-cell
-          = image_tag "http://placehold.it/100x100", alt: "hi", class: "bio-img", width: 100, height: 100
-        %div.bio-content-cell
-          %h3.bio-heading Jimmy Twoshoes
-          %div.bio-copy Company Name
-          %div.bio-copy Title
-          %div.bio-copy In Denver Since 2000
-
-%hr
-
-%section.module-ctas
-  %h2.module-primary-heading Call To Action Modules
+%section.section-container.module-ctas
+  %h2.primary-heading Call To Action Modules
   %ul.cta-list
     %li.cta
       %div.cta-content-cell
         %div.dswacon.dswacon-plus.dswacon-combo-primary
-        %h3.module-primary-heading.cta-heading Submit Idea
+        %h3.primary-heading.cta-heading Submit Idea
         %div.cta-copy Have an idea for a panel or workshop?
       %button.btn.cta-btn(href="#") Get Started
-
     %li.cta
       %div.cta-content-cell
         %div.dswacon.dswacon-plus.dswacon-combo-secondary
-        %h3.module-primary-heading.cta-heading View / Vote
+        %h3.primary-heading.cta-heading View / Vote
         %div.cta-copy View and vote on panel/workshop ideas.
       %button.btn.btn-secondary.cta-btn(href="#") Get Started
+
+%hr
+%section.section-container.module-bios
+  %h2.primary-heading Bio Modules
+  %ol.module-list
+    -(1..3).each do |i|
+      %li.module
+        %div.module-contents
+          %div.module-icon-cell
+            = image_tag "http://placehold.it/100x100", alt: "hi", class: "bio-img", width: 100, height: 100
+          %div.module-details-cell
+            %h3.module-heading Jimmy Twoshoes
+            %div.bio-copy Company Name
+            %div.bio-copy Title
+            %div.bio-copy In Denver Since 2000
+
+%hr
+%section.section-container.module-panels
+  %h2.primary-heading Panel Modules
+  %ol.module-list
+    -(1..3).each do |i|
+      %li.module
+        %div.module-contents
+          %div.module-icon-cell
+            %div.dswacon.dswacon-plus.dswacon-panel-icon
+          %div.module-details-cell
+            %h3.module-heading Title of Panel or Workshop
+            %div.p-copy Lorem ipsum dolere sit amet nonummy consecuter nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter nomen es quid.
+            %div.track-copy Technology
+        %div.voting-cell
+          %h4.voting-heading 66%
+          %span.dswacon.dswacon-plus
+          %span.dswacon.dswacon-minus
 

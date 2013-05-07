@@ -16,23 +16,33 @@ $mark-bgc: #ffc40d
   font-family: $sans-ultra-family
   font-weight: 100
 
-.module-primary-heading
+.primary-heading
   @extend %sans-thin
   +font-size(40)
   text-transform: capitalize
 
-.module-secondary-heading
+.secondary-heading
   @extend %sans-lite
   +font-size(22)
 
-.bio-heading
+.module-heading
   @extend %sans-lite
   +font-size(18)
 
-p
+.voting-heading
+  @extend %sans-ultra
+  +font-size(36)
+
+p,
+.p-copy,
+.bio-copy
   +font-size(13)
 
 .p-copy
-  +font-size(13)
   margin: 1em 0
+
+.track-copy
+  +font-size(16)
+  color: #7dc3fd
+  font-weight: bold
 
