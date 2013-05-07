@@ -10,6 +10,9 @@
       %br
       %br
       The week is focused on 5 tracks - Business, Design, Tech, Manufacturing, and Social Enterprise - and events includes sessions, presentations, panels, workshops, happy hours, social events, job fairs, and much more. 
+      %br
+      %br
+      Our 2013 site is still in process. Check back for updates, or catch up with us on <a href='https://twitter.com/denstartupweek'>Twitter</a> or <a href="https://www.facebook.com/DenverStartupWeek">Facebook</a>. You can also check out our <a href="http://vimeo.com/52483119">2012 wrap-up video</a> and <a href="http://2012.denverstartupweek.org/">archive site</a>.
 
   %article#dsw_why.tab-panel.fade
     = render_region :dsw_why_header, tag: 'h3', html: { class: 'secondary-heading' } do
@@ -49,20 +52,13 @@
 
 %section.section-container.module-involved
   %h2.primary-heading Get Involved
-  %form.dsw-form(role="form")
-    %fieldset
-      .control-group
-        %label.control-label(for="involve_name") Name
-        .controls
-          %input#involve_name(type="text" placeholder="Name")
-      .control-group
-        %label.control-label(for="involve_email") Email
-        .controls
-          %input#involve_email(type="email" placeholder="Email Address")
-      .control-group
-        %label.control-label(for="involve_company") Company
-        .controls
-          %input#involve_company(type="text" placeholder="Company")
-    .form-actions
-      %input.btn(type="submit" value="Get Involved")
 
+  = simple_form_for NewsletterSignup.new, url: main_app.newsletter_signups_path, html: { class: 'dsw-form', role: 'form', data: { bindable: 'newsletter-signup' } } do |f|
+    %fieldset
+      = f.input   :first_name, placeholder: 'First Name', required: true
+      = f.input   :last_name, placeholder: 'Last Name', required: true
+      = f.input   :email, placeholder: 'E-mail Address', label: 'E-mail Address', required: true
+      -# = f.input   :company, label: 'Company', required: true
+    .form-actions
+      = f.button :submit, 'Get Involved', class: 'btn'
+    .notification(style="display: none;")

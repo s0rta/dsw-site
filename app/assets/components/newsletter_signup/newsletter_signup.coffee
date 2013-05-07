@@ -48,7 +48,7 @@ class utensils.NewsletterSignup
           @notification.show()
           @notification.removeClass 'danger'
           @notification.addClass 'success'
-          @notification.text 'You have been added to the list! Please check your e-mail for a confirmation.'
+          @notification.text 'You have been added to our mailing list. Please check your e-mail for a confirmation.'
         error: =>
           @notification.show()
           @notification.removeClass 'success'
