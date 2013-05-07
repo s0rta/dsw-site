@@ -4,8 +4,8 @@ $mark-bgc: #ffc40d
 
 @import utensils/typography
 
-%sans-lite
-  font-family: $sans-lite-family
+%sans-light
+  font-family: $sans-light-family
   font-weight: 300
 
 %sans-thin
@@ -17,16 +17,16 @@ $mark-bgc: #ffc40d
   font-weight: 100
 
 .primary-heading
-  @extend %sans-thin
+  @extend %sans-ultra
   +font-size(40)
   text-transform: capitalize
 
 .secondary-heading
-  @extend %sans-lite
+  @extend %sans-light
   +font-size(22)
 
 .module-heading
-  @extend %sans-lite
+  @extend %sans-light
   +font-size(18)
 
 .voting-heading
@@ -41,8 +41,11 @@ p,
 .p-copy
   margin: 1em 0
 
+strong, b
+  font-family: $sans-neue-family
+
 .track-copy
+  @extend strong
   +font-size(16)
   color: #7dc3fd
-  font-weight: bold
 

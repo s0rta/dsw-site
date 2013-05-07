@@ -2,15 +2,17 @@
 // -----------------------------------------------------------------------------
 +font-face("dsw", "dsw", $asset-pipeline:true)
 
+@function helvetica_neue_stack($weight, $variant)
+  @return "Helvetica Neue CE #{$weight} #{$variant}", "Helvetica Neue LT #{$weight} #{$variant}", "Helvetica Neue #{$weight} #{$variant}", "HelveticaNeue-#{$variant}", "Helvetica Neue #{$variant}", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+
 // Fonts
-// $sans-family: "HelveticaNeue", "Helvetica Neue", "Helvetica", "Arial", sans-serif
 $sans-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", "Arial", "Lucida Grande", sans-serif
-$sans-lite-family: "HelveticaNeueLTStd-Lt", "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Arial", sans-serif
-$sans-thin-family: "HelveticaNeueLTStd-Th", "HelveticaNeueThin", "HelveticaNeue-Thin", "Helvetica Neue Thin", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Arial", sans-serif
-$sans-ultra-family: "HelveticaNeueLTStd-UltLt", "HelveticaNeueUltraLight", "HelveticaNeue-Ultra-Light", "Helvetica Neue Ultra Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Arial", sans-serif
+$sans-neue-family: "HelveticaNeue", "Helvetica Neue", "Helvetica", "Arial", sans-serif
+$sans-light-family: helvetica_neue_stack("45", "Light")
+$sans-thin-family: helvetica_neue_stack("35", "Thin")
+$sans-ultra-family: helvetica_neue_stack("25", "Ultra Light")
 $serif-family: "Georgia", "Times", "Times New Roman", serif
 $mono-family: "Bitstream Vera Sans Mono", "Menslo LG M", "Menlo", "Monaco", monospace
-
 
 
 // Base Sizing
