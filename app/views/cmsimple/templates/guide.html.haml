@@ -54,6 +54,36 @@
       %button.btn.btn-secondary.cta-btn(href="#") Get Started
 
 %hr
+%section.section-container.module-form
+  %h2.primary-heading Form Module
+  %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="true" data-activate="0")
+    %div.form-carousel-inner
+      -(1..3).each do |i|
+        %article.form-pane
+          %div.form-contents
+            %div.dswacon.dswacon-bulb.dswacon-combo-secondary
+            %h3.primary-heading Your Information (#{i})
+            %div.p-copy Lorem ipsum dolere sit amet nonummy consecuter nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter nomen es quid.
+
+            %form.dsw-form(role="form")
+              %fieldset
+                %div.control-group
+                  %label.control-label(for="guide_name_#{i}") Name
+                  %div.controls
+                    %input(id="guide_name_#{i}" type="text" placeholder="Name")
+                %div.control-group
+                  %label.control-label(for="guide_email_#{i}") Email
+                  %div.controls
+                    %input(id="guide_email_#{i}" type="email" placeholder="Email Address")
+                %div.control-group
+                  %label.control-label(for="guide_company_#{i}") Company
+                  %div.controls
+                    %input(id="guide_company_#{i}" type="text" placeholder="Company")
+          %button.btn.btn-secondary.form-btn(href="#") Next
+    %div.carousel-controls
+
+
+%hr
 %section.section-container.module-bios
   %h2.primary-heading Bio Modules
   %ol.module-list
@@ -88,4 +118,5 @@
           %div.voting-engine
             %span.dswacon.dswacon-plus
             %span.dswacon.dswacon-minus
+
 

@@ -53,7 +53,7 @@
 %section.section-container.module-involved
   %h2.primary-heading Get Involved
 
-  = simple_form_for NewsletterSignup.new, url: main_app.newsletter_signups_path, html: { class: 'dsw-form', role: 'form', data: { bindable: 'newsletter-signup' } } do |f|
+  = simple_form_for NewsletterSignup.new, url: main_app.newsletter_signups_path, html: { class: 'dsw-form involve-form', role: 'form', data: { bindable: 'newsletter-signup' } } do |f|
     %fieldset
       = f.input   :first_name, placeholder: 'First Name', required: true
       = f.input   :last_name, placeholder: 'Last Name', required: true

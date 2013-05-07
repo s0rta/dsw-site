@@ -1,0 +1,54 @@
+.form-carousel
+  @extend %clearfix
+  overflow: hidden
+  position: relative
+  width: 100%
+
+.form-carousel-inner
+  @extend %clearfix
+  -webkit-transform: translate3d(0,0,0)
+  +transition(margin-left $speed $ease-in-out-quart)
+  position: relative
+  float: left
+  width: 100%
+
+.form-pane
+  position: relative
+  float: left
+
+.form-contents
+  background-color: #546574
+  padding: 1em
+
+.form-contents .dswacon
+  margin-bottom: 2.5em
+
+.form-btn
+  +font-size(20)
+  display: block
+  margin-top: 1px
+  width: 100%
+
+.indicator
+  -webkit-transform: translate3d(0,0,0)
+  +transition(background-color $speed $ease-in-out-quart)
+  background-color: #677683
+  display: inline-block
+  border-radius: 1em
+  width: 1em
+  height: 1em
+  margin: 1em 0.5em 0
+
+.indicator.active
+  background-color: #c6ccd1
+
+
+@media (min-width: 50em)
+  .form-carousel
+    width: 60%
+    margin-left: auto
+    margin-right: auto
+  .form-contents
+    padding-top: 3em
+    padding-bottom: 3em
+
