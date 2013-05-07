@@ -1,0 +1,48 @@
+$heading-color: white
+$heading-font-weight: normal
+$mark-bgc: #ffc40d
+
+@import utensils/typography
+
+%sans-lite
+  font-family: $sans-lite-family
+  font-weight: 300
+
+%sans-thin
+  font-family: $sans-thin-family
+  font-weight: 200
+
+%sans-ultra
+  font-family: $sans-ultra-family
+  font-weight: 100
+
+.primary-heading
+  @extend %sans-thin
+  +font-size(40)
+  text-transform: capitalize
+
+.secondary-heading
+  @extend %sans-lite
+  +font-size(22)
+
+.module-heading
+  @extend %sans-lite
+  +font-size(18)
+
+.voting-heading
+  @extend %sans-ultra
+  +font-size(36)
+
+p,
+.p-copy,
+.bio-copy
+  +font-size(13)
+
+.p-copy
+  margin: 1em 0
+
+.track-copy
+  +font-size(16)
+  color: #7dc3fd
+  font-weight: bold
+

@@ -1,0 +1,28 @@
+$form-bgc: #677683
+$form-border: transparent
+$form-color: $base-color
+$form-focus-bgc: darken($form-bgc, 5%)
+$form-inset-shadow: none
+$placeholder: darken(#afb6bd, 10%)
+$form-input-padding: em(20)
+$form-input-width: 100%
+
+@import utensils/form_controls
+
+.dsw-form
+  margin-top: em(20)
+
+.dsw-form label
+  display: none
+
+@media (min-width: 50em)
+  .dsw-form
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="search"],
+    textarea
+      width: 50%
+

@@ -1,0 +1,64 @@
+%hr
+%section.section-container.module-tab(data-bindable="module-tab")
+  = render_region :dsw_about_header, tag: 'h2', html: { class: 'primary-heading' } do
+    About Denver Startup Week
+  %article#dsw_what.tab-panel.fade.in.active
+    = render_region :dsw_what_header, tag: 'h3', html: { class: 'secondary-heading' } do
+      What is Denver Startup Week?
+    = render_region :dsw_what_copy, tag: 'div', html: { class: 'p-copy' } do
+      Denver Startup Week is a celebration of everything entrepreneurial in Denver. Denver has a rich history of entrepreneurship and this week long event will showcase Denver’s entrepreneurial community with an emphasis on technology, design, social entrepreneurship and business. The event is intended to unite the entrepreneurial community in Denver and will celebrate the great companies, innovation and ideas happening in the City and the people and inspiration behind them.
+      %br
+      %br
+      The week is focused on 5 tracks - Business, Design, Tech, Manufacturing, and Social Enterprise - and events includes sessions, presentations, panels, workshops, happy hours, social events, job fairs, and much more. 
+      %br
+      %br
+      Our 2013 site is still in process. Check back for updates, or catch up with us on <a href='https://twitter.com/denstartupweek'>Twitter</a> or <a href="https://www.facebook.com/DenverStartupWeek">Facebook</a>. You can also check out our <a href="http://vimeo.com/52483119">2012 wrap-up video</a> and <a href="http://2012.denverstartupweek.org/">archive site</a>.
+
+  %article#dsw_why.tab-panel.fade
+    = render_region :dsw_why_header, tag: 'h3', html: { class: 'secondary-heading' } do
+      Why Denver Startup Week?
+    = render_region :dsw_why_copy, tag: 'div', html: { class: 'p-copy' } do
+      Denver has a thriving entrepreneurial community and is one of the best places in the U.S. to start, build and operate a business.
+      %br
+      Inspired by the innovation and activity in Denver, Denver Startup Week is focused on three goals:
+      %br
+      %br
+      %strong Enhance the sense of community amongst Denver entrepreneurs, with specific focus on Downtown Denver.
+      %br
+      %br
+      %strong Highlight Denver as an entrepreneurial center on the local, regional, and national stage.
+      %br
+      %br
+      %strong Provide education, inspiration, and networking events for the Denver entrepreneurial community.
+
+  %article#dsw_when.tab-panel.fade
+    = render_region :dsw_when_header, tag: 'h3', html: { class: 'secondary-heading' } do
+      When is Denver Startup Week?
+    = render_region :dsw_when_copy, tag: 'div', html: { class: 'p-copy' } do
+      Denver Startup Week 2013 will be held September 16th to 21st. Planning for the week is still in progress, but we will be announcing a schedule and issuing a call for presenters/sessions in mid-May.
+
+  %nav.tab-navigation
+    %a.btn.active(href="#dsw_what") What is Denver Startup Week?
+    %a.btn(href="#dsw_why") Why Denver Startup Week?
+    %a.btn(href="#dsw_when") When is Denver Startup Week?
+
+%hr
+
+%section.section-container.module-bios
+  %h2.primary-heading Those Involved
+  = render_region :involved_bios, tag: 'ol', region_type: 'snippets', html: { class: 'module-list' }
+
+%hr
+
+%section.section-container.module-involved
+  %h2.primary-heading Get Involved
+
+  = simple_form_for NewsletterSignup.new, url: main_app.newsletter_signups_path, html: { class: 'dsw-form', role: 'form', data: { bindable: 'newsletter-signup' } } do |f|
+    %fieldset
+      = f.input   :first_name, placeholder: 'First Name', required: true
+      = f.input   :last_name, placeholder: 'Last Name', required: true
+      = f.input   :email, placeholder: 'E-mail Address', label: 'E-mail Address', required: true
+      -# = f.input   :company, label: 'Company', required: true
+    .form-actions
+      = f.button :submit, 'Get Involved', class: 'btn'
+    .notification(style="display: none;")
