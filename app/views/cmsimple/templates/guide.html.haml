@@ -37,7 +37,7 @@
 %hr
 %section.section-container.module-ctas
   %h2.primary-heading Call To Action Modules
-  %ul.cta-list
+  %ul.module-list
     %li.cta
       %div.cta-content-cell
         %div.dswacon.dswacon-plus.dswacon-combo-primary
@@ -72,6 +72,8 @@
   %ol.module-list
     -(1..3).each do |i|
       %li.module
+        %a.panel-toggle(href="#")
+          %span.dswacon.dswacon-plus
         %div.module-contents
           %div.module-icon-cell
             %div.dswacon.dswacon-plus.dswacon-panel-icon
@@ -81,6 +83,7 @@
             %div.track-copy Technology
         %div.voting-cell
           %h4.voting-heading 66%
-          %span.dswacon.dswacon-plus
-          %span.dswacon.dswacon-minus
+          %div.voting-engine
+            %span.dswacon.dswacon-plus
+            %span.dswacon.dswacon-minus
 
