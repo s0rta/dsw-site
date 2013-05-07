@@ -3,6 +3,8 @@
     %fieldset
       %legend Bio Snippet
       = f.hidden_field :image
+      = hidden_field_tag :wrapperTag, 'li'
+      = hidden_field_tag :wrapperClass, 'module'
       .control-group
         = f.label :full_name, class: 'control-label'
         .controls
