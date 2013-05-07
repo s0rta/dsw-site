@@ -18,20 +18,17 @@ $mark-bgc: #ffc40d
 
 .primary-heading
   @extend %sans-ultra
-  +font-size(40)
+  +font-size(30)
   text-transform: capitalize
 
-.secondary-heading
-  @extend %sans-light
-  +font-size(22)
-
+.secondary-heading,
 .module-heading
   @extend %sans-light
   +font-size(18)
 
 .voting-heading
   @extend %sans-ultra
-  +font-size(36)
+  +font-size(26)
 
 p,
 .p-copy,
@@ -48,4 +45,13 @@ strong, b
   @extend strong
   +font-size(16)
   color: #7dc3fd
+
+
+@media (min-width: 31.25em)
+  .primary-heading
+    +font-size(40)
+  .secondary-heading
+    +font-size(22)
+  .voting-heading
+    +font-size(36)
 

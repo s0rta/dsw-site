@@ -3,18 +3,22 @@
 
 .cta-content-cell
   background-color: #546574
-  padding: 3em 1em
+  padding: 1em
 
 .cta-content-cell .dswacon
   margin-bottom: 2.5em
 
 .cta-btn
-  +font-size(20)
+  +font-size(16)
   color: white
   display: block
   margin-top: 1px
   width: 100%
 
+
+@media (min-width: 31.25em)
+  .cta-btn
+    +font-size(20)
 
 @media (min-width: 43.75em)
   .cta
@@ -22,4 +26,7 @@
     width: 44%
     margin-left: 3%
     margin-right: 3%
+  .cta-content-cell
+    padding-top: 3em
+    padding-bottom: 3em
 

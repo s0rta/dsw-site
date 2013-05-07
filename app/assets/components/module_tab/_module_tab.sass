@@ -1,9 +1,6 @@
 .tab-navigation .btn
   display: block
 
-.tab-navigation .btn + .btn
-  margin-top: 1em
-
 .tab-panel
   display: none
   margin-bottom: em(50)
@@ -14,11 +11,13 @@
   display: block
 
 
+@media (max-width: 50em)
+  .tab-navigation .btn + .btn
+    margin-top: 1em
+
 @media (min-width: 43.75em)
   .tab-navigation .btn
     display: inline-block
-  .tab-navigation .btn + .btn
-    margin-top: 0
   .tab-panel .secondary-heading
     margin-top: 2em
 
