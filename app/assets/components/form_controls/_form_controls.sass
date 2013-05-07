@@ -5,7 +5,7 @@ $form-focus-bgc: darken($form-bgc, 5%)
 $form-inset-shadow: none
 $placeholder: darken(#afb6bd, 10%)
 $form-input-padding: em(20)
-$form-input-width: 80%
+$form-input-width: 100%
 
 @import utensils/form_controls
 
@@ -16,6 +16,16 @@ $form-input-width: 80%
   display: none
 
 @media (min-width: 50em)
+  .dsw-form
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="url"],
+    input[type="tel"],
+    input[type="search"],
+    textarea
+      width: 80%
+
   .dsw-form.involve-form
     input[type="text"],
     input[type="email"],
