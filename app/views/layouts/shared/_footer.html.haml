@@ -1,15 +1,12 @@
 %footer.footer
   %div.footer-container
     %header.footer-header
-      %h5.dsw-logotype Denver Startup <span>Week</span>
+      %h5.dsw-logotype Denver Startup <span>Week</span> <span class="logotype-year">2013</span>
       %div.social-icons
+        %a.temp-icon(href="#")
+        %a.temp-icon(href="#")
+        %a.temp-icon(href="#")
 
-    %nav.footer-nav
-      %ul
-        %li
-          %a(href="#") Link
-        %li
-          %a(href="#") Link
-        %li
-          %a(href="#") Link
+    %nav.footer-navigation(role="navigation")
+      = semantic_navigation :footer, id: 'footer_navigation', class: 'footer-nav site-nav'
 
