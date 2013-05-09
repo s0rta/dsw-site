@@ -34,13 +34,13 @@
     = csrf_meta_tag
 
   %body(id="#{'mercury_invasion' if in_editor_iframe?}" class="body-#{current_page.template || controller_name}" role="document")
-    = render partial: 'layouts/shared/navigation'
-    = render partial: 'layouts/shared/masthead'
-    %section.main(role="main")
-      = yield
-    -# = render partial: 'layouts/shared/footer'
-    -# = render partial: 'layouts/shared/upgrade'
-    -# = render partial: 'layouts/shared/flash_message'
+    %section.main
+      %section.content
+        = render partial: 'layouts/shared/navigation'
+        = render partial: 'layouts/shared/masthead'
+        %section.content-container(role="main")
+        = yield
+    = render partial: 'layouts/shared/footer'
 
     = jquery_include_tag :google
     = javascript_include_tag :application
