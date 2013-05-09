@@ -1,16 +1,10 @@
 .navigation-container
   @extend .container
   @extend .container-justified
-  padding: 0.65em 0
+  padding: 0.65em 1%
 
 .primary-navigation
   background-color: #1c262e
-
-.site-nav li
-  display: inline-block
-
-.site-nav li + li
-  margin-left: 1em
 
 .site-nav a
   +transition(color $speed ease)
@@ -36,4 +30,16 @@
   display: inline-block
   vertical-align: middle
   line-height: 0
+
+
+@media (min-width: 43.75em)
+  .site-nav li
+    display: inline-block
+  .site-nav li + li
+    margin-left: 1em
+
+@media (min-width: 50em)
+  .navigation-container
+    padding-left: 0
+    padding-right: 0
 
