@@ -1,0 +1,39 @@
+.navigation-container
+  @extend .container
+  @extend .container-justified
+  padding: 0.65em 0
+
+.primary-navigation
+  background-color: #1c262e
+
+.site-nav li
+  display: inline-block
+
+.site-nav li + li
+  margin-left: 1em
+
+.site-nav a
+  +transition(color $speed ease)
+  +font-size(15)
+  color: #777d82
+  color: rgba(white, 0.4)
+  display: block
+  padding: 0.3em 0.5em
+
+.site-nav a:hover,
+.site-nav .active a
+  color: white
+
+.site-nav .home-icon a
+  +font-size(24)
+  padding-top: 0
+  padding-bottom: 0
+
+.site-nav .home-icon a:before
+  @extend %dswacon
+  @extend .dswacon-logo:before
+  color: inherit
+  display: inline-block
+  vertical-align: middle
+  line-height: 0
+
