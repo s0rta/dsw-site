@@ -1,4 +1,5 @@
 Cmsimple.configure do |cmsimple|
+
   # the parent controller for all the page CRUD activities
   cmsimple.parent_controller = 'AuthenticatedController'
 
@@ -19,4 +20,5 @@ Cmsimple.configure do |cmsimple|
 
   # set this to change layouts or pass other params into rendering a template
   # self.template_render_options = {}
+
 end

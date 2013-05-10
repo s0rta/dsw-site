@@ -136,6 +136,7 @@ GEM
       execjs (>= 1.2.9)
       sprockets (>= 2.0.3)
       tilt (>= 1.3.3)
+    hashie (2.0.4)
     hike (1.2.2)
     http_parser.rb (0.5.3)
     httparty (0.11.0)
@@ -172,6 +173,15 @@ GEM
     newrelic_rpm (3.6.1.88)
     nokogiri (1.5.9)
     normalize-rails (2.0.1)
+    oauth (0.4.7)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    omniauth-linkedin (0.1.0)
+      omniauth-oauth (~> 1.0)
+    omniauth-oauth (1.0.1)
+      oauth
+      omniauth (~> 1.0)
     pg (0.15.1)
     phantomjs (1.8.1.1)
       poltergeist
@@ -286,6 +296,8 @@ DEPENDENCIES
   jquery-rails-cdn
   navigasmic
   newrelic_rpm
+  omniauth
+  omniauth-linkedin
   pg
   pry-rails
   rails (= 3.2.13)

@@ -1,4 +1,24 @@
 %hr
+%section.section-container
+  %h2.primary-heading Coming September 16 &mdash; 21, 2013
+
+%hr
+%section.section-container.module-ctas
+  %ul.module-list
+    %li.cta
+      %div.cta-content-cell
+        %div.dswacon.dswacon-bulb.dswacon-combo-primary
+        %h3.primary-heading.cta-heading Submit Idea
+        %div.cta-copy Have an idea for a panel or workshop?
+      %button.btn.cta-btn(href="#") Get Started
+    %li.cta
+      %div.cta-content-cell
+        %div.dswacon.dswacon-plus.dswacon-combo-secondary
+        %h3.primary-heading.cta-heading View / Vote
+        %div.cta-copy View and vote on panel/workshop ideas.
+      %button.btn.btn-secondary.cta-btn(href="#") Coming Soon
+
+%hr
 %section.section-container.module-tab(data-bindable="module-tab")
   = render_region :dsw_about_header, tag: 'h2', html: { class: 'primary-heading' } do
     About Denver Startup Week

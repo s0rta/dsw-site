@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'pg'
+gem 'thin'
+
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
 gem 'haml-rails'
@@ -9,15 +12,14 @@ gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
 
-gem 'pg'
-gem 'thin'
-
 gem 'cloudinary'
 gem 'simple_form'
 
 gem 'gibbon'
 gem 'newrelic_rpm'
 
+gem 'omniauth'
+gem 'omniauth-linkedin'
 
 group :assets do
   gem 'bourbon'
@@ -29,12 +31,10 @@ group :assets do
   gem 'turbo-sprockets-rails3', github: 'ndbroadbent/turbo-sprockets-rails3'
 end
 
-
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
 end
-
 
 group :development, :test do
   gem 'pry-rails'
