@@ -42,6 +42,6 @@
         = yield
     = render partial: 'layouts/shared/footer'
 
-    = jquery_include_tag :google
-    = javascript_include_tag :application
+    = jquery_include_tag :google, :"data-turbolinks-eval" => false
+    = javascript_include_tag :application, :"data-turbolinks-eval" => false
 
