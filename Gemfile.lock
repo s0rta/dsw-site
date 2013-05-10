@@ -7,6 +7,13 @@ GIT
       railties (>= 3.2)
 
 GIT
+  remote: git://github.com/mkitt/jquery-rails-cdn.git
+  revision: db42064e82aaa7a51ed09d46e3fef2d750e63b59
+  specs:
+    jquery-rails-cdn (0.4.0)
+      jquery-rails
+
+GIT
   remote: git://github.com/modeset/cmsimple.git
   revision: c09967273d3e4d4875bbf96d87e7cd0c158f52f1
   specs:
@@ -42,6 +49,13 @@ GIT
     turbo-sprockets-rails3 (0.3.6)
       railties (> 3.2.8, < 4.0.0)
       sprockets (>= 2.0.0)
+
+GIT
+  remote: git://github.com/rails/turbolinks.git
+  revision: cebcbea332909d03e60f5a486fe0f6168408c10a
+  specs:
+    turbolinks (1.1.1)
+      coffee-rails
 
 GEM
   remote: https://rubygems.org/
@@ -117,7 +131,7 @@ GEM
     faye-websocket (0.4.7)
       eventmachine (>= 0.12.0)
     ffi (1.8.1)
-    font_assets (0.1.1)
+    font_assets (0.1.7)
       rack
     formatador (0.2.4)
     gibbon (0.4.6)
@@ -152,8 +166,6 @@ GEM
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    jquery-rails-cdn (0.4.0)
-      jquery-rails
     json (1.7.7)
     listen (1.0.3)
       rb-fsevent (>= 0.9.3)
@@ -258,12 +270,10 @@ GEM
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.18.1)
-    tilt (1.4.0)
+    tilt (1.4.1)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.1.1)
-      coffee-rails
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -283,12 +293,12 @@ DEPENDENCIES
   cloudinary
   cmsimple!
   coffee-rails
-  font_assets (= 0.1.1)
+  font_assets
   gibbon
   guard-teabag
   haml-rails
   jquery-rails
-  jquery-rails-cdn
+  jquery-rails-cdn!
   mercury-rails!
   navigasmic
   newrelic_rpm
@@ -303,7 +313,7 @@ DEPENDENCIES
   terminal-notifier-guard
   thin
   turbo-sprockets-rails3!
-  turbolinks
+  turbolinks!
   uglifier
   underscore-rails
   utensils!
