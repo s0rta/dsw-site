@@ -8,5 +8,8 @@
         %a.temp-icon(href="#")
 
     %nav.footer-navigation(role="navigation")
-      = semantic_navigation :footer, id: 'footer_navigation', class: 'footer-nav site-nav'
-
+      = semantic_navigation :footer, id: 'footer_navigation', class: 'footer-nav site-nav' do |n|
+        - n.item 'About', '/about'
+        - n.item 'Panel Picker', '/panel-picker'
+        - n.item 'Schedule', '/schedule'
+        - n.item 'Sponsors', '/sponsors'

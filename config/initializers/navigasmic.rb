@@ -1,20 +1,5 @@
 Navigasmic.setup do |config|
 
-  config.semantic_navigation :primary do |n|
-    n.item '', '/', class: 'home-icon'
-    n.item 'Information', '/information'
-    n.item 'Event Descriptions', '/event-descriptions'
-    n.item 'Event Schedule', '/event-schedule'
-    n.item 'Sponsors', '/sponsors'
-  end
-
-  config.semantic_navigation :footer do |n|
-    n.item 'Information', '/information'
-    n.item 'Event Descriptions', '/event-descriptions'
-    n.item 'Event Schedule', '/event-schedule'
-    n.item 'Sponsors', '/sponsors'
-  end
-
   # Naming Builder Configurations:
   #
   # If you want to define a named configuration for a builder, just provide a hash with the name and the builder to
