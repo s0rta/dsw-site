@@ -1,0 +1,23 @@
+.primary-navigation
+  background-color: #1c262e
+
+.navigation-container
+  @extend .container
+  @extend .container-justified
+  padding: 0.65em 1%
+
+
+@media (min-width: 37.5em)
+  .primary-nav li
+    display: inline-block
+  .primary-nav li + li
+    margin-left: 1em
+  .primary-nav a
+    padding-left: 0.5em
+    padding-right: 0.5em
+
+@media (min-width: 50em)
+  .navigation-container
+    padding-left: 0
+    padding-right: 0
+

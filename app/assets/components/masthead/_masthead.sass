@@ -4,34 +4,20 @@
   padding-left: 1%
   padding-right: 1%
 
-
-// Combine the logo
-.dsw-logo
-  color: white
-  display: inline-block
+.masthead .dsw-logo
   margin-bottom: 1.3em
 
-.dsw-logo:before
-  @extend %dswacon
-  @extend .dswacon-logo:before
-  +font-size(170)
-  display: block
-  margin-bottom: -0.2em
 
-.dsw-logotype
-  +font-size(22)
-  color: white
-  font-family: $sans-neue-family
-  font-weight: bold
-  display: block
-.dsw-logotype span
-  font-weight: normal
-
+@media (max-width: 31.25em)
+  .masthead .dsw-logo:before
+    +font-size(170)
+  .masthead .dsw-logotype
+    +font-size(22)
 
 @media (min-width: 31.25em)
-  .dsw-logo:before
+  .masthead .dsw-logo:before
     +font-size(180)
-  .dsw-logotype
+  .masthead .dsw-logotype
     +font-size(32)
 
 @media (min-width: 50em)

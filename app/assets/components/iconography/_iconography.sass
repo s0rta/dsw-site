@@ -68,3 +68,31 @@
   &:before
     color: #546574
 
+// Generic Logo
+.dsw-logo
+  color: white
+  display: inline-block
+
+.dsw-logo:before
+  @extend %dswacon
+  @extend .dswacon-logo:before
+  font-size: 5em
+  display: block
+  margin-bottom: -0.2em
+
+.dsw-logotype
+  font-size: 1em
+  color: white
+  font-family: $sans-neue-family
+  font-weight: bold
+  display: block
+.dsw-logotype span
+  font-weight: normal
+
+.temp-icon
+  display: inline-block
+  width: 24px
+  height: 24px
+  background-color: $primary
+  border-radius: 1px
+

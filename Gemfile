@@ -4,11 +4,10 @@ gem 'rails', '3.2.13'
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
 gem 'haml-rails'
-gem 'cmsimple', github: 'modeset/cmsimple'
-gem 'mercury-rails', github: 'jejacks0n/mercury'
+gem 'cmsimple'
 gem 'navigasmic'
-gem 'turbolinks'
-gem 'font_assets', '0.1.1' # Lock until https://github.com/rubymaverick/font_assets/pull/14 is merged
+gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
+gem 'font_assets'
 
 gem 'pg'
 gem 'thin'

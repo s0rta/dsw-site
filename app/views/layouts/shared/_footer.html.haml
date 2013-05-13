@@ -1,0 +1,14 @@
+%footer.footer
+  %div.footer-container
+    %header.footer-header
+      %h5.dsw-logotype Denver Startup <span>Week</span> <span class="logotype-year">2013</span>
+      -# %div.social-icons
+        -# %a.temp-icon(href="https://twitter.com/denstartupweek") T
+        -# %a.temp-icon(href="https://www.facebook.com/DenverStartupWeek") F
+
+    %nav.footer-navigation(role="navigation")
+      = semantic_navigation :footer, id: 'footer_navigation', class: 'footer-nav site-nav' do |n|
+        - n.item 'About', '/about'
+        - n.item 'Sponsors', '/sponsors'
+        - n.item 'Twitter', 'https://twitter.com/DenStartupWeek'
+        - n.item 'Facebook', 'https://facebook.com/DenverStartupWeek'

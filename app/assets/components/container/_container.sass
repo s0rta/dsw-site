@@ -1,4 +1,4 @@
-.main
+.content-container
   @extend %clearfix
   padding-left: 1%
   padding-right: 1%
@@ -26,8 +26,11 @@
   background-color: $primary
 
 
+@media (min-width: 31.25em)
+  +sticky-footer(12.5em)
+
 @media (min-width: 50em)
-  .main
+  .content-container
     padding-left: 0
     padding-right: 0
 
