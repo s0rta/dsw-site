@@ -2,10 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'jquery-rails'
-gem 'jquery-rails-cdn', github: 'mkitt/jquery-rails-cdn' # Waiting on https://github.com/kenn/jquery-rails-cdn/pull/17
+gem 'jquery-rails-cdn'
 gem 'haml-rails'
-gem 'cmsimple', github: 'modeset/cmsimple'
-gem 'mercury-rails', github: 'jejacks0n/mercury'
+gem 'cmsimple'
 gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
