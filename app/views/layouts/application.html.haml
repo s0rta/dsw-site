@@ -33,7 +33,7 @@
 
     = csrf_meta_tag
 
-  %body(id="#{'mercury_invasion' if in_editor_iframe?}" class="body-#{current_page.template || controller_name}" role="document")
+  %body(id="#{'mercury_invasion' if in_mercury_invasion?}" class="body-#{current_body_class}" role="document")
     %section.main
       %section.content
         = render partial: 'layouts/shared/navigation'

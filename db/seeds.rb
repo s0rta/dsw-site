@@ -9,3 +9,7 @@ unless Cmsimple::Page.where(is_root: true).first
   page = Cmsimple::Page.create is_root: true, title: 'Home', template: 'default'
   page.publish!
 end
+
+[ 'Business', 'Design', 'Tech', 'Manufacturing', 'Social Enterprise' ].each do |track_name|
+  Track.find_or_create_by_name! track_name
+end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508051211) do
+ActiveRecord::Schema.define(:version => 20130512230944) do
 
   create_table "cmsimple_images", :force => true do |t|
     t.string   "attachment"
@@ -69,6 +69,30 @@ ActiveRecord::Schema.define(:version => 20130508051211) do
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "submissions", :force => true do |t|
+    t.integer  "submitter_id"
+    t.integer  "track_id"
+    t.string   "format"
+    t.string   "location"
+    t.string   "day"
+    t.string   "time_range"
+    t.string   "title"
+    t.text     "description"
+    t.text     "notes"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "contact_email"
+  end
+
+  add_index "submissions", ["submitter_id"], :name => "index_submissions_on_submitter_id"
+  add_index "submissions", ["track_id"], :name => "index_submissions_on_track_id"
+
+  create_table "tracks", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

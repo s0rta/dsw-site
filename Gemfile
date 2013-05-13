@@ -21,6 +21,8 @@ gem 'newrelic_rpm'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 
+gem 'responders'
+
 group :assets do
   gem 'bourbon'
   gem 'sass-rails'
