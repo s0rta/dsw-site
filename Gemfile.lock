@@ -311,6 +311,7 @@ DEPENDENCIES
   pg
   pry-rails
   rails (= 3.2.13)
+  rake
   rb-fsevent
   responders
   rspec-rails
