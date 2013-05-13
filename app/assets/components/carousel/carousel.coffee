@@ -18,6 +18,7 @@ class dsw.Carousel
   initialize: ->
     @slider = @el.find '.form-carousel-inner'
     @panels = @slider.find '.form-pane'
+    @advances = @el.find '.advance-btn'
     @num_panels = @panels.length
     @setProperWidths()
     @indicators = @createIndicators()
@@ -52,6 +53,7 @@ class dsw.Carousel
   addListeners: ->
     $('html').on('keydown.carousel', => @keyed arguments...) if @data.keyboard
     @indicators.on 'click.carousel', => @indicated arguments...
+    @advances.on 'click', => @next arguments...
 
 
   removeListeners: ->
