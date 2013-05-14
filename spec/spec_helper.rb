@@ -8,7 +8,8 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-Capybara.default_driver = :selenium
+require 'capybara/poltergeist'
+Capybara.default_driver = :poltergeist
 
 RSpec.configure do |config|
   # ## Mock Framework
