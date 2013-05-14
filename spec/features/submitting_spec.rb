@@ -24,6 +24,7 @@ feature 'Creating a submission' do
     next_buttons[3].click
     fill_in 'submission_contact_email', with: 'test2@example.com'
     click_button 'Submit'
+    expect(page).to have_content('Thanks For Submitting!')
   end
 
 end

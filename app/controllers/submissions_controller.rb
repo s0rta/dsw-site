@@ -8,8 +8,11 @@ class SubmissionsController < ApplicationController
 
   def create
     @submission = Submission.new(params[:submission])
-    @submission.save
-    respond_with @submission
+    if @submission.save
+      redirect_to thanks_submissions_path
+    else
+      respond_with @submission
+    end
   end
 
 end
