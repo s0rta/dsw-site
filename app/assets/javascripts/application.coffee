@@ -1,5 +1,6 @@
 #= require turbolinks
 #= require utensils/bindable
+#= require utensils/dismiss
 #= require components/filter_bar
 #= require components/module_tab
 #= require components/newsletter_signup
