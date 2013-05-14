@@ -1,6 +1,6 @@
 class Submission < ActiveRecord::Base
 
-  attr_accessible :day, :description, :format, :location, :notes, :time_range, :title, :track_id, :contact_email
+  attr_accessible :day, :description, :format, :location, :notes, :time_range, :title, :track_id, :contact_email, :estimated_size
 
   FORMATS = [ 'Presentation',
               'Panel',
@@ -24,7 +24,7 @@ class Submission < ActiveRecord::Base
                   'Happy hour',
                   'Evening',
                   'Late night',
-                  'Not sure / don\'t care' ]
+                  "Not sure / don't care" ]
 
   belongs_to :submitter, class_name: 'User'
   belongs_to :track

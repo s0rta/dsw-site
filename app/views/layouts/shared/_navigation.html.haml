@@ -3,8 +3,5 @@
     = semantic_navigation :primary, id: 'primary_navigation', class: 'primary-nav site-nav' do |n|
       - n.item '', '/', class: 'home-icon'
       - n.item 'About', '/about'
-      - n.item 'Panel Picker', '/panel-picker'
-      - n.item 'Schedule', '/schedule'
-      - n.item 'Sponsors', '/sponsors'
-
+      - n.item 'Submit a Session', main_app.new_submission_path
 

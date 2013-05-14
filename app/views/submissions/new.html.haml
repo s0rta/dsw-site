@@ -8,11 +8,12 @@
             %div.form-contents
               %div.dswacon.dswacon-bulb.dswacon-combo-secondary
               %h3.primary-heading The Basics
-              %div.p-copy
+              .p-copy
                 Thanks for your interest in holding a DSW event! Each Denver Startup Week event is independently organized. We provide help with scheduling, venues and ticketing, promotion and marketing, and other infrastructure. Our goal is to provide as much support as necessary while getting out of the way and letting the community put on great events.
-              %div.p-copy
+              .p-copy
                 %strong Please fill out all fields as best you can.
-                Let's start with a few basic questions.
+              .p-copy
+                Let's start with a few basic questions:
               = field_set_tag do
                 = f.input :format, as: :select, collection: Submission::FORMATS, prompt: 'What sort of event are you proposing?'
                 = f.input :track_id, as: :select, collection: Track.all, prompt: 'What track would it fit best into?', include_blank: 'Not sure'
@@ -23,7 +24,7 @@
               %h3.primary-heading Tell Us About It
               %div.p-copy What's the essence of your event? These will be used for the community panel picker, so this is your chance to make it snappy and really sell the event to potential attendees.
               = field_set_tag do
-                = f.input :title, placeholder: 'Title'
+                = f.input :title, placeholder: 'Give this session a title'
                 = f.input :description, placeholder: 'Short description of the session you\'re proposing.', input_html: { rows: 4 }
             %button.btn.btn-secondary.form-btn.advance-btn(href="#") Next
           %article.form-pane
@@ -35,6 +36,7 @@
                 = f.input :day, as: :select, collection: Submission::DAYS, prompt: 'Which day in the week are you looking to hold your event?'
                 = f.input :location, placeholder: 'Where are you looking to hold your event?'
                 = f.input :time_range, as: :select, collection: Submission::TIME_RANGES, prompt: 'What time of day are you looking to hold your event?'
+                = f.input :estimated_size, placeholder: 'Roughly how many attendees do you think this event could accomodate?'
             %button.btn.btn-secondary.form-btn.advance-btn(href="#") Next
           %article.form-pane
             %div.form-contents
@@ -48,12 +50,14 @@
             %div.form-contents
               %div.dswacon.dswacon-bulb.dswacon-combo-secondary
               %h3.primary-heading Finalize
-              %div.p-copy
-                Once you hit submit, your proposal will be routed to the appropriate track chair to look over. They may contact you with questions. If everything looks good from there, we'll drop you a line and post it up on our panel picker for community voting and commenting.
-              %div.p-copy
+              .p-copy
+                Once you submit, your proposal will be routed to the appropriate track chair to look over. They may contact you with questions. If everything looks good from there, we'll drop you a line and post it up on our panel picker for community voting and commenting.
+              .p-copy
                 Please also note that you are responsible for all insurance and liability at your event.
-              %div.p-copy
+              .p-copy
                 While we're still working through the details, event submissions and voting/acceptance will be happening on a rolling basis. We'll be in touch throughout the process to make sure you have the latest updates.
+              .p-copy
+                %strong Please confirm your contact e-mail address:
               = f.input :contact_email, placeholder: 'Please provide a contact e-mail address'
             = f.button :submit, 'Submit', class: 'btn btn-secondary form-btn'
       - else
@@ -62,5 +66,5 @@
             %div.dswacon.dswacon-bulb.dswacon-combo-secondary
             %h3.primary-heading Get Started
             %div.p-copy You'll need to sign in to get going. To save you the pain of managing one more account, we use LinkedIn. 
-          %a.btn.btn-secondary.form-btn(href="/auth/linkedin") Sign in with LinkedIn to continue
+          %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{new_submission_path}") Sign in with LinkedIn to continue
     %div.carousel-controls

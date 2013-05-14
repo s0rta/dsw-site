@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
   respond_to :html 
 
   def new
-    @submission = Submission.new
+    @submission = Submission.new(contact_email: current_user.try(:email))
   end
 
   def create
