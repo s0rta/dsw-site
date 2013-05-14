@@ -1,4 +1,27 @@
 %hr
+%section.section-container.filter-bar(data-bindable="filter-bar")
+  %form.dsw-form.form-filter(role="form")
+    %fieldset
+
+      %div.control-group
+        %label.control-label(for="search_bar") Search
+        %div.controls
+          %input#search_bar(type="search" placeholder="Search")
+
+      %div.control-group
+        %div.controls
+          %div.filter-drop(data-filterable="filter-drop")
+            %button.drop-toggle Filter by: <span class="tagged-as"></span><span class="drop-caret"></span>
+            %ul.drop-menu.tag-menu(role="menu")
+              %li(data-filter-by="track")<
+                %a(href="#") Track
+              %li(data-filter-by="day")<
+                %a(href="#") Day
+              %li(data-filter-by="time")<
+                %a(href="#") Time
+              %li(data-filter-by="place")<
+                %a(href="#") Place
+
 %section.section-container.module-panels
   %ol.module-list
     -(1..3).each do |i|

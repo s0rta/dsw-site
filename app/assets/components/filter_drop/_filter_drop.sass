@@ -1,0 +1,115 @@
+$fdrop-bgc: #1c262e
+$fdrop-bgc-active: darken($fdrop-bgc, 10%)
+$fdrop-color: #c8cdd2
+
+.filter-drop
+  text-align: left
+  position: relative
+
+.drop-toggle
+  @extend .btn
+  background-color: $fdrop-bgc
+  border-radius: $radii
+  color: $fdrop-color
+  text-align: left
+  text-transform: uppercase
+  position: relative
+  width: 100%
+  &:focus,
+  &:hover
+    background-color: $fdrop-bgc-active
+    outline: 0
+  &.active, &:active
+    background-color: $fdrop-bgc-active
+
+.drop-caret
+  border-width: 6px
+  border-style: solid
+  border-color: $fdrop-color transparent transparent transparent
+  position: absolute
+  display: block
+  top: 50%
+  right: em(26)
+  width: 0
+  height: 0
+  margin-top: -3px
+  content: ""
+
+
+.filter-drop.active .drop-toggle
+  border-radius: $radii $radii 0 0
+  background-color: $fdrop-bgc-active
+  color: white
+  cursor: pointer
+
+
+.drop-menu
+  @extend %unstyled-list
+  background-color: $fdrop-bgc
+  border-radius: 0 0 $radii $radii
+  position: absolute
+  top: 100%
+  left: 0
+  width: 100%
+  margin-top: -1px
+  z-index: $zindex-drop
+  display: none
+.filter-drop.active .drop-menu
+  display: block
+
+
+.drop-menu a
+  +transition(background-color $speed ease)
+  padding: 1em em(26)
+  background-color: lighten($fdrop-bgc, 5%)
+  color: white
+  text-transform: uppercase
+  &:focus,
+  &:hover
+    background-color: lighten($fdrop-bgc, 10%)
+    outline: 0
+
+.drop-menu .active a
+  cursor: pointer
+  background-color: $primary
+
+.tag-menu li
+  display: inline-block
+  margin-left: 1em
+
+
+.tag-menu a
+  position: relative
+  display: inline-block
+  border-radius: $radii
+  margin: 1em 0
+
+.tag-menu a:before
+  content: "+"
+  position: absolute
+  top: 50%
+  left: 0.6em
+  margin-top: -0.8em
+
+.tag-menu .active a:before
+  content: "\00d7"
+
+
+// .drop-menu li
+  // border-top: 1px solid $fdrop-bgc-active
+
+// .drop-menu a
+  // +transition-duration($speed)
+  // +transition-timing-function(ease)
+  // +transition-property(color, background-color)
+  // display: block
+  // padding: 1em em(26)
+  // background-color: transparent
+  // color: $fdrop-color
+  // text-transform: uppercase
+  // &:focus,
+  // &:hover
+    // background-color: $fdrop-bgc-active
+    // color: white
+    // outline: 0
+
