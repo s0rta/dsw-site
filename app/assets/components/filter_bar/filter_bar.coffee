@@ -12,21 +12,42 @@ class dsw.FilterBar
 
   initialize: ->
     @document = $(document)
-    @filters = []
+    @search_by = ''
+    @filter_by = []
+    @sort_by = ''
+    @search_field = @el.find '#search_bar'
     @filterable = new utensils.Bindable(@el, "filterable").bindAll()
     @filterables = @filterable.getRefs()
 
 
 # PUBLIC #
 
-  addFilter: (filter) ->
-    @filters.push filter
-    filterable.add(filter, "#{@filters} ") for filterable in @filterables
+  search: (chars="") ->
+    @search_by = chars
+    @request()
 
 
-  removeFilter: (filter) ->
-    @filters.splice _.indexOf(@filters, filter), 1
-    filterable.remove(filter, "#{@filters} ") for filterable in @filterables
+  addFilter: (filter, requester) ->
+    @filter_by.push filter
+    requester.add filter, @stringifyFilters()
+    @request()
+
+
+  removeFilter: (filter, requester) ->
+    @filter_by.splice _.indexOf(@filter_by, filter), 1
+    requester.remove filter, @stringifyFilters()
+    @request()
+
+
+  sort: (tag, requester) ->
+    @sort_by = tag
+    requester.removeAll()
+    requester.add tag, @sort_by
+    @request()
+
+
+  request: ->
+    console?.log {search: @search_by, filter: @filter_by, sort: @sort_by}
 
 
   dispose: ->
@@ -37,16 +58,32 @@ class dsw.FilterBar
 # PROTECTED #
 
   addListeners: ->
+    @search_field.on 'input.search', => @searched arguments...
     @document.on 'filter', => @filtered arguments...
+    @document.on 'sort', => @sorted arguments...
 
 
   removeListeners: ->
+    @search_field.off 'input.search'
     @document.off 'filter'
+    @document.off 'sort'
+
+
+  searched: (e) ->
+    @search @search_field.val()
 
 
   filtered: (e, options) ->
-    return @removeFilter(options.tag) if _.contains @filters, options.tag
-    @addFilter options.tag
+    return @removeFilter(options.tag, options.requester) if _.contains @filter_by, options.tag
+    @addFilter options.tag, options.requester
+
+
+  sorted: (e, options) ->
+    @sort options.tag, options.requester
+
+
+  stringifyFilters: ->
+    "#{@filter_by}".replace /,/g, ", "
 
 
 utensils.Bindable.register 'filter-bar', dsw.FilterBar

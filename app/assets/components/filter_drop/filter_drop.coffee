@@ -4,9 +4,14 @@
 class dsw.FilterDrop
   constructor: (@el, data) ->
     @data = if data then data else @el.data()
+    @options()
     @initialize()
     @addListeners()
 
+
+  options: ->
+    @data.behavior ?= 'radio'
+    @data.action ?= 'sort'
 
   initialize: ->
     @document = $(document)
@@ -37,25 +42,19 @@ class dsw.FilterDrop
 
 
   add: (tag="", filters="") ->
-    li = @el.find "[data-filter-by='#{tag}']"
-    li.addClass 'active'
-    @text.html(filters)
+    @updateFilter tag, filters, 'addClass'
 
 
   remove: (tag="", filters="") ->
-    li = @el.find "[data-filter-by='#{tag}']"
-    li.removeClass 'active'
-    @text.html(filters)
+    @updateFilter tag, filters, 'removeClass'
 
 
   addAll: (tag="", filters="") ->
-    @lists.addClass 'active'
-    @text.html(filters)
+    @updateFilters tag, filters, 'addClass'
 
 
   removeAll: (tag="", filters="") ->
-    @lists.removeClass 'active'
-    @text.html(filters)
+    @updateFilters tag, filters, 'removeClass'
 
 
   dispose: ->
@@ -84,6 +83,17 @@ class dsw.FilterDrop
     @html.off('click.drop.document')
 
 
+  updateFilter: (tag, filters, fn) ->
+    li = @el.find "[data-filter-by='#{tag}']"
+    li[fn]('active')
+    @text.html filters
+
+
+  updateFilters: (tag, filters, fn) ->
+    @lists[fn] 'active'
+    @text.html filters
+
+
   send: (name, options={}) ->
     @document.trigger name, options
 
@@ -96,10 +106,11 @@ class dsw.FilterDrop
 
   filtered: (e) ->
     e?.preventDefault()
-    e?.stopPropagation()
+    e?.stopPropagation() if @data.behavior is 'checkbox'
     link = $(e.target)
     list = link.closest 'li'
-    @send 'filter', {tag: list.data('filter-by')}
+    @send @data.action, {tag: list.data('filter-by'), requester: @}
+
 
 utensils.Bindable.register 'filter-drop', dsw.FilterDrop
 
