@@ -36,7 +36,7 @@
                 = f.input :day, as: :select, collection: Submission::DAYS, prompt: 'Which day in the week are you looking to hold your event?'
                 = f.input :location, placeholder: 'Where are you looking to hold your event?'
                 = f.input :time_range, as: :select, collection: Submission::TIME_RANGES, prompt: 'What time of day are you looking to hold your event?'
-                = f.input :estimated_size, placeholder: 'Roughly how many attendees do you think this event could accomodate?'
+                = f.input :estimated_size, placeholder: 'How many attendees do you think this event could accomodate?'
             %button.btn.btn-secondary.form-btn.advance-btn(href="#") Next
           %article.form-pane
             %div.form-contents
