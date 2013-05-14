@@ -8,6 +8,8 @@
 
     %nav.footer-navigation(role="navigation")
       = semantic_navigation :footer, id: 'footer_navigation', class: 'footer-nav site-nav' do |n|
+        - if current_user
+          - n.item "Hello, #{current_user.name}", '#'
         - n.item 'About', '/about'
         - n.item 'Twitter', 'https://twitter.com/DenStartupWeek'
         - n.item 'Facebook', 'https://facebook.com/DenverStartupWeek'
