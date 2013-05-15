@@ -2,7 +2,7 @@ $fdrop-bgc: #1c262e
 $fdrop-bgc-active: darken($fdrop-bgc, 10%)
 $fdrop-color: #c8cdd2
 
-.filter-drop
+.drop-select
   text-align: left
   position: relative
 
@@ -35,14 +35,14 @@ $fdrop-color: #c8cdd2
   margin-top: -3px
   content: ""
 
-
-.filter-drop.active .drop-toggle
+.drop-select.active .drop-toggle
   border-radius: $radii $radii 0 0
   background-color: $fdrop-bgc-active
   color: white
   cursor: pointer
 
 
+// Generic Menu
 .drop-menu
   @extend %unstyled-list
   background-color: $fdrop-bgc
@@ -54,9 +54,8 @@ $fdrop-color: #c8cdd2
   margin-top: -1px
   z-index: $zindex-drop
   display: none
-.filter-drop.active .drop-menu
+.drop-select.active .drop-menu
   display: block
-
 
 .drop-menu a
   +transition(background-color $speed ease)
@@ -72,31 +71,4 @@ $fdrop-color: #c8cdd2
 .drop-menu .active a
   cursor: pointer
   background-color: $primary
-
-.tag-menu li
-  display: inline-block
-  margin-left: 1em
-
-
-.tag-menu a
-  position: relative
-  display: inline-block
-  border-radius: $radii
-  margin: 1em 0
-
-.tag-menu a:before
-  content: "+"
-  position: absolute
-  top: 50%
-  left: 0.6em
-  margin-top: -0.8em
-
-.tag-menu .active a:before
-  content: "\00d7"
-
-.select-menu li
-  border-top: 1px solid $fdrop-bgc-active
-
-.select-menu a
-  display: block
 

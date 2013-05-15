@@ -1,7 +1,10 @@
 #= require underscore
 #= require utensils/bindable
 #= require components/dsw
-#= require components/filter_drop
+#= require components/search_filter
+#= require components/drop_select
+#= require components/menu_filter
+#= require components/menu_sort
 
 class dsw.FilterBar
   constructor: (@el, data) ->
@@ -15,38 +18,36 @@ class dsw.FilterBar
     @search_by = ''
     @filter_by = []
     @sort_by = ''
-    @search_field = @el.find '#search_bar'
     @filterable = new utensils.Bindable(@el, "filterable").bindAll()
-    @filterables = @filterable.getRefs()
+    # @filterables = @filterable.getRefs()
 
 
 # PUBLIC #
 
-  search: (chars="") ->
-    @search_by = chars
-    @request()
+  search: (characters) ->
+    @search_by = characters
+    @query()
 
 
-  addFilter: (filter, requester) ->
+  add: (filter) ->
     @filter_by.push filter
-    requester.add filter, @stringifyFilters()
-    @request()
+    @query()
+    @document.trigger 'filter:update', {action:'add', tag:filter, tags:@stringifyFilters()}
 
 
-  removeFilter: (filter, requester) ->
+  remove: (filter) ->
     @filter_by.splice _.indexOf(@filter_by, filter), 1
-    requester.remove filter, @stringifyFilters()
-    @request()
+    @query()
+    @document.trigger 'filter:update', {action:'remove', tag:filter, tags:@stringifyFilters()}
 
 
-  sort: (tag, requester) ->
+  sort: (tag) ->
     @sort_by = tag
-    requester.removeAll()
-    requester.add tag, @sort_by
-    @request()
+    @query()
+    @document.trigger 'sort:update', {tag:tag, tags:tag}
 
 
-  request: ->
+  query: ->
     console?.log {search: @search_by, filter: @filter_by, sort: @sort_by}
 
 
@@ -58,28 +59,30 @@ class dsw.FilterBar
 # PROTECTED #
 
   addListeners: ->
-    @search_field.on 'input.search', => @searched arguments...
-    @document.on 'filter', => @filtered arguments...
+    @document.on 'searching', => @searched arguments...
+    @document.on 'searched', => @searched arguments...
     @document.on 'sort', => @sorted arguments...
+    @document.on 'filter', => @filtered arguments...
 
 
   removeListeners: ->
-    @search_field.off 'input.search'
+    @document.off 'searching'
+    @document.off 'searched'
     @document.off 'filter'
     @document.off 'sort'
 
 
-  searched: (e) ->
-    @search @search_field.val()
+  searched: (e, options) ->
+    @search options.characters
 
 
   filtered: (e, options) ->
-    return @removeFilter(options.tag, options.requester) if _.contains @filter_by, options.tag
-    @addFilter options.tag, options.requester
+    return @remove(options.tag) if _.contains @filter_by, options.tag
+    @add options.tag
 
 
   sorted: (e, options) ->
-    @sort options.tag, options.requester
+    @sort options.tag
 
 
   stringifyFilters: ->
