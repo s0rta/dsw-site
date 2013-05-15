@@ -21,7 +21,7 @@ class dsw.Carousel
     @advances = @el.find '.advance-btn'
     @num_panels = @panels.length
     @setProperWidths()
-    @indicators = @createIndicators()
+    @indicators = @createIndicators() if @num_panels > 1
 
 
 # PUBLIC #
