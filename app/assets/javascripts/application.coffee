@@ -19,6 +19,7 @@ disposeBindable = ->
 $(document).on 'ready page:change page:restore', (e) ->
   disposeBindable() if utensils.bindable
   createBindable()
+  _gaq.push(['_trackPageview']) if _gaq
 
 $(document).on 'page:fetch', (e) ->
   $('#spinner').addClass 'loading'
