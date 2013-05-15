@@ -1,0 +1,16 @@
+.spinner
+  +transition(opacity $speed ease 0s, visibility 0s ease $speed)
+  position: absolute
+  width: 16px
+  height: 16px
+  top: 1em
+  right: 1em
+  z-index: $zindex-spinner
+  visibility: hidden
+  opacity: 0
+
+.spinner.loading
+  +transition-delay(0s)
+  visibility: visible
+  opacity: 1
+

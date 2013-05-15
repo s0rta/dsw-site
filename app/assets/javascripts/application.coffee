@@ -20,3 +20,6 @@ $(document).on 'ready page:change page:restore', (e) ->
   disposeBindable() if utensils.bindable
   createBindable()
 
+$(document).on 'page:fetch', (e) ->
+  $('#spinner').addClass 'loading'
+
