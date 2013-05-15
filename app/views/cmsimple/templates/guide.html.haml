@@ -56,7 +56,7 @@
 %hr
 %section.section-container.module-form
   %h2.primary-heading Form Module
-  %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="true" data-activate="0")
+  %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="false" data-activate="0")
     %div.form-carousel-inner
       -(1..3).each do |i|
         %article.form-pane
@@ -99,10 +99,10 @@
             %div.bio-copy In Denver Since 2000
 
 %hr
-%section.section-container.module-panels
+%section.section-container
   %h2.primary-heading Panel Modules
 
-  %section.section-container.filter-bar(data-bindable="filter-bar")
+  %section.filter-bar(data-bindable="filter-bar")
     %form.dsw-form.form-filter(role="form")
       %fieldset
         %div.control-group(data-filterable="search-filter")
@@ -139,7 +139,7 @@
                   %a(href="#") Alphabetical
 
 
-  %section.section-container.module-panels
+  %section.module-panels
     %ol.module-list
       -(1..3).each do |i|
         %li.module
