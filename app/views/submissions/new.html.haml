@@ -1,6 +1,6 @@
 %hr
 %section.section-container.module-form
-  %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="true" data-activate="0")
+  %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="false" data-activate="0")
     %div.form-carousel-inner
       - if current_user
         = simple_form_for @submission, html: { class: 'dsw-form', role: 'form' } do |f|
