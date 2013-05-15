@@ -45,7 +45,6 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'poltergeist'
   gem 'database_cleaner'
   gem 'teabag'
   gem 'guard-teabag'
