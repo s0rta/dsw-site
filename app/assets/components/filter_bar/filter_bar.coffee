@@ -19,7 +19,6 @@ class dsw.FilterBar
     @filter_by = []
     @sort_by = ''
     @filterable = new utensils.Bindable(@el, "filterable").bindAll()
-    # @filterables = @filterable.getRefs()
 
 
 # PUBLIC #
