@@ -13,8 +13,15 @@
   +font-size(40)
   color: $primary
 
-.social-icons .temp-icon + .temp-icon
-  margin-left: 0.5em
+.social-icons .dswacon
+  +transition(color $speed ease)
+  +font-size(24)
+  display: inline-block
+  color: $primary
+.social-icons .dswacon:before
+  color: inherit
+.social-icons .dswacon:hover
+  color: #2178c1
 
 
 @media (min-width: 31.25em)
