@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   attr_accessible :email, :linkedin_uid, :name, :description
 
+  validates :name, presence: true
+  validates :email, presence: true,
+                    uniqueness: true
+
   has_many :submissions, foreign_key: 'submitter_id'
 
   def self.find_or_create_from_auth_hash(auth_hash)

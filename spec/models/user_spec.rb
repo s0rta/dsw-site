@@ -3,6 +3,10 @@ require 'spec_helper'
 describe User do
   it { should have_many(:submissions) }
 
+  it { should validate_presence_of(:name) }
+  it { should validate_presence_of(:email) }
+  it { should validate_uniqueness_of(:email) }
+
   describe 'creating from an auth hash' do
     let(:auth_hash) do
       {
@@ -25,7 +29,7 @@ describe User do
     end
 
     it 'finds and updates a preexisting user' do
-      original = User.create! linkedin_uid: 'abc123'
+      original = User.create! linkedin_uid: 'abc123', name: 'Test User', email: 'test@example.com'
       user = User.find_or_create_from_auth_hash(auth_hash)
       expect(user.id).to eq(original.id)
       expect(user.linkedin_uid).to eq('abc123')
