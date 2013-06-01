@@ -1,0 +1,19 @@
+Hey there,
+
+A new submission has been proposed for the <%= @track.name %> track:
+
+<%= @submission.title %>
+
+<%= @submission.description %>
+
+Submitter's notes:
+
+<%= @submission.notes %>
+
+It's proposed as a <%= @submission.format %>, to be held <%= @submission.day %> in the <%= @submission.time_range %> slot, at <%= @submission.location %>. Size is estimated to be <%= @submission.estimated_size %>.
+
+It was submitted by <%= @submission.submitter.name %> (<%= @submission.contact_email %>).
+
+Cheers,
+
+The DSW Panel Picker Robot

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514013000) do
+ActiveRecord::Schema.define(:version => 20130528190244) do
 
   create_table "cmsimple_images", :force => true do |t|
     t.string   "attachment"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130514013000) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "chair_id"
   end
 
   create_table "users", :force => true do |t|

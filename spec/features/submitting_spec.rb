@@ -4,13 +4,20 @@ feature 'Creating a submission' do
 
   let(:homepage) { Cmsimple::Page.create is_root: true, title: 'Home', template: 'default' }
 
-  before { homepage.publish! }
+  before do
+    homepage.publish!
+    @chair = User.create! name: 'Mr. Chairman', email: 'chair@example.com'
+    @track = Track.new name: 'Bizness'
+    @track.chair = @chair
+    @track.save!
+  end
 
   scenario 'User submits a new idea' do
     visit '/'
     click_link 'Submit a Session'
     click_link 'Sign in with LinkedIn to continue'
     select 'Panel', from: 'submission_format'
+    select 'Bizness', from: 'submission_track_id'
     next_buttons = all(:css, 'button', text: 'Next')
     next_buttons[0].click
     fill_in 'submission_title', with: 'Some talk'
@@ -25,6 +32,9 @@ feature 'Creating a submission' do
     fill_in 'submission_contact_email', with: 'test2@example.com'
     click_button 'Submit'
     expect(page).to have_content('Thanks For Submitting!')
+    email = ActionMailer::Base.deliveries.first
+    expect(email.subject).to eq('A new DSW submission has been received for the Bizness track')
+    expect(email.to).to include('chair@example.com')
   end
 
 end

@@ -7,7 +7,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = Submission.new(params[:submission])
+    @submission = current_user.submissions.new(params[:submission])
     if @submission.save
       redirect_to thanks_submissions_path
     else

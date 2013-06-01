@@ -4,4 +4,6 @@ class Track < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :submissions, dependent: :destroy
+  belongs_to :chair, class_name: 'User'
+
 end

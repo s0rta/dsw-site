@@ -8,6 +8,8 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
+require 'capybara/rails'
+require 'capybara/rspec'
 Capybara.default_driver = :selenium
 
 RSpec.configure do |config|

@@ -7,6 +7,7 @@ class Submission < ActiveRecord::Base
               'Workshop',
               'Social event',
               'Something else entirely' ]
+
   DAYS =  [ 'Monday',
             'Tuesday',
             'Wednesday',
@@ -15,6 +16,7 @@ class Submission < ActiveRecord::Base
             'Weekend before',
             'Weekend after',
             'Not sure / don\'t care ' ]
+
   TIME_RANGES = [ 'Early morning',
                   'Breakfast',
                   'Morning',
@@ -38,4 +40,18 @@ class Submission < ActiveRecord::Base
                       inclusion: { in: DAYS }
   validates :time_range,  presence: true,
                       inclusion: { in: TIME_RANGES }
+  validates :track_id, presence: true
+
+  after_create :notify_track_chair
+
+  def notify_track_chair
+    if chair = self.track.chair
+      NotificationsMailer.notify_of_new_submission(chair, self).deliver
+    else
+      binding.pry
+      Rails.logger.info self.track.inspect
+      Rails.logger.error "*** No chair exists for the #{self.track.name} track, unable to notify"
+    end
+  end
+
 end
