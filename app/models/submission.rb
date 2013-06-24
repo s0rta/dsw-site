@@ -12,6 +12,18 @@ class Submission < ActiveRecord::Base
                   :estimated_size,
                   :theme_id
 
+  attr_accessible :day,
+                  :description,
+                  :format,
+                  :location,
+                  :notes,
+                  :time_range,
+                  :title,
+                  :track_id,
+                  :contact_email,
+                  :estimated_size,
+                  :theme_id,
+                  :submitter_id, as: :admin
 
   FORMATS = [ 'Presentation',
               'Panel',

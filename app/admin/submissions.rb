@@ -1,5 +1,7 @@
 ActiveAdmin.register Submission do
 
+  controller { with_role :admin }
+
   index do
     column :title
     column :track
@@ -23,7 +25,7 @@ ActiveAdmin.register Submission do
   form do |f|
     f.inputs do
       f.input :submitter
-      f.input :track
+      f.input :track_id, as: :select, collection: Track.all.map {|t| [ t.name, t.id ]}
       f.input :theme_id, as: :select, collection: Theme.all.map {|t| [ t.name, t.id ]}
       f.input :format, as: :select, collection: Submission::FORMATS
       f.input :day, as: :select, collection: Submission::DAYS
@@ -33,6 +35,7 @@ ActiveAdmin.register Submission do
       f.input :location
       f.input :contact_email
       f.input :estimated_size
+      f.input :notes
     end
     f.actions
   end

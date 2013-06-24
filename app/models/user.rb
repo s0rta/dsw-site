@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
                   :name,
                   :description
 
+  attr_accessible :email,
+                  :linkedin_uid,
+                  :name,
+                  :description,
+                  :is_admin, as: :admin
+
   validates :name, presence: true
   validates :email, presence: true,
                     uniqueness: true
