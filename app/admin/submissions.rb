@@ -25,11 +25,11 @@ ActiveAdmin.register Submission do
   form do |f|
     f.inputs do
       f.input :submitter
-      f.input :track_id, as: :select, collection: Track.all.map {|t| [ t.name, t.id ]}
-      f.input :theme_id, as: :select, collection: Theme.all.map {|t| [ t.name, t.id ]}
-      f.input :format, as: :select, collection: Submission::FORMATS
-      f.input :day, as: :select, collection: Submission::DAYS
-      f.input :time_range, as: :select, collection: Submission::TIME_RANGES
+      f.input :track_id, as: :select, collection: Track.all.map {|t| [ t.name, t.id ]}, include_blank: false
+      f.input :theme_id, as: :select, collection: Theme.all.map {|t| [ t.name, t.id ]}, include_blank: true
+      f.input :format, as: :select, collection: Submission::FORMATS, include_blank: true
+      f.input :day, as: :select, collection: Submission::DAYS, include_blank: true
+      f.input :time_range, as: :select, collection: Submission::TIME_RANGES, include_blank: true
       f.input :title
       f.input :description
       f.input :location
