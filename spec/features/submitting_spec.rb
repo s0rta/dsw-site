@@ -8,6 +8,7 @@ feature 'Creating a submission' do
     homepage.publish!
     @chair = User.create! name: 'Mr. Chairman', email: 'chair@example.com'
     @track = Track.new name: 'Bizness'
+    @theme = Theme.create! name: 'Cool stuff'
     @track.chairs << @chair
     @track.save!
   end
@@ -20,6 +21,7 @@ feature 'Creating a submission' do
     click_link 'Sign in with LinkedIn to continue'
     select 'Panel', from: 'submission_format'
     select 'Bizness', from: 'submission_track_id'
+    select 'Cool stuff', from: 'submission_theme_id'
     next_buttons = all(:css, 'button', text: 'Next')
     next_buttons[0].click
     fill_in 'submission_title', with: 'Some talk'

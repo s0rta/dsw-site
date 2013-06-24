@@ -1,6 +1,17 @@
 class Submission < ActiveRecord::Base
 
-  attr_accessible :day, :description, :format, :location, :notes, :time_range, :title, :track_id, :contact_email, :estimated_size
+  attr_accessible :day,
+                  :description,
+                  :format,
+                  :location,
+                  :notes,
+                  :time_range,
+                  :title,
+                  :track_id,
+                  :contact_email,
+                  :estimated_size,
+                  :theme_id
+
 
   FORMATS = [ 'Presentation',
               'Panel',
@@ -27,6 +38,7 @@ class Submission < ActiveRecord::Base
 
   belongs_to :submitter, class_name: 'User'
   belongs_to :track
+  belongs_to :theme
 
   validates :title, presence: true
   validates :description, presence: true

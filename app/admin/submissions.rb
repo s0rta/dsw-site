@@ -3,6 +3,7 @@ ActiveAdmin.register Submission do
   index do
     column :title
     column :track
+    column :theme
     column :format
     column :day
     column :time_range
@@ -13,6 +14,7 @@ ActiveAdmin.register Submission do
   filter :title
   filter :description
   filter :track
+  filter :theme
   filter :submitter
   filter :day, as: :select, collection: Submission::DAYS
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
@@ -22,6 +24,7 @@ ActiveAdmin.register Submission do
     f.inputs do
       f.input :submitter
       f.input :track
+      f.input :theme_id, as: :select, collection: Theme.all.map {|t| [ t.name, t.id ]}
       f.input :format, as: :select, collection: Submission::FORMATS
       f.input :day, as: :select, collection: Submission::DAYS
       f.input :time_range, as: :select, collection: Submission::TIME_RANGES
