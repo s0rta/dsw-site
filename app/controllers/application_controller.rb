@@ -17,8 +17,11 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_linkedin_and_admin!
-    redirect_to '/auth/linkedin' unless current_user
-    redirect_to '/' unless current_user && current_user.is_admin?
+    if current_user && !current_user.is_admin?
+      redirect_to '/'
+    elsif !current_user
+      redirect_to '/auth/linkedin'
+    end
   end
 
   def in_mercury_invasion?
