@@ -1,4 +1,4 @@
-ActiveAdmin.register Submission do
+ActiveAdmin.register Submission, as: 'Session' do
 
   index do
     column :title
