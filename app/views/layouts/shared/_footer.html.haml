@@ -11,5 +11,6 @@
       = semantic_navigation :footer, id: 'footer_navigation', class: 'footer-nav site-nav' do |n|
         - if current_user
           - n.item "Hello, #{current_user.name}", '#'
-        - n.item 'About', '/about'
-
+        - @page.root.descendants.each do |page|
+          - n.item page.title, page.uri
+        - n.item 'Submit a Session', main_app.new_submission_path

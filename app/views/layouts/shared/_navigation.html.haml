@@ -2,6 +2,6 @@
   %div.navigation-container
     = semantic_navigation :primary, id: 'primary_navigation', class: 'primary-nav site-nav' do |n|
       - n.item '', '/', class: 'home-icon'
-      - n.item 'About', '/about'
+      - @page.root.descendants.each do |page|
+        - n.item page.title, page.uri
       - n.item 'Submit a Session', main_app.new_submission_path
-
