@@ -14,7 +14,9 @@ feature 'Creating a submission' do
 
   scenario 'User submits a new idea' do
     visit '/'
-    click_link 'Submit a Session', within: '.primary-navigation'
+    within '.primary-navigation' do
+      click_link 'Submit a Session'
+    end
     click_link 'Sign in with LinkedIn to continue'
     select 'Panel', from: 'submission_format'
     select 'Bizness', from: 'submission_track_id'
