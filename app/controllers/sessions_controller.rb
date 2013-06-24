@@ -6,6 +6,11 @@ class SessionsController < ApplicationController
     redirect_to request.env['omniauth.origin'] || '/'
   end
 
+  def destroy
+    session.delete(:current_user_id)
+    redirect_to '/'
+  end
+
   protected
 
   def auth_hash

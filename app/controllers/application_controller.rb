@@ -1,10 +1,8 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
+
   self.responder = ApplicationResponder
-  respond_to :html
-
-
   respond_to :html
 
   helper_method :user_signed_in?
@@ -18,12 +16,17 @@ class ApplicationController < ActionController::Base
     request.headers["Authorization"].present?
   end
 
+  def ensure_linkedin_and_admin!
+    redirect_to '/auth/linkedin' unless current_user
+    redirect_to '/' unless current_user && current_user.is_admin?
+  end
+
   def in_mercury_invasion?
     params[:mercury_frame] && (params[:mercury_frame] == true || params[:mercury_frame] == 'true')
   end
 
   def current_user
-    User.where(id: session[:current_user_id]).first
+    session[:current_user_id] && User.where(id: session[:current_user_id]).first
   end
 
   def current_body_class
