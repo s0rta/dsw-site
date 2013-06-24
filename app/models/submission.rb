@@ -42,15 +42,11 @@ class Submission < ActiveRecord::Base
                                    allow_nil: true }
   validates :track_id, presence: true
 
-  after_create :notify_track_chair
+  after_create :notify_track_chairs
 
-  def notify_track_chair
-    if chair = self.track.chair
+  def notify_track_chairs
+    self.track.chairs.each do |chair|
       NotificationsMailer.notify_of_new_submission(chair, self).deliver
-    else
-      binding.pry
-      Rails.logger.info self.track.inspect
-      Rails.logger.error "*** No chair exists for the #{self.track.name} track, unable to notify"
     end
   end
 

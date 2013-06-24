@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :linkedin_uid, :name, :description
+
+  attr_accessible :email,
+                  :linkedin_uid,
+                  :name,
+                  :description
 
   validates :name, presence: true
   validates :email, presence: true,

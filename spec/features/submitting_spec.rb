@@ -8,13 +8,13 @@ feature 'Creating a submission' do
     homepage.publish!
     @chair = User.create! name: 'Mr. Chairman', email: 'chair@example.com'
     @track = Track.new name: 'Bizness'
-    @track.chair = @chair
+    @track.chairs << @chair
     @track.save!
   end
 
   scenario 'User submits a new idea' do
     visit '/'
-    click_link 'Submit a Session'
+    click_link 'Submit a Session', within: '.primary-navigation'
     click_link 'Sign in with LinkedIn to continue'
     select 'Panel', from: 'submission_format'
     select 'Bizness', from: 'submission_track_id'
