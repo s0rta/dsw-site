@@ -10,7 +10,7 @@ unless Cmsimple::Page.where(is_root: true).first
   page.publish!
 end
 
-{ 'Business' => 'graph', 'Design' => 'pen', 'Tech' => 'markup', 'Manufacturing' => 'factory', 'Social Enterprise' => 'bulb' }.each do |track_name, icon|
+{ 'Business' => 'graph', 'Design' => 'pen', 'Tech' => 'markup', 'Manufacturing' => 'factory' }.each do |track_name, icon|
   t = Track.where(name: track_name).first_or_initialize
   t.icon = icon
   t.save!
