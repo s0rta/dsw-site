@@ -67,11 +67,16 @@ class Submission < ActiveRecord::Base
   validates :track_id, presence: true
 
   after_create :notify_track_chairs
+  after_create :send_confirmation_notice
 
   def notify_track_chairs
     self.track.chairs.each do |chair|
       NotificationsMailer.notify_of_new_submission(chair, self).deliver
     end
+  end
+
+  def send_confirmation_notice
+    NotificationsMailer.confirm_new_submission(self).deliver
   end
 
 end
