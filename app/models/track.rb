@@ -1,5 +1,7 @@
 class Track < ActiveRecord::Base
-  attr_accessible :name
+
+  attr_accessible :name,
+                  :icon
 
   validates :name, presence: true
 
