@@ -1,15 +1,21 @@
 ActiveAdmin.register Submission do
 
-  controller { with_role :admin }
+  controller do
+    with_role :admin
+    def scoped_collection
+      resource_class.includes(:track, :theme, :submitter)
+    end
+  end
 
   index do
     column :title
-    column :track
-    column :theme
+    column :track, sortable: 'tracks.name'
+    column :theme, sortable: 'themes.name'
     column :format
     column :day
     column :time_range
-    column :submitter
+    column :submitter, sortable: 'users.name'
+    column :updated_at
     default_actions
   end
 

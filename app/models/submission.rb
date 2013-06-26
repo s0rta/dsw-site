@@ -55,15 +55,12 @@ class Submission < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :contact_email, presence: true
-  validates :format,  presence: true,
-                      inclusion: { in: FORMATS,
-                                   allow_nil: true }
-  validates :day,  presence: true,
-                      inclusion: { in: DAYS,
-                                   allow_nil: true }
-  validates :time_range,  presence: true,
-                      inclusion: { in: TIME_RANGES,
-                                   allow_nil: true }
+  validates :format, inclusion: {   in: FORMATS,
+                                    allow_blank: true }
+  validates :day, inclusion: {  in: DAYS,
+                                allow_blank: true }
+  validates :time_range, inclusion: { in: TIME_RANGES,
+                                      allow_blank: true }
   validates :track_id, presence: true
 
   after_create :notify_track_chairs
