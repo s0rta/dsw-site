@@ -1,10 +1,14 @@
 #= require turbolinks
+#= require jquery_ujs
 #= require utensils/bindable
 #= require utensils/dismiss
+#= require components/ajax_voter
 #= require components/filter_bar
 #= require components/module_tab
 #= require components/newsletter_signup
 #= require components/carousel
+#= require components/module_expander
+#= require components/sortable_submissions
 
 # Lets get this party started..
 createBindable = ->

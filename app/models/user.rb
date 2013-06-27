@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
                     uniqueness: true
 
   has_many :submissions, foreign_key: 'submitter_id'
+  has_many :votes, dependent: :destroy
 
   def self.find_or_create_from_auth_hash(auth_hash)
     user = User.where(linkedin_uid: auth_hash[:uid]).first_or_initialize

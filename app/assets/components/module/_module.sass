@@ -7,6 +7,16 @@
   position: relative
   margin-bottom: 1em
 
+  .expanded-shown
+    display: none
+  .expanded-hidden
+    display: block
+  &.expanded
+    .expanded-shown
+      display: block
+    .expanded-hidden
+      display: none
+
 .module-contents
   background-color: #546574
   padding: 1em

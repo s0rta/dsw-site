@@ -1,16 +1,61 @@
-%hr
-%section.section-container.module-ctas
-  %h2.primary-heading Our 2013 Call for Sessions is open!
-  %ul.module-list
-    %li.cta
-      %div.cta-content-cell
-        %div.dswacon.dswacon-bulb.dswacon-combo-primary
-        %h3.primary-heading.cta-heading Submit Idea
-        %div.cta-copy Have an idea for a panel or workshop?
-      = link_to 'Get Started', new_submission_path, class: 'btn cta-btn'
-    %li.cta
-      %div.cta-content-cell
-        %div.dswacon.dswacon-vote-yes.dswacon-combo-secondary
-        %h3.primary-heading.cta-heading View / Vote
-        %div.cta-copy View and vote on panel/workshop ideas.
-      %button.btn.btn-secondary.cta-btn(href="#") Coming Soon
+
+%section.section-container
+  %h2.primary-heading View and vote on panel/workshop ideas
+
+  .p-copy
+    Hello there!
+
+  - unless current_user
+    %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submissions_path}")
+      Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
+
+  %section.filter-bar(data-bindable="filter-bar")
+    %form.dsw-form.form-filter(role="form")
+      %fieldset
+        %div.control-group.search-filter(data-filterable="search-filter")
+          %label.control-label.dswacon.dswacon-search(for="search_bar")
+          %div.controls
+            %input#search_bar(type="search" placeholder="Search")
+
+        %div.control-group
+          %div.controls
+            %div.drop-select(data-filterable="drop-select" data-action="filter")
+              %button.drop-toggle Filter by: <span class="tagged-as"></span><span class="drop-caret"></span>
+              %ul.drop-menu.menu-filter(role="menu" data-filterable="menu-filter")
+                - Track.all.each do |t|
+                  %li(data-tag="track:#{t.name}")<
+                    %a(href="#")= t.name
+
+        %div.control-group
+          %div.controls
+            %div.drop-select(data-filterable="drop-select" data-action="sort")
+              %button.drop-toggle Sort by: <span class="tagged-as"></span><span class="drop-caret"></span>
+              %ul.drop-menu.menu-sort(role="menu" data-filterable="menu-sort")
+                %li(data-tag="popularity")<
+                  %a(href="#") Popularity
+                %li(data-tag="track")<
+                  %a(href="#") Track
+                %li(data-tag="title")<
+                  %a(href="#") Title
+
+
+  %section.module-panels
+    %ol.module-list(data-bindable="sortable-submissions")
+      - @submissions.each do |submission|
+        %li.module(id="submission_module_#{submission.id}" data-bindable="module-expander" data-title="#{submission.title}" data-track="#{submission.track.name}" data-day="#{submission.day}" data-time="#{submission.time_range}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.count}")
+          %a.panel-toggle(href="#")
+            %span.dswacon.dswacon-plus
+          %div.module-contents.voting-module
+            %div.module-icon-cell
+              %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
+            %div.module-details-cell
+              %h3.module-heading= truncate(submission.title, length: 100, separator: ' ')
+              %div.expanded-hidden.p-copy= truncate(submission.description, length: 200, separator: ' ')
+              %div.expanded-shown.p-copy= submission.description
+              %div.track-copy= "Proposed by #{submission.submitter.name}"
+          %div.voting-cell(data-bindable="ajax-voter")
+            %h4.voting-heading= submission.votes.count > 0 ? submission.votes.count : 'New'
+            %div.voting-engine
+              - if current_user
+                = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
+

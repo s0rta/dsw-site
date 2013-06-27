@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130624155135) do
+ActiveRecord::Schema.define(:version => 20130717031259) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -135,5 +135,15 @@ ActiveRecord::Schema.define(:version => 20130624155135) do
     t.datetime "updated_at",                      :null => false
     t.boolean  "is_admin",     :default => false, :null => false
   end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "submission_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "votes", ["submission_id"], :name => "index_votes_on_submission_id"
+  add_index "votes", ["user_id"], :name => "index_votes_on_user_id"
 
 end

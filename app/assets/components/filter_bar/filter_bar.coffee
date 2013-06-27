@@ -26,6 +26,7 @@ class dsw.FilterBar
   search: (characters) ->
     @search_by = characters
     @query()
+    @document.trigger 'search:update', { terms: characters }
 
 
   add: (filter) ->

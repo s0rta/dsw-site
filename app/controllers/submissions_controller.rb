@@ -2,6 +2,10 @@ class SubmissionsController < ApplicationController
 
   respond_to :html 
 
+  def index
+    @submissions = Submission.order('random()')
+  end
+
   def new
     @submission = Submission.new(contact_email: current_user.try(:email))
   end

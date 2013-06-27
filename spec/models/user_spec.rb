@@ -1,7 +1,9 @@
 require 'spec_helper'
 
 describe User do
+
   it { should have_many(:submissions) }
+  it { should have_many(:votes).dependent(:destroy) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:email) }

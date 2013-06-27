@@ -52,6 +52,8 @@ class Submission < ActiveRecord::Base
   belongs_to :track
   belongs_to :theme
 
+  has_many :votes, dependent: :destroy
+
   validates :title, presence: true
   validates :description, presence: true
   validates :contact_email, presence: true
