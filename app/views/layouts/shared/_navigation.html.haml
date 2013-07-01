@@ -4,4 +4,3 @@
       - n.item '', '/', class: 'home-icon'
       - Cmsimple::Page.root.first.descendants.each do |page|
         - n.item page.title, page.uri
-      - n.item 'Submit a Session', main_app.new_submission_path
