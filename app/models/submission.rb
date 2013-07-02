@@ -62,6 +62,7 @@ class Submission < ActiveRecord::Base
   validates :time_range, inclusion: { in: TIME_RANGES,
                                       allow_blank: true }
   validates :track_id, presence: true
+  validates :location, length: { maximum: 255 }
 
   after_create :notify_track_chairs
   after_create :send_confirmation_notice
