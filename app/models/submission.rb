@@ -23,6 +23,8 @@ class Submission < ActiveRecord::Base
                   :contact_email,
                   :estimated_size,
                   :theme_id,
+                  :is_public,
+                  :is_confirmed,
                   :submitter_id, as: :admin
 
   FORMATS = [ 'Presentation',
