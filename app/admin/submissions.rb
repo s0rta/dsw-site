@@ -15,6 +15,8 @@ ActiveAdmin.register Submission do
     column :day
     column :time_range
     column :submitter, sortable: 'users.name'
+    column :is_public
+    column :is_confirmed
     column :updated_at
     default_actions
   end
@@ -27,6 +29,8 @@ ActiveAdmin.register Submission do
   filter :day, as: :select, collection: Submission::DAYS
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
   filter :format, as: :select, collection: Submission::FORMATS
+  filter :is_public
+  filter :is_confirmed
 
   form do |f|
     f.inputs do
@@ -41,6 +45,8 @@ ActiveAdmin.register Submission do
       f.input :location
       f.input :contact_email
       f.input :estimated_size
+      f.input :is_public
+      f.input :is_confirmed
       f.input :notes
     end
     f.actions

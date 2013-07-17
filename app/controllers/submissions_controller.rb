@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
   respond_to :html 
 
   def index
-    @submissions = Submission.order('random()')
+    @submissions = Submission.where(is_public: true).order('random()')
   end
 
   def new

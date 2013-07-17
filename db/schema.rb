@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717031259) do
+ActiveRecord::Schema.define(:version => 20130717170045) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -98,11 +98,13 @@ ActiveRecord::Schema.define(:version => 20130717031259) do
     t.string   "title"
     t.text     "description"
     t.text     "notes"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "contact_email"
     t.string   "estimated_size"
     t.integer  "theme_id"
+    t.boolean  "is_confirmed",   :default => false, :null => false
+    t.boolean  "is_public",      :default => true,  :null => false
   end
 
   add_index "submissions", ["submitter_id"], :name => "index_submissions_on_submitter_id"
