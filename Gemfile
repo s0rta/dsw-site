@@ -57,3 +57,8 @@ group :development, :test do
   gem 'rb-fsevent'
 end
 
+
+group :production do
+  gem 'memcachier'
+  gem 'dalli'
+end
