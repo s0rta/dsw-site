@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130717170045) do
+ActiveRecord::Schema.define(:version => 20130718145826) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -79,6 +79,17 @@ ActiveRecord::Schema.define(:version => 20130717170045) do
 
   add_index "cmsimple_versions", ["page_id"], :name => "index_cmsimple_versions_on_page_id"
   add_index "cmsimple_versions", ["published_at"], :name => "index_cmsimple_versions_on_published_at"
+
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "submission_id"
+    t.text     "body"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "comments", ["submission_id"], :name => "index_comments_on_submission_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "newsletter_signups", :force => true do |t|
     t.string   "email"

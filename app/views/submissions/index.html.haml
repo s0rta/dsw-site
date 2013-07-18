@@ -42,16 +42,16 @@
   %section.module-panels
     %ol.module-list(data-bindable="sortable-submissions")
       - @submissions.each do |submission|
-        %li.module(id="submission_module_#{submission.id}" data-bindable="module-expander" data-title="#{submission.title}" data-track="#{submission.track.name}" data-day="#{submission.day}" data-time="#{submission.time_range}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.count}")
-          %a.panel-toggle(href="#")
+        %li.module(id="submission_module_#{submission.id}" data-day="#{submission.day}" data-time="#{submission.time_range}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.count}")
+          = link_to submission, class: 'panel-toggle' do
             %span.dswacon.dswacon-plus
           %div.module-contents.voting-module
             %div.module-icon-cell
               %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
             %div.module-details-cell
-              %h3.module-heading= truncate(submission.title, length: 100, separator: ' ')
-              %div.expanded-hidden.p-copy= truncate(submission.description, length: 200, separator: ' ')
-              %div.expanded-shown.p-copy= submission.description
+              %h3.module-heading.panel-title
+                = link_to truncate(submission.title, length: 100, separator: ' '), submission
+              %div.p-copy.panel-desc= truncate(submission.description, length: 200, separator: ' ')
               %div.track-copy= "Proposed by #{submission.submitter.name}"
           %div.voting-cell(data-bindable="ajax-voter")
             %h4.voting-heading= submission.votes.count > 0 ? submission.votes.count : 'New'

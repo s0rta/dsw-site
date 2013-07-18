@@ -19,4 +19,8 @@ class SubmissionsController < ApplicationController
     end
   end
 
+  def show
+    @submission = Submission.find(params[:id])
+  end
+
 end

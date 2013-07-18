@@ -55,6 +55,7 @@ class Submission < ActiveRecord::Base
   belongs_to :theme
 
   has_many :votes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :title, presence: true
   validates :description, presence: true

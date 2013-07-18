@@ -1,0 +1,33 @@
+.form-comment
+  margin: 1em 0 0
+.form-comment fieldset
+  margin: 0 auto
+  text-align: center
+  width: 100%
+
+.form-comment textarea
+  width: 100%
+
+.form-comment .form-btn
+  +font-size(16)
+
+.comments
+  @extend %unstyled-list
+
+.comment
+  padding: 2em
+  background-color: #546574
+  margin-top: em(20)
+
+.comment-heading
+  color: white
+
+.voting-comments
+  margin: em(40) auto 0
+  width: 100%
+
+@media (min-width: 43.75em)
+  .form-comment fieldset,
+  .voting-comments
+    width: 60%
+
