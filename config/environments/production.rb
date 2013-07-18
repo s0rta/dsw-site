@@ -68,4 +68,7 @@ Denverstartupweek::Application.configure do
   # Cache asset compilation in Memcache
   config.assets.cache_store = :dalli_store
 
+  # Set the default AM host
+  config.action_mailer.default_url_options = { host: "www.denverstartupweek.org" }
+
 end
