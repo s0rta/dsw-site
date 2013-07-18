@@ -54,7 +54,7 @@
               %div.p-copy.panel-desc= truncate(submission.description, length: 200, separator: ' ')
               %div.track-copy= "Proposed by #{submission.submitter.name}"
           %div.voting-cell(data-bindable="ajax-voter")
-            %h4.voting-heading= submission.votes.count > 0 ? submission.votes.count : 'New'
+            %h4.voting-heading= submission.votes.count > 0 ? submission.votes.count : 'No votes yet'
             %div.voting-engine
               - if current_user
                 = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
