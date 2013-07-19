@@ -16,8 +16,6 @@ gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
 
-gem 'html-pipeline'
-
 gem 'cloudinary'
 gem 'simple_form'
 
@@ -30,6 +28,7 @@ gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
 
 gem 'responders'
+gem 'html-pipeline', require: 'html/pipeline'
 
 group :assets do
   gem 'bourbon'
