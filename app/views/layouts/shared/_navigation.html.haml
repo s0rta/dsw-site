@@ -4,6 +4,6 @@
       - n.item '', '/', class: 'home-icon'
       - Cmsimple::Page.root.first.descendants.each do |page|
         - n.item page.title, page.uri
+      - n.item 'Panel Picker', main_app.submissions_path
       - if current_user && current_user.is_admin?
-        - n.item 'Panel Picker', main_app.submissions_path
         - n.item 'Manage &rarr;'.html_safe, main_app.admin_root_path, data: { 'no-turbolink' => true }
