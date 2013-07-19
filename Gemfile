@@ -16,6 +16,8 @@ gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
 
+gem 'html-pipeline'
+
 gem 'cloudinary'
 gem 'simple_form'
 
