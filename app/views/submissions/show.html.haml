@@ -14,15 +14,16 @@
       %div.voting-engine
         - if current_user
           = link_to '', submission_votes_path(@submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
-%hr
-%section.section-container.module-form
-  %h2.primary-heading What Do You Think?
-  %div.form-comment
-    = simple_form_for [ @submission, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
-      = field_set_tag do
-        = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
-        %div.submit-btn-holder
-          = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
+- if current_user
+  %hr
+  %section.section-container.module-form
+    %h2.primary-heading What Do You Think?
+    %div.form-comment
+      = simple_form_for [ @submission, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
+        = field_set_tag do
+          = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
+          %div.submit-btn-holder
+            = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
 - unless @submission.comments.empty?
   %hr
 %section.section-container
