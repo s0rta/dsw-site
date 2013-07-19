@@ -1,7 +1,7 @@
 $btn-bgc: $primary
 $btn-active: #2178c1
 
-.btn
+.btn, .btn:visited
   +transition(all $speed ease)
   background-color: $btn-bgc
   border: 0
@@ -34,7 +34,7 @@ $btn-active: #2178c1
     cursor: default
     outline: 0
 
-.btn-secondary
+.btn-secondary, .btn-secondary:visited
   background-color: $secondary
   &:hover,
   &.active,
