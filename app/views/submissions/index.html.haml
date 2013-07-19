@@ -49,7 +49,7 @@
   %section.module-panels
     %ol.module-list(data-bindable="sortable-submissions")
       - @submissions.each do |submission|
-        %li.module(id="submission_module_#{submission.id}" data-day="#{submission.day}" data-time="#{submission.time_range}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}")
+        %li.module(id="submission_module_#{submission.id}" data-day="#{submission.day}" data-time="#{submission.time_range}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
           = link_to submission, class: 'panel-toggle' do
             %span.dswacon.dswacon-plus
           %div.module-contents.voting-module
@@ -59,10 +59,15 @@
               %h3.module-heading.panel-title
                 = link_to truncate(submission.title, length: 100, separator: ' '), submission
               %div.p-copy.panel-desc= truncate(submission.description, length: 200, separator: ' ')
-              %div.track-copy= "Proposed by #{submission.submitter.name}"
+              %div.track-copy(class="#{submission.is_confirmed? ? '' : 'blue'}")= "Proposed by #{submission.submitter.name}"
           %div.voting-cell(data-bindable="ajax-voter")
-            %h4.voting-heading= submission.votes.size > 0 ? submission.votes.size : 'No votes yet'
-            %div.voting-engine
-              - if current_user
-                = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
+            - unless submission.is_confirmed?
+              %h4.voting-heading= submission.votes.size > 0 ? submission.votes.size : 'No votes yet'
+              %div.voting-engine
+                - if current_user
+                  = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
+            - else
+              %h4.voting-heading &nbsp;
+              %div.voting-engine &nbsp;
+
 
