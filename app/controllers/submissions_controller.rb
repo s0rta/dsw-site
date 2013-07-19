@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
   respond_to :html 
 
   def index
-    @submissions = Submission.where(is_public: true).order('random()')
+    @submissions = Submission.where(is_public: true).order('random()').includes(:submitter, :theme, :track, :votes)
   end
 
   def new
@@ -20,7 +20,7 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    @submission = Submission.find(params[:id])
+    @submission = Submission.where(id: params[:id]).includes(:submitter, :track, :votes, :comments => :user).first!
   end
 
 end

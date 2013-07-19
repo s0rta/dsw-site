@@ -2,7 +2,7 @@
   %div.navigation-container
     = semantic_navigation :primary, id: 'primary_navigation', class: 'primary-nav site-nav' do |n|
       - n.item '', '/', class: 'home-icon'
-      - Cmsimple::Page.root.first.descendants.each do |page|
+      - Cmsimple::Page.where(parent_id: nil).each do |page|
         - n.item page.title, page.uri
       - n.item 'Panel Picker', main_app.submissions_path
       - if current_user && current_user.is_admin?
