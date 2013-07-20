@@ -3,7 +3,7 @@ ActiveAdmin.register Submission do
   controller do
     with_role :admin
     def scoped_collection
-      resource_class.includes(:track, :theme, :submitter)
+      resource_class.includes(:track, :theme, :submitter, :votes, :comments)
     end
   end
 
@@ -18,6 +18,8 @@ ActiveAdmin.register Submission do
     column :is_public
     column :is_confirmed
     column :updated_at
+    column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
+    column(:comments, sortable: 'COUNT(comments.id)') { |s| s.comments.size }
     default_actions
   end
 
@@ -50,6 +52,10 @@ ActiveAdmin.register Submission do
       f.input :notes
     end
     f.actions
+  end
+
+  sidebar :actions, only: [ :edit, :show ]  do
+    link_to 'View on site', submission
   end
 
 end
