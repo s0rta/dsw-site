@@ -7,6 +7,9 @@ gem 'rake'
 gem 'pg'
 gem 'thin'
 gem 'airbrake'
+gem 'memcachier'
+gem 'dalli'
+gem 'newrelic_rpm'
 
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
@@ -20,15 +23,14 @@ gem 'cloudinary'
 gem 'simple_form'
 
 gem 'gibbon'
-gem 'newrelic_rpm'
 
 gem 'omniauth'
 gem 'omniauth-linkedin'
-gem 'activeadmin'
-gem 'meta_search',    '>= 1.1.0.pre'
-
 gem 'responders'
 gem 'html-pipeline', require: 'html/pipeline'
+
+gem 'activeadmin'
+gem 'meta_search',    '>= 1.1.0.pre'
 
 group :assets do
   gem 'bourbon'
@@ -58,9 +60,6 @@ group :development, :test do
   gem 'rb-fsevent'
 end
 
-
 group :production do
-  gem 'memcachier'
-  gem 'dalli'
   gem 'unicorn'
 end
