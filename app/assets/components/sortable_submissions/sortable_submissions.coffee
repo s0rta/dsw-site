@@ -43,6 +43,7 @@ class dsw.SortableSubmissions
       @field 'day'
       @field 'time'
       @field 'description'
+      @field 'submitter'
     @updateIndex()
 
   updateIndex: =>
@@ -53,6 +54,7 @@ class dsw.SortableSubmissions
         title: @getAttribute('data-title')
         track: @getAttribute('data-track')
         description: @getAttribute('data-description')
+        submitter: @getAttribute('data-submitter')
         day: @getAttribute('data-day')
         time: @getAttribute('data-time')
 

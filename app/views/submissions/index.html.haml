@@ -49,7 +49,7 @@
   %section.module-panels
     %ol.module-list(data-bindable="sortable-submissions")
       - @submissions.each do |submission|
-        %li.module(id="submission_module_#{submission.id}" data-day="#{submission.day}" data-time="#{submission.time_range}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
+        %li.module(id="submission_module_#{submission.id}" data-day="#{submission.day}" data-time="#{submission.time_range}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" data-submitter="#{submission.submitter.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
           = link_to submission, class: 'panel-toggle' do
             %span.dswacon.dswacon-plus
           %div.module-contents.voting-module
