@@ -72,6 +72,11 @@ class Submission < ActiveRecord::Base
   after_create :notify_track_chairs
   after_create :send_confirmation_notice
 
+
+  def to_param
+    "#{self.id}-#{self.title.parameterize}"
+  end
+
   def notify_track_chairs
     self.track.chairs.each do |chair|
       NotificationsMailer.notify_of_new_submission(chair, self).deliver
