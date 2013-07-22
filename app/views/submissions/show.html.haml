@@ -2,6 +2,9 @@
   %h2.primary-heading
     = link_to 'Help pick the sessions for 2013', submissions_path
 %hr
+- unless current_user
+  %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submission_path(@submission)}")
+    Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
 %section.section-container
   .p-copy
     %a.dswacon.dswacon-panel-icon(class="dswacon-#{@submission.track.icon}" title="#{@submission.track.name}")
