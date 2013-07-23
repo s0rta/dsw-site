@@ -71,4 +71,7 @@ Denverstartupweek::Application.configure do
   # Set the default AM host
   config.action_mailer.default_url_options = { host: "www.denverstartupweek.org" }
 
+  # Limit log noise
+  config.lograge.enabled = true
+
 end

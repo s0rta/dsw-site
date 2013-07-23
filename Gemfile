@@ -62,4 +62,5 @@ end
 
 group :production do
   gem 'unicorn'
+  gem 'lograge'
 end
