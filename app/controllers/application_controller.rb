@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
     session[:current_user_id] && User.where(id: session[:current_user_id]).first
   end
 
+  def signed_in?
+    session[:current_user_id].present?
+  end
+
   def current_body_class
     if respond_to?(:current_page)
       current_page.try(:template)

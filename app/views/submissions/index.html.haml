@@ -12,7 +12,7 @@
   %h3.secondary-heading
     Voting will be open until <strong>August 1</strong> &mdash; be sure to get your feedback in by then!
 
-  - unless current_user
+  - unless signed_in?
     %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submissions_path}")
       Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
 
@@ -64,7 +64,7 @@
             - unless submission.is_confirmed?
               %h4.voting-heading= submission.votes.size > 0 ? submission.votes.size : 'No votes yet'
               %div.voting-engine
-                - if current_user
+                - if signed_in?
                   = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
             - else
               %h4.voting-heading &nbsp;
