@@ -10,7 +10,8 @@ class Submission < ActiveRecord::Base
                   :track_id,
                   :contact_email,
                   :estimated_size,
-                  :theme_id
+                  :theme_id,
+                  :venue_id
 
   attr_accessible :day,
                   :description,
@@ -25,6 +26,7 @@ class Submission < ActiveRecord::Base
                   :theme_id,
                   :is_public,
                   :is_confirmed,
+                  :venue_id,
                   :submitter_id, as: :admin
 
   FORMATS = [ 'Presentation',
@@ -53,6 +55,7 @@ class Submission < ActiveRecord::Base
   belongs_to :submitter, class_name: 'User'
   belongs_to :track
   belongs_to :theme
+  belongs_to :venue
 
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -71,7 +74,6 @@ class Submission < ActiveRecord::Base
 
   after_create :notify_track_chairs
   after_create :send_confirmation_notice
-
 
   def to_param
     "#{self.id}-#{self.title.parameterize}"

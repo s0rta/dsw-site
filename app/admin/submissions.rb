@@ -11,6 +11,7 @@ ActiveAdmin.register Submission do
     column :title
     column :track, sortable: 'tracks.name'
     column :theme, sortable: 'themes.name'
+    column :venue
     column :format
     column :day
     column :time_range
@@ -27,6 +28,8 @@ ActiveAdmin.register Submission do
   filter :description
   filter :track
   filter :theme
+  filter :venue
+  filter :format
   filter :submitter
   filter :day, as: :select, collection: Submission::DAYS
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
@@ -42,6 +45,7 @@ ActiveAdmin.register Submission do
       f.input :format, as: :select, collection: Submission::FORMATS, include_blank: true
       f.input :day, as: :select, collection: Submission::DAYS, include_blank: true
       f.input :time_range, as: :select, collection: Submission::TIME_RANGES, include_blank: true
+      f.input :venue
       f.input :title
       f.input :description
       f.input :location
