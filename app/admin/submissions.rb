@@ -24,6 +24,19 @@ ActiveAdmin.register Submission do
     default_actions
   end
 
+  csv do
+    column :id
+    Submission.content_columns.each do |content_column|
+      column(content_column.name.to_sym)
+    end
+    column :votes do |submission|
+      submission.votes.size
+    end
+    column :comments do |submission|
+      submission.comments.size
+    end
+  end
+
   filter :title
   filter :description
   filter :track
