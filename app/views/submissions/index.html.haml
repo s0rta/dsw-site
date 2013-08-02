@@ -10,7 +10,7 @@
     We're excited to make this year's program even better than last, but we can't do it without you. Get involved, tell your friends, and help us get the word out!
 
   %h3.secondary-heading
-    Voting will be open until <strong>August 1</strong> &mdash; be sure to get your feedback in by then!
+    Voting and feedback are now closed. Thanks to everyone who participated! We'll be announcing the full schedule shortly.
 
   - unless signed_in?
     %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submissions_path}")
@@ -64,8 +64,8 @@
             - unless submission.is_confirmed?
               %h4.voting-heading= submission.votes.size > 0 ? submission.votes.size : 'No votes yet'
               %div.voting-engine
-                - if signed_in?
-                  = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
+                -# - if signed_in?
+                  -# = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
             - else
               %h4.voting-heading &nbsp;
               %div.voting-engine &nbsp;

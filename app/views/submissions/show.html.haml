@@ -2,9 +2,9 @@
   %h2.primary-heading
     = link_to 'Help pick the sessions for 2013', submissions_path
 %hr
-- unless current_user
-  %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submission_path(@submission)}")
-    Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
+-# - unless current_user
+  -# %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submission_path(@submission)}")
+    -# Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
 %section.section-container
   .p-copy
     %a.dswacon.dswacon-panel-icon(class="dswacon-#{@submission.track.icon}" title="#{@submission.track.name}")
@@ -16,18 +16,18 @@
     %div.voting-cell(data-bindable="ajax-voter")
       %h4.voting-heading= @submission.votes.size > 0 ? @submission.votes.size : 'No votes yet'
       %div.voting-engine
-        - if current_user
-          = link_to '', submission_votes_path(@submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
+        -# - if current_user
+          -# = link_to '', submission_votes_path(@submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
 - if current_user
   %hr
   %section.section-container.module-form
     %h2.primary-heading What Do You Think?
-    %div.form-comment
-      = simple_form_for [ @submission, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
-        = field_set_tag do
-          = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
-          %div.submit-btn-holder
-            = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
+    -# %div.form-comment
+      -# = simple_form_for [ @submission, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
+        -# = field_set_tag do
+          -# = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
+          -# %div.submit-btn-holder
+            -# = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
 - unless @submission.comments.empty?
   %hr
 %section.section-container
