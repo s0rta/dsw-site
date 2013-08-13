@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730175935) do
+ActiveRecord::Schema.define(:version => 20130813182826) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -130,9 +130,10 @@ ActiveRecord::Schema.define(:version => 20130730175935) do
 
   create_table "tracks", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "icon"
+    t.integer  "zerista_track_id"
   end
 
   create_table "tracks_users", :id => false, :force => true do |t|
@@ -156,6 +157,15 @@ ActiveRecord::Schema.define(:version => 20130730175935) do
     t.string   "contact_name"
     t.string   "contact_email"
     t.string   "contact_phone"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "volunteer_signups", :force => true do |t|
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.text     "interest"
+    t.text     "notes"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end

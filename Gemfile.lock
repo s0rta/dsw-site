@@ -386,6 +386,7 @@ DEPENDENCIES
   guard-teabag
   haml-rails
   html-pipeline
+  httparty
   jquery-rails
   jquery-rails-cdn
   lograge

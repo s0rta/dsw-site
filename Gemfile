@@ -23,6 +23,7 @@ gem 'cloudinary'
 gem 'simple_form'
 
 gem 'gibbon'
+gem 'httparty'
 
 gem 'omniauth'
 gem 'omniauth-linkedin'
