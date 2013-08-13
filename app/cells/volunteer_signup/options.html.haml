@@ -1,0 +1,14 @@
+.mercury-display-pane(style='width: 500px')
+  = form_for @snippet, :url => '#', html: { class: 'form-horizontal' } do |f|
+    %fieldset
+      %legend Newsletter Signup Snippet
+      .control-group
+        = f.label :header, class: 'control-label'
+        .controls
+          = f.text_field :header
+      .control-group
+        = f.label :submit_text, class: 'control-label'
+        .controls
+          = f.text_field :submit_text
+    .form-actions.mercury-display-controls
+      = f.submit class: 'btn btn-primary'

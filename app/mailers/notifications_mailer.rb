@@ -23,4 +23,9 @@ class NotificationsMailer < ActionMailer::Base
     mail to: @submission.contact_email, subject: 'Voting for Denver Startup Week 2013 sessions is now open!'
   end
 
+  def notify_of_new_volunteer_signup(volunteer_signup)
+    @volunteer_signup = volunteer_signup
+    mail to: ENV['VOLUNTEER_SIGNUP_EMAIL_RECIPIENTS'].split(','), subject: 'Someone has volunteered to help out with DSW'
+  end
+
 end

@@ -1,0 +1,11 @@
+%section.section-container.module-involved
+  %h2.primary-heading= @header
+  = simple_form_for VolunteerSignup.new, html: { class: 'dsw-form involve-form', role: 'form', data: { bindable: 'volunteer-signup' } } do |f|
+    .notification(style="display: none;")
+    %fieldset
+      = f.input   :contact_name, placeholder: 'What is your name?', required: true
+      = f.input   :contact_email, placeholder: 'What is your e-mail address?', required: true
+      = f.input   :interest, placeholder: 'What are you interested in helping out with?', required: true, input_html: { rows: 2 }
+      = f.input   :notes, placeholder: 'Any additional notes/comments?', input_html: { rows: 2 }
+    .form-actions
+      = f.button :submit, @submit_text, class: 'btn primary'
