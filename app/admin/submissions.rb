@@ -3,21 +3,20 @@ ActiveAdmin.register Submission do
   controller do
     with_role :admin
     def scoped_collection
-      resource_class.includes(:track, :theme, :submitter, :votes, :comments)
+      resource_class.includes(:track, :submitter, :votes, :comments)
     end
   end
 
   index do
     column :title
     column :track, sortable: 'tracks.name'
-    column :theme, sortable: 'themes.name'
     column :venue
     column :format
     column :day
     column :time_range
     column :submitter, sortable: 'users.name'
-    column :is_public
-    column :is_confirmed
+    column('Public', :is_public, sortable: :is_public) { |s| s.is_public? ? 'Yes' : 'No' }
+    column('Confirmed', :is_confirmed, sortable: :is_confirmed) { |s| s.is_confirmed? ? 'Yes' : 'No' }
     column :updated_at
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
     column(:comments, sortable: 'COUNT(comments.id)') { |s| s.comments.size }
