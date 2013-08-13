@@ -1,6 +1,7 @@
 #= require utensils/bindable
+#= require dsw
 
-class utensils.NewsletterSignup
+class dsw.NewsletterSignup
   constructor: (@el, data) ->
     @data = if data then data else @el.data()
     @initialize()
@@ -56,4 +57,4 @@ class utensils.NewsletterSignup
           @notification.text 'Sorry, an error occurred while adding you to the list. Please try again later.'
 
 
-utensils.Bindable.register 'newsletter-signup', utensils.NewsletterSignup
+utensils.Bindable.register 'newsletter-signup', dsw.NewsletterSignup
