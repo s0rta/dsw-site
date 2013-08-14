@@ -5,7 +5,7 @@ class ZeristaReplicator
   end
 
   def replicate!
-    return unless @submission.day && @submission.time_range
+    return unless @submission.day.present? && @submission.time_range.present?
     client.create_event @submission.title,
                         @submission.description,
                         date_for_slot + offset_for_slot,
