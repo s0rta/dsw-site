@@ -59,6 +59,7 @@ group :development, :test do
   gem 'guard-teabag'
   gem 'terminal-notifier-guard'
   gem 'rb-fsevent'
+  gem 'dotenv-rails'
 end
 
 group :production do

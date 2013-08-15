@@ -134,6 +134,9 @@ GEM
       warden (~> 1.2.1)
     diff-lcs (1.2.4)
     dimensions (1.2.0)
+    dotenv (0.7.0)
+    dotenv-rails (0.7.0)
+      dotenv (= 0.7.0)
     erubis (2.7.0)
     escape_utils (0.3.2)
     eventmachine (1.0.3)
@@ -381,6 +384,7 @@ DEPENDENCIES
   coffee-rails
   dalli
   database_cleaner
+  dotenv-rails
   font_assets
   gibbon
   guard-teabag
