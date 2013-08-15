@@ -91,10 +91,14 @@ class Submission < ActiveRecord::Base
     NotificationsMailer.confirm_new_submission(self).deliver
   end
 
+  def propagate_to_zerista
+    ZeristaReplicator.new(self).replicate!
+  end
+
+  # after_save :propagate_to_zerista
+
   def self.create_in_zerista
-    where(is_confirmed: true).each do |s|
-      ZeristaReplicator.new(s).replicate!
-    end
+    where(is_confirmed: true).each(&:propagate_to_zerista)
   end
 
 end
