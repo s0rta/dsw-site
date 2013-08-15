@@ -15,12 +15,14 @@ class ZeristaReplicator
 
   def replicate_submission!
     return unless @submission.day.present? && @submission.time_range.present?
+    estimated_size = @submission.estimated_size.to_i
     attrs = {   name: @submission.title,
                 description: process_into_html(@submission.description),
                 start_time: date_for_slot + offset_for_slot,
                 end_time: date_for_slot + offset_for_slot + 2.hours,
                 client_id: @submission.id,
-                track_id: @submission.track.zerista_track_id }
+                track_id: @submission.track.zerista_track_id,
+                max_attendees: (estimated_size == 0 ? nil : estimated_size) }
     if @submission.venue
       attrs[:location_name] = @submission.venue.name
       attrs[:address] = @submission.venue.address
