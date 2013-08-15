@@ -21,6 +21,7 @@ module Zerista
                       'event[start]'      => attrs[:start_time].iso8601,
                       'event[finish]'     => attrs[:end_time].iso8601,
                       'event[track_id]'   => attrs[:track_id],
+                      'event[item_attributes][tags_list]' => attrs[:tag_list],
                       'client_id'         => attrs[:client_id],
                       'location[item_attributes][display_value]' => attrs[:location_name],
                       'location_address[street]' => attrs[:address],
@@ -49,13 +50,15 @@ module Zerista
                       'event[start]'      => attrs[:start_time].try(:iso8601),
                       'event[finish]'     => attrs[:end_time].try(:iso8601),
                       'event[track_id]'   => attrs[:track_id],
+                      'event[item_attributes][tags_list]' => attrs[:tag_list],
                       'client_id'         => attrs[:client_id],
                       'location[item_attributes][display_value]' => attrs[:location_name],
                       'location_address[street]' => attrs[:address],
                       'location_address[street2]' => nil,
                       'location_address[city]' => attrs[:city],
                       'location_address[state]' => attrs[:state],
-                      'location_address[country_code]' => 'US'
+                      'location_address[country_code]' => 'US',
+                      'event[max_attendees]' => attrs[:max_attendees]
         }
       post_params.delete_if { |k, v| !v }
       signature = signature_for_params(get_params, post_params)

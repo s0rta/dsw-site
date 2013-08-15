@@ -22,6 +22,7 @@ class ZeristaReplicator
                 end_time: date_for_slot + offset_for_slot + 2.hours,
                 client_id: @submission.id,
                 track_id: @submission.track.zerista_track_id,
+                tag_list: @submission.track.name,
                 max_attendees: (estimated_size == 0 ? nil : estimated_size) }
     if @submission.venue
       attrs[:location_name] = @submission.venue.name
