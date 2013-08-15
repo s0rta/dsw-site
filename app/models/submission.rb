@@ -29,6 +29,8 @@ class Submission < ActiveRecord::Base
                   :venue_id,
                   :budget_needed,
                   :volunteers_needed,
+                  :start_hour,
+                  :end_hour,
                   :submitter_id, as: :admin
 
   FORMATS = [ 'Presentation',
@@ -71,6 +73,8 @@ class Submission < ActiveRecord::Base
                                 allow_blank: true }
   validates :time_range, inclusion: { in: TIME_RANGES,
                                       allow_blank: true }
+  validates :start_hour, inclusion: { in: 0..23 }
+  validates :end_hour, inclusion: { in: 0..23 }
   validates :track_id, presence: true
   validates :location, length: { maximum: 255 }
 

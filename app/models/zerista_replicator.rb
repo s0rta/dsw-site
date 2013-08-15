@@ -18,8 +18,8 @@ class ZeristaReplicator
     estimated_size = @submission.estimated_size.to_i
     attrs = {   name: @submission.title,
                 description: process_into_html(@submission.description),
-                start_time: date_for_slot + offset_for_slot,
-                end_time: date_for_slot + offset_for_slot + 2.hours,
+                start_time: date_for_slot + @submission.start_hour.hours,
+                end_time: date_for_slot + @submission.end_hour.hours,
                 client_id: @submission.id,
                 track_id: @submission.track.zerista_track_id,
                 tag_list: @submission.track.name,
@@ -60,29 +60,6 @@ class ZeristaReplicator
       ActiveSupport::TimeZone['America/Denver'].parse('2013-9-15')
     when 'Weekend after'
       ActiveSupport::TimeZone['America/Denver'].parse('2013-9-21')
-    end
-  end
-
-  def offset_for_slot
-    case @submission.time_range
-    when 'Breakfast'
-      8.hours
-    when 'Early morning'
-      9.hours
-    when 'Morning'
-      11.hours
-    when 'Lunch'
-      12.hours
-    when 'Early afternoon'
-      13.hours
-    when 'Afternoon'
-      15.hours
-    when 'Happy hour'
-      17.hours
-    when 'Evening'
-      18.hours
-    when 'Late night'
-      22.hours
     end
   end
 
