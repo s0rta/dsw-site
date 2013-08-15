@@ -65,6 +65,8 @@ ActiveAdmin.register Submission do
       f.input :estimated_size
       f.input :is_public
       f.input :is_confirmed
+      f.input :budget_needed
+      f.input :volunteers_needed
       f.input :notes
     end
     f.actions

@@ -27,6 +27,8 @@ class Submission < ActiveRecord::Base
                   :is_public,
                   :is_confirmed,
                   :venue_id,
+                  :budget_needed,
+                  :volunteers_needed,
                   :submitter_id, as: :admin
 
   FORMATS = [ 'Presentation',
