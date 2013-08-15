@@ -33,6 +33,8 @@ gem 'html-pipeline', require: 'html/pipeline'
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
 
+gem 'sucker_punch'
+
 group :assets do
   gem 'bourbon'
   gem 'sass-rails'
