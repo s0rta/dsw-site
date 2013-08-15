@@ -7,7 +7,7 @@ class ZeristaReplicator
   def replicate!
     return unless @submission.day.present? && @submission.time_range.present?
     attrs = {   name: @submission.title,
-                description: @submission.description,
+                description: process_into_html(@submission.description),
                 start_time: date_for_slot + offset_for_slot,
                 end_time: date_for_slot + offset_for_slot + 2.hours,
                 client_id: @submission.id,
@@ -69,6 +69,16 @@ class ZeristaReplicator
     when 'Late night'
       22.hours
     end
+  end
+
+  def process_into_html(content)
+    pipeline = HTML::Pipeline.new [
+      HTML::Pipeline::MarkdownFilter,
+      HTML::Pipeline::SanitizationFilter,
+      HTML::Pipeline::AutolinkFilter
+    ]
+    result = pipeline.call content
+    result[:output]
   end
 
   def client
