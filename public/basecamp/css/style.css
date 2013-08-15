@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'nexa_boldregular';
+    src: url('../fonts/nexa/Nexa_Free_Bold-webfont.eot');
+    src: url('../fonts/nexa/Nexa_Free_Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/nexa/Nexa_Free_Bold-webfont.woff') format('woff'),
+         url('../fonts/nexa/Nexa_Free_Bold-webfont.ttf') format('truetype'),
+         url('../fonts/nexa/Nexa_Free_Bold-webfont.svg#nexa_boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html{
+	background:url(../images/bg.jpg) repeat;
+	border-top:4px solid #27aae0;
+}
+
+a{
+	-webkit-transition: color 400ms ease-in-out;
+	-moz-transition: 	color 400ms ease-in-out;
+    -ms-transition: 	color 400ms ease-in-out;
+    -o-transition: 		color 400ms ease-in-out;
+	transition: 		color 400ms ease-in-out;
+	color:#27aae0;
+	text-decoration: none;
+}
+
+a:hover {
+	color:#92e0d1;
+}
+
+img{
+	max-width:100%;
+}
+
+.logo,
+.blurb{
+	width:100%;
+	margin:0 auto;
+}
+
+.logo {
+	max-width:600px;
+	width:100%;
+	padding:50px 0 0px 0;
+	margin:0 auto;
+}
+
+.logo img {
+	margin:0 auto;
+}
+
+.blurb {
+	max-width:982px;
+}
+
+.blurb h1,
+.blurb p {
+	text-align: center;
+}
+
+.blurb h1 {
+	margin-top:0;
+	margin-bottom:0;
+	padding:0 0 10px 0;
+	border-bottom:4px solid #2b2b2b;
+	color:#27aae0;
+	font-family: 'nexa_boldregular', sans-serif;
+	font-size:4em;
+}
+
+.blurb p {
+	color:#2b2b2b;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size:.9em;
+	line-height:1.5em;
+}
