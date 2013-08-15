@@ -1,15 +1,16 @@
 %hr
 %section.section-container
-  %h1.primary-heading(data-mercury="full")
+  %h1.primary-heading#primary_header(data-mercury="full")
     = render_region 'primary_header' do
       A Celebration of Everything Entrepreneurial in Denver
       %br
       September 16 &mdash; 21, 2013
-  %div.p-copy(data-mercury="full")
+  %div.p-copy#primary_copy(data-mercury="full")
     = render_region 'primary_copy' do
       Denver’s momentum is making headlines around the nation. To showcase Denver’s opportunities to the future work force and the world, Denver is hosting the second annual Denver Startup Week, September 16-21, 2013 and the event showcases the entrepreneurs, employees and the startup companies fueling innovation in Denver.  Organized by the Downtown Denver Partnership, Colorado Technology Association, and the Denver community, Denver Startup Week is a platform to convene all those who are building startups, want to build startups and want to be involved in the community.   With hundreds of activities and events over a period of six days, there is something for anyone who wants to engage in Denver’s entrepreneurial ecosystem. The week includes workshops, mentor office hours, resource fairs, hack-a-thons, happy hours and more.  Get involved and be a part of the community!
-  %h3.secondary-heading
-    Save the date for 2013. Mark your calendars. September is going to be the month of Denver Startups!
+  %h3.secondary-heading#secondary_header(data-mercury="full")
+    = render_region 'secondary_header' do
+      Save the date for 2013. Mark your calendars. September is going to be the month of Denver Startups!
 
 %section.section-container.module-ctas
   %ul.module-list
