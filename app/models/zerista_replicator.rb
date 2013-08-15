@@ -5,6 +5,15 @@ class ZeristaReplicator
   end
 
   def replicate!
+    if @submission.is_confirmed?
+      replicate_submission!
+    else
+      remove_submission!
+    end
+
+  end
+
+  def replicate_submission!
     return unless @submission.day.present? && @submission.time_range.present?
     attrs = {   name: @submission.title,
                 description: process_into_html(@submission.description),
@@ -24,7 +33,10 @@ class ZeristaReplicator
     if result['error'] == 'Event with that client_id already exists.'
       client.update_event_by_client_id @submission.id, attrs
     end
+  end
 
+  def remove_submission!
+    client.delete_event_by_client_id @submission.id
   end
 
   protected

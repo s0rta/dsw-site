@@ -95,7 +95,7 @@ class Submission < ActiveRecord::Base
     ZeristaReplicator.new(self).replicate!
   end
 
-  # after_save :propagate_to_zerista
+  after_save :propagate_to_zerista
 
   def self.create_in_zerista
     where(is_confirmed: true).each(&:propagate_to_zerista)
