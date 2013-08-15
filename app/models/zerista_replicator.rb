@@ -5,7 +5,7 @@ class ZeristaReplicator
   end
 
   def replicate!
-    if @submission.is_confirmed?
+    if @submission.is_confirmed? && @submission.is_public?
       replicate_submission!
     else
       remove_submission!
