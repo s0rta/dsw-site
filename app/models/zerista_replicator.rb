@@ -6,12 +6,25 @@ class ZeristaReplicator
 
   def replicate!
     return unless @submission.day.present? && @submission.time_range.present?
-    client.create_event @submission.title,
-                        @submission.description,
-                        date_for_slot + offset_for_slot,
-                        date_for_slot + offset_for_slot + 2.hours,
-                        @submission.id,
-                        @submission.track.zerista_track_id
+    attrs = {   name: @submission.title,
+                description: @submission.description,
+                start_time: date_for_slot + offset_for_slot,
+                end_time: date_for_slot + offset_for_slot + 2.hours,
+                client_id: @submission.id,
+                track_id: @submission.track.zerista_track_id }
+    if @submission.venue
+      attrs[:location_name] = @submission.venue.name
+      attrs[:address] = @submission.venue.address
+      attrs[:city] = @submission.venue.city
+      attrs[:state] = @submission.venue.state
+    end
+    # Try to create first
+    result = client.create_event attrs
+    # Otherwise update
+    if result['error'] == 'Event with that client_id already exists.'
+      client.update_event @submission.id, attrs
+    end
+
   end
 
   protected

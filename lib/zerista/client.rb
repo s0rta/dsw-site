@@ -14,15 +14,22 @@ module Zerista
       @signing_key = signing_key
     end
 
-    def create_event(name, description, start_time, end_time, client_id, track_id)
+    def create_event(attrs)
       get_params = { 'format' => 'json_7' }
-      post_params = { 'event[subject]'    => name,
-                      'event[mceEditor]'  => description,
-                      'event[start]'      => start_time.iso8601,
-                      'event[finish]'     => end_time.iso8601,
-                      'event[track_id]'   => track_id,
-                      'client_id'         => client_id
+      post_params = { 'event[subject]'    => attrs[:name],
+                      'event[mceEditor]'  => attrs[:description],
+                      'event[start]'      => attrs[:start_time].iso8601,
+                      'event[finish]'     => attrs[:end_time].iso8601,
+                      'event[track_id]'   => attrs[:track_id],
+                      'client_id'         => attrs[:client_id],
+                      'location[item_attributes][display_value]' => attrs[:location_name],
+                      'location_address[street]' => attrs[:address],
+                      'location_address[street2]' => nil,
+                      'location_address[city]' => attrs[:city],
+                      'location_address[state]' => attrs[:state],
+                      'location_address[country_code]' => 'US'
         }
+      post_params.delete_if { |k, v| !v }
       signature = signature_for_params(get_params, post_params)
       self.class.post "https://#{@subdomain}.zerista.com/event", query: get_params, body: post_params.merge(sig: signature)
     end
@@ -32,6 +39,32 @@ module Zerista
       post_params = { 'client_id' => client_id }
       signature = signature_for_params(get_params, post_params)
       self.class.delete "https://#{@subdomain}.zerista.com/event", query: get_params, body: post_params.merge(sig: signature)
+    end
+
+    def update_event_by_client_id(client_id, attrs)
+      get_params = { 'format' => 'json_7', 'client_id' => client_id }
+      post_params = { 'event[subject]'    => attrs[:name],
+                      'event[mceEditor]'  => attrs[:description],
+                      'event[start]'      => attrs[:start_time].try(:iso8601),
+                      'event[finish]'     => attrs[:end_time].try(:iso8601),
+                      'event[track_id]'   => attrs[:track_id],
+                      'client_id'         => attrs[:client_id],
+                      'location[item_attributes][display_value]' => attrs[:location_name],
+                      'location_address[street]' => attrs[:address],
+                      'location_address[street2]' => nil,
+                      'location_address[city]' => attrs[:city],
+                      'location_address[state]' => attrs[:state],
+                      'location_address[country_code]' => 'US'
+        }
+      post_params.delete_if { |k, v| !v }
+      signature = signature_for_params(get_params, post_params)
+      self.class.put "https://#{@subdomain}.zerista.com/event", query: get_params, body: post_params.merge(sig: signature)
+    end
+
+    def list_events(terms = '', limit = 100)
+      get_params = { 'format' => 'json_7', 'terms' => terms, 'limit' => limit }
+      signature = signature_for_params(get_params, {})
+      self.class.get "https://#{@subdomain}.zerista.com/event", query: get_params, body: {sig: signature}
     end
 
     def signature_for_params(get_params, post_params)
