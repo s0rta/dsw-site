@@ -13,9 +13,10 @@ end
 ZERISTA_TRACK_IDS = { 'Business'  => 2354,
                       'Design'    => 2356,
                       'Tech'      => 2355,
-                      'Manufacturing' => 2357 }
+                      'Manufacturing' => 2357,
+                      'Marquee Events' => 2353 }
 
-{ 'Business' => 'graph', 'Design' => 'pen', 'Tech' => 'markup', 'Manufacturing' => 'factory' }.each do |track_name, icon|
+{ 'Business' => 'graph', 'Design' => 'pen', 'Tech' => 'markup', 'Manufacturing' => 'factory', 'Marquee Events' => 'bulb' }.each do |track_name, icon|
   t = Track.where(name: track_name).first_or_initialize
   t.icon = icon
   t.zerista_track_id = ZERISTA_TRACK_IDS[track_name]
