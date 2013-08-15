@@ -22,7 +22,7 @@ class ZeristaReplicator
     result = client.create_event attrs
     # Otherwise update
     if result['error'] == 'Event with that client_id already exists.'
-      client.update_event @submission.id, attrs
+      client.update_event_by_client_id @submission.id, attrs
     end
 
   end
