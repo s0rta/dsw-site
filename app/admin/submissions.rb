@@ -13,7 +13,7 @@ ActiveAdmin.register Submission do
     column :venue
     column :format
     column :day
-    column :time_range
+    column(:time_range, sortable: 'start_hour') { |s| "#{s.start_hour}:00 - #{s.end_hour}:00" }
     column :submitter, sortable: 'users.name'
     column('Public', :is_public, sortable: :is_public) { |s| s.is_public? ? 'Yes' : 'No' }
     column('Confirmed', :is_confirmed, sortable: :is_confirmed) { |s| s.is_confirmed? ? 'Yes' : 'No' }
