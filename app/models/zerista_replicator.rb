@@ -14,7 +14,7 @@ class ZeristaReplicator
   end
 
   def replicate_submission!
-    return unless @submission.day.present? && @submission.time_range.present?
+    return unless @submission.day.present? && @submission.start_hour.present? && @submission.end_hour.present?
     estimated_size = @submission.estimated_size.to_i
     attrs = {   name: @submission.title,
                 description: process_into_html(@submission.description),
