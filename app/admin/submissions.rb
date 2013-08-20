@@ -13,7 +13,11 @@ ActiveAdmin.register Submission do
     column :venue
     column :format
     column :day
-    column(:time_range, sortable: 'start_hour') { |s| "#{s.start_hour}:00 - #{s.end_hour}:00" }
+    column(:time_range, sortable: 'start_hour') do |s|
+      if s.start_hour && s.end_hour
+        "#{(Time.now.at_beginning_of_day + s.start_hour.hours).strftime('%l:%M%P')} - #{(Time.now.at_beginning_of_day + s.end_hour.hours).strftime('%l:%M%P')}"
+      end
+    end
     column :submitter, sortable: 'users.name'
     column('Public', :is_public, sortable: :is_public) { |s| s.is_public? ? 'Yes' : 'No' }
     column('Confirmed', :is_confirmed, sortable: :is_confirmed) { |s| s.is_confirmed? ? 'Yes' : 'No' }
@@ -57,8 +61,8 @@ ActiveAdmin.register Submission do
       f.input :format, as: :select, collection: Submission::FORMATS, include_blank: true
       f.input :day, as: :select, collection: Submission::DAYS, include_blank: true
       f.input :time_range, as: :select, label: 'Submitted Time Range', collection: Submission::TIME_RANGES, include_blank: true, input_html: { disabled: true }
-      f.input :start_hour, as: :select, collection: 0..23, include_blank: false
-      f.input :end_hour, as: :select, collection: 0..23, include_blank: false
+      f.input :start_hour, as: :select, collection: collection_for_hour_select, include_blank: false
+      f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :venue
       f.input :title
       f.input :description

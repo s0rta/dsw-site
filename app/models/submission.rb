@@ -73,8 +73,8 @@ class Submission < ActiveRecord::Base
                                 allow_blank: true }
   validates :time_range, inclusion: { in: TIME_RANGES,
                                       allow_blank: true }
-  validates :start_hour, inclusion: { in: 0..23 }
-  validates :end_hour, inclusion: { in: 0..23 }
+  validates :start_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
+  validates :end_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
   validates :track_id, presence: true
   validates :location, length: { maximum: 255 }
 
