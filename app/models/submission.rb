@@ -105,7 +105,7 @@ class Submission < ActiveRecord::Base
 
   after_save :propagate_to_zerista_asynchronously
 
-  def self.create_in_zerista
+  def self.propagate_to_zerista
     where(is_confirmed: true).each(&:propagate_to_zerista)
   end
 
