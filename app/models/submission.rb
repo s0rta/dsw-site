@@ -1,5 +1,7 @@
 class Submission < ActiveRecord::Base
 
+  has_paper_trail
+
   attr_accessible :day,
                   :description,
                   :format,

@@ -252,6 +252,9 @@ GEM
       oauth
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
+    paper_trail (2.7.2)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     pg (0.15.1)
     phantomjs (1.8.1.1)
       poltergeist
@@ -405,6 +408,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth
   omniauth-linkedin
+  paper_trail
   pg
   pry-rails
   rails (= 3.2.13)

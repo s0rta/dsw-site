@@ -1,10 +1,20 @@
 ActiveAdmin.register Submission do
 
   controller do
+
     with_role :admin
+
     def scoped_collection
       resource_class.includes(:track, :submitter, :votes, :comments)
     end
+
+    def show
+        @submission = Submission.find(params[:id])
+        @versions = @submission.versions
+        @submission = @submission.versions[params[:version].to_i].reify if params[:version]
+        show!
+    end
+
   end
 
   index do
@@ -80,6 +90,25 @@ ActiveAdmin.register Submission do
 
   sidebar :actions, only: [ :edit, :show ]  do
     link_to 'View on site', submission
+  end
+
+  sidebar :versionate, :partial => "admin/version", :only => :show
+
+  show do
+    attributes_table *default_attribute_table_rows
+    panel 'Recent Updates' do
+      table_for submission.versions do
+        column 'Modified at' do |v|
+          v.created_at.to_s :long
+        end
+        column 'User' do |v|
+          link_to User.find(v.whodunnit).name, admin_user_path(User.find(v.whodunnit))
+        end
+        column 'View' do |v|
+          link_to 'View', { version: v.index}
+        end
+      end
+    end
   end
 
 end
