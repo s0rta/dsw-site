@@ -105,7 +105,7 @@ class Submission < ActiveRecord::Base
     ZeristaPropagationJob.new.async.perform(self.id)
   end
 
-  after_save :propagate_to_zerista_asynchronously
+  after_commit :propagate_to_zerista_asynchronously
 
   def self.propagate_to_zerista
     where(is_confirmed: true).each(&:propagate_to_zerista)
