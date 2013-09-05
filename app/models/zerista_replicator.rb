@@ -14,12 +14,12 @@ class ZeristaReplicator
   end
 
   def replicate_submission!
-    return unless @submission.day.present? && @submission.start_hour.present? && @submission.end_hour.present?
+    return unless @submission.start_day.present? && @submission.end_day.present? && @submission.start_hour.present? && @submission.end_hour.present?
     estimated_size = @submission.estimated_size.to_i
     attrs = {   name: @submission.title,
                 description: process_into_html(@submission.description),
-                start_time: date_for_slot + @submission.start_hour.hours,
-                end_time: date_for_slot + @submission.end_hour.hours,
+                start_time: date_for_slot(@submission.start_day) + @submission.start_hour.hours,
+                end_time: date_for_slot(@submission.end_day) + @submission.end_hour.hours,
                 client_id: @submission.id,
                 track_id: @submission.track.zerista_track_id,
                 tag_list: @submission.track.name,
@@ -44,8 +44,8 @@ class ZeristaReplicator
 
   protected
 
-  def date_for_slot
-    case @submission.day
+  def date_for_slot(day)
+    case day
     when 'Monday'
       ActiveSupport::TimeZone['America/Denver'].parse('2013-9-16')
     when 'Tuesday'

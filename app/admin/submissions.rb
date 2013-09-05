@@ -22,7 +22,8 @@ ActiveAdmin.register Submission do
     column :track, sortable: 'tracks.name'
     column :venue
     column :format
-    column :day
+    column :start_day
+    column :end_day
     column(:time_range, sortable: 'start_hour') do |s|
       if s.start_hour && s.end_hour
         "#{(Time.now.at_beginning_of_day + s.start_hour.hours).strftime('%l:%M%P')} - #{(Time.now.at_beginning_of_day + s.end_hour.hours).strftime('%l:%M%P')}"
@@ -57,7 +58,8 @@ ActiveAdmin.register Submission do
   filter :venue
   filter :format
   filter :submitter
-  filter :day, as: :select, collection: Submission::DAYS
+  filter :start_day, as: :select, collection: Submission::DAYS
+  filter :end_day, as: :select, collection: Submission::DAYS
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
   filter :format, as: :select, collection: Submission::FORMATS
   filter :is_public
@@ -69,9 +71,10 @@ ActiveAdmin.register Submission do
       f.input :track_id, as: :select, collection: Track.all.map {|t| [ t.name, t.id ]}, include_blank: false
       f.input :theme_id, as: :select, collection: Theme.all.map {|t| [ t.name, t.id ]}, include_blank: true
       f.input :format, as: :select, collection: Submission::FORMATS, include_blank: true
-      f.input :day, as: :select, collection: Submission::DAYS, include_blank: true
       f.input :time_range, as: :select, label: 'Submitted Time Range', collection: Submission::TIME_RANGES, include_blank: true, input_html: { disabled: true }
+      f.input :start_day, as: :select, collection: Submission::DAYS, include_blank: true
       f.input :start_hour, as: :select, collection: collection_for_hour_select, include_blank: false
+      f.input :end_day, as: :select, collection: Submission::DAYS, include_blank: true
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :venue
       f.input :title

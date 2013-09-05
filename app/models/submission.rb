@@ -2,7 +2,7 @@ class Submission < ActiveRecord::Base
 
   has_paper_trail
 
-  attr_accessible :day,
+  attr_accessible :start_day,
                   :description,
                   :format,
                   :location,
@@ -15,7 +15,8 @@ class Submission < ActiveRecord::Base
                   :theme_id,
                   :venue_id
 
-  attr_accessible :day,
+  attr_accessible :start_day,
+                  :end_day,
                   :description,
                   :format,
                   :location,
@@ -71,7 +72,9 @@ class Submission < ActiveRecord::Base
   validates :contact_email, presence: true
   validates :format, inclusion: {   in: FORMATS,
                                     allow_blank: true }
-  validates :day, inclusion: {  in: DAYS,
+  validates :start_day, inclusion: {  in: DAYS,
+                                allow_blank: true }
+  validates :end_day, inclusion: {  in: DAYS,
                                 allow_blank: true }
   validates :time_range, inclusion: { in: TIME_RANGES,
                                       allow_blank: true }
