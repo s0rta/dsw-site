@@ -28,7 +28,7 @@ module Zerista
                       'location_address[street2]' => nil,
                       'location_address[city]' => attrs[:city],
                       'location_address[state]' => attrs[:state],
-                      'location_address[country_code]' => 'US',
+                      'location_address[country_code]' => attrs[:country],
                       'event[max_attendees]' => attrs[:max_attendees]
         }
       post_params.delete_if { |k, v| !v }
