@@ -29,7 +29,7 @@ class ZeristaReplicator
       # attrs[:address] = @submission.venue.address
       # attrs[:city] = @submission.venue.city
       # attrs[:state] = @submission.venue.state
-      attrs[:description] << "\n\Hosted at #{@submission.venue.name}\n#{@submission.venue.address}"
+      attrs[:description] << "\n\n\nLocated at #{@submission.venue.name} - #{@submission.venue.address}"
     end
     # Try to create first
     result = client.create_event attrs
