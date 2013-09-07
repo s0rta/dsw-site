@@ -26,9 +26,10 @@ class ZeristaReplicator
                 max_attendees: (estimated_size == 0 ? nil : estimated_size) }
     if @submission.venue
       attrs[:location_name] = @submission.venue.name
-      attrs[:address] = @submission.venue.address
-      attrs[:city] = @submission.venue.city
-      attrs[:state] = @submission.venue.state
+      # attrs[:address] = @submission.venue.address
+      # attrs[:city] = @submission.venue.city
+      # attrs[:state] = @submission.venue.state
+      attrs[:description] << "\n\Hosted at #{@submission.venue.name}\n#{@submission.venue.address}"
     end
     # Try to create first
     result = client.create_event attrs
