@@ -1,0 +1,50 @@
+/*------------------------------------*\
+    //Variables
+\*------------------------------------*/
+
+/*------------------------------------*\
+    //Colors
+\*------------------------------------*/
+
+//primary colors / page anchor tags
+$color-1:           #27aae0;
+$color-1-light:     lighten($color-1,20%);
+$color-1-dark:      darken($color-1,20%);
+
+//secondary colors / global nav and Local Nav.
+$color-2:           #007DAB;
+$color-2-light:     lighten($color-2,20%);
+$color-2-dark:      darken($color-2,20%);
+
+//tertiary colors / secondary global nav and secondary local nav.
+$color-3:           #F79021;
+$color-3-light:     lighten($color-3,20%);
+$color-3-dark:      darken($color-3,20%);
+
+//alert colors
+$color-good:  #00801c;
+$color-bad:   #ff0000;
+
+$black: 	  #221f1f;
+$white: 	  #fefefe;
+
+/*------------------------------------*\
+    //Text Styling
+\*------------------------------------*/
+
+//font colors
+$txt-color-1:       $color-1-dark;
+$txt-color-2:       $color-1-dark;
+$txt-color-3:       $color-3-dark;
+
+//font families
+$fam-heading:       'nexa', sans-serif;
+$fam-btn:       	'opensans', sans-serif;
+$fam-body:          palatino, serif;
+$fam-icon:          'icon', sans-serif;
+
+//internal/page anchor tags
+$a-color-link:      $color-1;
+$a-color-visited:   $a-color-link;
+$a-color-hover:     lighten($a-color-link,20%);
+$a-color-active:    lighten($a-color-link,30%);

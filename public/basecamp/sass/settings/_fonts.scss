@@ -1,0 +1,11 @@
+/*------------------------------------*\
+    //Fonts
+\*------------------------------------*/
+
+// EXAMPLE:
+// @include font-face(nobile, '/fonts/nobile');
+// @include font-face(nobile, '/fonts/nobile_bold', bold);
+// @include font-face(nobile, 'nobile_italic', normal, italic);
+@include font-face(nexa, 'nexa/Nexa_Free_Bold-webfont', bold);
+@include font-face(opensans, 'opensans/OpenSans-Regular-webfont', regular);
+@include font-face(icon, 'icomoon/icomoon', regular);
