@@ -34,7 +34,7 @@
               %h3.primary-heading Logistics
               %div.p-copy The nitty gritty. Where, when, and how many people? It's okay if you don't know just yet.
               = field_set_tag do
-                = f.input :day, as: :select, collection: Submission::DAYS, prompt: 'Which day in the week are you looking to hold your event?', include_blank: 'Not sure / don\'t care'
+                = f.input :start_day, as: :select, collection: Submission::DAYS, prompt: 'Which day in the week are you looking to hold your event?', include_blank: 'Not sure / don\'t care'
                 = f.input :location, placeholder: 'Where are you looking to hold your event?'
                 = f.input :time_range, as: :select, collection: Submission::TIME_RANGES, prompt: 'What time of day are you looking to hold your event?', include_blank: 'Not sure / don\'t care'
                 = f.input :estimated_size, placeholder: 'How many attendees do you think this event could accomodate?'
