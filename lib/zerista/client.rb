@@ -71,6 +71,15 @@ module Zerista
       self.class.get "https://#{@subdomain}.zerista.com/event", query: get_params, body: {sig: signature}
     end
 
+    def rsvp_for_event(event_id, user_email, response)
+      get_params = { 'format' => 'json_7' }
+      post_params = { 'client_id' => event_id,
+                      'user[email]' => user_email,
+                      'response' => response}
+      signature = signature_for_params(get_params, post_params)
+      self.class.put "https://#{@subdomain}.zerista.com/event/rsvp", query: get_params, body: post_params.merge(sig: signature)
+    end
+
     def signature_for_params(get_params, post_params)
       get_params['key_id'] = @key_id
       sorted_get_params = Hash[get_params.sort_by {|k,v| k }]
