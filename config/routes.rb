@@ -3,6 +3,7 @@ Denverstartupweek::Application.routes.draw do
   resources :submissions, except: [ :edit, :update, :destroy ], path: 'panel-picker', path_names: { new: 'submit' } do
     collection do
       get :thanks
+      get :by_day
     end
     resources :votes, only: :create
     resources :comments, only: :create

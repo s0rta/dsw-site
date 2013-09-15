@@ -1,9 +1,14 @@
 class SubmissionsController < ApplicationController
 
-  respond_to :html 
+  respond_to  :html,
+              :atom
 
   def index
     @submissions = Submission.where(is_public: true).order('random()').includes(:submitter, :theme, :track, :votes)
+  end
+
+  def by_day
+    @submissions = Submission.where(is_public: true, is_confirmed: true, start_day: params[:day]).order('random()').includes(:submitter, :theme, :track, :votes)
   end
 
   def new
