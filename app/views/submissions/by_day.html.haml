@@ -2,10 +2,12 @@
   - @submissions.each do |submission|
     %section.section-container(style="padding: 0.5em;")
       %h2.secondary-heading= submission.title
-      %div.p-copy= "#{submission.track.name} Track"
-      %div.p-copy= "#{(Date.today.at_midnight + submission.start_hour.hours).strftime('%l:%M%P')} - #{(Date.today.at_midnight + submission.end_hour.hours).strftime('%l:%M%P')}"
-      - if submission.venue.present?
-        %div.p-copy= "#{submission.venue.name} - #{submission.venue.address}"
-
+      %div.p-copy
+        = "#{submission.track.name} Track"
+        %br
+        = "#{(Date.today.at_midnight + submission.start_hour.hours).strftime('%l:%M%P')} - #{(Date.today.at_midnight + submission.end_hour.hours).strftime('%l:%M%P')}"
+        %br
+        - if submission.venue.present?
+          = "#{submission.venue.name} - #{submission.venue.address}"
     %hr
 
