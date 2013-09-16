@@ -2,17 +2,27 @@
 #= require components/dsw
 
 class dsw.Autoscroller
-  constructor: (@el, data) ->
 
-    @scrollTime = parseInt(@el.data('scroll-time'), 10)
+  constructor: (@el, data) ->
+    @scrollTime = parseFloat(@el.data('scroll-time'))
     @initialize()
     @addListeners()
 
   initialize: =>
-    console.log @scrollTime
-    cb = =>
-      $('html,body').animate({scrollTop: @el.height()}, @scrollTime * 1000)
-    setTimeout cb, 2000
+    @currentIndex = 0
+    @eventCount = @el.find('section').length
+    @animateNext()
+
+  animateNext: =>
+    if @currentIndex < @eventCount
+      currentEl = $(@el.find('section').get(@currentIndex))
+      $('html,body').animate({scrollTop: currentEl.position().top}, 250)
+    else
+      @currentIndex = 0
+      $('html,body').animate({scrollTop: 0}, 250)
+    @currentIndex += 1
+    setTimeout @animateNext, @scrollTime * 1000
+
 
 # PUBLIC #
 
