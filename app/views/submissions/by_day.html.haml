@@ -1,4 +1,4 @@
-%div(data-bindable="autoscroller" data-scroll-time="#{@submissions.length * 2.0}")
+%div(data-bindable="autoscroller" data-scroll-time="#{@submissions.length * 3.0}")
   - @submissions.each do |submission|
     %section.section-container(style="padding: 0.5em;")
       %h2.secondary-heading= submission.title
