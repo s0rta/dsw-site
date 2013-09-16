@@ -1,15 +1,16 @@
-%footer.footer
-  %div.footer-container
-    %header.footer-header
-      %h5.dsw-logotype Denver Startup <span>Week</span> <span class="logotype-year">2013</span>
-      %div.social-icons
-        %a.dswacon.dswacon-facebook(href="https://www.facebook.com/DenverStartupWeek")
-        %a.dswacon.dswacon-twitter(href="https://twitter.com/denstartupweek")
-        %a.dswacon.dswacon-google-plus(href="https://plus.google.com/105192639808515157053")
+- unless params[:hide_chrome]
+  %footer.footer
+    %div.footer-container
+      %header.footer-header
+        %h5.dsw-logotype Denver Startup <span>Week</span> <span class="logotype-year">2013</span>
+        %div.social-icons
+          %a.dswacon.dswacon-facebook(href="https://www.facebook.com/DenverStartupWeek")
+          %a.dswacon.dswacon-twitter(href="https://twitter.com/denstartupweek")
+          %a.dswacon.dswacon-google-plus(href="https://plus.google.com/105192639808515157053")
 
-    %nav.footer-navigation(role="navigation")
-      = semantic_navigation :footer, id: 'footer_navigation', class: 'footer-nav site-nav' do |n|
-        - Cmsimple::Page.published.where(parent_id: nil, is_root: false).order(:position).each do |page|
-          - n.item page.title, page.uri
-        - if current_user && current_user.is_admin?
-          - n.item 'Manage &rarr;'.html_safe, main_app.admin_root_path, data: { 'no-turbolink' => true }
+      %nav.footer-navigation(role="navigation")
+        = semantic_navigation :footer, id: 'footer_navigation', class: 'footer-nav site-nav' do |n|
+          - Cmsimple::Page.published.where(parent_id: nil, is_root: false).order(:position).each do |page|
+            - n.item page.title, page.uri
+          - if current_user && current_user.is_admin?
+            - n.item 'Manage &rarr;'.html_safe, main_app.admin_root_path, data: { 'no-turbolink' => true }

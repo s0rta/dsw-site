@@ -8,7 +8,7 @@ class SubmissionsController < ApplicationController
   end
 
   def by_day
-    @submissions = Submission.where(is_public: true, is_confirmed: true, start_day: params[:day]).order('random()').includes(:submitter, :theme, :track, :votes)
+    @submissions = Submission.where(is_public: true, is_confirmed: true, start_day: params[:day]).order('start_hour ASC').includes(:submitter, :theme, :track, :votes)
   end
 
   def new

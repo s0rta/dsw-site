@@ -10,6 +10,7 @@
 #= require components/carousel
 #= require components/module_expander
 #= require components/sortable_submissions
+#= require components/autoscroller
 
 # Lets get this party started..
 createBindable = ->

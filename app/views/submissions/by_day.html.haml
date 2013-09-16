@@ -1,0 +1,7 @@
+%div(data-bindable="autoscroller")
+  - @submissions.each do |submission|
+    %section.section-container(style="padding-top: 0.5em; padding-bottom: 0.5em")
+      %h2.secondary-heading= submission.title
+      %div.p-copy= "#{submission.track.name} Track - #{(Date.today.at_midnight + submission.start_hour.hours).strftime('%l:%M')} at #{submission.venue.try(:name)}"
+    %hr
+
