@@ -3,17 +3,16 @@
 
 class dsw.Autoscroller
   constructor: (@el, data) ->
-    @data = if data then data else @el.data()
-    @options()
+
+    @scrollTime = parseInt(@el.data('scroll-time'), 10)
     @initialize()
     @addListeners()
 
-
-  options: ->
-
-
-  initialize: ->
-    $('html,body').animate({scrollTop: @el.height()}, 20000)
+  initialize: =>
+    console.log @scrollTime
+    cb = =>
+      $('html,body').animate({scrollTop: @el.height()}, @scrollTime * 1000)
+    setTimeout cb, 2000
 
 # PUBLIC #
 
