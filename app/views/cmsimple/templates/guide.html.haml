@@ -1,193 +1,199 @@
-%hr
-%section.section-container
-  %h2.primary-heading Color Swatches
-  %div.swatch
-  %div.swatch(style="background-color:#e77003;")
-  %div.swatch(style="background-color:#b22222;")
-  %div.swatch(style="background-color:#46a546;")
+%section.main
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %hr
+    %section.section-container
+      %h2.primary-heading Color Swatches
+      %div.swatch
+      %div.swatch(style="background-color:#e77003;")
+      %div.swatch(style="background-color:#b22222;")
+      %div.swatch(style="background-color:#46a546;")
 
-  %div.swatch(style="background-color:#1c262e;")
-  %div.swatch(style="background-color:#546574;")
-  %div.swatch(style="background-color:#677683;")
-  %div.swatch(style="background-color:#768490;")
-  %div.swatch(style="background-color:#c6ccd1;")
-
-
-%hr
-%section.section-container
-  %h2.primary-heading Iconography
-  %span.dswacon.dswacon-logo
-  %span.dswacon.dswacon-dsw-mini
-  %span.dswacon.dswacon-circle
-  %span.dswacon.dswacon-circle-border
-  %span.dswacon.dswacon-plus
-  %span.dswacon.dswacon-minus
-  %span.dswacon.dswacon-vote-yes
-  %span.dswacon.dswacon-vote-no
-  %span.dswacon.dswacon-search
-  %span.dswacon.dswacon-star
-  %span.dswacon.dswacon-bulb
-  %span.dswacon.dswacon-factory
-  %span.dswacon.dswacon-graph
-  %span.dswacon.dswacon-pen
-  %span.dswacon.dswacon-markup
-  %span.dswacon.dswacon-linkedin
-  %span.dswacon.dswacon-twitter
-  %span.dswacon.dswacon-facebook
-  %span.dswacon.dswacon-google-plus
-  %p Combo Icons
-  %div.dswacon.dswacon-plus.dswacon-combo-primary
-  %div.dswacon.dswacon-minus.dswacon-combo-secondary
-  %div.dswacon.dswacon-markup.dswacon-panel-icon
-
-%hr
-%section.section-container
-  %h2.primary-heading Buttons
-  %button.btn(href="#") Primary Button
-  %button.btn.active(href="#") Primary Button (Active)
-  %button.btn.btn-secondary(href="#") Secondary Button
-  %button.btn.btn-secondary.active(href="#") Secondary Button (Active)
-
-%hr
-%section.section-container.module-ctas
-  %h2.primary-heading Call To Action Modules
-  %ul.module-list
-    %li.cta
-      %div.cta-content-cell
-        %div.dswacon.dswacon-bulb.dswacon-combo-primary
-        %h3.primary-heading.cta-heading Submit Idea
-        %div.cta-copy Have an idea for a panel or workshop?
-      %a.btn.cta-btn(href="#") Get Started
-    %li.cta
-      %div.cta-content-cell
-        %div.dswacon.dswacon-vote-yes.dswacon-combo-secondary
-        %h3.primary-heading.cta-heading View / Vote
-        %div.cta-copy View and vote on panel/workshop ideas.
-      %a.btn.btn-secondary.cta-btn(href="#") Get Started
-
-%hr
-%section.section-container.module-form
-  %h2.primary-heading Form Module
-  %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="false" data-activate="0")
-    %div.form-carousel-inner
-      -(1..3).each do |i|
-        %article.form-pane
-          %div.form-contents
-            %div.dswacon.dswacon-bulb.dswacon-combo-secondary
-            %h3.primary-heading Your Information (#{i})
-            %div.p-copy Lorem ipsum dolere sit amet nonummy consecuter nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter nomen es quid.
-
-            %form.dsw-form(role="form")
-              %fieldset
-                %div.control-group
-                  %label.control-label(for="guide_name_#{i}") Name
-                  %div.controls
-                    %input(id="guide_name_#{i}" type="text" placeholder="Name")
-                %div.control-group
-                  %label.control-label(for="guide_email_#{i}") Email
-                  %div.controls
-                    %input(id="guide_email_#{i}" type="email" placeholder="Email Address")
-                %div.control-group
-                  %label.control-label(for="guide_company_#{i}") Company
-                  %div.controls
-                    %input(id="guide_company_#{i}" type="text" placeholder="Company")
-          %button.btn.btn-secondary.form-btn(href="#") Next
-    %div.carousel-controls
+      %div.swatch(style="background-color:#1c262e;")
+      %div.swatch(style="background-color:#546574;")
+      %div.swatch(style="background-color:#677683;")
+      %div.swatch(style="background-color:#768490;")
+      %div.swatch(style="background-color:#c6ccd1;")
 
 
-%hr
-%section.section-container.module-bios
-  %h2.primary-heading Bio Modules
-  %ol.module-list
-    -(1..3).each do |i|
-      %li.module
-        %div.module-contents
-          %div.module-icon-cell
-            = image_tag "http://placehold.it/100x100", alt: "hi", class: "bio-img", width: 100, height: 100
-          %div.module-details-cell
-            %h3.module-heading Jimmy Twoshoes
-            %div.bio-copy Company Name
-            %div.bio-copy Title
-            %div.bio-copy In Denver Since 2000
+    %hr
+    %section.section-container
+      %h2.primary-heading Iconography
+      %span.dswacon.dswacon-logo
+      %span.dswacon.dswacon-dsw-mini
+      %span.dswacon.dswacon-circle
+      %span.dswacon.dswacon-circle-border
+      %span.dswacon.dswacon-plus
+      %span.dswacon.dswacon-minus
+      %span.dswacon.dswacon-vote-yes
+      %span.dswacon.dswacon-vote-no
+      %span.dswacon.dswacon-search
+      %span.dswacon.dswacon-star
+      %span.dswacon.dswacon-bulb
+      %span.dswacon.dswacon-factory
+      %span.dswacon.dswacon-graph
+      %span.dswacon.dswacon-pen
+      %span.dswacon.dswacon-markup
+      %span.dswacon.dswacon-linkedin
+      %span.dswacon.dswacon-twitter
+      %span.dswacon.dswacon-facebook
+      %span.dswacon.dswacon-google-plus
+      %p Combo Icons
+      %div.dswacon.dswacon-plus.dswacon-combo-primary
+      %div.dswacon.dswacon-minus.dswacon-combo-secondary
+      %div.dswacon.dswacon-markup.dswacon-panel-icon
 
-%hr
-%section.section-container
-  %h2.primary-heading Panel Modules
+    %hr
+    %section.section-container
+      %h2.primary-heading Buttons
+      %button.btn(href="#") Primary Button
+      %button.btn.active(href="#") Primary Button (Active)
+      %button.btn.btn-secondary(href="#") Secondary Button
+      %button.btn.btn-secondary.active(href="#") Secondary Button (Active)
 
-  %section.filter-bar(data-bindable="filter-bar")
-    %form.dsw-form.form-filter(role="form")
-      %fieldset
-        %div.control-group.search-filter(data-filterable="search-filter")
-          %label.control-label.dswacon.dswacon-search(for="search_bar")
-          %div.controls
-            %input#search_bar(type="search" placeholder="Search")
+    %hr
+    %section.section-container.module-ctas
+      %h2.primary-heading Call To Action Modules
+      %ul.module-list
+        %li.cta
+          %div.cta-content-cell
+            %div.dswacon.dswacon-bulb.dswacon-combo-primary
+            %h3.primary-heading.cta-heading Submit Idea
+            %div.cta-copy Have an idea for a panel or workshop?
+          %a.btn.cta-btn(href="#") Get Started
+        %li.cta
+          %div.cta-content-cell
+            %div.dswacon.dswacon-vote-yes.dswacon-combo-secondary
+            %h3.primary-heading.cta-heading View / Vote
+            %div.cta-copy View and vote on panel/workshop ideas.
+          %a.btn.btn-secondary.cta-btn(href="#") Get Started
 
-        %div.control-group
-          %div.controls
-            %div.drop-select(data-filterable="drop-select" data-action="filter")
-              %button.drop-toggle Filter by: <span class="tagged-as"></span><span class="drop-caret"></span>
-              %ul.drop-menu.menu-filter(role="menu" data-filterable="menu-filter")
-                %li(data-tag="track")<
-                  %a(href="#") Track
-                %li(data-tag="day")<
-                  %a(href="#") Day
-                %li(data-tag="time")<
-                  %a(href="#") Time
-                %li(data-tag="place")<
-                  %a(href="#") Place
+    %hr
+    %section.section-container.module-form
+      %h2.primary-heading Form Module
+      %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="false" data-activate="0")
+        %div.form-carousel-inner
+          -(1..3).each do |i|
+            %article.form-pane
+              %div.form-contents
+                %div.dswacon.dswacon-bulb.dswacon-combo-secondary
+                %h3.primary-heading Your Information (#{i})
+                %div.p-copy Lorem ipsum dolere sit amet nonummy consecuter nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter nomen es quid.
 
-        %div.control-group
-          %div.controls
-            %div.drop-select(data-filterable="drop-select" data-action="sort")
-              %button.drop-toggle Sort by: <span class="tagged-as"></span><span class="drop-caret"></span>
-              %ul.drop-menu.menu-sort(role="menu" data-filterable="menu-sort")
-                %li(data-tag="popularity")<
-                  %a(href="#") Popularity
-                %li(data-tag="time")<
-                  %a(href="#") Time
-                %li(data-tag="track")<
-                  %a(href="#") Track
-                %li(data-tag="alphabetical")<
-                  %a(href="#") Alphabetical
-
-
-  %section.module-panels
-    %ol.module-list
-      -(1..3).each do |i|
-        %li.module
-          %a.panel-toggle(href="#")
-            %span.dswacon.dswacon-plus
-          %div.module-contents
-            %div.module-icon-cell
-              %div.dswacon.dswacon-markup.dswacon-panel-icon
-            %div.module-details-cell
-              %h3.module-heading Title of Panel or Workshop
-              %div.p-copy Lorem ipsum dolere sit amet nonummy consecuter nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter nomen es quid.
-              %div.track-copy Technology
-          %div.voting-cell
-            %h4.voting-heading 66%
-            %div.voting-engine
-              %a.dswacon.dswacon-vote-yes(href="#")
-              %a.dswacon.dswacon-vote-no(href="#")
+                %form.dsw-form(role="form")
+                  %fieldset
+                    %div.control-group
+                      %label.control-label(for="guide_name_#{i}") Name
+                      %div.controls
+                        %input(id="guide_name_#{i}" type="text" placeholder="Name")
+                    %div.control-group
+                      %label.control-label(for="guide_email_#{i}") Email
+                      %div.controls
+                        %input(id="guide_email_#{i}" type="email" placeholder="Email Address")
+                    %div.control-group
+                      %label.control-label(for="guide_company_#{i}") Company
+                      %div.controls
+                        %input(id="guide_company_#{i}" type="text" placeholder="Company")
+              %button.btn.btn-secondary.form-btn(href="#") Next
+        %div.carousel-controls
 
 
-%hr
-%section.section-container
-  %h2.primary-heading Notifications
+    %hr
+    %section.section-container.module-bios
+      %h2.primary-heading Bio Modules
+      %ol.module-list
+        -(1..3).each do |i|
+          %li.module
+            %div.module-contents
+              %div.module-icon-cell
+                = image_tag "http://placehold.it/100x100", alt: "hi", class: "bio-img", width: 100, height: 100
+              %div.module-details-cell
+                %h3.module-heading Jimmy Twoshoes
+                %div.bio-copy Company Name
+                %div.bio-copy Title
+                %div.bio-copy In Denver Since 2000
 
-  .notification.fade.in(role="alert")
-    %p <strong>Default!</strong> This is the default notification
-    %a.notification-close(href="#" data-bindable="dismiss") &times;
+    %hr
+    %section.section-container
+      %h2.primary-heading Panel Modules
 
-  .notification.notification-warning.fade.in(role="alert")
-    %p <strong>Warning!</strong> This is the warning notification
-    %a.notification-close(href="#" data-bindable="dismiss") &times;
+      %section.filter-bar(data-bindable="filter-bar")
+        %form.dsw-form.form-filter(role="form")
+          %fieldset
+            %div.control-group.search-filter(data-filterable="search-filter")
+              %label.control-label.dswacon.dswacon-search(for="search_bar")
+              %div.controls
+                %input#search_bar(type="search" placeholder="Search")
 
-  .notification.notification-success.fade.in(role="alert")
-    %p <strong>Success!</strong> This is the success notification
-    %a.notification-close(href="#" data-bindable="dismiss") &times;
+            %div.control-group
+              %div.controls
+                %div.drop-select(data-filterable="drop-select" data-action="filter")
+                  %button.drop-toggle Filter by: <span class="tagged-as"></span><span class="drop-caret"></span>
+                  %ul.drop-menu.menu-filter(role="menu" data-filterable="menu-filter")
+                    %li(data-tag="track")<
+                      %a(href="#") Track
+                    %li(data-tag="day")<
+                      %a(href="#") Day
+                    %li(data-tag="time")<
+                      %a(href="#") Time
+                    %li(data-tag="place")<
+                      %a(href="#") Place
 
-  .notification.notification-error.fade.in(role="alert")
-    %p <strong>Error!</strong> This is the error notification
-    %a.notification-close(href="#" data-bindable="dismiss") &times;
+            %div.control-group
+              %div.controls
+                %div.drop-select(data-filterable="drop-select" data-action="sort")
+                  %button.drop-toggle Sort by: <span class="tagged-as"></span><span class="drop-caret"></span>
+                  %ul.drop-menu.menu-sort(role="menu" data-filterable="menu-sort")
+                    %li(data-tag="popularity")<
+                      %a(href="#") Popularity
+                    %li(data-tag="time")<
+                      %a(href="#") Time
+                    %li(data-tag="track")<
+                      %a(href="#") Track
+                    %li(data-tag="alphabetical")<
+                      %a(href="#") Alphabetical
 
+
+      %section.module-panels
+        %ol.module-list
+          -(1..3).each do |i|
+            %li.module
+              %a.panel-toggle(href="#")
+                %span.dswacon.dswacon-plus
+              %div.module-contents
+                %div.module-icon-cell
+                  %div.dswacon.dswacon-markup.dswacon-panel-icon
+                %div.module-details-cell
+                  %h3.module-heading Title of Panel or Workshop
+                  %div.p-copy Lorem ipsum dolere sit amet nonummy consecuter nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter nomen es quid.
+                  %div.track-copy Technology
+              %div.voting-cell
+                %h4.voting-heading 66%
+                %div.voting-engine
+                  %a.dswacon.dswacon-vote-yes(href="#")
+                  %a.dswacon.dswacon-vote-no(href="#")
+
+
+    %hr
+    %section.section-container
+      %h2.primary-heading Notifications
+
+      .notification.fade.in(role="alert")
+        %p <strong>Default!</strong> This is the default notification
+        %a.notification-close(href="#" data-bindable="dismiss") &times;
+
+      .notification.notification-warning.fade.in(role="alert")
+        %p <strong>Warning!</strong> This is the warning notification
+        %a.notification-close(href="#" data-bindable="dismiss") &times;
+
+      .notification.notification-success.fade.in(role="alert")
+        %p <strong>Success!</strong> This is the success notification
+        %a.notification-close(href="#" data-bindable="dismiss") &times;
+
+      .notification.notification-error.fade.in(role="alert")
+        %p <strong>Error!</strong> This is the error notification
+        %a.notification-close(href="#" data-bindable="dismiss") &times;
+= render partial: 'layouts/shared/footer'
+= render partial: 'layouts/shared/flash_message'
+= render partial: 'layouts/shared/spinner'

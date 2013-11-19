@@ -46,16 +46,7 @@
     = csrf_meta_tag
 
   %body(id="#{'mercury_invasion' if in_mercury_invasion?}" class="body-#{current_body_class}" role="document")
-    %section.main
-      %section.content
-        = render partial: 'layouts/shared/navigation'
-        = render partial: 'layouts/shared/masthead'
-        %section.content-container(role="main")
-        = yield
-    = render partial: 'layouts/shared/footer'
-    = render partial: 'layouts/shared/flash_message'
-    = render partial: 'layouts/shared/spinner'
-
+    = yield
     = jquery_include_tag :google, :"data-turbolinks-eval" => false
     = javascript_include_tag :application, :"data-turbolinks-eval" => false
     %div(style="display: none;")

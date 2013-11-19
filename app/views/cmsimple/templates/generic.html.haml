@@ -1,8 +1,14 @@
-%section.section-container
-  %h1.primary-heading#generic_heading(data-mercury="full")><
-    = render_region "generic_heading" do
-      Page Heading
-  %div.p-copy#generic_copy(data-mercury="full")
-    = render_region "generic_copy" do
-      Coming Soon
-
+%section.main
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %section.section-container
+      %h1.primary-heading#generic_heading(data-mercury="full")><
+        = render_region "generic_heading" do
+          Page Heading
+      %div.p-copy#generic_copy(data-mercury="full")
+        = render_region "generic_copy" do
+          Coming Soon
+= render partial: 'layouts/shared/footer'
+= render partial: 'layouts/shared/flash_message'
+= render partial: 'layouts/shared/spinner'
