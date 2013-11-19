@@ -5,11 +5,11 @@
         %span.dsw-logotype Denver Startup <span>Week</span>
 
     %section.landing-banner
-      %article.teaser-copy
+      = render_region :landing_teaser_copy, tag: 'article', html: { class: 'teaser-copy' } do
         %p In 2012 and 2013, the most creative and well-connected innovators from Colorado and beyond came together for a week of learning, discussion, networking, and more. More than 9,000 startup community members engaged in over 240 community-driven events - all with the goal of celebrating everything entrepreneurial in the Mile High City.
         %p In 2013, Seth Godin told the crowd that Denver Startup Week is incredibly unique: “This event is pretty rare," he said. "It's not just rare for me; it's rare for the world."
         %a.btn(href="#") Sponsorship
         %a.btn(href="#") Photos from 2013
-      %h1.teaser-header
+      = render_region :landing_teaser_header, tag: 'h1', html: { class: 'teaser-header' } do
         Returning September 15&mdash;19 2014
 = render partial: 'layouts/shared/footer'
