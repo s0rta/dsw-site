@@ -71,6 +71,18 @@ module Zerista
       self.class.get "https://#{@subdomain}.zerista.com/event", query: get_params, body: {sig: signature}
     end
 
+    def list_rsvp(event_id)
+      get_params = { 'format' => 'json_7', 'client_id' => event_id }
+      signature = signature_for_params(get_params, {})
+      self.class.get "https://#{@subdomain}.zerista.com/event/rsvp", query: get_params, body: {sig: signature}
+    end
+
+    def find_user_by_email(email)
+      get_params = { 'format' => 'json_7', 'user[mapbuzz_auth_attributes][email]' => email }
+      signature = signature_for_params(get_params, {})
+      self.class.get "https://#{@subdomain}.zerista.com/user/member", query: get_params, body: {sig: signature}
+    end
+
     def rsvp_for_event(event_id, user_email, response)
       get_params = { 'format' => 'json_7' }
       post_params = { 'client_id' => event_id,
