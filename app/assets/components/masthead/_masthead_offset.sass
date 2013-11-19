@@ -1,0 +1,21 @@
+.masthead-offset
+  @extend .container
+  @extend .container-justified
+  padding-left: 1%
+  padding-right: 11%
+
+.masthead-offset .dsw-logo
+  margin-bottom: 1.3em
+
+
+@media (max-width: 31.25em)
+  .masthead-offset .dsw-logo:before
+    +font-size(135)
+  .masthead-offset .dsw-logotype
+    +font-size(18)
+
+@media (min-width: 31.25em)
+  .masthead-offset .dsw-logo:before
+    +font-size(144)
+  .masthead-offset .dsw-logotype
+    +font-size(24)

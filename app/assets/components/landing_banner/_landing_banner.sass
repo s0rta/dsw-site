@@ -1,0 +1,36 @@
+.landing-photo
+  background-image: image_url('landing_2014/background.jpg')
+
+.landing-banner
+  @extend %clearfix
+  width: 100%
+  background-color: white
+  margin: 10% 0
+  padding: 1em 0
+
+  .btn
+    color: white
+    padding: em(12) em(20)
+    text-transform: uppercase
+    +font-size(12)
+
+  .teaser-copy
+    +font-size(12)
+    color: #788793
+    width: 30%
+    padding: 0.3em
+    margin-left: 15%
+    text-align: right
+    float: left
+    clear: none
+
+  .teaser-header
+    @extend %sans-ultra
+    +font-size(48)
+    // line-height: 1.0
+    color: #788793
+    width: 30%
+    padding: 0.3em
+    text-align: left
+    float: left
+    clear: none
