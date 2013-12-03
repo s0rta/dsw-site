@@ -12,6 +12,8 @@ script:
   - bundle exec rake db:schema:load
   - bundle exec rake db:test:prepare
   - bundle exec rake spec --trace
+notifications:
+  email: false
 deploy:
   provider: heroku
   api_key:
