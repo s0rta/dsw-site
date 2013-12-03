@@ -5,7 +5,5 @@
         - n.item '', '/', class: 'home-icon'
         - Cmsimple::Page.published.where(parent_id: nil, is_root: false).order(:position).each do |page|
           - n.item page.title, page.uri
-        - n.item 'Events', 'https://denverstartupweek.zerista.com/event'
-        - n.item 'Basecamp', '/basecamp', data: { 'no-turbolink' => true }
         - if current_user && current_user.is_admin?
           - n.item 'Manage &rarr;'.html_safe, main_app.admin_root_path, data: { 'no-turbolink' => true }
