@@ -1,12 +1,19 @@
 language: ruby
 rvm:
-  - 1.9.3
+- 1.9.3
 before_install:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 before_script:
-  - cp config/database.travis.yml config/database.yml
-  - psql -c 'create database dsw_development;' -U postgres
-  - psql -c 'create database dsw_test;' -U postgres
+- cp config/database.travis.yml config/database.yml
+- psql -c 'create database dsw_development;' -U postgres
+- psql -c 'create database dsw_test;' -U postgres
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:migrate spec
+- RAILS_ENV=test bundle exec rake --trace db:migrate spec
+deploy:
+  provider: heroku
+  api_key:
+    secure: iq7Dg8MvCYyNStfm8kXf/VTmsHToRD7u1YOdNJBvx0cNemlzNoEk2aIUgqVX+cTnrssWpeu27GrW2B1Lw5iiJ5uV+OcBDasR1DDN4NFMOzTJI9a0Q+H5SWfibcINcK1LkElGr/foiWGgzac3G2tSa90xIEQupPj6j01AZ1VmM78=
+  app: denver-startup-week
+  on:
+    repo: modeset/denver-startup-week
