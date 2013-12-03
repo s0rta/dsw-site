@@ -9,7 +9,9 @@ before_script:
 - psql -c 'create database dsw_development;' -U postgres
 - psql -c 'create database dsw_test;' -U postgres
 script:
-  - RAILS_ENV=test bundle exec rake --trace db:schema:load spec
+  - bundle exec rake db:schema:load
+  - bundle exec rake db:test:prepare
+  - bundle exec rake spec --trace
 deploy:
   provider: heroku
   api_key:

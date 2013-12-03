@@ -1,3 +1,7 @@
+development:
+  adapter: postgresql
+  database: dsw_development
+  username: postgres
 test:
   adapter: postgresql
   database: dsw_test
