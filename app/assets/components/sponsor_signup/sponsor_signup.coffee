@@ -29,6 +29,7 @@ class dsw.SponsorSignup
     e.preventDefault()
     contactEmail  = @el.find('#sponsor_signup_contact_email').val()
     contactName   = @el.find('#sponsor_signup_contact_name').val()
+    company       = @el.find('#sponsor_signup_company').val()
     interest      = @el.find('#sponsor_signup_interest').val()
     notes         = @el.find('#sponsor_signup_notes').val()
     unless contactName and contactEmail
@@ -45,6 +46,7 @@ class dsw.SponsorSignup
           sponsor_signup:
             contact_name: contactName
             contact_email:  contactEmail
+            company:  company
             interest:      interest
             notes:      notes
         success: =>
