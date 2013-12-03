@@ -14,6 +14,7 @@ feature 'Creating a submission' do
   end
 
   scenario 'User submits a new idea' do
+    pending 'Temporarily disabled'
     visit '/'
     within '.primary-navigation' do
       click_link 'Submit a Session'
