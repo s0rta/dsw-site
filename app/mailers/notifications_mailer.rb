@@ -28,4 +28,8 @@ class NotificationsMailer < ActionMailer::Base
     mail to: ENV['VOLUNTEER_SIGNUP_EMAIL_RECIPIENTS'].split(','), subject: 'Someone has volunteered to help out with DSW'
   end
 
+  def notify_of_new_sponsor_signup(sponsor_signup)
+    @sponsor_signup = sponsor_signup
+    mail to: ENV['SPONSOR_SIGNUP_EMAIL_RECIPIENTS'].split(','), subject: 'Someone is interested in sponsoring DSW'
+  end
 end

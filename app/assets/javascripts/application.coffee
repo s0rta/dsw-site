@@ -7,6 +7,7 @@
 #= require components/module_tab
 #= require components/newsletter_signup
 #= require components/volunteer_signup
+#= require components/sponsor_signup
 #= require components/carousel
 #= require components/module_expander
 #= require components/sortable_submissions
