@@ -1,6 +1,6 @@
 %section.section-container.module-involved
   %h2.primary-heading= @header
-  = simple_form_for SponsorSignup.new, html: { class: 'dsw-form involve-form', role: 'form', data: { bindable: 'sponsor-signup' } } do |f|
+  = simple_form_for SponsorSignup.new, html: { class: 'dsw-form involve-form', honeypot: true, role: 'form', data: { bindable: 'sponsor-signup' } } do |f|
     .notification(style="display: none;")
     %fieldset
       = f.input   :contact_name, placeholder: 'What is your name?', required: true

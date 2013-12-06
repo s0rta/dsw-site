@@ -180,6 +180,7 @@ GEM
     has_scope (0.5.1)
     hashie (2.0.5)
     hike (1.2.2)
+    honeypot-captcha (0.0.2)
     html-pipeline (0.1.0)
       activesupport (>= 2, < 4)
       escape_utils (~> 0.3)
@@ -397,6 +398,7 @@ DEPENDENCIES
   gibbon
   guard-teabag
   haml-rails
+  honeypot-captcha
   html-pipeline
   httparty
   jquery-rails

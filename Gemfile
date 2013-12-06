@@ -19,6 +19,9 @@ gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
 
+# Simple transparent captchas
+gem 'honeypot-captcha'
+
 gem 'cloudinary'
 gem 'simple_form'
 
