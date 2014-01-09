@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 
-gem 'rails', '3.2.13'
+gem 'rails', '~> 3.2.13'
 gem 'rake'
 gem 'pg'
 gem 'thin'
@@ -33,10 +33,13 @@ gem 'omniauth-linkedin'
 gem 'responders'
 gem 'html-pipeline', require: 'html/pipeline'
 
+
+# Admin interface
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
 gem 'paper_trail'
 
+# Background processing
 gem 'sucker_punch'
 
 group :assets do
