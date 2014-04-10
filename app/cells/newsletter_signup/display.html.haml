@@ -1,4 +1,4 @@
-= simple_form_for NewsletterSignup.new, html: { class: 'form-stack', honeypot: true, data: { bindable: 'newsletter-signup' } } do |f|
+= simple_form_for NewsletterSignup.new, honeypot: true, html: { class: 'form-stack', honeypot: true, data: { bindable: 'newsletter-signup' } } do |f|
   .notification(style="display: none;")
   %fieldset
     = f.input   :first_name, label: 'First Name', required: true

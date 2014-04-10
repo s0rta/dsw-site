@@ -1,5 +1,7 @@
 class VolunteerSignupCell < Cell::Rails
 
+  helper HoneypotHelper
+
   def display(snippet)
     @header = snippet.header
     @submit_text = snippet.submit_text
