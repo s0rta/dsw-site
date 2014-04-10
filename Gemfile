@@ -6,10 +6,6 @@ gem 'rails', '~> 3.2.13'
 gem 'rake'
 gem 'pg'
 gem 'thin'
-gem 'airbrake'
-gem 'memcachier'
-gem 'dalli'
-gem 'newrelic_rpm'
 
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
@@ -33,6 +29,12 @@ gem 'omniauth-linkedin'
 gem 'responders'
 gem 'html-pipeline', require: 'html/pipeline'
 
+# Production support
+gem 'utf8-cleaner'
+gem 'airbrake'
+gem 'memcachier'
+gem 'dalli'
+gem 'newrelic_rpm'
 
 # Admin interface
 gem 'activeadmin'
