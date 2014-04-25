@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  private
+
   def user_signed_in?
     request.headers["Authorization"].present?
   end

@@ -9,10 +9,10 @@ ActiveAdmin.register Submission do
     end
 
     def show
-        @submission = Submission.find(params[:id])
-        @versions = @submission.versions
-        @submission = @submission.versions[params[:version].to_i].reify if params[:version]
-        show!
+      @submission = Submission.find(params[:id])
+      @versions = @submission.versions
+      @submission = @submission.versions[params[:version].to_i].reify if params[:version]
+      show!
     end
 
   end
@@ -25,9 +25,7 @@ ActiveAdmin.register Submission do
     column :start_day
     column :end_day
     column(:time_range, sortable: 'start_hour') do |s|
-      if s.start_hour && s.end_hour
-        "#{(Time.now.at_beginning_of_day + s.start_hour.hours).strftime('%l:%M%P')} - #{(Time.now.at_beginning_of_day + s.end_hour.hours).strftime('%l:%M%P')}"
-      end
+      "#{(Time.now.at_beginning_of_day + s.start_hour.hours).strftime('%l:%M%P')} - #{(Time.now.at_beginning_of_day + s.end_hour.hours).strftime('%l:%M%P')}" if s.start_hour && s.end_hour
     end
     column :submitter, sortable: 'users.name'
     column('Public', :is_public, sortable: :is_public) { |s| s.is_public? ? 'Yes' : 'No' }
