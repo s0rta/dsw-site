@@ -9,7 +9,7 @@ before_script:
 script:
 - bundle exec rake db:drop:all
 - bundle exec rake db:create:all
-- bundle exec rake db:structure:load
+- bundle exec rake db:schema:load
 - bundle exec rake --trace
 deploy:
   provider: heroku
