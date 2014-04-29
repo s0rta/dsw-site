@@ -348,7 +348,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    utf8-cleaner (0.0.8)
+    utf8-cleaner (0.0.9)
     warden (1.2.1)
       rack (>= 1.0)
     websocket (1.0.7)
