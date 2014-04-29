@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(:version => 20140429002904) do
     t.float    "start_hour"
     t.float    "end_hour"
     t.string   "end_day"
+    t.integer  "year"
   end
 
   add_index "submissions", ["submitter_id"], :name => "index_submissions_on_submitter_id"

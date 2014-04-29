@@ -17,6 +17,15 @@ ActiveAdmin.register Submission do
 
   end
 
+  # Set a default year filter
+  scope 'Current', default: true do |submissions|
+    submissions.where(year: Date.today.year)
+  end
+
+  scope 'Previous Year' do |submissions|
+    submissions.where('year < ? ', Date.today.year)
+  end
+
   index do
     selectable_column
     column :title
@@ -51,6 +60,7 @@ ActiveAdmin.register Submission do
     column :contact_email
     column :volunteers_needed
     column :budget_needed
+    column :year
     column :votes do |submission|
       submission.votes.size
     end

@@ -17,6 +17,7 @@ class SubmissionsController < ApplicationController
 
   def create
     @submission = current_user.submissions.new(params[:submission])
+    @submission.year = Date.today.year
     if @submission.save
       redirect_to thanks_submissions_path
     else
