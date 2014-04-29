@@ -23,11 +23,3 @@ ZERISTA_TRACK_IDS = { 'Business'  => 2354,
   t.save!
 end
 
-[ 'Government and Technology',
-  'Diversity in Technology',
-  'Social Impact',
-  'Green/Clean Tech',
-  'Education' ].each do |name|
-  Theme.where(name: name).first_or_create
-end
-

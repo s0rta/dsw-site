@@ -17,7 +17,6 @@
               = field_set_tag do
                 = f.input :format, as: :select, collection: Submission::FORMATS, prompt: 'What sort of event are you proposing?', include_blank: 'Something else entirely'
                 = f.input :track_id, as: :select, collection: Track.all.map { |t| [t.name, t.id]}, prompt: 'What track would it fit best into?', include_blank: 'Not sure'
-                = f.input :theme_id, as: :select, collection: Theme.all.map { |t| [t.name, t.id]}, prompt: 'Does it fit any of our secondary themes within the week?', include_blank: 'No (and that\'s okay)'
             %button.btn.btn-secondary.form-btn.advance-btn(href="#") Next
           %article.form-pane
             %div.form-contents
