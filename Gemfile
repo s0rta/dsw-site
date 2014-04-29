@@ -10,7 +10,7 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
 gem 'haml-rails'
-gem 'cmsimple', github: 'modeset/cmsimple', branch: 'rails3-stable'
+gem 'cmsimple'
 gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
