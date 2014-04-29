@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-ruby '2.1.1'
+ruby '1.9.3'
 
-gem 'rails', '~> 3.2.17'
+gem 'rails', '~> 3.2.13'
 gem 'rake'
 gem 'pg'
 gem 'thin'
@@ -54,16 +54,22 @@ group :assets do
   gem 'turbo-sprockets-rails3', github: 'ndbroadbent/turbo-sprockets-rails3'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 group :development, :test do
-  gem 'spring'
-  gem 'spring-commands-rspec'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
-  gem 'teaspoon'
+  gem 'teabag'
+  gem 'guard-teabag'
+  gem 'terminal-notifier-guard'
+  gem 'rb-fsevent'
   gem 'dotenv-rails'
 end
 
