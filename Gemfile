@@ -10,7 +10,8 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
 gem 'haml-rails'
-gem 'cmsimple'
+gem 'cmsimple'                     , github: 'modeset/cmsimple', branch: 'rails3-stable'
+gem 'mercury-rails'                , '~> 0.9.0'
 gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
@@ -54,22 +55,16 @@ group :assets do
   gem 'turbo-sprockets-rails3', github: 'ndbroadbent/turbo-sprockets-rails3'
 end
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
-
 group :development, :test do
+  gem 'spring', require: false
+  gem 'spring-commands-rspec', require: false
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
-  gem 'teabag'
-  gem 'guard-teabag'
-  gem 'terminal-notifier-guard'
-  gem 'rb-fsevent'
+  gem 'teaspoon'
   gem 'dotenv-rails'
 end
 
