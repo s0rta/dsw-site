@@ -37,6 +37,8 @@ gem 'memcachier'
 gem 'dalli'
 gem 'newrelic_rpm'
 
+gem 'rack-canonical-host'
+
 # Admin interface
 gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
