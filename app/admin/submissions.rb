@@ -21,7 +21,6 @@ ActiveAdmin.register Submission do
     column :title
     column :track, sortable: 'tracks.name'
     column :venue
-    column :format
     column :start_day
     column :end_day
     column(:time_range, sortable: 'start_hour') do |s|
@@ -29,8 +28,6 @@ ActiveAdmin.register Submission do
     end
     column :submitter, sortable: 'users.name'
     column('Public', :is_public, sortable: :is_public) { |s| s.is_public? ? 'Yes' : 'No' }
-    column('Confirmed', :is_confirmed, sortable: :is_confirmed) { |s| s.is_confirmed? ? 'Yes' : 'No' }
-    column :updated_at
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
     column(:comments, sortable: 'COUNT(comments.id)') { |s| s.comments.size }
     default_actions
