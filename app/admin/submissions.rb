@@ -18,6 +18,7 @@ ActiveAdmin.register Submission do
   end
 
   index do
+    selectable_column
     column :title
     column :track, sortable: 'tracks.name'
     column :venue

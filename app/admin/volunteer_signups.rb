@@ -1,6 +1,7 @@
 ActiveAdmin.register VolunteerSignup do
 
   index do
+    selectable_column
     column :contact_name
     column :contact_email
     column :created_at

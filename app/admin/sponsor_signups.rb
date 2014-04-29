@@ -1,6 +1,7 @@
 ActiveAdmin.register SponsorSignup do
 
   index do
+    selectable_column
     column :contact_name
     column :contact_email
     column :company

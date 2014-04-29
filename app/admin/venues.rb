@@ -1,6 +1,7 @@
 ActiveAdmin.register Venue do
 
   index do
+    selectable_column
     column :name
     column :contact_name
     column :contact_email
