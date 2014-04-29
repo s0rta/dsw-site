@@ -35,13 +35,25 @@ ActiveAdmin.register Submission do
 
   csv do
     column :id
-    Submission.content_columns.each do |content_column|
-      column(content_column.name.to_sym)
-    end
+    column :title
+    column :description
+    column :notes
+    column :track
+    column :format
+    column :venue
+    column :start_day
+    column :end_day
+    column :submitter
+    column :is_public
+    column :created_at
+    column :updated_at
+    column :contact_email
+    column :volunteers_needed
+    column :budget_needed
     column :votes do |submission|
       submission.votes.size
     end
-    column :comments do |submission|
+    column :comment_count do |submission|
       submission.comments.size
     end
   end
