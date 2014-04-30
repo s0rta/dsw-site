@@ -1,72 +1,79 @@
-%section.section-container
-  %h2.primary-heading Help pick the sessions for 2013
+%section.main
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %hr
+    %section.section-container
+      %h2.primary-heading Help pick the sessions!
 
-  %div.p-copy
-    Thanks to everyone who submitted session proposals for our Business, Design, Tech, and Manufacturing. We're excited to announce that our panel picker is now open.
+      %div.p-copy
+        Thanks to everyone who submitted session proposals for our Business, Design, Tech, and Manufacturing tracks. We're excited to announce that our panel picker is now open.
 
-  %div.p-copy
-    We want to get as much community feedback and input as possible so we can create the best possible schedule. Check out the submissions, vote up the ones you're interested in, comment and provide feedback.
-    We're excited to make this year's program even better than last, but we can't do it without you. Get involved, tell your friends, and help us get the word out!
+      %div.p-copy
+        We want to get as much community feedback and input as possible so we can create the best possible schedule. Check out the submissions, vote up the ones you're interested in, comment and provide feedback.
+        We're excited to make this year's program even better than last, but we can't do it without you. Get involved, tell your friends, and help us get the word out!
 
-  %h3.secondary-heading
-    Voting and feedback are now closed. Thanks to everyone who participated! We'll be announcing the full schedule shortly.
+      %h3.secondary-heading
+        Voting and feedback are now closed. Thanks to everyone who participated! We'll be announcing the full schedule shortly.
 
-  - unless signed_in?
-    %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submissions_path}")
-      Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
+      - unless signed_in?
+        %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submissions_path}")
+          Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
 
-  %section.filter-bar(data-bindable="filter-bar")
-    %form.dsw-form.form-filter(role="form")
-      %fieldset
-        %div.control-group.search-filter(data-filterable="search-filter")
-          %label.control-label.dswacon.dswacon-search(for="search_bar")
-          %div.controls
-            %input#search_bar(type="search" placeholder="Search")
+      %section.filter-bar(data-bindable="filter-bar")
+        %form.dsw-form.form-filter(role="form")
+          %fieldset
+            %div.control-group.search-filter(data-filterable="search-filter")
+              %label.control-label.dswacon.dswacon-search(for="search_bar")
+              %div.controls
+                %input#search_bar(type="search" placeholder="Search")
 
-        %div.control-group
-          %div.controls
-            %div.drop-select(data-filterable="drop-select" data-action="filter")
-              %button.drop-toggle Filter by: <span class="tagged-as"></span><span class="drop-caret"></span>
-              %ul.drop-menu.menu-filter(role="menu" data-filterable="menu-filter")
-                - Track.all.each do |t|
-                  %li(data-tag="track:#{t.name}")<
-                    %a(href="#")= t.name
+            %div.control-group
+              %div.controls
+                %div.drop-select(data-filterable="drop-select" data-action="filter")
+                  %button.drop-toggle Filter by: <span class="tagged-as"></span><span class="drop-caret"></span>
+                  %ul.drop-menu.menu-filter(role="menu" data-filterable="menu-filter")
+                    - Track.all.each do |t|
+                      %li(data-tag="track:#{t.name}")<
+                        %a(href="#")= t.name
 
-        %div.control-group
-          %div.controls
-            %div.drop-select(data-filterable="drop-select" data-action="sort")
-              %button.drop-toggle Sort by: <span class="tagged-as"></span><span class="drop-caret"></span>
-              %ul.drop-menu.menu-sort(role="menu" data-filterable="menu-sort")
-                %li(data-tag="popularity")<
-                  %a(href="#") Popularity
-                %li(data-tag="track")<
-                  %a(href="#") Track
-                %li(data-tag="title")<
-                  %a(href="#") Title
-
-
-  %section.module-panels
-    %ol.module-list(data-bindable="sortable-submissions")
-      - @submissions.each do |submission|
-        %li.module(id="submission_module_#{submission.id}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" data-submitter="#{submission.submitter.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
-          = link_to submission, class: 'panel-toggle' do
-            %span.dswacon.dswacon-plus
-          %div.module-contents.voting-module
-            %div.module-icon-cell
-              %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
-            %div.module-details-cell
-              %h3.module-heading.panel-title
-                = link_to truncate(submission.title, length: 100, separator: ' '), submission
-              %div.p-copy.panel-desc= truncate(submission.description, length: 200, separator: ' ')
-              %div.track-copy(class="#{submission.is_confirmed? ? '' : 'blue'}")= "Proposed by #{submission.submitter.name}"
-          %div.voting-cell(data-bindable="ajax-voter")
-            - unless submission.is_confirmed?
-              %h4.voting-heading= submission.votes.size > 0 ? submission.votes.size : 'No votes yet'
-              %div.voting-engine
-                -# - if signed_in?
-                  -# = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
-            - else
-              %h4.voting-heading &nbsp;
-              %div.voting-engine &nbsp;
+            %div.control-group
+              %div.controls
+                %div.drop-select(data-filterable="drop-select" data-action="sort")
+                  %button.drop-toggle Sort by: <span class="tagged-as"></span><span class="drop-caret"></span>
+                  %ul.drop-menu.menu-sort(role="menu" data-filterable="menu-sort")
+                    %li(data-tag="popularity")<
+                      %a(href="#") Popularity
+                    %li(data-tag="track")<
+                      %a(href="#") Track
+                    %li(data-tag="title")<
+                      %a(href="#") Title
 
 
+      %section.module-panels
+        %ol.module-list(data-bindable="sortable-submissions")
+          - @submissions.each do |submission|
+            %li.module(id="submission_module_#{submission.id}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" data-submitter="#{submission.submitter.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
+              = link_to submission, class: 'panel-toggle' do
+                %span.dswacon.dswacon-plus
+              %div.module-contents.voting-module
+                %div.module-icon-cell
+                  %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
+                %div.module-details-cell
+                  %h3.module-heading.panel-title
+                    = link_to truncate(submission.title, length: 100, separator: ' '), submission
+                  %div.p-copy.panel-desc= truncate(submission.description, length: 200, separator: ' ')
+                  %div.track-copy(class="#{submission.is_confirmed? ? '' : 'blue'}")= "Proposed by #{submission.submitter.name}"
+              %div.voting-cell(data-bindable="ajax-voter")
+                - unless submission.is_confirmed?
+                  %h4.voting-heading= submission.votes.size > 0 ? submission.votes.size : 'No votes yet'
+                  %div.voting-engine
+                    -# - if signed_in?
+                      -# = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
+                - else
+                  %h4.voting-heading &nbsp;
+                  %div.voting-engine &nbsp;
+
+= render partial: 'layouts/shared/footer'
+= render partial: 'layouts/shared/flash_message'
+= render partial: 'layouts/shared/spinner'
