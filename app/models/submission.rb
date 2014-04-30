@@ -69,14 +69,14 @@ class Submission < ActiveRecord::Base
   validates :contact_email, presence: true
   validates :format, inclusion: {   in: FORMATS,
                                     allow_blank: true }
-  validates :start_day, inclusion: {  in: DAYS,
-                                allow_blank: true }
-  validates :end_day, inclusion: {  in: DAYS,
-                                allow_blank: true }
-  validates :time_range, inclusion: { in: TIME_RANGES,
-                                      allow_blank: true }
-  validates :start_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
-  validates :end_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
+  # validates :start_day, inclusion: {  in: DAYS,
+                                # allow_blank: true }
+  # validates :end_day, inclusion: {  in: DAYS,
+                                # allow_blank: true }
+  # validates :time_range, inclusion: { in: TIME_RANGES,
+                                      # allow_blank: true }
+  # validates :start_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
+  # validates :end_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
   validates :track_id, presence: true
   validates :location, length: { maximum: 255 }
 
