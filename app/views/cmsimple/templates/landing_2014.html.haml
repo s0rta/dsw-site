@@ -11,8 +11,10 @@
       = render_region :landing_teaser_copy, tag: 'article', html: { class: 'teaser-copy' } do
         %p Since 2012, the most creative and well-connected innovators from Colorado and beyond came together for a week of learning, discussion, networking, and more. In 2013, 5,500+ startup community members and over 650 companies engaged in over 125 community-driven events all with the goal of celebrating everything entrepreneurial in the Mile High City.
         %p Seth Godin told the 2013 crowd that Denver Startup Week is incredibly unique. "This event is pretty rare," he said. "It's not just rare for me; it's rare for the world."
+        %p
+          %strong Our 2014 call for sessions is now open!
         .button-container
           %a.btn(href="/sponsors") Sponsorship
-          %a.btn(href="/2013-photos") Photos from 2013
-          %a.btn(href="/get-involved") Get Involved
+          %a.btn(href="/2013-photos") Get Involved
+          = link_to 'Submit a Session', main_app.new_submission_path, class: 'btn'
 = render partial: 'layouts/shared/footer'
