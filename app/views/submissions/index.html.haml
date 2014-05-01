@@ -2,19 +2,12 @@
   %section.content
     = render partial: 'layouts/shared/navigation'
     = render partial: 'layouts/shared/masthead'
-    %hr
-    %section.section-container
-      %h2.primary-heading Help pick the sessions!
-
-      %div.p-copy
-        Thanks to everyone who submitted session proposals for our Business, Design, Tech, and Manufacturing tracks. We're excited to announce that our panel picker is now open.
+    %section.section-container.width-constrained
+      %h2.primary-heading Help pick the sessions for #{Date.today.year}!
 
       %div.p-copy
         We want to get as much community feedback and input as possible so we can create the best possible schedule. Check out the submissions, vote up the ones you're interested in, comment and provide feedback.
         We're excited to make this year's program even better than last, but we can't do it without you. Get involved, tell your friends, and help us get the word out!
-
-      %h3.secondary-heading
-        Voting and feedback are now closed. Thanks to everyone who participated! We'll be announcing the full schedule shortly.
 
       - unless signed_in?
         %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submissions_path}")
