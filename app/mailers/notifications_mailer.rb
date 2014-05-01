@@ -20,7 +20,7 @@ class NotificationsMailer < ActionMailer::Base
 
   def voting_open(submission)
     @submission = submission
-    mail to: @submission.contact_email, subject: 'Voting for Denver Startup Week 2013 sessions is now open!'
+    mail to: @submission.contact_email, subject: 'Voting for Denver Startup Week Sessions Is Now Open!'
   end
 
   def notify_of_new_volunteer_signup(volunteer_signup)

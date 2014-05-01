@@ -10,69 +10,86 @@
               %article.form-pane
                 %div.form-contents
                   %div.dswacon.dswacon-bulb.dswacon-combo-primary
-                  %h3.primary-heading Submit a Session Idea
+                  %h3.primary-heading We Want Your Ideas!
                   .p-copy
-                    Thanks for your interest in being part of Denver Startup Week! Each session is independently organized, and we provide help with scheduling, venues and ticketing, promotion and marketing, and other infrastructure. Our aim is to provide as much support as necessary while getting out of the way and letting the community put on great events.
+                    Denver Startup Week is a community event and is incredible because of YOUR involvement.  Submit your design, tech, business or manufacturing session idea now and help create Denver Startup Week 2014.
+                  .p-copy
+                    Here’s how it works:
+                  .p-copy
+                    Submit your session idea by <strong>May 23, 2014</strong>
+                    %br
+                    Complete session ideas will be voted on by the community starting <strong>June 1, 2014</strong>
+                    %br
+                    Winning sessions will be announced <strong>in July</strong>
+                    %br
+                    There is no limit to the number of ideas you may submit
+                  .p-copy Questions? Comments? Concerns? Check out our #{link_to 'FAQ', '/frequently-asked-questions'}.
+                %button.btn.btn-primary.form-btn.advance-btn(href="#") Get Started
+              %article.form-pane
+                %div.form-contents
+                  %div.dswacon.dswacon-bulb.dswacon-combo-primary
+                  %h3.primary-heading Submit Your Session Idea
+                  .p-copy
+                    Denver Startup Week is a celebration of entrepreneurship and there’s no better way to celebrate than having startups, community members and entrepreneurs throughout Downtown Denver host sessions, workshops and networking events.
+                  .p-copy
+                    All sessions are independently organized. Denver Startup Week organizers will help with scheduling, venues, ticketing, promotions and marketing, as well as logistics.
                   .p-copy
                     %strong Please fill out all fields as best you can. Incomplete sessions may not be presented for voting!
-                  .p-copy Questions, comments, or concerns? Check out our #{link_to 'FAQ', '/faq'}.
                   .p-copy
                     Let's start with a few basic questions:
                   = field_set_tag do
-                    = f.input :format, as: :select, collection: Submission::FORMATS, prompt: 'What sort of session are you proposing?', include_blank: 'Something else entirely', error: false
+                    = f.input :format, as: :select, collection: Submission::FORMATS, prompt: 'What type of session are you proposing?', include_blank: 'Something else entirely', error: false
                     = f.input :track_id, as: :select, collection: Track.all.map { |t| [t.name, t.id]}, prompt: 'What track would it fit best into?', include_blank: 'I\'m not sure', error: false
                 %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents
                   %div.dswacon.dswacon-pen.dswacon-combo-primary
-                  %h3.primary-heading Spill the beans
-                  %div.p-copy Describe the kind of event you have in mind.
-                  %div.p-copy These will be used for the community panel picker, so this is your chance to make it snappy and really sell your event to potential attendees.
+                  %h3.primary-heading The Details
+                  .p-copy Describe the kind of session you have in mind. What will attendees do, why they should attend, how will it impact their business, what will they learn?
+                  .p-copy NOTE: This information will be displayed publicly if your session idea advances to the voting round
                   = field_set_tag do
-                    = f.input :title, placeholder: 'Give this session a title', error: false
-                    = f.input :description, placeholder: 'Give a concise description of the session you\'re proposing. What is it, who is the target audience, why is it awesome?', input_html: { rows: 4 }, error: false
+                    = f.input :title, placeholder: 'What is your proposed title?', error: false
+                    = f.input :description, placeholder: 'Describe your event. Who are your speakers/panelists (if applicable), who should attend, what will people do or learn, how does it fit into Denver Startup Week, and why is it an awesome idea?', input_html: { rows: 4 }, error: false
                 %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents
                   %div.dswacon.dswacon-graph.dswacon-combo-primary
                   %h3.primary-heading Logistics
                   %div.p-copy
-                    If you have a specific location or a fixed size in mind for the session you're proposing, tell us.
+                    Have an idea of how many people would attend your session? Already have a location where you want to host the event? Tell us!
                     %br
-                    It's okay to leave this section blank if you don't know or this doesn't apply to your session.
+                    You may leave this section blank if you don't know yet or it doesn't apply to your session.
                   = field_set_tag do
                     = f.input :location, placeholder: 'Where are you looking to hold your event?'
-                    = f.input :estimated_size, placeholder: 'How many attendees do you think this event could accomodate?'
+                    = f.input :estimated_size, placeholder: 'How many attendees can your session reasonably accomodate?'
                 %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents
                   %div.dswacon.dswacon-plus.dswacon-combo-primary
-                  %h3.primary-heading How can we help?
-                  %div.p-copy What do you need from us to make your session out-of-this-world awesome? Venue help, financial assistance, event partners, more speakers, moderators? Let us know and we'll work with you to make it happen.
+                  %h3.primary-heading Building a Great Session
+                  %div.p-copy How can the Denver Startup Week organizers assist in making your session the best yet?  We can assist in securing venue locations, collaborating with event partners, locating additional speakers/panel members/moderators, and even provide some financial assistance if needed.
                   = field_set_tag do
-                    = f.input :notes, input_html: { rows: 4 }
+                    = f.input :notes, input_html: { rows: 4 }, placeholder: 'How can we help you build a great session?'
                 %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents
                   %div.dswacon.dswacon-vote-yes.dswacon-combo-primary
                   %h3.primary-heading Confirm &amp; Submit
                   .p-copy
-                    Once you submit, your proposal will be routed to the appropriate track chair to look over. They may contact you with questions.
+                    Once your idea is submitted, you will receive a confirmation email and may be contacted by a Denver Startup Week organizer if we have any questions.
                   .p-copy
-                    If everything looks good from there, we'll drop you a line and post it up on our panel picker for community voting and commenting as soon as it opens.
+                    Complete session ideas will be featured on the panel picker for community voting starting <strong>June 1</strong>
                   .p-copy
-                    While we're still working through the details, event submissions and voting/acceptance will be happening on a rolling basis. We'll be in touch throughout the process to make sure you have the latest updates.
-                  .p-copy
-                    %strong Please confirm your contact e-mail address:
-                  = f.input :contact_email, placeholder: 'Please provide a contact e-mail address', error: false
+                    %strong Please confirm your e-mail address below:
+                  = f.input :contact_email, placeholder: 'E-mail', error: false
                 = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
           - else
             %article.form-pane
               %div.form-contents
-                %div.dswacon.dswacon-bulb.dswacon-combo-secondary
+                %div.dswacon.dswacon-bulb.dswacon-combo-primary
                 %h3.primary-heading Get Started
                 %div.p-copy You'll need to sign in to get going. To save you the pain of managing one more account, we use LinkedIn. 
-              %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{new_submission_path}") Sign in with LinkedIn to continue
+              %a.btn.btn-primary.form-btn(href="/auth/linkedin?origin=#{new_submission_path}") Sign in with LinkedIn to continue
         %div.carousel-controls
 = render partial: 'layouts/shared/footer'
 = render partial: 'layouts/shared/flash_message'

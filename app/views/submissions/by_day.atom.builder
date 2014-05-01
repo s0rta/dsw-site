@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title('Denver Startup Week 2013 Events')
+  feed.title('Denver Startup Week Events')
   # feed.updated(@submissions.max(:created_at)) if @submissions.length > 0
   @submissions.each do |submission|
     feed.entry(submission) do |entry|

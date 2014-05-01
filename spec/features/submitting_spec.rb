@@ -15,6 +15,7 @@ feature 'Creating a submission' do
   scenario 'User submits a new idea' do
     visit '/panel-picker/submit'
     click_link 'Sign in with LinkedIn to continue'
+    find('button', text: 'Get Started', visible: true).click
     select 'Panel', from: 'submission_format'
     select 'Bizness', from: 'submission_track_id'
     all('button', text: 'Next', visible: true).last.click
@@ -27,7 +28,7 @@ feature 'Creating a submission' do
     all('button', text: 'Next', visible: true).last.click
     fill_in 'submission_contact_email', with: 'test2@example.com'
     click_button 'Submit'
-    expect(page).to have_content('Thanks For Submitting!')
+    expect(page).to have_content('Thanks!')
 
     # Confirmation to track chair
     email = ActionMailer::Base.deliveries.first
