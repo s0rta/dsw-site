@@ -92,7 +92,7 @@ class Submission < ActiveRecord::Base
   end
 
   def self.for_previous_years
-    submissions.where('year < ? ', Date.today.year)
+    where('year < ? ', Date.today.year)
   end
 
   def notify_track_chairs
