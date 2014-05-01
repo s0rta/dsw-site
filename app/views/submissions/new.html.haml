@@ -2,15 +2,14 @@
   %section.content
     = render partial: 'layouts/shared/navigation'
     = render partial: 'layouts/shared/masthead'
-    %hr
-    %section.section-container.module-form
+    %section.section-container.module-form{:style => "background-image: url(\"/assets/landing_2014/background#{(1..11).to_a.sample}.jpg\")"}
       %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="false" data-activate="0")
         %div.form-carousel-inner
           - if current_user
             = simple_form_for @submission, html: { class: 'dsw-form', role: 'form' } do |f|
               %article.form-pane
                 %div.form-contents
-                  %div.dswacon.dswacon-bulb.dswacon-combo-secondary
+                  %div.dswacon.dswacon-bulb.dswacon-combo-primary
                   %h3.primary-heading Submit a Session Idea
                   .p-copy
                     Thanks for your interest in being part of Denver Startup Week! Each session is independently organized, and we provide help with scheduling, venues and ticketing, promotion and marketing, and other infrastructure. Our aim is to provide as much support as necessary while getting out of the way and letting the community put on great events.
@@ -22,20 +21,20 @@
                   = field_set_tag do
                     = f.input :format, as: :select, collection: Submission::FORMATS, prompt: 'What sort of session are you proposing?', include_blank: 'Something else entirely', error: false
                     = f.input :track_id, as: :select, collection: Track.all.map { |t| [t.name, t.id]}, prompt: 'What track would it fit best into?', include_blank: 'I\'m not sure', error: false
-                %button.btn.btn-secondary.form-btn.advance-btn(href="#") Next
+                %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents
-                  %div.dswacon.dswacon-pen.dswacon-combo-secondary
+                  %div.dswacon.dswacon-pen.dswacon-combo-primary
                   %h3.primary-heading Spill the beans
                   %div.p-copy Describe the kind of event you have in mind.
                   %div.p-copy These will be used for the community panel picker, so this is your chance to make it snappy and really sell your event to potential attendees.
                   = field_set_tag do
                     = f.input :title, placeholder: 'Give this session a title', error: false
                     = f.input :description, placeholder: 'Give a concise description of the session you\'re proposing. What is it, who is the target audience, why is it awesome?', input_html: { rows: 4 }, error: false
-                %button.btn.btn-secondary.form-btn.advance-btn(href="#") Next
+                %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents
-                  %div.dswacon.dswacon-graph.dswacon-combo-secondary
+                  %div.dswacon.dswacon-graph.dswacon-combo-primary
                   %h3.primary-heading Logistics
                   %div.p-copy
                     If you have a specific location or a fixed size in mind for the session you're proposing, tell us.
@@ -44,18 +43,18 @@
                   = field_set_tag do
                     = f.input :location, placeholder: 'Where are you looking to hold your event?'
                     = f.input :estimated_size, placeholder: 'How many attendees do you think this event could accomodate?'
-                %button.btn.btn-secondary.form-btn.advance-btn(href="#") Next
+                %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents
-                  %div.dswacon.dswacon-plus.dswacon-combo-secondary
+                  %div.dswacon.dswacon-plus.dswacon-combo-primary
                   %h3.primary-heading How can we help?
                   %div.p-copy What do you need from us to make your session out-of-this-world awesome? Venue help, financial assistance, event partners, more speakers, moderators? Let us know and we'll work with you to make it happen.
                   = field_set_tag do
                     = f.input :notes, input_html: { rows: 4 }
-                %button.btn.btn-secondary.form-btn.advance-btn(href="#") Next
+                %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents
-                  %div.dswacon.dswacon-vote-yes.dswacon-combo-secondary
+                  %div.dswacon.dswacon-vote-yes.dswacon-combo-primary
                   %h3.primary-heading Confirm &amp; Submit
                   .p-copy
                     Once you submit, your proposal will be routed to the appropriate track chair to look over. They may contact you with questions.
@@ -66,7 +65,7 @@
                   .p-copy
                     %strong Please confirm your contact e-mail address:
                   = f.input :contact_email, placeholder: 'Please provide a contact e-mail address', error: false
-                = f.button :submit, 'Submit', class: 'btn btn-secondary form-btn'
+                = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
           - else
             %article.form-pane
               %div.form-contents
