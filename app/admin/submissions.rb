@@ -19,11 +19,11 @@ ActiveAdmin.register Submission do
 
   # Set a default year filter
   scope 'Current', default: true do |submissions|
-    submissions.where(year: Date.today.year)
+    submissions.for_current_year
   end
 
   scope 'Previous Year' do |submissions|
-    submissions.where('year < ? ', Date.today.year)
+    submissions.for_previous_years
   end
 
   index do

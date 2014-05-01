@@ -87,6 +87,14 @@ class Submission < ActiveRecord::Base
     "#{self.id}-#{self.title.parameterize}"
   end
 
+  def self.for_current_year
+    where(year: Date.today.year)
+  end
+
+  def self.for_previous_years
+    submissions.where('year < ? ', Date.today.year)
+  end
+
   def notify_track_chairs
     self.track.chairs.each do |chair|
       NotificationsMailer.notify_of_new_submission(chair, self).deliver
