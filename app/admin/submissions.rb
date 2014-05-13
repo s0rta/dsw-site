@@ -37,7 +37,7 @@ ActiveAdmin.register Submission do
       "#{(Time.now.at_beginning_of_day + s.start_hour.hours).strftime('%l:%M%P')} - #{(Time.now.at_beginning_of_day + s.end_hour.hours).strftime('%l:%M%P')}" if s.start_hour && s.end_hour
     end
     column :submitter, sortable: 'users.name'
-    column('State', sortable: :state) do |submission|
+    column('Status', sortable: :state) do |submission|
       status_tag submission.state.to_s.titleize, status_for_submission(submission)
     end
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
@@ -155,7 +155,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only => :show do
+  action_item :only => [ :edit, :show ] do
     unless submission.open_for_voting?
       link_to('Open for voting', open_for_voting_admin_submission_path(submission), method: :post)
     end
@@ -167,7 +167,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only => :show do
+  action_item :only => [ :edit, :show ] do
     if submission.open_for_voting?
       link_to('Accept', accept_admin_submission_path(submission), method: :post)
     end
@@ -179,7 +179,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only => :show do
+  action_item :only => [ :edit, :show ] do
     if submission.accepted?
       link_to('Confirm', confirm_admin_submission_path(submission), method: :post)
     end
@@ -191,7 +191,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only => :show do
+  action_item :only =>  [ :edit, :show ] do
     if submission.open_for_voting?
       link_to('Reject', reject_admin_submission_path(submission), method: :post)
     end
