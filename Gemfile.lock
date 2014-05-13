@@ -157,9 +157,11 @@ GEM
       rack
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    gemoji (1.5.0)
     gibbon (0.4.6)
       httparty
       multi_json (>= 1.3.4)
+    github-markdown (0.6.5)
     haml (4.0.5)
       tilt
     haml-rails (0.4)
@@ -288,6 +290,7 @@ GEM
       railties (>= 3.2, < 5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rinku (1.7.3)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
@@ -300,6 +303,8 @@ GEM
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
     rubyzip (1.1.3)
+    sanitize (2.1.0)
+      nokogiri (>= 1.4.4)
     sass (3.3.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -373,7 +378,9 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   font_assets
+  gemoji
   gibbon
+  github-markdown
   haml-rails
   honeypot-captcha
   html-pipeline
@@ -396,7 +403,9 @@ DEPENDENCIES
   rails_12factor
   rake
   responders
+  rinku
   rspec-rails
+  sanitize
   sass-rails
   selenium-webdriver
   shoulda-matchers

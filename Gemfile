@@ -28,7 +28,13 @@ gem 'httparty'
 gem 'omniauth'
 gem 'omniauth-linkedin'
 gem 'responders'
+
 gem 'html-pipeline', require: 'html/pipeline'
+gem 'github-markdown'
+gem 'sanitize'
+gem 'rinku'
+gem 'gemoji'
+
 
 # Production support
 gem 'utf8-cleaner'
