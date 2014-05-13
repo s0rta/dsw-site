@@ -12,7 +12,6 @@ script:
 - bundle exec rake db:schema:load
 - bundle exec rake --trace
 deploy:
-  strategy: git
   provider: heroku
   api_key:
     secure: iq7Dg8MvCYyNStfm8kXf/VTmsHToRD7u1YOdNJBvx0cNemlzNoEk2aIUgqVX+cTnrssWpeu27GrW2B1Lw5iiJ5uV+OcBDasR1DDN4NFMOzTJI9a0Q+H5SWfibcINcK1LkElGr/foiWGgzac3G2tSa90xIEQupPj6j01AZ1VmM78=
