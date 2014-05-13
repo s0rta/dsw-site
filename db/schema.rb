@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140429002904) do
+ActiveRecord::Schema.define(:version => 20140513155451) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20140429002904) do
     t.float    "end_hour"
     t.string   "end_day"
     t.integer  "year"
+    t.string   "state"
   end
 
   add_index "submissions", ["submitter_id"], :name => "index_submissions_on_submitter_id"

@@ -4,11 +4,11 @@ class SubmissionsController < ApplicationController
               :atom
 
   def index
-    @submissions = Submission.for_current_year.where(is_public: true).order('random()').includes(:submitter, :track, :votes)
+    @submissions = Submission.for_current_year.public.order('random()').includes(:submitter, :track, :votes)
   end
 
   def by_day
-    @submissions = Submission.for_current_year.where(is_public: true, is_confirmed: true, start_day: params[:day]).order('start_hour ASC').includes(:submitter, :track, :votes)
+    @submissions = Submission.for_current_year.public.where(start_day: params[:day]).order('start_hour ASC').includes(:submitter, :track, :votes)
   end
 
   def new
@@ -26,7 +26,7 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    @submission = Submission.where(id: params[:id], is_public: true).includes(:submitter, :track, :votes, :comments => :user).first!
+    @submission = Submission.public.where(id: params[:id]).includes(:submitter, :track, :votes, :comments => :user).first!
   end
 
 end

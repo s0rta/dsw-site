@@ -95,6 +95,10 @@ class Submission < ActiveRecord::Base
     where('year < ? ', Date.today.year)
   end
 
+  def self.public
+    where(state: %w(open_for_voting accepted confirmed))
+  end
+
   def notify_track_chairs
     self.track.chairs.each do |chair|
       NotificationsMailer.notify_of_new_submission(chair, self).deliver
@@ -122,5 +126,21 @@ class Submission < ActiveRecord::Base
   def zerista_enabled?
     ENV['ZERISTA_ENABLED'] == 'true'
   end
+
+  # State machine
+  include SimpleStates
+
+  states  :created,
+          :on_hold,
+          :open_for_voting,
+          :accepted,
+          :confirmed,
+          :rejected
+
+  event :place_on_hold,       to: :on_hold
+  event :open_for_voting,     to: :open_for_voting
+  event :accept,              from: :open_for_voting,   to: :accepted
+  event :reject,              to: :rejected
+  event :confirm,             from: :accepted,          to: :confirmed
 
 end

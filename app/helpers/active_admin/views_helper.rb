@@ -1,5 +1,6 @@
 module ActiveAdmin
   module ViewsHelper
+
     def collection_for_hour_select
       (0..48).map do |i|
         [
@@ -8,5 +9,14 @@ module ActiveAdmin
         ]
       end
     end
+
+    def status_for_submission(submission)
+      status_type = nil
+      status_type = :ok if submission.confirmed?
+      status_type = :error if submission.rejected?
+      status_type ||= :warning
+      status_type
+    end
+
   end
 end

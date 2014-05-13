@@ -35,6 +35,8 @@ gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
 
+# State machines
+gem 'simple_states'
 
 # Production support
 gem 'utf8-cleaner'

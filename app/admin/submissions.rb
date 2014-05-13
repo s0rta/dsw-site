@@ -37,7 +37,9 @@ ActiveAdmin.register Submission do
       "#{(Time.now.at_beginning_of_day + s.start_hour.hours).strftime('%l:%M%P')} - #{(Time.now.at_beginning_of_day + s.end_hour.hours).strftime('%l:%M%P')}" if s.start_hour && s.end_hour
     end
     column :submitter, sortable: 'users.name'
-    column('Public', :is_public, sortable: :is_public) { |s| s.is_public? ? 'Yes' : 'No' }
+    column('State', sortable: :state) do |submission|
+      status_tag submission.state.to_s.titleize, status_for_submission(submission)
+    end
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
     column(:comments, sortable: 'COUNT(comments.id)') { |s| s.comments.size }
     default_actions
@@ -117,6 +119,10 @@ ActiveAdmin.register Submission do
     link_to 'View on site', submission
   end
 
+  sidebar 'Status', except: :index do
+    status_tag submission.state.to_s.titleize, status_for_submission(submission)
+  end
+
   sidebar :versionate, :partial => "admin/version", :only => :show
 
   show do
@@ -134,6 +140,67 @@ ActiveAdmin.register Submission do
         end
       end
     end
+  end
+
+  # State machine actions
+  action_item :only => :show do
+    unless submission.on_hold?
+      link_to('Place on hold', place_on_hold_admin_submission_path(submission), method: :post)
+    end
+  end
+
+  member_action :place_on_hold, method: :post do
+    submission = Submission.find(params[:id])
+    submission.place_on_hold!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item :only => :show do
+    unless submission.open_for_voting?
+      link_to('Open for voting', open_for_voting_admin_submission_path(submission), method: :post)
+    end
+  end
+
+  member_action :open_for_voting, method: :post do
+    submission = Submission.find(params[:id])
+    submission.open_for_voting!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item :only => :show do
+    if submission.open_for_voting?
+      link_to('Accept', accept_admin_submission_path(submission), method: :post)
+    end
+  end
+
+  member_action :accept, method: :post do
+    submission = Submission.find(params[:id])
+    submission.accept!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item :only => :show do
+    if submission.accepted?
+      link_to('Confirm', confirm_admin_submission_path(submission), method: :post)
+    end
+  end
+
+  member_action :confirm, method: :post do
+    submission = Submission.find(params[:id])
+    submission.confirm!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item :only => :show do
+    if submission.open_for_voting?
+      link_to('Reject', reject_admin_submission_path(submission), method: :post)
+    end
+  end
+
+  member_action :reject, method: :post do
+    submission = Submission.find(params[:id])
+    submission.reject!
+    redirect_to admin_submission_path(submission)
   end
 
 end
