@@ -48,12 +48,18 @@ ActiveAdmin.register Submission do
     column :title
     column :description
     column :notes
-    column :track
+    column :track do |submission|
+      submission.track.try(:name)
+    end
     column :format
-    column :venue
+    column :venue do |submission|
+      submission.venue.try(:name)
+    end
     column :start_day
     column :end_day
-    column :submitter
+    column :submitter_name do |submission|
+      submission.submitter.try(:name)
+    end
     column :is_public
     column :created_at
     column :updated_at
