@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/modeset/denver-startup-week.png?label=ready&title=Ready)](https://waffle.io/modeset/denver-startup-week)
 # Denver Startup Week
 
 ## Talk Nerdy To Me
