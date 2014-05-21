@@ -92,6 +92,7 @@ ActiveAdmin.register Submission do
 
   form do |f|
     f.inputs do
+      f.input :year
       f.input :submitter_id, as: :select, collection: User.order(:name).map {|t| [ t.name, t.id ]}, include_blank: false
       f.input :track_id, as: :select, collection: Track.all.map {|t| [ t.name, t.id ]}, include_blank: false
       f.input :format, as: :select, collection: Submission::FORMATS, include_blank: true

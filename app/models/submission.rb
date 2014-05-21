@@ -16,6 +16,7 @@ class Submission < ActiveRecord::Base
 
   attr_accessible :start_day,
                   :end_day,
+                  :year,
                   :description,
                   :format,
                   :location,
