@@ -59,6 +59,10 @@ module Denverstartupweek
     config.assets.paths << 'app/assets'
     config.assets.precompile += %w( cmsimple.js cmsimple.css mercury.css polyfill.js dinosaur.css respond.proxy.js respond-proxy.html jquery.js active_admin.css active_admin.js active_admin/print.css)
 
+    # Set up Emoji
+    config.assets.paths << Emoji.images_path
+    config.assets.precompile << "emoji/*.png"
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
