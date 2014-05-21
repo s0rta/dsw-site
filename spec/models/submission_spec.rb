@@ -14,4 +14,8 @@ describe Submission do
   # it { should ensure_inclusion_of(:time_range).in_array(Submission::TIME_RANGES) }
   it { should ensure_length_of(:location).is_at_most(255) }
 
+  it 'defaults its year to the current year' do
+    expect(Submission.new.year).to eq(Date.today.year)
+  end
+
 end
