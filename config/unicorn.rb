@@ -15,8 +15,8 @@ before_fork do |server, worker|
     Rails.logger.info('Disconnected from ActiveRecord')
   end
 
-  if defined?(Resque)
-    Resque.redis.quit
+  if defined?(Redis)
+    Redis.current.quit
   end
 
 end
@@ -27,16 +27,14 @@ after_fork do |server, worker|
     puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
   end
 
-  if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.establish_connection
-    Rails.logger.info('Connected to ActiveRecord')
-  end
-
-  # If you are using Redis but not Resque, change this
-  if defined?(Resque)
-    uri = URI.parse(ENV['MYREDIS_URL'] || ENV['REDISTOGO_URL'])
-    Redis.current = Redis.new(host: uri.host, port: uri.port, password: uri.password)
-    Rails.logger.info('Connected to Redis')
+  # Duplicated in config/initializers/redis.rb
+  if defined?(Redis)
+    url = ENV['REDISCLOUD_URL'] || ENV['MYREDIS_URL'] || ENV['REDISTOGO_URL' || ENV['REDIS_URL']]
+    if url
+      uri = URI.parse(url)
+      Redis.current = Redis.new(host: uri.host, port: uri.port, password: uri.password)
+      Rails.logger.info('Connected to Redis')
+    end
   end
 
   # Reset the object cache store (Dalli)
