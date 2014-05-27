@@ -10,6 +10,7 @@ feature 'Creating a submission' do
     @track = Track.new name: 'Bizness'
     @track.chairs << @chair
     @track.save!
+    FeatureToggler.activate_submission!
   end
 
   scenario 'User submits a new idea' do
@@ -39,6 +40,13 @@ feature 'Creating a submission' do
     email = ActionMailer::Base.deliveries.last
     expect(email.subject).to eq('Thanks for submitting a session proposal for Denver Startup Week!')
     expect(email.to).to include('test2@example.com')
+  end
+
+  scenario 'User tries to submit a new idea when submissions are closed' do
+    FeatureToggler.deactivate_submission!
+    visit '/panel-picker/submit'
+    expect(page).to have_content('Session Submissions Are Now Closed')
+    expect(current_path).to eq('/panel-picker/closed')
   end
 
 end

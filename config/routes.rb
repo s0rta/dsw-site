@@ -4,6 +4,7 @@ Denverstartupweek::Application.routes.draw do
     collection do
       get :thanks
       get :by_day
+      get :closed
     end
     resources :votes, only: :create
     resources :comments, only: :create

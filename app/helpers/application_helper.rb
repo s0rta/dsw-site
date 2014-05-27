@@ -12,4 +12,9 @@ module ApplicationHelper
     result = pipeline.call content
     result[:output]
   end
+
+  def current_year
+    Date.today.year
+  end
+
 end
