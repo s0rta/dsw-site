@@ -83,7 +83,11 @@ class Submission < ActiveRecord::Base
 
   after_create :notify_track_chairs
   after_create :send_confirmation_notice
-  after_initialize :set_year
+
+  after_initialize do
+    self.year ||= Date.today.year
+  end
+
 
   def to_param
     "#{self.id}-#{self.title.parameterize}"
@@ -109,10 +113,6 @@ class Submission < ActiveRecord::Base
 
   def send_confirmation_notice
     NotificationsMailer.confirm_new_submission(self).deliver
-  end
-
-  def set_year
-    self.year ||= Date.today.year
   end
 
   def propagate_to_zerista
