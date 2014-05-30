@@ -200,4 +200,11 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  batch_action :open_for_voting do |submissions|
+    Submission.find(submissions).each do |submission|
+      submission.open_for_voting!
+    end
+    redirect_to admin_submissions_path
+  end
+
 end
