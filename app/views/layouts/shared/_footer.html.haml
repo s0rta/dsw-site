@@ -13,6 +13,10 @@
           - Cmsimple::Page.published.where(parent_id: nil, is_root: false).order(:position).each do |page|
             - n.item page.title, page.uri
           - if current_user && current_user.is_admin?
-            -# - n.item 'Submit a Session', main_app.new_submission_path
-            -# - n.item 'Panel Picker', main_app.submissions_path
+            - if FeatureToggler.submission_active?
+              - n.item 'Submit a Session', main_app.new_submission_path
+            - if FeatureToggler.feedback_active?
+              - n.item 'Panel Picker', main_app.submissions_path
+            - if FeatureToggler.registration_active?
+              - n.item 'Register', main_app.new_registration_path
             - n.item 'Manage &rarr;'.html_safe, main_app.admin_root_path, data: { 'no-turbolink' => true }

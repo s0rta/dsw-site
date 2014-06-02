@@ -1,9 +1,17 @@
 Denverstartupweek::Application.routes.draw do
 
+  resource :registration, only: [ :new, :create ] do
+    collection do
+      get :closed
+      get :confirm
+    end
+  end
+
   resources :submissions, except: [ :edit, :update, :destroy ], path: 'panel-picker', path_names: { new: 'submit' } do
     collection do
       get :thanks
       get :by_day
+      get :closed
     end
     resources :votes, only: :create
     resources :comments, only: :create
@@ -15,6 +23,8 @@ Denverstartupweek::Application.routes.draw do
 
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
+
+  get '/register', to: 'registrations#new'
 
   ActiveAdmin.routes(self)
 

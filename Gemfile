@@ -52,6 +52,9 @@ gem 'activeadmin'
 gem 'meta_search',    '>= 1.1.0.pre'
 gem 'paper_trail'
 
+# Feature toggle
+gem 'redis-objects'
+
 # Background processing
 gem 'sucker_punch'
 

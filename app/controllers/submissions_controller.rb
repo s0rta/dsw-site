@@ -12,6 +12,7 @@ class SubmissionsController < ApplicationController
   end
 
   def new
+    redirect_to closed_submissions_path unless FeatureToggler.submission_active?
     @submission = Submission.new(contact_email: current_user.try(:email))
   end
 

@@ -4,10 +4,22 @@ describe User do
 
   it { should have_many(:submissions) }
   it { should have_many(:votes).dependent(:destroy) }
+  it { should have_many(:registrations).dependent(:destroy) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:email) }
   it { should validate_uniqueness_of(:email) }
+
+  it { should allow_mass_assignment_of(:email) }
+  it { should allow_mass_assignment_of(:linkedin_uid) }
+  it { should allow_mass_assignment_of(:name) }
+  it { should allow_mass_assignment_of(:description) }
+
+  it { should allow_mass_assignment_of(:email).as(:admin) }
+  it { should allow_mass_assignment_of(:linkedin_uid).as(:admin) }
+  it { should allow_mass_assignment_of(:name).as(:admin) }
+  it { should allow_mass_assignment_of(:description).as(:admin) }
+  it { should allow_mass_assignment_of(:is_admin).as(:admin) }
 
   describe 'creating from an auth hash' do
     let(:auth_hash) do
@@ -41,4 +53,5 @@ describe User do
     end
 
   end
+
 end

@@ -39,7 +39,7 @@
                     Let's start with a few basic questions:
                   = field_set_tag do
                     = f.input :format, as: :select, collection: Submission::FORMATS, prompt: 'What type of session are you proposing?', include_blank: 'Something else entirely', error: false
-                    = f.input :track_id, as: :select, collection: Track.all.map { |t| [t.name, t.id]}, prompt: 'What track would it fit best into?', include_blank: 'I\'m not sure', error: false
+                    = f.input :track_id, as: :select, collection: tracks_for_select, prompt: 'What track would it fit best into?', include_blank: 'I\'m not sure', error: false
                 %button.btn.btn-primary.form-btn.advance-btn(href="#") Next
               %article.form-pane
                 %div.form-contents

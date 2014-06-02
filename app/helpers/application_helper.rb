@@ -12,4 +12,13 @@ module ApplicationHelper
     result = pipeline.call content
     result[:output]
   end
+
+  def current_year
+    Date.today.year
+  end
+
+  def tracks_for_select
+    Track.all.map { |t| [ t.name, t.id ] }
+  end
+
 end

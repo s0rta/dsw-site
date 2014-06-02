@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   has_many :submissions, foreign_key: 'submitter_id'
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :registrations, dependent: :destroy
 
   def self.find_or_create_from_auth_hash(auth_hash)
     user = User.where(linkedin_uid: auth_hash[:uid]).first_or_initialize
@@ -26,6 +27,10 @@ class User < ActiveRecord::Base
                             email:        auth_hash[:info][:email],
                             description:  auth_hash[:info][:description]
     user
+  end
+
+  def current_registration
+    registrations.for_current_year.first
   end
 
 end
