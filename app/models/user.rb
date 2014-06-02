@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  default_scope order('LOWER(name) ASC')
+
   attr_accessible :email,
                   :linkedin_uid,
                   :name,
