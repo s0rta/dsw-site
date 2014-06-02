@@ -3,7 +3,7 @@
     = render partial: 'layouts/shared/navigation'
     = render partial: 'layouts/shared/masthead'
     %hr
-    %section.section-container.module-tab(data-bindable="module-tab")
+    %section.section-container.module-tab.width-constrained(data-bindable="module-tab")
       = render_region :dsw_about_header, tag: 'h2', html: { class: 'primary-heading' } do
         About Denver Startup Week
       %article#dsw_what.tab-panel.fade.in.active
