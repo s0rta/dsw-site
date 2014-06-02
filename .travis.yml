@@ -3,6 +3,8 @@ rvm:
 - 2.1.2
 services:
 - redis-server
+bundler_args:
+  --without development production
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start

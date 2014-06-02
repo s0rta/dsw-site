@@ -41,8 +41,6 @@ gem 'simple_states'
 # Production support
 gem 'utf8-cleaner'
 gem 'airbrake'
-gem 'memcachier'
-gem 'dalli'
 gem 'newrelic_rpm'
 
 gem 'rack-canonical-host'
@@ -68,9 +66,13 @@ group :assets do
   gem 'turbo-sprockets-rails3', github: 'ndbroadbent/turbo-sprockets-rails3'
 end
 
-group :development, :test do
+group :development do
   gem 'spring', require: false
   gem 'spring-commands-rspec', require: false
+  gem 'dotenv-rails'
+end
+
+group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
@@ -78,7 +80,6 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'teaspoon'
-  gem 'dotenv-rails'
 end
 
 group :production do

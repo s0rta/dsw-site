@@ -136,7 +136,6 @@ GEM
       execjs
     coffee-script-source (1.2.0)
     daemons (1.1.9)
-    dalli (2.0.2)
     database_cleaner (0.9.1)
     devise (3.2.4)
       bcrypt (~> 3.0)
@@ -207,7 +206,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memcachier (0.0.2)
     meta_search (1.1.2)
       actionpack (~> 3.1)
       activerecord (~> 3.1)
@@ -381,7 +379,6 @@ DEPENDENCIES
   cloudinary
   cmsimple!
   coffee-rails
-  dalli
   database_cleaner
   dotenv-rails
   font_assets
@@ -395,7 +392,6 @@ DEPENDENCIES
   jquery-rails
   jquery-rails-cdn
   lograge
-  memcachier
   mercury-rails!
   meta_search (>= 1.1.0.pre)
   navigasmic
