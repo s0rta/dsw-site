@@ -8,10 +8,10 @@ class FeatureToggler
   value :schedule_builder_active, global: true, marshal: true
 
   def self.clear
-    self.submission_active.delete
-    self.feedback_active.delete
-    self.registration_active.delete
-    self.schedule_builder_active.delete
+    submission_active.delete
+    feedback_active.delete
+    registration_active.delete
+    schedule_builder_active.delete
   end
 
   def self.activate_submission!
@@ -47,19 +47,19 @@ class FeatureToggler
   end
 
   def self.submission_active?
-    self.submission_active.value == true
+    submission_active.value == true
   end
 
   def self.feedback_active?
-    self.feedback_active.value == true
+    feedback_active.value == true
   end
 
   def self.registration_active?
-    self.registration_active.value == true
+    registration_active.value == true
   end
 
   def self.schedule_builder_active?
-    self.schedule_builder_active.value == true
+    schedule_builder_active.value == true
   end
 
 end
