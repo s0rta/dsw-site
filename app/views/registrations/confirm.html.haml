@@ -1,0 +1,25 @@
+%section.main
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %hr
+    %section.section-container
+      %h1.primary-heading
+        You are now registered for DSW #{current_year}!
+      %div.p-copy#generic_copy
+        %br
+        Thanks for registering! We look forward to seeing you in September.
+        %br
+        Be sure to check back often - we'll be announcing additional details about the week soon!
+        %br
+        - if FeatureToggler.feedback_active?
+          Feedback for session ideas is currently open - #{link_to('check out the ideas', submissions_path).html_safe} and tell us what you think.
+          %br
+        - if FeatureToggler.schedule_builder_active?
+          Be sure to check out our schedule and #{link_to 'build your own schedule', '#'} of must-see events for the week.
+          %br
+        If you have any questions, comments, or concerns, please <a href="/faq">check out the FAQ</a> or  <a href="mailto:info@denverstartupweek.org">email us</a>.
+        %br
+= render partial: 'layouts/shared/footer'
+= render partial: 'layouts/shared/flash_message'
+= render partial: 'layouts/shared/spinner'

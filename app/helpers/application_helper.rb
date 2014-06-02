@@ -17,4 +17,8 @@ module ApplicationHelper
     Date.today.year
   end
 
+  def tracks_for_select
+    Track.all.map { |t| [ t.name, t.id ] }
+  end
+
 end
