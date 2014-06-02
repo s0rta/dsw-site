@@ -1,39 +1,46 @@
-%section.section-container
-  %h2.primary-heading
-    = link_to "Help pick the sessions for #{Date.today.year}", submissions_path
-%hr
--# - unless current_user
-  -# %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submission_path(@submission)}")
-    -# Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
-%section.section-container
-  .p-copy
-    %a.dswacon.dswacon-panel-icon(class="dswacon-#{@submission.track.icon}" title="#{@submission.track.name}")
-  %h1.primary-heading= @submission.title
-  %h3.secondary-heading= "Proposed by #{@submission.submitter.name}"
-  .p-copy= process_with_pipeline(@submission.description).html_safe
+%section.main
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %section.section-container.width-constrained
+      %h2.primary-heading
+        = link_to "Help pick the sessions for #{Date.today.year}", submissions_path
+    %hr
+    - if !current_user && FeatureToggler.feedback_active?
+      %a.btn.btn-secondary.form-btn(href="/auth/linkedin?origin=#{submission_path(@submission)}")
+        Hey there, stranger! Click here to sign in with LinkedIn so you can comment and vote.
+    %section.section-container.width-constrained
+      .p-copy
+        %a.dswacon.dswacon-panel-icon(class="dswacon-#{@submission.track.icon}" title="#{@submission.track.name}")
+      %h1.primary-heading= @submission.title
+      %h3.secondary-heading= "Proposed by #{@submission.submitter.name}"
+      .p-copy= process_with_pipeline(@submission.description).html_safe
 
-  %div.voting-comments
-    %div.voting-cell(data-bindable="ajax-voter")
-      %h4.voting-heading= @submission.votes.size > 0 ? @submission.votes.size : 'No votes yet'
-      %div.voting-engine
-        -# - if current_user
-          -# = link_to '', submission_votes_path(@submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
-- if current_user
-  %hr
-  %section.section-container.module-form
-    %h2.primary-heading What Do You Think?
-    %div.form-comment
-      = simple_form_for [ @submission, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
-        = field_set_tag do
-          = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
-          %div.submit-btn-holder
-            = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
-- unless @submission.comments.empty?
-  %hr
-%section.section-container
-  %ol.comments
-    - @submission.comments.each do |comment|
-      %li.comment
-        %span.comment-heading= "#{comment.user.try(:name) || 'Anonymous'} said:"
-        = comment.body
+      %div.voting-comments
+        %div.voting-cell(data-bindable="ajax-voter")
+          %h4.voting-heading= @submission.votes.size > 0 ? @submission.votes.size : 'No votes yet'
+          %div.voting-engine
+            - if current_user && FeatureToggler.feedback_active?
+              = link_to '', submission_votes_path(@submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'
+    - if current_user && FeatureToggler.feedback_active?
+      %hr
+      %section.section-container.module-form.width-constrained
+        %h2.primary-heading What Do You Think?
+        %div.form-comment
+          = simple_form_for [ @submission, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
+            = field_set_tag do
+              = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
+              %div.submit-btn-holder
+                = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
+    - unless @submission.comments.empty?
+      %hr
+      %section.section-container.width-constrained
+        %ol.comments
+          - @submission.comments.each do |comment|
+            %li.comment
+              %span.comment-heading= "#{comment.user.try(:name) || 'Anonymous'} said:"
+              = comment.body
 
+= render partial: 'layouts/shared/footer'
+= render partial: 'layouts/shared/flash_message'
+= render partial: 'layouts/shared/spinner'

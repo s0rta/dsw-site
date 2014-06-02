@@ -47,7 +47,7 @@
         %ol.module-list(data-bindable="sortable-submissions")
           - @submissions.each do |submission|
             %li.module(id="submission_module_#{submission.id}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" data-submitter="#{submission.submitter.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
-              = link_to submission, class: 'panel-toggle' do
+              = link_to submission, class: 'panel-toggle', title: 'Click for more details' do
                 %span.dswacon.dswacon-plus
               %div.module-contents.voting-module
                 %div.module-icon-cell
