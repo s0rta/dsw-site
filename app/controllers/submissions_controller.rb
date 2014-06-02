@@ -4,6 +4,7 @@ class SubmissionsController < ApplicationController
               :atom
 
   def index
+    redirect_to feedback_closed_submissions_path unless FeatureToggler.feedback_active?
     @submissions = Submission.for_current_year.public.order('random()').includes(:submitter, :track, :votes)
   end
 
@@ -12,7 +13,7 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    redirect_to closed_submissions_path unless FeatureToggler.submission_active?
+    redirect_to submissions_closed_submissions_path unless FeatureToggler.submission_active?
     @submission = Submission.new(contact_email: current_user.try(:email))
   end
 

@@ -46,7 +46,7 @@ feature 'Creating a submission' do
     FeatureToggler.deactivate_submission!
     visit '/panel-picker/submit'
     expect(page).to have_content('Session Submissions Are Now Closed')
-    expect(current_path).to eq('/panel-picker/closed')
+    expect(current_path).to eq('/panel-picker/submissions_closed')
   end
 
 end

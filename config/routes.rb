@@ -11,7 +11,8 @@ Denverstartupweek::Application.routes.draw do
     collection do
       get :thanks
       get :by_day
-      get :closed
+      get :submissions_closed
+      get :feedback_closed
     end
     resources :votes, only: :create
     resources :comments, only: :create
