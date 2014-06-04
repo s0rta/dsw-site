@@ -1,5 +1,5 @@
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 10
+timeout (ENV['TIMEOUT'] || 15).to_i
 preload_app true
 listen ENV['PORT'].to_i || 3000, tcp_nopush: false
 
