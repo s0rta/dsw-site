@@ -7,9 +7,9 @@
           - n.item page.title, page.uri
         - if current_user && current_user.is_admin?
           - if FeatureToggler.submission_active?
-            - n.item 'Submit a Session', main_app.new_submission_path
+            - n.item 'Submit a Session', main_app.new_submission_path, data: { 'no-turbolink' => true }
           - if FeatureToggler.feedback_active?
-            - n.item 'Panel Picker', main_app.submissions_path
+            - n.item 'Panel Picker', main_app.submissions_path, data: { 'no-turbolink' => true }
           - if FeatureToggler.registration_active?
-            - n.item 'Register', main_app.new_registration_path
+            - n.item 'Register', main_app.new_registration_path, data: { 'no-turbolink' => true }
           - n.item 'Manage &rarr;'.html_safe, main_app.admin_root_path, data: { 'no-turbolink' => true }
