@@ -1,6 +1,8 @@
 class Comment < ActiveRecord::Base
+
   belongs_to :user
-  belongs_to :submission
+  belongs_to :submission, touch: true
+
   attr_accessible :body,
                   :user_id
 

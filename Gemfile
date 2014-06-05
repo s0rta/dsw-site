@@ -86,4 +86,6 @@ group :production do
   gem 'rails_12factor'
   gem 'unicorn'
   gem 'lograge'
+  gem 'memcachier'
+  gem 'dalli'
 end
