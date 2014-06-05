@@ -155,6 +155,7 @@ GEM
       rack
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    gctools (0.2.3)
     gemoji (1.5.0)
     gibbon (0.4.6)
       httparty
@@ -379,6 +380,7 @@ DEPENDENCIES
   database_cleaner
   dotenv-rails
   font_assets
+  gctools
   gemoji
   gibbon
   github-markdown
