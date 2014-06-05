@@ -5,7 +5,6 @@ ruby '2.1.2'
 gem 'rails', '~> 3.2.17'
 gem 'rake'
 gem 'pg'
-gem 'thin'
 
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
@@ -73,6 +72,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'thin'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
