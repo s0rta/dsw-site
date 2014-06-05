@@ -4,6 +4,7 @@ require ::File.expand_path('../config/environment',  __FILE__)
 
 # Set up Unicorn OOBGC
 if defined?(Unicorn::HttpRequest)
+  GC::Profiler.enable
   require 'gctools/oobgc'
   use GC::OOB::UnicornMiddleware
 end
