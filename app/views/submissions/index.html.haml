@@ -48,9 +48,9 @@
 
       %section.module-panels
         %ol.module-list(data-bindable="sortable-submissions")
-          - cache "submissions-index/#{@submissions.maximum(:updated_at).utc.to_i}" do
+          - cache "submissions-index/#{@submissions.maximum(:updated_at).utc.to_i}/#{FeatureToggler.feedback_active?}/#{signed_in?}" do
             - @submissions.each do |submission|
-              - cache submission do
+              - cache "#{submission.cache_key}/#{FeatureToggler.feedback_active?}/#{signed_in?}" do
                 %li.module(id="submission_module_#{submission.id}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" data-submitter="#{submission.submitter.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
                   = link_to submission, class: 'panel-toggle', title: 'Click for more details' do
                     %span.dswacon.dswacon-plus
@@ -61,7 +61,7 @@
                       %h3.module-heading.panel-title
                         = link_to truncate(submission.title, length: 100, separator: ' '), submission
                       %div.p-copy.panel-desc= truncate(submission.description, length: 200, separator: ' ')
-                      %div.track-copy(class="#{submission.is_confirmed? ? '' : 'blue'}")= "Proposed by #{submission.submitter.name}"
+                      %div.track-copy(class="blue")= "Proposed by #{submission.submitter.name}"
                   %div.voting-cell(data-bindable="ajax-voter")
                     %h4.voting-heading= submission.votes.size > 0 ? submission.votes.size : 'No votes yet'
                     %div.voting-engine
