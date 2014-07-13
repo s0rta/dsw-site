@@ -207,4 +207,18 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
+  batch_action :accept do |submissions|
+    Submission.find(submissions).each do |submission|
+      submission.accept!
+    end
+    redirect_to admin_submissions_path
+  end
+
+  batch_action :reject do |submissions|
+    Submission.find(submissions).each do |submission|
+      submission.reject!
+    end
+    redirect_to admin_submissions_path
+  end
+
 end
