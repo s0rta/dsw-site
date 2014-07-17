@@ -75,6 +75,9 @@ ActiveAdmin.register Submission do
     column :comment_count do |submission|
       submission.comments.size
     end
+    column(:state) do |submission|
+      submission.state.to_s.titleize
+    end
   end
 
   filter :title
