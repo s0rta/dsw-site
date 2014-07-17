@@ -133,7 +133,11 @@ ActiveAdmin.register Submission do
           v.created_at.to_s :long
         end
         column 'User' do |v|
-          link_to User.find(v.whodunnit).name, admin_user_path(User.find(v.whodunnit))
+          if user = User.where(id: v.whodunnit).first
+            link_to user.name, admin_user_path(user)
+          else
+            'Unknown'
+          end
         end
         column 'View' do |v|
           link_to 'View', { version: v.index}
