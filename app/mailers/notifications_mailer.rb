@@ -40,7 +40,7 @@ class NotificationsMailer < ActionMailer::Base
          subject: 'Your session proposal for Denver Startup Week',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,
-         bcc: @submission.track.email_alias
+         cc: @submission.track.email_alias
   end
 
   def notify_of_submission_rejection(submission)
