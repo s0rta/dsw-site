@@ -1,5 +1,6 @@
 class NotificationsMailer < ActionMailer::Base
-  default from: "robot@denverstartupweek.org"
+  default from: 'info@denverstartupweek.org',
+          reply_to: 'info@denverstartupweek.org'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
