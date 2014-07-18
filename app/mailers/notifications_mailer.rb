@@ -38,6 +38,8 @@ class NotificationsMailer < ActionMailer::Base
     @submission = submission
     mail to: @submission.contact_email,
          subject: 'Your session proposal for Denver Startup Week',
+         from: @submission.track.email_alias,
+         reply_to: @submission.track.email_alias,
          bcc: @submission.track.email_alias
   end
 
