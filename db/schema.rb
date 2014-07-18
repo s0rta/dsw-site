@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140526225628) do
+ActiveRecord::Schema.define(:version => 20140718155905) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20140526225628) do
     t.datetime "updated_at",       :null => false
     t.string   "icon"
     t.integer  "zerista_track_id"
+    t.string   "email_alias"
   end
 
   create_table "tracks_users", :id => false, :force => true do |t|
