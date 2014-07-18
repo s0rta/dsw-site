@@ -32,4 +32,17 @@ class NotificationsMailer < ActionMailer::Base
     @sponsor_signup = sponsor_signup
     mail to: ENV['SPONSOR_SIGNUP_EMAIL_RECIPIENTS'].split(','), subject: 'Someone is interested in sponsoring DSW'
   end
+
+  def notify_of_submission_acceptance(submission)
+    @submission = submission
+    mail to: @submission.contact_email,
+         subject: 'Your session proposal for Denver Startup Week',
+         bcc: @submission.track.email_alias
+  end
+
+  def notify_of_submission_rejection(submission)
+    @submission = submission
+    mail to: @submission.contact_email,
+         subject: 'Your session proposal for Denver Startup Week'
+  end
 end

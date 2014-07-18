@@ -1,0 +1,19 @@
+Hey there,
+
+Congratulations! Your session "<%= @submission.title %>" has been selected to be part of the <%= @submission.track.name %> Track during Denver Startup Week.
+
+Locations are currently "TBD" and will be assigned in a few weeks based on expected attendance.
+
+As a session organizer, you will have a 90 minute slot available to fill as you see fit. You are not required to fill it the entire allotted time, however. We will work with you to make sure that you understand everything involved in putting a session together, and provide logistical support during the event.
+
+Please confirm ASAP that you are still willing and able to host this session. We will be in touch with you over the next couple of weeks with additional details, including scheduling.
+
+Thank you for participating in Denver Startup Week. Please let us know if we can answer any questions.
+
+Thanks,
+
+<%= @submission.track.chairs.map(&:name) * ' & ' %>
+<%= @submission.track.name %> Track
+<%= @submission.track.email_alias %>
+Denver Startup Week Planning Committee
+
