@@ -114,6 +114,16 @@ ActiveRecord::Schema.define(:version => 20140718155905) do
 
   add_index "registrations", ["user_id"], :name => "index_registrations_on_user_id"
 
+  create_table "session_registrations", :force => true do |t|
+    t.integer  "registration_id"
+    t.integer  "submission_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "session_registrations", ["registration_id"], :name => "index_session_registrations_on_registration_id"
+  add_index "session_registrations", ["submission_id"], :name => "index_session_registrations_on_submission_id"
+
   create_table "sponsor_signups", :force => true do |t|
     t.string   "contact_name"
     t.string   "contact_email"

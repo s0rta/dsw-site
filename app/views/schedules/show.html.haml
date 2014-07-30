@@ -1,0 +1,70 @@
+%section.main
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %section.section-container.width-constrained
+      %h2.primary-heading Build your schedule for #{current_year}!
+
+      %div.p-copy
+        Copy goes here
+
+      - unless registered?
+        %a.btn.btn-secondary.form-btn(href="#{new_registration_path}")
+          Hey there! Click here to register to attend so you can build your own schedule.
+
+      %section.filter-bar(data-bindable="filter-bar")
+        %form.dsw-form.form-filter(role="form")
+          %fieldset
+            %div.control-group.search-filter(data-filterable="search-filter")
+              %label.control-label.dswacon.dswacon-search(for="search_bar")
+              %div.controls
+                %input#search_bar(type="search" placeholder="Search")
+
+            %div.control-group
+              %div.controls
+                %div.drop-select(data-filterable="drop-select" data-action="filter")
+                  %button.drop-toggle Filter by: <span class="tagged-as"></span><span class="drop-caret"></span>
+                  %ul.drop-menu.menu-filter(role="menu" data-filterable="menu-filter")
+                    - Track.all.each do |t|
+                      %li(data-tag="track:#{t.name}")<
+                        %a(href="#")= t.name
+
+            %div.control-group
+              %div.controls
+                %div.drop-select(data-filterable="drop-select" data-action="sort")
+                  %button.drop-toggle Sort by: <span class="tagged-as"></span><span class="drop-caret"></span>
+                  %ul.drop-menu.menu-sort(role="menu" data-filterable="menu-sort")
+                    %li(data-tag="popularity")<
+                      %a(href="#") Popularity
+                    %li(data-tag="track")<
+                      %a(href="#") Track
+                    %li(data-tag="title")<
+                      %a(href="#") Title
+
+
+      %section.module-panels
+        %ol.module-list(data-bindable="sortable-submissions")
+          - @sessions.group_by {|s| s.start_day }.each do |day,submissions_by_day|
+            %div.schedule-module-group-header= day
+            - submissions_by_day.sort_by(&:start_hour).each do |submission|
+              %li.schedule-module(id="submission_module_#{submission.id}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" data-submitter="#{submission.submitter.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
+                = link_to submission, class: 'panel-toggle', title: 'Click for more details' do
+                  %span.dswacon.dswacon-plus
+                %div.schedule-module-contents
+                  %div.schedule-module-icon-cell
+                    %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
+                  %div.schedule-module-details-cell
+                    %h3.module-heading.panel-title
+                      = link_to truncate(submission.title, length: 100, separator: ' '), submission
+                    - if submission.start_hour && submission.end_hour
+                      %div.time-location-copy.blue
+                        - if submission.has_time_set?
+                          = human_time_range(submission)
+                          %br
+                          = submission.human_location_name
+                        - else
+                          = submission.human_location_name
+
+= render partial: 'layouts/shared/footer'
+= render partial: 'layouts/shared/flash_message'
+= render partial: 'layouts/shared/spinner'

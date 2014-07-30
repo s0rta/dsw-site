@@ -4,6 +4,10 @@ describe Submission do
 
   it { should belong_to(:track) }
   it { should have_many(:votes).dependent(:destroy) }
+  it { should have_many(:comments).dependent(:destroy) }
+  it { should have_many(:session_registrations).dependent(:destroy) }
+  it { should have_many(:user_registrations) }
+  it { should have_many(:registrants) }
 
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:description) }
