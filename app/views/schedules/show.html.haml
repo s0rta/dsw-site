@@ -56,14 +56,14 @@
                   %div.schedule-module-details-cell
                     %h3.module-heading.panel-title
                       = link_to truncate(submission.title, length: 100, separator: ' '), submission
-                    - if submission.start_hour && submission.end_hour
-                      %div.time-location-copy.blue
-                        - if submission.has_time_set?
-                          = human_time_range(submission)
-                          %br
-                          = submission.human_location_name
-                        - else
-                          = submission.human_location_name
+                  - if submission.start_hour && submission.end_hour
+                    %div.time-location-copy.blue
+                      - if submission.has_time_set?
+                        = human_time_range(submission)
+                        %br
+                        = submission.human_location_name
+                      - else
+                        = submission.human_location_name
 
 = render partial: 'layouts/shared/footer'
 = render partial: 'layouts/shared/flash_message'
