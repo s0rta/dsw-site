@@ -42,28 +42,44 @@
                       %a(href="#") Title
 
 
-      %section.module-panels
-        %ol.module-list(data-bindable="sortable-submissions")
+      %section
+        %ol.module-list
           - @sessions.group_by {|s| s.start_day }.each do |day,submissions_by_day|
-            %div.schedule-module-group-header= day
+            %div.module-group-header.schedule-header<>
+              %span.schedule-day= day
+              %span.schedule-date September 15, 2014
             - submissions_by_day.sort_by(&:start_hour).each do |submission|
-              %li.schedule-module(id="submission_module_#{submission.id}" data-description="#{submission.description}" data-popularity="#{1.0 / submission.votes.size}" data-track="#{submission.track.name}" data-submitter="#{submission.submitter.name}" class="#{submission.is_confirmed? ? 'confirmed' : ''}")
-                = link_to submission, class: 'panel-toggle', title: 'Click for more details' do
-                  %span.dswacon.dswacon-plus
-                %div.schedule-module-contents
-                  %div.schedule-module-icon-cell
+              %li.schedule-module.module(id="submission_module_#{submission.id}")
+                %div.module-contents.schedule-module-contents
+                  %header.schedule-module-header
                     %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
-                  %div.schedule-module-details-cell
                     %h3.module-heading.panel-title
                       = link_to truncate(submission.title, length: 100, separator: ' '), submission
-                  - if submission.start_hour && submission.end_hour
-                    %div.time-location-copy.blue
-                      - if submission.has_time_set?
-                        = human_time_range(submission)
-                        %br
-                        = submission.human_location_name
-                      - else
-                        = submission.human_location_name
+                  %footer.schedule-module-footer
+                    %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
+                    - if submission.start_hour && submission.end_hour
+                      %div.time-location-copy
+                        - if submission.has_time_set?
+                          = human_time_range(submission)
+                          %br
+                          = submission.human_location_name
+                        - else
+                          = submission.human_location_name
+
+
+                  -# %div.module-icon-cell
+                    -# %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
+                  -# %div.module-details-cell
+                    -# %h3.module-heading.panel-title
+                      -# = link_to truncate(submission.title, length: 100, separator: ' '), submission
+                  -# - if submission.start_hour && submission.end_hour
+                    -# %div.time-location-copy.blue
+                      -# - if submission.has_time_set?
+                        -# = human_time_range(submission)
+                        -# %br
+                        -# = submission.human_location_name
+                      -# - else
+                        -# = submission.human_location_name
 
 = render partial: 'layouts/shared/footer'
 = render partial: 'layouts/shared/flash_message'
