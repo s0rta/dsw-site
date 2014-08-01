@@ -1,0 +1,46 @@
+%section.main
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %section.section-container.width-constrained
+      %h2.primary-heading Build your schedule for #{current_year}!
+
+      %div.p-copy
+        Copy goes here
+
+      - unless registered?
+        %a.btn.btn-secondary.form-btn(href="#{new_registration_path}")
+          Hey there! Click here to register to attend so you can build your own schedule.
+
+      %nav.schedule-tabs<>
+        - Track.all.each do |t|
+          %button.btn(href="#")<>= t.name
+
+
+      %section
+        %ol.module-list
+          - @sessions.group_by {|s| s.start_day }.each do |day,submissions_by_day|
+            %div.module-group-header.schedule-header<>
+              %span.schedule-day= day
+              %span.schedule-date September 15, 2014
+            - submissions_by_day.sort_by(&:start_hour).each do |submission|
+              %li.schedule-module.module(id="submission_module_#{submission.id}")
+                %div.module-contents.schedule-module-contents
+                  %header.schedule-module-header
+                    %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
+                    %h3.module-heading.panel-title
+                      = link_to truncate(submission.title, length: 100, separator: ' '), schedule_path(submission)
+                  %footer.schedule-module-footer
+                    %a.dswacon(title="#{submission.track.name}")
+                    - if submission.start_hour && submission.end_hour
+                      - if submission.has_time_set?
+                        %span.schedule-time= human_time_range(submission)
+                        %br
+                        %span.schedule-location-name= submission.human_location_name
+                      - else
+                        %span.schedule-location-name= submission.human_location_name
+
+
+= render partial: 'layouts/shared/footer'
+= render partial: 'layouts/shared/flash_message'
+= render partial: 'layouts/shared/spinner'

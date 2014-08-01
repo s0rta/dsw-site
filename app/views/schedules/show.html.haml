@@ -1,45 +1,41 @@
 %section.main
   %section.content
     = render partial: 'layouts/shared/navigation'
-    = render partial: 'layouts/shared/masthead'
     %section.section-container.width-constrained
-      %h2.primary-heading Build your schedule for #{current_year}!
+      = link_to 'Back to Schedule', schedules_path, class: 'btn back-to-schedule'
+      .p-copy
+        %a.dswacon.dswacon-panel-icon.current-event-icon(class="dswacon-#{@session.track.icon}" title="#{@session.track.name}")
+      %h1.primary-heading= @session.title
 
-      %div.p-copy
-        Copy goes here
+      %div.event-description<>
+        %div.p-copy= process_with_pipeline(@session.description).html_safe
 
-      - unless registered?
-        %a.btn.btn-secondary.form-btn(href="#{new_registration_path}")
-          Hey there! Click here to register to attend so you can build your own schedule.
+      %div.event-details<>
+        %h3.event-details-heading Event Details
+        %p.event-details-info
+          3:00pm - 4:00pm
+          <br/>
+          Denver Museum of Contemporary Art
+          <br/>
+          4th Floor
+        %p.event-details-attending
+          %span.dswacon.dswacon-people
+          %span 49 People are Attending
 
-      %nav.schedule-tabs<>
-        - Track.all.each do |t|
-          %button.btn(href="#")<>= t.name
 
-
-      %section
-        %ol.module-list
-          - @sessions.group_by {|s| s.start_day }.each do |day,submissions_by_day|
-            %div.module-group-header.schedule-header<>
-              %span.schedule-day= day
-              %span.schedule-date September 15, 2014
-            - submissions_by_day.sort_by(&:start_hour).each do |submission|
-              %li.schedule-module.module(id="submission_module_#{submission.id}")
-                %div.module-contents.schedule-module-contents
-                  %header.schedule-module-header
-                    %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
-                    %h3.module-heading.panel-title
-                      = link_to truncate(submission.title, length: 100, separator: ' '), submission
-                  %footer.schedule-module-footer
-                    %a.dswacon(title="#{submission.track.name}")
-                    - if submission.start_hour && submission.end_hour
-                      - if submission.has_time_set?
-                        %span.schedule-time= human_time_range(submission)
-                        %br
-                        %span.schedule-location-name= submission.human_location_name
-                      - else
-                        %span.schedule-location-name= submission.human_location_name
-
+    %iframe.location-map(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=1782+Platte+Street,+Denver,+CO,+United+States&key=AIzaSyAvjqf7BI97ZjJRQVpuDxT3zL0Jh9hnC5c")
+    %section.section-container.module-form.event-comment-section
+      %h2.primary-heading Comments
+      %div.form-comment.event-form-comment
+        = simple_form_for [ @session, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
+          = field_set_tag do
+            = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
+            %div.submit-btn-holder
+              = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
+      %ol.event-comments
+        %li.event-comment
+          %span.event-comment-heading= "Someone said:"
+          Hello
 
 = render partial: 'layouts/shared/footer'
 = render partial: 'layouts/shared/flash_message'

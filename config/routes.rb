@@ -24,7 +24,7 @@ Denverstartupweek::Application.routes.draw do
   resources :volunteer_signups, only: :create
   resources :sponsor_signups, only: :create
 
-  resource :schedule, only: :show
+  resources :schedules, only: [ :index, :show ]
 
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
