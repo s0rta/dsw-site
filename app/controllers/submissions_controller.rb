@@ -27,8 +27,11 @@ class SubmissionsController < ApplicationController
     end
   end
 
-o def show
-    @submission = Submission.public.where(id: params[:id].to_i).includes(:submitter, :track, :votes, :comments => :user).first!
+  def show
+    @submission = Submission.public.
+      where(id: params[:id].to_i).
+      includes(:submitter, :track, :votes, comments: :user).
+      first!
   end
 
 end

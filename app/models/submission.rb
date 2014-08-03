@@ -65,8 +65,12 @@ class Submission < ActiveRecord::Base
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :session_registrations, dependent: :destroy
-  has_many :user_registrations, through: :session_registrations, class_name: 'Registration', source: :registration
-  has_many :registrants, through: :user_registrations, class_name: 'User', source: :user
+  has_many :user_registrations, through: :session_registrations,
+                                class_name: 'Registration',
+                                source: :registration
+  has_many :registrants, through: :user_registrations,
+                         class_name: 'User',
+                         source: :user
 
   validates :title, presence: true
   validates :description, presence: true

@@ -5,7 +5,10 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @session = Submission.confirmed.where(id: params[:id].to_i).includes(:submitter, :track, :comments => :user).first!
+    @session = Submission.confirmed.
+      where(id: params[:id].to_i).
+      includes(:submitter, :track, comments: :user).
+      first!
   end
 
 end
