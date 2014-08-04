@@ -1,7 +1,5 @@
 Denverstartupweek::Application.routes.draw do
 
-  get "schedule/index"
-
   resource :registration, only: [ :new, :create ] do
     collection do
       get :closed
@@ -24,7 +22,8 @@ Denverstartupweek::Application.routes.draw do
   resources :volunteer_signups, only: :create
   resources :sponsor_signups, only: :create
 
-  resources :schedules, only: [ :index, :show ]
+  get '/schedule', to: 'schedules#index', as: :schedules
+  get '/schedule/:id', to: 'schedules#show', as: :schedule
 
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
