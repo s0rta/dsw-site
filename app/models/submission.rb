@@ -40,13 +40,13 @@ class Submission < ActiveRecord::Base
               'Workshop',
               'Social event' ]
 
-  DAYS =  [ 'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Weekend before',
-            'Weekend after' ]
+  DAYS = { 1 => 'Weekend before',
+           2 => 'Monday',
+           3 => 'Tuesday',
+           4 => 'Wednesday',
+           5 => 'Thursday',
+           6 => 'Friday',
+           7 => 'Weekend after' }
 
   TIME_RANGES = [ 'Early morning',
                   'Breakfast',
@@ -116,6 +116,10 @@ class Submission < ActiveRecord::Base
     where(state: 'confirmed')
   end
 
+  def self.for_schedule
+    confirmed.where('start_day IS NOT NULL AND end_day IS NOT NULL')
+  end
+
   def notify_track_chairs
     self.track.chairs.each do |chair|
       NotificationsMailer.notify_of_new_submission(chair, self).deliver
@@ -175,6 +179,14 @@ class Submission < ActiveRecord::Base
     else
       'Location TBA'
     end
+  end
+
+  def human_start_day
+    DAYS[start_day]
+  end
+
+  def human_end_day
+    DAYS[end_day]
   end
 
 end

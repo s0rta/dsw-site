@@ -13,17 +13,20 @@
       %div.event-details<>
         %h3.event-details-heading Event Details
         %p.event-details-info
-          3:00pm - 4:00pm
-          <br/>
-          Denver Museum of Contemporary Art
-          <br/>
-          4th Floor
+          = human_time_range(@session)
+          %br
+          - if @session.venue
+            = @session.venue.name
+            %br
+            = @session.venue.address
+          - else
+            Location TBA
         %p.event-details-attending
           %span.dswacon.dswacon-people
-          %span 49 People are Attending
+          %span #{@session.registrants.count} People are Attending
 
-
-    %iframe.location-map(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=1782+Platte+Street,+Denver,+CO,+United+States&key=AIzaSyAvjqf7BI97ZjJRQVpuDxT3zL0Jh9hnC5c")
+    - if @session.venue
+      %iframe.location-map(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=#{@session.venue.address_for_google_maps}&zoom=19&key=AIzaSyAvjqf7BI97ZjJRQVpuDxT3zL0Jh9hnC5c")
     %section.section-container.module-form.event-comment-section
       %h2.primary-heading Comments
       %div.form-comment.event-form-comment

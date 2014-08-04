@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140718155905) do
+ActiveRecord::Schema.define(:version => 20140803224445) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -139,7 +139,6 @@ ActiveRecord::Schema.define(:version => 20140718155905) do
     t.integer  "track_id"
     t.string   "format"
     t.string   "location"
-    t.string   "start_day"
     t.string   "time_range"
     t.string   "title"
     t.text     "description"
@@ -153,11 +152,12 @@ ActiveRecord::Schema.define(:version => 20140718155905) do
     t.integer  "venue_id"
     t.integer  "volunteers_needed"
     t.integer  "budget_needed"
-    t.float    "start_hour"
-    t.float    "end_hour"
-    t.string   "end_day"
+    t.float    "start_hour",                           :null => false
+    t.float    "end_hour",                             :null => false
     t.integer  "year"
     t.string   "state"
+    t.integer  "start_day"
+    t.integer  "end_day"
   end
 
   add_index "submissions", ["submitter_id"], :name => "index_submissions_on_submitter_id"

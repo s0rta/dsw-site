@@ -19,9 +19,9 @@
 
       %section
         %ol.module-list
-          - @sessions.group_by {|s| s.start_day }.each do |day,submissions_by_day|
+          - @sessions.group_by {|s| s.start_day }.sort_by { |d,s| d }.each do |day,submissions_by_day|
             %div.module-group-header.schedule-header<>
-              %span.schedule-day= day
+              %span.schedule-day= Submission::DAYS[day]
               %span.schedule-date September 15, 2014
             - submissions_by_day.sort_by(&:start_hour).each do |submission|
               %li.schedule-module.module(id="submission_module_#{submission.id}")

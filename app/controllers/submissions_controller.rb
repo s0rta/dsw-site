@@ -30,6 +30,7 @@ class SubmissionsController < ApplicationController
   def show
     @submission = Submission.public.
       where(id: params[:id].to_i).
+      order(:start_day).
       includes(:submitter, :track, :votes, comments: :user).
       first!
   end
