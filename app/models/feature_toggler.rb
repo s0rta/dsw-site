@@ -26,10 +26,6 @@ class FeatureToggler
     self.registration_active = true
   end
 
-  def self.activate_schedule_builder!
-    self.schedule_builder_active = true
-  end
-
   def self.deactivate_submission!
     self.submission_active = false
   end
@@ -38,16 +34,12 @@ class FeatureToggler
     self.feedback_active = false
   end
 
-  def self.deactivate_registration!
-    self.registration_active = false
-  end
-
   def self.deactivate_schedule_builder!
     self.schedule_builder_active = false
   end
 
   def self.submission_active?
-    submission_active.value == true
+   submission_active.value == true
   end
 
   def self.feedback_active?
@@ -56,10 +48,6 @@ class FeatureToggler
 
   def self.registration_active?
     registration_active.value == true
-  end
-
-  def self.schedule_builder_active?
-    schedule_builder_active.value == true
   end
 
 end

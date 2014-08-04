@@ -5,20 +5,19 @@
         - n.item '', '/', class: 'home-icon'
         - Cmsimple::Page.published.where(parent_id: nil, is_root: false).order(:position).each do |page|
           - n.item page.title, page.uri
+        - if FeatureToggler.submission_active?
+          - n.item 'Submit a Session', main_app.new_submission_path, data: { 'no-turbolink' => true },
+            highlights_on: [ { controller: 'submissions', action: 'new' },
+                             { controller: 'submissions', action: 'thanks' },
+                             { controller: 'submissions', action: 'submissions_closed' } ]
+        - if FeatureToggler.feedback_active?
+          - n.item 'Panel Picker', main_app.submissions_path, data: { 'no-turbolink' => true },
+            highlights_on: [ { controller: 'submissions', action: 'show' },
+                             { controller: 'submissions', action: 'index' },
+                             { controller: 'submissions', action: 'feedback_closed' } ]
+        - if FeatureToggler.registration_active?
+          - unless signed_in? && registered?
+            - n.item 'Register', main_app.new_registration_path, data: { 'no-turbolink' => true }
+          - n.item 'Schedule', main_app.schedules_path, data: { 'no-turbolink' => true }
         - if current_user && current_user.is_admin?
-          - if FeatureToggler.submission_active?
-            - n.item 'Submit a Session', main_app.new_submission_path, data: { 'no-turbolink' => true },
-              highlights_on: [ { controller: 'submissions', action: 'new' },
-                               { controller: 'submissions', action: 'thanks' },
-                               { controller: 'submissions', action: 'submissions_closed' } ]
-          - if FeatureToggler.feedback_active?
-            - n.item 'Panel Picker', main_app.submissions_path, data: { 'no-turbolink' => true },
-              highlights_on: [ { controller: 'submissions', action: 'show' },
-                               { controller: 'submissions', action: 'index' },
-                               { controller: 'submissions', action: 'feedback_closed' } ]
-          - if FeatureToggler.registration_active?
-            - if signed_in? && registered?
-              - n.item 'My Schedule', '#', data: { 'no-turbolink' => true }
-            - else
-              - n.item 'Register', main_app.new_registration_path, data: { 'no-turbolink' => true }
           - n.item 'Manage &rarr;'.html_safe, main_app.admin_root_path, data: { 'no-turbolink' => true }
