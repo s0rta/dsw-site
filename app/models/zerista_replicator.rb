@@ -30,7 +30,7 @@ class ZeristaReplicator
       # attrs[:city] = @submission.venue.city
       # attrs[:state] = @submission.venue.state
       # attrs[:country] = 'US'
-      attrs[:description] << process_into_html("\n  \nLocated at [#{@submission.venue.name} - #{@submission.venue.address}](http://maps.google.com/?q=#{([@submission.venue.address, @submission.venue.city, @submission.venue.state] * ', ').gsub(' ','+')})")
+      attrs[:description] << process_into_html("\n  \nLocated at [#{@submission.venue.name} - #{@submission.venue.address}](http://maps.google.com/?q=#{@submission.venue.address_for_google_maps})")
     end
     # Try to create first
     result = client.create_event attrs
