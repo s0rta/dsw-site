@@ -21,7 +21,7 @@ gem 'honeypot-captcha'
 gem 'cloudinary'
 gem 'simple_form'
 
-gem 'gibbon'
+gem 'emma', github: 'myemma/EmmaRuby'
 gem 'httparty'
 
 gem 'omniauth'

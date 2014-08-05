@@ -37,6 +37,14 @@ GIT
       sass-rails
 
 GIT
+  remote: git://github.com/myemma/EmmaRuby.git
+  revision: 47b7978bb750a3dd676f51173a532dabb88bcfdd
+  specs:
+    emma (0.0.1)
+      httparty
+      json
+
+GIT
   remote: git://github.com/ndbroadbent/turbo-sprockets-rails3.git
   revision: 880904169535d1ccebdae3ba2da83f595f09e67d
   specs:
@@ -157,9 +165,6 @@ GEM
       actionpack (>= 3.0)
     gctools (0.2.3)
     gemoji (1.5.0)
-    gibbon (0.4.6)
-      httparty
-      multi_json (>= 1.3.4)
     github-markdown (0.6.5)
     haml (4.0.5)
       tilt
@@ -379,10 +384,10 @@ DEPENDENCIES
   dalli
   database_cleaner
   dotenv-rails
+  emma!
   font_assets
   gctools
   gemoji
-  gibbon
   github-markdown
   haml-rails
   honeypot-captcha
