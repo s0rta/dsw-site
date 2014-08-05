@@ -152,8 +152,8 @@ ActiveRecord::Schema.define(:version => 20140803224445) do
     t.integer  "venue_id"
     t.integer  "volunteers_needed"
     t.integer  "budget_needed"
-    t.float    "start_hour",                           :null => false
-    t.float    "end_hour",                             :null => false
+    t.float    "start_hour",        :default => 0.0,   :null => false
+    t.float    "end_hour",          :default => 0.0,   :null => false
     t.integer  "year"
     t.string   "state"
     t.integer  "start_day"
