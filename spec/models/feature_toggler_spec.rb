@@ -57,21 +57,4 @@ describe FeatureToggler do
     end
   end
 
-  describe 'checking for the schedule builder feature' do
-    it 'is inactive by default' do
-      expect(FeatureToggler.schedule_builder_active?).to be_false
-    end
-
-    it 'is active when it has been activated' do
-      FeatureToggler.activate_schedule_builder!
-      expect(FeatureToggler.schedule_builder_active?).to be_true
-    end
-
-    it 'is inactive when it has been deactivated' do
-      FeatureToggler.activate_schedule_builder!
-      FeatureToggler.deactivate_schedule_builder!
-      expect(FeatureToggler.schedule_builder_active?).to be_false
-    end
-  end
-
 end
