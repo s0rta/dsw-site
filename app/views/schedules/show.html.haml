@@ -8,7 +8,7 @@
       %h1.primary-heading= @session.title
 
       %div.event-description<>
-        %div.p-copy= process_with_pipeline(@session.description).html_safe
+        %div.p-copy= process_with_pipeline(@session.description)
 
       %div.event-details<>
         %h3.event-details-heading Event Details

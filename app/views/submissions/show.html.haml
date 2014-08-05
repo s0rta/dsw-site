@@ -14,7 +14,7 @@
         %a.dswacon.dswacon-panel-icon(class="dswacon-#{@submission.track.icon}" title="#{@submission.track.name}")
       %h1.primary-heading= @submission.title
       %h3.secondary-heading= "Proposed by #{@submission.submitter.name}"
-      .p-copy= process_with_pipeline(@submission.description).html_safe
+      .p-copy= process_with_pipeline(@submission.description)
 
       %div.voting-comments
         %div.voting-cell(data-bindable="ajax-voter")
