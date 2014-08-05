@@ -29,16 +29,18 @@
       %iframe.location-map(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=#{@session.venue.address_for_google_maps}&zoom=19&key=AIzaSyAvjqf7BI97ZjJRQVpuDxT3zL0Jh9hnC5c")
     %section.section-container.module-form.event-comment-section
       %h2.primary-heading Comments
-      %div.form-comment.event-form-comment
-        = simple_form_for [ @session, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
-          = field_set_tag do
-            = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
-            %div.submit-btn-holder
-              = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
+      - if registered?
+        %div.form-comment.event-form-comment
+          = simple_form_for [ @session, Comment.new ], html: { class: 'dsw-form', role: 'form' } do |f|
+            = field_set_tag do
+              = f.input :body, placeholder: 'Comment on this idea...', input_html: { rows: 4 }
+              %div.submit-btn-holder
+                = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
       %ol.event-comments
         %li.event-comment
-          %span.event-comment-heading= "Someone said:"
-          Hello
+          - @session.comments.each do |comment|
+            %em.event-comment-heading= "#{comment.user.name} said:"
+            = process_with_pipeline(comment.body)
 
 = render partial: 'layouts/shared/footer'
 = render partial: 'layouts/shared/flash_message'
