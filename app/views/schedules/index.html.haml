@@ -37,10 +37,10 @@
 
       %section
         %ol.module-list(data-bindable="schedule-addable-modules")
-          - @sessions.group_by {|s| s.start_day }.sort_by { |d,s| d }.each do |day,submissions_by_day|
+          - @sessions.group_by {|s| s.start_day }.sort_by { |d,s| d }.each_with_index do |(day,submissions_by_day),index|
             %div.module-group-header.schedule-header<>
               %span.schedule-day= Submission::DAYS[day]
-              %span.schedule-date September 15, 2014
+              %span.schedule-date= (Date.new(2014, 9, 15) + index.days).strftime('%B %-d, %Y')
             - submissions_by_day.sort_by(&:start_hour).each do |submission|
               %li.schedule-module.module(id="submission_module_#{submission.id}" class="#{'schedule-selected' if registered? && current_registration.submissions.include?(submission)}" data-track="#{submission.track.name}" data-add-path="#{add_to_schedule_path(id: submission.id)}" data-remove-path="#{remove_from_schedule_path(id: submission.id)}")
                 %div.module-contents.schedule-module-contents
