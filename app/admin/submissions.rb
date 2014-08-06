@@ -98,9 +98,9 @@ ActiveAdmin.register Submission do
       f.input :track_id, as: :select, collection: Track.all.map {|t| [ t.name, t.id ]}, include_blank: false
       f.input :format, as: :select, collection: Submission::FORMATS, include_blank: true
       f.input :time_range, as: :select, label: 'Submitted Time Range', collection: Submission::TIME_RANGES, include_blank: true, input_html: { disabled: true }
-      f.input :start_day, as: :select, collection: Submission::DAYS, include_blank: true
+      f.input :start_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :start_hour, as: :select, collection: collection_for_hour_select, include_blank: false
-      f.input :end_day, as: :select, collection: Submission::DAYS, include_blank: true
+      f.input :end_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :venue
       f.input :title
