@@ -23,7 +23,10 @@ Denverstartupweek::Application.routes.draw do
   resources :sponsor_signups, only: :create
 
   get '/schedule', to: 'schedules#index', as: :schedules
+  get '/my-schedule', to: 'schedules#my_schedule', as: :my_schedule
   get '/schedule/:id', to: 'schedules#show', as: :schedule
+  post '/schedule/:id', to: 'schedules#create', as: :add_to_schedule
+  delete '/schedule/:id', to: 'schedules#destroy', as: :remove_from_schedule
 
   get '/auth/:provider/callback', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'

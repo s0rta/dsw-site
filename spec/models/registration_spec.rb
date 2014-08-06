@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Registration do
 
   it { should belong_to(:user) }
+  it { should have_many(:session_registrations).dependent(:destroy) }
+  it { should have_many(:sessions) }
   it { should validate_presence_of(:user) }
   it { should validate_presence_of(:contact_email) }
 

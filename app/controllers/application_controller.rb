@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :registered?
   helper_method :current_user
+  helper_method :current_registration
   helper_method :current_body_class
   helper_method :in_mercury_invasion?
 

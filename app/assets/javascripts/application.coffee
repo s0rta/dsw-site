@@ -13,6 +13,7 @@
 #= require components/sortable_submissions
 #= require components/autoscroller
 #= require components/schedule_track_filter
+#= require components/schedule_addable_modules
 
 # Lets get this party started..
 createBindable = ->

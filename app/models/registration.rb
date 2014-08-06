@@ -1,6 +1,8 @@
 class Registration < ActiveRecord::Base
 
   belongs_to :user
+  has_many :session_registrations, dependent: :destroy
+  has_many :submissions, through: :session_registrations
 
   attr_accessible :contact_email,
                   :year,
