@@ -5,9 +5,10 @@
     %section.section-container.width-constrained
       %h2.primary-heading Build your schedule for #{current_year}!
 
-      - unless registered?
-        %a.btn.btn-secondary.form-btn(href="#{new_registration_path}")<> Register
-        %a.btn.btn-primary.form-btn(href="/auth/linkedin?origin=#{schedules_path}") Login
+      - if signed_in? && !registered?
+        %a.btn.btn-secondary.form-btn(href="#{new_registration_path}")<> Register for DSW 2014
+      - if !signed_in?
+        %a.btn.btn-primary.form-btn(href="/auth/linkedin?origin=#{schedules_path}") Login and register for DSW 2014
 
       %div.p-copy
         Login or register now to start building your personal itinerary.
