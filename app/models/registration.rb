@@ -25,6 +25,12 @@ class Registration < ActiveRecord::Base
     ListSubscriptionJob.perform(contact_email)
   end
 
+  after_create :send_confirmation_email
+
+  def send_confirmation_email
+    ConfirmRegistrationJob.perform(self)
+  end
+
   def self.for_current_year
     where(year: Date.today.year)
   end
