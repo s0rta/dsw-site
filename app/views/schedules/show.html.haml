@@ -13,6 +13,8 @@
       %div.event-details<>
         %h3.event-details-heading Event Details
         %p.event-details-info
+          Presented by #{@session.submitter.name}
+          %br
           = human_time_range(@session)
           %br
           - if @session.venue
