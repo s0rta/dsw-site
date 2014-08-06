@@ -32,7 +32,6 @@ class dsw.DropSelect
   hide: ->
     @el.removeClass 'active'
     @removeDocumentListener()
-    false
 
 
   toggle: ->
