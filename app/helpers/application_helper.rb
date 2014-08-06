@@ -10,7 +10,7 @@ module ApplicationHelper
       HTML::Pipeline::AutolinkFilter
     ], context)
     result = pipeline.call content
-    result[:output]
+    result[:output].html_safe
   end
 
   def current_year

@@ -40,13 +40,13 @@ class Submission < ActiveRecord::Base
               'Workshop',
               'Social event' ]
 
-  DAYS =  [ 'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Weekend before',
-            'Weekend after' ]
+  DAYS = { 1 => 'Weekend before',
+           2 => 'Monday',
+           3 => 'Tuesday',
+           4 => 'Wednesday',
+           5 => 'Thursday',
+           6 => 'Friday',
+           7 => 'Weekend after' }
 
   TIME_RANGES = [ 'Early morning',
                   'Breakfast',
@@ -64,6 +64,13 @@ class Submission < ActiveRecord::Base
 
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :session_registrations, dependent: :destroy
+  has_many :user_registrations, through: :session_registrations,
+                                class_name: 'Registration',
+                                source: :registration
+  has_many :registrants, through: :user_registrations,
+                         class_name: 'User',
+                         source: :user
 
   validates :title, presence: true
   validates :description, presence: true
@@ -103,6 +110,14 @@ class Submission < ActiveRecord::Base
 
   def self.public
     where(state: %w(open_for_voting accepted confirmed))
+  end
+
+  def self.confirmed
+    where(state: 'confirmed')
+  end
+
+  def self.for_schedule
+    confirmed.where('start_day IS NOT NULL AND end_day IS NOT NULL')
   end
 
   def notify_track_chairs
@@ -148,5 +163,30 @@ class Submission < ActiveRecord::Base
   event :accept,              from: :open_for_voting,   to: :accepted
   event :reject,              to: :rejected
   event :confirm,             from: :accepted,          to: :confirmed
+
+  # Helpers
+
+  def has_time_set?
+    start_day &&
+    start_hour &&
+    end_day &&
+    end_hour
+  end
+
+  def human_location_name
+    if venue
+      venue.name
+    else
+      'Location TBA'
+    end
+  end
+
+  def human_start_day
+    DAYS[start_day]
+  end
+
+  def human_end_day
+    DAYS[end_day]
+  end
 
 end

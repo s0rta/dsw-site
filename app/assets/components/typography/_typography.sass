@@ -48,7 +48,7 @@ p,
   +font-size(15)
 
 .p-copy
-  margin: 1em 0
+  margin: 1em
 
 strong, b
   font-family: $sans-neue-family
@@ -56,6 +56,12 @@ strong, b
 .track-copy
   @extend strong
   +font-size(16)
+  &.blue
+    color: #7dc3fd
+
+.time-location-copy
+  @extend strong
+  +font-size(12)
   &.blue
     color: #7dc3fd
 

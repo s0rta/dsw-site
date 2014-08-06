@@ -1,0 +1,86 @@
+.schedule-tabs
+  text-align: center
+  margin-top: 40px
+  margin-left: -10px
+
+.schedule-tabs .btn
+  text-transform: uppercase
+  margin-bottom: 10px
+  margin-left: 10px
+  width: 13.5em
+  &.active
+    color: rgba(#f1f2f2, 0.5)
+    background-color: rgba(white, 0.1)
+
+.btn.btn-secondary.form-btn,
+.btn.btn-primary.form-btn
+  display: inline-block
+  padding: .75em
+  margin: 1em 0
+  width: 13em
+
+.schedule-header
+  text-align: left
+  padding: 1.5em
+  margin: 1.5em 0
+
+.schedule-module
+  text-align: left
+
+.schedule-module-contents
+  padding: 0
+
+.schedule-module-header
+  position: relative
+  padding: 1em 1em 1em 92px
+  height: 115px
+  overflow: hidden
+
+.schedule-module-header a:hover
+  color: white
+
+.schedule-module-header .dswacon
+  position: absolute
+  top: 16px
+  left: 16px
+
+.schedule-day
+  @extend %sans-ultra-bold
+  +font-size(18)
+
+.schedule-date
+  @extend %sans-light
+  +font-size(18)
+
+.schedule-module-footer
+  +font-size(16)
+  position: relative
+  background-color: #1c262e
+  padding: 1em 1em 1em 92px
+  height: 72px
+
+.schedule-time
+  @extend %sans-ultra-bold
+  color: $blue
+
+.schedule-module-footer .dswacon
+  position: absolute
+  top: 20px
+  left: 30px
+  font-size: 30px
+  &:before
+    @extend .dswacon-plus:before
+    color: $blue
+
+.schedule-selected .schedule-time
+  color: #d7df23
+
+.schedule-selected .schedule-module-footer .dswacon:before
+  @extend .dswacon-check:before
+  color: #d7df23
+
+
+@media (min-width: 75em)
+  .schedule-module
+    width: 24%
+
