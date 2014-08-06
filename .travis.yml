@@ -23,3 +23,7 @@ deploy:
   on:
     repo: modeset/denver-startup-week
     branch: master
+  run:
+    - "rake db:migrate"
+    - "rake db:seed"
+    - restart
