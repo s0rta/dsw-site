@@ -3,13 +3,13 @@ class SchedulesController < ApplicationController
   def index
     @sessions = Submission.for_current_year.
                            for_schedule.
-                           includes(:submitter, :track, :votes)
+                           includes(:venue, :submitter, :track, :votes)
   end
 
   def show
     @session = Submission.for_schedule.
       where(id: params[:id].to_i).
-      includes(:submitter, :track, comments: :user).
+      includes(:venue, :submitter, :track, comments: :user).
       first!
   end
 
@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
     @my_schedule = true
     @sessions = current_registration.submissions.for_current_year.
                            for_schedule.
-                           includes(:submitter, :track, :votes)
+                           includes(:venue, :submitter, :track, :votes)
     render action: :index
   end
 
