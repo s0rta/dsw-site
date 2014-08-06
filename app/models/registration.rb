@@ -19,6 +19,12 @@ class Registration < ActiveRecord::Base
     self.year ||= Date.today.year
   end
 
+  after_create :subscribe_to_list
+
+  def subscribe_to_list
+    ListSubscriptionJob.perform(contact_email)
+  end
+
   def self.for_current_year
     where(year: Date.today.year)
   end
