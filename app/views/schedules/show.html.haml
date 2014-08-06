@@ -38,6 +38,8 @@
                 = f.button :submit, 'Submit', class: 'btn btn-primary form-btn'
       %ol.event-comments
         %li.event-comment
+          - if @session.comments.empty?
+            No comments yet. Be the first!
           - @session.comments.each do |comment|
             %em.event-comment-heading= "#{comment.user.name} said:"
             = process_with_pipeline(comment.body)
