@@ -8,7 +8,8 @@
       %h1.primary-heading= @session.title
 
       %div.event-description<>
-        %div.p-copy= process_with_pipeline(@session.description)
+        - cache [ @session, 'schedule-show' ] do
+          %div.p-copy= process_with_pipeline(@session.description)
 
       %div.event-details<>
         %h3.event-details-heading Event Details
@@ -44,7 +45,8 @@
             No comments yet. Be the first!
           - @session.comments.each do |comment|
             %em.event-comment-heading= "#{comment.user.name} said:"
-            = process_with_pipeline(comment.body)
+            - cache [ comment, 'schedule-show' ] do
+              = process_with_pipeline(comment.body)
 
       = link_to 'Back to Schedule', schedules_path, class: 'btn back-to-schedule'
 
