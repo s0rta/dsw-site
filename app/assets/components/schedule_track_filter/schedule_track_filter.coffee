@@ -30,14 +30,21 @@ class dsw.ScheduleTrackFilter
   clicked: (e) =>
     e?.preventDefault()
     btn = $(e.target)
-    selector = ".#{@filterElementClass}[data-track='#{btn.data('track')}']"
-    if btn.hasClass('active')
-      btn.removeClass('active')
-      $(document).find(selector).show()
+    trackSessionSelector = ".#{@filterElementClass}[data-track='#{btn.data('track')}']"
+    nonTrackSessionSelector = ".#{@filterElementClass}:not([data-track='#{btn.data('track')}'])"
+    if !btn.hasClass('active') && !btn.siblings().is('.active')
+      btn.siblings().addClass('active')
+      $(document).find(nonTrackSessionSelector).hide()
+      $(document).find(trackSessionSelector).show()
+    else if !btn.hasClass('active') && btn.siblings().is('.active')
+      btn.siblings().removeClass('active')
+      $(document).find(nonTrackSessionSelector).show()
+      $(document).find(trackSessionSelector).show()
     else
-      btn.addClass('active')
-      $(document).find(selector).hide()
-
+      btn.removeClass('active')
+      btn.siblings().addClass('active')
+      $(document).find(nonTrackSessionSelector).hide()
+      $(document).find(trackSessionSelector).show()
 
 
 utensils.Bindable.register 'schedule-track-filter', dsw.ScheduleTrackFilter
