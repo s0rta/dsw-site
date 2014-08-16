@@ -22,7 +22,6 @@ gem 'cloudinary'
 gem 'simple_form'
 
 gem 'emma', github: 'myemma/EmmaRuby'
-gem 'httparty'
 
 gem 'omniauth'
 gem 'omniauth-linkedin'

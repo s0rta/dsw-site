@@ -397,7 +397,6 @@ DEPENDENCIES
   haml-rails
   honeypot-captcha
   html-pipeline
-  httparty
   jquery-rails
   jquery-rails-cdn
   lograge
