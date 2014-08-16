@@ -14,7 +14,10 @@
       %div.event-details<>
         %h3.event-details-heading Event Details
         %p.event-details-info
+          #{@session.human_start_day} #{formatted_start_date_for_index(@session.start_day, '%-m/%-d')}
+          %br
           = human_time_range(@session)
+          %br
           %br
           - if @session.venue
             = @session.venue.name
