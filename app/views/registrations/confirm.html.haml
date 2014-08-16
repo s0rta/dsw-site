@@ -12,13 +12,12 @@
         %br
         Be sure to check back often - we'll be announcing additional details about the week soon!
         %br
-        - if FeatureToggler.feedback_active?
-          Feedback for session ideas is currently open - #{link_to('check out the ideas', submissions_path).html_safe} and tell us what you think.
-          %br
-        Be sure to check out our schedule and #{link_to 'build your own schedule', schedules_path} of must-see events for the week.
-        %br
         If you have any questions, comments, or concerns, please <a href="/faq">check out the FAQ</a> or  <a href="mailto:info@denverstartupweek.org">email us</a>.
         %br
+
+      %div.p-copy#generic_copy
+        %a.btn.btn-primary(href="#{schedules_path}")<> Next Step: Build Your Schedule
+
 = render partial: 'layouts/shared/footer'
 = render partial: 'layouts/shared/flash_message'
 = render partial: 'layouts/shared/spinner'

@@ -22,6 +22,8 @@ feature 'Registering to attend' do
     fill_in 'registration_contact_email', with: 'test@example.com'
     click_button 'Submit'
     expect(page).to have_content('Thanks for registering!')
+    click_link 'Next Step: Build Your Schedule'
+    expect(current_path).to eq('/schedule')
   end
 
   scenario 'User tries to register when registrations are closed' do
