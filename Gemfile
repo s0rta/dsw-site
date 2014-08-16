@@ -74,11 +74,14 @@ group :development, :test do
   gem 'thin'
   gem 'pry-rails'
   gem 'rspec-rails'
-  gem 'shoulda-matchers'
+  gem 'teaspoon'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
-  gem 'teaspoon'
 end
 
 group :production do
