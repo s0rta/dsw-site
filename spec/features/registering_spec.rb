@@ -10,7 +10,7 @@ feature 'Registering to attend' do
     FeatureToggler.activate_registration!
   end
 
-  scenario '' do
+  scenario 'Registering to attend' do
     visit '/registration/new'
     click_link 'Sign in with LinkedIn to continue'
     find('button', text: 'Get Started', visible: true).click
