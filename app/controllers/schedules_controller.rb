@@ -1,9 +1,13 @@
 class SchedulesController < ApplicationController
 
+  respond_to :html
+  respond_to :json, only: :index
+
   def index
     @sessions = Submission.for_current_year.
                            for_schedule.
                            includes(:venue, :submitter, :track, :votes)
+    respond_with @sessions
   end
 
   def show

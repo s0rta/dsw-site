@@ -1,9 +1,20 @@
 class Venue < ActiveRecord::Base
 
-  attr_accessible :contact_email, :contact_name, :contact_phone, :description, :name, :address, :city, :state
+  attr_accessible :contact_email,
+                  :contact_name,
+                  :contact_phone,
+                  :description,
+                  :name,
+                  :address,
+                  :city,
+                  :state
 
   def address_for_google_maps
-    ([ address, city, state ] * ', ').gsub(' ','+')
+    combined_address.gsub(' ','+')
+  end
+
+  def combined_address
+    [ address, city, state ] * ', '
   end
 
 end

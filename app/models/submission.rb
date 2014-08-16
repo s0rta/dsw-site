@@ -171,4 +171,20 @@ class Submission < ActiveRecord::Base
     DAYS[end_day]
   end
 
+  def week_start
+    Date.new(2014, 9, 15)
+  end
+
+  def start_datetime
+    datetime = week_start + (start_day.to_i - 1).days
+    datetime += start_hour.hours if start_hour
+    datetime
+  end
+
+  def end_datetime
+    datetime = week_start + (end_day.to_i - 1).days
+    datetime += end_hour.hours if end_hour
+    datetime
+  end
+
 end

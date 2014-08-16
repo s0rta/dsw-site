@@ -36,6 +36,9 @@ gem 'gemoji'
 # State machines
 gem 'simple_states'
 
+# API
+gem 'active_model_serializers', '~> 0.8.0'
+
 # Production support
 gem 'utf8-cleaner'
 gem 'airbrake'
