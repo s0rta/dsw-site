@@ -8,4 +8,8 @@ module ScheduleHelper
     (Date.new(2014, 9, 15) + index.days).strftime(format)
   end
 
+  def registered_for_session?(submission)
+    current_registration.submission_ids.include?(submission.id)
+  end
+
 end

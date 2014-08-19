@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def current_registration
-    registrations.for_current_year.includes(:submissions).first
+    registrations.for_current_year.first
   end
 
 end
