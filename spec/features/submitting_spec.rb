@@ -32,14 +32,12 @@ feature 'Creating a submission' do
     expect(page).to have_content('Thanks!')
 
     # Confirmation to track chair
-    email = ActionMailer::Base.deliveries.first
+    email = ActionMailer::Base.deliveries.find { |e| e.to.include?('chair@example.com')}
     expect(email.subject).to eq('A new DSW submission has been received for the Bizness track')
-    expect(email.to).to include('chair@example.com')
 
     # Confirmation to submitter
-    email = ActionMailer::Base.deliveries.last
+    email = ActionMailer::Base.deliveries.find { |e| e.to.include?('test2@example.com')}
     expect(email.subject).to eq('Thanks for submitting a session proposal for Denver Startup Week!')
-    expect(email.to).to include('test2@example.com')
   end
 
   scenario 'User tries to submit a new idea when submissions are closed' do
