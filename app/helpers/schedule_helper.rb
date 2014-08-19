@@ -5,7 +5,7 @@ module ScheduleHelper
   end
 
   def formatted_start_date_for_index(index, format = '%B %-d, %Y')
-    (Date.new(2014, 9, 15) + index.days).strftime(format)
+    (Date.new(2014, 9, 15).at_beginning_of_day + index.days).strftime(format)
   end
 
   def registered_for_session?(submission)

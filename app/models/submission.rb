@@ -172,7 +172,7 @@ class Submission < ActiveRecord::Base
   end
 
   def week_start
-    Date.new(2014, 9, 15)
+    Date.new(2014, 9, 15).at_beginning_of_day
   end
 
   def start_datetime
