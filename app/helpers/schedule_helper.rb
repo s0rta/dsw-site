@@ -9,7 +9,7 @@ module ScheduleHelper
   end
 
   def registered_for_session?(submission)
-    current_registration.submission_ids.include?(submission.id)
+    registered? && current_registration.submission_ids.include?(submission.id)
   end
 
 end
