@@ -15,6 +15,7 @@ end
   'Tech'            => 'markup',
   'Manufacturing'   => 'factory',
   'Headline Events' => 'bulb',
+  'Basecamp'        => 'logo',
   'Social Events'   => 'social' }.each do |track_name, icon|
   t = Track.where(name: track_name).first_or_initialize
   t.icon = icon
