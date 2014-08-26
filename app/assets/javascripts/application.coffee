@@ -14,6 +14,7 @@
 #= require components/autoscroller
 #= require components/schedule_track_filter
 #= require components/schedule_addable_modules
+#= require components/event_detail
 
 # Lets get this party started..
 createBindable = ->

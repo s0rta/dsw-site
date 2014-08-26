@@ -29,6 +29,13 @@
           %span.dswacon.dswacon-people
           %span #{@session.registrants.count} People are Attending
 
+        %p.event-details-adder(class="#{'added' if registered_for_session?(@session)}" data-bindable="schedule-addable" data-add-path="#{add_to_schedule_path(id: @session.id)}" data-remove-path="#{remove_from_schedule_path(id: @session.id)}")
+          - if registered?
+            %a.btn.btn-primary.remove-btn Remove from my schedule
+            %a.btn.btn-primary.add-btn Add to my schedule
+          - elsif FeatureToggler.registration_active?
+            = link_to 'Register & Build Your Schedule', new_registration_path, class: 'btn btn-primary'
+
     - if @session.venue
       %iframe.location-map(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=#{@session.venue.address_for_google_maps}&zoom=19&key=AIzaSyAvjqf7BI97ZjJRQVpuDxT3zL0Jh9hnC5c")
     %section.section-container.module-form.event-comment-section
