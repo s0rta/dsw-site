@@ -20,10 +20,10 @@ class dsw.ScheduleAddable
 # PROTECTED #
 
   addListeners: ->
-    @el.on 'click', 'a', @clicked
+    @el.on 'click', 'a.add-btn, a.remove-btn', @clicked
 
   removeListeners: ->
-    @el.off 'click', 'a', @clicked
+    @el.off 'click', 'a.add-btn, a.remove-btn', @clicked
 
 
   clicked: (e) =>
