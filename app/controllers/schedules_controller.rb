@@ -33,7 +33,7 @@ class SchedulesController < ApplicationController
       includes(:submitter, :track, comments: :user).
       first!
     current_registration.submissions << submission unless current_registration.submissions.include?(submission)
-    head :no_content
+    render json: submission.session_registrations.count
   end
 
   def destroy
@@ -42,7 +42,7 @@ class SchedulesController < ApplicationController
       includes(:submitter, :track, comments: :user).
       first!
     current_registration.session_registrations.where(submission_id: submission.id).destroy_all
-    head :no_content
+    render json: submission.session_registrations.count
   end
 
 end

@@ -9,7 +9,7 @@ class dsw.ScheduleAddable
 
 
   initialize: ->
-    # No-op
+    @registrantCount = $('#registrant_count')
 
 # PUBLIC #
 
@@ -35,12 +35,15 @@ class dsw.ScheduleAddable
       module.removeClass('added')
       $.ajax
         type: 'DELETE'
+        dataType: 'json'
         url: module.data().removePath
+        success: (json) => @registrantCount.text("#{json} people are attending")
     else
       module.addClass('added')
       $.ajax
         type: 'POST'
         url: module.data().addPath
+        success: (json) => @registrantCount.text("#{json} people are attending")
 
 
 

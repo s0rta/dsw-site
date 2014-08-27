@@ -27,7 +27,7 @@
             Location TBA
         %p.event-details-attending
           %span.dswacon.dswacon-people
-          %span #{@session.registrants.count} People are Attending
+          %span#registrant_count #{@session.registrants.count} people are attending
 
         %p.event-details-adder(class="#{'added' if registered_for_session?(@session)}" data-bindable="schedule-addable" data-add-path="#{add_to_schedule_path(id: @session.id)}" data-remove-path="#{remove_from_schedule_path(id: @session.id)}")
           - if registered?
