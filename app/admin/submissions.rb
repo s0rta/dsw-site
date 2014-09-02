@@ -116,7 +116,8 @@ ActiveAdmin.register Submission do
   end
 
   sidebar :actions, only: [ :edit, :show ]  do
-    link_to 'View on site', submission
+    link_to 'View in panel picker', submission_path(submission)
+    link_to 'View in schedule', schedule_path(id: submission.id)
   end
 
   sidebar 'Status', except: :index do
