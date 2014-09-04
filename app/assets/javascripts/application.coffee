@@ -1,7 +1,10 @@
 #= require turbolinks
 #= require jquery_ujs
+#= require temporal
+
 #= require utensils/bindable
 #= require utensils/dismiss
+
 #= require components/ajax_voter
 #= require components/filter_bar
 #= require components/module_tab

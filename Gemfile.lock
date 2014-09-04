@@ -349,6 +349,9 @@ GEM
       celluloid (~> 0.14.1)
     teaspoon (0.7.9)
       railties (>= 3.2.5, < 5)
+    temporal-rails (0.2.3)
+      coffee-rails
+      railties (>= 3.2.5, < 5)
     thin (1.5.1)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -431,6 +434,7 @@ DEPENDENCIES
   spring-commands-rspec
   sucker_punch
   teaspoon
+  temporal-rails
   thin
   turbo-sprockets-rails3!
   turbolinks!
