@@ -116,8 +116,8 @@ ActiveAdmin.register Submission do
   end
 
   sidebar :actions, only: [ :edit, :show ]  do
-    link_to 'View in panel picker', submission_path(submission)
-    link_to 'View in schedule', schedule_path(id: submission.id)
+    para { link_to('View in panel picker', submission_path(submission)) }
+    para { link_to('View in schedule', schedule_path(id: submission.id)) }
   end
 
   sidebar 'Status', except: :index do
@@ -125,6 +125,28 @@ ActiveAdmin.register Submission do
   end
 
   sidebar :versionate, :partial => "admin/version", :only => :show
+
+  # Attendee export
+  sidebar 'Attendees', except: :index do
+    "#{submission.registrants.count} attending"
+  end
+
+  action_item :only => [ :edit, :show ] do
+    link_to 'Export attendee list', export_attendees_admin_submission_path(submission)
+  end
+
+  member_action :export_attendees, method: :get do
+    registrations = Submission.find(params[:id]).user_registrations.includes(:user)
+    csv_text = CSV.generate do |csv|
+      registrations.each do |registration|
+        csv << [ registration.user.name,
+                 registration.contact_email,
+                 registration.zip,
+                 registration.gender ]
+      end
+    end
+    render csv: csv_text
+  end
 
   show do
     attributes_table *default_attribute_table_rows
@@ -146,6 +168,7 @@ ActiveAdmin.register Submission do
       end
     end
   end
+
 
   # State machine actions
   action_item :only => :show do
