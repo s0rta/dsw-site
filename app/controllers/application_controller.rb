@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
   helper_method :current_body_class
   helper_method :in_mercury_invasion?
 
+  layout(lambda do |c|
+    if c.respond_to?(:current_page) && c.template_exists?(c.current_page.template, 'layouts')
+      c.current_page.template
+    else
+      'application'
+    end
+  end)
+
   protect_from_forgery
 
   private

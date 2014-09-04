@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Denver Startup Week 2014</title>
+	<!--[if lt IE 9]>
+        <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVA7_lzwSKYSjplSXGKbhGIaiSCjF1kC4"></script>
+  <%= javascript_include_tag :basecamp %>
+
+  <link rel="icon" type="image/png" href="favicon.ico">
+  <%= stylesheet_link_tag :basecamp %>
+</head>
+<body>
+	<div class="wrap-all-the-things">
+
+		<header class="main-head">
+			<div class="main-head__inner center">
+        <div class="logo"><img src="<%= asset_path 'basecamp/logo.png' %>" alt="Startup Week Basecamp Logo" /></div>
+				<div class="main-head__content">
+					<h2>Your Denver Startup Week Hub</h2>
+					<h2 class="blue">September 15 — 20, 2014</h2>
+					<div class="text">
+						<p>More than 2,000 DSW attendees visited Basecamp in 2013, and this year we're ready for more.</p>
+ 						<p>Basecamp 2014 offers a larger space and an expanded offering of keynote speakers, panelists and one-on-one mentor sessions, featuring CEOs, entrepreneurs, and developers from around Colorado and across the country. There will also be a media center, networking events, DJs, a ping pong tournament, food, coffee, (possibly a farmers market) and more!</p>
+						<h3>Basecamp – launched by Chase – the hub of Denver Startup Week 2014.</h3>
+						<p class="plus">Free &amp; open to all Denver Startup Week attendees</p>
+						<h3>8:00am-6:00pm daily 1515 Arapahoe Street</h3>
+						<div class="note">(at the corner of Arapahoe &amp; 16th St. Mall)</div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- Main Content -->
+		<section class="main-torso">
+
+			<!-- Image Slider -->
+			<div class="main-head__slider">
+				<div class="flexslider">
+					<ul class="slides">
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide1_large.jpg"><img src="<%= asset_path 'basecamp/slide1_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide2_large.jpg"><img src="<%= asset_path 'basecamp/slide2_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide3_large.jpg"><img src="<%= asset_path 'basecamp/slide3_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide4_large.jpg"><img src="<%= asset_path 'basecamp/slide4_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide5_large.jpg"><img src="<%= asset_path 'basecamp/slide5_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide6_large.jpg"><img src="<%= asset_path 'basecamp/slide6_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide7_large.jpg"><img src="<%= asset_path 'basecamp/slide7_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide8_large.jpg"><img src="<%= asset_path 'basecamp/slide8_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide9_large.jpg"><img src="<%= asset_path 'basecamp/slide9_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide10_large.jpg"><img src="<%= asset_path 'basecamp/slide10_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide11_large.jpg"><img src="<%= asset_path 'basecamp/slide11_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide12_large.jpg"><img src="<%= asset_path 'basecamp/slide12_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide13_large.jpg"><img src="<%= asset_path 'basecamp/slide13_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide14_large.jpg"><img src="<%= asset_path 'basecamp/slide14_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide15_large.jpg"><img src="<%= asset_path 'basecamp/slide15_250.jpg' %>" alt="" /></a></li>
+						<li><a class="fancybox" rel="group" href="images/basecamp/slide16_large.jpg"><img src="<%= asset_path 'basecamp/slide16_250.jpg' %>" alt="" /></a></li>
+					</ul>
+				</div>
+			</div>
+			<!-- End Image Slider -->
+
+			<!-- Basecamp Highlights -->
+			<div class="highlights">
+				<div class="highlights__inner">
+					<h1 class="center">Basecamp Highlights</h1>
+					<div class="highlight">
+						<div class="top">
+							<div class="title">Keynote Speakers</div>
+							<div class="time">Mornings &amp; Afternoons Daily</div>
+						</div>
+						<div class="bottom">
+							Hear from some of the biggest names and most engaging minds in the entrepreneurial world.
+						</div>
+					</div>
+					<div class="highlight">
+						<div class="top">
+							<div class="title">Mentor Hours</div>
+							<div class="time">10AM-Noon | 2PM-4PM Daily</div>
+						</div>
+						<div class="bottom">
+							Sign up for 20-minute one-on-one sessions to meet with top entrepreneurs and business leaders.
+							<div class="link">Sign up Below</div>
+						</div>
+					</div>
+					<div class="highlight">
+						<div class="top">
+							<div class="title">Leadership Spotlights</div>
+							<div class="time">Noon – 2PM Daily</div>
+						</div>
+						<div class="bottom">
+						Learn from successful entrepreneurs as they share their stories and answer your questions.
+						</div>
+					</div>
+					<div class="highlight">
+						<div class="top">
+							<div class="title">Café &amp; Lounge</div>
+							<div class="time">8AM – 6PM Daily</div>
+						</div>
+						<div class="bottom">
+							Drop in to work, relax, recharge and network in comfortable, dynamic atmosphere fueled by free lunches, high-speed wifi, coffee and more.
+						</div>
+					</div>
+					<div class="highlight">
+						<div class="top">
+							<div class="title">Happy Hours</div>
+							<div class="time">4PM – 6PM Daily</div>
+						</div>
+						<div class="bottom">
+							Meet up with DSW attendees each afternoon to sample some of what Colorado’s best brewers and distillers have to offer.
+						</div>
+					</div>
+					<div class="highlight">
+						<div class="top">
+							<div class="title">Special Events</div>
+							<div class="time">Check Schedule for Details</div>
+						</div>
+						<div class="bottom">
+							Lookout for the startup farmers market, morning yoga, a ping pong tourney, coffee cuppings, the annual startup crawl and more.
+						</div>
+					</div>
+					<div class="signup">
+						<div class="signup--text">
+							Click here to see detailed daily schedules and register for events
+						</div>
+						<div class="signup--btn">
+							<div class="btn-link">
+								<a target="_blank" href="http://www.denverstartupweek.org/basecamp" class="btn">Events</a>
+								<div class="btn-after"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Basecamp Highlights -->
+
+			<!-- Mentor Sessions -->
+      <%= render_region :dsw_basecamp_mentor_sessions, tag: 'div', html: { class: 'sessions' } do %>
+				<div class="sessions__inner">
+					<h1>Mentor Sessions</h1>
+					<p class="italic">Looking for some free advice? Our mentors are here to help.</p>
+					<div class="text">
+						<p>Colorado’s top entrepreneurs are volunteering their time and talent to meet with Denver Startup Week attendees. Sign up for a 20-minute, 1:1 meeting with mentors from all walks of the startup world. All mentor office hours will be held at Basecamp, 1201 16th Street, @ Larimer in Downtown Denver.</p><p> Mentor Office Hours are organized by the Entrepreneurs Foundation of Colorado --  a network of Colorado entrepreneurs whose companies share a common commitment to pledge a portion of founding equity or a portion of annual profits to the communities in which they reside. <a target="_blank" href="http://www.efcolorado.org">www.efcolorado.org</a></p>
+					</div>
+					<div class="mentors">
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Peter Adams</div>
+								<div class="title">Rockies Venture Club</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Bradley Bertchie</div>
+								<div class="title">Ascend ERP Cloud</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">James Brown</div>
+								<div class="title">Still Secure</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Bo Brustkern</div>
+								<div class="title">Acstone Partners</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Josh Dorsey</div>
+								<div class="title">Silicon Valley Bank</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Perry Evans</div>
+								<div class="title">Closely</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Andrew Fischer</div>
+								<div class="title">Choozle</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Ken Fugate</div>
+								<div class="title">Square 1 Bank</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Nicole Glaros</div>
+								<div class="title">TechStars</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Nicole Gravagna</div>
+								<div class="title">10.10.10</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Brian Grega</div>
+								<div class="title">Infinite Buyer</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Tom Higley</div>
+								<div class="title">Vokl</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Tom Keller</div>
+								<div class="title">NTB</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Charlie Kelly</div>
+								<div class="title">Silicon Valley Bank</div>
+							</a>
+						</div>
+
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Seth Levine</div>
+								<div class="title">Foundry Group</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Bart Lorang</div>
+								<div class="title">Full Contact</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Taylor McLemore</div>
+								<div class="title">Prediculous</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Jason Mendelson</div>
+								<div class="title">Foundry Group</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Chris Neumann</div>
+								<div class="title">DataHero</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Noah Pittard</div>
+								<div class="title">Cooley</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Mike Platt</div>
+							e<div class="title">Cooley</div>
+							</a>
+						</div>
+
+						<div class="mentor">
+							<a target="_blank" href="">
+								<div class="name">Jim Franklin</div>
+								<div class="title">SendGrid</div>
+							</a>
+						</div>
+						<div class="mentor">
+							<a class="mentor" target="_blank" href="">
+								<div class="name">Manny Ladis</div>
+								<div class="title">Dizzion</div>
+							</a>
+						</div>
+
+					</div>
+					<div class="signup">
+						<div class="signup--btn">
+							<div class="btn-link">
+								<a target="_blank" href="http://www.denverstartupweek.org/basecamp" class="btn">Sign up!</a>
+								<div class="btn-after"></div>
+							</div>
+						</div>
+						<div class="signup--text text--right">
+							<div><span class="bold">Schedule:</span> Monday-Friday, September 16-20</div>
+							<div><span class="bold">Monday-Friday:</span> 10:00am-12:00pm &amp; 2:00pm-4:00pm</div>
+						</div>
+					</div>
+				</div>
+      <%- end %>
+			<!-- End Mentor Sessions -->
+
+			<!-- Events and Twitter -->
+			<div class="social-events">
+				<div class="social__inner">
+					<div class="events">
+						<h1>Event Highlights</h1>
+						<div class="event">
+              <img src="<%= asset_path 'basecamp/event1.jpg' %>" alt="Bitcoin 2.0, it’s the technology stupid">
+							<div class="text">
+								<div class="title"><a target="_blank" href="">Bitcoin 2.0, it’s the technology stupid.</a></div>
+								<div class="info">
+									<div>9:00 AM - 11:00 AM on Monday, Sep 15, 2014</div>
+									<div>Modworks 110 16th St., Suite 1300</div>
+								</div>
+							</div>
+						</div>
+						<div class="event">
+              <img src="<%= asset_path 'basecamp/event2.jpg' %>" alt="Branding Your Startup for an Exit">
+							<div class="text">
+								<div class="title"><a target="_blank" href="">Branding Your Startup for an Exit</a></div>
+								<div class="info">
+									<div>12:00pm — 2:00pm on Monday, Sep 15, 2014</div>
+									<div>Infinite Monkey Theorem 3200 Larimer St</div>
+								</div>
+							</div>
+						</div>
+						<div class="event">
+              <img src="<%= asset_path 'basecamp/event3.jpg' %>" alt="Lean Product Development for Startups">
+							<div class="text">
+								<div class="title"><a target="_blank" href="">Lean Product Development for Startups</a></div>
+								<div class="info">
+									<div>1:00pm — 2:30pm on Monday, Sep 15, 2014</div>
+									<div>PaySimple 1515 Wynkoop, Ste 25</div>
+								</div>
+							</div>
+						</div>
+						<h4>Check out the full schedule of events!</h4>
+						<div class="btn-link">
+							<a target="_blank" href="http://www.denverstartupweek.org/basecamp" class="btn">Events</a>
+							<div class="btn-after"></div>
+						</div>
+					</div>
+					<div class="twitter">
+						<h1>The View From Basecamp</h1>
+						<!-- Replace this with a widget from the basecamp feed. -->
+						<!-- https://dev.twitter.com/docs/embedded-timelines : follow the "Create an embedded timeline" link -->
+						<a class="twitter-timeline" href="https://twitter.com/kblizeck" data-widget-id="506885698033426432">Tweets by @kblizeck</a>
+						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+					</div>
+				</div>
+			</div>
+			<!-- End Events and Twitter -->
+
+			<!-- YouTube -->
+			<div class="youtube">
+				<div class="youtube__inner">
+					<div class="text">
+						<h1>The View from Basecamp in 2013</h1>
+						<p>A preview of what’s to come at Basecamp during Denver Startup Week 2014</p>
+					</div>
+					<div class="video">
+						<div class="video__container">
+						<iframe width="560" height="315" src="//www.youtube.com/embed/XQs_0F9R-kc?modestbranding=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End YouTube -->
+
+			<!-- Google Map -->
+			<div class="map">
+				<div class="map__inner">
+					<div class="header">
+            <div class="logo"><img src="<%= asset_path 'basecamp/logo.png' %>" alt="Startup Week Basecamp Logo" /></div>
+						<div class="text"><span class="bold">1515 Arapahoe St, Denver, CO</span> (Corner of Arapahoe &amp; 16th St. Mall)</div>
+					</div>
+					<div id="map-canvas"></div>
+				</div>
+			</div>
+			<!-- End Google Map -->
+
+			<!-- Sponsors -->
+			<div class="sponsors">
+				<div class="sponsors__inner">
+					<h1 class="center">Denver Startup Week Sponsors</h1>
+          <div class="sponsor"><img src="<%= asset_path 'basecamp/Downtown.jpg' %>" alt="Downtown Denver Partnership, Inc."></div>
+          <div class="sponsor"><img src="<%= asset_path 'basecamp/CTA.jpg' %>" alt="Colorado Technology Association"></div>
+          <div class="sponsor"><img src="<%= asset_path 'basecamp/chase.jpg' %>" alt="Chase Bank"></div>
+				</div>
+			</div>
+			<!-- End Sponsors -->
+
+		</section> <!-- End of main content -->
+
+		<footer class="main-foot">
+			<div class="main-foot__inner">
+				<div class="left">
+					<div class="text">
+						<div class="heavy">BASECAMP</div>
+						<div>Denver Startup Week 2014</div>
+					</div>
+					<div class="social">
+						<div class="facebook">
+							<a target="_blank" href="https://www.facebook.com/DenverStartupWeek">
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+								<path d="M666,495H549.1c0,187.8,0,419,0,419H375.8c0,0,0-228.9,0-419h-82.4v-148h82.4v-95.8
+									c0-68.6,32.4-175.7,174.8-175.7L679,75.9v143.7c0,0-78,0-93.1,0c-15.2,0-36.8,7.6-36.8,40.3v87h132.1L666,495z"/>
+								</svg>
+							</a>
+						</div>
+						<div class="twitter">
+							<a target="_blank" href="https://twitter.com/denstartupweek">
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									 viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+								<path d="M897.8,291.1c0.4,8.8,0.6,17.6,0.6,26.5c0,270.7-206,582.8-582.8,582.8c-115.7,0-223.3-33.9-314-92
+									c16.1,1.8,32.4,2.8,48.9,2.8c96,0,184.3-32.7,254.4-87.6c-89.6-1.7-165.3-60.9-191.3-142.3c12.5,2.4,25.3,3.7,38.5,3.7
+									c18.7,0,36.8-2.6,53.9-7.2C112.4,559,41.7,476.2,41.7,376.9c0-0.9,0-1.7,0-2.6c27.7,15.4,59.2,24.6,92.8,25.6
+									c-55-36.7-91.1-99.4-91.1-170.5c0-37.5,10.1-72.7,27.7-103c101,124,252,205.5,422.2,214c-3.5-15-5.3-30.6-5.3-46.7
+									C488,180.7,579.7,89,692.9,89c58.9,0,112.1,24.9,149.5,64.7c46.6-9.2,90.5-26.2,130.1-49.7c-15.4,47.8-47.8,88-90.1,113.3
+									c41.4-4.9,80.9-15.9,117.6-32.2C972.6,226.1,937.9,262.2,897.8,291.1z"/>
+								</svg>
+							</a>
+						</div>
+						<div class="google">
+							<a target="_blank" href="https://plus.google.com/+Denverstartupweek">
+								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									 viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+								<g>
+									<polygon id="Plus" points="992.2,251.8 818.7,251.8 818.7,85.7 780.9,85.7 780.9,251.8 614.9,251.8 614.9,297
+										780.9,297 780.9,463.1 818.7,463.1 818.7,297 992.2,297 	"/>
+									<path id="g" d="M429.1,567.2c-23.4-16.6-68.2-56.9-68.2-80.6c0-27.8,7.9-41.4,49.7-74.1
+										c42.8-33.5,73.2-78.8,73.2-133.6c0-65.2-29-132.9-83.5-148h82.1l58-45.3c0,0-194.3,0-259.1,0c-116.1,0-225.5,88-225.5,189.9
+										c0,104.1,79.2,188.2,197.3,188.2c8.2,0,16.2-0.2,24-0.7c-7.7,14.7-13.1,31.2-13.1,48.4c0,28.9,15.6,52.4,35.3,71.6
+										c-14.9,0-29.2,0.4-44.9,0.4c-143.9,0-254.6,91.6-254.6,186.6c0,93.6,121.4,152.1,265.2,152.1c164,0,254.6-93.1,254.6-186.6
+										C519.7,660.6,497.5,615.6,429.1,567.2z M290.7,437.4c-66.7-2-130.2-74.7-141.7-162.3c-11.5-87.6,33.2-154.7,100-152.7
+										c66.7,2,130.2,72.3,141.7,160C402.2,370,357.4,439.4,290.7,437.4z M264.5,880.9c-99.4,0-171.2-63-171.2-138.6
+										c0-74.1,89.1-135.8,188.5-134.7c23.2,0.2,44.8,4,64.5,10.3c54,37.5,92.7,58.7,103.6,101.5c2.1,8.7,3.2,17.6,3.2,26.7
+										C453,821.8,404.3,880.9,264.5,880.9z"/>
+								</g>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="right">
+					Site Design by <a target="_blank" rel="nofollow" href="http://www.zenman.com">Zenman Web Design</a>
+				</div>
+			</div>
+	    </footer><!-- // main-foot -->
+	<!-- sticky footer will fail if anything goes between the closing footer and .wrap -->
+	</div><!-- // wrap-all-the-things -->
+</body>
+</html>

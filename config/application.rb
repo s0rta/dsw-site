@@ -57,7 +57,8 @@ module Denverstartupweek
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.paths << 'app/assets'
-    config.assets.precompile += %w( cmsimple.js cmsimple.css mercury.css polyfill.js dinosaur.css respond.proxy.js respond-proxy.html jquery.js active_admin.css active_admin.js active_admin/print.css)
+    config.assets.paths << 'app/assets/fonts'
+    config.assets.precompile += %w( cmsimple.js cmsimple.css mercury.css polyfill.js dinosaur.css respond.proxy.js respond-proxy.html jquery.js active_admin.css active_admin.js active_admin/print.css basecamp.css basecamp.js)
 
     # Set up Emoji
     config.assets.paths << Emoji.images_path
