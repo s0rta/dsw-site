@@ -6,9 +6,9 @@
       %h2.primary-heading Build your schedule for #{current_year}!
 
       - if signed_in? && !registered?
-        %a.btn.btn-secondary.form-btn(href="#{new_registration_path}")<> Register for DSW 2014
+        %a.btn.btn-secondary.form-btn(href="#{register_path}")<> Register for DSW 2014
       - if !signed_in?
-        %a.btn.btn-primary.form-btn(href="/auth/linkedin?origin=#{schedules_path}") Login and register for DSW 2014
+        = link_to 'Login and register for DSW 2014', new_user_session_path, class: 'btn btn-primary form-btn'
 
       %div.p-copy
         Please note that the schedule builder is for your convenience only and does not guarantee a seat at the event.

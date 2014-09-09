@@ -1,5 +1,8 @@
 Denverstartupweek::Application.routes.draw do
 
+  devise_for :users, controllers: { registrations: 'users/registrations',
+                                    omniauth_callbacks: 'users/omniauth_callbacks' }
+
   resource :registration, only: [ :new, :create ] do
     collection do
       get :closed
@@ -28,10 +31,7 @@ Denverstartupweek::Application.routes.draw do
   post '/schedule/:id', to: 'schedules#create', as: :add_to_schedule
   delete '/schedule/:id', to: 'schedules#destroy', as: :remove_from_schedule
 
-  get '/auth/:provider/callback', to: 'sessions#create'
-  delete '/signout', to: 'sessions#destroy'
-
-  get '/register', to: 'registrations#new'
+  get '/register', to: 'registrations#new', as: :register
 
   ActiveAdmin.routes(self)
 

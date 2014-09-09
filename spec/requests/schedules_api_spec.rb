@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'Schedule API', type: :request do
 
-  let(:submitter) { User.create!(name: 'Test User', email: 'test@example.com') }
+  let(:submitter) { User.create!(name: 'Test User', email: 'test@example.com', password: 'password') }
   let(:track) { Track.create!(name: 'Tech') }
   let!(:submission) do
     submitter.submissions.create!(track_id: track.id,
@@ -11,9 +11,13 @@ describe 'Schedule API', type: :request do
                                   contact_email: 'test@example.com')
   end
 
-  it 'allows retrieval of schedule data via a simple JSON API' do
+
+  before do
     submission.update_attributes({ start_day: 1, end_day: 1 }, as: :admin)
     submission.update_column(:state, 'confirmed')
+  end
+
+  it 'allows retrieval of schedule data via a simple JSON API' do
     get '/schedule.json'
     json = ActiveSupport::JSON.decode(response.body)
     expect(json.size).to eq(1)

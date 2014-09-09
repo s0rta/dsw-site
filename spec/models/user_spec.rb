@@ -11,12 +11,20 @@ describe User do
   it { should validate_uniqueness_of(:email) }
 
   it { should allow_mass_assignment_of(:email) }
-  it { should allow_mass_assignment_of(:linkedin_uid) }
+  it { should allow_mass_assignment_of(:password) }
+  it { should allow_mass_assignment_of(:password_confirmation) }
+  it { should allow_mass_assignment_of(:remember_me) }
+  it { should allow_mass_assignment_of(:uid) }
+  it { should allow_mass_assignment_of(:provider) }
   it { should allow_mass_assignment_of(:name) }
   it { should allow_mass_assignment_of(:description) }
 
   it { should allow_mass_assignment_of(:email).as(:admin) }
-  it { should allow_mass_assignment_of(:linkedin_uid).as(:admin) }
+  it { should allow_mass_assignment_of(:password).as(:admin) }
+  it { should allow_mass_assignment_of(:password_confirmation).as(:admin) }
+  it { should allow_mass_assignment_of(:remember_me).as(:admin) }
+  it { should allow_mass_assignment_of(:uid).as(:admin) }
+  it { should allow_mass_assignment_of(:provider).as(:admin) }
   it { should allow_mass_assignment_of(:name).as(:admin) }
   it { should allow_mass_assignment_of(:description).as(:admin) }
   it { should allow_mass_assignment_of(:is_admin).as(:admin) }
@@ -24,6 +32,7 @@ describe User do
   describe 'creating from an auth hash' do
     let(:auth_hash) do
       {
+        provider: 'linkedin',
         uid: 'abc123',
         info: {
           name: 'Test User',
@@ -34,22 +43,22 @@ describe User do
     end
 
     it 'creates a new user when none exists' do
-      user = User.find_or_create_from_auth_hash(auth_hash)
+      user = User.from_omniauth(auth_hash)
       expect(user).to eq(User.first)
-      expect(user.linkedin_uid).to eq('abc123')
+      expect(user.provider).to eq('linkedin')
+      expect(user.uid).to eq('abc123')
       expect(user.name).to eq('Test User')
       expect(user.email).to eq('test@example.com')
-      expect(user.description).to eq('Some test guy')
     end
 
     it 'finds and updates a preexisting user' do
-      original = User.create! linkedin_uid: 'abc123', name: 'Test User', email: 'test@example.com'
-      user = User.find_or_create_from_auth_hash(auth_hash)
+      original = User.create! uid: 'abc123', provider: 'linkedin', name: 'Test User', email: 'test@example.com', password: 'password'
+      user = User.from_omniauth(auth_hash)
       expect(user.id).to eq(original.id)
-      expect(user.linkedin_uid).to eq('abc123')
+      expect(user.uid).to eq('abc123')
+      expect(user.provider).to eq('linkedin')
       expect(user.name).to eq('Test User')
       expect(user.email).to eq('test@example.com')
-      expect(user.description).to eq('Some test guy')
     end
 
   end
