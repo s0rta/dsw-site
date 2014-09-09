@@ -37,7 +37,7 @@
             = link_to 'Register & Build Your Schedule', new_registration_path, class: 'btn btn-primary'
 
     - if @session.venue
-      %iframe.location-map(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=#{@session.venue.address_for_google_maps}&zoom=19&key=AIzaSyAvjqf7BI97ZjJRQVpuDxT3zL0Jh9hnC5c")
+      %iframe.location-map(frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=#{URI.encode(@session.venue.address_for_google_maps)}&zoom=19&key=AIzaSyAvjqf7BI97ZjJRQVpuDxT3zL0Jh9hnC5c")
     %section.section-container.module-form.event-comment-section
       %h2.primary-heading Comments
       - if registered?
