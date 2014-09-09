@@ -80,6 +80,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'teaspoon'
+  gem 'quiet_assets'
 end
 
 group :test do
