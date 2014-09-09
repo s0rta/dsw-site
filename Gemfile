@@ -27,6 +27,7 @@ gem 'emma', github: 'myemma/EmmaRuby'
 
 gem 'omniauth'
 gem 'omniauth-linkedin'
+gem 'devise'
 gem 'responders'
 
 gem 'html-pipeline', require: 'html/pipeline'

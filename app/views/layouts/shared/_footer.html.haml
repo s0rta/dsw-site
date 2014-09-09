@@ -24,7 +24,7 @@
                                { controller: 'submissions', action: 'feedback_closed' } ]
           - if FeatureToggler.registration_active?
             - unless signed_in? && registered?
-              - n.item 'Register', main_app.new_registration_path, data: { 'no-turbolink' => true }
+              - n.item 'Register', main_app.register_path, data: { 'no-turbolink' => true }
             - n.item 'Schedule', main_app.schedules_path, data: { 'no-turbolink' => true }
           - if current_user && current_user.is_admin?
             - n.item 'Manage &rarr;'.html_safe, main_app.admin_root_path, data: { 'no-turbolink' => true }

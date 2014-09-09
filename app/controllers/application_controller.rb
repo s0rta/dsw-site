@@ -28,27 +28,15 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_linkedin_and_admin!
-    if current_user && !current_user.is_admin?
-      redirect_to '/'
-    elsif !current_user
-      redirect_to '/auth/linkedin'
-    end
+    redirect_to root_path unless current_user && current_user.is_admin?
   end
 
   def in_mercury_invasion?
     params[:mercury_frame] && (params[:mercury_frame] == true || params[:mercury_frame] == 'true')
   end
 
-  def current_user
-    session[:current_user_id] && User.where(id: session[:current_user_id]).first
-  end
-
   def current_registration
     current_user && current_user.current_registration
-  end
-
-  def signed_in?
-    session[:current_user_id].present?
   end
 
   def current_body_class
@@ -62,5 +50,16 @@ class ApplicationController < ActionController::Base
   def user_for_paper_trail
     current_user || 'Unknown user'
   end
+
+  def after_sign_in_path_for(user)
+    if user.is_admin?
+      admin_root_path
+    elsif user.registered?
+      schedules_path
+    else
+      register_path
+    end
+  end
+
 
 end

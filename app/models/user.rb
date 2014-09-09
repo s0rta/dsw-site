@@ -1,14 +1,32 @@
 class User < ActiveRecord::Base
 
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable,
+         :registerable,
+         :recoverable,
+         :trackable,
+         :validatable,
+         :omniauthable,
+         omniauth_providers: [ :linkedin ]
+
   default_scope order('LOWER(name) ASC')
 
   attr_accessible :email,
-                  :linkedin_uid,
+                  :password,
+                  :password_confirmation,
+                  :remember_me,
+                  :uid,
+                  :provider,
                   :name,
                   :description
 
   attr_accessible :email,
-                  :linkedin_uid,
+                  :password,
+                  :password_confirmation,
+                  :remember_me,
+                  :uid,
+                  :provider,
                   :name,
                   :description,
                   :is_admin, as: :admin
@@ -22,17 +40,20 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :registrations, dependent: :destroy
 
-  def self.find_or_create_from_auth_hash(auth_hash)
-    user = User.where(linkedin_uid: auth_hash[:uid]).first_or_initialize
-    user.update_attributes  linkedin_uid: auth_hash[:uid],
-                            name:         auth_hash[:info][:name],
-                            email:        auth_hash[:info][:email],
-                            description:  auth_hash[:info][:description]
-    user
+  def self.from_omniauth(auth_hash)
+    User.where(uid: auth_hash[:uid], provider: auth_hash[:provider]).first_or_create do |u|
+      u.name = auth_hash[:info][:name]
+      u.email = auth_hash[:info][:email]
+      u.password = Devise.friendly_token[0,20]
+    end
   end
 
   def current_registration
     registrations.for_current_year.first
+  end
+
+  def registered?
+    current_registration.present?
   end
 
 end
