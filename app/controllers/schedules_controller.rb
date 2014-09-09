@@ -3,6 +3,8 @@ class SchedulesController < ApplicationController
   respond_to :html
   respond_to :json, only: :index
 
+  before_filter :authenticate_user!, only: :my_schedule
+
   def index
     @sessions = Submission.for_current_year.
                            for_schedule.
