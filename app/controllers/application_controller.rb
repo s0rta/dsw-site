@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_linkedin_and_admin!
-    redirect_to root_path unless current_user && current_user.is_admin?
+    redirect_to main_app.cmsimple_path unless current_user && current_user.is_admin?
   end
 
   def in_mercury_invasion?
