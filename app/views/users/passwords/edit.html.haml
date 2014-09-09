@@ -1,0 +1,34 @@
+%section.main
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %hr
+
+    %section.section-container.module-form
+      %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="false" data-activate="0")
+        %div.form-carousel-inner
+          = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+            %article.form-pane
+              %div.form-contents
+                %div.dswacon.dswacon-bulb.dswacon-combo-primary
+                %h3.primary-heading Reset your password
+
+                - flash.each do |key, message|
+                  %div.notification(class="notification-#{key}")= message
+
+                %form.dsw-form(role="form")
+                  %fieldset
+                    = f.input :reset_password_token, as: :hidden
+                    = f.full_error :reset_password_token
+                    = f.input :password, required: true, placeholder: 'New Password', label: false, error: true, autofocus: true
+                    = f.input :password_confirmation, required: true, placeholder: 'Confirm your new password', label: false, error: true, autofocus: true
+
+              = f.button :submit, 'Change my password', class: 'btn btn-primary form-btn'
+
+              %div.p-copy
+                = render "users/shared/links"
+        %div.carousel-controls
+
+= render partial: 'layouts/shared/footer'
+= render partial: 'layouts/shared/flash_message'
+= render partial: 'layouts/shared/spinner'
