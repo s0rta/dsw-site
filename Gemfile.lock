@@ -193,6 +193,7 @@ GEM
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     i18n (0.6.11)
+    icalendar (2.1.2)
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
@@ -406,6 +407,7 @@ DEPENDENCIES
   haml-rails
   honeypot-captcha
   html-pipeline
+  icalendar
   jquery-rails
   jquery-rails-cdn
   lograge

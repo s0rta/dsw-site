@@ -31,6 +31,12 @@
                   %li
                     = link_to 'View My Schedule', my_schedule_path, data: {'allow-default' => true }
 
+      - if @my_schedule
+        %div.p-copy
+          = link_to 'Save schedule to Google Calendar', "https://www.google.com/calendar/render?cid=#{schedule_feed_url(id: current_registration.calendar_token, format: :ics)}"
+          &nbsp; | &nbsp;
+          = link_to 'Download schedule for Outlook/iCal', schedule_feed_path(id: current_registration.calendar_token, format: :ics)
+
       %nav.schedule-tabs(data-bindable="schedule-track-filter" data-filter-element-class="schedule-module")<>
         - Track.all.each do |t|
           %button.btn(href="#" data-track="#{t.name}")<>= t.name

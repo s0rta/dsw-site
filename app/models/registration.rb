@@ -17,6 +17,7 @@ class Registration < ActiveRecord::Base
 
   after_initialize do
     self.year ||= Date.today.year
+    self.calendar_token ||= SecureRandom.hex(25)
   end
 
   after_create :subscribe_to_list

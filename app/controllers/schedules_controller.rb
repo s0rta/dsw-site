@@ -3,7 +3,7 @@ class SchedulesController < ApplicationController
   respond_to :html
   respond_to :json, only: :index
 
-  before_filter :authenticate_user!, only: :my_schedule
+  before_filter :authenticate_user!, only: [ :my_schedule, :create, :destroy ]
 
   def index
     @sessions = Submission.for_current_year.
@@ -27,6 +27,33 @@ class SchedulesController < ApplicationController
                            for_schedule.
                            includes(:venue, :submitter, :track)
     render action: :index
+  end
+
+  def feed
+    registration = Registration.where(calendar_token: params[:id]).first!
+    @sessions = registration.submissions.for_current_year.
+                           for_schedule.
+                           includes(:venue, :submitter, :track)
+    respond_to do |format|
+      format.ics do
+        calendar = Icalendar::Calendar.new
+        @sessions.each do |submission|
+          event = Icalendar::Event.new
+          event.dtstart = submission.start_datetime
+          event.dtend = submission.end_datetime
+          event.summary = submission.title
+          event.description = "#{submission.description}\n\nMore details: #{schedule_url(id: submission.id)}"
+          event.location = submission.human_location_name
+          event.ip_class = 'PUBLIC'
+          event.created = submission.created_at
+          event.last_modified = submission.updated_at
+          event.uid = event.url = schedule_url(id: submission.id)
+          calendar.add_event(event)
+        end
+        calendar.publish
+        render text: calendar.to_ical
+      end
+    end
   end
 
   def create

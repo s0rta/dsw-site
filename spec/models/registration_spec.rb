@@ -14,4 +14,8 @@ describe Registration do
     expect(Registration.new.year).to eq(Date.today.year)
   end
 
+  it 'defaults its calendar_token to a random value' do
+    expect(Registration.new.calendar_token).not_to be_empty
+  end
+
 end

@@ -30,6 +30,7 @@ Denverstartupweek::Application.routes.draw do
   get '/schedule/:id', to: 'schedules#show', as: :schedule
   post '/schedule/:id', to: 'schedules#create', as: :add_to_schedule
   delete '/schedule/:id', to: 'schedules#destroy', as: :remove_from_schedule
+  get '/schedule/:id/feed', to: 'schedules#feed', as: :schedule_feed
 
   get '/register', to: 'registrations#new', as: :register
 

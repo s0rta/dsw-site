@@ -187,4 +187,8 @@ class Submission < ActiveRecord::Base
     datetime
   end
 
+  def to_ics
+    event
+  end
+
 end

@@ -36,6 +36,8 @@ gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
 
+gem 'icalendar'
+
 # State machines
 gem 'simple_states'
 
