@@ -38,9 +38,15 @@ class SchedulesController < ApplicationController
       format.ics do
         calendar = Icalendar::Calendar.new
         @sessions.each do |submission|
+          event_start = submission.start_datetime
+          event_end = submission.end_datetime
+          tzid = submission.start_datetime.time_zone.tzinfo.identifier
+          tz = TZInfo::Timezone.get(tzid)
+          timezone = tz.ical_timezone(event_start)
+          calendar.add_timezone(timezone)
           event = Icalendar::Event.new
-          event.dtstart = submission.start_datetime
-          event.dtend = submission.end_datetime
+          event.dtstart = Icalendar::Values::DateTime.new(event_start, 'tzid' => tzid)
+          event.dtend = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
           event.summary = submission.title
           event.description = "#{submission.description}\n\nMore details: #{schedule_url(id: submission.id)}"
           event.location = submission.human_location_name
