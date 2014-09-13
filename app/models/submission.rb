@@ -176,13 +176,13 @@ class Submission < ActiveRecord::Base
   end
 
   def start_datetime
-    datetime = week_start + (start_day.to_i - 1).days
+    datetime = week_start + (start_day.to_i - 2).days
     datetime += start_hour.hours if start_hour
     datetime
   end
 
   def end_datetime
-    datetime = week_start + (end_day.to_i - 1).days
+    datetime = week_start + (end_day.to_i - 2).days
     datetime += end_hour.hours if end_hour
     datetime
   end
