@@ -3,8 +3,7 @@ class NotificationsMailer < ActionMailer::Base
   include ScheduleHelper
   helper ScheduleHelper
 
-  default from: 'info@denverstartupweek.org',
-          reply_to: 'info@denverstartupweek.org'
+  default from: 'Denver Startup Week <info@denverstartupweek.org>'
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
