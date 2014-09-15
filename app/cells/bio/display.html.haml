@@ -3,6 +3,6 @@
     %img.bio-img(src="#{@image.presence || 'http://placehold.it/100x100'}" data-snippet-image='image' alt="#{@full_name}" width="100" height="100")
   %div.module-details-cell
     %h3.module-heading= @full_name
-    %div.bio-copy= @company
-    %div.bio-copy= @title
+    %div.bio-copy= @company.presence || '&nbsp;'.html_safe
+    %div.bio-copy= @title.presence || '&nbsp;'.html_safe
     %div.bio-copy= @copy
