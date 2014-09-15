@@ -1,4 +1,8 @@
 class NotificationsMailer < ActionMailer::Base
+
+  include ScheduleHelper
+  helper ScheduleHelper
+
   default from: 'info@denverstartupweek.org',
           reply_to: 'info@denverstartupweek.org'
 
@@ -54,4 +58,12 @@ class NotificationsMailer < ActionMailer::Base
     mail to: @registration.contact_email,
       subject: "You are registered for Denver Startup Week #{Date.today.year}"
   end
+
+  def notify_of_daily_schedule(registration, day)
+    @day = day - 2
+    @registration = registration
+    @sessions = @registration.submissions.where(start_day: day).order('start_hour ASC')
+    mail to: @registration.contact_email, subject: "Your Denver Startup Week Schedule for #{formatted_start_date_for_index(@day, '%A %-m/%-d')}"
+  end
+
 end

@@ -58,7 +58,7 @@ module Denverstartupweek
     config.assets.enabled = true
     config.assets.paths << 'app/assets'
     config.assets.paths << 'app/assets/fonts'
-    config.assets.precompile += %w( cmsimple.js cmsimple.css mercury.css polyfill.js dinosaur.css respond.proxy.js respond-proxy.html jquery.js active_admin.css active_admin.js active_admin/print.css basecamp.css basecamp.js)
+    config.assets.precompile += %w( cmsimple.js cmsimple.css mercury.css polyfill.js dinosaur.css respond.proxy.js respond-proxy.html jquery.js active_admin.css active_admin.js active_admin/print.css basecamp.css basecamp.js daily_schedule_email.css)
 
     # Set up Emoji
     config.assets.paths << Emoji.images_path

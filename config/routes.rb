@@ -1,5 +1,9 @@
 Denverstartupweek::Application.routes.draw do
 
+  if Rails.env.development?
+    mount MailPreview => 'mailers'
+  end
+
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 

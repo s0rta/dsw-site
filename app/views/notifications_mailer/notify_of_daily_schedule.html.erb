@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <!-- If you delete this meta tag, the ground will open and swallow you. -->
+  <meta name="viewport" content="width=device-width" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Denver Startup Week</title>
+  <%= stylesheet_link_tag 'daily_schedule_email' %>
+</head>
+
+<body bgcolor="#FFFFFF" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0">
+
+<!-- HEADER -->
+<table class="head-wrap" bgcolor="#415464">
+  <tr>
+    <td></td>
+    <td class="header container" align="">
+
+      <!-- /content -->
+      <div class="content">
+        <table bgcolor="#415464" >
+          <tr>
+            <td><%= image_tag 'daily_schedule_email/dsw_200x50.png' %></td>
+            <td align="right"><h6 class="collapse">Your Daily Schedule for <%= formatted_start_date_for_index(@day, '%A, %b %-d') %></h6></td>
+          </tr>
+        </table>
+      </div><!-- /content -->
+
+    </td>
+    <td></td>
+  </tr>
+</table><!-- /HEADER -->
+
+<!-- BODY -->
+<table class="body-wrap" bgcolor="">
+  <tr>
+    <td></td>
+    <td class="container" align="" bgcolor="#FFFFFF">
+
+      <!-- content -->
+      <div class="content">
+        <table>
+          <tr>
+            <td>
+
+              <h1>Denver Startup Week is here!</h1>
+              <p class="lead">
+                Can you believe it? After months of anticipation and planning, Denver Startup Week 2014 is finally here! To help you plan your day and make the most of the week, we'll be sending you a daily summary with a list of the events you've put on your <a href="<%= my_schedule_url %>">personal schedule</a>.
+              </p>
+
+              <!-- A Real Hero (and a real human being) -->
+              <p><%= image_tag 'daily_schedule_email/kickoff.jpg' %></p><!-- /hero -->
+              <p>If you have any questions, comments or concerns throughout the week, please feel free to stop by Basecamp at 16th &amp; Arapahoe or reach out to us at <a href="mailto:info@denverstartupweek.org">info@denverstartupweek.org</a></p>
+            </td>
+          </tr>
+        </table>
+      </div><!-- /content -->
+
+      <!-- content -->
+      <div class="content"><table bgcolor="">
+        <tr>
+          <td>
+
+            <!-- Callout Panel -->
+            <p class="callout">Remember to pick up your official Denver Startup Week wristband at #ChaseBasecamp, located at 16th &amp; Arapahoe, after 11:00 am on Monday. <br /><%= link_to 'Check out #ChaseBasecamp &raquo;'.html_safe, 'http://www.denverstartupweek.org/basecamp' %></p><!-- /callout panel -->
+
+          </td>
+        </tr>
+      </table></div><!-- /content -->
+
+
+      <% @sessions.each do |submission| %>
+        <!-- content -->
+        <div class="content">
+
+          <table bgcolor="">
+            <tr>
+              <td class="small" width="20%" style="vertical-align: top; padding-right:10px;"><%= image_tag "daily_schedule_email/#{submission.track.icon}.png" %></td>
+              <td>
+                <h4><%= submission.title %><small> <%= human_time_range(submission) %></small></h4>
+                <p class=""><%= submission.description.truncate(200, separator: ' ') %></p>
+
+                <%= link_to 'Event Details &raquo;'.html_safe, schedule_url(submission), class: 'btn' %>
+              </td>
+            </tr>
+          </table>
+
+        </div><!-- /content -->
+      <%- end %>
+
+
+      <!-- content -->
+      <div class="content">
+        <table bgcolor="">
+          <tr>
+            <td>
+
+              <!-- social & contact -->
+              <table bgcolor="" class="social" width="100%">
+                <tr>
+                  <td>
+
+                    <!--- column 1 -->
+                    <div class="column">
+                      <table bgcolor="" cellpadding="" align="left">
+                    <tr>
+                      <td>
+
+                        <h5 class="">Connect with Us:</h5>
+                        <p class="">
+                          <a href="https://www.facebook.com/DenverStartupWeek" class="soc-btn fb">Facebook</a>&nbsp;
+                          <a href="https://twitter.com/DENStartupWeek" class="soc-btn tw">Twitter</a>
+                      </td>
+                    </tr>
+                  </table><!-- /column 1 -->
+                    </div>
+
+                    <!--- column 2 -->
+                    <div class="column">
+                      <table bgcolor="" cellpadding="" align="left">
+                    <tr>
+                      <td>
+
+                        <h5 class="">Contact Info:</h5>
+                        <p>
+                          Email: <strong><a href="mailto:info@denverstartupweek.org">info@denverstartupweek.org</a></strong>
+                        </p>
+                      </td>
+                    </tr>
+                  </table><!-- /column 2 -->
+                    </div>
+
+                    <div class="clear"></div>
+
+                  </td>
+                </tr>
+              </table><!-- /social & contact -->
+
+            </td>
+          </tr>
+        </table>
+      </div><!-- /content -->
+
+
+    </td>
+    <td></td>
+  </tr>
+</table><!-- /BODY -->
+
+<!-- FOOTER -->
+<table class="footer-wrap">
+  <tr>
+    <td></td>
+    <td class="container">
+
+        <!-- content -->
+        <%# <div class="content"> %>
+          <%# <table> %>
+            <%# <tr> %>
+              <%# <td align="center"> %>
+                <%# <p> %>
+                  <%# <a href="#">Terms</a> | %>
+                  <%# <a href="#">Privacy</a> | %>
+                  <%# <a href="#"><unsubscribe>Unsubscribe</unsubscribe></a> %>
+                <%# </p> %>
+              <%# </td> %>
+            <%# </tr> %>
+          <%# </table> %>
+        <%# </div>[> /content <] %>
+
+    </td>
+    <td></td>
+  </tr>
+</table><!-- /FOOTER -->
+
+</body>
+</html>
