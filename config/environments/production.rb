@@ -74,4 +74,7 @@ Denverstartupweek::Application.configure do
   # Limit log noise
   config.lograge.enabled = true
 
+  # Disable the spoofing filter
+  config.action_dispatch.ip_spoofing_check = false
+
 end
