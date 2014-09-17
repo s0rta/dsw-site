@@ -72,4 +72,11 @@ class NotificationsMailer < ActionMailer::Base
     mail to: @registration.contact_email, subject: "Your Denver Startup Week Schedule for #{formatted_start_date_for_index(@day, '%A %-m/%-d')}"
   end
 
+  def notify_of_wednesday_daily_schedule(registration)
+    @day = 2
+    @registration = registration
+    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
+    mail to: @registration.contact_email, subject: "Your Denver Startup Week Schedule for #{formatted_start_date_for_index(@day, '%A %-m/%-d')}"
+  end
+
 end
