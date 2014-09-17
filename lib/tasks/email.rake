@@ -1,6 +1,6 @@
 namespace :email do
 
-  task :monday_schedule => :env do
+  task :monday_schedule => :environment do
     Registration.joins(:submissions).
       where(submissions: { start_day: 2 }).
       having('COUNT(submissions.*) > 0').
@@ -9,7 +9,7 @@ namespace :email do
       end
   end
 
-  task :tuesday_schedule => :env do
+  task :tuesday_schedule => :environment do
     Registration.joins(:submissions).
       where(submissions: { start_day: 3 }).
       having('COUNT(submissions.*) > 0').
@@ -18,7 +18,7 @@ namespace :email do
       end
   end
 
-  task :wednesday_schedule => :env do
+  task :wednesday_schedule => :environment do
     Registration.joins(:submissions).
       where(submissions: { start_day: 4 }).
       having('COUNT(submissions.*) > 0').
