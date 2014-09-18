@@ -27,4 +27,13 @@ namespace :email do
       end
   end
 
+  task :thursday_schedule => :environment do
+    Registration.joins(:submissions).
+      where(submissions: { start_day: 5 }).
+      having('COUNT(submissions.*) > 0').
+      group('registrations.id').each do |registration|
+        NotificationsMailer.notify_of_thursday_daily_schedule(registration).deliver!
+      end
+  end
+
 end
