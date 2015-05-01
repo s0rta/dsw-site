@@ -8,9 +8,9 @@
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
-    %title= content_for(:title).presence || @page.try(:browser_title) || "Denver Startup Week"
-    %meta(name="description" content="#{content_for(:description).presence || @page.try(:description) || 'CirrusMD'}")
-    %meta(name="keywords" content="#{content_for(:keywords).presence || @page.try(:keywords) || 'CirrusMD'}")
+    %title= content_for(:title).presence || @page.try(:browser_title) || 'Denver Startup Week'
+    %meta(name="description" content="#{content_for(:description).presence || @page.try(:description) || 'Denver Startup Week'}")
+    %meta(name="keywords" content="#{content_for(:keywords).presence || @page.try(:keywords) || 'Denver Startup Week'}")
     %meta(name="author" content="Mode Set")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta(name="imagetoolbar" content="no")
