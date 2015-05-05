@@ -71,7 +71,7 @@ Denverstartupweek::Application.configure do
   # config.assets.cache_store = :dalli_store
 
   # Set the default AM host
-  config.action_mailer.default_url_options = { host: "www.denverstartupweek.org" }
+  config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_HOST'] }
 
   # Limit log noise
   config.lograge.enabled = true
