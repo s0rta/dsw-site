@@ -86,12 +86,12 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   # Rails 3.2 needs test-unit
-  gem 'test-unit', '~> 3.0'
   gem 'teaspoon'
   gem 'quiet_assets'
 end
 
 group :test do
+  gem 'test-unit', '~> 3.0'
   gem 'shoulda-matchers', require: false
   gem 'capybara'
   gem 'selenium-webdriver'
