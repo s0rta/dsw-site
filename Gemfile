@@ -85,6 +85,8 @@ group :development, :test do
   gem 'thin'
   gem 'pry-rails'
   gem 'rspec-rails'
+  # Rails 3.2 needs test-unit
+  gem 'test-unit', '~> 3.0'
   gem 'teaspoon'
   gem 'quiet_assets'
 end
