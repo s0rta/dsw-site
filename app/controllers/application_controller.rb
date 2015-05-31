@@ -56,8 +56,10 @@ class ApplicationController < ActionController::Base
       admin_root_path
     elsif user.registered?
       schedules_path
-    else
+    elsif FeatureToggler.registration_active?
       register_path
+    else
+      new_submission_path
     end
   end
 
