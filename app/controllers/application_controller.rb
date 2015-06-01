@@ -58,7 +58,7 @@ class ApplicationController < ActionController::Base
       schedules_path
     elsif FeatureToggler.registration_active?
       register_path
-    else
+    elsif FeatureToggler.submission_active?
       new_submission_path
     end
   end
