@@ -5,6 +5,7 @@ ruby '2.2.2'
 gem 'rails', '~> 3.2.19'
 gem 'rake'
 gem 'pg'
+gem 'minitest'
 
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
