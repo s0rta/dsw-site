@@ -142,7 +142,7 @@ class Submission < ActiveRecord::Base
 
   event :place_on_hold,       to: :on_hold
   event :open_for_voting,     to: :open_for_voting
-  event :accept,              from: :open_for_voting,   to: :accepted
+  event :accept,              to: :accepted
   event :reject,              to: :rejected
   event :confirm,             from: :accepted,          to: :confirmed
 
