@@ -52,14 +52,18 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    if user.is_admin?
-      admin_root_path
-    elsif user.registered?
+    if user.registered?
       schedules_path
     elsif FeatureToggler.registration_active?
       register_path
     elsif FeatureToggler.submission_active?
       new_submission_path
+    elsif FeatureToggler.feedback_active?
+      submissions_path
+    elsif user.is_admin?
+      admin_root_path
+    else
+      root_path
     end
   end
 
