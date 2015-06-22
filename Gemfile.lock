@@ -238,6 +238,7 @@ GEM
       subexec (~> 0.2.1)
     mini_portile (0.6.0)
     multi_json (1.11.0)
+    multi_fetch_fragments (0.0.17)
     multi_xml (0.5.3)
     navigasmic (1.0.4)
       railties (~> 3.2)
@@ -436,6 +437,7 @@ DEPENDENCIES
   memcachier
   mercury-rails!
   meta_search (>= 1.1.0.pre)
+  multi_fetch_fragments
   navigasmic
   newrelic_rpm
   omniauth
