@@ -103,7 +103,6 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'unicorn'
-  gem 'gctools'
   gem 'lograge'
   gem 'memcachier'
   gem 'dalli'

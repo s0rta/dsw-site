@@ -174,7 +174,6 @@ GEM
       rack
     formtastic (2.2.1)
       actionpack (>= 3.0)
-    gctools (0.2.3)
     gemoji (1.5.0)
     github-markdown (0.6.5)
     haml (4.0.5)
@@ -423,7 +422,6 @@ DEPENDENCIES
   dotenv-rails
   emma!
   font_assets
-  gctools
   gemoji
   github-markdown
   haml-rails
