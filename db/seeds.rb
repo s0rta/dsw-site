@@ -10,10 +10,12 @@ unless Cmsimple::Page.where(is_root: true).first
   page.publish!
 end
 
-{ 'Business'        => 'graph',
+{ 'Founder'         => 'bulb',
+  'Growth'          => 'Graph',
   'Design'          => 'pen',
-  'Tech'            => 'markup',
-  'Manufacturing'   => 'factory',
+  'Product'          => 'pen',
+  'Developer'       => 'markup',
+  'Maker'           => 'factory',
   'Headline Events' => 'bulb',
   'Basecamp'        => 'logo',
   'Social Events'   => 'social' }.each do |track_name, icon|
