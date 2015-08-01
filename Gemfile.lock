@@ -479,6 +479,3 @@ DEPENDENCIES
   unicorn
   utensils!
   utf8-cleaner
-
-BUNDLED WITH
-   1.10.6
