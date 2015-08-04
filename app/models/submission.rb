@@ -137,11 +137,13 @@ class Submission < ActiveRecord::Base
           :on_hold,
           :open_for_voting,
           :accepted,
+          :waitlisted,
           :confirmed,
           :rejected
 
   event :place_on_hold,       to: :on_hold
   event :open_for_voting,     to: :open_for_voting
+  event :waitlist,            to: :waitlisted
   event :accept,              to: :accepted
   event :reject,              to: :rejected
   event :confirm,             from: :accepted,          to: :confirmed

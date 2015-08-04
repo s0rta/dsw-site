@@ -231,6 +231,18 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  member_action :waitlist, method: :post do
+    submission = Submission.find(params[:id])
+    submission.waitlist!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item :only => [ :edit, :show ] do
+    if submission.open_for_voting?
+      link_to('Waitlist', waitlist_admin_submission_path(submission), method: :post)
+    end
+  end
+
   batch_action :open_for_voting do |submissions|
     Submission.find(submissions).each do |submission|
       submission.open_for_voting!
@@ -248,6 +260,13 @@ ActiveAdmin.register Submission do
   batch_action :reject do |submissions|
     Submission.find(submissions).each do |submission|
       submission.reject!
+    end
+    redirect_to admin_submissions_path
+  end
+
+  batch_action :waitlist do |submissions|
+    Submission.find(submissions).each do |submission|
+      submission.waitlist!
     end
     redirect_to admin_submissions_path
   end
