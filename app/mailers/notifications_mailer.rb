@@ -52,6 +52,15 @@ class NotificationsMailer < ActionMailer::Base
          subject: 'Your session proposal for Denver Startup Week'
   end
 
+  def notify_of_submission_waitlisting(submission)
+    @submission = submission
+    mail to: @submission.contact_email,
+         subject: 'Your session proposal for Denver Startup Week',
+         from: @submission.track.email_alias,
+         reply_to: @submission.track.email_alias,
+         cc: @submission.track.email_alias
+  end
+
   def confirm_registration(registration)
     @registration = registration
     mail to: @registration.contact_email,
