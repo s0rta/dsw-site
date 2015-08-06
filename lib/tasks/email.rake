@@ -17,7 +17,7 @@ namespace :email do
   end
 
   task :notify_of_waitlisting => :environment do
-    Submission.for_current_year.where(state: 'waitlisted').limit(1).each do |submission|
+    Submission.for_current_year.where(state: 'waitlisted').each do |submission|
       Rails.logger.info "Sending waitlisted notification to submission #{submission.id}"
       NotificationsMailer.notify_of_submission_waitlisting(submission ).deliver!
       submission.update_column :notes, submission.notes + "\nSent waitlisting e-mail on #{Date.today.to_s(:long)}"
