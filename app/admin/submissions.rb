@@ -90,6 +90,7 @@ ActiveAdmin.register Submission do
   filter :end_day, as: :select, collection: Submission::DAYS
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
   filter :format, as: :select, collection: Submission::FORMATS
+  filter :state, as: :select, collection: Submission.states
 
   form do |f|
     f.inputs do
