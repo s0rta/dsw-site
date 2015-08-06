@@ -4,7 +4,7 @@ namespace :email do
     Submission.for_current_year.where(state: 'accepted').each do |submission|
       Rails.logger.info "Sending acceptance notification to submission #{submission.id}"
       NotificationsMailer.notify_of_submission_acceptance(submission ).deliver!
-      submission.update_column notes: submission.notes + "\nSent acceptance e-mail on #{Date.today.to_s(:long)}"
+      submission.update_column :notes, submission.notes + "\nSent acceptance e-mail on #{Date.today.to_s(:long)}"
     end
   end
 
@@ -12,7 +12,7 @@ namespace :email do
     Submission.for_current_year.where(state: 'rejected').each do |submission|
       Rails.logger.info "Sending rejection notification to submission #{submission.id}"
       NotificationsMailer.notify_of_submission_rejection(submission ).deliver!
-      submission.update_column notes: submission.notes + "\nSent rejection e-mail on #{Date.today.to_s(:long)}"
+      submission.update_column :notes, submission.notes + "\nSent rejection e-mail on #{Date.today.to_s(:long)}"
     end
   end
 
@@ -20,7 +20,7 @@ namespace :email do
     Submission.for_current_year.where(state: 'waitlisted').limit(1).each do |submission|
       Rails.logger.info "Sending waitlisted notification to submission #{submission.id}"
       NotificationsMailer.notify_of_submission_waitlisting(submission ).deliver!
-      submission.update_column notes: submission.notes + "\nSent waitlisting e-mail on #{Date.today.to_s(:long)}"
+      submission.update_column :notes, submission.notes + "\nSent waitlisting e-mail on #{Date.today.to_s(:long)}"
     end
   end
 
