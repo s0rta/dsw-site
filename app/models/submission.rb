@@ -175,7 +175,7 @@ class Submission < ActiveRecord::Base
   end
 
   def week_start
-    ActiveSupport::TimeZone.new('America/Denver').local(2014, 9, 15).at_beginning_of_day
+    ActiveSupport::TimeZone.new('America/Denver').local(2015, 9, 27).at_beginning_of_day
   end
 
   def start_datetime
