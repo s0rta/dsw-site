@@ -84,6 +84,7 @@ ActiveAdmin.register Submission do
   filter :description
   filter :track
   filter :venue
+  filter :venue, as: :select, collection: Venue.alphabetical
   filter :format
   filter :submitter
   filter :start_day, as: :select, collection: Submission::DAYS
@@ -104,7 +105,7 @@ ActiveAdmin.register Submission do
       f.input :start_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :end_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
-      f.input :venue
+      f.input :venue_id, as: :select, collection: Venue.alphabetical.map {|v| [ v.name, v.id ]}, include_blank: true
       f.input :title
       f.input :description
       f.input :location

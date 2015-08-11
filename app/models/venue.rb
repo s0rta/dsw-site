@@ -9,6 +9,10 @@ class Venue < ActiveRecord::Base
                   :city,
                   :state
 
+  def self.alphabetical
+    order(:name)
+  end
+
   def address_for_google_maps
     combined_address.gsub(' ','+')
   end
