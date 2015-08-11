@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
     elsif user.is_admin?
       main_app.admin_root_path
     else
-      main_app.root_path
+      main_app.cmsimple_path
     end
   end
 
