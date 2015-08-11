@@ -29,7 +29,7 @@
                 %div.drop-select(data-filterable="drop-select" data-action="filter")
                   %button.drop-toggle Filter by: <span class="tagged-as"></span><span class="drop-caret"></span>
                   %ul.drop-menu.menu-filter(role="menu" data-filterable="menu-filter")
-                    - Track.all.each do |t|
+                    - Track.in_display_order.each do |t|
                       %li(data-tag="track:#{t.name}")<
                         %a(href="#")= t.name
 
