@@ -146,7 +146,7 @@ class Submission < ActiveRecord::Base
   event :waitlist,            to: :waitlisted
   event :accept,              to: :accepted
   event :reject,              to: :rejected
-  event :confirm,             from: :accepted,          to: :confirmed
+  event :confirm,             to: :confirmed
 
   # Helpers
 
