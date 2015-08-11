@@ -5,7 +5,7 @@ module ScheduleHelper
   end
 
   def formatted_start_date_for_index(index, format = '%B %-d, %Y')
-    (ActiveSupport::TimeZone.new('America/Denver').local(2014, 9, 15).at_beginning_of_day + index.days).strftime(format)
+    (ActiveSupport::TimeZone.new('America/Denver').local(2015, 9, 28).at_beginning_of_day + index.days).strftime(format)
   end
 
   def registered_for_session?(submission)
