@@ -1,6 +1,7 @@
 %section.main
   %div.landing-photo{:style => "background-image: url(\"/assets/landing_2014/background#{(1..10).to_a.sample}.jpg\")"}
   %section.content
+    = render partial: 'layouts/shared/navigation'
     %header.masthead.masthead-offset
       %div.dsw-logo
         %span.dsw-logotype Denver Startup <span>Week</span>
