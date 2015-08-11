@@ -33,6 +33,7 @@ class Submission < ActiveRecord::Base
                   :volunteers_needed,
                   :start_hour,
                   :end_hour,
+                  :state,
                   :submitter_id, as: :admin
 
   FORMATS = [ 'Presentation',
