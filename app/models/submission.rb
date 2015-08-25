@@ -1,5 +1,7 @@
 class Submission < ActiveRecord::Base
 
+  WEEK_START = ActiveSupport::TimeZone.new('America/Denver').local(2015, 9, 28).at_beginning_of_day
+
   has_paper_trail
 
   attr_accessible :start_day,
@@ -174,18 +176,14 @@ class Submission < ActiveRecord::Base
     DAYS[end_day]
   end
 
-  def week_start
-    ActiveSupport::TimeZone.new('America/Denver').local(2015, 9, 27).at_beginning_of_day
-  end
-
   def start_datetime
-    datetime = week_start + (start_day.to_i - 2).days
+    datetime = WEEK_START + (start_day.to_i - 2).days
     datetime += start_hour.hours if start_hour
     datetime
   end
 
   def end_datetime
-    datetime = week_start + (end_day.to_i - 2).days
+    datetime = WEEK_START + (end_day.to_i - 2).days
     datetime += end_hour.hours if end_hour
     datetime
   end

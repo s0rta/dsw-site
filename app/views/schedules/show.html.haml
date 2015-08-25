@@ -14,7 +14,7 @@
       %div.event-details<>
         %h3.event-details-heading Event Details
         %p.event-details-info
-          #{@session.human_start_day} #{formatted_start_date_for_index(@session.start_day - 2, '%-m/%-d')}
+          #{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}
           %br
           = human_time_range(@session)
           %br
