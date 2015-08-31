@@ -1,0 +1,37 @@
+%section.main
+  %div.landing-photo-container
+    = image_tag "landing_2014/background#{(1..9).to_a.sample}.jpg", class: "landing-photo"
+  %section.content
+    = render partial: 'layouts/shared/navigation'
+    = render partial: 'layouts/shared/masthead'
+    %section.landing-banner
+      %article.teaser-header
+        %h1 September 28 - October 2, 2015
+      %article.teaser-copy
+        %p Innovation is everywhere. Bringing it to life takes the skills and drive of an entire team founders, developers, product managers, designers, marketers, sales teams, and makers. Denver Startup Week is where every member of that team can come to learn, grow, and be ready to take on the next challenge.
+        %p Each of our tracks is geared towards one of these roles, with workshops, keynotes, and panels that will help you grow yourself and grow your startup.
+        %p And best of all, it’s free to attend! You won't find a better opportunity anywhere.
+        %p Attend Denver Startup Week and take the next step in scaling up.
+        .button-container
+          = link_to 'Register Now', main_app.register_path, class: 'btn'
+      %article.teaser-announce
+        %h1 Announcements
+        %div.teaser-announce-header
+          %h2
+            Keynote Speaker Announced
+            %span &#73;
+            %span.date August 30, 2015
+        %p.teaser-announce-copy
+          Lorem ipsum dolere sit amet nonummy consecuter es quid.
+          Lorem ipsum dolere sit amet nonummy consecuter es quid.
+          Lorem ipsum dolere sit amet nonummy consecuter es quid.
+          Lorem ipsum dolere sit amet nonummy consecuter es quid.
+          Lorem ipsum dolere sit amet nonummy consecuter es quid.
+          Lorem ipsum dolere sit amet nonummy consecuter es quid.
+          Lorem ipsum dolere amet nonummy consecuter es.
+          .teaser-announce-buttons
+            %a(href="#") &lt; Previous
+            %span &#73;
+            %a(href="#") Next &gt;
+
+= render partial: 'layouts/shared/footer'
