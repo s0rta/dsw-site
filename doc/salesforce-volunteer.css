@@ -1,0 +1,47 @@
+html, button, input, select, textarea {
+  color: #c8cdd2;
+  font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue","Helvetica","Arial","Lucida Grande",sans-serif;
+  font-size: 0.9375rem;
+}
+
+.cssForm {
+  background-color: transparent;
+}
+
+.cssForm input[type=submit] {
+  background-color: #3599ed;
+  border: 0;
+  color: #fff;
+  text-align: center;
+  padding: 1.125em 1.625em;
+
+}
+
+.cssLabelsColumnColumn {
+  width: 150px;
+  text-align: right;
+  vertical-align: center;
+  padding-right: 1em;
+
+}
+
+.cssInputFieldsColumn {
+  width: 100%;
+  padding: 10px;
+  vertical-align: top;
+  border: none;
+  border-radius: 5px;
+}
+
+.cssInputFields {
+  background-color:    #677683;
+  border-color: #677683;
+}
+
+.cssTextArea {
+  width:300px;
+}
+
+.multiSelectPickListCell a img {
+  width: 20px;
+}
