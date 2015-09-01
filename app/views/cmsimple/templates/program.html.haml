@@ -9,12 +9,12 @@
       %div.p-copy#generic_copy(data-mercury="full")
         = render_region "generic_copy" do
           Coming Soon
-      - 6.times do
+      - 6.times do |i|
         %h3.secondary-heading(data-mercury="full")><
-          = render_region "generic_heading" do
+          = render_region "generic_heading_#{i}" do
             Page Heading
         %div.p-copy#generic_copy(data-mercury="full")
-          = render_region "generic_copy" do
+          = render_region "generic_copy_#{i}" do
             Coming Soon
 = render partial: 'layouts/shared/footer'
 = render partial: 'layouts/shared/flash_message'
