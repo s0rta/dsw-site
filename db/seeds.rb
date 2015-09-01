@@ -12,8 +12,8 @@ end
 
 { 'Founder'         => 'bulb',
   'Growth'          => 'Graph',
-  'Design'          => 'pen',
-  'Product'          => 'pen',
+  'Designer'        => 'pen',
+  'Product'         => 'pen',
   'Developer'       => 'markup',
   'Maker'           => 'factory',
   'Headline Events' => 'bulb',
