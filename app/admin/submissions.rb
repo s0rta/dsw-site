@@ -70,6 +70,9 @@ ActiveAdmin.register Submission do
     column :volunteers_needed
     column :budget_needed
     column :year
+    column :registrants do |submission|
+      submission.registrants.size
+    end
     column :votes do |submission|
       submission.votes.size
     end
