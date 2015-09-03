@@ -66,6 +66,7 @@ ActiveAdmin.register Submission do
     column :created_at
     column :updated_at
     column :contact_email
+    column :estimated_size
     column :volunteers_needed
     column :budget_needed
     column :year
