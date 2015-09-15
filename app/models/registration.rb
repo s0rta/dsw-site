@@ -23,7 +23,7 @@ class Registration < ActiveRecord::Base
   after_create :subscribe_to_list
 
   def subscribe_to_list
-    ListSubscriptionJob.perform(contact_email)
+    ListSubscriptionJob.perform(contact_email, registered_years: user.registrations.map(&:year).sort.map(&:to_s))
   end
 
   after_create :send_confirmation_email
