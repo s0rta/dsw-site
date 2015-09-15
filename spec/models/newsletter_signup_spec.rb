@@ -10,6 +10,8 @@ describe NewsletterSignup do
     NewsletterSignup.create! email: 'test@example.com',
                              first_name: 'Test',
                              last_name: 'User'
-    expect(ListSubscriptionJob).to have_received(:perform).with('test@example.com', 'Test', 'User')
+    expect(ListSubscriptionJob).to have_received(:perform).with('test@example.com',
+                                                                first_name: 'Test',
+                                                                last_name: 'User')
   end
 end
