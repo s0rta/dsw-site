@@ -10,7 +10,9 @@ describe ListSubscriptionJob, job: true do
                                                                        first_name: 'Test',
                                                                        last_name: 'User'
                                                                       })
-    ListSubscriptionJob.perform('test@example.com', { first_name: 'Test', last_name: 'User' })
+    ListSubscriptionJob.perform('test@example.com',
+                                first_name: 'Test',
+                                last_name: 'User')
   end
 
 end

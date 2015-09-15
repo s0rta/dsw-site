@@ -22,7 +22,6 @@ describe Registration do
     expect(Registration.new.calendar_token).not_to be_empty
   end
 
-
   context 'subscribing to mailing lists' do
     let(:user) do
       User.create! name: 'Test User',
@@ -33,13 +32,16 @@ describe Registration do
 
     it 'subscribes automatically on creation' do
       user.registrations.create! contact_email: 'test@example.com', year: 2015
-      expect(ListSubscriptionJob).to have_received(:perform).with('test@example.com', registered_years: [ '2015' ])
+      expect(ListSubscriptionJob).to have_received(:perform).with('test@example.com',
+                                                                  registered_years: [ '2015' ])
     end
 
     it 'sends multiple registration years if applicable' do
       user.registrations.create! contact_email: 'test@example.com', year: 2015
       user.registrations.create! contact_email: 'test@example.com', year: 2016
-      expect(ListSubscriptionJob).to have_received(:perform).with('test@example.com', registered_years: [ '2015', '2016' ])
+      expect(ListSubscriptionJob).to have_received(:perform).with('test@example.com',
+                                                                  registered_years: [ '2015',
+                                                                                      '2016' ])
     end
   end
 
