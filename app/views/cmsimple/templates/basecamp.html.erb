@@ -1,740 +1,443 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Denver Startup Week 2014</title>
-	<!--[if lt IE 9]>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Denver Startup Week 2015</title>
+  <!--[if lt IE 9]>
         <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVA7_lzwSKYSjplSXGKbhGIaiSCjF1kC4"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVA7_lzwSKYSjplSXGKbhGIaiSCjF1kC4"></script>
   <%= javascript_include_tag :basecamp %>
 
   <link rel="icon" type="image/png" href="favicon.ico">
   <%= stylesheet_link_tag :basecamp %>
 </head>
 <body>
-	<div class="wrap-all-the-things">
+  <div class="wrap-all-the-things">
 
-		<header class="main-head">
-			<div class="main-head__inner center">
+    <header class="main-head">
+      <div class="main-head__inner center">
         <div class="logo"><img src="<%= asset_path 'basecamp/logo.png' %>" alt="Startup Week Basecamp Logo" /></div>
-				<div class="main-head__content">
-					<h2>Your Denver Startup Week Hub</h2>
-					<h2 class="blue">September 15 — 20, 2014</h2>
-					<div class="text">
-						<p>More than 2,000 DSW attendees visited Basecamp in 2013, and this year we're ready for more.</p>
- 						<p>Basecamp 2014 offers a larger space and an expanded offering of keynote speakers, panelists and one-on-one mentor sessions, featuring CEOs, entrepreneurs, and developers from around Colorado and across the country. There will also be a media center, networking events, DJs, a ping pong tournament, food, coffee, (possibly a farmers market) and more!</p>
-						<h3>Basecamp – launched by Chase – the hub of Denver Startup Week 2014.</h3>
-						<p class="plus">Free &amp; open to all Denver Startup Week attendees</p>
-						<h3>8:00am-6:00pm daily 1515 Arapahoe Street</h3>
-						<div class="note">(at the corner of Arapahoe &amp; 16th St. Mall)</div>
-					</div>
-				</div>
-			</div>
-		</header>
+        <div class="main-head__content">
+          <h2>Your Denver Startup Week Hub</h2>
+          <h2 class="blue">September 28 — October 2, 2015</h2>
+          <div class="text">
+            <p>Since 2013, Basecamp, launched by Chase, has been the entrepreneurial hub and epicenter for all Denver Startup Week attendees.  Basecamp will return this year at its same location in the heart of Downtown Denver at Arapahoe and 16th Street Mall, located at Ashford University’s Denver Online Center on the first floor of 1515 Arapahoe Street. Expect an exciting line-up of entrepreneurs and innovators to hit the Basecamp stage during Denver Startup Week, including Ryan Martens of Rally Software and Pledge 1% and Brad Feld of Techstars and The Foundry Group. Additional details about Basecamp activities will be released in the coming weeks.</p>
+            <h3>Basecamp – launched by Chase – the hub of Denver Startup Week 2015.</h3>
+            <p class="plus">Free &amp; open to all Denver Startup Week attendees</p>
+            <h3>8:00am-6:00pm daily 1515 Arapahoe Street</h3>
+            <div class="note">(at the corner of Arapahoe &amp; 16th St. Mall)</div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-		<!-- Main Content -->
-		<section class="main-torso">
+    <!-- Main Content -->
+    <section class="main-torso">
 
-			<!-- Image Slider -->
-			<div class="main-head__slider">
-				<div class="flexslider">
-					<ul class="slides">
+      <!-- Image Slider -->
+      <div class="main-head__slider">
+        <div class="flexslider">
+          <ul class="slides">
             <li><a class="fancybox" rel="group" href="images/basecamp/slide1_large.jpg"><img src="<%= asset_path 'basecamp/slide1_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide2_large.jpg"><img src="<%= asset_path 'basecamp/slide2_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide3_large.jpg"><img src="<%= asset_path 'basecamp/slide3_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide4_large.jpg"><img src="<%= asset_path 'basecamp/slide4_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide5_large.jpg"><img src="<%= asset_path 'basecamp/slide5_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide6_large.jpg"><img src="<%= asset_path 'basecamp/slide6_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide7_large.jpg"><img src="<%= asset_path 'basecamp/slide7_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide8_large.jpg"><img src="<%= asset_path 'basecamp/slide8_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide9_large.jpg"><img src="<%= asset_path 'basecamp/slide9_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide10_large.jpg"><img src="<%= asset_path 'basecamp/slide10_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide11_large.jpg"><img src="<%= asset_path 'basecamp/slide11_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide12_large.jpg"><img src="<%= asset_path 'basecamp/slide12_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide13_large.jpg"><img src="<%= asset_path 'basecamp/slide13_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide14_large.jpg"><img src="<%= asset_path 'basecamp/slide14_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide15_large.jpg"><img src="<%= asset_path 'basecamp/slide15_250.jpg' %>" alt="" /></a></li>
-						<li><a class="fancybox" rel="group" href="images/basecamp/slide16_large.jpg"><img src="<%= asset_path 'basecamp/slide16_250.jpg' %>" alt="" /></a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- End Image Slider -->
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide2_large.jpg"><img src="<%= asset_path 'basecamp/slide2_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide3_large.jpg"><img src="<%= asset_path 'basecamp/slide3_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide4_large.jpg"><img src="<%= asset_path 'basecamp/slide4_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide5_large.jpg"><img src="<%= asset_path 'basecamp/slide5_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide6_large.jpg"><img src="<%= asset_path 'basecamp/slide6_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide7_large.jpg"><img src="<%= asset_path 'basecamp/slide7_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide8_large.jpg"><img src="<%= asset_path 'basecamp/slide8_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide9_large.jpg"><img src="<%= asset_path 'basecamp/slide9_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide10_large.jpg"><img src="<%= asset_path 'basecamp/slide10_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide11_large.jpg"><img src="<%= asset_path 'basecamp/slide11_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide12_large.jpg"><img src="<%= asset_path 'basecamp/slide12_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide13_large.jpg"><img src="<%= asset_path 'basecamp/slide13_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide14_large.jpg"><img src="<%= asset_path 'basecamp/slide14_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide15_large.jpg"><img src="<%= asset_path 'basecamp/slide15_250.jpg' %>" alt="" /></a></li>
+            <li><a class="fancybox" rel="group" href="images/basecamp/slide16_large.jpg"><img src="<%= asset_path 'basecamp/slide16_250.jpg' %>" alt="" /></a></li>
+          </ul>
+        </div>
+      </div>
+      <!-- End Image Slider -->
 
-			<!-- Basecamp Highlights -->
-			<div class="highlights">
-				<div class="highlights__inner">
-					<h1 class="center">What's at Basecamp</h1>
-					<div class="highlight">
-						<div class="top">
-							<div class="title">Keynote Speakers</div>
-							<div class="time">Mornings &amp; Afternoons Daily</div>
-						</div>
-						<div class="bottom">
-							Hear from some of the biggest names and most engaging minds in the entrepreneurial world.
-						</div>
-					</div>
-					<div class="highlight">
-						<div class="top">
-							<div class="title">Mentor Hours</div>
-							<div class="time">10AM-Noon | 2PM-4PM Daily</div>
-						</div>
-						<div class="bottom">
-							Sign up for 20-minute one-on-one sessions to meet with top entrepreneurs and business leaders.
-							<div class="link">Sign up Below</div>
-						</div>
-					</div>
-					<div class="highlight">
-						<div class="top">
-							<div class="title">Leadership Spotlights</div>
-							<div class="time">Noon – 2PM Daily</div>
-						</div>
-						<div class="bottom">
-						Learn from successful entrepreneurs as they share their stories and answer your questions.
-						</div>
-					</div>
-					<div class="highlight">
-						<div class="top">
-							<div class="title">Café &amp; Lounge</div>
-							<div class="time">8AM – 6PM Daily</div>
-						</div>
-						<div class="bottom">
-							Drop in to work, relax, recharge and network in comfortable, dynamic atmosphere fueled by free lunches, high-speed wifi, coffee and more.
-						</div>
-					</div>
-					<div class="highlight">
-						<div class="top">
-							<div class="title">Happy Hours</div>
-							<div class="time">4PM – 6PM Daily</div>
-						</div>
-						<div class="bottom">
-							Meet up with DSW attendees each afternoon to sample some of what Colorado’s best brewers and distillers have to offer.
-						</div>
-					</div>
-					<div class="highlight">
-						<div class="top">
-							<div class="title">Special Events</div>
-							<div class="time">Check Schedule for Details</div>
-						</div>
-						<div class="bottom">
-							Lookout for the startup farmers market, morning yoga, a ping pong tourney, coffee cuppings, the annual startup crawl and more.
-						</div>
-					</div>
-					<div class="signup">
-						<div class="signup--text">
-							Click here to see detailed daily schedules and register for events
-						</div>
-						<div class="signup--btn">
-							<div class="btn-link">
-								<a target="_blank" href="http://www.denverstartupweek.org/schedule" class="btn">Events</a>
-								<div class="btn-after"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Basecamp Highlights -->
+      <!-- Basecamp Highlights -->
+      <div class="highlights">
+        <div class="highlights__inner">
+          <h1 class="center">What's at Basecamp</h1>
+          <div class="highlight">
+            <div class="top">
+              <div class="title">Programming</div>
+              <div class="time">Mornings &amp; Afternoons Daily</div>
+            </div>
+            <div class="bottom">
+              Hear from some of the biggest names and most engaging minds in the entrepreneurial world.
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="top">
+              <div class="title">Mentor Hours</div>
+              <div class="time">2PM &mdash; 4PM Daily</div>
+            </div>
+            <div class="bottom">
+              Sign up for 20-minute one-on-one sessions to meet with top entrepreneurs and business leaders.
+              <div class="link">Sign up Below</div>
+            </div>
+          </div>
+          <div class="highlight">
+            <div class="top">
+              <div class="title">Café &amp; Lounge</div>
+              <div class="time">8AM &mdash; 6PM Daily</div>
+            </div>
+            <div class="bottom">
+              Drop in to work, relax, recharge and network in comfortable, dynamic atmosphere fueled by free lunches, high-speed wifi, coffee and more.
+            </div>
+          </div>
+          <div class="signup">
+            <div class="signup--text">
+              Click here to see detailed daily schedules and register for events
+            </div>
+            <div class="signup--btn">
+              <div class="btn-link">
+                <a target="_blank" href="http://www.denverstartupweek.org/schedule" class="btn">Events</a>
+                <div class="btn-after"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Basecamp Highlights -->
 
-			<!-- Mentor Sessions -->
-      <%= render_region :dsw_basecamp_mentor_sessions, tag: 'div', html: { class: 'sessions' } do %>
-				<div class="sessions__inner">
-					<h1>Mentor Sessions</h1>
-					<p class="italic">Looking for some free advice? Our mentors are here to help.</p>
-					<div class="text">
-						<p>Colorado’s top entrepreneurs are volunteering their time and talent to meet with Denver Startup Week attendees. Sign up for a 20-minute, 1:1 meeting with mentors from all walks of the startup world. All mentor office hours will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.).</p><p> Mentor Office Hours are organized by the Entrepreneurs Foundation of Colorado --  a network of Colorado entrepreneurs whose companies share a common commitment to pledge a portion of founding equity or a portion of annual profits to the communities in which they reside. <a target="_blank" href="http://www.efcolorado.org">www.efcolorado.org</a></p>
-					</div>
-					<div class="mentors">
+      <!-- Mentor Sessions -->
+      <%= render_region :basecamp_mentor_sessions, tag: 'div', html: { class: 'sessions' } do %>
+        <div class="sessions__inner">
+          <h1>Mentor Sessions</h1>
+          <p class="italic">Looking for some free advice? Our mentors are here to help.</p>
+          <div class="text">
+            <p>Colorado’s top entrepreneurs are volunteering their time and talent to meet with Denver Startup Week attendees. Sign up for a 20-minute, 1:1 meeting with mentors from all walks of the startup world. All mentor office hours will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.).</p><p> Mentor Office Hours are organized by the Entrepreneurs Foundation of Colorado --  a network of Colorado entrepreneurs whose companies share a common commitment to pledge a portion of founding equity or a portion of annual profits to the communities in which they reside. <a target="_blank" href="http://www.efcolorado.org">www.efcolorado.org</a></p>
+          </div>
+          <div class="mentors">
+            <h3>Monday 9/28</h3>
+            <h3>2 &mdash; 4pm</h3>
+            <br />
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/sut58zqv7d/slots">
+              <a target="_blank" href="http://slottd.com/events/uwsl7c64z9/slots">
+                <div class="name">Ryan Martens</div>
+                <div class="title">Rally Software</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/yqkshwmqp9/slots">
+                <div class="name">Seth Levine</div>
+                <div class="title">Foundry Group</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/ls3c92s83o/slots">
+                <div class="name">David Gold</div>
+                <div class="title">Access Venture Partners</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/yevb63m6qd/slots">
                 <div class="name">Peter Adams</div>
                 <div class="title">Rockies Venture Club</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/mdtvrmi11h/slots">
-                <div class="name">Peter Adams</div>
-                <div class="title">Rockies Venture Club</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/8af3vj45kf/slots">
-                <div class="name">Samar Birwadker</div>
-                <div class="title">Good.Co</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/2i3mzk73vg/slots">
-                <div class="name">Christian Braun</div>
-                <div class="title">hobbyDB</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/gifq3awhod/slots">
-                <div class="name">Scott Brown</div>
-                <div class="title">Bounce.io</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/llxp95badn/slots">
-                <div class="name">Bo Brustkern</div>
-                <div class="title">Arcstone Partners</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/619dbeozzk/slots">
-                <div class="name">Bo Brustkern</div>
-                <div class="title">Arcstone Partners</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/1tvabhitdz/slots">
-                <div class="name">Emily Bryson</div>
-                <div class="title">Radius</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/ugf3rznj96/slots">
-                <div class="name">Emily Bryson</div>
-                <div class="title">Radius</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/9wt3yxfvur/slots">
-                <div class="name">Jon Bryson</div>
-                <div class="title">TriNet</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/6h9isrrogi/slots">
-                <div class="name">Jon Bryson</div>
-                <div class="title">TriNet</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/i8h4aob2mv/slots">
-                <div class="name">Chris Calder</div>
-                <div class="title">EPIC Ventures</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/kutaqp535o/slots">
-                <div class="name">Chirag  Chotalia</div>
-                <div class="title">Pritzker Venture Capital</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/muhw69yehe/slots">
-                <div class="name">Dan DeGolier</div>
-                <div class="title">DeGolier CFO Consulting</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/vc1f6dlsm9/slots">
-                <div class="name">Dan DeGolier</div>
-                <div class="title">DeGolier CFO Consulting</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/z9ywyadypo/slots">
-                <div class="name">Josh Dorsey</div>
-                <div class="title">Silicon Valley Bank</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/ne46g25y9x/slots">
-                <div class="name">Dave DuPont</div>
-                <div class="title">TeamSnap</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/t8j2y21teh/slots">
-                <div class="name">Rami Essaid</div>
-                <div class="title">Distil Networks</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/yqzbto9pve/slots">
+              <a target="_blank" href="http://slottd.com/events/4fxou6klrv/slots">
                 <div class="name">Perry Evans</div>
-                <div class="title">Closely, Inc.</div>
+                <div class="title">Closely Inc.</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/4f1hdhek7s/slots">
-                <div class="name">Andrew Fischer</div>
-                <div class="title">Choozle</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/yss4s8zir2/slots">
-                <div class="name">Jim Franklin</div>
-                <div class="title">SendGrid</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/iqjfgp8sfo/slots">
-                <div class="name">Ken Fugate</div>
-                <div class="title">Square 1 Bank</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/b1st3mbzcs/slots">
-                <div class="name">Ken Fugate</div>
-                <div class="title">Square 1 Bank</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/sq2k48hf3u/slots">
-                <div class="name">David Gold</div>
-                <div class="title">Access Venture Partners</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/fwhvhbvkfr/slots">
-                <div class="name">David Gold</div>
-                <div class="title">Access Venture Partners</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/h5v74u5p3b/slots">
-                <div class="name">David Gold</div>
-                <div class="title">Access Venture Partners</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/5jrbl2u4yk/slots">
-                <div class="name">Nicole Gravagna</div>
-                <div class="title">Rocky Mountain Patent</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/men2a8an3s/slots">
-                <div class="name">Nicole Gravagna</div>
-                <div class="title">Rocky Mountain Patent</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/brpdl6pc59/slots">
-                <div class="name">Brian Grega</div>
-                <div class="title">Infinite Buyer</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/9gyt6wv2wf/slots">
-                <div class="name">Ron Guillot</div>
-                <div class="title">Visualase </div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/8bkbfwqmqf/slots">
-                <div class="name">Eric Gunderson</div>
-                <div class="title">mapbox</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/3bn1lz8cj6/slots">
-                <div class="name">Steve Halstedt</div>
-                <div class="title">Centennial Ventures</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/biyfcwasnz/slots">
-                <div class="name">Steve Halstedt</div>
-                <div class="title">Centennial Ventures</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/nu8xuqot1v/slots">
+              <a target="_blank" href="http://slottd.com/events/17r7ltnrxg/slots">
                 <div class="name">Tom Higley</div>
                 <div class="title">10.10.10</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/5w2mnk9zx6/slots">
-                <div class="name">JB Holston</div>
-                <div class="title">Sitrion</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/pzs2jdbyot/slots">
-                <div class="name">Matt Hyde</div>
-                <div class="title">Cooley</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/xmhk6k9v5p/slots">
-                <div class="name">Matt Hyde</div>
-                <div class="title">Cooley</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/6veew5u715/slots">
-                <div class="name">Karen Ivy</div>
-                <div class="title">Ashford University  Forbes School of Business</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/hwm69eu5rd/slots">
-                <div class="name">Karen Ivy</div>
-                <div class="title">Ashford University  Forbes School of Business</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/ovv6vonr78/slots">
-                <div class="name">Sonu Kansal</div>
-                <div class="title">EPLATFORMA, Inc.</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/ftnboq336p/slots">
-                <div class="name">Sonu Kansal</div>
-                <div class="title">EPLATFORMA, Inc.</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/tn679vrqqo/slots">
-                <div class="name">Colleen  Kazemi</div>
-                <div class="title">The Impact Angel Group</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/u5typuhnmu/slots">
-                <div class="name">Colleen  Kazemi</div>
-                <div class="title">The Impact Angel Group</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/wod9zb669t/slots">
-                <div class="name">Tom Keller</div>
-                <div class="title">NBT</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/soaosm9n3r/slots">
-                <div class="name">Charlie Kelly</div>
-                <div class="title">Silicon Valley Bank</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/yhjyvuz6n1/slots">
-                <div class="name">Chris Kiyan</div>
-                <div class="title">Cooley</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/yw1fp7az5p/slots">
-                <div class="name">Manny Ladis</div>
-                <div class="title">Dizzion</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/mwei79ee5b/slots">
-                <div class="name">Manny Ladis</div>
-                <div class="title">Dizzion</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/u63x6ubr6s/slots">
-                <div class="name">John Leonard</div>
-                <div class="title">Fairfield and Woods</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/bwoqgwt4yt/slots">
-                <div class="name">John Leonard</div>
-                <div class="title">Fairfield and Woods</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/hsj6uev51q/slots">
-                <div class="name"> Dr. Richard Leventhal</div>
-                <div class="title">Ashford University</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/wdu9ia2i3u/slots">
-                <div class="name"> Dr. Richard Leventhal</div>
-                <div class="title">Ashford University</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/wd9bi8nd45/slots">
-                <div class="name">Seth Levine</div>
-                <div class="title">Foundry</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/rlr2wmyjak/slots">
-                <div class="name">John Levisay</div>
-                <div class="title">Crafsty</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/wpy7o2z4ck/slots">
-                <div class="name">Bart Lorang</div>
-                <div class="title">FullContact</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/u6gjgvtfd6/slots">
-                <div class="name">David Mandell</div>
-                <div class="title">PivotDesk</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/lhiz8nta9m/slots">
-                <div class="name">Eric Marcoullier</div>
-                <div class="title">Cloudspace</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/bv5ixfx1f9/slots">
-                <div class="name">Ryan Martens</div>
-                <div class="title">Rally</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/799tp2fgjb/slots">
-                <div class="name">Laura Medina</div>
-                <div class="title">Cooley LLP</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/5qjhejj8zj/slots">
-                <div class="name">Laura Medina</div>
-                <div class="title">Cooley LLP</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/nkxivnc14r/slots">
-                <div class="name">Chris Neumann</div>
-                <div class="title">DataHero</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/p7scy5ueur/slots">
-                <div class="name">Danny Newman</div>
-                <div class="title">ROXIMITY</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/ncb8ttrwmd/slots">
-                <div class="name">Mike Perrone</div>
-                <div class="title">SocialSign.in</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/6uw35cc4xl/slots">
+              <a target="_blank" href="http://slottd.com/events/3wnek2tzgc/slots">
                 <div class="name">Noah Pittard</div>
-                <div class="title">Cooley LLO</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/locs77dl7w/slots">
-                <div class="name">Stephan Reckie</div>
-                <div class="title">Angelus Funding LLC</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/gzqmjzjft7/slots">
-                <div class="name">Stephan Reckie</div>
-                <div class="title">Angelus Funding LLC</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/8tx2y9df83/slots">
-                <div class="name">Ross Rudd</div>
-                <div class="title">Epic Ventures</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/r79vtnnyio/slots">
-                <div class="name">Chuck Schwab</div>
                 <div class="title">Cooley LLP</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/9tj1lwxqek/slots">
-                <div class="name">Gil Selinger</div>
-                <div class="title">Fairfield and Woods P.C.</div>
+              <a target="_blank" href="http://slottd.com/events/h6lw6zlrus/slots">
+                <div class="name">Chris Kiyan</div>
+                <div class="title">Catalyst Law Group</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/oh3mf2xh2w/slots">
-                <div class="name">Andrei Soroker</div>
-                <div class="title">Kato</div>
+              <a target="_blank" href="http://slottd.com/events/3ei9er7u68/slots">
+                <div class="name">Tami Door</div>
+                <div class="title">Downtown Denver Partnership</div>
               </a>
             </div>
+          </div>
+          <div class="mentors">
+            <h3>Tuesday 9/29</h3>
+            <h3>2 &mdash; 4pm</h3>
+            <br />
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/ylfgkzw9r8/slots">
-                <div class="name">Justin Stanwix</div>
-                <div class="title">ebay</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/679nmrjpwr/slots">
-                <div class="name">Shawn Stigler</div>
-                <div class="title">Modus Law, Ltd.</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/5voi2h1udo/slots">
-                <div class="name">Shawn Stigler</div>
-                <div class="title">Modus Law, Ltd.</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/1p1psbabbp/slots">
-                <div class="name">Jeff Zabel</div>
-                <div class="title">DataHero</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/ocj1iv3uwr/slots">
+              <a target="_blank" href="http://slottd.com/events/pvnfhvokaz/slots">
                 <div class="name">Joe Zell</div>
                 <div class="title">Grotech Ventures</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/p39zrrviti/slots">
-                <div class="name">Brad Feld</div>
-                <div class="title">Foundry Group</div>
+              <a target="_blank" href="http://slottd.com/events/2dv8pgpu3l/slots">
+                <div class="name">Bing Chou</div>
+                <div class="title">Simpler</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/fhf6xspvfr/slots">
-                <div class="name">Ryan McIntyre</div>
-                <div class="title">Foundry Group</div>
+              <a target="_blank" href="http://slottd.com/events/mjb1ifx3ai/slots">
+                <div class="name">Manny Ladis</div>
+                <div class="title">Dizzion</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/mxvwpmu38b/slots">
-                <div class="name">Chris  Onan</div>
+              <a target="_blank" href="http://slottd.com/events/cd8ch3ku3z/slots">
+                <div class="name">Ben Deda</div>
                 <div class="title">Galvanize</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/ut8t5e711f/slots">
+              <a target="_blank" href="http://slottd.com/events/6deab9zjnb/slots">
+                <div class="name">Scott Brown</div>
+                <div class="title">Bounce.io</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/xr82rmbfj9/slots">
+                <div class="name">Matt Hyde</div>
+                <div class="title">Catalyst Law Group</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/xzygql2mjv/slots">
+                <div class="name">Gary Stone</div>
+                <div class="title">Rachio</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/sb1k2z59ib/slots">
+                <div class="name">Stephan Reckie</div>
+                <div class="title">Angelus Funding</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/lzmr1pcknw/slots">
+                <div class="name">Todd Lemley</div>
+                <div class="title">Entrepreneur / Investor</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/pjixhgzzge/slots">
+                <div class="name">Jane Miller</div>
+                <div class="title">ProYo</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/5k58gxsgp1/slots">
+                <div class="name">Sherri Hammons</div>
+                <div class="title">IQNavigator</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/mjhk1z79tn/slots">
                 <div class="name">Desi McAdam</div>
                 <div class="title">thoughtbot</div>
               </a>
             </div>
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/va57y4u5tp/slots">
-                <div class="name">Desi McAdam</div>
+              <a target="_blank" href="http://slottd.com/events/mjhk1z79tn/slots">
+                <div class="name">Andrew Cohen</div>
                 <div class="title">thoughtbot</div>
               </a>
             </div>
+          </div>
+          <div class="mentors">
+            <h3>Wednesday 9/30</h3>
+            <h3>2 &mdash; 4pm</h3>
+            <br />
             <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/tuev7hkts5/slots">
-                <div class="name">David Gold</div>
-                <div class="title">Access Venture Partners</div>
-              </a>
-            </div>
-            <div class="mentor">
-              <a target="_blank" href="http://www.slottd.com/events/wu86vznkhl/slots">
+              <a target="_blank" href="http://slottd.com/events/f1e4uhb143/slots">
                 <div class="name">Kirk Holland</div>
                 <div class="title">Access Venture Partners</div>
               </a>
             </div>
-					</div>
-					<div class="signup">
-						<div class="signup--text text--right">
-							<div><span class="bold">Schedule:</span> Monday-Friday, September 15-19</div>
-							<div><span class="bold">Monday-Friday:</span> 10:00am-12:00pm &amp; 2:00pm-4:00pm</div>
-						</div>
-					</div>
-				</div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/lkzbc2tmly/slots">
+                <div class="name">Charles Schwab</div>
+                <div class="title">Cooley LLP</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/3ei9er7u68/slots">
+                <div class="name">Nicole Gravagna</div>
+                <div class="title">Quandary Financial</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/29rjaz2iw6/slots">
+                <div class="name">Jody Shepherd</div>
+                <div class="title">Square 1 Bank &amp; Service Provider Capital</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/txswcqv4vn/slots">
+                <div class="name">Colleen Kazemi</div>
+                <div class="title">Synergy5280</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/6bxrnpgpex/slots">
+                <div class="name">Carm Huntress</div>
+                <div class="title">RxREVU, Inc.</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/v8zygq35cw/slots">
+                <div class="name">James Graham</div>
+                <div class="title">Bolder Business Advisors CPA, PC</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/9ygrkquxm2/slots">
+                <div class="name">Nicole Glaros</div>
+                <div class="title">Techstars</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/tc21nbyj5j/slots">
+                <div class="name">Todd Munson</div>
+                <div class="title">Chase</div>
+              </a>
+            </div>
+          </div>
+          <div class="mentors">
+            <h3>Thursday 10/1</h3>
+            <h3>2 &mdash; 4pm</h3>
+            <br />
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/g17z8s89zz/slots">
+                <div class="name">Andrew Fischer</div>
+                <div class="title">Choozle</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/2cemmp2l9q/slots">
+                <div class="name">Chris Schwalbach</div>
+                <div class="title">AVL Growth Partners</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/rdq2egpsfl/slots">
+                <div class="name">Dan DeGolier</div>
+                <div class="title">Ascent CFO Solutions</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/bp6haz5onb/slots">
+                <div class="name">David Cline</div>
+                <div class="title">Modus Law</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/wrf7dbz2zp/slots">
+                <div class="name">Bart Lorang</div>
+                <div class="title">FullContact Inc</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/ngvbwd75jg/slots">
+                <div class="name">Maddy Hasulak</div>
+                <div class="title">Love Grown Foods</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/f1f17i5bgv/slots">
+                <div class="name">Charlie Kelly</div>
+                <div class="title">Silicon Valley Bank</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/82v2yrc4bq/slots">
+                <div class="name">Mystery Murphy</div>
+                <div class="title">Cooley LLP</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/hbvfichbf2/slots">
+                <div class="name">Terry Pratchett</div>
+                <div class="title">J.P. Morgan</div>
+              </a>
+            </div>
+            <div class="mentor">
+              <a target="_blank" href="http://slottd.com/events/nyawao4jal/slots">
+                <div class="name">Joe Coleman</div>
+                <div class="title">Chase</div>
+              </a>
+            </div>
+          </div>
+        </div>
       <%- end %>
-			<!-- End Mentor Sessions -->
+      <!-- End Mentor Sessions -->
 
-			<!-- Events and Twitter -->
-			<div class="social-events">
-				<div class="social__inner">
-					<div class="events">
-						<h1>Basecamp Highlights</h1>
-						<div class="event">
-              <img src="<%= asset_path 'basecamp/twitter.png' %>" alt="Twitter Visits Denver: The Developer Session">
-							<div class="text">
-								<div class="title"><a target="_blank" href="http://www.denverstartupweek.org/schedule/728-twitter-visits-denver-the-developer-session">Twitter Visits Denver: The Developer Session</a></div>
-								<div class="info">
-									<div>10:00 AM — 11:00 AM on Wednesday, Sep 17, 2014</div>
-								</div>
-							</div>
-						</div>
-						<div class="event">
-              <img src="<%= asset_path 'basecamp/feld.png' %>" alt="Feld & Friends: A Very Special Episode">
-							<div class="text">
-								<div class="title"><a target="_blank" href="http://www.denverstartupweek.org/schedule/740-feld-friends-a-very-special-episode">Feld &amp; Friends: A Very Special Episode</a></div>
-								<div class="info">
-									<div>1:00 PM - 2:30 PM on Thursday, Sep 18, 2014</div>
-								</div>
-							</div>
-						</div>
-						<div class="event">
-              <img src="<%= asset_path 'basecamp/logo-event.png' %>" alt="DSW Happy Hour At Basecamp">
-							<div class="text">
-								<div class="title"><a target="_blank" href="http://www.denverstartupweek.org/schedule/772-dsw-happy-hour-at-basecamp">DSW Happy Hour At Basecamp</a></div>
-								<div class="info">
-									<div>4:00pm — 6:00pm on Monday, Sep 15, 2014</div>
-								</div>
-							</div>
-						</div>
-						<h4>Check out the full schedule of events!</h4>
-						<div class="btn-link">
-							<a target="_blank" href="http://www.denverstartupweek.org/schedule" class="btn">Events</a>
-							<div class="btn-after"></div>
-						</div>
-					</div>
-					<div class="twitter">
-						<h1>The View From Basecamp</h1>
-						<!-- Replace this with a widget from the basecamp feed. -->
-						<!-- https://dev.twitter.com/docs/embedded-timelines : follow the "Create an embedded timeline" link -->
+      <!-- Events and Twitter -->
+      <div class="social-events">
+        <div class="social__inner">
+          <div class="twitter">
+            <h1>The View From Basecamp</h1>
+            <!-- Replace this with a widget from the basecamp feed. -->
+            <!-- https://dev.twitter.com/docs/embedded-timelines : follow the "Create an embedded timeline" link -->
             <a class="twitter-timeline" data-dnt="true" href="https://twitter.com/search?q=%23DENStartupWeek+OR+%23ChaseBasecamp" data-widget-id="509420443225190400">Tweets about "#DENStartupWeek OR #ChaseBasecamp"</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-					</div>
-				</div>
-			</div>
-			<!-- End Events and Twitter -->
+          </div>
+        </div>
+      </div>
+      <!-- End Events and Twitter -->
 
-			<!-- YouTube -->
-			<div class="youtube">
-				<div class="youtube__inner">
-					<div class="text">
-						<h1>The View from Basecamp in 2013</h1>
-						<p>A preview of what’s to come at Basecamp during Denver Startup Week 2014</p>
-					</div>
-					<div class="video">
-						<div class="video__container">
-						<iframe width="560" height="315" src="//www.youtube.com/embed/XQs_0F9R-kc?modestbranding=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End YouTube -->
+      <!-- YouTube -->
+      <div class="youtube">
+        <div class="youtube__inner">
+          <div class="text">
+            <h1>The View from Basecamp in 2014</h1>
+            <p>A preview of what’s to come at Basecamp during Denver Startup Week 2015</p>
+          </div>
+          <div class="video">
+            <div class="video__container">
+            <iframe width="560" height="315" src="//www.youtube.com/embed/Teqj9vc-a64?modestbranding=1&showinfo=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End YouTube -->
 
-			<!-- Google Map -->
-			<div class="map">
-				<div class="map__inner">
-					<div class="header">
+      <!-- Google Map -->
+      <div class="map">
+        <div class="map__inner">
+          <div class="header">
             <div class="logo"><img src="<%= asset_path 'basecamp/logo.png' %>" alt="Startup Week Basecamp Logo" /></div>
-						<div class="text"><span class="bold">1515 Arapahoe St, Denver, CO</span> (Corner of Arapahoe &amp; 16th St. Mall)</div>
-					</div>
-					<div id="map-canvas"></div>
-				</div>
-			</div>
-			<!-- End Google Map -->
+            <div class="text"><span class="bold">1515 Arapahoe St, Denver, CO</span> (Corner of Arapahoe &amp; 16th St. Mall)</div>
+          </div>
+          <div id="map-canvas"></div>
+        </div>
+      </div>
+      <!-- End Google Map -->
 
-			<!-- Sponsors -->
-			<div class="sponsors">
-				<div class="sponsors__inner">
-					<h1 class="center">Denver Startup Week Sponsors</h1>
+      <!-- Sponsors -->
+      <div class="sponsors">
+        <div class="sponsors__inner">
+          <h1 class="center">Denver Startup Week Sponsors</h1>
           <div class="sponsor"><img src="<%= asset_path 'basecamp/Downtown.jpg' %>" alt="Downtown Denver Partnership, Inc."></div>
           <div class="sponsor"><img src="<%= asset_path 'basecamp/CTA.jpg' %>" alt="Colorado Technology Association"></div>
           <div class="sponsor"><img src="<%= asset_path 'basecamp/chase.jpg' %>" alt="Chase Bank"></div>
           <div class="sponsor"><img src="<%= asset_path 'basecamp/comcast.jpg' %>" alt="Comcast"></div>
-					<h1 class="center">Special thanks from Basecamp</h1>
+          <h1 class="center">Special thanks from Basecamp</h1>
           <div class="sponsor">
             <a href="http://www.ashford.edu/"><img class="pad-right" src="<%= asset_path 'basecamp/ashford_small.jpg' %>" alt="Ashford University"></a>
             <a href="http://wifi.comcast.com/"><img src="<%= asset_path 'basecamp/xfinity_small.jpg' %>" alt="Xfinity Wifi"></a>
@@ -743,68 +446,68 @@
             <a href="http://efcolorado.org/"><img class="pad-right" src="<%= asset_path 'basecamp/efco_small.jpg' %>" alt="EFCO"></a>
             <a href="http://www.officescapes.com/"><img src="<%= asset_path 'basecamp/officescapes_small.jpg' %>" alt="OfficeScapes"></a>
           </div>
-				</div>
-			</div>
-			<!-- End Sponsors -->
+        </div>
+      </div>
+      <!-- End Sponsors -->
 
-		</section> <!-- End of main content -->
+    </section> <!-- End of main content -->
 
-		<footer class="main-foot">
-			<div class="main-foot__inner">
-				<div class="left">
-					<div class="text">
-						<div class="heavy">BASECAMP</div>
-						<div>Denver Startup Week 2014</div>
-					</div>
-					<div class="social">
-						<div class="facebook">
-							<a target="_blank" href="https://www.facebook.com/DenverStartupWeek">
-								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
-								<path d="M666,495H549.1c0,187.8,0,419,0,419H375.8c0,0,0-228.9,0-419h-82.4v-148h82.4v-95.8
-									c0-68.6,32.4-175.7,174.8-175.7L679,75.9v143.7c0,0-78,0-93.1,0c-15.2,0-36.8,7.6-36.8,40.3v87h132.1L666,495z"/>
-								</svg>
-							</a>
-						</div>
-						<div class="twitter">
-							<a target="_blank" href="https://twitter.com/denstartupweek">
-								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-									 viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
-								<path d="M897.8,291.1c0.4,8.8,0.6,17.6,0.6,26.5c0,270.7-206,582.8-582.8,582.8c-115.7,0-223.3-33.9-314-92
-									c16.1,1.8,32.4,2.8,48.9,2.8c96,0,184.3-32.7,254.4-87.6c-89.6-1.7-165.3-60.9-191.3-142.3c12.5,2.4,25.3,3.7,38.5,3.7
-									c18.7,0,36.8-2.6,53.9-7.2C112.4,559,41.7,476.2,41.7,376.9c0-0.9,0-1.7,0-2.6c27.7,15.4,59.2,24.6,92.8,25.6
-									c-55-36.7-91.1-99.4-91.1-170.5c0-37.5,10.1-72.7,27.7-103c101,124,252,205.5,422.2,214c-3.5-15-5.3-30.6-5.3-46.7
-									C488,180.7,579.7,89,692.9,89c58.9,0,112.1,24.9,149.5,64.7c46.6-9.2,90.5-26.2,130.1-49.7c-15.4,47.8-47.8,88-90.1,113.3
-									c41.4-4.9,80.9-15.9,117.6-32.2C972.6,226.1,937.9,262.2,897.8,291.1z"/>
-								</svg>
-							</a>
-						</div>
-						<div class="google">
-							<a target="_blank" href="https://plus.google.com/+Denverstartupweek">
-								<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-									 viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
-								<g>
-									<polygon id="Plus" points="992.2,251.8 818.7,251.8 818.7,85.7 780.9,85.7 780.9,251.8 614.9,251.8 614.9,297
-										780.9,297 780.9,463.1 818.7,463.1 818.7,297 992.2,297 	"/>
-									<path id="g" d="M429.1,567.2c-23.4-16.6-68.2-56.9-68.2-80.6c0-27.8,7.9-41.4,49.7-74.1
-										c42.8-33.5,73.2-78.8,73.2-133.6c0-65.2-29-132.9-83.5-148h82.1l58-45.3c0,0-194.3,0-259.1,0c-116.1,0-225.5,88-225.5,189.9
-										c0,104.1,79.2,188.2,197.3,188.2c8.2,0,16.2-0.2,24-0.7c-7.7,14.7-13.1,31.2-13.1,48.4c0,28.9,15.6,52.4,35.3,71.6
-										c-14.9,0-29.2,0.4-44.9,0.4c-143.9,0-254.6,91.6-254.6,186.6c0,93.6,121.4,152.1,265.2,152.1c164,0,254.6-93.1,254.6-186.6
-										C519.7,660.6,497.5,615.6,429.1,567.2z M290.7,437.4c-66.7-2-130.2-74.7-141.7-162.3c-11.5-87.6,33.2-154.7,100-152.7
-										c66.7,2,130.2,72.3,141.7,160C402.2,370,357.4,439.4,290.7,437.4z M264.5,880.9c-99.4,0-171.2-63-171.2-138.6
-										c0-74.1,89.1-135.8,188.5-134.7c23.2,0.2,44.8,4,64.5,10.3c54,37.5,92.7,58.7,103.6,101.5c2.1,8.7,3.2,17.6,3.2,26.7
-										C453,821.8,404.3,880.9,264.5,880.9z"/>
-								</g>
-								</svg>
-							</a>
-						</div>
-					</div>
-				</div>
-				<div class="right">
-					Site Design by <a target="_blank" rel="nofollow" href="http://www.zenman.com">Zenman Web Design</a>
-				</div>
-			</div>
-	    </footer><!-- // main-foot -->
-	<!-- sticky footer will fail if anything goes between the closing footer and .wrap -->
-	</div><!-- // wrap-all-the-things -->
+    <footer class="main-foot">
+      <div class="main-foot__inner">
+        <div class="left">
+          <div class="text">
+            <div class="heavy">BASECAMP</div>
+            <div>Denver Startup Week 2014</div>
+          </div>
+          <div class="social">
+            <div class="facebook">
+              <a target="_blank" href="https://www.facebook.com/DenverStartupWeek">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                <path d="M666,495H549.1c0,187.8,0,419,0,419H375.8c0,0,0-228.9,0-419h-82.4v-148h82.4v-95.8
+                  c0-68.6,32.4-175.7,174.8-175.7L679,75.9v143.7c0,0-78,0-93.1,0c-15.2,0-36.8,7.6-36.8,40.3v87h132.1L666,495z"/>
+                </svg>
+              </a>
+            </div>
+            <div class="twitter">
+              <a target="_blank" href="https://twitter.com/denstartupweek">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                <path d="M897.8,291.1c0.4,8.8,0.6,17.6,0.6,26.5c0,270.7-206,582.8-582.8,582.8c-115.7,0-223.3-33.9-314-92
+                  c16.1,1.8,32.4,2.8,48.9,2.8c96,0,184.3-32.7,254.4-87.6c-89.6-1.7-165.3-60.9-191.3-142.3c12.5,2.4,25.3,3.7,38.5,3.7
+                  c18.7,0,36.8-2.6,53.9-7.2C112.4,559,41.7,476.2,41.7,376.9c0-0.9,0-1.7,0-2.6c27.7,15.4,59.2,24.6,92.8,25.6
+                  c-55-36.7-91.1-99.4-91.1-170.5c0-37.5,10.1-72.7,27.7-103c101,124,252,205.5,422.2,214c-3.5-15-5.3-30.6-5.3-46.7
+                  C488,180.7,579.7,89,692.9,89c58.9,0,112.1,24.9,149.5,64.7c46.6-9.2,90.5-26.2,130.1-49.7c-15.4,47.8-47.8,88-90.1,113.3
+                  c41.4-4.9,80.9-15.9,117.6-32.2C972.6,226.1,937.9,262.2,897.8,291.1z"/>
+                </svg>
+              </a>
+            </div>
+            <div class="google">
+              <a target="_blank" href="https://plus.google.com/+Denverstartupweek">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                   viewBox="0 0 1000 1000" enable-background="new 0 0 1000 1000" xml:space="preserve">
+                <g>
+                  <polygon id="Plus" points="992.2,251.8 818.7,251.8 818.7,85.7 780.9,85.7 780.9,251.8 614.9,251.8 614.9,297
+                    780.9,297 780.9,463.1 818.7,463.1 818.7,297 992.2,297   "/>
+                  <path id="g" d="M429.1,567.2c-23.4-16.6-68.2-56.9-68.2-80.6c0-27.8,7.9-41.4,49.7-74.1
+                    c42.8-33.5,73.2-78.8,73.2-133.6c0-65.2-29-132.9-83.5-148h82.1l58-45.3c0,0-194.3,0-259.1,0c-116.1,0-225.5,88-225.5,189.9
+                    c0,104.1,79.2,188.2,197.3,188.2c8.2,0,16.2-0.2,24-0.7c-7.7,14.7-13.1,31.2-13.1,48.4c0,28.9,15.6,52.4,35.3,71.6
+                    c-14.9,0-29.2,0.4-44.9,0.4c-143.9,0-254.6,91.6-254.6,186.6c0,93.6,121.4,152.1,265.2,152.1c164,0,254.6-93.1,254.6-186.6
+                    C519.7,660.6,497.5,615.6,429.1,567.2z M290.7,437.4c-66.7-2-130.2-74.7-141.7-162.3c-11.5-87.6,33.2-154.7,100-152.7
+                    c66.7,2,130.2,72.3,141.7,160C402.2,370,357.4,439.4,290.7,437.4z M264.5,880.9c-99.4,0-171.2-63-171.2-138.6
+                    c0-74.1,89.1-135.8,188.5-134.7c23.2,0.2,44.8,4,64.5,10.3c54,37.5,92.7,58.7,103.6,101.5c2.1,8.7,3.2,17.6,3.2,26.7
+                    C453,821.8,404.3,880.9,264.5,880.9z"/>
+                </g>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="right">
+          Site Design by <a target="_blank" rel="nofollow" href="http://www.zenman.com">Zenman Web Design</a>
+        </div>
+      </div>
+      </footer><!-- // main-foot -->
+  <!-- sticky footer will fail if anything goes between the closing footer and .wrap -->
+  </div><!-- // wrap-all-the-things -->
 </body>
 </html>
