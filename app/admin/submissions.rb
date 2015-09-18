@@ -133,13 +133,6 @@ ActiveAdmin.register Submission do
 
   sidebar :versionate, :partial => "admin/version", :only => :show
 
-  # Notify of venue match
-  member_action :send_venue_match_email, method: :post do
-    submission = Submission.find(params[:id])
-    NotificationsMailer.notify_of_submission_venue_match(submission).deliver
-    redirect_to admin_submission_path(submission)
-  end
-
   # Attendee export
   sidebar 'Attendees', except: :index do
     "#{submission.registrants.count} attending"
@@ -181,6 +174,19 @@ ActiveAdmin.register Submission do
         end
       end
     end
+  end
+
+  # Notify of venue match
+  action_item :only => :show do
+    if submission.venue && submission.venue.contact_email && submission.contact_email
+      link_to('Send venue match email', send_venue_match_email_admin_submission_path(submission), method: :post)
+    end
+  end
+
+  member_action :send_venue_match_email, method: :post do
+    submission = Submission.find(params[:id])
+    NotificationsMailer.notify_of_submission_venue_match(submission).deliver
+    redirect_to admin_submission_path(submission)
   end
 
 
