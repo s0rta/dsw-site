@@ -1,0 +1,27 @@
+<%= @submission.submitter.name.split.first %>,
+
+We would like to introduce you to <%= @submission.venue.contact_name %> at <%= @submission.venue.name %>.
+
+We have scheduled your session to be located at <%= @submission.venue.address %> on <%= @submission.human_start_day %> <%= @submission.start_datetime.strftime('%-m/%-d') %> from <%= @submission.human_time_range('-') %>.
+
+<%= @submission.venue.contact_name.split.first %>,
+<%= @submission.submitter.name.split.first %> is the session organizer. They will be prepared to facilitate the session.
+
+Here is a link to the session information:
+<%= schedule_url(@submission) %>
+
+We'll let you two pick up the conversation from here. Here are some recommended items to discuss:
+
+1.    Schedule (set-up, program time, clean-up, etc.)
+2.    AV needs and setup
+3.    Room layout
+4.    Program details
+
+Let us know if we can answer any questions or provide additional resources.
+
+Thanks,
+
+<%= @submission.track.chairs.map(&:name) * ' & ' %>
+<%= @submission.track.name %> Track
+Denver Startup Week Planning Committee
+<%= @submission.track.email_alias %>

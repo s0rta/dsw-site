@@ -188,6 +188,11 @@ class Submission < ActiveRecord::Base
     datetime
   end
 
+  def human_time_range(separator = "&mdash;")
+    "#{start_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')} #{separator} #{end_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')}".html_safe
+  end
+
+
   def to_ics
     event
   end

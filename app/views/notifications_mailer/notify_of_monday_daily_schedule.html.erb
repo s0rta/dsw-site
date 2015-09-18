@@ -77,7 +77,7 @@
             <tr>
               <td class="small" width="20%" style="vertical-align: top; padding-right:10px;"><%= image_tag "daily_schedule_email/#{submission.track.icon}.png" %></td>
               <td>
-                <h4><%= submission.title %><small> <%= human_time_range(submission) %></small></h4>
+                <h4><%= submission.title %><small> <%= submission.human_time_range %></small></h4>
                 <p class=""><%= submission.description.truncate(200, separator: ' ') %></p>
 
                 <%= link_to 'Event Details &raquo;'.html_safe, schedule_url(submission), class: 'btn' %>

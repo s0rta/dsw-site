@@ -61,7 +61,7 @@
                         %a.dswacon(title="Add to My Schedule" data-addable="true")
                       - if submission.start_hour && submission.end_hour
                         - if submission.has_time_set?
-                          %span.schedule-time= human_time_range(submission)
+                          %span.schedule-time= submission.human_time_range
                           %br
                           %span.schedule-location-name= submission.human_location_name
                         - else

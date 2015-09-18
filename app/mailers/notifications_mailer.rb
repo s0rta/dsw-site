@@ -61,6 +61,16 @@ class NotificationsMailer < ActionMailer::Base
          cc: @submission.track.email_alias
   end
 
+  def notify_of_submission_venue_match(submission)
+    @submission = submission
+    mail to: [ @submission.contact_email,
+               @submission.venue.contact_email ],
+         subject: 'Denver Startup Week session location intro',
+         from: @submission.track.email_alias,
+         reply_to: @submission.track.email_alias,
+         cc: @submission.track.email_alias
+  end
+
   def confirm_registration(registration)
     @registration = registration
     mail to: @registration.contact_email,
