@@ -16,7 +16,7 @@
         %p.event-details-info
           #{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}
           %br
-          = submission.human_time_range
+          = @session.human_time_range
           %br
           %br
           - if @session.venue
