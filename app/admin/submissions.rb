@@ -187,6 +187,7 @@ ActiveAdmin.register Submission do
     submission = Submission.find(params[:id])
     NotificationsMailer.notify_of_submission_venue_match(submission).deliver
     flash[:notice] = 'Email sent!'
+    submission.update_column :notes, submission.notes + "\nSent venue match e-mail on #{Date.today.to_s(:long)}"
     redirect_to admin_submission_path(submission)
   end
 
