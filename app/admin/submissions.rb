@@ -178,7 +178,7 @@ ActiveAdmin.register Submission do
 
   # Notify of venue match
   action_item :only => :show do
-    if submission.venue && submission.venue.contact_email && submission.contact_email
+    if submission.venue && submission.venue.contact_email && submission.contact_email && submission.venue.contact_name
       link_to('Send venue match email', send_venue_match_email_admin_submission_path(submission), method: :post)
     end
   end
