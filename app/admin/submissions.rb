@@ -186,6 +186,7 @@ ActiveAdmin.register Submission do
   member_action :send_venue_match_email, method: :post do
     submission = Submission.find(params[:id])
     NotificationsMailer.notify_of_submission_venue_match(submission).deliver
+    flash[:notice] = 'Email sent!'
     redirect_to admin_submission_path(submission)
   end
 
