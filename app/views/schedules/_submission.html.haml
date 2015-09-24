@@ -1,0 +1,16 @@
+%li.schedule-module.module(id="submission_module_#{submission.id}" class="#{'schedule-selected' if registered? && registered_for_session?(submission)}" data-track="#{submission.track.name}" data-add-path="#{add_to_schedule_path(id: submission.id)}" data-remove-path="#{remove_from_schedule_path(id: submission.id)}")
+  %div.module-contents.schedule-module-contents
+    %header.schedule-module-header
+      %a.dswacon.dswacon-panel-icon(class="dswacon-#{submission.track.icon}" title="#{submission.track.name}")
+      %h3.module-heading.panel-title
+        = link_to truncate(submission.title, length: 100, separator: ' '), schedule_path(submission)
+    %footer.schedule-module-footer
+      - if registered?
+        %a.dswacon(title="Add to My Schedule" data-addable="true")
+      - if submission.start_hour && submission.end_hour
+        - if submission.has_time_set?
+          %span.schedule-time= submission.human_time_range
+          %br
+          %span.schedule-location-name= submission.human_location_name
+        - else
+          %span.schedule-location-name= submission.human_location_name
