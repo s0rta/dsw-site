@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_registration
   helper_method :current_body_class
   helper_method :in_mercury_invasion?
+  helper_method :simple_registration?
 
   layout(lambda do |c|
     if c.respond_to?(:current_page) && c.template_exists?(c.current_page.template, 'layouts')
@@ -37,6 +38,10 @@ class ApplicationController < ActionController::Base
 
   def current_registration
     current_user && current_user.current_registration
+  end
+
+  def simple_registration?
+    cookies.signed[:simple_registration] == true
   end
 
   def current_body_class

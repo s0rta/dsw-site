@@ -5,7 +5,7 @@
     %section.section-container.module-form{:style => "background-image: url(\"/assets/landing_2014/background#{(1..10).to_a.sample}.jpg\")"}
       %div.form-carousel(data-bindable="dsw-carousel" data-keyboard="false" data-activate="0")
         %div.form-carousel-inner
-          - if current_user
+          - if current_user || simple_registration?
             = simple_form_for @registration, url: registration_path, method: :post, html: { class: 'dsw-form', role: 'form' } do |f|
               %article.form-pane
                 %div.form-contents
