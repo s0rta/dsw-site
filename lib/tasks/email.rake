@@ -28,7 +28,9 @@ namespace :email do
     Registration.joins(:submissions).
       where(submissions: { start_day: 2 }).
       having('COUNT(submissions.*) > 0').
-      group('registrations.id').each do |registration|
+      group('registrations.id').
+      order('registrations.id').each do |registration|
+        Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
         NotificationsMailer.notify_of_monday_daily_schedule(registration).deliver!
       end
   end
