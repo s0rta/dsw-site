@@ -25,7 +25,9 @@ namespace :email do
   end
 
   task :monday_schedule => :environment do
-    Registration.joins(:submissions).
+    Registration.
+      for_current_year.
+      joins(:submissions).
       where(submissions: { start_day: 2 }).
       having('COUNT(submissions.*) > 0').
       group('registrations.id').
