@@ -14,7 +14,7 @@ class RegistrationsController < ApplicationController
     else
       @registration = current_user.registrations.build(params[:registration])
     end
-    if @registration.save!
+    if @registration.save
       redirect_to confirm_registration_path
     else
       respond_with @registration
