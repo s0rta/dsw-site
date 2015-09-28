@@ -91,8 +91,8 @@ ActiveAdmin.register Submission do
   filter :venue, as: :select, collection: Venue.alphabetical
   filter :format
   filter :submitter
-  filter :start_day, as: :select, collection: Submission::DAYS
-  filter :end_day, as: :select, collection: Submission::DAYS
+  filter :start_day, as: :select, collection: Submission::DAYS.invert
+  filter :end_day, as: :select, collection: Submission::DAYS.invert
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
   filter :format, as: :select, collection: Submission::FORMATS
   filter :state, as: :select, collection: Submission.states
