@@ -18,6 +18,7 @@
 #= require components/schedule_track_filter
 #= require components/schedule_addable_modules
 #= require components/event_detail
+#= require components/mapquest_map
 
 # Lets get this party started..
 createBindable = ->

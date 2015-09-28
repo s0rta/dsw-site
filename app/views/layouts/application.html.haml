@@ -47,6 +47,11 @@
       for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
       mixpanel.init("86910e1c1d52021f6b9e83a91fa9a065");
 
+    %link(rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css")
+    %script(src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js")
+    %script(src="http://www.mapquestapi.com/sdk/leaflet/v2.s/mq-map.js?key=#{ENV['MAPQUEST_API_KEY']}")
+    %script(src="http://www.mapquestapi.com/sdk/leaflet/v1.s/mq-geocoding.js?key=#{ENV['MAPQUEST_API_KEY']}")
+
     = csrf_meta_tag
 
   %body(id="#{'mercury_invasion' if in_mercury_invasion?}" class="body-#{current_body_class}" role="document")
