@@ -11,7 +11,7 @@ unless Cmsimple::Page.where(is_root: true).first
 end
 
 { 'Founder'         => 'bulb',
-  'Growth'          => 'Graph',
+  'Growth'          => 'graph',
   'Designer'        => 'pen',
   'Product'         => 'pen',
   'Developer'       => 'markup',
