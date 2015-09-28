@@ -38,6 +38,9 @@ Denverstartupweek::Application.routes.draw do
 
   get '/register', to: 'registrations#new', as: :register
 
+  get 'enable-simple-reg', to: 'simple_registrations#enable', as: :enable_simple_reg
+  get 'disable-simple-reg', to: 'simple_registrations#disable', as: :disable_simple_reg
+
   ActiveAdmin.routes(self)
 
   mount Cmsimple::Engine => '/'

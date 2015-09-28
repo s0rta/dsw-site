@@ -9,11 +9,11 @@
       %p.schedule-subheading
         Please note that the schedule builder is your own planning convenience, and does not guarantee you a space at any event. Unless otherwise noted, all event admittance is on a first-come, first-served basis. Please plan to arrive to your events a few minutes early!
 
-      - if signed_in? && !registered?
+      - if signed_in? && !registered? || simple_registration?
         %p.schedule-subheading
           All events are free, but registration is required.
         %a.btn.btn-secondary.form-btn(href="#{register_path}")<> Register for #{current_year}!
-      - if !signed_in?
+      - elsif !signed_in?
         %p.schedule-subheading
           All events are free, but registration is required.
         = link_to 'Login and register for DSW', new_user_session_path, class: 'btn btn-primary form-btn'

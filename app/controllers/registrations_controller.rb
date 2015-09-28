@@ -7,8 +7,14 @@ class RegistrationsController < ApplicationController
   end
 
   def create
-    @registration = current_user.registrations.new(params[:registration])
-    if @registration.save
+    if simple_registration?
+      password = SecureRandom.hex
+      @registration = Registration.new(registration_params)
+      @user = @registration.build_user(email: registration_params[:email], password: password, password_confirmation: password)
+    else
+      @registration = current_user.registrations.build(params[:registration])
+    end
+    if @registration.save!
       redirect_to confirm_registration_path
     else
       respond_with @registration
