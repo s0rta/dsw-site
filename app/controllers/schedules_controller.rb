@@ -14,7 +14,9 @@ class SchedulesController < ApplicationController
   end
 
   def show
-    @session = Submission.for_schedule.
+    @session = Submission.
+      for_current_year.
+      for_schedule.
       where(id: params[:id].to_i).
       order(:start_day).
       includes(:venue, :submitter, :track, comments: :user).
