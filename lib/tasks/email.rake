@@ -38,10 +38,13 @@ namespace :email do
   end
 
   task :tuesday_schedule => :environment do
-    Registration.joins(:submissions).
+    Registration.
+      for_current_year.
+      joins(:submissions).
       where(submissions: { start_day: 3 }).
       having('COUNT(submissions.*) > 0').
-      group('registrations.id').each do |registration|
+      group('registrations.id').
+      order('registrations.id').each do |registration|
         NotificationsMailer.notify_of_tuesday_daily_schedule(registration).deliver!
       end
   end
