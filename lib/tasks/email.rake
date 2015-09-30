@@ -45,15 +45,20 @@ namespace :email do
       having('COUNT(submissions.*) > 0').
       group('registrations.id').
       order('registrations.id').each do |registration|
+        Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
         NotificationsMailer.notify_of_tuesday_daily_schedule(registration).deliver!
       end
   end
 
   task :wednesday_schedule => :environment do
-    Registration.joins(:submissions).
+    Registration.
+      for_current_year.
+      joins(:submissions).
       where(submissions: { start_day: 4 }).
       having('COUNT(submissions.*) > 0').
-      group('registrations.id').each do |registration|
+      group('registrations.id').
+      order('registrations.id').each do |registration|
+        Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
         NotificationsMailer.notify_of_wednesday_daily_schedule(registration).deliver!
       end
   end
