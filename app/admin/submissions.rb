@@ -147,6 +147,7 @@ ActiveAdmin.register Submission do
     csv_text = CSV.generate do |csv|
       registrations.each do |registration|
         csv << [ registration.user.name,
+                 registration.primary_role,
                  registration.contact_email,
                  registration.zip,
                  registration.gender ]
