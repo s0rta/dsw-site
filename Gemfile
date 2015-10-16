@@ -51,7 +51,7 @@ gem 'active_model_serializers', '~> 0.8.0'
 
 # Production support
 gem 'utf8-cleaner'
-gem 'airbrake'
+gem 'runtimeerror_notifier'
 gem 'newrelic_rpm'
 
 gem 'rack-canonical-host'
