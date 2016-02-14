@@ -51,7 +51,7 @@ gem 'active_model_serializers', '~> 0.8.0'
 
 # Production support
 gem 'utf8-cleaner'
-gem 'runtimeerror_notifier'
+gem 'rollbar', '~> 1.2.7'
 gem 'newrelic_rpm'
 
 gem 'rack-canonical-host'
@@ -87,7 +87,6 @@ group :development, :test do
   gem 'thin'
   gem 'pry-rails'
   gem 'rspec-rails'
-  # Rails 3.2 needs test-unit
   gem 'teaspoon'
   gem 'quiet_assets'
 end
@@ -98,7 +97,6 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
-  gem 'codeclimate-test-reporter', require: false
 end
 
 group :production do
