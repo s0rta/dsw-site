@@ -2,15 +2,17 @@ source 'https://rubygems.org'
 
 ruby '2.1.5'
 
-gem 'rails', '~> 3.2.19'
+gem 'rails', '~> 4.2.5.2'
 gem 'rake'
 gem 'pg'
+
+gem 'rails4_upgrade'
 
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
 gem 'haml-rails'
 gem 'slim-rails'
-gem 'cmsimple', github: 'modeset/cmsimple', branch: 'rails3-stable'
+gem 'cmsimple', github: 'modeset/cmsimple'
 gem 'mercury-rails', github: 'jejacks0n/mercury'
 gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
@@ -58,8 +60,8 @@ gem 'newrelic_rpm'
 gem 'rack-canonical-host'
 
 # Admin interface
-gem 'activeadmin'
-gem 'meta_search',    '>= 1.1.0.pre'
+gem 'activeadmin', '>=1.0.0.pre2'
+# gem 'meta_search',   '>= 1.1.0.pre'
 gem 'paper_trail'
 
 # Feature toggle
@@ -74,8 +76,8 @@ group :assets do
   gem 'coffee-rails'
   gem 'underscore-rails'
   gem 'uglifier'
-  gem 'utensils', github: 'modeset/utensils'
-  gem 'turbo-sprockets-rails3', github: 'ndbroadbent/turbo-sprockets-rails3'
+  # gem 'utensils', github: 'modeset/utensils'
+  # gem 'turbo-sprockets-rails3', github: 'ndbroadbent/turbo-sprockets-rails3'
 end
 
 group :development do
