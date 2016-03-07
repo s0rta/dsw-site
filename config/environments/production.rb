@@ -14,11 +14,18 @@ Denverstartupweek::Application.configure do
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
+  # Disable serving static assets from '/public' - note, we may need to rejigger asset pipeline since Rails 4 buildsin
+  # many of the niceties around asset pipeline that were not present in Rails 3
+  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
+
+  # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
+  # note, we may need to create this and move things over.
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
@@ -78,5 +85,8 @@ Denverstartupweek::Application.configure do
 
   # Disable the spoofing filter
   config.action_dispatch.ip_spoofing_check = false
+
+  # Dump schema after migrations
+  config.active_record.dump_schema_after_migration = true
 
 end
