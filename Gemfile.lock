@@ -139,7 +139,7 @@ GEM
       addressable
     daemons (1.2.2)
     dalli (2.0.2)
-    database_cleaner (0.9.1)
+    database_cleaner (1.5.1)
     devise (3.5.6)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -422,7 +422,7 @@ GEM
     utf8-cleaner (0.0.9)
     warden (1.2.6)
       rack (>= 1.0)
-    websocket (1.2.2)
+    websocket (1.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
