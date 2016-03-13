@@ -12,7 +12,7 @@ class RegistrationsController < ApplicationController
       @registration = Registration.new(registration_params)
       @user = @registration.build_user(email: registration_params[:email], password: password, password_confirmation: password)
     else
-      @registration = current_user.registrations.build(params[:registration])
+      @registration = current_user.registrations.build(registration_params)
     end
     if @registration.save
       redirect_to confirm_registration_path
@@ -24,7 +24,13 @@ class RegistrationsController < ApplicationController
   private
 
   def registration_params
-    params[:registration] || {}
+    params.require(:registration).permit(:contact_email,
+                                         :year,
+                                         :zip,
+                                         :company,
+                                         :gender,
+                                         :primary_role,
+                                         :track_id)
   end
 
 end

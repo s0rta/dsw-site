@@ -18,7 +18,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = current_user.submissions.new(params[:submission])
+    @submission = current_user.submissions.new(submission_params)
     @submission.year = Date.today.year
     if @submission.save
       redirect_to thanks_submissions_path
@@ -33,6 +33,22 @@ class SubmissionsController < ApplicationController
       order(:start_day).
       includes(:submitter, :track, :votes, comments: :user).
       first!
+  end
+
+  private
+
+  def submission_params
+    params.reqiure(:submission).permit(:start_day,
+                                       :description,
+                                       :format,
+                                       :location,
+                                       :notes,
+                                       :time_range,
+                                       :title,
+                                       :track_id,
+                                       :contact_email,
+                                       :estimated_size,
+                                       :venue_id)
   end
 
 end

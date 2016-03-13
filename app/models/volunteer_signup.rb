@@ -1,5 +1,4 @@
 class VolunteerSignup < ActiveRecord::Base
-  attr_accessible :contact_email, :contact_name, :interest, :notes
 
   after_create :notify_chairs
 

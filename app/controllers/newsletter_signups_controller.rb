@@ -11,4 +11,10 @@ class NewsletterSignupsController < ApplicationController
     end
   end
 
+  private
+
+  def newsletter_signup_params
+    params.require(:newsletter_signup).permit(:email, :first_name, :last_name)
+  end
+
 end

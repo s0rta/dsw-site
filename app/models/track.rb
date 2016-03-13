@@ -1,8 +1,9 @@
 class Track < ActiveRecord::Base
 
-  attr_accessible :name,
-                  :icon,
-                  :email_alias
+  # Add to ActiveAdmin as strong params
+  # attr_accessible :name,
+  #                 :icon,
+  #                 :email_alias
 
   validates :name, presence: true
 

@@ -4,14 +4,6 @@ class Registration < ActiveRecord::Base
   has_many :session_registrations, dependent: :destroy
   has_many :submissions, through: :session_registrations
 
-  attr_accessible :contact_email,
-                  :year,
-                  :zip,
-                  :company,
-                  :gender,
-                  :primary_role,
-                  :track_id
-
   validates :user, presence: true
   validates :contact_email, presence: true
 

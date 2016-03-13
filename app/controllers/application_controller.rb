@@ -2,6 +2,8 @@ require "application_responder"
 
 class ApplicationController < ActionController::Base
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   self.responder = ApplicationResponder
   respond_to :html
 
@@ -23,6 +25,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up,
+      keys: [:email, :remember_me, :uid, :provider, :name, :description])
+  end
 
   def registered?
     current_registration.present?
