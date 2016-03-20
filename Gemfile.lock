@@ -398,6 +398,8 @@ GEM
     terminal-table (1.5.2)
     test-unit (3.0.8)
       power_assert
+    test_after_commit (1.0.0)
+      activerecord (>= 3.2)
     thin (1.6.3)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0)
@@ -487,6 +489,7 @@ DEPENDENCIES
   teaspoon
   temporal-rails
   test-unit (~> 3.0)
+  test_after_commit
   thin
   turbolinks!
   uglifier

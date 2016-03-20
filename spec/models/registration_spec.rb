@@ -1,16 +1,15 @@
 require 'spec_helper'
 
-describe Registration do
-
+RSpec.describe Registration, type: :model do
   before do
     allow(ListSubscriptionJob).to receive(:perform)
   end
 
-  it { should belong_to(:user) }
-  it { should have_many(:session_registrations).dependent(:destroy) }
-  it { should have_many(:submissions) }
-  it { should validate_presence_of(:user) }
-  it { should validate_presence_of(:contact_email) }
+  it { is_expected.to belong_to(:user) }
+  it { is_expected.to have_many(:session_registrations).dependent(:destroy) }
+  it { is_expected.to have_many(:submissions) }
+  it { is_expected.to validate_presence_of(:user) }
+  it { is_expected.to validate_presence_of(:contact_email) }
 
   it 'defaults its year to the current year' do
     expect(Registration.new.year).to eq(Date.today.year)
@@ -42,5 +41,4 @@ describe Registration do
                                                                                       '2016' ])
     end
   end
-
 end

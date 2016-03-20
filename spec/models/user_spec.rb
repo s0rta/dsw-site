@@ -1,14 +1,13 @@
 require 'spec_helper'
 
-describe User do
+RSpec.describe User, type: :model do
+  it { is_expected.to have_many(:submissions) }
+  it { is_expected.to have_many(:votes).dependent(:destroy) }
+  it { is_expected.to have_many(:registrations).dependent(:destroy) }
 
-  it { should have_many(:submissions) }
-  it { should have_many(:votes).dependent(:destroy) }
-  it { should have_many(:registrations).dependent(:destroy) }
-
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:email) }
-  it { should validate_uniqueness_of(:email) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
 
   describe 'creating from an auth hash' do
     let(:auth_hash) do
@@ -41,7 +40,5 @@ describe User do
       expect(user.name).to eq('Test User')
       expect(user.email).to eq('test@example.com')
     end
-
   end
-
 end

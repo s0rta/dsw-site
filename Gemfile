@@ -96,10 +96,11 @@ end
 
 group :test do
   gem 'test-unit', '~> 3.0'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'test_after_commit'
 end
 
 group :production do

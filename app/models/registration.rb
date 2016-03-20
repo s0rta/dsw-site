@@ -12,7 +12,7 @@ class Registration < ActiveRecord::Base
     self.calendar_token ||= SecureRandom.hex(25)
   end
 
-  after_create :subscribe_to_list
+  after_commit :subscribe_to_list
 
   def subscribe_to_list
     registered_years = user.registrations.map(&:year).sort.map(&:to_s)

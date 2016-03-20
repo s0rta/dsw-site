@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe Comment do
-  it { should belong_to(:submission).touch(true) }
+RSpec.describe Comment, type: :model do
+  it { is_expected.to belong_to(:submission).touch(true) }
 end
