@@ -12,8 +12,6 @@ describe Registration do
   it { should validate_presence_of(:user) }
   it { should validate_presence_of(:contact_email) }
 
-  it { should allow_mass_assignment_of(:contact_email) }
-
   it 'defaults its year to the current year' do
     expect(Registration.new.year).to eq(Date.today.year)
   end
