@@ -1,0 +1,26 @@
+@import ../config
+
+header.masthead
+  position: fixed
+  width: 100%
+  min-height: 130px
+  background: #fff
+  opacity: 0.95
+  z-index: 10
+  .section-content
+    position: relative
+    max-width: $max-breakpoint
+    margin: 20px auto 0
+    padding: 0
+  .menu
+    position: absolute
+    left: 0px
+  img
+    position: absolute
+    right: 20px
+    max-width: 140px
+
+@media(max-width: 1124px)
+  header.masthead
+    .menu
+      left: 20px

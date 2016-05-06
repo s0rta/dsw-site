@@ -1,0 +1,35 @@
+@import ../config
+
+.faq-question,
+.faq-answer
+  width: 100%
+  margin-bottom: 8px
+  padding: 20px
+  outline: none
+  border: 0
+  cursor: pointer
+  h6
+    text-align: left
+  .icon
+    width: 20px
+    height: 20px
+
+.faq-question
+  display: flex
+  justify-content: space-between
+  background: $backfill-grey
+  h6
+    padding-right: 10px
+
+.faq-answer
+  background: $teal
+  color: darken($teal, 35%)
+  h6
+    &:first-child
+      font-family: 'Montserrat-Regular'
+  header
+    display: flex
+    justify-content: space-between
+    margin-bottom: 15px
+  .icon
+    fill: #fff

@@ -1,0 +1,6 @@
+nav
+  .section-content
+    h1 Programs
+    = link_to 'Event Info', '/new-site/programs', class: item == :event_info ? 'active' : ''
+    = link_to 'Tracks', '/new-site/programs/tracks', class: item == :tracks ? 'active' : ''
+    = link_to 'Previous', '/new-site/programs/previous', class: item == :previous ? 'active' : ''

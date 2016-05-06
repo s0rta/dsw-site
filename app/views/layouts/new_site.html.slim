@@ -3,10 +3,12 @@ html
   head
     title Denver Startup Week
     meta http-equiv="X-UA-Compatible" content="IE=Edge"
-    link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'
     meta name="viewport" content="width=device-width, initial-scale=1"
-    = stylesheet_link_tag 'new_site', media: 'all'
+    = stylesheet_link_tag '2016/application', media: 'all'
     = csrf_meta_tags
 
-  body
-    == yield
+  body(id="#{controller_name}_controller" class="#{params[:page] || 'unknown'}-action")
+    = render partial: 'layouts/2016_shared/header'
+    main
+      == yield
+    = render partial: 'layouts/2016_shared/site_footer'

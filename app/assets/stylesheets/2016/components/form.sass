@@ -1,0 +1,22 @@
+@import ../config
+
+form
+  input, label
+    display: block
+    font-family: 'Montserrat-Light'
+    font-size: 14px
+    font-weight: 200
+  label
+    margin-bottom: 5px
+  input
+    width: 100%
+    border: none
+    background: $backfill-grey
+    margin-bottom: 20px
+    padding: 20px
+    border-radius: 2px
+    &:focus
+      outline: none !important
+      border: 1px solid darken($backfill-grey, 50%)
+      box-shadow: 0 0 5px darken($backfill-grey, 50%)
+
