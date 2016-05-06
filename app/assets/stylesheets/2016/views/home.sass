@@ -71,7 +71,22 @@
       font-size: 64px
       color: $copy-color-bold
     .section-image
+      width: 100%
+      min-height: 300px
       margin-bottom: 20px
+      background-size: cover
+
+  section.common.the-what
+    .section-image
+      background: image-url('2016_redesign/crawford-hotel.jpg') no-repeat center
+      background-size: 110%
+      background-position: 50% 70%
+
+  section.common.the-why
+    .section-image
+      background: image-url('2016_redesign/gather.jpg') no-repeat center
+      background-size: 110%
+      background-position: 50% 90%
 
   section.common.the-why
     .buttons
@@ -109,3 +124,7 @@
         .section-content
           padding: 0 40px
 
+    section.common.the-what,
+    section.common.the-why
+      .section-image
+        min-height: 470px
