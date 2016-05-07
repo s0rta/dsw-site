@@ -83,10 +83,10 @@ end
 group :development do
   gem 'spring', require: false
   gem 'spring-commands-rspec', require: false
-  gem 'dotenv-rails'
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'thin'
   gem 'pry-rails'
   gem 'rspec-rails'
