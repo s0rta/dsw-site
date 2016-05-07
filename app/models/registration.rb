@@ -16,14 +16,14 @@ class Registration < ActiveRecord::Base
 
   def subscribe_to_list
     registered_years = user.registrations.map(&:year).sort.map(&:to_s)
-    ListSubscriptionJob.perform(contact_email,
+    ListSubscriptionJob.perform_async(contact_email,
                                 registered_years: registered_years)
   end
 
   after_create :send_confirmation_email
 
   def send_confirmation_email
-    ConfirmRegistrationJob.perform(self)
+    ConfirmRegistrationJob.perform_async(self)
   end
 
   def self.for_current_year

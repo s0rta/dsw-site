@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Registration, type: :model do
   before do
-    allow(ListSubscriptionJob).to receive(:perform)
+    allow(ListSubscriptionJob).to receive(:perform_async)
   end
 
   it { is_expected.to belong_to(:user) }
@@ -29,16 +29,15 @@ RSpec.describe Registration, type: :model do
 
     it 'subscribes automatically on creation' do
       user.registrations.create! contact_email: 'test@example.com', year: 2015
-      expect(ListSubscriptionJob).to have_received(:perform).with('test@example.com',
-                                                                  registered_years: [ '2015' ])
+      expect(ListSubscriptionJob).to have_received(:perform_async).with('test@example.com',
+                                                                        registered_years: [ '2015' ])
     end
 
     it 'sends multiple registration years if applicable' do
       user.registrations.create! contact_email: 'test@example.com', year: 2015
       user.registrations.create! contact_email: 'test@example.com', year: 2016
-      expect(ListSubscriptionJob).to have_received(:perform).with('test@example.com',
-                                                                  registered_years: [ '2015',
-                                                                                      '2016' ])
+      expect(ListSubscriptionJob).to have_received(:perform_async).with('test@example.com',
+                                                                        registered_years: %w(2015 2016))
     end
   end
 end
