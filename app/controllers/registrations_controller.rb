@@ -24,13 +24,13 @@ class RegistrationsController < ApplicationController
   private
 
   def registration_params
-    params.require(:registration).permit(:contact_email,
-                                         :year,
-                                         :zip,
-                                         :company,
-                                         :gender,
-                                         :primary_role,
-                                         :track_id)
+    params.fetch(:registration, {}).permit(:contact_email,
+                                           :year,
+                                           :zip,
+                                           :company,
+                                           :gender,
+                                           :primary_role,
+                                           :track_id)
   end
 
 end
