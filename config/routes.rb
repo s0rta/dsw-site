@@ -45,6 +45,4 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  mount Cmsimple::Engine => '/'
-
 end

@@ -13,8 +13,6 @@ gem 'jquery-rails-cdn'
 gem 'haml-rails'
 gem 'slim-rails'
 gem 'responders'
-gem 'cmsimple', github: 'modeset/cmsimple'
-gem 'mercury-rails', github: 'jejacks0n/mercury'
 gem 'navigasmic'
 gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
@@ -24,7 +22,6 @@ gem 'temporal-rails'
 # Simple transparent captchas
 gem 'honeypot-captcha'
 
-gem 'cloudinary'
 gem 'simple_form'
 
 gem 'emma', github: 'myemma/EmmaRuby'

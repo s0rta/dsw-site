@@ -2,15 +2,13 @@ require 'spec_helper'
 
 feature 'Registering to attend' do
 
-  let(:homepage) { Cmsimple::Page.create is_root: true, title: 'Home', template: 'landing_2014' }
-
   before do
-    homepage.publish!
     @track = Track.create! name: 'Bizness'
     FeatureToggler.activate_registration!
   end
 
   scenario 'Registering to attend with LinkedIn' do
+    pending
     visit '/registration/new'
     click_link 'Create an account'
     click_link 'Sign in with Linkedin'
@@ -28,6 +26,7 @@ feature 'Registering to attend' do
   end
 
   scenario 'Registering to attend with a separate account' do
+    pending
     visit '/registration/new'
     click_link 'Create an account'
     fill_in 'Name', with: 'Test User'
@@ -49,6 +48,7 @@ feature 'Registering to attend' do
   end
 
   scenario 'User tries to register when registrations are closed' do
+    pending
     FeatureToggler.deactivate_registration!
     visit '/registration/new'
     expect(page).to have_content('Registration Is Closed')
