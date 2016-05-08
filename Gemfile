@@ -6,8 +6,6 @@ gem 'rails', '~> 4.2.6'
 gem 'rake'
 gem 'pg'
 
-gem 'rails4_upgrade'
-
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
 gem 'haml-rails'
