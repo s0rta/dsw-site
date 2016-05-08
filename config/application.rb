@@ -16,13 +16,6 @@ module Denverstartupweek
     config.autoload_paths += %W(#{config.root}/lib)
     config.eager_load_paths += %W(#{config.root}/lib)
 
-    # Only load the plugins named here, in the order given (default is alphabetical).
-    # :all can be used as a placeholder for all plugins not explicitly named.
-    # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-
-    # Activate observers that should always be running.
-    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
-
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
@@ -31,23 +24,10 @@ module Denverstartupweek
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Enable the asset pipeline
-    # this needs to be moved to a new assets.rb
-    # config.assets.enabled = true
-    # config.assets.paths << 'app/assets'
-    # config.assets.paths << 'app/assets/fonts'
-    # config.assets.precompile += %w( cmsimple.js cmsimple.css mercury.css polyfill.js dinosaur.css respond.proxy.js respond-proxy.html jquery.js active_admin.css active_admin.js active_admin/print.css basecamp.css basecamp.js daily_schedule_email.css)
-
-    # Set up Emoji
-    # config.assets.paths << Emoji.images_path
-    # config.assets.precompile << "emoji/*.png"
-
-    # Version of your assets, change this if you want to expire all your assets
-    # config.assets.version = '1.0'
-
-    # config.assets.initialize_on_precompile = false
-
-    # Do not swallow errors in after_commit/after_rollback callbacks
+    # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Set a default host for mailers
+    config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_HOST'] }
   end
 end
