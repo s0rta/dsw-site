@@ -54,7 +54,7 @@ gem 'active_model_serializers', '~> 0.8.0'
 
 # Production support
 gem 'utf8-cleaner'
-gem 'rollbar', '~> 1.2.7'
+gem 'rollbar'
 gem 'newrelic_rpm'
 
 gem 'rack-canonical-host'
