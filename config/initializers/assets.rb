@@ -10,4 +10,5 @@ Rails.application.config.assets.paths << 'app/assets/fonts'
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-Rails.application.config.assets.precompile += %w(cmsimple.js cmsimple.css mercury.css polyfill.js dinosaur.css respond.proxy.js respond-proxy.html jquery.js active_admin.css active_admin.js active_admin/print.css basecamp.css basecamp.js daily_schedule_email.css emoji/*.png *.otf)
+Rails.application.config.assets.precompile -= %w(application.js application.css)
+Rails.application.config.assets.precompile += %w(2016/application.css active_admin.css active_admin.js active_admin/print.css basecamp.css basecamp.js daily_schedule_email.css emoji/*.png *.otf)
