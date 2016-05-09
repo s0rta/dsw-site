@@ -11,15 +11,15 @@ section.hero-cta
       h2 Submissions
       h3 Submissions are open
       h6 Denver Startup Week is powered by the community. Submit a topic. Make an impact.
-      = link_to 'Submit a Topic', '/new-site/sign-in', class: 'btn blue'
+      = link_to 'Submit a Topic', page_path(page: 'sign-in'), class: 'btn blue'
       / if already authenticated then goes to dashboard
-      / = link_to 'Submit a Topic', '/new-site/submissions/dashboard', class: 'btn blue'
+      / = link_to 'Submit a Topic', page_path(page: 'submissions/dashboard'), class: 'btn blue'
   article.teal
     .section-content
       h2 Get Involved
       h3 Be a part of something epic
       h6 Denver Startup Week is powered by the community. Get involved. Make an impact.
-      = link_to 'Contact', '/new-site/contact', class: 'btn teal'
+      = link_to 'Contact', page_path(page: 'contact'), class: 'btn teal'
 
 section.common.the-what
   .section-content
@@ -44,7 +44,7 @@ section.common.the-why
       | We value celebrating, educating, and connecting entrepreneurs, businesses, artists, advocates, technologists, makers, thought leaders, and everything in between.
 
     .buttons
-      = link_to 'View Program', '/new-site/programs', class: 'btn primary'
-      = link_to 'Meet the Team', '/new-site/team', class: 'btn primary'
+      = link_to 'View Program', page_path(page: 'programs'), class: 'btn primary'
+      = link_to 'Meet the Team', page_path(page: 'team'), class: 'btn primary'
 
 = render partial: 'layouts/2016_shared/page_footer'

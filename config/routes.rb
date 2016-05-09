@@ -43,5 +43,5 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  get '/(*page)', to: 'new_site#index', as: :new_site, defaults: {page: :index}
+  get '/(*page)', to: 'new_site#index', as: :page, defaults: {page: :index}
 end
