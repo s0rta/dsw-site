@@ -8,7 +8,6 @@ gem 'pg'
 gem 'puma'
 
 gem 'jquery-rails'
-gem 'jquery-rails-cdn'
 gem 'haml-rails'
 gem 'slim-rails'
 gem 'responders'
