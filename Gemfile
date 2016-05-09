@@ -5,6 +5,7 @@ ruby '2.3.0'
 gem 'rails', '~> 4.2.6'
 gem 'rake'
 gem 'pg'
+gem 'puma'
 
 gem 'jquery-rails'
 gem 'jquery-rails-cdn'
@@ -82,7 +83,6 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'thin'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'teaspoon'
@@ -100,7 +100,6 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'unicorn'
   gem 'lograge'
   gem 'memcachier'
   gem 'dalli'
