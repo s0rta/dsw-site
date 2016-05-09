@@ -29,8 +29,6 @@ Rails.application.routes.draw do
   resources :volunteer_signups, only: :create
   resources :sponsor_signups, only: :create
 
-  get '/new-site(/*page)', to: 'new_site#index', as: :new_site, defaults: {page: :index}
-
   get '/schedule', to: 'schedules#index', as: :schedules
   get '/my-schedule', to: 'schedules#my_schedule', as: :my_schedule
   get '/schedule/:id', to: 'schedules#show', as: :schedule
@@ -45,4 +43,5 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
+  get '/(*page)', to: 'new_site#index', as: :new_site, defaults: {page: :index}
 end
