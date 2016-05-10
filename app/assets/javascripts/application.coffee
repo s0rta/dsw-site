@@ -4,6 +4,7 @@
 #= require utensils/bindable
 
 #= require components/newsletter_signup
+#= require components/volunteer_signup
 
 createBindable = ->
   utensils.bindable = new utensils.Bindable().bindAll()
