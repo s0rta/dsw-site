@@ -9,11 +9,16 @@ header.masthead(data-bindable='toggle-nav')
     .inner-modal-container
       a.close href='#'
         = render partial: 'icons/x_mark'
-      = link_to 'Sign In', '/sign-in'
-      = link_to 'Program', '/programs'
-      = link_to 'Our Team', '/team'
+      - if signed_in?
+        = link_to 'My Dashboard', mine_submissions_path
+      - else
+        = link_to 'Sign In', new_user_session_path
+      = link_to 'Program', page_path(page: 'programs')
+      = link_to 'Our Team', page_path(page: 'team')
       / = link_to 'Attendees', '/attendees'
-      = link_to 'Contact', 'contact'
-      / = link_to 'Sponsor', 'sponsors'
-      = link_to 'FAQ', 'faq'
+      = link_to 'Contact', page_path(page: 'contact')
+      / = link_to 'Sponsor', page_path(page: 'sponsors')
+      = link_to 'FAQ', page_path(page: 'faq')
+      - if signed_in?
+        = link_to 'Logout', destroy_user_session_path, method: :delete
 
