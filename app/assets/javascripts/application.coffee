@@ -14,7 +14,6 @@ disposeBindable = ->
   utensils.bindable.dispose()
   utensils.bindable = null
 
-$(document).on 'ready page:change page:restore', (e) ->
+$(document).on 'ready', (e) ->
   disposeBindable() if utensils.bindable
   createBindable()
-  _gaq.push(['_trackPageview']) if _gaq
