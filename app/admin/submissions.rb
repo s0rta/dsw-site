@@ -42,7 +42,7 @@ ActiveAdmin.register Submission do
     end
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
     column(:comments, sortable: 'COUNT(comments.id)') { |s| s.comments.size }
-    default_actions
+    actions
   end
 
   csv do

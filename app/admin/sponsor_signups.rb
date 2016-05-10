@@ -6,7 +6,7 @@ ActiveAdmin.register SponsorSignup do
     column :contact_email
     column :company
     column :created_at
-    default_actions
+    actions
   end
 
   filter :name
