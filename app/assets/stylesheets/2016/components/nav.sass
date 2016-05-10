@@ -16,12 +16,58 @@ nav
     font-size: 14px
     border-bottom: 5px solid #fff
     color: $teal
+    cursor: pointer
     &:last-child
       margin-right: 0
     &:hover, &:active, &.active
       border-bottom: 5px solid $teal
       color: darken($teal, 30%)
 
-nav#main-nav
+.outer-modal-container
   display: none
+  z-index: 2
+  align-items: center
+  justify-content: center
+  align-content: center
+  position: fixed
+  top: 0
+  bottom: 0
+  left: 0
+  right: 0
+  background: rgba(5, 211, 216, 0.95)
+  &.nav-open
+    display: flex
+
+.inner-modal-container
+  position: relative
+  padding: 60px 40px
+  max-height: 80%
+  max-width: 80%
+  border-radius: 10px
+  overflow-x: scroll
+  background: transparent
+  a
+    display: block
+    margin-bottom: 10px
+    color: darken($teal, 35%)
+    font-size: 20px
+    border-bottom: 5px solid $teal 
+    &:hover, &:active, &.active
+      border-bottom: 5px solid #fff
+  .icon
+    width: 20px
+    height: 20px
+    margin-bottom: 30px
+    color: darken($teal, 35%)
+
+.modal-close
+  position: absolute
+  top: 20px
+  right: 20px
+  color: #8f8f8f
+  text-transform: uppercase
+  img
+    width: 15px
+    vertical-align: -2px
+    margin-left: 12px
 
