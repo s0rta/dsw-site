@@ -11,10 +11,13 @@ section.common.blue
     - flash.each do |key, message|
       h6 = message
 
+.submission-close-count
+  h2 Submissions close in
+  h1.countdown #{time_remaining_to_deadline('2016/06/01')}
 
 section.common
   .section-content
-    h1 #{current_year} Submissions
+    h1 Your #{current_year} Submissions
     - if @submissions.any?
       - @submissions.each do |submission|
         .talk-submission
