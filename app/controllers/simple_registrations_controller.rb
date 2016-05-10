@@ -1,5 +1,4 @@
 class SimpleRegistrationsController < ApplicationController
-  render layout: 'new_site'
 
   def enable
     cookies.permanent.signed[:simple_registration] = true
