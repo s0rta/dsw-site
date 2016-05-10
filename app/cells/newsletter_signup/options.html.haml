@@ -1,8 +1,0 @@
-.mercury-display-pane(style='width: 500px')
-  %h2 Newsletter Signup Snippet
-  = semantic_form_for @snippet, :url => '#', html: { class: 'mercury-form' } do |f|
-    = f.inputs do
-      = f.input :submit_text, hint: 'Label for the submit button onthe signup form'
-    .mercury-display-controls
-      = f.actions do
-        = f.action :submit
