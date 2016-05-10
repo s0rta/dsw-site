@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get :by_day
       get :submissions_closed
       get :feedback_closed
+      get :mine
     end
     resources :votes, only: :create
     resources :comments, only: :create
@@ -43,5 +44,5 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  get '/(*page)', to: 'new_site#index', as: :page, defaults: {page: :index}
+  get '/(*page)', to: 'new_site#index', as: :page, defaults: { page: :index }
 end

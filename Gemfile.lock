@@ -13,13 +13,6 @@ GIT
       httparty
       json
 
-GIT
-  remote: git://github.com/rails/turbolinks.git
-  revision: cebcbea332909d03e60f5a486fe0f6168408c10a
-  specs:
-    turbolinks (1.1.1)
-      coffee-rails
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -424,7 +417,6 @@ DEPENDENCIES
   temporal-rails
   test-unit (~> 3.0)
   test_after_commit
-  turbolinks!
   uglifier
   underscore-rails
   utf8-cleaner

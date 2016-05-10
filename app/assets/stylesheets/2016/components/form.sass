@@ -1,14 +1,17 @@
 @import ../config
 
 form
-  input, label
+  select
+    -webkit-appearance: none
+    -moz-appearance: none
+  input, label, textarea, select
     display: block
     font-family: 'Montserrat-Light'
     font-size: 14px
     font-weight: 200
   label
     margin-bottom: 5px
-  input
+  input, textarea, select
     width: 100%
     border: none
     background: $backfill-grey

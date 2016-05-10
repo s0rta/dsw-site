@@ -12,7 +12,6 @@ gem 'haml-rails'
 gem 'slim-rails'
 gem 'responders'
 gem 'navigasmic'
-gem 'turbolinks', github: 'rails/turbolinks' # Get the edge version for `data-turbolinks-eval`
 gem 'font_assets'
 
 gem 'temporal-rails'

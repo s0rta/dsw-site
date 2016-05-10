@@ -3,7 +3,7 @@ section.hero
   h2 September 12 - 16, 2016
   .section-content
     / h3 Denver Startup Week is about innovation for founders, developers, product managers, designers, marketers, sales teams, and makers.
-    h3 Denver Startup Week. Celebrating entrepreneurial spirit. 
+    h3 Denver Startup Week. Celebrating entrepreneurial spirit.
 
 section.hero-cta
   article.blue
@@ -11,9 +11,7 @@ section.hero-cta
       h2 Submissions
       h3 Submissions are open
       h6 Denver Startup Week is powered by the community. Submit a topic. Make an impact.
-      = link_to 'Submit a Topic', page_path(page: 'sign-in'), class: 'btn blue'
-      / if already authenticated then goes to dashboard
-      / = link_to 'Submit a Topic', page_path(page: 'submissions/dashboard'), class: 'btn blue'
+      = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
   article.teal
     .section-content
       h2 Get Involved

@@ -1,0 +1,44 @@
+nav
+  .section-content
+    h1 Panel Picker
+
+section.common.blue
+  .section-content
+    .dash-profile-bar
+      h3 = link_to 'Return to Dashboard', mine_submissions_path
+      /* = link_to 'Logout', '#' */
+
+.submission-close-count
+  h2 Submissions close in
+  h1.countdown 123 : 15 : 45
+
+section.common
+  .section-content
+    h1 Propose a New Session
+    h6
+      | Before submitting a session proposal, please take a minute to read through 
+      = link_to 'our FAQs', page_path(page: 'faqs')
+      |  for more information about the submission and selection process.
+
+    - flash.each do |key, message|
+      h6 = message
+
+section.common.sm-centered
+  .section-content
+    = form_for @submission do |f|
+      = f.label :title, 'Which track would your session best fit into?'
+      = f.select :track_id, tracks_for_select, include_blank: 'I\'m not sure', required: 'required'
+
+      = f.label :title, "What is your session's title? It should be short and sweet."
+      = f.text_field :title, required: 'required'
+
+      = f.label :description, 'Describe the kind of session you have in mind. What will attendees do, why they should attend, who are your speakers/panelists, how will it improve their business, what will they learn? This will be displayed as the public description if your session idea advances to the voting round.'
+      = f.text_area :description, required: 'required', rows: 8
+
+      = f.label :notes, 'Pitch us: why should we consider this session? How does it fit into Denver Startup Week? Why is it a truly standout, awesome idea?'
+      = f.text_area :notes, required: 'required', rows: 8
+
+      = f.label :contact_email, 'Please confirm your e-mail address. Once your idea is submitted, you will receive a confirmation email. We may also reach out if we have any questions.'
+      = f.text_field :contact_email, required: 'required'
+
+      = f.submit 'Submit'

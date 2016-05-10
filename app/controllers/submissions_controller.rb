@@ -2,10 +2,17 @@ class SubmissionsController < ApplicationController
 
   respond_to  :html,
               :atom
+  before_action :check_submissions_open, only: [ :new, :create ]
+  before_action :authenticate_user!, only: [ :new, :create, :mine ]
+  before_action :check_feedback_open, only: [ :index ]
 
   def index
-    redirect_to feedback_closed_submissions_path unless FeatureToggler.feedback_active?
     @submissions = Submission.for_current_year.public.order('random()').includes(:submitter, :track, :votes)
+  end
+
+  def mine
+    @submissions = current_user.submissions.for_current_year
+    @previous_submissions = current_user.submissions.for_previous_years.order('created_at DESC')
   end
 
   def by_day
@@ -13,7 +20,6 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    redirect_to submissions_closed_submissions_path unless FeatureToggler.submission_active?
     @submission = Submission.new(contact_email: current_user.try(:email))
   end
 
@@ -21,7 +27,8 @@ class SubmissionsController < ApplicationController
     @submission = current_user.submissions.new(submission_params)
     @submission.year = Date.today.year
     if @submission.save
-      redirect_to thanks_submissions_path
+      flash[:notice] = 'Thanks! Your proposal has been received and you will receive an e-mail confirmation shortly'
+      redirect_to mine_submissions_path
     else
       respond_with @submission
     end
@@ -38,7 +45,7 @@ class SubmissionsController < ApplicationController
   private
 
   def submission_params
-    params.reqiure(:submission).permit(:start_day,
+    params.require(:submission).permit(:start_day,
                                        :description,
                                        :format,
                                        :location,
@@ -49,6 +56,14 @@ class SubmissionsController < ApplicationController
                                        :contact_email,
                                        :estimated_size,
                                        :venue_id)
+  end
+
+  def check_submissions_open
+    redirect_to submissions_closed_submissions_path unless FeatureToggler.submission_active?
+  end
+
+  def check_feedback_open
+    redirect_to feedback_closed_submissions_path unless FeatureToggler.feedback_active?
   end
 
 end
