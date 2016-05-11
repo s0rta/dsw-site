@@ -1,24 +1,32 @@
 header.masthead(data-bindable='toggle-nav')
   .section-content
-    a.menu-icon href='#'
+    a#menu-icon href='#'
       = render partial: 'icons/hamburger'
-    = link_to image_tag('2016_redesign/2016_logo.png'), page_path
-    / = link_to image_tag('2016_redesign/2016_logo_sm.png'), page_path
+    h1.logo-container
+      a.logo href='/' <span>Denver Startup Week</span>
 
   nav.outer-modal-container
     .inner-modal-container
       a.close href='#'
         = render partial: 'icons/x_mark'
       - if signed_in?
-        = link_to 'My Dashboard', mine_submissions_path
+        div
+          = link_to 'My Dashboard', mine_submissions_path
       - else
-        = link_to 'Sign In', new_user_session_path
-      = link_to 'Program', page_path(page: 'programs')
-      = link_to 'Our Team', page_path(page: 'team')
-      / = link_to 'Attendees', '/attendees'
-      = link_to 'Contact', page_path(page: 'contact')
-      / = link_to 'Sponsor', page_path(page: 'sponsors')
-      = link_to 'FAQ', page_path(page: 'faq')
+        div
+          = link_to 'Sign In', new_user_session_path
+      div
+        = link_to 'Program', page_path(page: 'program')
+      div
+        = link_to 'Our Team', page_path(page: 'team')
+      / div
+        / = link_to 'Attendees', 'page_path(page: 'attendees')
+      div
+        = link_to 'Contact', page_path(page: 'contact')
+      / div
+        / = link_to 'Sponsor', page_path(page: 'sponsors')
+      div
+        = link_to 'FAQ', page_path(page: 'faq')
       - if signed_in?
-        = link_to 'Logout', destroy_user_session_path, method: :delete
-
+        div
+          = link_to 'Logout', destroy_user_session_path, method: :delete

@@ -1,35 +1,53 @@
 @import ../config
 
-.faq-question,
-.faq-answer
+button.accordion
+  display: flex
+  align-items: center
   width: 100%
   margin-bottom: 8px
   padding: 20px
   outline: none
   border: 0
+  background-color: $backfill-grey
+  font-family: 'Montserrat-Light'
+  color: $copy-color
   cursor: pointer
   h6
     text-align: left
-  .icon
-    width: 20px
-    height: 20px
+    flex: 1
+  .faq-plus
+    display: inline-block
+  .faq-x
+    display: none
+  &.active
+    .faq-plus
+      display: none
+    .faq-x
+      display: inline-block
 
-.faq-question
-  display: flex
-  justify-content: space-between
-  background: $backfill-grey
-  h6
-    padding-right: 10px
+.faq-plus,
+.faq-x
+  width: 20px
+  height: 20px
 
-.faq-answer
+.panel
+  display: none
+  margin-bottom: 8px
+  padding: 15px
   background: $teal
   color: darken($teal, 35%)
+  a
+    text-decoration: underline
+    color: darken($teal, 35%)
+    &:hover
+      color: #fff
   h6
     &:first-child
       font-family: 'Montserrat-Regular'
-  header
-    display: flex
-    justify-content: space-between
-    margin-bottom: 15px
-  .icon
-    fill: #fff
+      margin-bottom: 10px
+  &.show
+    display: block
+
+@media(max-width: 330px)
+  .panel
+    padding: 5px

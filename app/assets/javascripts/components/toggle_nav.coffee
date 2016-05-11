@@ -7,7 +7,7 @@ class dsw.ToggleNav
     @addListeners()
 
   addListeners: ->
-    @$el.find('.menu-icon').on 'click', @handleClick
+    @$el.find('#menu-icon').on 'click', @handleClick
     @$el.find('.close').on 'click', @close
 
 
@@ -21,4 +21,3 @@ class dsw.ToggleNav
 
 
 utensils.Bindable.register 'toggle-nav', dsw.ToggleNav
-
