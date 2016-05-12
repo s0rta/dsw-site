@@ -27,12 +27,20 @@ h6
 
 a
   text-decoration: none
+a.inline-copy-link
+  text-decoration: underline
+  color: inherit
+  &:hover
+    color: $teal-background
 
 ul, li
   padding: 0
   list-style: none
 li
   margin-bottom: 8px
+
+textarea
+  resize: none
 
 .icon
   width: 30px
@@ -42,4 +50,8 @@ li
   margin: 0 auto
   padding: 0 20px
   max-width: 740px
+  .btn
+    margin-top: 40px
+  &.instruction
+    margin-bottom: 40px
 

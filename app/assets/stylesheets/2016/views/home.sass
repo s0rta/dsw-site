@@ -25,20 +25,19 @@
   section.hero
     h1, h2
       text-align: center
-    h1
-      font-size: 55px
+    h1.countdown
       margin-bottom: 30px
-      font-weight: 100
-    h1
-      line-height: 1.5
+      font-family: 'Montserrat-UltraLight'
       font-size: 55px
-      color: $teal
+      line-height: 1.5
+      color: $teal-background
     h2
+      font-size: 28px
       font-weight: 400
       color: $copy-color-bold
     h3
       text-align: center
-      padding: 25px 0 55px 0
+      padding: 5px 0 55px 0
       font-size: 20px
       font-weight: 200
       color: $copy-color
@@ -46,7 +45,7 @@
   section.hero-cta
     article
       display: block
-      background: $teal
+      background: $teal-background
       padding: 20px 0
       .section-content
         max-width: 590px
@@ -62,11 +61,15 @@
       h6
         margin-bottom: 30px
     article:nth-child(1)
-      background: $blue
+      background: $blue-background
     article.blue
-      color: darken($blue, 25%)
+      color: $blue-text
+      h6
+        color: $blue-text
     article.teal
-      color: darken($teal, 25%)
+      color: $teal-text
+      h6
+        color: $teal-text
     .btn
       margin-bottom: 30px
 
@@ -99,14 +102,14 @@
       flex-direction: column
       justify-content: space-between
       width: 100%
-      margin: 40px auto 0 auto
+      margin:  0 auto
       .btn:first-child
         margin-bottom: 10px
 
 @media(min-width: 640px)
   #new_site_controller.index-action
     section.hero
-      h1
+      h1.countdown
         font-size: 85px
     section.common.the-why
       .buttons
@@ -115,7 +118,6 @@
         justify-content: space-between
         width: 100%
         max-width: 590px
-        margin-top: 40px
         .btn:first-child
           margin-bottom: 0
           margin-right: 10px

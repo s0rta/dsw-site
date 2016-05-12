@@ -1,41 +1,39 @@
 nav
   .section-content
-    h1 Panel Picker
+    h1 Propose Session
 
-section.common.blue
+section.common.teal
   .section-content
     .dash-profile-bar
-      h3 = link_to 'Return to Dashboard', mine_submissions_path
+      h3 Hello, #{current_user.name}!
+      h6 = link_to 'Return to Dashboard', mine_submissions_path
       /* = link_to 'Logout', '#' */
 
 .submission-close-count
   h2 Submissions close in
   h1.countdown #{time_remaining_to_deadline('2016/06/01')}
 
-section.common
-  .section-content
-    h1 Propose a New Session
+section.common.sm-centered
+  .section-content.instruction
     h6
       | Before submitting a session proposal, please take a minute to read through 
-      = link_to 'our FAQs', page_path(page: 'faqs')
+      = link_to 'our FAQs', page_path(page: 'faq'), target: '_blank', class: 'inline-copy-link'
       |  for more information about the submission and selection process.
 
     - flash.each do |key, message|
       h6 = message
-
-section.common.sm-centered
   .section-content
     = form_for @submission do |f|
       = f.label :title, 'Which track would your session best fit into?'
       = f.select :track_id, tracks_for_select, include_blank: 'I\'m not sure', required: 'required'
 
-      = f.label :title, "What is your session's title? It should be short and sweet."
+      = f.label :title, "What is your session's title? Please limit your title to 60 characters or less."
       = f.text_field :title, required: 'required'
 
-      = f.label :description, 'Describe the kind of session you have in mind. What will attendees do, why they should attend, who are your speakers/panelists, how will it improve their business, what will they learn? This will be displayed as the public description if your session idea advances to the voting round.'
+      = f.label :description, 'Provide a concise description for the session limited to 600 characters or less. The description field is where you write a short paragraph to quickly tell us what you\'re going to talk about. This gets published in the program along with the title, so it’s the public face of your session. It should be compelling and to the point. Tell a story. Why should attendees come to your session and what will they get out of it?'
       = f.text_area :description, required: 'required', rows: 8
 
-      = f.label :notes, 'Pitch us: why should we consider this session? How does it fit into Denver Startup Week? Why is it a truly standout, awesome idea?'
+      = f.label :notes, 'The Pitch field is your chance to show the reviewers why you should be giving this talk at Denver Startup Week. Here is the place to focus on how your talk will help the program, or fill a specific need. Explain why you\'re passionate about this topic. This content will only be visible to the review committee.'
       = f.text_area :notes, required: 'required', rows: 8
 
       = f.label :contact_email, 'Please confirm your e-mail address. Once your idea is submitted, you will receive a confirmation email. We may also reach out if we have any questions.'
