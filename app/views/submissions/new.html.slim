@@ -1,6 +1,6 @@
 nav
   .section-content
-    h1 Propose Session
+    h1 Session Proposal
 
 section.common.teal
   .section-content
@@ -28,13 +28,13 @@ section.common.sm-centered
       = f.select :track_id, tracks_for_select, include_blank: 'I\'m not sure', required: 'required'
 
       = f.label :title, "What is your session's title? Please limit your title to 60 characters or less."
-      = f.text_field :title, required: 'required'
+      = f.text_field :title, required: 'required', placeholder: 'Session Title'
 
       = f.label :description, 'Provide a concise description for the session limited to 600 characters or less. The description field is where you write a short paragraph to quickly tell us what you\'re going to talk about. This gets published in the program along with the title, so it’s the public face of your session. It should be compelling and to the point. Tell a story. Why should attendees come to your session and what will they get out of it?'
-      = f.text_area :description, required: 'required', rows: 8
+      = f.text_area :description, required: 'required', rows: 8, placeholder: 'Session Description (public facing)'
 
       = f.label :notes, 'The Pitch field is your chance to show the reviewers why you should be giving this talk at Denver Startup Week. Here is the place to focus on how your talk will help the program, or fill a specific need. Explain why you\'re passionate about this topic. This content will only be visible to the review committee.'
-      = f.text_area :notes, required: 'required', rows: 8
+      = f.text_area :notes, required: 'required', rows: 8, placeholder: 'Session Pitch (for reviewers only)'
 
       = f.label :contact_email, 'Please confirm your e-mail address. Once your idea is submitted, you will receive a confirmation email. We may also reach out if we have any questions.'
       = f.text_field :contact_email, required: 'required'
