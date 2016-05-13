@@ -1,0 +1,40 @@
+@import ../config
+
+.icon-flex-container
+  margin-top: 40px
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  align-items: baseline
+  justify-content: space-around
+
+.icon-item
+  display: inline-block
+  min-width: 300px
+  max-width: 300px
+  margin-bottom: 50px
+  text-align: center
+  a
+    color: $copy-color-bold
+    &:hover
+      color: $teal-light
+  img, svg
+    margin-bottom: 20px
+  svg
+    width: 50px
+    height: 50px
+    fill: $purple-light
+  h4
+    margin-bottom: 5px
+  &.spacer
+    height: 0
+
+.avatar
+  width: 100px
+  height: 100px
+  margin-bottom: 15px
+  border-radius: 50%
+  filter: grayscale(100%)
+  -webkit-filter: grayscale(100%)
+
+
