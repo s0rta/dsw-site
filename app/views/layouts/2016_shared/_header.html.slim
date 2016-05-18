@@ -12,9 +12,12 @@ header.masthead(data-bindable='toggle-nav')
       - if signed_in?
         div
           = link_to 'My Dashboard', mine_submissions_path
+      - elsif FeatureToggler.submission_active?
+        div
+          = link_to 'Submit Proposal', new_submission_path
       - else
         div
-          = link_to 'Sign In', new_user_session_path
+          = link_to 'Sign In', mine_submissions_path
       div
         = link_to 'Program', page_path(page: 'program')
       div
