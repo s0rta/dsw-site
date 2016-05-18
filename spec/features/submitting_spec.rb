@@ -45,6 +45,16 @@ feature 'Creating a submission' do
     visit '/panel-picker/submit'
     expect(page).to have_content("Session submissions for #{Date.today.year} are currently closed")
     expect(current_path).to eq('/panel-picker/submissions_closed')
+
+    visit '/panel-picker/mine'
+    click_on 'Register for an account'
+    fill_in 'Name', with: 'New Guy'
+    fill_in 'E-mail Address', with: 'test@example.com'
+    fill_in 'Password', with: 'password', match: :prefer_exact
+    fill_in 'Confirm Password', with: 'password', match: :prefer_exact
+
+    click_on 'Sign Up'
+    expect(page).to have_no_link('Submit a New Proposal')
   end
 
 end
