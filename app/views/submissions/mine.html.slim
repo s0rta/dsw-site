@@ -11,9 +11,10 @@ section.common.blue
     - flash.each do |key, message|
       h6 = message
 
-.submission-close-count
-  h2 Submissions close in
-  h1.countdown #{time_remaining_to_deadline('2016/06/01')}
+- if FeatureToggler.submission_active?
+  .submission-close-count
+    h2 Submissions close in
+    h1.countdown #{time_remaining_to_deadline('2016/06/01')}
 
 section.common.sm-centered
   .section-content
