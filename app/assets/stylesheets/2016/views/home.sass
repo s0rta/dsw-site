@@ -1,27 +1,6 @@
 @import ../config
 
 #new_site_controller.index-action
-  header.masthead
-    position: fixed
-    width: 100%
-    min-height: 300px
-    background: #fff
-    opacity: 0.95
-  .logo-container
-    display: block
-    float: none
-    text-align: center
-  .logo
-    display: inline-block
-    width: 300px
-    height: 215px
-    background: image-url('2016_redesign/2016_logo.svg') no-repeat center
-    span
-      display: none
-
-  main
-    padding-top: 300px
-
   section.hero
     h1, h2
       text-align: center
@@ -105,6 +84,21 @@
       margin:  0 auto
       .btn:first-child
         margin-bottom: 10px
+
+@media(min-width: 520px)
+  #new_site_controller.index-action
+    main
+      padding-top: 300px
+    header.masthead
+      min-height: 300px
+    .logo-container
+      display: block
+      float: none
+      text-align: center
+    .logo
+      width: 300px
+      height: 215px
+      background: image-url('2016_redesign/2016_logo.svg') no-repeat center
 
 @media(min-width: 640px)
   #new_site_controller.index-action
