@@ -1,0 +1,28 @@
+nav
+  .section-content
+    h1 Panel Picker
+
+section.common.green
+  .section-content
+    h1 Reset Your Password
+    - flash.each do |key, message|
+      h6 = message
+
+
+section.common.sm-centered
+  .section-content
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+
+      = f.hidden_field :reset_password_token
+
+      = f.label :password, 'New Password'
+      = f.text_field :password, required: 'required', autofocus: 'autofocus'
+
+      = f.label :password_confirmation, 'Confirm Your New Password'
+      = f.text_field :password_confirmation, required: 'required', autofocus: 'autofocus'
+
+      = f.submit 'Change Password'
+  .section-content.auth-links
+    = link_to 'Sign in', new_user_session_path
+    = " / "
+    = link_to 'Create an account', new_user_registration_path

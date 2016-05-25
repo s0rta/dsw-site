@@ -93,6 +93,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'test_after_commit'
+  gem 'email_spec', '~> 2.1.0'
 end
 
 group :production do
