@@ -35,7 +35,7 @@ section.common.sm-centered
       = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'
 
 - if @previous_submissions.any?
-  section.common
+  section.common.sm-centered
     .section-content
       h1 Previous Submissions
       - @previous_submissions.each do |submission|
