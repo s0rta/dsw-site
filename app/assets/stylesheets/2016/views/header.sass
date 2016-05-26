@@ -1,0 +1,29 @@
+@import ../config
+
+header.masthead
+  position: fixed
+  width: 100%
+  min-height: 130px
+  background: #fff
+  opacity: 0.95
+  z-index: 10
+  .section-content
+    position: relative
+    max-width: $max-breakpoint
+    margin: 20px auto 0
+    padding: 0
+  .logo-container
+    display: inline-block
+    float: right
+  .logo
+    display: inline-block
+    width: 100px
+    height: 100px
+    background: image-url('2016_redesign/2016_logo_sm.svg') no-repeat center
+    span
+      display: none
+
+
+@media(max-width: 1124px)
+  header.masthead
+    padding: 0 20px

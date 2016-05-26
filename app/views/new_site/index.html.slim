@@ -1,0 +1,44 @@
+section.hero
+  h1.countdown #{time_remaining_to_deadline('2016/09/12')}
+  h2 September 12 - 16, 2016
+  .section-content
+    h3 Denver Startup Week. Celebrating the entrepreneurial spirit.
+
+section.hero-cta
+  article.teal
+    .section-content
+      h2 Submissions
+      h3 Submissions are open
+      h6 Denver Startup Week is powered by the community. Submit a topic. Make an impact.
+      = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
+  article.blue
+    .section-content
+      h2 Get Involved
+      h3 Be a part of something epic
+      h6 Denver Startup Week is powered by the community. Get involved. Make an impact.
+      = link_to 'Contact', page_path(page: 'contact'), class: 'btn teal'
+
+section.common.the-what
+  .section-content
+    h1 What
+  .section-image
+    / = image_tag '2016_redesign/crawford-hotel.jpg'
+  .section-content
+    h6
+      | The largest event of its kind in North America, Denver Startup Week is the summit of entrepreneurial energy, innovation, and connection. 
+      | Powered by the local community, our sessions represent the very best in tech, design, DIY-making, marketing and leadership. 
+      | Whether a founder, developer, designer, marketer, maker, or anything in between - Denver Startup Week will inspire. 
+
+section.common.the-why
+  .section-content
+    h1 Why
+  .section-image
+    / = image_tag '2016_redesign/gather.jpg'
+  .section-content
+    h6 Innovation is everywhere. Bringing it to life takes the skills and drive of an entire team; founders, developers, product managers, designers, marketers, sales teams, and makers. The mission of Denver Startup Week is to foster an environment where every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge.
+
+    .buttons
+      = link_to 'View Program', page_path(page: 'program'), class: 'btn primary'
+      = link_to 'Meet the Team', page_path(page: 'team'), class: 'btn primary'
+
+= render partial: 'layouts/2016_shared/page_footer'

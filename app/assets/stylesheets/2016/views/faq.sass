@@ -1,0 +1,53 @@
+@import ../config
+
+button.accordion
+  display: flex
+  align-items: center
+  width: 100%
+  margin-bottom: 8px
+  padding: 20px
+  outline: none
+  border: 0
+  background-color: $backfill-grey
+  font-family: 'Montserrat-Light'
+  color: $copy-color
+  cursor: pointer
+  h6
+    text-align: left
+    flex: 1
+  .faq-plus
+    display: inline-block
+  .faq-x
+    display: none
+  &.active
+    .faq-plus
+      display: none
+    .faq-x
+      display: inline-block
+
+.faq-plus,
+.faq-x
+  width: 20px
+  height: 20px
+
+.panel
+  display: none
+  margin-bottom: 8px
+  padding: 30px
+  background: $teal-light
+  color: $teal-dark
+  a
+    text-decoration: underline
+    color: $teal-dark
+    &:hover
+      color: #fff
+  h6
+    &:first-child
+      font-family: 'Montserrat-Regular'
+      margin-bottom: 10px
+  &.show
+    display: block
+
+@media(max-width: 330px)
+  .panel
+    padding: 5px

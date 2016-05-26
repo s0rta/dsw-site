@@ -24,5 +24,4 @@ class SubmissionSerializer < ActiveModel::Serializer
   def registrant_count
     object.session_registrations.count
   end
-
 end

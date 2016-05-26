@@ -5,7 +5,7 @@ ActiveAdmin.register Venue do
     column :name
     column :contact_name
     column :contact_email
-    default_actions
+    actions
   end
 
   filter :name

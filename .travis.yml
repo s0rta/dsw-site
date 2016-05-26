@@ -1,7 +1,7 @@
 language: ruby
 sudo: false
 rvm:
-- 2.1.5
+- 2.3.0
 services:
 - redis-server
 bundler_args:
@@ -11,20 +11,6 @@ before_install:
 - sh -e /etc/init.d/xvfb start
 before_script:
 - cp config/database.travis.yml config/database.yml
+- cp .env.example .env
 script:
-- bundle exec rake db:drop:all
-- bundle exec rake db:create:all
-- bundle exec rake db:schema:load
-- bundle exec rake --trace
-deploy:
-  provider: heroku
-  api_key:
-    secure: iq7Dg8MvCYyNStfm8kXf/VTmsHToRD7u1YOdNJBvx0cNemlzNoEk2aIUgqVX+cTnrssWpeu27GrW2B1Lw5iiJ5uV+OcBDasR1DDN4NFMOzTJI9a0Q+H5SWfibcINcK1LkElGr/foiWGgzac3G2tSa90xIEQupPj6j01AZ1VmM78=
-  app: denver-startup-week
-  on:
-    repo: denverstartupweek/dsw-site
-    branch: master
-  run:
-    - "rake db:migrate"
-    - "rake db:seed"
-    - restart
+- bundle exec rake db:setup spec

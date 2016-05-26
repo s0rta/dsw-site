@@ -1,4 +1,4 @@
-Denverstartupweek::Application.routes.draw do
+Rails.application.routes.draw do
 
   if Rails.env.development?
     mount MailPreview => 'mailers'
@@ -20,6 +20,7 @@ Denverstartupweek::Application.routes.draw do
       get :by_day
       get :submissions_closed
       get :feedback_closed
+      get :mine
     end
     resources :votes, only: :create
     resources :comments, only: :create
@@ -43,6 +44,5 @@ Denverstartupweek::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  mount Cmsimple::Engine => '/'
-
+  get '/(*page)', to: 'new_site#index', as: :page, defaults: { page: :index }
 end

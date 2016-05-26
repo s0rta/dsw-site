@@ -1,33 +1,13 @@
 require 'spec_helper'
 
-describe User do
+RSpec.describe User, type: :model do
+  it { is_expected.to have_many(:submissions) }
+  it { is_expected.to have_many(:votes).dependent(:destroy) }
+  it { is_expected.to have_many(:registrations).dependent(:destroy) }
 
-  it { should have_many(:submissions) }
-  it { should have_many(:votes).dependent(:destroy) }
-  it { should have_many(:registrations).dependent(:destroy) }
-
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:email) }
-  it { should validate_uniqueness_of(:email) }
-
-  it { should allow_mass_assignment_of(:email) }
-  it { should allow_mass_assignment_of(:password) }
-  it { should allow_mass_assignment_of(:password_confirmation) }
-  it { should allow_mass_assignment_of(:remember_me) }
-  it { should allow_mass_assignment_of(:uid) }
-  it { should allow_mass_assignment_of(:provider) }
-  it { should allow_mass_assignment_of(:name) }
-  it { should allow_mass_assignment_of(:description) }
-
-  it { should allow_mass_assignment_of(:email).as(:admin) }
-  it { should allow_mass_assignment_of(:password).as(:admin) }
-  it { should allow_mass_assignment_of(:password_confirmation).as(:admin) }
-  it { should allow_mass_assignment_of(:remember_me).as(:admin) }
-  it { should allow_mass_assignment_of(:uid).as(:admin) }
-  it { should allow_mass_assignment_of(:provider).as(:admin) }
-  it { should allow_mass_assignment_of(:name).as(:admin) }
-  it { should allow_mass_assignment_of(:description).as(:admin) }
-  it { should allow_mass_assignment_of(:is_admin).as(:admin) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
 
   describe 'creating from an auth hash' do
     let(:auth_hash) do
@@ -60,7 +40,5 @@ describe User do
       expect(user.name).to eq('Test User')
       expect(user.email).to eq('test@example.com')
     end
-
   end
-
 end

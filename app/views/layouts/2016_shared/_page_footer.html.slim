@@ -1,0 +1,9 @@
+footer.page-footer
+  section.common.stay-in-touch
+    .section-content
+      h1 Stay in Touch
+      = form_for NewsletterSignup.new, html: { data: { bindable: 'newsletter-signup' } } do |f|
+        = f.label :email, 'Email Address'
+        = f.text_field :email
+        = f.submit 'Subscribe to Updates'
+

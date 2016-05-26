@@ -1,0 +1,44 @@
+nav
+  .section-content
+    h1 My Dashboard
+
+section.common.blue
+  .section-content
+    .dash-profile-bar
+      h3 Hello, #{current_user.name}!
+      /* = link_to 'Logout', '#' */
+
+    - flash.each do |key, message|
+      h6 = message
+
+- if FeatureToggler.submission_active?
+  .submission-close-count
+    h2 Submissions close in
+    h1.countdown #{time_remaining_to_deadline('2016/06/01')}
+
+section.common.sm-centered
+  .section-content
+    h1 Your #{current_year} Submissions
+    - if @submissions.any?
+      - @submissions.each do |submission|
+        .talk-submission
+          h6
+            | #{submission.title} (#{submission.track.name})
+          /* a href='#' */
+          /*   = render partial: 'icons/pencil' */
+    - else
+      h6 You have not yet submitted any proposals for this year.
+
+- if FeatureToggler.submission_active?
+  section.common.sm-centered
+    .section-content
+      = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'
+
+- if @previous_submissions.any?
+  section.common
+    .section-content
+      h1 Previous Submissions
+      - @previous_submissions.each do |submission|
+        .talk-submission
+          h6
+            | #{truncate(submission.title, length: 70)} (#{submission.year}, #{submission.track.name})

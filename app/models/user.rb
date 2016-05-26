@@ -10,26 +10,27 @@ class User < ActiveRecord::Base
          :omniauthable,
          omniauth_providers: [ :linkedin ]
 
-  default_scope order('LOWER(name) ASC')
+  default_scope { order('LOWER(name) ASC') }
 
-  attr_accessible :email,
-                  :password,
-                  :password_confirmation,
-                  :remember_me,
-                  :uid,
-                  :provider,
-                  :name,
-                  :description
+  # attr_accessible :email,
+  #                 :password,
+  #                 :password_confirmation,
+  #                 :remember_me,
+  #                 :uid,
+  #                 :provider,
+  #                 :name,
+  #                 :description
 
-  attr_accessible :email,
-                  :password,
-                  :password_confirmation,
-                  :remember_me,
-                  :uid,
-                  :provider,
-                  :name,
-                  :description,
-                  :is_admin, as: :admin
+  # Add to ActiveAdmin as strong params
+  # attr_accessible :email,
+  #                 :password,
+  #                 :password_confirmation,
+  #                 :remember_me,
+  #                 :uid,
+  #                 :provider,
+  #                 :name,
+  #                 :description,
+  #                 :is_admin, as: :admin
 
   validates :name, presence: true
   validates :email, presence: true,

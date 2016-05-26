@@ -1,0 +1,131 @@
+@import ../config
+
+#new_site_controller.index-action
+  section.hero
+    h1, h2
+      text-align: center
+    h1.countdown
+      margin-bottom: 30px
+      font-family: 'Montserrat-UltraLight'
+      font-size: 55px
+      line-height: 1.5
+      color: $teal-light
+    h2
+      font-size: 28px
+      font-weight: 400
+      color: $copy-color-bold
+    h3
+      text-align: center
+      padding: 5px 0 55px 0
+      font-size: 20px
+      font-weight: 200
+      color: $copy-color
+
+  section.hero-cta
+    article
+      display: block
+      background: $teal-light
+      padding: 20px 0
+      .section-content
+        max-width: 590px
+      h2
+        margin-bottom: 20px
+        text-transform: uppercase
+        font-size: 30px
+        font-weight: 200
+      h3
+        margin-bottom: 5px
+        font-family: 'Montserrat-Regular'
+        font-size: 16px
+      h6
+        margin-bottom: 30px
+    article:nth-child(1)
+      background: $blue-light
+    article.blue
+      color: $blue-dark
+      h6
+        color: $blue-dark
+    article.teal
+      color: $teal-dark
+      h6
+        color: $teal-dark
+    .btn
+      margin-bottom: 30px
+
+  section.common.the-what,
+  section.common.the-why
+    h1
+      font-size: 64px
+      color: $copy-color-bold
+    .section-image
+      width: 100%
+      min-height: 300px
+      margin-bottom: 20px
+      background-size: cover
+
+  section.common.the-what
+    .section-image
+      background: image-url('2016_redesign/crawford-hotel-2.jpg') no-repeat center
+      background-size: 110%
+      background-position: 50% 70%
+
+  section.common.the-why
+    .section-image
+      background: image-url('2016_redesign/keynote-2.jpg') no-repeat center
+      background-size: 110%
+      background-position: 50% 15%
+
+  section.common.the-why
+    .buttons
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      width: 100%
+      margin:  0 auto
+      .btn:first-child
+        margin-bottom: 10px
+
+@media(min-width: 520px)
+  #new_site_controller.index-action
+    main
+      padding-top: 300px
+    header.masthead
+      min-height: 300px
+    .logo-container
+      display: block
+      float: none
+      text-align: center
+    .logo
+      width: 300px
+      height: 215px
+      background: image-url('2016_redesign/2016_logo.svg') no-repeat center
+
+@media(min-width: 640px)
+  #new_site_controller.index-action
+    section.hero
+      h1.countdown
+        font-size: 85px
+    section.common.the-why
+      .buttons
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        width: 100%
+        max-width: 590px
+        .btn:first-child
+          margin-bottom: 0
+          margin-right: 10px
+
+@media(min-width: 1200px)
+  #new_site_controller.index-action
+    section.hero-cta
+      article
+        display: inline-block
+        width: 50%
+        .section-content
+          padding: 0 40px
+
+    section.common.the-what,
+    section.common.the-why
+      .section-image
+        min-height: 470px

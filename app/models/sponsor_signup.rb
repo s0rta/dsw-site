@@ -1,5 +1,4 @@
 class SponsorSignup < ActiveRecord::Base
-  attr_accessible :contact_email, :contact_name, :company, :interest, :notes
 
   after_create :notify_chairs
 

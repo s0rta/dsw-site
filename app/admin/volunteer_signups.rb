@@ -5,7 +5,7 @@ ActiveAdmin.register VolunteerSignup do
     column :contact_name
     column :contact_email
     column :created_at
-    default_actions
+    actions
   end
 
   filter :name

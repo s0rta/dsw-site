@@ -4,39 +4,28 @@ class Submission < ActiveRecord::Base
 
   has_paper_trail
 
-  attr_accessible :start_day,
-                  :description,
-                  :format,
-                  :location,
-                  :notes,
-                  :time_range,
-                  :title,
-                  :track_id,
-                  :contact_email,
-                  :estimated_size,
-                  :venue_id
-
-  attr_accessible :start_day,
-                  :end_day,
-                  :year,
-                  :description,
-                  :format,
-                  :location,
-                  :notes,
-                  :time_range,
-                  :title,
-                  :track_id,
-                  :contact_email,
-                  :estimated_size,
-                  :is_public,
-                  :is_confirmed,
-                  :venue_id,
-                  :budget_needed,
-                  :volunteers_needed,
-                  :start_hour,
-                  :end_hour,
-                  :state,
-                  :submitter_id, as: :admin
+  # Add to ActiveAdmin as strong params
+  # attr_accessible :start_day,
+  #                 :end_day,
+  #                 :year,
+  #                 :description,
+  #                 :format,
+  #                 :location,
+  #                 :notes,
+  #                 :time_range,
+  #                 :title,
+  #                 :track_id,
+  #                 :contact_email,
+  #                 :estimated_size,
+  #                 :is_public,
+  #                 :is_confirmed,
+  #                 :venue_id,
+  #                 :budget_needed,
+  #                 :volunteers_needed,
+  #                 :start_hour,
+  #                 :end_hour,
+  #                 :state,
+  #                 :submitter_id, as: :admin
 
   FORMATS = [ 'Presentation',
               'Panel',
@@ -93,6 +82,7 @@ class Submission < ActiveRecord::Base
 
   after_create :notify_track_chairs
   after_create :send_confirmation_notice
+  after_create :subscribe_to_list
 
   after_initialize do
     self.year ||= Date.today.year
@@ -121,16 +111,6 @@ class Submission < ActiveRecord::Base
 
   def self.for_schedule
     confirmed.where('start_day IS NOT NULL AND end_day IS NOT NULL')
-  end
-
-  def notify_track_chairs
-    self.track.chairs.each do |chair|
-      NotificationsMailer.notify_of_new_submission(chair, self).deliver
-    end
-  end
-
-  def send_confirmation_notice
-    NotificationsMailer.confirm_new_submission(self).deliver
   end
 
   # State machine
@@ -197,4 +177,19 @@ class Submission < ActiveRecord::Base
     event
   end
 
+  private
+
+  def notify_track_chairs
+    self.track.chairs.each do |chair|
+      NotificationsMailer.notify_of_new_submission(chair, self).deliver
+    end
+  end
+
+  def send_confirmation_notice
+    NotificationsMailer.confirm_new_submission(self).deliver
+  end
+
+  def subscribe_to_list
+    ListSubscriptionJob.perform_async(contact_email)
+  end
 end

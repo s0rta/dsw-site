@@ -8,7 +8,7 @@ ActiveAdmin.register User do
     column :email
     column :description
     column :is_admin
-    default_actions
+    actions
   end
 
   filter :name

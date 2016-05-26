@@ -1,0 +1,62 @@
+@import ../config
+
+footer.page-footer
+  max-width: 590px
+  margin: 40px auto 0 auto
+  section.common.stay-in-touch
+  h1
+    color: $copy-color-bold
+
+footer.site-footer
+  background: $backfill-grey
+  h6
+    display: inline-block
+    vertical-align: middle
+    margin-bottom: 8px
+    font-size: 18px
+    text-transform: uppercase
+    white-space: nowrap
+  .social
+    display: inline-block
+    vertical-align: middle
+    margin-top: 20px
+
+.footer-blocks
+  display: flex
+  flex-direction: column
+  margin: 0 auto
+  padding: 40px 20px
+  max-width: 1400px
+.footer-block
+  flex: 1
+  &:first-child
+    margin-bottom: 30px
+  a
+    text-decoration: underline
+    color: #4d4d4d
+
+.company-logos
+  margin-bottom: 15px
+  img:first-child
+    margin-right: 15px
+
+
+@media(min-width: 640px)
+  footer.page-footer
+    .section-content
+      padding: 0
+  .footer-blocks
+    flex-direction: row
+  .footer-block
+    &:first-child
+      margin-bottom: 0
+
+@media(min-width: 800px)
+  .company-logos
+    display: inline-block
+    vertical-align: middle
+    margin-right: 15px
+  .company-callouts
+    display: inline-block
+  .company-container
+    float: right

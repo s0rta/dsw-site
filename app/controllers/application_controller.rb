@@ -2,6 +2,8 @@ require "application_responder"
 
 class ApplicationController < ActionController::Base
 
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
   self.responder = ApplicationResponder
   respond_to :html
 
@@ -20,9 +22,28 @@ class ApplicationController < ActionController::Base
     end
   end)
 
-  protect_from_forgery
+  protect_from_forgery with: :exception
+
+  before_action :store_location
 
   private
+
+  def store_location
+    return unless request.get?
+    return if devise_controller?
+    return if request.xhr?
+    session[:previous_url] = request.fullpath
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:email,
+               :remember_me,
+               :name,
+               :password,
+               :password_confirmation)
+    end
+  end
 
   def registered?
     current_registration.present?
@@ -57,7 +78,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    if user.registered?
+    if session[:previous_url]
+      session[:previous_url]
+    elsif user.registered?
       main_app.schedules_path
     elsif FeatureToggler.registration_active?
       main_app.register_path
@@ -71,5 +94,4 @@ class ApplicationController < ActionController::Base
       main_app.cmsimple_path
     end
   end
-
 end

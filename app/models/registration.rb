@@ -4,14 +4,6 @@ class Registration < ActiveRecord::Base
   has_many :session_registrations, dependent: :destroy
   has_many :submissions, through: :session_registrations
 
-  attr_accessible :contact_email,
-                  :year,
-                  :zip,
-                  :company,
-                  :gender,
-                  :primary_role,
-                  :track_id
-
   validates :user, presence: true
   validates :contact_email, presence: true
 
@@ -20,18 +12,18 @@ class Registration < ActiveRecord::Base
     self.calendar_token ||= SecureRandom.hex(25)
   end
 
-  after_create :subscribe_to_list
+  after_commit :subscribe_to_list
 
   def subscribe_to_list
     registered_years = user.registrations.map(&:year).sort.map(&:to_s)
-    ListSubscriptionJob.perform(contact_email,
+    ListSubscriptionJob.perform_async(contact_email,
                                 registered_years: registered_years)
   end
 
   after_create :send_confirmation_email
 
   def send_confirmation_email
-    ConfirmRegistrationJob.perform(self)
+    ConfirmRegistrationJob.perform_async(self)
   end
 
   def self.for_current_year
