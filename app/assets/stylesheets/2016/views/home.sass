@@ -91,14 +91,24 @@
       padding-top: 300px
     header.masthead
       min-height: 300px
-    .logo-container
-      display: block
-      float: none
-      text-align: center
-    .logo
-      width: 300px
-      height: 215px
-      background: image-url('2016_redesign/2016_logo.svg') no-repeat center
+      .logo-container
+        display: block
+        float: none
+        text-align: center
+      .logo
+        width: 300px
+        height: 215px
+        background: image-url('2016_redesign/2016_logo.svg') no-repeat center
+    header.masthead.shrink
+      min-height: 130px
+      .logo-container
+        display: inline-block
+        float: right
+        text-align: none
+      .logo
+        width: 100px
+        height: 100px
+        background: image-url('2016_redesign/2016_logo_sm.svg') no-repeat center
 
 @media(min-width: 640px)
   #new_site_controller.index-action
