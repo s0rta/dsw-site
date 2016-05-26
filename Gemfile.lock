@@ -137,6 +137,7 @@ GEM
       activesupport (>= 3.2, < 5)
     hashie (3.4.4)
     hashr (0.0.22)
+    honeybadger (2.6.0)
     honeypot-captcha (0.0.2)
     html-pipeline (1.8.0)
       activesupport (>= 2)
@@ -379,6 +380,7 @@ DEPENDENCIES
   gemoji
   github-markdown
   haml-rails
+  honeybadger
   honeypot-captcha
   html-pipeline
   icalendar

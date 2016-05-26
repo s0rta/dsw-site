@@ -49,6 +49,7 @@ gem 'active_model_serializers', '~> 0.8.0'
 # Production support
 gem 'utf8-cleaner'
 gem 'newrelic_rpm'
+gem 'honeybadger'
 
 gem 'rack-canonical-host'
 
@@ -62,6 +63,7 @@ gem 'redis-objects'
 
 # Background processing
 gem 'sucker_punch'
+
 
 group :assets do
   gem 'bourbon'
