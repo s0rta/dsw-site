@@ -25,7 +25,7 @@ section.common.sm-centered
   .section-content
     = form_for @submission do |f|
       = f.label :title, 'Which track would your session best fit into?'
-      = f.select :track_id, tracks_for_select, include_blank: 'I\'m not sure', required: 'required'
+      = f.select :track_id, tracks_for_select, required: 'required'
 
       = f.label :title, "What is your session's title? Please limit your title to 60 characters or less."
       = f.text_field :title, required: 'required', placeholder: 'Session Title'
