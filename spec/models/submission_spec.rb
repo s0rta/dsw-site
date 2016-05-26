@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 RSpec.describe Submission, type: :model do
+
+  before do
+    allow(ListSubscriptionJob).to receive(:perform_async)
+  end
+
   it { is_expected.to belong_to(:track) }
   it { is_expected.to have_many(:votes).dependent(:destroy) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }
@@ -19,5 +24,14 @@ RSpec.describe Submission, type: :model do
 
   it 'defaults its year to the current year' do
     expect(Submission.new.year).to eq(Date.today.year)
+  end
+
+  it 'subscribes after creation' do
+    track = Track.create!(name: 'Test')
+    Submission.create! contact_email: 'test@example.com',
+                       title: 'Test',
+                       description: 'Test',
+                       track: track
+    expect(ListSubscriptionJob).to have_received(:perform_async).with('test@example.com')
   end
 end

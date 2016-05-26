@@ -1,4 +1,4 @@
-Hi <%= @submission.submitter.name %>,
+Hi <%= @submission.submitter.try(:name) || @submission.contact_email %>,
 
 Thanks for submitting "<%= @submission.title %>" for consideration for Denver Startup Week <%= Date.today.year %>!
 
