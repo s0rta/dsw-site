@@ -16,10 +16,10 @@ section.common.sm-centered
       = f.hidden_field :reset_password_token
 
       = f.label :password, 'New Password'
-      = f.text_field :password, required: 'required', autofocus: 'autofocus'
+      = f.password_field :password, required: 'required', autofocus: 'autofocus'
 
       = f.label :password_confirmation, 'Confirm Your New Password'
-      = f.text_field :password_confirmation, required: 'required', autofocus: 'autofocus'
+      = f.password_field :password_confirmation, required: 'required', autofocus: 'autofocus'
 
       = f.submit 'Change Password'
   .section-content.auth-links
