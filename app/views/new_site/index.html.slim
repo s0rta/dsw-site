@@ -5,12 +5,20 @@ section.hero
     h3 Denver Startup Week. Celebrating the entrepreneurial spirit.
 
 section.hero-cta
-  article.teal
-    .section-content
-      h2 Submissions
-      h3 Submissions are open
-      h6 Denver Startup Week is powered by the community. Submit a topic. Make an impact.
-      = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
+  - if FeatureToggler.submission_active?
+    article.teal
+      .section-content
+        h2 Call for Submissions
+        h3 Session submissions are now open
+        h6 Denver Startup Week is powered by the community. Submit a topic for consideration for 2016.
+        = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
+  - else
+    article.teal
+      .section-content
+        h2 Program
+        h3 Celebrating the entrepreneurial spirit
+        h6 Encompassing six tracks, the always-free program represents the very best that Denver has to offer.
+        = link_to 'VIEW PROGRAM', page_path(page: 'program'), class: 'btn blue'
   article.blue
     .section-content
       h2 Get Involved
