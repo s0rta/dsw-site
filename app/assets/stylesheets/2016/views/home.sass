@@ -85,6 +85,42 @@
       .btn:first-child
         margin-bottom: 10px
 
+  section.common.title-sponsors
+    padding: 0
+    margin-top: 200px
+    color: $copy-color-bold
+    h3
+      overflow: hidden
+      text-align: center
+      text-transform: uppercase
+    h3:before,
+    h3:after
+      background-color: $copy-color-bold
+      content: ""
+      display: inline-block
+      height: 1px
+      position: relative
+      vertical-align: middle
+      width: 50%
+    h3:before
+      right: 0.5em
+      margin-left: -50%
+    h3:after
+      left: 0.5em
+      margin-right: -50%
+    .title-logo-container
+      display: flex
+      flex-direction: column
+      padding: 80px 0
+      flex-wrap: wrap
+      align-items: center
+      justify-content: space-around
+      img
+        width: 200px
+        height: 70px
+        &:first-child
+          margin-bottom: 40px
+
 @media(min-width: 520px)
   #new_site_controller.index-action
     main
@@ -109,6 +145,11 @@
         width: 100px
         height: 100px
         background: image-url('2016_redesign/2016_logo_sm.svg') no-repeat center
+    section.common.title-sponsors
+      .title-logo-container
+        flex-direction: row
+        img:first-child
+          margin-bottom: 0
 
 @media(min-width: 640px)
   #new_site_controller.index-action
