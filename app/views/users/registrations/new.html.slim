@@ -8,6 +8,8 @@ section.common.green
     h6 Please create an account to submit sessions for consideration and voting.
     - flash.each do |key, message|
       h6 = message
+    - unless resource.errors.empty?
+      h6 = "Please correct the following errors: #{resource.errors.full_messages.to_sentence}"
 
 
 section.common.sm-centered

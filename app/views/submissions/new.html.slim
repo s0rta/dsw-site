@@ -22,6 +22,10 @@ section.common.sm-centered
 
     - flash.each do |key, message|
       h6 = message
+
+    - unless @submission.errors.empty?
+      h6 = "Please correct the following errors: #{@submission.errors.full_messages.to_sentence}"
+
   .section-content
     = form_for @submission do |f|
       = f.label :title, 'Which track would your session best fit into?'

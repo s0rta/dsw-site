@@ -57,4 +57,16 @@ feature 'Creating a submission' do
     expect(page).to have_no_link('Submit a New Proposal')
   end
 
+  scenario 'User tries to submit a new idea but fails to create an account' do
+    User.create! name: 'Here First', email: 'test@example.com', password: 'password', password_confirmation: 'password'
+    visit '/panel-picker/mine'
+    click_on 'Register for an account'
+    fill_in 'Name', with: 'New Guy'
+    fill_in 'E-mail Address', with: 'test@example.com'
+    fill_in 'Password', with: 'password', match: :prefer_exact
+    fill_in 'Confirm Password', with: 'password', match: :prefer_exact
+    click_on 'Sign Up'
+    expect(page).to have_content('Email has already been taken')
+  end
+
 end
