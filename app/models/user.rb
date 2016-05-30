@@ -33,8 +33,6 @@ class User < ActiveRecord::Base
   #                 :is_admin, as: :admin
 
   validates :name, presence: true
-  validates :email, presence: true,
-                    uniqueness: true
 
   has_many :submissions, foreign_key: 'submitter_id'
   has_many :votes, dependent: :destroy
