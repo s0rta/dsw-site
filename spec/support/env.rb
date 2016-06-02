@@ -1,0 +1,1 @@
+ENV['VOLUNTEER_SIGNUP_EMAIL_RECIPIENTS'] = 'test@example.com'
