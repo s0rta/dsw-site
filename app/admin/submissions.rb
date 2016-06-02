@@ -1,5 +1,27 @@
 ActiveAdmin.register Submission do
 
+  permit_params :start_day,
+                :end_day,
+                :year,
+                :description,
+                :format,
+                :location,
+                :notes,
+                :time_range,
+                :title,
+                :track_id,
+                :contact_email,
+                :estimated_size,
+                :is_public,
+                :is_confirmed,
+                :venue_id,
+                :budget_needed,
+                :volunteers_needed,
+                :start_hour,
+                :end_hour,
+                :state,
+                :submitter_id
+
   controller do
     def scoped_collection
       resource_class.includes(:track, :submitter, :votes, :comments)

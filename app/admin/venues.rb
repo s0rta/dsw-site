@@ -1,5 +1,14 @@
 ActiveAdmin.register Venue do
 
+  permit_params :contact_email,
+                :contact_name,
+                :contact_phone,
+                :description,
+                :name,
+                :address,
+                :city,
+                :state
+
   index do
     selectable_column
     column :name
