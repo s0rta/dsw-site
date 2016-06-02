@@ -1,9 +1,6 @@
 ActiveAdmin.register Submission do
 
   controller do
-
-    with_role :admin
-
     def scoped_collection
       resource_class.includes(:track, :submitter, :votes, :comments)
     end
@@ -14,7 +11,6 @@ ActiveAdmin.register Submission do
       @submission = @submission.versions[params[:version].to_i].reify if params[:version]
       show!
     end
-
   end
 
   # Set a default year filter
