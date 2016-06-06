@@ -1,0 +1,95 @@
+@import ../config
+
+.back-link
+  display: block
+  padding-left: 20px
+  text-transform: uppercase
+  background: image-url('2016_redesign/arrow-left.png') no-repeat
+  background-position: 0 50%
+  font-family: 'Montserrat-Regular'
+  font-size: 14px
+  color: $teal-light
+
+.section-content.session-detail
+  font-family: 'Montserrat-Light'
+  color: $copy-color-bold
+  header
+    margin-bottom: 20px
+    text-transform: uppercase
+    font-size: 32px
+    .icon
+      margin-right: 15px
+    &.gold
+      color: $gold-light
+      fill: $gold-light
+    &.green
+      color: $green-light
+      fill: $green-light
+    &.blue
+      color: $blue-light
+      fill: $blue-light
+    &.teal
+      color: $teal-light
+      fill: $teal-light
+    &.orange
+      color: $orange-light
+      fill: $orange-light
+    &.purple
+      color: $purple-light
+      fill: $purple-light
+  .title
+    margin-bottom: 20px
+    font-size: 30px
+  .names
+    margin-bottom: 20px
+  .description
+    margin-bottom: 40px
+  footer
+    display: flex
+    flex-wrap: nowrap
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    padding: 10px 20px
+    width: 100%
+    right: 0
+    bottom: 0
+  .register-vote:hover
+    .icon
+      fill: white
+  .vote-count
+    font-family: 'Montserrat-Light'
+    flex: 1
+    span:first-child
+      margin-right: 5px
+      font-size: 24px
+  footer.teal
+    background: $teal-light
+    color: $teal-dark
+    svg
+      fill: $teal-dark
+  footer.gold
+    background: $gold-light
+    color: $gold-dark
+    svg
+      fill: $gold-dark
+  footer.orange
+    background: $orange-light
+    color: $orange-dark
+    svg
+      fill: $orange-dark
+  footer.purple
+    background: $purple-light
+    color: $purple-dark
+    svg
+      fill: $purple-dark
+  footer.green
+    background: $green-light
+    color: $green-dark
+    svg
+      fill: $green-dark
+  footer.blue
+    background: $blue-light
+    color: $blue-dark
+    svg
+      fill: $blue-dark

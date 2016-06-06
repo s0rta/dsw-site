@@ -1,0 +1,26 @@
+nav
+  .section-content
+    h1 Vote
+
+section.common
+  .section-content
+    = link_to 'Back to Topics', :back, class: 'back-link'
+
+section.common
+  .section-content.session-detail
+    header.gold
+      = render partial: 'icons/person'
+      span.track-title Founder
+    .title Some very stupid ridiculous long title I'm quite certain, wondering if I should lead-caps these guys...probably so...
+    .names
+      h6 Person McName
+      h6 SecondPerson McNames
+    .description Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit.
+
+    footer.gold
+      div.vote-count
+        span 45
+        span votes
+      a.register-vote href='#'
+        = render partial: 'icons/thumbsup'
+

@@ -1,0 +1,155 @@
+@import ../config
+
+form.filters
+  display: flex
+  flex-direction: column
+  flex-wrap: wrap
+  margin: 40px 0 20px 0
+  padding: 0 20px
+  input,
+  select
+    flex: 1
+  input
+    background: $backfill-grey image-url('2016_redesign/magnify-glass.png') no-repeat
+    background-position: 95% 50%
+
+.card-container
+  padding: 0 20px
+  margin-bottom: 100px
+
+.card-frame
+  display: inline-block
+  width: 100%
+  overflow: hidden
+
+.card-content
+  position: relative
+  height: 320px
+  margin: 5px
+  padding: 20px
+  background: #f2f2f2
+  &:hover
+    background: darken(#f2f2f2, 5%)
+  header, footer
+    font-size: 18px
+  header
+    margin-bottom: 25px
+    font-family: 'Montserrat-Light'
+    .icon
+      vertical-align: middle
+      margin-right: 10px
+    .track-title
+      text-transform: uppercase
+  header.teal
+    color: $teal-light
+    fill: $teal-light
+  header.purple
+    color: $purple-light
+    fill: $purple-light
+  header.gold
+    color: $gold-light
+    fill: $gold-light
+  header.green
+    color: $green-light
+    fill: $green-light
+  header.blue
+    color: $blue-light
+    fill: $blue-light
+  header.orange
+    color: $orange-light
+    fill: $orange-light
+  .title
+    margin-bottom: 15px
+    max-height: 60px
+    overflow: hidden
+    font-family: 'Montserrat-Regular'
+    font-size: 16px
+    color: $copy-color-bold
+  .names
+    margin-bottom: 15px
+    max-height: 35px
+    overflow: hidden
+    font-family: 'Montserrat-Light'
+    font-size: 14px
+  .description
+    margin-bottom: 15px
+    max-height: 55px
+    overflow: hidden
+    font-family: 'Montserrat-Light'
+    font-size: 12px
+    color: $copy-color-bold
+  footer
+    position: absolute
+    display: flex
+    flex-wrap: nowrap
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+    padding: 10px
+    width: 100%
+    right: 0
+    bottom: 0
+  .register-vote:hover
+    .icon
+      fill: white
+  .vote-count
+    font-family: 'Montserrat-Light'
+    flex: 1
+    span:first-child
+      margin-right: 5px
+      font-size: 24px
+  footer.teal
+    background: $teal-light
+    color: $teal-dark
+    svg
+      fill: $teal-dark
+  footer.gold
+    background: $gold-light
+    color: $gold-dark
+    svg
+      fill: $gold-dark
+  footer.orange
+    background: $orange-light
+    color: $orange-dark
+    svg
+      fill: $orange-dark
+  footer.purple
+    background: $purple-light
+    color: $purple-dark
+    svg
+      fill: $purple-dark
+  footer.green
+    background: $green-light
+    color: $green-dark
+    svg
+      fill: $green-dark
+  footer.blue
+    background: $blue-light
+    color: $blue-dark
+    svg
+      fill: $blue-dark
+
+
+@media(min-width: 600px)
+  form.filters
+    flex-direction: row
+    input
+      margin-right: 10px
+  .card-frame
+    width: 50%
+
+@media(min-width: 820px)
+  .card-frame
+    width: 33.3333%
+
+@media(min-width: 1100px)
+  form.filters
+    padding: 0
+  .card-container
+    margin-left: -5px
+    margin-right: -5px
+    padding: 0
+
+@media(min-width: 1200px)
+  .card-frame
+    width: 25%
