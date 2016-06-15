@@ -26,7 +26,7 @@ module ApplicationHelper
       full_hours = hours.floor
       minutes = (hours - full_hours) * 60
       full_minutes = minutes.floor
-      "#{full_days} : #{full_hours} : #{full_minutes}"
+      "#{full_days} : #{full_hours.to_s.rjust(2, "0")} : #{full_minutes.to_s.rjust(2, "0")}"
     end
   end
 
