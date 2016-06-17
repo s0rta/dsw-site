@@ -7,7 +7,13 @@ class SubmissionsController < ApplicationController
   before_action :check_feedback_open, only: [ :index ]
 
   def index
-    @submissions = Submission.for_current_year.public.order('random()').includes(:submitter, :track, :votes)
+    @submissions = Submission.
+      for_current_year.
+      joins(:track).
+      where(tracks: { is_submittable: true }).
+      public.
+      order('random()').
+      includes(:submitter, :track, :votes)
   end
 
   def mine
