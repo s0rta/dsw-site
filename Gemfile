@@ -33,6 +33,8 @@ gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
 
+gem 'algoliasearch-rails'
+
 gem 'multi_fetch_fragments'
 
 gem 'icalendar'
@@ -96,6 +98,7 @@ group :test do
   gem 'database_cleaner'
   gem 'test_after_commit'
   gem 'email_spec', '~> 2.1.0'
+  gem 'webmock'
 end
 
 group :production do

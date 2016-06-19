@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       get :submissions_closed
       get :feedback_closed
       get :mine
+      get :search
     end
     resources :votes, only: :create
     resources :comments, only: :create

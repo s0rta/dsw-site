@@ -16,6 +16,18 @@ class SubmissionsController < ApplicationController
       includes(:submitter, :track, :votes)
   end
 
+  def search
+    ids = Submission.algolia_raw_search(params[:terms])['hits'].map { |h| h['objectID'] }.map(&:to_i)
+    @submissions = Submission.where(id: ids).
+      for_current_year.
+      joins(:track).
+      where(tracks: { is_submittable: true }).
+      public.
+      includes(:submitter, :track, :votes).
+      order("idx(ARRAY#{ids}, submissions.id)")
+    render action: :index
+  end
+
   def mine
     @submissions = current_user.submissions.for_current_year
     @previous_submissions = current_user.submissions.for_previous_years.order('created_at DESC')

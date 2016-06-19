@@ -6,8 +6,8 @@ section.common.green
   .section-content
     h6 So far in #{current_year}, the community has cast <strong>#{number_with_delimiter(Vote.for_current_year.count)} votes</strong> and provided <strong>#{number_with_delimiter(Comment.for_current_year.count)} comments</strong>. We're excited to make this year's program even better than last, but we can't do it without you. Vote for your favorite sessions, tell your friends, and help us get the word out!
 
-form.filters
-  input
+form.filters(action="#{search_submissions_path}")
+  input(name="terms" value="#{params[:terms]}")
   select
     option Track 1
     option Track 2
@@ -22,7 +22,7 @@ form.filters
             = truncate(submission.title, length: 100, separator: ' ')
           .names
             h6 = submission.submitter.name
-          .description = truncate(submission.description, length: 200, separator: ' ')
+          .description = truncate(submission.description, length: 100, separator: ' ')
         footer.gold
           div.vote-count
             span = submission.votes.size

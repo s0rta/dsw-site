@@ -67,6 +67,12 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    algoliasearch (1.9.0)
+      httpclient (~> 2.7.1)
+      json (>= 1.5.1)
+    algoliasearch-rails (1.14.1)
+      algoliasearch (>= 1.2.14)
+      json (>= 1.5.1)
     arbre (1.0.3)
       activesupport (>= 3.0.0)
     arel (6.0.3)
@@ -92,6 +98,8 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     css_parser (1.4.1)
       addressable
     dalli (2.0.2)
@@ -135,6 +143,7 @@ GEM
     has_scope (0.6.0)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
+    hashdiff (0.3.0)
     hashie (3.4.4)
     hashr (0.0.22)
     honeybadger (2.6.0)
@@ -151,6 +160,7 @@ GEM
     httparty (0.13.7)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
+    httpclient (2.7.2)
     i18n (0.7.0)
     icalendar (2.1.2)
     inherited_resources (1.6.0)
@@ -294,6 +304,7 @@ GEM
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
     rubyzip (1.2.0)
+    safe_yaml (1.0.4)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
     sass (3.4.21)
@@ -359,6 +370,10 @@ GEM
     utf8-cleaner (0.0.9)
     warden (1.2.6)
       rack (>= 1.0)
+    webmock (2.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket (1.2.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
@@ -369,6 +384,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.0)
   activeadmin (>= 1.0.0.pre2)
+  algoliasearch-rails
   bourbon
   capybara
   coffee-rails
@@ -426,6 +442,7 @@ DEPENDENCIES
   uglifier
   underscore-rails
   utf8-cleaner
+  webmock
 
 BUNDLED WITH
    1.11.2
