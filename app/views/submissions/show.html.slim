@@ -1,0 +1,22 @@
+nav
+  .section-content
+    h1 Vote
+
+section.common
+  .section-content
+    = link_to 'Back to Topics', :back, class: 'back-link'
+
+section.common
+  div class=("section-content session-detail #{@submission.track.name.downcase}")
+    = render partial: "submissions/headers/#{@submission.track.name.downcase}"
+    .title = @submission.title
+    .names
+      h6  = @submission.submitter.name
+    .description = process_with_pipeline(@submission.description)
+
+    footer
+      div.vote-count
+        span = @submission.votes.size
+        span votes
+      a.register-vote href='#'
+        = render partial: 'icons/thumbsup'

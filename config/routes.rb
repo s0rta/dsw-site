@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       get :feedback_closed
       get :mine
       get :search
+      get 'track/:track_name', action: :track
     end
     resources :votes, only: :create
     resources :comments, only: :create
