@@ -7,11 +7,12 @@ section.common.gold
     h6 Denver Startup Week is made possible through the generous help of our sponsors. Take a minute to get to know these amazing companies.
     br
     h6 Interested in sponsorship? Download the prospectus now and support the community. 
-    br
-    h6 Have immediate questions? Contact <a class='section-inline-link' href='mailto:kbarton@downtowndenver.com'>Kate Barton</a>
+    h6 Have immediate questions regarding sponsorship opportunities? Contact <a class='section-inline-link' href='mailto:kbarton@downtowndenver.com'>Kate Barton</a>. 
+    h6 Have available space to host sessions/events? Contact <a class='section-inline-link' href='mailto:njohnson@downtowndenver.com'>Nneka Johnson</a>.
     a.btn.gold href='/DenverStartupWeek2016Sponsorship.pdf' Download Sponsorship Prospectus
 
 section.common.sponsor
+  / --------------- TITLE SPONSORS ---------------
   .section-content
     h1 Title
     .sponsor-container
@@ -19,12 +20,14 @@ section.common.sponsor
         = image_tag '2016_redesign/sponsors/comcast.png'
       .sponsor-copy
         span Comcast brings together the best in media and technology. We drive innovation to create the world’s best entertainment and online experiences.
+
     .sponsor-container
       a.sponsor-logo href='http://www.downtowndenver.com/' target='_blank'
         = image_tag '2016_redesign/sponsors/ddp.png'
       .sponsor-copy
         span The Downtown Denver Partnership, Inc. partners with public, private and non-profit entities to implement high-impact strategies, outlined in the organization’s long-term strategy the 2007 Downtown Area Plan, to support its vision for an economically healthy, growing and vital Downtown Denver.
 
+  / --------------- TRACK SPONSORS ---------------
   .section-content
     h1 Track
     .sponsor-container
@@ -35,6 +38,7 @@ section.common.sponsor
           = render partial: 'icons/terminal'
           span Developer
         span Hired is on a mission to get everyone a job they love. Starting with in-demand tech and sales roles, we’ve built a marketplace that brings together highly qualified individuals with the companies who want to hire them.
+
     .sponsor-container
       a.sponsor-logo href='http://www.coloradolendingsource.org/' target='_blank'
         = image_tag '2016_redesign/sponsors/colorado-lending-source.png'
@@ -44,14 +48,34 @@ section.common.sponsor
           span Maker
         span Colorado Lending Source helps turn dreamers into doers. By partnering with local lenders, government agencies and resource partners, we make access to capital more attainable for small businesses. Through our 25-year history we’ve helped 3,293 small businesses start, grow and expand resulting in the creation of 24,187 jobs and injecting over $4 billion into the economy. 
 
-  / .section-content
-    / h1 Headline
-    / .sponsor-container
-      / a.sponsor-logo href='#' target='_blank'
-        / = image_tag '2016_redesign/sponsors/enterprise.png'
-      / .sponsor-copy
-        / span Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit.
+    .sponsor-container
+      a.sponsor-logo href='http://www.zayo.com/' target='_blank'
+        = image_tag '2016_redesign/sponsors/colorado-lending-source.png'
+      .sponsor-copy
+        .sponsor-track.blue
+          = render partial: 'icons/chart'
+          span Growth
+        span Zayo Group Holdings, Inc. (NYSE: ZAYO) provides communications infrastructure services, including fiber and bandwidth connectivity, colocation and cloud services to the world’s leading businesses. Customers include wireless and wireline carriers, media and content companies and finance, healthcare and other large enterprises.
 
+    .sponsor-container
+      a.sponsor-logo href='https://www.mapquest.com/' target='_blank'
+        = image_tag '2016_redesign/sponsors/mapquest.png'
+      .sponsor-copy
+        .sponsor-track.purple
+          = render partial: 'icons/phone'
+          span Product
+        span We are mapping pioneers with an early history rooted in exploring the frontier. We were at the forefront of mapping in the dawn of the digital age. And we're redefining the category, yet again.
+
+  / --------------- HEADLINE SPONSORS ---------------
+  .section-content
+    h1 Headline
+    .sponsor-container
+      a.sponsor-logo href='http://focuspropertygroup.net/' target='_blank'
+        = image_tag '2016_redesign/sponsors/enterprise.png'
+      .sponsor-copy
+        span Enterprise is where entrepreneurs come to work and their visions come to life. It’s a collaborative environment designed to support one-man shops, 100-person companies and everything in between. It’s local, Corvus coffee brewed to fuel your morning brainstorm sessions, rooftop patios built to bring fresh air and fresh thinking to your work, and flexible, private suites designed to expand and adjust as quickly as your business does. Enterprise is a lot more than a workspace. It’s space to unleash your potential.
+
+  / --------------- PARTNER SPONSORS ---------------
   .section-content
     h1 Partner
     .sponsor-container
@@ -59,12 +83,20 @@ section.common.sponsor
         = image_tag '2016_redesign/sponsors/cooley.png'
       .sponsor-copy
         span Clients partner with Cooley on transformative deals, complex IP and regulatory matters, and high-stakes litigation, where innovation meets the law. Cooley ranked as the #1 most active law firm for advising on both early and late-stage VC financings for Q1 2016 and advises investors and companies on more than 800 financings annually.
+
     .sponsor-container
       a.sponsor-logo href='http://www.bridgepointeducation.com/' target='_blank'
         = image_tag '2016_redesign/sponsors/bridgepoint.png'
       .sponsor-copy
         span Bridgepoint Education, Inc. (NYSE:BPI) harnesses the latest technology to reimagine the modern student experience. Bridgepoint owns two academic institutions - Ashford University and University of the Rockies. Together, these programs, technologies, and resources represent a unique model for advancing education in the 21st century. Bridgepoint stands for greater access, social learning, and exposure to leading minds.
 
+    .sponsor-container
+      a.sponsor-logo href='https://www.fullcontact.com/' target='_blank'
+        = image_tag '2016_redesign/sponsors/bridgepoint.png'
+      .sponsor-copy
+        span FullContact is the most powerful fully-connected contact management platform for professionals and enterprises that need to master their contacts and be awesome with people. FullContact’s cross-platform suite of Apps and APIs enhance contacts with 360-degree insights, while keeping them organized, synchronized, up-to-date, and safe.
+
+  / --------------- MEMBER SPONSORS ---------------
   .section-content
     h1 Member
     .sponsor-container
@@ -72,31 +104,37 @@ section.common.sponsor
         = image_tag '2016_redesign/sponsors/alchemy.png'
       .sponsor-copy
         span Assuming risk is inherent to business. Without it, there is little possibility of return. Your ability to manage risk is a determining factor in your company’s success or failure. Alchemy Security was founded to help our clients identify ways to make the best business decisions about how and where to invest precious resources to minimize Information Security risk.
+
     .sponsor-container
       a.sponsor-logo href='https://www.aylanetworks.com/' target='_blank'
         = image_tag '2016_redesign/sponsors/ayla.png'
       .sponsor-copy
         span Ayla Networks provides the industry’s first Agile IoT Platform, accelerating development, support, and ongoing enhancements of connected products for the Internet of Things.  Ayla’s software fabric runs across devices, cloud, and apps to create secure connectivity, data analytics, and feature-rich customer experiences. 
+
     .sponsor-container
       a.sponsor-logo href='http://www.edgelink.com/' target='_blank'
         = image_tag '2016_redesign/sponsors/edgelink.png'
       .sponsor-copy
         span We are experts in technology staffing and recruiting, for software product development and IT. We have two specialized teams; Direct Hire & Contract Services. Call for advice on onboarding, retention, average salaries, hourly rates or availability of certain skills in your market. DevOps, Big Data, AngularJS, .Net, Java, Database or Network Systems…learn how you can find the best people for your business! 
+
     .sponsor-container
       a.sponsor-logo href='http://www.swiftpage.com/en-gb/' target='_blank'
         = image_tag '2016_redesign/sponsors/swiftpage.png'
       .sponsor-copy
         span We fuel small business growth by providing technology solutions that unlock the power of their everyday interactions.
+
     .sponsor-container
       a.sponsor-logo href='http://www.taxnologi.com/' target='_blank'
         = image_tag '2016_redesign/sponsors/taxnologi.png'
       .sponsor-copy
         span We are a group of specialized consultants with a deep understanding of federal, state and local and international tax laws and hands-on technology solution skills. Our backgrounds are diverse and include Big Four accounting, oil and gas, telecommunications, retail and manufacturing industries.
+
     .sponsor-container
       a.sponsor-logo href='https://www.spotxchange.com/' target='_blank'
         = image_tag '2016_redesign/sponsors/spotx.png'
       .sponsor-copy
         span SpotX is a video inventory management platform for premium publishers and broadcasters, helping them manage all of their demand sources from one place, and monetize content across all screens and all streams. The SpotX platform offers publishers unprecedented transparency and insight, creating a safe, controlled environment that allows them to connect with advertisers, and achieve the highest revenue possible.
+
     .sponsor-container
       a.sponsor-logo href='http://www.dgslaw.com/' target='_blank'
         = image_tag '2016_redesign/sponsors/dgs.png'
