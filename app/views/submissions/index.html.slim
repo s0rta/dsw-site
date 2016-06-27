@@ -8,9 +8,16 @@ section.common.green
 
 form.filters(action="#{search_submissions_path}")
   input(name="terms" value="#{params[:terms]}")
-  select
-    option Track 1
-    option Track 2
+  select(name="track_name" value="#{params[:track_name]}" onchange="this.form.submit();")
+    - if !params[:track_name].present?
+      option(selected="selected" value="") All
+    - else
+      option(value="") All
+    - Track.submittable.in_display_order.each do |track|
+      - if params[:track_name] == track.name.downcase
+        option(selected="selected" value="#{track.name.downcase}") = track.name
+      - else
+        option(value="#{track.name.downcase}") = track.name
 
 .card-container
   - @submissions.each do |submission|

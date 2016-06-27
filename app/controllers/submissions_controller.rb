@@ -17,27 +17,35 @@ class SubmissionsController < ApplicationController
   end
 
   def track
-    @submissions = Submission.
-      for_current_year.
-      joins(:track).
-      where(tracks: { is_submittable: true }).
-      where('LOWER(tracks.name) = LOWER(?)', params[:track_name]).
-      public.
-      order('random()').
-      includes(:submitter, :track, :votes)
-    render action: :index
+    if params[:track_name].present?
+      @submissions = Submission.
+        for_current_year.
+        joins(:track).
+        where(tracks: { is_submittable: true }).
+        where('LOWER(tracks.name) = LOWER(?)', params[:track_name]).
+        public.
+        order('random()').
+        includes(:submitter, :track, :votes)
+      render action: :index
+    else
+      redirect_to submissions_path
+    end
   end
 
   def search
-    ids = Submission.algolia_raw_search(params[:terms])['hits'].map { |h| h['objectID'] }.map(&:to_i)
-    @submissions = Submission.where(id: ids).
-      for_current_year.
-      joins(:track).
-      where(tracks: { is_submittable: true }).
-      public.
-      includes(:submitter, :track, :votes).
-      order("idx(ARRAY#{ids}, submissions.id)")
-    render action: :index
+    if params[:track_name].present?
+      redirect_to track_submissions_path(track_name: params[:track_name])
+    else
+      ids = Submission.algolia_raw_search(params[:terms])['hits'].map { |h| h['objectID'] }.map(&:to_i)
+      @submissions = Submission.where(id: ids).
+        for_current_year.
+        joins(:track).
+        where(tracks: { is_submittable: true }).
+        public.
+        includes(:submitter, :track, :votes).
+        order("idx(ARRAY#{ids}, submissions.id)")
+      render action: :index
+    end
   end
 
   def mine

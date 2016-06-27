@@ -31,7 +31,7 @@ module ApplicationHelper
   end
 
   def tracks_for_select
-    Track.submittable.map { |t| [ t.name, t.id ] }
+    Track.submittable.in_display_order.map { |t| [ t.name, t.id ] }
   end
 
 end
