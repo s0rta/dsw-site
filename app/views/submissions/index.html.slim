@@ -1,10 +1,10 @@
 nav
   .section-content
-    h1 Help pick the sessions for #{current_year}!
+    h1 Your Vote Counts
 
 section.common.green
   .section-content
-    h6 So far in #{current_year}, the community has cast <strong>#{number_with_delimiter(Vote.for_current_year.count)} votes</strong> and provided <strong>#{number_with_delimiter(Comment.for_current_year.count)} comments</strong>. We're excited to make this year's program even better than last, but we can't do it without you. Vote for your favorite sessions, tell your friends, and help us get the word out!
+    h6 We take your votes seriously. You may vote on as many sessions as you would like, but only one vote per session is counted. Our track chairs use your votes to guide their decision making, so be sure to spread the word and enlist all your contacts to participate in curating the very best for Denver Startup Week #{Date.today.year}.
 
 form.filters(action="#{search_submissions_path}")
   input(name="terms" value="#{params[:terms]}")
