@@ -26,7 +26,7 @@ class SubmissionsController < ApplicationController
       respond_to do |format|
         format.html
         format.js do
-          render json: { fragment: render_to_string(partial: 'track_contents'),
+          render json: { fragment: render_to_string(partial: 'track_contents', formats: [ :html ]),
                          next_url: url_for(page: Integer(params[:page] || 1) + 1) }
         end
       end
@@ -48,7 +48,7 @@ class SubmissionsController < ApplicationController
         page(params[:page])
       respond_to do |format|
         format.json do
-          render json: { fragment: render_to_string(partial: 'track_contents'),
+          render json: { fragment: render_to_string(partial: 'track_contents', formats: [ :html ]),
                          next_url: url_for(page: Integer(params[:page] || 1) + 1) }
         end
         format.html { render action: :track }
