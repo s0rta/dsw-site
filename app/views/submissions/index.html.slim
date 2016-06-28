@@ -6,7 +6,7 @@
       div class=("card-content #{track.name.downcase}")
         = link_to track_submissions_path(track_name: track.name.downcase) do
           = render partial: "submissions/headers/#{track.name.downcase}"
-          .title = "#{track.submissions.for_current_year.count} Topics"
+          .title = "#{track.submissions.public.for_current_year.count} Topics"
           .description = track.description
           footer
             span View Topics
