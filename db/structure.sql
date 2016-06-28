@@ -486,7 +486,8 @@ CREATE TABLE tracks (
     icon character varying(255),
     email_alias character varying(255),
     display_order integer DEFAULT 0 NOT NULL,
-    is_submittable boolean DEFAULT false NOT NULL
+    is_submittable boolean DEFAULT false NOT NULL,
+    description text
 );
 
 
@@ -1242,4 +1243,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160617045028');
 INSERT INTO schema_migrations (version) VALUES ('20160619043445');
 
 INSERT INTO schema_migrations (version) VALUES ('20160627234846');
+
+INSERT INTO schema_migrations (version) VALUES ('20160628040744');
 

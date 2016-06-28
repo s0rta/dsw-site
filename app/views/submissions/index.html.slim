@@ -1,45 +1,12 @@
-nav
-  .section-content
-    h1 2016 Session Selection
+= render partial: 'voting_header'
 
-section.common.green
-  .section-content
-    h1 Your Vote Counts
-    h6 We take your votes seriously. You may vote on as many sessions as you would like, but only one vote per session is counted. Our track chairs use your votes to guide their decision making, so be sure to spread the word and enlist all your contacts to participate in curating the very best for Denver Startup Week #{Date.today.year}.
-
-form.filters(action="#{search_submissions_path}")
-  input(name="terms" value="#{params[:terms]}")
-  select(name="track_name" value="#{params[:track_name]}" onchange="this.form.submit();")
-    - if !params[:track_name].present?
-      option(selected="selected" value="") All
-    - else
-      option(value="") All
-    - Track.submittable.in_display_order.each do |track|
-      - if params[:track_name] == track.name.downcase
-        option(selected="selected" value="#{track.name.downcase}") = track.name
-      - else
-        option(value="#{track.name.downcase}") = track.name
-
-.card-container
-  - @submissions.each do |submission|
+.card-container.voting-categories
+  - Track.submittable.in_display_order.each do |track|
     .card-frame
-      div class=("card-content #{submission.track.name.downcase}") data-bindable='ajax-voter'
-        = link_to submission, class: 'vote-detail' do
-          = render partial: "submissions/headers/#{submission.track.name.downcase}"
-          .title
-            = truncate(submission.title, length: 100, separator: ' ')
-          .names
-            h6 = submission.submitter.name
-          .description = truncate(submission.description, length: 100, separator: ' ')
-        footer
-          div.vote-count
-            span = pluralize(submission.votes.size, 'vote')
-          - if current_user
-            = link_to submission_votes_path(submission), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{submission.title}'" do
-              = render partial: 'icons/thumbsup'
-          - else
-            = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{submission.title}'" do
-              = render partial: 'icons/thumbsup'
-
-section.common.sm-centered
-    a.load-more href='#' Load More
+      div class=("card-content #{track.name.downcase}")
+        = link_to track_submissions_path(track_name: track.name.downcase) do
+          = render partial: "submissions/headers/#{track.name.downcase}"
+          .title = "#{track.submissions.for_current_year.count} Topics"
+          .description = track.description
+          footer
+            span View Topics

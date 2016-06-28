@@ -23,7 +23,6 @@ class SubmissionsController < ApplicationController
         for_track(params[:track_name]).
         public.
         page(params[:page])
-      render action: :index
     else
       redirect_to submissions_path(terms: params[:terms])
     end
@@ -40,7 +39,7 @@ class SubmissionsController < ApplicationController
         for_track(params[:track_name]).
         public.
         page(params[:page])
-      render action: :index
+      render action: :track
     end
   end
 
