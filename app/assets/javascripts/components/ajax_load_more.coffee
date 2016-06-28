@@ -3,7 +3,6 @@
 
 class dsw.AjaxLoadMore
   constructor: (@el, data) ->
-    console.log('AjaxLoadMore', @el)
     @data = if data then data else @el.data()
     @options()
     @initialize()
