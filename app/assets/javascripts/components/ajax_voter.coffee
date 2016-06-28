@@ -31,7 +31,7 @@ class dsw.AjaxVoter
 
   countVote: (event, data) =>
     a = $(event.target)
-    countEl = a.closest('footer').find('.vote-count')
+    countEl = a.closest('footer').find('.vote-count span')
     noun = if data.count == 1 then 'vote' else 'votes'
     countEl.html("#{data.count} #{noun}")
 
