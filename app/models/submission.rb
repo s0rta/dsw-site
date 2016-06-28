@@ -181,12 +181,12 @@ class Submission < ActiveRecord::Base
 
   def notify_track_chairs
     self.track.chairs.each do |chair|
-      NotificationsMailer.notify_of_new_submission(chair, self).deliver
+      NotificationsMailer.notify_of_new_submission(chair, self).deliver_now
     end
   end
 
   def send_confirmation_notice
-    NotificationsMailer.confirm_new_submission(self).deliver
+    NotificationsMailer.confirm_new_submission(self).deliver_now
   end
 
   def subscribe_to_list
