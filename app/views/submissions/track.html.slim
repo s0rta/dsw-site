@@ -33,3 +33,6 @@ form.filters(action="#{search_submissions_path}")
           - else
             = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{submission.title}'" do
               = render partial: 'icons/thumbsup'
+
+section.common.sm-centered
+    a.load-more href='#' Load More
