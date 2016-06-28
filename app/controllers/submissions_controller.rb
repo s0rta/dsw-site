@@ -23,6 +23,13 @@ class SubmissionsController < ApplicationController
         for_track(params[:track_name]).
         public.
         page(params[:page])
+      respond_to do |format|
+        format.html
+        format.js do
+          render json: { fragment: render_to_string(partial: 'track_contents'),
+                         next_url: url_for(page: Integer(params[:page] || 1) + 1) }
+        end
+      end
     else
       redirect_to submissions_path(terms: params[:terms])
     end
@@ -39,7 +46,13 @@ class SubmissionsController < ApplicationController
         for_track(params[:track_name]).
         public.
         page(params[:page])
-      render action: :track
+      respond_to do |format|
+        format.json do
+          render json: { fragment: render_to_string(partial: 'track_contents'),
+                         next_url: url_for(page: Integer(params[:page] || 1) + 1) }
+        end
+        format.html { render action: :track }
+      end
     end
   end
 

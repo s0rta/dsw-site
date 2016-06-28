@@ -8,6 +8,7 @@
 #= require components/toggle_nav
 #= require components/toggle_faq
 #= require components/ajax_voter
+#= require components/ajax_load_more
 
 createBindable = ->
   utensils.bindable = new utensils.Bindable().bindAll()

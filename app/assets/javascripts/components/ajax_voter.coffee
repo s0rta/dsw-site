@@ -23,11 +23,11 @@ class dsw.AjaxVoter
 # PROTECTED #
 
   addListeners: ->
-    @el.on 'ajax:success', 'a', @countVote
+    @el.on 'ajax:success', 'a.register-vote', @countVote
 
 
   removeListeners: ->
-    @el.off 'ajax:success', 'a', @countVote
+    @el.off 'ajax:success', 'a.register-vote', @countVote
 
   countVote: (event, data) =>
     noun = if data.count == 1 then 'vote' else 'votes'

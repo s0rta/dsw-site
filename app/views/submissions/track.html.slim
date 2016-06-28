@@ -14,25 +14,7 @@ form.filters(action="#{search_submissions_path}")
         option(value="#{track.name.downcase}") = track.name
 
 .card-container
-  - @submissions.each do |submission|
-    .card-frame
-      div class=("card-content #{submission.track.name.downcase}") data-bindable='ajax-voter'
-        = link_to submission, class: 'vote-detail' do
-          = render partial: "submissions/headers/#{submission.track.name.downcase}"
-          .title
-            = truncate(submission.title, length: 100, separator: ' ')
-          .names
-            h6 = submission.submitter.name
-          .description = truncate(submission.description, length: 100, separator: ' ')
-        footer
-          div.vote-count
-            span = pluralize(submission.votes.size, 'vote')
-          - if current_user
-            = link_to submission_votes_path(submission), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{submission.title}'" do
-              = render partial: 'icons/thumbsup'
-          - else
-            = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{submission.title}'" do
-              = render partial: 'icons/thumbsup'
+  = render partial: 'track_contents'
 
-section.common.sm-centered
-    a.load-more href='#' Load More
+  section.common.sm-centered(data-bindable="ajax-load-more")
+    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1), remote: true, method: :get, class: 'load-more', data: { type: 'json' }
