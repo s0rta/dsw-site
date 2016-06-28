@@ -18,6 +18,9 @@ header.masthead(data-bindable='toggle-nav')
       - else
         div
           = link_to 'Sign In', mine_submissions_path
+      - if FeatureToggler.feedback_active?
+        div
+          = link_to 'Panel Picker', submissions_path
       div
         = link_to 'Program', page_path(page: 'program')
       div
@@ -30,6 +33,9 @@ header.masthead(data-bindable='toggle-nav')
         = link_to 'Contact', page_path(page: 'contact')
       div
         = link_to 'FAQ', page_path(page: 'faq')
+      - if signed_in? && current_user.is_admin?
+        div
+          = link_to 'Admin', admin_root_path
       - if signed_in?
         div
           = link_to 'Logout', destroy_user_session_path, method: :delete
