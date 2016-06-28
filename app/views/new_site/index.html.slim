@@ -13,12 +13,12 @@ section.hero-cta
         h6 Denver Startup Week is powered by the community. Submit a topic for consideration for 2016.
         = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
   - elsif FeatureToggler.feedback_active?
-    article.teal
+    article.green
       .section-content
         h2 Voting is Open
         h3 Cast your vote before July 15
         h6 The sessions are in, now we need you to help us finalize the best for this year's event. Don't delay, cast your vote and spread the word.
-        = link_to 'Vote Now', submissions_path, class: 'btn blue'
+        = link_to 'Vote Now', submissions_path, class: 'btn green'
   - else
     article.teal
       .section-content
@@ -31,7 +31,7 @@ section.hero-cta
       h2 Get Involved
       h3 Be a part of something epic
       h6 Denver Startup Week is powered by the community. Get involved. Make an impact.
-      = link_to 'Contact', page_path(page: 'contact'), class: 'btn teal'
+      = link_to 'Contact', page_path(page: 'contact'), class: 'btn blue'
 
 section.common.the-what
   .section-content
