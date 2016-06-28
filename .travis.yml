@@ -4,8 +4,7 @@ rvm:
 - 2.3.0
 services:
 - redis-server
-bundler_args:
-  --without development production
+bundler_args: "--without development production"
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
@@ -14,3 +13,8 @@ before_script:
 - cp .env.example .env
 script:
 - bundle exec rake db:setup spec
+notifications:
+  email:
+    false
+  slack:
+    secure: F6u0zqE1SGYYc5VdMvj8zYhP4kGCW1lFl9rJF4aNRgb/YcC3sfz65LncvRtL46Q3BvjBK4YC+hqjEdiN1SjMovch15SpujP2MeHNBwoCRTcdQRlyPXC2sQ9j6kPryhqa0aYhNJBR5sE1LwEPTE8E55k9sFAugC9Bq8vHL1MR9HG73qhDMF6ubl0AwqoYdY80NfXhiJcIXgNeGTkqtq1zG9Mg2saiTQgXhdn/s65fcB8Jqn16p7mBoTBBy5biHT8zl7jJUuE38lvkcAdX4cNT+w9HFGNki5HcC8uP6qCLjc8iC605ejVxv6OKip0WIVrsWGu0K79xHw3e1eL7FTI6zww3XDao2/4tTGOhjuV33WjMrU1PGD9x6ussBaWzl/vG7OSeOrQEdyXyXDvQN0iXjiAwI38f5/GKi4GyyIU3BH64NHQF6mmKj0Dw8QlyIbqSI6nC0/ndPpPiHb32IuFfs8oHNtGgQd8Sbdmj0cCe4I/g8YSgV9xhPlHWCTd3grjspasK55rQnirHcLTr0NvC48UQi+fyjqibSvYUiFosqphAms2XnUWseXc1OpWiUAW+V07u7XJ3ca0q6Ql3EoKcSTAp69wW2e7l0oFI13Q0u42XYSI6P29wxXTs4Z6Wy/1IRUJ/qnyzscRWUo1T6Ab+WKR5gi5QIdPpfACTXsC3i0o=
