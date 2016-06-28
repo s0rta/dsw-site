@@ -1,11 +1,3 @@
-require 'algolia/webmock'
+require 'webmock'
 
-RSpec.configure do |c|
-  c.before(:each) do
-    WebMock.enable!
-  end
-
-  c.after(:each) do
-    WebMock.disable!
-  end
-end
+WebMock.disable_net_connect! allow_localhost: true
