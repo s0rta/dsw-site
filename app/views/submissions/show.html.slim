@@ -4,7 +4,7 @@ nav
 
 section.common
   .section-content
-    = link_to 'Back to Topics', :back, class: 'back-link'
+    = link_to 'Back to Topics', submissions_path, class: 'back-link'
 
 section.common
   div class=("section-content session-detail #{@submission.track.name.downcase}") data-bindable='ajax-voter'
