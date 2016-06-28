@@ -4,7 +4,7 @@ feature 'Creating a submission' do
 
   before do
     @chair = User.create! name: 'Mr. Chairman', email: 'chair@example.com', password: 'passsword'
-    @track = Track.new name: 'Bizness'
+    @track = Track.new name: 'Bizness', is_submittable: true
     @track.chairs << @chair
     @track.save!
     FeatureToggler.activate_submission!

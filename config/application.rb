@@ -29,5 +29,8 @@ module Denverstartupweek
 
     # Set a default host for mailers
     config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_HOST'] }
+
+    # Use a SQL schema format to allow fulltext indices to be dumped
+    config.active_record.schema_format = :sql
   end
 end

@@ -4,7 +4,7 @@ class VolunteerSignup < ActiveRecord::Base
                :subscribe_to_list
 
   def notify_chairs
-    NotificationsMailer.notify_of_new_volunteer_signup(self).deliver
+    NotificationsMailer.notify_of_new_volunteer_signup(self).deliver_now
   end
 
   def subscribe_to_list

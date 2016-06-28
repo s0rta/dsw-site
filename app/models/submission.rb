@@ -1,31 +1,7 @@
 class Submission < ActiveRecord::Base
 
-  WEEK_START = ActiveSupport::TimeZone.new('America/Denver').local(2015, 9, 28).at_beginning_of_day
-
-  has_paper_trail
-
-  # Add to ActiveAdmin as strong params
-  # attr_accessible :start_day,
-  #                 :end_day,
-  #                 :year,
-  #                 :description,
-  #                 :format,
-  #                 :location,
-  #                 :notes,
-  #                 :time_range,
-  #                 :title,
-  #                 :track_id,
-  #                 :contact_email,
-  #                 :estimated_size,
-  #                 :is_public,
-  #                 :is_confirmed,
-  #                 :venue_id,
-  #                 :budget_needed,
-  #                 :volunteers_needed,
-  #                 :start_hour,
-  #                 :end_hour,
-  #                 :state,
-  #                 :submitter_id, as: :admin
+  WEEK_START = ActiveSupport::TimeZone.new('America/Denver').local(2015, 9, 28).at_beginning_of_day.freeze
+  PUBLIC_STATES = %w(open_for_voting accepted confirmed).freeze
 
   FORMATS = [ 'Presentation',
               'Panel',
@@ -49,6 +25,10 @@ class Submission < ActiveRecord::Base
                   'Happy hour',
                   'Evening',
                   'Late night' ]
+
+  include SearchableSubmission
+
+  has_paper_trail
 
   belongs_to :submitter, class_name: 'User'
   belongs_to :track
@@ -88,7 +68,6 @@ class Submission < ActiveRecord::Base
     self.year ||= Date.today.year
   end
 
-
   def to_param
     "#{self.id}-#{self.title.parameterize}"
   end
@@ -97,12 +76,34 @@ class Submission < ActiveRecord::Base
     where(year: Date.today.year)
   end
 
+  def for_current_year?
+    year == Date.today.year
+  end
+
   def self.for_previous_years
     where('year < ? ', Date.today.year)
   end
 
   def self.public
-    where(state: %w(open_for_voting accepted confirmed))
+    where(state: PUBLIC_STATES)
+  end
+
+  def self.for_submittable_tracks
+    joins(:track).
+    where(tracks: { is_submittable: true })
+  end
+
+  def self.for_track(name)
+    if name.present?
+      joins(:track).
+      where('LOWER(tracks.name) = LOWER(?)', name)
+    else
+      all
+    end
+  end
+
+  def public?
+    PUBLIC_STATES.include?(state)
   end
 
   def self.confirmed
@@ -172,7 +173,6 @@ class Submission < ActiveRecord::Base
     "#{start_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')} #{separator} #{end_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')}".html_safe
   end
 
-
   def to_ics
     event
   end
@@ -181,12 +181,12 @@ class Submission < ActiveRecord::Base
 
   def notify_track_chairs
     self.track.chairs.each do |chair|
-      NotificationsMailer.notify_of_new_submission(chair, self).deliver
+      NotificationsMailer.notify_of_new_submission(chair, self).deliver_now
     end
   end
 
   def send_confirmation_notice
-    NotificationsMailer.confirm_new_submission(self).deliver
+    NotificationsMailer.confirm_new_submission(self).deliver_now
   end
 
   def subscribe_to_list

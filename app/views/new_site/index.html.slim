@@ -12,6 +12,13 @@ section.hero-cta
         h3 Session submissions are open until June 15
         h6 Denver Startup Week is powered by the community. Submit a topic for consideration for 2016.
         = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
+  - elsif FeatureToggler.feedback_active?
+    article.teal
+      .section-content
+        h2 Voting is Open
+        h3 Cast your vote before July 15
+        h6 The sessions are in, now we need you to help us finalize the best for this year's event. Don't delay, cast your vote and spread the word.
+        = link_to 'Vote Now', submissions_path, class: 'btn blue'
   - else
     article.teal
       .section-content

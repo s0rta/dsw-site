@@ -3,7 +3,7 @@ namespace :email do
   task :notify_of_acceptance => :environment do
     Submission.for_current_year.where(state: 'accepted').each do |submission|
       Rails.logger.info "Sending acceptance notification to submission #{submission.id}"
-      NotificationsMailer.notify_of_submission_acceptance(submission ).deliver!
+      NotificationsMailer.notify_of_submission_acceptance(submission ).deliver_now!
       submission.update_column :notes, submission.notes + "\nSent acceptance e-mail on #{Date.today.to_s(:long)}"
     end
   end
@@ -11,7 +11,7 @@ namespace :email do
   task :notify_of_rejection => :environment do
     Submission.for_current_year.where(state: 'rejected').each do |submission|
       Rails.logger.info "Sending rejection notification to submission #{submission.id}"
-      NotificationsMailer.notify_of_submission_rejection(submission ).deliver!
+      NotificationsMailer.notify_of_submission_rejection(submission ).deliver_now!
       submission.update_column :notes, submission.notes + "\nSent rejection e-mail on #{Date.today.to_s(:long)}"
     end
   end
@@ -19,7 +19,7 @@ namespace :email do
   task :notify_of_waitlisting => :environment do
     Submission.for_current_year.where(state: 'waitlisted').each do |submission|
       Rails.logger.info "Sending waitlisted notification to submission #{submission.id}"
-      NotificationsMailer.notify_of_submission_waitlisting(submission ).deliver!
+      NotificationsMailer.notify_of_submission_waitlisting(submission ).deliver_now!
       submission.update_column :notes, submission.notes + "\nSent waitlisting e-mail on #{Date.today.to_s(:long)}"
     end
   end
@@ -33,7 +33,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_monday_daily_schedule(registration).deliver!
+        NotificationsMailer.notify_of_monday_daily_schedule(registration).deliver_now!
       end
   end
 
@@ -46,7 +46,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_tuesday_daily_schedule(registration).deliver!
+        NotificationsMailer.notify_of_tuesday_daily_schedule(registration).deliver_now!
       end
   end
 
@@ -59,7 +59,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_wednesday_daily_schedule(registration).deliver!
+        NotificationsMailer.notify_of_wednesday_daily_schedule(registration).deliver_now!
       end
   end
 
@@ -72,7 +72,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_thursday_daily_schedule(registration).deliver!
+        NotificationsMailer.notify_of_thursday_daily_schedule(registration).deliver_now!
       end
   end
 
@@ -85,8 +85,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_friday_daily_schedule(registration).deliver!
+        NotificationsMailer.notify_of_friday_daily_schedule(registration).deliver_now!
       end
   end
-
 end

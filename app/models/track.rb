@@ -14,4 +14,7 @@ class Track < ActiveRecord::Base
     order('display_order ASC, name ASC')
   end
 
+  def self.submittable
+    where(is_submittable: true)
+  end
 end

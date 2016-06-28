@@ -7,7 +7,53 @@ class SubmissionsController < ApplicationController
   before_action :check_feedback_open, only: [ :index ]
 
   def index
-    @submissions = Submission.for_current_year.public.order('random()').includes(:submitter, :track, :votes)
+    @submissions = Submission.
+      for_current_year.
+      for_submittable_tracks.
+      public.
+      page(params[:page])
+  end
+
+  def track
+    if params[:track_name].present?
+      @submissions = Submission.
+        fulltext_search(params[:terms]).
+        for_current_year.
+        for_submittable_tracks.
+        for_track(params[:track_name]).
+        public.
+        page(params[:page])
+      respond_to do |format|
+        format.html
+        format.js do
+          render json: { fragment: render_to_string(partial: 'track_contents'),
+                         next_url: url_for(page: Integer(params[:page] || 1) + 1) }
+        end
+      end
+    else
+      redirect_to submissions_path(terms: params[:terms])
+    end
+  end
+
+  def search
+    if params[:track_name].present?
+      redirect_to track_submissions_path(track_name: params[:track_name], terms: params[:terms])
+    else
+      @submissions = Submission.
+        fulltext_search(params[:terms]).
+        for_current_year.
+        for_submittable_tracks.
+        for_track(params[:track_name]).
+        public.
+        page(params[:page])
+      respond_to do |format|
+        format.json do
+          render json: { fragment: render_to_string(partial: 'track_contents'),
+                         next_url: url_for(page: Integer(params[:page] || 1) + 1) }
+        end
+        format.html { render action: :track }
+      end
+    end
   end
 
   def mine
