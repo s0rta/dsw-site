@@ -9,8 +9,7 @@ class SubmissionsController < ApplicationController
   def index
     @submissions = Submission.
       for_current_year.
-      joins(:track).
-      where(tracks: { is_submittable: true }).
+      for_submittable_tracks.
       public.
       order('random()').
       includes(:submitter, :track, :votes)
