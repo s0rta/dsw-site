@@ -122,10 +122,9 @@
       align-items: center
       justify-content: space-around
       img
-        width: 200px
-        height: 70px
-        &:first-child
-          margin-bottom: 40px
+        max-width: 200px
+        max-height: 70px
+        margin-bottom: 30px
 
 @media(max-width: 400px)
   #new_site_controller.index-action
@@ -161,11 +160,6 @@
         width: 100px
         height: 100px
         background: image-url('2016_redesign/2016_logo_sm.svg') no-repeat center
-    section.common.title-sponsors
-      .title-logo-container
-        flex-direction: row
-        img:first-child
-          margin-bottom: 0
 
 @media(min-width: 640px)
   #new_site_controller.index-action
@@ -182,6 +176,12 @@
         .btn:first-child
           margin-bottom: 0
           margin-right: 10px
+
+@media(min-width: 740px)
+  #new_site_controller.index-action
+    section.common.title-sponsors
+      .title-logo-container
+        flex-direction: row
 
 @media(min-width: 1200px)
   #new_site_controller.index-action
