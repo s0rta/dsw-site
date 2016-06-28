@@ -20,6 +20,7 @@ gem 'temporal-rails'
 gem 'honeypot-captcha'
 
 gem 'simple_form'
+gem 'kaminari'
 
 gem 'emma', github: 'myemma/EmmaRuby'
 

@@ -397,6 +397,7 @@ DEPENDENCIES
   html-pipeline
   icalendar
   jquery-rails
+  kaminari
   lograge
   mail_view!
   memcachier

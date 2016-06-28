@@ -11,8 +11,7 @@ class SubmissionsController < ApplicationController
       for_current_year.
       for_submittable_tracks.
       public.
-      order('random()').
-      includes(:submitter, :track, :votes)
+      page(params[:page])
   end
 
   def track
@@ -22,8 +21,7 @@ class SubmissionsController < ApplicationController
         for_submittable_tracks.
         for_track(params[:track_name]).
         public.
-        order('random()').
-        includes(:submitter, :track, :votes)
+        page(params[:page]).
       render action: :index
     else
       redirect_to submissions_path(terms: params[:terms])
@@ -39,8 +37,7 @@ class SubmissionsController < ApplicationController
         for_submittable_tracks.
         for_track(params[:track_name]).
         public.
-        order('random()').
-        includes(:submitter, :track, :votes)
+        page(params[:page]).
       render action: :index
     end
   end
