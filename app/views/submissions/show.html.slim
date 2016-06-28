@@ -7,7 +7,7 @@ section.common
     = link_to 'Back to Topics', :back, class: 'back-link'
 
 section.common
-  div class=("section-content session-detail #{@submission.track.name.downcase}")
+  div class=("section-content session-detail #{@submission.track.name.downcase}") data-bindable='ajax-voter'
     = render partial: "submissions/headers/#{@submission.track.name.downcase}"
     .title = @submission.title
     .names
@@ -16,7 +16,10 @@ section.common
 
     footer
       div.vote-count
-        span = @submission.votes.size
-        span votes
-      a.register-vote href='#'
-        = render partial: 'icons/thumbsup'
+        span = pluralize(@submission.votes.size, 'vote')
+      - if current_user
+        = link_to submission_votes_path(@submission), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{@submission.title}'" do
+          = render partial: 'icons/thumbsup'
+      - else
+        = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{@submission.title}'" do
+          = render partial: 'icons/thumbsup'
