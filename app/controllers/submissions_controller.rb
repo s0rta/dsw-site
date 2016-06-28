@@ -18,32 +18,30 @@ class SubmissionsController < ApplicationController
 
   def track
     if params[:track_name].present?
-      @submissions = Submission.
+      @submissions = Submission.fulltext_search(params[:terms]).
         for_current_year.
-        joins(:track).
-        where(tracks: { is_submittable: true }).
-        where('LOWER(tracks.name) = LOWER(?)', params[:track_name]).
+        for_submittable_tracks.
+        for_track(params[:track_name]).
         public.
         order('random()').
         includes(:submitter, :track, :votes)
       render action: :index
     else
-      redirect_to submissions_path
+      redirect_to submissions_path(terms: params[:terms])
     end
   end
 
   def search
     if params[:track_name].present?
-      redirect_to track_submissions_path(track_name: params[:track_name])
+      redirect_to track_submissions_path(track_name: params[:track_name], terms: params[:terms])
     else
-      ids = Submission.algolia_raw_search(params[:terms])['hits'].map { |h| h['objectID'] }.map(&:to_i)
-      @submissions = Submission.where(id: ids).
+      @submissions = Submission.fulltext_search(params[:terms]).
         for_current_year.
-        joins(:track).
-        where(tracks: { is_submittable: true }).
+        for_submittable_tracks.
+        for_track(params[:track_name]).
         public.
-        includes(:submitter, :track, :votes).
-        order("idx(ARRAY#{ids}, submissions.id)")
+        order('random()').
+        includes(:submitter, :track, :votes)
       render action: :index
     end
   end

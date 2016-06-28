@@ -88,6 +88,20 @@ class Submission < ActiveRecord::Base
     where(state: PUBLIC_STATES)
   end
 
+  def self.for_submittable_tracks
+    joins(:track).
+    where(tracks: { is_submittable: true })
+  end
+
+  def self.for_track(name)
+    if name.present?
+      joins(:track).
+      where('LOWER(tracks.name) = LOWER(?)', name)
+    else
+      all
+    end
+  end
+
   def public?
     PUBLIC_STATES.include?(state)
   end

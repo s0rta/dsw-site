@@ -33,7 +33,7 @@ gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
 
-gem 'algoliasearch-rails'
+gem 'textacular'
 
 gem 'multi_fetch_fragments'
 

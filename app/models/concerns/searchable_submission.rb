@@ -1,15 +1,22 @@
 module SearchableSubmission
   extend ActiveSupport::Concern
 
-  included do
-    include AlgoliaSearch
-    algoliasearch per_environment: true, if: :indexable? do
-      attribute :title, :description
-      attribute(:track_name) { track.name }
+  class_methods do
+    def searchable_language
+      'english'
+    end
+
+    def searchable_columns
+      %i(title description)
+    end
+
+    def fulltext_search(terms)
+      if terms
+        basic_search(terms)
+      else
+        all
+      end
     end
   end
 
-  def indexable?
-    for_current_year? && public?
-  end
 end
