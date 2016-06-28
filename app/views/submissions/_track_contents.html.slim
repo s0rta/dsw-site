@@ -1,6 +1,6 @@
 - @submissions.each do |submission|
   .card-frame
-    div class=("card-content #{submission.track.name.downcase}") data-bindable='ajax-voter'
+    div class=("card-content #{submission.track.name.downcase}")
       = link_to submission, class: 'vote-detail' do
         = render partial: "submissions/headers/#{submission.track.name.downcase}"
         .title

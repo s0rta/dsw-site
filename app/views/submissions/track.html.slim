@@ -13,7 +13,7 @@ form.filters(action="#{search_submissions_path}")
       - else
         option(value="#{track.name.downcase}") = track.name
 
-.card-container
+.card-container(data-bindable='ajax-voter')
   = render partial: 'track_contents'
 
   section.common.sm-centered(data-bindable="ajax-load-more")
