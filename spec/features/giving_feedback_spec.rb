@@ -35,7 +35,9 @@ feature 'Providing feedback on submissions' do
     FeatureToggler.activate_feedback!
     login_as user, scope: :user
     visit '/panel-picker'
+    click_link 'View Topics'
     expect(page).to have_content('I am a session')
+
     click_link "Vote for 'I am a session'"
     expect(page).to have_css('.vote-count', text: '1 vote')
 
@@ -47,7 +49,9 @@ feature 'Providing feedback on submissions' do
   scenario 'User votes for a session after being prompted to sign in' do
     FeatureToggler.activate_feedback!
     visit '/panel-picker'
+    click_link 'View Topics'
     expect(page).to have_content('I am a session')
+
     click_link "Vote for 'I am a session'"
     fill_in 'E-mail Address', with: 'test@example.com'
     fill_in 'Password', with: 'password', match: :prefer_exact
@@ -64,6 +68,7 @@ feature 'Providing feedback on submissions' do
     FeatureToggler.activate_feedback!
     login_as user, scope: :user
     visit '/panel-picker'
+    click_link 'View Topics'
     expect(page).to have_content('I am a session')
     click_link "interesting stuff"
     click_link "Vote for 'I am a session'"
