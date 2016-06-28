@@ -16,12 +16,13 @@ class SubmissionsController < ApplicationController
 
   def track
     if params[:track_name].present?
-      @submissions = Submission.fulltext_search(params[:terms]).
+      @submissions = Submission.
+        fulltext_search(params[:terms]).
         for_current_year.
         for_submittable_tracks.
         for_track(params[:track_name]).
         public.
-        page(params[:page]).
+        page(params[:page])
       render action: :index
     else
       redirect_to submissions_path(terms: params[:terms])
@@ -32,12 +33,13 @@ class SubmissionsController < ApplicationController
     if params[:track_name].present?
       redirect_to track_submissions_path(track_name: params[:track_name], terms: params[:terms])
     else
-      @submissions = Submission.fulltext_search(params[:terms]).
+      @submissions = Submission.
+        fulltext_search(params[:terms]).
         for_current_year.
         for_submittable_tracks.
         for_track(params[:track_name]).
         public.
-        page(params[:page]).
+        page(params[:page])
       render action: :index
     end
   end

@@ -11,7 +11,7 @@ module SearchableSubmission
     end
 
     def fulltext_search(terms)
-      if terms
+      if terms.present?
         basic_search(terms)
       else
         all
