@@ -1,9 +1,10 @@
 nav
   .section-content
-    h1 Your Vote Counts
+    h1 2016 Session Selection
 
 section.common.green
   .section-content
+    h1 Your Vote Counts
     h6 We take your votes seriously. You may vote on as many sessions as you would like, but only one vote per session is counted. Our track chairs use your votes to guide their decision making, so be sure to spread the word and enlist all your contacts to participate in curating the very best for Denver Startup Week #{Date.today.year}.
 
 form.filters(action="#{search_submissions_path}")
@@ -39,3 +40,6 @@ form.filters(action="#{search_submissions_path}")
           - else
             = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{submission.title}'" do
               = render partial: 'icons/thumbsup'
+
+section.common.sm-centered
+    a.load-more href='#' Load More
