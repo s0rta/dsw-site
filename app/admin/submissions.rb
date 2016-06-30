@@ -49,11 +49,6 @@ ActiveAdmin.register Submission do
     column :title
     column :track, sortable: 'tracks.name'
     column :venue
-    column :start_day
-    column :end_day
-    column(:time_range, sortable: 'start_hour') do |s|
-      "#{(Time.now.at_beginning_of_day + s.start_hour.hours).strftime('%l:%M%P')} - #{(Time.now.at_beginning_of_day + s.end_hour.hours).strftime('%l:%M%P')}" if s.start_hour && s.end_hour
-    end
     column :submitter, sortable: 'users.name'
     column('Status', sortable: :state) do |submission|
       status_tag submission.state.to_s.titleize, status_for_submission(submission)
