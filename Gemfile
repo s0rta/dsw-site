@@ -10,6 +10,11 @@ gem 'puma'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'slim-rails'
+gem 'bourbon'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'underscore-rails'
+gem 'uglifier'
 gem 'responders'
 gem 'navigasmic'
 gem 'font_assets'
@@ -66,17 +71,6 @@ gem 'redis-objects'
 
 # Background processing
 gem 'sucker_punch'
-
-
-group :assets do
-  gem 'bourbon'
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'underscore-rails'
-  gem 'uglifier'
-  # gem 'utensils', github: 'modeset/utensils'
-  # gem 'turbo-sprockets-rails3', github: 'ndbroadbent/turbo-sprockets-rails3'
-end
 
 group :development do
   gem 'spring', require: false
