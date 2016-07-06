@@ -314,4 +314,9 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
+  # Hooks
+  after_build do |submission|
+    submission.submitter = current_user
+  end
+
 end
