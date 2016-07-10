@@ -6,13 +6,15 @@ module SearchableSubmission
       'english'
     end
 
-    def searchable_columns
-      %i(title description)
-    end
-
     def fulltext_search(terms)
       if terms.present?
-        basic_search(terms)
+        predicate = {
+          title: terms,
+          description: terms,
+          users: { name: terms }
+        }
+        joins(:submitter).
+          basic_search(predicate, false)
       else
         all
       end

@@ -973,6 +973,13 @@ CREATE INDEX fulltext_submissions_title_english ON submissions USING gin (to_tsv
 
 
 --
+-- Name: fulltext_users_name_english; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fulltext_users_name_english ON users USING gin (to_tsvector('english'::regconfig, (name)::text));
+
+
+--
 -- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1245,4 +1252,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160619043445');
 INSERT INTO schema_migrations (version) VALUES ('20160627234846');
 
 INSERT INTO schema_migrations (version) VALUES ('20160628040744');
+
+INSERT INTO schema_migrations (version) VALUES ('20160710013925');
 
