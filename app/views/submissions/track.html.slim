@@ -16,5 +16,6 @@ form.filters(action="#{search_submissions_path}")
 .card-container(data-bindable='ajax-voter')
   = render partial: 'track_contents'
 
-  section.common.sm-centered(data-bindable="ajax-load-more")
-    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1), remote: true, method: :get, class: 'load-more', data: { type: 'json' }
+  - unless @submissions.empty?
+    section.common.sm-centered(data-bindable="ajax-load-more")
+      = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1), remote: true, method: :get, class: 'load-more', data: { type: 'json' }
