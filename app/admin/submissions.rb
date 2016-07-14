@@ -316,7 +316,7 @@ ActiveAdmin.register Submission do
 
   # Hooks
   after_build do |submission|
-    submission.submitter = current_user
+    submission.submitter ||= current_user
   end
 
 end
