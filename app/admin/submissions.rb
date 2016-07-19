@@ -7,6 +7,7 @@ ActiveAdmin.register Submission do
                 :format,
                 :location,
                 :notes,
+                :internal_notes,
                 :time_range,
                 :title,
                 :track_id,
@@ -63,6 +64,7 @@ ActiveAdmin.register Submission do
     column :title
     column :description
     column :notes
+    column :internal_notes
     column :track do |submission|
       submission.track.try(:name)
     end
@@ -131,6 +133,7 @@ ActiveAdmin.register Submission do
       f.input :budget_needed
       f.input :volunteers_needed
       f.input :notes
+      f.input :internal_notes
     end
     f.actions
   end
