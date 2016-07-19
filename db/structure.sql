@@ -452,7 +452,9 @@ CREATE TABLE submissions (
     state character varying(255),
     start_day integer,
     end_day integer,
-    internal_notes text
+    internal_notes text,
+    slides_url character varying,
+    video_url character varying
 );
 
 
@@ -1257,4 +1259,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160628040744');
 INSERT INTO schema_migrations (version) VALUES ('20160710013925');
 
 INSERT INTO schema_migrations (version) VALUES ('20160719182417');
+
+INSERT INTO schema_migrations (version) VALUES ('20160719182706');
 

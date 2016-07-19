@@ -21,7 +21,9 @@ ActiveAdmin.register Submission do
                 :start_hour,
                 :end_hour,
                 :state,
-                :submitter_id
+                :submitter_id,
+                :slides_url,
+                :video_url
 
   controller do
     def scoped_collection
@@ -134,6 +136,8 @@ ActiveAdmin.register Submission do
       f.input :volunteers_needed
       f.input :notes
       f.input :internal_notes
+      f.input :slides_url
+      f.input :video_url
     end
     f.actions
   end
