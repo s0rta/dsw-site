@@ -5,6 +5,7 @@ class SubmissionsController < ApplicationController
   before_action :check_submissions_open, only: [ :new, :create ]
   before_action :authenticate_user!, only: [ :new, :create, :mine ]
   before_action :check_feedback_open, only: [ :index ]
+  before_action :set_submissions, only: [:edit, :update]
 
   def index
     @submissions = Submission.
@@ -80,6 +81,19 @@ class SubmissionsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @submission.update(submission_params)
+    if @submission.save
+      flash[:notice] = 'Thanks! Your proposal has been updated.'
+      redirect_to mine_submissions_path
+    else
+      respond_with @submission
+    end
+  end
+
   def show
     @submission = Submission.public.
       where(id: params[:id].to_i).
@@ -110,6 +124,10 @@ class SubmissionsController < ApplicationController
 
   def check_feedback_open
     redirect_to feedback_closed_submissions_path unless FeatureToggler.feedback_active?
+  end
+
+  def set_submissions
+    @submission = current_user.submissions.find(params[:id])
   end
 
 end

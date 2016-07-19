@@ -1,0 +1,21 @@
+nav
+  .section-content
+    h1 Edit Submission
+
+section.common.teal
+  .section-content
+    .dash-profile-bar
+    h3 Hello, #{current_user.name}!
+    h6 = link_to 'Return to Dashboard', mine_submissions_path
+
+.section-content
+  = form_for @submission do |f|
+    = f.label :title
+    = f.text_field :title, required: 'required', placeholder: 'Session Title'
+
+    = f.label :description
+    = f.text_area :description, required: 'required', rows: 8, placeholder: 'Session Description (public facing)'
+
+    = f.label :notes
+    = f.text_area :notes, required: 'required', rows: 8, placeholder: 'Session Pitch (for reviewers only)'
+    = f.submit 'Submit'

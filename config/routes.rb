@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :submissions, except: [ :edit, :update, :destroy ], path: 'panel-picker', path_names: { new: 'submit' } do
+  resources :submissions, except: [:destroy ], path: 'panel-picker', path_names: { new: 'submit' } do
     collection do
       get :thanks
       get :by_day
