@@ -131,7 +131,7 @@ ActiveAdmin.register Submission do
       f.input :end_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :venue_id, as: :select, collection: Venue.alphabetical.map {|v| [ v.name, v.id ]}, include_blank: true
-      f.input :cluster_id, as: :select, collection: Cluster.map {|c| [ c.name, c.id ]}, include_blank: true
+      f.input :cluster_id, as: :select, collection: Cluster.all.map {|c| [ c.name, c.id ]}, include_blank: true
       f.input :title
       f.input :description
       f.input :location
