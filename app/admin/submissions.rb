@@ -16,6 +16,7 @@ ActiveAdmin.register Submission do
                 :is_public,
                 :is_confirmed,
                 :venue_id,
+                :cluster_id,
                 :budget_needed,
                 :volunteers_needed,
                 :start_hour,
