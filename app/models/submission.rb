@@ -44,6 +44,8 @@ class Submission < ActiveRecord::Base
                          class_name: 'User',
                          source: :user
 
+  belongs_to :cluster
+
   validates :title, presence: true
   validates :description, presence: true
   validates :contact_email, presence: true

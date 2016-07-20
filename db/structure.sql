@@ -98,6 +98,37 @@ ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 
 
 --
+-- Name: clusters; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE clusters (
+    id integer NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: clusters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE clusters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: clusters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE clusters_id_seq OWNED BY clusters.id;
+
+
+--
 -- Name: cmsimple_images; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -454,7 +485,8 @@ CREATE TABLE submissions (
     end_day integer,
     internal_notes text,
     slides_url character varying,
-    video_url character varying
+    video_url character varying,
+    cluster_id integer
 );
 
 
@@ -717,6 +749,13 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY clusters ALTER COLUMN id SET DEFAULT nextval('clusters_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY cmsimple_images ALTER COLUMN id SET DEFAULT nextval('cmsimple_images_id_seq'::regclass);
 
 
@@ -831,6 +870,14 @@ ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regcl
 
 ALTER TABLE ONLY active_admin_comments
     ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY clusters
+    ADD CONSTRAINT clusters_pkey PRIMARY KEY (id);
 
 
 --
@@ -1074,6 +1121,13 @@ CREATE INDEX index_session_registrations_on_submission_id ON session_registratio
 
 
 --
+-- Name: index_submissions_on_cluster_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_submissions_on_cluster_id ON submissions USING btree (cluster_id);
+
+
+--
 -- Name: index_submissions_on_submitter_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1261,4 +1315,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160710013925');
 INSERT INTO schema_migrations (version) VALUES ('20160719182417');
 
 INSERT INTO schema_migrations (version) VALUES ('20160719182706');
+
+INSERT INTO schema_migrations (version) VALUES ('20160720160503');
 
