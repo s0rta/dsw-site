@@ -70,6 +70,9 @@ ActiveAdmin.register Submission do
     column :track do |submission|
       submission.track.try(:name)
     end
+    column :cluster do |submission|
+      submission.cluster.try(:name)
+    end
     column :format
     column :venue do |submission|
       submission.venue.try(:name)
@@ -113,6 +116,7 @@ ActiveAdmin.register Submission do
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
   filter :format, as: :select, collection: Submission::FORMATS
   filter :state, as: :select, collection: Submission.states
+  filter :cluster, as: :select, collection: Cluster.all
 
   form do |f|
     f.inputs do
@@ -127,6 +131,7 @@ ActiveAdmin.register Submission do
       f.input :end_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :venue_id, as: :select, collection: Venue.alphabetical.map {|v| [ v.name, v.id ]}, include_blank: true
+      f.input :cluster_id, as: :select, collection: Cluster.map {|c| [ c.name, c.id ]}, include_blank: true
       f.input :title
       f.input :description
       f.input :location
