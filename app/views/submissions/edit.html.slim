@@ -5,8 +5,22 @@ nav
 section.common.teal
   .section-content
     .dash-profile-bar
-    h3 Hello, #{current_user.name}!
-    h6 = link_to 'Return to Dashboard', mine_submissions_path
+      h3 Hello, #{current_user.name}!
+      h6 = link_to 'Return to Dashboard', mine_submissions_path
+
+section.common.sm-centered
+  .section-content.instruction
+    h6
+      | We encourage you to update the title, description, and/or submitter notes for your session proposal as you see fit. 
+      | Before updating your session proposal, please take a minute to read through 
+      = link_to 'our FAQs', page_path(page: 'faq'), target: '_blank', class: 'inline-copy-link'
+      |  for more information about the submission and selection process.
+
+    - flash.each do |key, message|
+      h6 = message
+
+    - unless @submission.errors.empty?
+      h6 = "Please correct the following errors: #{@submission.errors.full_messages.to_sentence}"
 
 .section-content
   = form_for @submission do |f|
