@@ -486,7 +486,8 @@ CREATE TABLE submissions (
     internal_notes text,
     slides_url character varying,
     video_url character varying,
-    cluster_id integer
+    cluster_id integer,
+    company_name character varying
 );
 
 
@@ -1317,4 +1318,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160719182417');
 INSERT INTO schema_migrations (version) VALUES ('20160719182706');
 
 INSERT INTO schema_migrations (version) VALUES ('20160720160503');
+
+INSERT INTO schema_migrations (version) VALUES ('20160726164453');
 

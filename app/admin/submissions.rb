@@ -24,11 +24,12 @@ ActiveAdmin.register Submission do
                 :state,
                 :submitter_id,
                 :slides_url,
-                :video_url
+                :video_url,
+                :company_name
 
   controller do
     def scoped_collection
-      resource_class.includes(:track, :submitter, :votes, :comments)
+      resource_class.includes(:track, :submitter, :votes, :venue)
     end
 
     def show
@@ -52,13 +53,13 @@ ActiveAdmin.register Submission do
     selectable_column
     column :title
     column :track, sortable: 'tracks.name'
-    column :venue
+    column :cluster, sortable: 'clusters.name'
+    column :venue, sortable: 'venues.name'
     column :submitter, sortable: 'users.name'
     column('Status', sortable: :state) do |submission|
       status_tag submission.state.to_s.titleize, status_for_submission(submission)
     end
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
-    column(:comments, sortable: 'COUNT(comments.id)') { |s| s.comments.size }
     actions
   end
 
@@ -74,10 +75,10 @@ ActiveAdmin.register Submission do
     column :cluster do |submission|
       submission.cluster.try(:name)
     end
-    column :format
     column :venue do |submission|
       submission.venue.try(:name)
     end
+    column :format
     column :start_day
     column :end_day
     column :submitter_name do |submission|
@@ -86,6 +87,7 @@ ActiveAdmin.register Submission do
     column :is_public
     column :created_at
     column :updated_at
+    column :company_name
     column :contact_email
     column :estimated_size
     column :volunteers_needed
@@ -97,9 +99,6 @@ ActiveAdmin.register Submission do
     column :votes do |submission|
       submission.votes.size
     end
-    column :comment_count do |submission|
-      submission.comments.size
-    end
     column(:state) do |submission|
       submission.state.to_s.titleize
     end
@@ -108,8 +107,8 @@ ActiveAdmin.register Submission do
   filter :title
   filter :description
   filter :track
-  filter :venue
   filter :venue, as: :select, collection: Venue.alphabetical
+  filter :company_name
   filter :format
   filter :submitter
   filter :start_day, as: :select, collection: Submission::DAYS.invert
@@ -137,6 +136,7 @@ ActiveAdmin.register Submission do
       f.input :description
       f.input :location
       f.input :contact_email
+      f.input :company_name
       f.input :estimated_size
       f.input :budget_needed
       f.input :volunteers_needed
@@ -331,5 +331,4 @@ ActiveAdmin.register Submission do
   after_build do |submission|
     submission.submitter ||= current_user
   end
-
 end
