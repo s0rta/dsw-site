@@ -183,7 +183,20 @@ ActiveAdmin.register Submission do
   end
 
   show do
-    attributes_table *default_attribute_table_rows
+    if submission.proposed_updates
+      panel 'Proposed Updates' do
+        attributes_table_for submission do
+          submission.proposed_updates.keys.each do |k|
+            row k do
+              submission.proposed_updates[k]
+            end
+          end
+        end
+      end
+    end
+
+    attributes_table *(default_attribute_table_rows - [:proposed_updates])
+
     panel 'Recent Updates' do
       table_for submission.versions do
         column 'Modified at' do |v|
@@ -218,6 +231,19 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  # Accept proposed session changes
+
+  action_item :only => :show do
+    if submission.proposed_updates
+      link_to('Accept updates', accept_update_admin_submission_path(submission), method: :post)
+    end
+  end
+
+  member_action :accept_update, method: :post do
+    submission = Submission.find(params[:id])
+    submission.promote_updates
+    redirect_to admin_submission_path(submission)
+  end
 
   # State machine actions
   action_item :only => :show do

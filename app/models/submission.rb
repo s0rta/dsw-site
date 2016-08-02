@@ -179,6 +179,10 @@ class Submission < ActiveRecord::Base
     event
   end
 
+  def promote_updates
+    update(proposed_updates.merge(proposed_updates: nil))
+  end
+
   private
 
   def notify_track_chairs

@@ -85,9 +85,9 @@ class SubmissionsController < ApplicationController
   end
 
   def update
-    @submission.update(submission_params)
+    @submission.update(proposed_updates: submission_params)
     if @submission.save
-      flash[:notice] = 'Thanks! Your proposal has been updated.'
+      flash[:notice] = 'Thanks! Your changes have been submitted and are pending review.'
       redirect_to mine_submissions_path
     else
       respond_with @submission

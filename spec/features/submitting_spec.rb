@@ -86,11 +86,17 @@ feature 'Creating a submission' do
     fill_in 'submission_contact_email', with: 'test2@example.com'
     click_button 'Submit'
 
-    click_on 'Edit'
+    click_on 'Propose Update'
     fill_in 'submission_title', with: 'Updated talk'
     fill_in 'submission_description', with: 'Here is my udpated idea'
     fill_in 'submission_notes', with: 'I have even more things to say now.'
     click_button 'Submit'
+
+    expect(page).to have_content 'Some talk'
+    expect(page).to have_content 'Your changes have been submitted'
+
+    Submission.last.promote_updates
+    visit page.current_path
 
     expect(page).to have_content 'Updated talk'
     expect(page).to_not have_content 'Some talk'
