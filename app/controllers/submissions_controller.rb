@@ -88,6 +88,7 @@ class SubmissionsController < ApplicationController
     @submission.update(proposed_updates: submission_params)
     if @submission.save
       flash[:notice] = 'Thanks! Your changes have been submitted and are pending review.'
+      @submission.notify_track_chairs_of_update
       redirect_to mine_submissions_path
     else
       respond_with @submission

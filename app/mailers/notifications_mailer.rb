@@ -17,6 +17,13 @@ class NotificationsMailer < ActionMailer::Base
     mail to: chair.email, subject: "A new DSW submission has been received for the #{@track.name} track"
   end
 
+  def notify_of_submission_update(chair, submission)
+    @chair = chair
+    @submission = submission
+    @track = @submission.track
+    mail to: chair.email, subject: "#{@submission.submitter} has proposed an update needing your approval for the #{@track.name} track."
+  end
+
   def confirm_new_submission(submission)
     @submission = submission
     mail to: @submission.contact_email, subject: 'Thanks for submitting a session proposal for Denver Startup Week!'
