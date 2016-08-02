@@ -5,7 +5,7 @@
 #= require utensils/bindable
 
 #= require components/newsletter_signup
-#= require components/volunteer_signup
+#= require components/general_inquiry
 #= require components/toggle_nav
 #= require components/toggle_faq
 #= require components/ajax_voter

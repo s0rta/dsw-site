@@ -307,6 +307,40 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: general_inquiries; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE general_inquiries (
+    id integer NOT NULL,
+    contact_name character varying(255),
+    contact_email character varying(255),
+    interest text,
+    notes text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: general_inquiries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE general_inquiries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: general_inquiries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE general_inquiries_id_seq OWNED BY general_inquiries.id;
+
+
+--
 -- Name: newsletter_signups; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -675,25 +709,23 @@ ALTER SEQUENCE versions_id_seq OWNED BY versions.id;
 
 
 --
--- Name: volunteer_signups; Type: TABLE; Schema: public; Owner: -
+-- Name: volunteer_shifts; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE volunteer_signups (
+CREATE TABLE volunteer_shifts (
     id integer NOT NULL,
-    contact_name character varying(255),
-    contact_email character varying(255),
-    interest text,
-    notes text,
+    starts_at timestamp without time zone,
+    ends_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: volunteer_signups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: volunteer_shifts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE volunteer_signups_id_seq
+CREATE SEQUENCE volunteer_shifts_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -702,10 +734,10 @@ CREATE SEQUENCE volunteer_signups_id_seq
 
 
 --
--- Name: volunteer_signups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: volunteer_shifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE volunteer_signups_id_seq OWNED BY volunteer_signups.id;
+ALTER SEQUENCE volunteer_shifts_id_seq OWNED BY volunteer_shifts.id;
 
 
 --
@@ -793,6 +825,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY general_inquiries ALTER COLUMN id SET DEFAULT nextval('general_inquiries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY newsletter_signups ALTER COLUMN id SET DEFAULT nextval('newsletter_signups_id_seq'::regclass);
 
 
@@ -856,7 +895,7 @@ ALTER TABLE ONLY versions ALTER COLUMN id SET DEFAULT nextval('versions_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY volunteer_signups ALTER COLUMN id SET DEFAULT nextval('volunteer_signups_id_seq'::regclass);
+ALTER TABLE ONLY volunteer_shifts ALTER COLUMN id SET DEFAULT nextval('volunteer_shifts_id_seq'::regclass);
 
 
 --
@@ -920,6 +959,14 @@ ALTER TABLE ONLY cmsimple_versions
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: general_inquiries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY general_inquiries
+    ADD CONSTRAINT general_inquiries_pkey PRIMARY KEY (id);
 
 
 --
@@ -995,11 +1042,11 @@ ALTER TABLE ONLY versions
 
 
 --
--- Name: volunteer_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteer_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY volunteer_signups
-    ADD CONSTRAINT volunteer_signups_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY volunteer_shifts
+    ADD CONSTRAINT volunteer_shifts_pkey PRIMARY KEY (id);
 
 
 --
@@ -1323,4 +1370,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160720160503');
 INSERT INTO schema_migrations (version) VALUES ('20160726164453');
 
 INSERT INTO schema_migrations (version) VALUES ('20160802021908');
+
+INSERT INTO schema_migrations (version) VALUES ('20160802033828');
+
+INSERT INTO schema_migrations (version) VALUES ('20160802040055');
 

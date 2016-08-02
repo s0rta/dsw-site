@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe VolunteerSignup do
+describe GeneralInquiry do
   before do
     allow(ListSubscriptionJob).to receive(:perform_async)
   end

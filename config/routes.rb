@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   resources :newsletter_signups, only: :create
-  resources :volunteer_signups, only: :create
+  resources :general_inquiries, only: :create
   resources :sponsor_signups, only: :create
 
   get '/schedule', to: 'schedules#index', as: :schedules

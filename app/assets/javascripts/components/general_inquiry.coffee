@@ -1,7 +1,7 @@
 #= require utensils/bindable
 #= require ./dsw
 
-class dsw.VolunteerSignup
+class dsw.GeneralInquiry
   constructor: (@el, data) ->
     @data = if data then data else @el.data()
     @initialize()
@@ -27,10 +27,10 @@ class dsw.VolunteerSignup
 
   formWasSubmitted: (e) =>
     e.preventDefault()
-    email = @el.find("#volunteer_signup_contact_email").val()
-    name = @el.find("#volunteer_signup_contact_name").val()
-    interest = @el.find("#volunteer_signup_interest").val()
-    notes = @el.find("#volunteer_signup_notes").val()
+    email = @el.find("#general_inquiry_contact_email").val()
+    name = @el.find("#general_inquiry_contact_name").val()
+    interest = @el.find("#general_inquiry_interest").val()
+    notes = @el.find("#general_inquiry_notes").val()
     unless email && name
       @button.val 'Please supply your name and e-mail address.'
     else
@@ -39,7 +39,7 @@ class dsw.VolunteerSignup
         type: 'POST'
         dataType: 'json'
         data:
-          volunteer_signup:
+          general_inquiry:
             contact_email: email
             contact_name: name
             interest: interest
@@ -50,4 +50,4 @@ class dsw.VolunteerSignup
           @button.val 'An error occurred - please try again later!'
 
 
-utensils.Bindable.register 'volunteer-signup', dsw.VolunteerSignup
+utensils.Bindable.register 'general-inquiry', dsw.GeneralInquiry
