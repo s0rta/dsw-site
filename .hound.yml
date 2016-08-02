@@ -1,13 +1,4 @@
-SpaceInsideBrackets:
-  Enabled: false
-LineLength:
-  # Default is that lines should be 80, but that's somewhat noisy. We want a softer limit.
-  Description: Limit lines to 100 characters.
-  Max: 100
-  Exclude:
-    - config/routes.rb
-EmptyLinesAroundBody:
-  Enabled: false
-StringLiterals:
-  EnforcedStyle: single_quotes
-  Enabled: true
+ruby:
+  enabled: true
+  config_file: .rubocop.yml
+
