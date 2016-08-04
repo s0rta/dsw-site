@@ -1,5 +1,7 @@
 ActiveAdmin.register VolunteerShift do
 
+  config.filters = false
+
   menu parent: 'Volunteers', label: 'Shifts'
 
   permit_params :name,
@@ -22,5 +24,4 @@ ActiveAdmin.register VolunteerShift do
     end
     f.actions
   end
-
 end
