@@ -17,6 +17,21 @@ class VolunteershipsController < ApplicationController
     end
   end
 
+  def edit
+    @volunteership = current_user.current_volunteership
+    render action: :new
+  end
+
+  def update
+    @volunteership = current_user.current_volunteership
+    if @volunteership.update(volunteership_params)
+      flash[:notice] = 'Your changes have been saved!'
+      redirect_to mine_submissions_path
+    else
+      respond_with @volunteership
+    end
+  end
+
   def show
   end
 

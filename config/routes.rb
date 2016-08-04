@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
 
-  resources :volunteerships, only: [ :new, :create, :show ], path: 'volunteer', path_names: { new: 'signup' }
+  resource :volunteership, path: 'volunteer', path_names: { new: 'signup' }
 
   resources :newsletter_signups, only: :create
   resources :general_inquiries, only: :create
