@@ -9,13 +9,8 @@ class NewSiteController < ApplicationController
   private
 
   def verify_page_exists!
-    template_name = "new_site/#{sanitized_page}"
-    unless template_exists?(template_name)
-      raise ActionController::RoutingError.new("#{sanitized_page} not found")
+    unless template_exists?(params[:page], _prefixes, false)
+      raise ActionController::RoutingError.new("#{params[:page]} not found")
     end
-  end
-
-  def sanitized_page
-    @sanitized_page ||= Zaru.sanitize!(params[:page])
   end
 end
