@@ -15,6 +15,10 @@ ActiveAdmin.register VolunteerShift do
     actions
   end
 
+  # Set a default year filter
+  scope('Current', default: true, &:for_current_year)
+  scope('Previous Year', &:for_previous_years)
+
   form do |f|
     f.inputs do
       f.input :name

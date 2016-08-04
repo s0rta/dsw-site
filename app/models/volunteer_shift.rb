@@ -1,4 +1,7 @@
 class VolunteerShift < ActiveRecord::Base
+
+  include YearScoped
+
   validates :name,
             presence: true
 
@@ -10,6 +13,6 @@ class VolunteerShift < ActiveRecord::Base
   has_many :volunteerships, through: :volunteership_shifts
 
   def self.for_select
-    order('day ASC').map { |s| [ s.name, s.id ] }
+    for_current_year.order('day ASC').map { |s| [ s.name, s.id ] }
   end
 end

@@ -719,7 +719,8 @@ CREATE TABLE volunteer_shifts (
     start_hour double precision,
     end_hour double precision,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    year integer
 );
 
 
@@ -1602,4 +1603,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160802042349');
 INSERT INTO schema_migrations (version) VALUES ('20160802043811');
 
 INSERT INTO schema_migrations (version) VALUES ('20160802050802');
+
+INSERT INTO schema_migrations (version) VALUES ('20160804150055');
 

@@ -1,5 +1,7 @@
 class Volunteership < ActiveRecord::Base
 
+  include YearScoped
+
   belongs_to :user
   validates :user, presence: true
 
@@ -8,16 +10,4 @@ class Volunteership < ActiveRecord::Base
 
   has_many :volunteership_assigned_shifts
   has_many :assigned_shifts, through: :volunteership_assigned_shifts, class_name: 'VolunteerShift'
-
-  after_initialize do
-    self.year ||= Date.today.year
-  end
-
-  def self.for_current_year
-    where(year: Date.today.year)
-  end
-
-  def self.for_previous_years
-    where('year < ? ', Date.today.year)
-  end
 end

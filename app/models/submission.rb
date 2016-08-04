@@ -27,6 +27,7 @@ class Submission < ActiveRecord::Base
                   'Late night' ]
 
   include SearchableSubmission
+  include YearScoped
 
   has_paper_trail
 
@@ -72,18 +73,6 @@ class Submission < ActiveRecord::Base
 
   def to_param
     "#{self.id}-#{self.title.parameterize}"
-  end
-
-  def self.for_current_year
-    where(year: Date.today.year)
-  end
-
-  def for_current_year?
-    year == Date.today.year
-  end
-
-  def self.for_previous_years
-    where('year < ? ', Date.today.year)
   end
 
   def self.public
