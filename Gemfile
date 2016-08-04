@@ -38,6 +38,7 @@ gem 'github-markdown'
 gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
+gem 'zaru'
 
 gem 'textacular'
 
