@@ -179,10 +179,20 @@ class Submission < ActiveRecord::Base
     event
   end
 
+  def promote_updates
+    update(proposed_updates.merge(proposed_updates: nil))
+  end
+
+  def notify_track_chairs_of_update
+    track.chairs.each do |chair|
+      NotificationsMailer.notify_of_submission_update(chair, self).deliver_now
+    end
+  end
+
   private
 
   def notify_track_chairs
-    self.track.chairs.each do |chair|
+    track.chairs.each do |chair|
       NotificationsMailer.notify_of_new_submission(chair, self).deliver_now
     end
   end

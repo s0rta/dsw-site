@@ -69,4 +69,37 @@ feature 'Creating a submission' do
     expect(page).to have_content('Email has already been taken')
   end
 
+  scenario 'User edits an existing submission' do
+    visit '/panel-picker/mine' # Can't click on the homepage for some reason
+    click_on 'Register for an account'
+    fill_in 'Name', with: 'New Guy'
+    fill_in 'E-mail Address', with: 'test@example.com'
+    fill_in 'Password', with: 'password', match: :prefer_exact
+    fill_in 'Confirm Password', with: 'password', match: :prefer_exact
+
+    click_on 'Sign Up'
+    click_on 'Submit a New Proposal'
+    select 'Bizness', from: 'submission_track_id'
+    fill_in 'submission_title', with: 'Some talk'
+    fill_in 'submission_description', with: 'I am going to give a talk.'
+    fill_in 'submission_notes', with: 'Please pick my talk.'
+    fill_in 'submission_contact_email', with: 'test2@example.com'
+    click_button 'Submit'
+
+    click_on 'Propose Update'
+    fill_in 'submission_title', with: 'Updated talk'
+    fill_in 'submission_description', with: 'Here is my udpated idea'
+    fill_in 'submission_notes', with: 'I have even more things to say now.'
+    click_button 'Submit'
+
+    expect(page).to have_content 'Some talk'
+    expect(page).to have_content 'Your changes have been submitted'
+
+    Submission.last.promote_updates
+    visit page.current_path
+
+    expect(page).to have_content 'Updated talk'
+    expect(page).to_not have_content 'Some talk'
+  end
+
 end
