@@ -42,8 +42,8 @@ ActiveAdmin.setup do |config|
   #
   config.namespace :admin do |admin|
     admin.build_menu do |menu|
-        menu.add label: 'Sessions', priority: 0
-      end
+      menu.add label: 'Sessions', priority: 0
+    end
   end
   #
   # This will ONLY change the title for the admin section. Other

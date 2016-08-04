@@ -16,6 +16,7 @@ class Volunteership < ActiveRecord::Base
   def self.for_current_year
     where(year: Date.today.year)
   end
+
   def self.for_previous_years
     where('year < ? ', Date.today.year)
   end

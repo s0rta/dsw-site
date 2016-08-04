@@ -1,5 +1,5 @@
 class VolunteershipsController < ApplicationController
-  respond_to  :html
+  respond_to :html
   before_action :check_volunteership_open, only: [ :new, :create ]
   before_action :authenticate_user!
 
@@ -31,5 +31,4 @@ class VolunteershipsController < ApplicationController
                                           :affiliated_organization,
                                           available_shift_ids: [])
   end
-
 end

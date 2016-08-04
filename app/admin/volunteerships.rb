@@ -15,13 +15,8 @@ ActiveAdmin.register Volunteership do
   end
 
   # Set a default year filter
-  scope 'Current', default: true do |s|
-    s.for_current_year
-  end
-
-  scope 'Previous Year' do |s|
-    s.for_previous_years
-  end
+  scope('Current', default: true, &:for_current_year)
+  scope('Previous Year', &:for_previous_years)
 
   index do
     selectable_column
