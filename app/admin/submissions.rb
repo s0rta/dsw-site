@@ -157,14 +157,14 @@ ActiveAdmin.register Submission do
     status_tag submission.state.to_s.titleize, status_for_submission(submission)
   end
 
-  sidebar :versionate, :partial => "admin/version", :only => :show
+  sidebar :versionate, partial: 'admin/version', only: :show
 
   # Attendee export
   sidebar 'Attendees', except: :index do
     "#{submission.registrants.count} attending"
   end
 
-  action_item :only => [ :edit, :show ] do
+  action_item only: [ :edit, :show ] do
     link_to 'Export attendee list', export_attendees_admin_submission_path(submission)
   end
 
@@ -195,7 +195,7 @@ ActiveAdmin.register Submission do
       end
     end
 
-    attributes_table *(default_attribute_table_rows - [:proposed_updates])
+    attributes_table(*(default_attribute_table_rows - [:proposed_updates]))
 
     panel 'Recent Updates' do
       table_for submission.versions do
@@ -217,7 +217,7 @@ ActiveAdmin.register Submission do
   end
 
   # Notify of venue match
-  action_item :only => :show do
+  action_item only: :show do
     if submission.venue && submission.venue.contact_email && submission.contact_email && submission.venue.contact_name
       link_to('Send venue match email', send_venue_match_email_admin_submission_path(submission), method: :post)
     end
@@ -232,8 +232,7 @@ ActiveAdmin.register Submission do
   end
 
   # Accept proposed session changes
-
-  action_item :only => :show do
+  action_item only: :show do
     if submission.proposed_updates
       link_to('Accept updates', accept_update_admin_submission_path(submission), method: :post)
     end
@@ -246,7 +245,7 @@ ActiveAdmin.register Submission do
   end
 
   # State machine actions
-  action_item :only => :show do
+  action_item only: :show do
     unless submission.on_hold?
       link_to('Place on hold', place_on_hold_admin_submission_path(submission), method: :post)
     end
@@ -258,7 +257,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only => [ :edit, :show ] do
+  action_item only: [ :edit, :show ] do
     unless submission.open_for_voting?
       link_to('Open for voting', open_for_voting_admin_submission_path(submission), method: :post)
     end
@@ -270,7 +269,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only => [ :edit, :show ] do
+  action_item only: [ :edit, :show ] do
     if submission.open_for_voting?
       link_to('Accept', accept_admin_submission_path(submission), method: :post)
     end
@@ -282,7 +281,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only => [ :edit, :show ] do
+  action_item only: [ :edit, :show ] do
     if submission.accepted?
       link_to('Confirm', confirm_admin_submission_path(submission), method: :post)
     end
@@ -294,7 +293,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only =>  [ :edit, :show ] do
+  action_item only: [ :edit, :show ] do
     if submission.open_for_voting?
       link_to('Reject', reject_admin_submission_path(submission), method: :post)
     end
@@ -312,7 +311,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :only => [ :edit, :show ] do
+  action_item only: [ :edit, :show ] do
     if submission.open_for_voting?
       link_to('Waitlist', waitlist_admin_submission_path(submission), method: :post)
     end
