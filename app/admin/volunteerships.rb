@@ -46,16 +46,12 @@ ActiveAdmin.register Volunteership do
     f.actions
   end
 
-  batch_action :assign_to_shift, form: {
-    shift: VolunteerShift.for_select
-  } do |ids, inputs|
+  batch_action :assign_to_shift, form: -> { { shift: VolunteerShift.for_select } } do |ids, inputs|
     Volunteership.where(id: ids).map { |v| v.update!(assigned_shift_ids: v.assigned_shift_ids + [ inputs[:shift].to_i ]) }
     redirect_to collection_path
   end
 
-  batch_action :remove_from_shift, form: {
-    shift: VolunteerShift.for_select
-  } do |ids, inputs|
+  batch_action :remove_from_shift, form: -> { { shift: VolunteerShift.for_select } } do |ids, inputs|
     Volunteership.where(id: ids).map { |v| v.update!(assigned_shift_ids: v.assigned_shift_ids - [ inputs[:shift].to_i ]) }
     redirect_to collection_path
   end
