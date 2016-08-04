@@ -23,7 +23,7 @@ section.common.sm-centered
       h6 = "Please correct the following errors: #{@volunteership.errors.full_messages.to_sentence}"
 
   .section-content
-    = form_for @volunteership do |f|
+    = form_for @volunteership, url: volunteership_path do |f|
 
       = f.label :available_shift_ids, 'What shifts are you available to volunteer?'
       = f.select :available_shift_ids, volunteer_shifts_for_select, { required: 'required'}, { multiple: true, size: 5 }

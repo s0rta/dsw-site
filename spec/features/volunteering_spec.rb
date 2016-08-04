@@ -51,4 +51,21 @@ feature 'Signing up to volunteer' do
     click_button 'Submit'
     expect(page). to have_content('Thanks for volunteering! We will reach out to you shortly to confirm details.')
   end
+
+  scenario 'User should be able to view/edit their slot selections' do
+    login_as user, scope: :user
+    visit '/volunteer/signup'
+    select 'Monday Morning', from: 'volunteership_available_shift_ids'
+    fill_in 'volunteership_mobile_phone_number', with: '000-555-1212'
+    fill_in 'volunteership_affiliated_organization', with: 'Globex Corporation'
+    click_button 'Submit'
+    expect(page).to have_content('Thanks for volunteering! We will reach out to you shortly to confirm details.')
+    expect(page).to have_content('Available: Monday Morning')
+    click_link 'Edit my availability'
+    unselect 'Monday Morning', from: 'volunteership_available_shift_ids'
+    select 'Tuesday Afternoon', from: 'volunteership_available_shift_ids'
+    click_button 'Submit'
+    expect(page).to have_content('Your changes have been saved')
+    expect(page).to have_content('Available: Tuesday Afternoon')
+  end
 end
