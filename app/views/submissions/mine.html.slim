@@ -11,6 +11,11 @@ section.common.blue
     - flash.each do |key, message|
       h6 = message
 
+- if FeatureToggler.volunteership_active? && !current_user.volunteered?
+  section.common.sm-centered
+    .section-content
+      = link_to 'Sign up to volunteer', new_volunteership_path, class: 'btn primary'
+
 - if FeatureToggler.submission_active?
   .submission-close-count
     h2 Submissions close in

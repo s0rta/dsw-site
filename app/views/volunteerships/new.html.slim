@@ -1,0 +1,37 @@
+nav
+  .section-content
+    h1 Volunteer
+
+section.common.teal
+  .section-content
+    .dash-profile-bar
+      h3 Hello, #{current_user.name}!
+      h6 = link_to 'Return to Dashboard', mine_submissions_path
+      /* = link_to 'Logout', '#' */
+
+section.common.sm-centered
+  .section-content.instruction
+    h6
+      | Thanks for volunteering to help out with Denver Startup Week! For more information on volunteer roles and responsibilitys, please check out 
+      = link_to 'our FAQs', page_path(page: 'faq'), target: '_blank', class: 'inline-copy-link'
+      | .
+
+    - flash.each do |key, message|
+      h6 = message
+
+    - unless @volunteership.errors.empty?
+      h6 = "Please correct the following errors: #{@volunteership.errors.full_messages.to_sentence}"
+
+  .section-content
+    = form_for @volunteership do |f|
+
+      = f.label :available_shift_ids, 'What shifts are you available to volunteer?'
+      = f.select :available_shift_ids, volunteer_shifts_for_select, { required: 'required'}, { multiple: true, size: 5 }
+
+      = f.label :mobile_phone_number, 'What is your mobile phone number?'
+      = f.text_field :mobile_phone_number, required: 'required', placeholder: '(xxx) xxx-xxxx'
+
+      = f.label :affiliated_organization, "If you are volunteering as part of a company or group, what is the name of it? (optional)?"
+      = f.text_field :affiliated_organization, placeholder: 'Company/Group'
+
+      = f.submit 'Submit'

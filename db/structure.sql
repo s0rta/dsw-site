@@ -714,8 +714,10 @@ ALTER SEQUENCE versions_id_seq OWNED BY versions.id;
 
 CREATE TABLE volunteer_shifts (
     id integer NOT NULL,
-    starts_at timestamp without time zone,
-    ends_at timestamp without time zone,
+    name character varying,
+    day integer,
+    start_hour double precision,
+    end_hour double precision,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -738,6 +740,104 @@ CREATE SEQUENCE volunteer_shifts_id_seq
 --
 
 ALTER SEQUENCE volunteer_shifts_id_seq OWNED BY volunteer_shifts.id;
+
+
+--
+-- Name: volunteership_assigned_shifts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE volunteership_assigned_shifts (
+    id integer NOT NULL,
+    volunteership_id integer,
+    volunteer_shift_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: volunteership_assigned_shifts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE volunteership_assigned_shifts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: volunteership_assigned_shifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE volunteership_assigned_shifts_id_seq OWNED BY volunteership_assigned_shifts.id;
+
+
+--
+-- Name: volunteership_available_shifts; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE volunteership_available_shifts (
+    id integer NOT NULL,
+    volunteership_id integer,
+    volunteer_shift_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: volunteership_available_shifts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE volunteership_available_shifts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: volunteership_available_shifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE volunteership_available_shifts_id_seq OWNED BY volunteership_available_shifts.id;
+
+
+--
+-- Name: volunteerships; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE volunteerships (
+    id integer NOT NULL,
+    mobile_phone_number character varying,
+    affiliated_organization character varying,
+    user_id integer,
+    year integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: volunteerships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE volunteerships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: volunteerships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE volunteerships_id_seq OWNED BY volunteerships.id;
 
 
 --
@@ -902,6 +1002,27 @@ ALTER TABLE ONLY volunteer_shifts ALTER COLUMN id SET DEFAULT nextval('volunteer
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY volunteership_assigned_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_assigned_shifts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteership_available_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_available_shifts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteerships ALTER COLUMN id SET DEFAULT nextval('volunteerships_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regclass);
 
 
@@ -1047,6 +1168,30 @@ ALTER TABLE ONLY versions
 
 ALTER TABLE ONLY volunteer_shifts
     ADD CONSTRAINT volunteer_shifts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: volunteership_assigned_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteership_assigned_shifts
+    ADD CONSTRAINT volunteership_assigned_shifts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: volunteership_available_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteership_available_shifts
+    ADD CONSTRAINT volunteership_available_shifts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: volunteerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteerships
+    ADD CONSTRAINT volunteerships_pkey PRIMARY KEY (id);
 
 
 --
@@ -1205,6 +1350,41 @@ CREATE INDEX index_versions_on_item_type_and_item_id ON versions USING btree (it
 
 
 --
+-- Name: index_volunteership_assigned_shifts_on_volunteer_shift_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_volunteership_assigned_shifts_on_volunteer_shift_id ON volunteership_assigned_shifts USING btree (volunteer_shift_id);
+
+
+--
+-- Name: index_volunteership_assigned_shifts_on_volunteership_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_volunteership_assigned_shifts_on_volunteership_id ON volunteership_assigned_shifts USING btree (volunteership_id);
+
+
+--
+-- Name: index_volunteership_available_shifts_on_volunteer_shift_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_volunteership_available_shifts_on_volunteer_shift_id ON volunteership_available_shifts USING btree (volunteer_shift_id);
+
+
+--
+-- Name: index_volunteership_available_shifts_on_volunteership_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_volunteership_available_shifts_on_volunteership_id ON volunteership_available_shifts USING btree (volunteership_id);
+
+
+--
+-- Name: index_volunteerships_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_volunteerships_on_user_id ON volunteerships USING btree (user_id);
+
+
+--
 -- Name: index_votes_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1223,6 +1403,46 @@ CREATE INDEX index_votes_on_user_id ON votes USING btree (user_id);
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: fk_rails_26e12c935b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteerships
+    ADD CONSTRAINT fk_rails_26e12c935b FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_rails_92f98cffc7; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteership_assigned_shifts
+    ADD CONSTRAINT fk_rails_92f98cffc7 FOREIGN KEY (volunteership_id) REFERENCES volunteerships(id);
+
+
+--
+-- Name: fk_rails_9489760428; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteership_available_shifts
+    ADD CONSTRAINT fk_rails_9489760428 FOREIGN KEY (volunteer_shift_id) REFERENCES volunteer_shifts(id);
+
+
+--
+-- Name: fk_rails_b1f4aeb35b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteership_assigned_shifts
+    ADD CONSTRAINT fk_rails_b1f4aeb35b FOREIGN KEY (volunteer_shift_id) REFERENCES volunteer_shifts(id);
+
+
+--
+-- Name: fk_rails_e76f764d04; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteership_available_shifts
+    ADD CONSTRAINT fk_rails_e76f764d04 FOREIGN KEY (volunteership_id) REFERENCES volunteerships(id);
 
 
 --
@@ -1374,4 +1594,12 @@ INSERT INTO schema_migrations (version) VALUES ('20160802021908');
 INSERT INTO schema_migrations (version) VALUES ('20160802033828');
 
 INSERT INTO schema_migrations (version) VALUES ('20160802040055');
+
+INSERT INTO schema_migrations (version) VALUES ('20160802042244');
+
+INSERT INTO schema_migrations (version) VALUES ('20160802042349');
+
+INSERT INTO schema_migrations (version) VALUES ('20160802043811');
+
+INSERT INTO schema_migrations (version) VALUES ('20160802050802');
 

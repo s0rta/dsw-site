@@ -2,50 +2,27 @@ class FeatureToggler
 
   include Redis::Objects
 
-  value :submission_active, global: true, marshal: true
-  value :feedback_active, global: true, marshal: true
-  value :registration_active, global: true, marshal: true
+  TOGGLES = %w(submission feedback registration volunteership).freeze
+
+  TOGGLES.each do |toggle|
+    value "#{toggle}_active", global: true, marshal: true
+
+    define_singleton_method "activate_#{toggle}!" do
+      send("#{toggle}_active=", true)
+    end
+
+    define_singleton_method "deactivate_#{toggle}!" do
+      send("#{toggle}_active=", false)
+    end
+
+    define_singleton_method "#{toggle}_active?" do
+      send("#{toggle}_active").value == true
+    end
+  end
 
   def self.clear
-    submission_active.delete
-    feedback_active.delete
-    registration_active.delete
+    TOGGLES.each do |t|
+      send("#{t}_active").delete
+    end
   end
-
-  def self.activate_submission!
-    self.submission_active = true
-  end
-
-  def self.activate_feedback!
-    self.feedback_active = true
-  end
-
-  def self.activate_registration!
-    self.registration_active = true
-  end
-
-  def self.deactivate_submission!
-    self.submission_active = false
-  end
-
-  def self.deactivate_feedback!
-    self.feedback_active = false
-  end
-
-  def self.deactivate_registration!
-    self.registration_active = false
-  end
-
-  def self.submission_active?
-   submission_active.value == true
-  end
-
-  def self.feedback_active?
-    feedback_active.value == true
-  end
-
-  def self.registration_active?
-    registration_active.value == true
-  end
-
 end

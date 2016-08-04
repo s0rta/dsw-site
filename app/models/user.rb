@@ -12,32 +12,13 @@ class User < ActiveRecord::Base
 
   default_scope { order('LOWER(name) ASC') }
 
-  # attr_accessible :email,
-  #                 :password,
-  #                 :password_confirmation,
-  #                 :remember_me,
-  #                 :uid,
-  #                 :provider,
-  #                 :name,
-  #                 :description
-
-  # Add to ActiveAdmin as strong params
-  # attr_accessible :email,
-  #                 :password,
-  #                 :password_confirmation,
-  #                 :remember_me,
-  #                 :uid,
-  #                 :provider,
-  #                 :name,
-  #                 :description,
-  #                 :is_admin, as: :admin
-
   validates :name, presence: true
 
   has_many :submissions, foreign_key: 'submitter_id'
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :registrations, dependent: :destroy
+  has_many :volunteerships, dependent: :destroy
 
   def self.from_omniauth(auth_hash)
     User.where(uid: auth_hash[:uid], provider: auth_hash[:provider]).first_or_create do |u|
@@ -53,6 +34,14 @@ class User < ActiveRecord::Base
 
   def registered?
     current_registration.present?
+  end
+
+  def current_volunteership
+    volunteerships.for_current_year.first
+  end
+
+  def volunteered?
+    current_volunteership.present?
   end
 
 end
