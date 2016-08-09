@@ -1,5 +1,7 @@
 ActiveAdmin.register Submission do
 
+  menu parent: 'Sessions', priority: 1
+
   permit_params :start_day,
                 :end_day,
                 :year,

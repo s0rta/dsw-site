@@ -34,4 +34,8 @@ module ApplicationHelper
     Track.submittable.in_display_order.map { |t| [ t.name, t.id ] }
   end
 
+  def volunteer_shifts_for_select
+    VolunteerShift.for_select
+  end
+
 end

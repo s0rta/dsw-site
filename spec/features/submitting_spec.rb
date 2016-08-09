@@ -32,11 +32,11 @@ feature 'Creating a submission' do
     expect(page).to have_content('Some talk (Bizness)')
 
     # Confirmation to track chair
-    email = ActionMailer::Base.deliveries.find { |e| e.to.include?('chair@example.com')}
+    email = ActionMailer::Base.deliveries.detect { |e| e.to.include?('chair@example.com') }
     expect(email.subject).to eq('A new DSW submission has been received for the Bizness track')
 
     # Confirmation to submitter
-    email = ActionMailer::Base.deliveries.find { |e| e.to.include?('test2@example.com')}
+    email = ActionMailer::Base.deliveries.detect { |e| e.to.include?('test2@example.com') }
     expect(email.subject).to eq('Thanks for submitting a session proposal for Denver Startup Week!')
   end
 

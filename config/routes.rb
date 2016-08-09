@@ -28,8 +28,10 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
 
+  resource :volunteership, path: 'volunteer', path_names: { new: 'signup' }
+
   resources :newsletter_signups, only: :create
-  resources :volunteer_signups, only: :create
+  resources :general_inquiries, only: :create
   resources :sponsor_signups, only: :create
 
   get '/schedule', to: 'schedules#index', as: :schedules

@@ -1,5 +1,7 @@
 ActiveAdmin.register Venue do
 
+  menu parent: 'Sessions'
+
   permit_params :contact_email,
                 :contact_name,
                 :contact_phone,

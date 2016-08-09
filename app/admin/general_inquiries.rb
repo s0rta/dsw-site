@@ -1,4 +1,6 @@
-ActiveAdmin.register VolunteerSignup do
+ActiveAdmin.register GeneralInquiry do
+
+  menu parent: 'Volunteers'
 
   index do
     selectable_column

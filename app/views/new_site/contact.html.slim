@@ -9,7 +9,7 @@ section.common.green
 
 section.common.sm-centered
   .section-content
-    = form_for VolunteerSignup.new, html: { class: 'contact-us', data: { bindable: 'volunteer-signup' } }, honeypot: true do |f|
+    = form_for GeneralInquiry.new, html: { class: 'contact-us', data: { bindable: 'general-inquiry' } }, honeypot: true do |f|
       = f.label :contact_name, 'Name'
       = f.text_field :contact_name, required: 'required'
 
