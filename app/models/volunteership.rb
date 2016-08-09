@@ -10,4 +10,10 @@ class Volunteership < ActiveRecord::Base
 
   has_many :volunteership_assigned_shifts
   has_many :assigned_shifts, through: :volunteership_assigned_shifts, class_name: 'VolunteerShift'
+
+  after_create :send_confirmation_notice
+
+  def send_confirmation_notice
+    NotificationsMailer.confirm_volunteer_signup(self).deliver_now
+  end
 end

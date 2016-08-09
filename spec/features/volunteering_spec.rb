@@ -50,6 +50,9 @@ feature 'Signing up to volunteer' do
     fill_in 'volunteership_affiliated_organization', with: 'Globex Corporation'
     click_button 'Submit'
     expect(page). to have_content('Thanks for volunteering! We will reach out to you shortly to confirm details.')
+
+    email = ActionMailer::Base.deliveries.find { |e| e.to.include?('test@example.com')}
+    expect(email.subject).to eq('Thanks for volunteering to help out with Denver Startup Week!')
   end
 
   scenario 'User should be able to view/edit their slot selections' do
