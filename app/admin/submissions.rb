@@ -107,16 +107,16 @@ ActiveAdmin.register Submission do
   filter :title
   filter :description
   filter :track
-  filter :venue, as: :select, collection: Venue.alphabetical
+  filter :venue, as: :select, collection: -> { Venue.alphabetical }
   filter :company_name
   filter :format
-  filter :submitter
+  filter :submitter_name_cont, as: :string, label: 'Submitter Name'
   filter :start_day, as: :select, collection: Submission::DAYS.invert
   filter :end_day, as: :select, collection: Submission::DAYS.invert
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
   filter :format, as: :select, collection: Submission::FORMATS
-  filter :state, as: :select, collection: Submission.states
-  filter :cluster, as: :select, collection: Cluster.all
+  filter :state, as: :select, collection: -> { Submission.states }
+  filter :cluster, as: :select, collection: -> { Cluster.all }
 
   form do |f|
     f.inputs do
