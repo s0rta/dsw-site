@@ -51,7 +51,7 @@ feature 'Signing up to volunteer' do
     click_button 'Submit'
     expect(page). to have_content('Thanks for volunteering! We will reach out to you shortly to confirm details.')
 
-    email = ActionMailer::Base.deliveries.find { |e| e.to.include?('test@example.com')}
+    email = ActionMailer::Base.deliveries.detect { |e| e.to.include?('test@example.com') }
     expect(email.subject).to eq('Thanks for volunteering to help out with Denver Startup Week!')
   end
 
