@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'helpscout_hooks/show'
+
   if Rails.env.development?
     mount MailPreview => 'mailers'
   end
@@ -45,6 +47,8 @@ Rails.application.routes.draw do
 
   get 'enable-simple-reg', to: 'simple_registrations#enable', as: :enable_simple_reg
   get 'disable-simple-reg', to: 'simple_registrations#disable', as: :disable_simple_reg
+
+  post '/helpscout_hook', to: 'helpscout_hooks#create', as: :helpscout_hook
 
   ActiveAdmin.routes(self)
 
