@@ -1,0 +1,18 @@
+<h4>
+  <i class="icon-doc"></i>
+  Session Submissions
+</h4>
+<ul>
+  <%- @user.submissions.each do |submission| %>
+    <li><%= link_to "#{submission.title} (#{submission.year})", admin_submission_url(submission) %></li>
+  <%- end %>
+</ul>
+<h4>
+  <i class="icon-cart"></i>
+  Registration History
+</h4>
+<p>
+  <%- @user.registrations.each do |registration| %>
+    <span class="badge"><%= registration.year %></span>
+  <%- end %>
+</p>
