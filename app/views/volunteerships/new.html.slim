@@ -25,7 +25,7 @@ section.common.sm-centered
   .section-content
     = form_for @volunteership, url: volunteership_path do |f|
 
-      = f.label :available_shift_ids, 'What shifts are you available to volunteer?'
+      = f.label :available_shift_ids, 'What shift(s) are you available to volunteer? Feel free to select more than one.'
       = f.select :available_shift_ids, volunteer_shifts_for_select, { required: 'required'}, { multiple: true, size: 5 }
 
       = f.label :mobile_phone_number, 'What is your mobile phone number?'
