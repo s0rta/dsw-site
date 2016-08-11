@@ -58,7 +58,7 @@ ActiveAdmin.register Submission do
     column :cluster, sortable: 'clusters.name'
     column :venue, sortable: 'venues.name'
     column('Time', sortable: false) do |s|
-      "#{s.human_start_day} #{s.human_time_range}" if s.time_assigned?
+      "#{s.human_start_day} #{s.human_time_range}".html_safe if s.time_assigned?
     end
     column('Status', sortable: :state) do |s|
       status_tag s.state.to_s.titleize, status_for_submission(s)
