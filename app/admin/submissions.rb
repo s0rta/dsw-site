@@ -57,11 +57,11 @@ ActiveAdmin.register Submission do
     column :track, sortable: 'tracks.name'
     column :cluster, sortable: 'clusters.name'
     column :venue, sortable: 'venues.name'
-    column('Time', sortable: false) do |submission|
-      submission.human_time_range if submission.time_assigned?
+    column('Time', sortable: false) do |s|
+      "#{s.human_start_day} #{s.human_time_range}" if s.time_assigned?
     end
-    column('Status', sortable: :state) do |submission|
-      status_tag submission.state.to_s.titleize, status_for_submission(submission)
+    column('Status', sortable: :state) do |s|
+      status_tag s.state.to_s.titleize, status_for_submission(s)
     end
     column :submitter, sortable: 'users.name'
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
