@@ -164,6 +164,13 @@ class Submission < ActiveRecord::Base
     "#{start_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')} #{separator} #{end_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')}".html_safe
   end
 
+  def time_assigned?
+    start_hour.present? &&
+    end_hour.present? &&
+    start_day.present? &&
+    end_day.present?
+  end
+
   def to_ics
     event
   end
