@@ -1,21 +1,53 @@
 Hello!
 
-Congratulations! Your session "<%= @submission.title %>" has been selected to be part of the <%= @submission.track.name %> Track during Denver Startup Week.
+First of all, sorry for how long it’s taken us to get this note out to you.
 
-We are currently working on assigning locations and times based on schedule availability, track locality, and expected attendance. We try to schedule related talks in nearby venues, though we are unable to guarantee specific placement. That process will be complete within a few weeks, and we will be reaching out with additional details as they are finalized.
+But congratulations! Your session "<%= @submission.title %>" has been selected to be part of the <%= @submission.track.name %> Track program during Denver Startup Week <%= Date.today.year %>. We’ve scheduled it for <%= @submission.human_start_day %> (<%= @submission.start_datetime.strftime('%B %e') %>), at <%= @submission.human_start_time %>.
 
-As a session organizer, you will have a 90 minute slot available to fill as you see fit. You are not, however, required to fill the entire allotted time. We will work with you to make sure that you understand everything involved in putting a session together, and provide logistical support during the event.
+As a session organizer, you will have a 90 minute slot available to fill as you see fit. You are not, however, required to fill the entire allotted time. For example, many presenters elect to do a 60-75 minute session followed by 15-30 minutes of Q&A.
 
-Please reply back as soon as possible to confirm that you are still willing and able to host this session. We will be in touch with you over the next couple of weeks with additional details, including scheduling.
+Please reply to this email to let us know (as soon as you are able, but no later than August 15) that you’re willing and able to present this session at that time. Unfortunately, due to the size of the event, we have very limited ability to accommodate requests for time slot changes. If we don’t receive confirmation from you by August 15, we will cede your slot to another session from our waitlist.
 
-Thank you for participating in Denver Startup Week! Please let us know if we can answer any questions.
+VENUES
 
-Thanks,
+We are currently working on booking venues based on schedule availability, track locality, and expected attendance. If you have already secured a venue on your own, please note that in your response. Otherwise, we will reach out with additional logistics on your assigned venue in the next few weeks.
 
-<%= @submission.track.chairs.map(&:name) * ' & ' %>
+TITLE & DESCRIPTION UPDATES
+
+We have created a section of the site where you can submit updates to the title and description for your session, should you wish to do so. For more information, visit https://www.denverstartupweek.org/panel-picker/mine and follow the instructions there. Over the course of the next few weeks, we’ll be rolling out a function to indicate individual speakers for your sessions as well - stay tuned for that!
+
+MANDATORY PRESENTER ORIENTATION
+
+In order to help ensure consistency and high quality in all our sessions, this year we are asking that all session organizers attend one of our orientation sessions. The sessions cover event logistics, volunteer coordination, session promotion, branding, and more. We’re offering the session at two different times (once during the business day and once in the evening) to try to accommodate as many schedules as possible.
+
+Please register for one of these sessions via the Eventbrite links below:
+
+Presenter Training Session 1
+Tuesday, August 30, 2016 from 5:30 to 6:30 p.m.
+The Commons on Champa (1245 Champa St.)
+https://www.eventbrite.com/e/denver-startup-week-presenter-training-1-tickets-26949502688
+
+Presenter Training Session 2
+Wednesday, August 31, 2016 from 9 to 10 a.m.
+The Commons on Champa (1245 Champa St.)
+https://www.eventbrite.com/e/denver-startup-week-presenter-training-2-tickets-26949558856
+
+
+OTHER EVENTS
+
+We will have 200+ other events throughout the week and would love to see you take part in some of them. The full schedule will be publicized and registration opens the week of August 15th.
+
+Per the above, please reply back as soon as possible to confirm you are still willing and able to host this session. We will be in touch with you over the next couple of weeks with additional details.
+
+Please feel free to reply to this e-mail with any questions as well - we’re here to help!
+
+Thanks for being a part of Denver Startup Week,
+
+<%= @submission.track.chairs.map(&:name).join(' & ') %>
 
 <%= @submission.track.name %> Track
 
 Denver Startup Week Planning Committee
 
 <%= @submission.track.email_alias %>
+

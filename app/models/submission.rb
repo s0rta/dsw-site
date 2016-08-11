@@ -1,6 +1,6 @@
 class Submission < ActiveRecord::Base
 
-  WEEK_START = ActiveSupport::TimeZone.new('America/Denver').local(2015, 9, 28).at_beginning_of_day.freeze
+  WEEK_START = ActiveSupport::TimeZone.new('America/Denver').local(2016, 9, 12).at_beginning_of_day.freeze
   PUBLIC_STATES = %w(open_for_voting accepted confirmed).freeze
 
   FORMATS = [ 'Presentation',
@@ -161,7 +161,15 @@ class Submission < ActiveRecord::Base
   end
 
   def human_time_range(separator = "&mdash;")
-    "#{start_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')} #{separator} #{end_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')}".html_safe
+    "#{human_start_time} #{separator} #{human_end_time}".html_safe
+  end
+
+  def human_start_time
+    start_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')
+  end
+
+  def human_end_time
+    end_hour.hours.since(Date.today.beginning_of_day).strftime('%l:%M%P')
   end
 
   def time_assigned?
