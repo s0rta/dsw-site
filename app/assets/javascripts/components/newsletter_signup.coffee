@@ -39,7 +39,7 @@ class dsw.NewsletterSignup
           newsletter_signup:
             email: email
         success: =>
-          @button.val 'Thanks! Check your e-mail for a confirmation.'
+          @button.val 'Thanks! You are signed up for updates.'
         error: =>
           @button.val 'An error occurred - please try again later!'
 
