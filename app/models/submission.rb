@@ -114,7 +114,8 @@ class Submission < ActiveRecord::Base
           :accepted,
           :waitlisted,
           :confirmed,
-          :rejected
+          :rejected,
+          :withdrawn
 
   event :place_on_hold,       to: :on_hold
   event :open_for_voting,     to: :open_for_voting
@@ -122,6 +123,7 @@ class Submission < ActiveRecord::Base
   event :accept,              to: :accepted
   event :reject,              to: :rejected
   event :confirm,             to: :confirmed
+  event :withdraw,            to: :withdrawn
 
   # Helpers
 

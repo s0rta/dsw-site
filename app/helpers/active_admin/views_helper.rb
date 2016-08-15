@@ -13,7 +13,7 @@ module ActiveAdmin
     def status_for_submission(submission)
       status_type = nil
       status_type = :ok if submission.confirmed?
-      status_type = :error if submission.rejected?
+      status_type = :error if submission.rejected? || submission.withdrawn?
       status_type ||= :warning
       status_type
     end
