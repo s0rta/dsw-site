@@ -21,6 +21,7 @@ ActiveAdmin.register Volunteership do
   index do
     selectable_column
     column(:name, sortable: 'users.name') { |v| v.user.name }
+    column(:email, sortable: 'users.email') { |v| v.user.email }
     column :mobile_phone_number
     column :affiliated_organization
     column('Available Shifts', sortable: false) do |v|
@@ -54,6 +55,20 @@ ActiveAdmin.register Volunteership do
   batch_action :remove_from_shift, form: -> { { shift: VolunteerShift.for_select } } do |ids, inputs|
     Volunteership.where(id: ids).map { |v| v.update!(assigned_shift_ids: v.assigned_shift_ids - [ inputs[:shift].to_i ]) }
     redirect_to collection_path
+  end
+
+  csv do
+    column(:name) { |v| v.user.name }
+    column(:email) { |v| v.user.email }
+    column :mobile_phone_number
+    column :affiliated_organization
+    column('Available Shifts') do |v|
+      v.available_shifts.map(&:name) * ', '
+    end
+    column('Assigned Shifts') do |v|
+      v.assigned_shifts.map(&:name) * ', '
+    end
+    column :created_at
   end
 
 end
