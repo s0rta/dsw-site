@@ -299,6 +299,16 @@ ActiveAdmin.register Submission do
   end
 
   action_item only: [ :edit, :show ] do
+    link_to('Withdraw', withdraw_admin_submission_path(submission), method: :post)
+  end
+
+  member_action :withdraw, method: :post do
+    submission = Submission.find(params[:id])
+    submission.withdraw!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item only: [ :edit, :show ] do
     if submission.open_for_voting?
       link_to('Reject', reject_admin_submission_path(submission), method: :post)
     end
@@ -323,37 +333,32 @@ ActiveAdmin.register Submission do
   end
 
   batch_action :open_for_voting do |submissions|
-    Submission.find(submissions).each do |submission|
-      submission.open_for_voting!
-    end
+    Submission.find(submissions).each(&:open_for_voting!)
     redirect_to admin_submissions_path
   end
 
   batch_action :accept do |submissions|
-    Submission.find(submissions).each do |submission|
-      submission.accept!
-    end
+    Submission.find(submissions).each(&:accept!)
     redirect_to admin_submissions_path
   end
 
   batch_action :reject do |submissions|
-    Submission.find(submissions).each do |submission|
-      submission.reject!
-    end
+    Submission.find(submissions).each(&:reject!)
     redirect_to admin_submissions_path
   end
 
   batch_action :waitlist do |submissions|
-    Submission.find(submissions).each do |submission|
-      submission.waitlist!
-    end
+    Submission.find(submissions).each(&:waitlist!)
+    redirect_to admin_submissions_path
+  end
+
+  batch_action :withdraw do |submissions|
+    Submission.find(submissions).each(&:withdraw!)
     redirect_to admin_submissions_path
   end
 
   batch_action :confirm do |submissions|
-    Submission.find(submissions).each do |submission|
-      submission.confirm!
-    end
+    Submission.find(submissions).each(&:confirm!)
     redirect_to admin_submissions_path
   end
 
