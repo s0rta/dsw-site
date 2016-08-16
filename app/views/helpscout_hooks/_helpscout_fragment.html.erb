@@ -3,8 +3,10 @@
   Session Submissions
 </h4>
 <ul>
-  <%- @user.submissions.each do |submission| %>
-    <li><%= link_to "#{submission.title} (#{submission.year})", admin_submission_url(submission) %></li>
+  <%- if @user %>
+    <%- @user.submissions.each do |submission| %>
+      <li><%= link_to "#{submission.title} (#{submission.year})", admin_submission_url(submission) %></li>
+    <%- end %>
   <%- end %>
 </ul>
 <h4>
@@ -12,7 +14,9 @@
   Registration History
 </h4>
 <p>
-  <%- @user.registrations.each do |registration| %>
-    <span class="badge"><%= registration.year %></span>
+  <%- if @user %>
+    <%- @user.registrations.each do |registration| %>
+      <span class="badge"><%= registration.year %></span>
+    <%- end %>
   <%- end %>
 </p>
