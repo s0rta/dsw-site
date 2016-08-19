@@ -46,7 +46,8 @@ form.filters
     .scheduled-session
       .icon-container.teal
         = render partial: 'icons/wrench'
-      .session-info
+      / I guess we'll add a class of "confirmed" for a logged in user's scheduled sessions. Or we can call it something else...
+      .session-info.confirmed
         .time-slot
           .time 10:00 am - 11:30 am
           .cluster-name Healthtech
