@@ -5,7 +5,6 @@ class Registration < ActiveRecord::Base
   has_many :submissions, through: :session_registrations
 
   validates :user, presence: true
-  validates :contact_email, presence: true
 
   after_initialize do
     self.year ||= Date.today.year
@@ -16,7 +15,7 @@ class Registration < ActiveRecord::Base
 
   def subscribe_to_list
     registered_years = user.registrations.map(&:year).sort.map(&:to_s)
-    ListSubscriptionJob.perform_async(contact_email,
+    ListSubscriptionJob.perform_async(user.email,
                                 registered_years: registered_years)
   end
 

@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
 
+  before_filter :authenticate_user!, unless: :simple_registration?
+
   def new
     redirect_to closed_registration_path unless FeatureToggler.registration_active?
     registration_attributes = { contact_email: current_user.try(:email) }.merge(registration_params)
@@ -15,7 +17,7 @@ class RegistrationsController < ApplicationController
       @registration = current_user.registrations.build(registration_params)
     end
     if @registration.save
-      redirect_to confirm_registration_path
+      redirect_to schedules_path, notice: 'Thanks for registering! You will receive a confirmation e-mail shortly.'
     else
       respond_with @registration
     end

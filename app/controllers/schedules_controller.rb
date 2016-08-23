@@ -3,12 +3,30 @@ class SchedulesController < ApplicationController
   respond_to :html
   respond_to :json, only: :index
 
+  before_filter :ensure_registered!, only: [ :my_schedule, :create, :destroy ]
   before_filter :authenticate_user!, only: [ :my_schedule, :create, :destroy ]
 
   def index
     @sessions = Submission.for_current_year.
+                        for_schedule.
+                        order(:start_day).
+                        includes(:venue, :submitter, :track)
+    respond_to do |format|
+      format.json do
+        respond_with @sessions
+      end
+      format.html do
+        redirect_to schedules_by_day_path
+      end
+    end
+  end
+
+  def by_day
+    @day_index = Submission::DAYS.invert[params[:start_day].titleize]
+    @submissions = Submission.for_current_year.
                            for_schedule.
-                           order(:start_day).
+                           for_start_day(params[:start_day]).
+                           order(:start_hour).
                            includes(:venue, :submitter, :track)
     respond_with @sessions
   end
@@ -65,21 +83,21 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    submission = Submission.for_schedule.
+    @session = Submission.for_schedule.
       where(id: params[:id].to_i).
       includes(:submitter, :track, comments: :user).
       first!
-    current_registration.submissions << submission unless current_registration.submissions.include?(submission)
-    render json: submission.session_registrations.count
+    current_registration.submissions << @session unless current_registration.submissions.include?(@session)
+    render action: :show
   end
 
   def destroy
-    submission = Submission.for_schedule.
+    @session = Submission.for_schedule.
       where(id: params[:id].to_i).
       includes(:submitter, :track, comments: :user).
       first!
-    current_registration.session_registrations.where(submission_id: submission.id).destroy_all
-    render json: submission.session_registrations.count
+    current_registration.session_registrations.where(submission_id: @session.id).destroy_all
+    render action: :show
   end
 
 end

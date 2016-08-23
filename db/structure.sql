@@ -390,7 +390,8 @@ CREATE TABLE registrations (
     track_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    calendar_token character varying(255)
+    calendar_token character varying(255),
+    age_range character varying
 );
 
 
@@ -1611,4 +1612,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160804150055');
 INSERT INTO schema_migrations (version) VALUES ('20160823024038');
 
 INSERT INTO schema_migrations (version) VALUES ('20160823024807');
+
+INSERT INTO schema_migrations (version) VALUES ('20160823044119');
 

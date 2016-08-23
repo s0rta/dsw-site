@@ -105,6 +105,14 @@ class Submission < ActiveRecord::Base
     confirmed.where('start_day IS NOT NULL AND end_day IS NOT NULL')
   end
 
+  def self.for_start_day(day)
+    if day_index = DAYS.invert[day.titleize]
+      where(start_day: day_index)
+    else
+      all
+    end
+  end
+
   # State machine
   include SimpleStates
 

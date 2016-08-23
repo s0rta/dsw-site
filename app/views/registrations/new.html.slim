@@ -1,0 +1,37 @@
+nav
+  .section-content
+    h1 Register to Attend
+
+section.common.green
+  .section-content
+    h1 Register for Denver Startup Week #{Date.today.year}
+    h6 Denver Startup Week is an event by and for the entrepreneurial community. It's open to anyone and everyone, and registration is totally free!
+
+    - flash.each do |key, message|
+      h6 = message
+    - unless @registration.errors.empty?
+      h6 = "Please correct the following errors: #{@registration.errors.full_messages.to_sentence}"
+
+
+section.common.sm-centered
+  .section-content
+    = form_for(@registration, method: :post, url: registration_path) do |f|
+      = f.label :gender, 'What gender do you identify as?'
+      = f.select :gender, collection: [ 'Male', 'Female', 'Decline to say' ], required: 'required'
+
+      = f.label :age_range, 'How old are you?'
+      = f.select :age_range, collection: age_ranges_for_select, required: 'required'
+
+      = f.label :track_id, 'Which track are you most interested in?'
+      = f.select :track_id, tracks_for_select, required: 'required'
+
+      = f.label :company, 'What company do you work for?'
+      = f.text_field :company
+
+      = f.label :primary_role, 'What is your job title?'
+      = f.text_field :primary_role
+
+      = f.label :zip, 'What is the zip code of your primary residence?'
+      = f.password_field :zip, required: 'required'
+
+      = f.submit 'Register'
