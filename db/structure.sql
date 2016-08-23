@@ -105,7 +105,8 @@ CREATE TABLE clusters (
     id integer NOT NULL,
     name character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    description text
 );
 
 
@@ -1593,7 +1594,11 @@ INSERT INTO schema_migrations (version) VALUES ('20160726164453');
 
 INSERT INTO schema_migrations (version) VALUES ('20160802021908');
 
+INSERT INTO schema_migrations (version) VALUES ('20160802033828');
+
 INSERT INTO schema_migrations (version) VALUES ('20160802040055');
+
+INSERT INTO schema_migrations (version) VALUES ('20160802042244');
 
 INSERT INTO schema_migrations (version) VALUES ('20160802042349');
 
@@ -1604,4 +1609,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160802050802');
 INSERT INTO schema_migrations (version) VALUES ('20160804150055');
 
 INSERT INTO schema_migrations (version) VALUES ('20160823024038');
+
+INSERT INTO schema_migrations (version) VALUES ('20160823024807');
 
