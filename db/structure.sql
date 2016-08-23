@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 9.4.4
--- Dumped by pg_dump version 9.5.3
+-- Dumped by pg_dump version 9.5.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -558,7 +558,8 @@ CREATE TABLE tracks (
     email_alias character varying(255),
     display_order integer DEFAULT 0 NOT NULL,
     is_submittable boolean DEFAULT false NOT NULL,
-    description text
+    description text,
+    color character varying
 );
 
 
@@ -1592,11 +1593,7 @@ INSERT INTO schema_migrations (version) VALUES ('20160726164453');
 
 INSERT INTO schema_migrations (version) VALUES ('20160802021908');
 
-INSERT INTO schema_migrations (version) VALUES ('20160802033828');
-
 INSERT INTO schema_migrations (version) VALUES ('20160802040055');
-
-INSERT INTO schema_migrations (version) VALUES ('20160802042244');
 
 INSERT INTO schema_migrations (version) VALUES ('20160802042349');
 
@@ -1605,4 +1602,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160802043811');
 INSERT INTO schema_migrations (version) VALUES ('20160802050802');
 
 INSERT INTO schema_migrations (version) VALUES ('20160804150055');
+
+INSERT INTO schema_migrations (version) VALUES ('20160823024038');
 

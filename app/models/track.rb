@@ -14,6 +14,10 @@ class Track < ActiveRecord::Base
     order('display_order ASC, name ASC')
   end
 
+  def self.with_icon_and_color
+    where('icon IS NOT NULL AND color IS NOT NULL')
+  end
+
   def self.submittable
     where(is_submittable: true)
   end
