@@ -6,7 +6,7 @@ class Submission < ActiveRecord::Base
   FORMATS = [ 'Presentation',
               'Panel',
               'Workshop',
-              'Social event' ]
+              'Social event' ].freeze
 
   DAYS = { 1 => 'Weekend before',
            2 => 'Monday',
@@ -14,7 +14,7 @@ class Submission < ActiveRecord::Base
            4 => 'Wednesday',
            5 => 'Thursday',
            6 => 'Friday',
-           7 => 'Weekend after' }
+           7 => 'Weekend after' }.freeze
 
   TIME_RANGES = [ 'Early morning',
                   'Breakfast',
@@ -24,7 +24,7 @@ class Submission < ActiveRecord::Base
                   'Afternoon',
                   'Happy hour',
                   'Evening',
-                  'Late night' ]
+                  'Late night' ].freeze
 
   include SearchableSubmission
   include YearScoped
