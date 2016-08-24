@@ -1,0 +1,110 @@
+nav
+  .section-content
+    h1 Schedule
+
+- unless flash.empty?
+  section.common.green
+    .section-content
+      - flash.each do |key, message|
+        h6 = message
+
+- unless registered?
+  section.common
+    .section-content
+      h1 Register and build your schedule
+      h6 Get registered to attend sessions during Denver Startup Week and build your own custom schedule of events. Everything during the week is totally free - we just ask that you register to help us plan appropriately!
+      = link_to 'Register Now', new_registration_path, class: 'btn primary'
+
+form.filters
+  input(name="terms" value="#{params[:terms]}" placeholder="Search Schedule")
+  select(name="filter" value="#{params[:filter]}" onchange="this.form.submit();")
+    option(value="all" selected=("selected" if params[:filter] == 'all')) View All Sessions
+    option(value="mine" selected=("selected" if params[:filter] == 'mine')) View My Schedule
+    optgroup(label="View Sessions By Track")
+    - Track.in_display_order.each do |t|
+      option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) = "&nbsp;#{t.name}#{t.is_submittable? ? ' Track' : '' }".html_safe
+    optgroup(label="View Sessions By Cluster")
+    - Cluster.all.each do |c|
+      option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) = "&nbsp;#{c.name} Cluster".html_safe
+
+.section-content.schedule-container
+  nav
+    - if @day_index > 2
+      = link_to image_tag('images/2016_redesign/nav-arrow-left.png'), schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters)
+    span = "#{Submission::DAYS[@day_index]} #{formatted_start_date_for_index(@day_index)}"
+    - if @day_index < 6
+      = link_to image_tag('images/2016_redesign/nav-arrow-right.png'), schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters)
+
+  - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
+    .time-block
+      .time-tag = grouping.first.human_start_time
+      - grouping.each do |submission|
+        .scheduled-session
+          div(class="icon-container #{submission.track.color}")
+            - if submission.track.icon
+              = render partial: "icons/#{submission.track.icon}"
+            - else
+              .icon
+          .session-info
+            .time-slot
+              .time = submission.human_time_range
+              - if submission.cluster
+                .cluster-name = submission.cluster.name
+            .title-venue
+              = link_to submission.title, schedule_path(submission), class: 'session-title'
+              .session-location = submission.human_location_name
+
+    /* .scheduled-session */
+    /*   .icon-container.teal */
+    /*     = render partial: 'icons/wrench' */
+    /*   .session-info */
+    /*     .time-slot */
+    /*       .time 10:00 am - 11:30 am */
+    /*       .cluster-name Healthtech */
+    /*     .title-venue */
+    /*       .session-title Title of talk goes here. */
+    /*       .session-location Venue name goes here */
+
+    /* .scheduled-session */
+    /*   .icon-container.blue */
+    /*     = render partial: 'icons/chart' */
+    /*   .session-info */
+    /*     .time-slot */
+    /*       .time 10:00 am - 11:30 am */
+    /*       .cluster-name IOT */
+    /*     .title-venue */
+    /*       .session-title Title of talk goes here and could be extra long name that takes up as much as three lines, truncate if more than three lines. */
+    /*       .session-location Venue name goes here */
+
+    /* .scheduled-session */
+    /*   .icon-container.orange */
+    /*     = render partial: 'icons/person' */
+    /*   .session-info */
+    /*     .time-slot */
+    /*       .time 10:00 am - 11:30 am */
+    /*       .cluster-name IOT */
+    /*     .title-venue */
+    /*       .session-title Title of talk goes here and could be extra long name that takes up as much as three lines, truncate if more than three lines. */
+    /*       .session-location Venue name goes here */
+
+    /* .scheduled-session */
+    /*   .icon-container.gold */
+    /*     = render partial: 'icons/terminal' */
+    /*   .session-info */
+    /*     .time-slot */
+    /*       .time 10:00 am - 11:30 am */
+    /*       .cluster-name IOT */
+    /*     .title-venue */
+    /*       .session-title Title of talk goes here and could be extra long name that takes up as much as three lines, truncate if more than three lines. */
+    /*       .session-location Venue name goes here */
+
+    /* .scheduled-session */
+    /*   .icon-container.purple */
+    /*     = render partial: 'icons/phone' */
+    /*   .session-info */
+    /*     .time-slot */
+    /*       .time 10:00 am - 11:30 am */
+    /*       .cluster-name IOT */
+    /*     .title-venue */
+    /*       .session-title Title of talk goes here and could be extra long name that takes up as much as three lines, truncate if more than three lines. */
+    /*       .session-location Venue name goes here */

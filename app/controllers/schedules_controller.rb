@@ -3,39 +3,64 @@ class SchedulesController < ApplicationController
   respond_to :html
   respond_to :json, only: :index
 
+  before_filter :ensure_registered!, only: [ :my_schedule, :create, :destroy ]
   before_filter :authenticate_user!, only: [ :my_schedule, :create, :destroy ]
 
   def index
-    @sessions = Submission.for_current_year.
-                           for_schedule.
-                           order(:start_day).
-                           includes(:venue, :submitter, :track)
+    @sessions = Submission.
+                for_current_year.
+                for_schedule.
+                order(:start_day).
+                includes(:venue, :submitter, :track)
+    respond_to do |format|
+      format.json do
+        respond_with @sessions
+      end
+      format.html do
+        redirect_to schedules_by_day_path(request.query_parameters)
+      end
+    end
+  end
+
+  def by_day
+    @day_index = Submission::DAYS.invert[params[:start_day].titleize]
+    @submissions = Submission.
+                   for_current_year.
+                   for_schedule.
+                   for_start_day(params[:start_day]).
+                   for_schedule_filter(params[:filter], current_user).
+                   fulltext_search(params[:terms]).
+                   order(:start_hour).
+                   includes(:venue, :submitter, :track)
     respond_with @sessions
   end
 
   def show
     @session = Submission.
-      for_current_year.
-      for_schedule.
-      where(id: params[:id].to_i).
-      order(:start_day).
-      includes(:venue, :submitter, :track, comments: :user).
-      first!
+               for_current_year.
+               for_schedule.
+               where(id: params[:id].to_i).
+               order(:start_day).
+               includes(:venue, :submitter, :track, comments: :user).
+               first!
   end
 
   def my_schedule
     @my_schedule = true
-    @sessions = current_registration.submissions.for_current_year.
-                           for_schedule.
-                           includes(:venue, :submitter, :track)
+    @sessions = current_registration.
+                submissions.
+                for_current_year.
+                for_schedule.
+                includes(:venue, :submitter, :track)
     render action: :index
   end
 
   def feed
     registration = Registration.where(calendar_token: params[:id]).first!
-    @sessions = registration.submissions.for_current_year.
-                           for_schedule.
-                           includes(:venue, :submitter, :track)
+    @sessions = registration.
+                submissions.for_current_year.
+                for_schedule.
+                includes(:venue, :submitter, :track)
     respond_to do |format|
       format.ics do
         calendar = Icalendar::Calendar.new
@@ -65,21 +90,21 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    submission = Submission.for_schedule.
+    @session = Submission.for_schedule.
       where(id: params[:id].to_i).
       includes(:submitter, :track, comments: :user).
       first!
-    current_registration.submissions << submission unless current_registration.submissions.include?(submission)
-    render json: submission.session_registrations.count
+    current_registration.submissions << @session unless current_registration.submissions.include?(@session)
+    render action: :show
   end
 
   def destroy
-    submission = Submission.for_schedule.
+    @session = Submission.for_schedule.
       where(id: params[:id].to_i).
       includes(:submitter, :track, comments: :user).
       first!
-    current_registration.session_registrations.where(submission_id: submission.id).destroy_all
-    render json: submission.session_registrations.count
+    current_registration.session_registrations.where(submission_id: @session.id).destroy_all
+    render action: :show
   end
 
 end

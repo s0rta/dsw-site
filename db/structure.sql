@@ -3,7 +3,7 @@
 --
 
 -- Dumped from database version 9.4.4
--- Dumped by pg_dump version 9.5.3
+-- Dumped by pg_dump version 9.5.4
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -105,7 +105,8 @@ CREATE TABLE clusters (
     id integer NOT NULL,
     name character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    description text
 );
 
 
@@ -389,7 +390,8 @@ CREATE TABLE registrations (
     track_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    calendar_token character varying(255)
+    calendar_token character varying(255),
+    age_range character varying
 );
 
 
@@ -558,7 +560,8 @@ CREATE TABLE tracks (
     email_alias character varying(255),
     display_order integer DEFAULT 0 NOT NULL,
     is_submittable boolean DEFAULT false NOT NULL,
-    description text
+    description text,
+    color character varying
 );
 
 
@@ -1605,4 +1608,10 @@ INSERT INTO schema_migrations (version) VALUES ('20160802043811');
 INSERT INTO schema_migrations (version) VALUES ('20160802050802');
 
 INSERT INTO schema_migrations (version) VALUES ('20160804150055');
+
+INSERT INTO schema_migrations (version) VALUES ('20160823024038');
+
+INSERT INTO schema_migrations (version) VALUES ('20160823024807');
+
+INSERT INTO schema_migrations (version) VALUES ('20160823044119');
 

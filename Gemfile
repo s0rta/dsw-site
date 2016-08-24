@@ -18,6 +18,7 @@ gem 'uglifier'
 gem 'responders'
 gem 'navigasmic'
 gem 'font_assets'
+gem "autoprefixer-rails"
 
 gem 'temporal-rails'
 

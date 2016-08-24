@@ -1,0 +1,113 @@
+@import ../config
+
+.schedule-container
+  nav
+    margin-bottom: 30px
+    a
+      margin: 0
+      &:first-child
+        float: left
+      &:last-child
+        float: right
+    span
+      margin: 0 15px
+      font-family: 'Montserrat-Light'
+      font-size: 20px
+      color: $copy-color-bold
+
+.time-block
+  margin-bottom: 20px
+.time-tag
+  margin-bottom: 10px
+.scheduled-session
+  display: flex
+  margin-bottom: 5px
+  .icon-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    padding: 0 8px
+    .icon
+      width: 23px
+    &.green
+      background: $green-light
+      .icon
+        fill: $green-dark
+    &.blue
+      background: $blue-light
+      .icon
+        fill: $blue-dark
+    &.purple
+      background: $purple-light
+      .icon
+        fill: $purple-dark
+    &.orange
+      background: $orange-light
+      .icon
+        fill: $orange-dark
+    &.teal
+      background: $teal-light
+      .icon
+        fill: $teal-dark
+    &.gold
+      background: $gold-light
+      .icon
+        fill: $gold-dark
+
+.location-details
+  margin-top: 20px
+
+.session-info
+  width: 100%
+  padding: 10px 5px
+  background: $backfill-grey
+  font-family: 'Montserrat-Light'
+  font-size: 12px
+  &.confirmed
+    background: darken($backfill-grey, 15%)
+.session-title
+  color: $copy-color-bold
+  margin-bottom: 5px
+  max-height: 36px
+  overflow: hidden
+  font-family: 'Montserrat-Regular'
+  line-height: 1
+.time-slot
+  margin-bottom: 8px
+  &:after
+    content: ""
+    display: table
+    clear: both
+  .time
+    float: left
+  .cluster-name
+    float: right
+    text-transform: uppercase
+    font-family: 'Montserrat-Regular'
+    font-size: 10px
+
+
+@media(min-width: 375px)
+  .session-info
+    padding: 15px
+    font-size: 14px
+  .session-title
+    max-height: 42px
+  .time-slot
+    .cluster-name
+      font-size: 12px
+
+@media(min-width: 600px)
+  .time-slot
+    display: inline-block
+    vertical-align: top
+    width: 30%
+    .time,
+    .cluster-name
+      float: none
+    .time
+      margin-bottom: 10px
+  .title-venue
+    display: inline-block
+    width: 70%

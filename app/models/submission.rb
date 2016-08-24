@@ -6,7 +6,7 @@ class Submission < ActiveRecord::Base
   FORMATS = [ 'Presentation',
               'Panel',
               'Workshop',
-              'Social event' ]
+              'Social event' ].freeze
 
   DAYS = { 1 => 'Weekend before',
            2 => 'Monday',
@@ -14,7 +14,7 @@ class Submission < ActiveRecord::Base
            4 => 'Wednesday',
            5 => 'Thursday',
            6 => 'Friday',
-           7 => 'Weekend after' }
+           7 => 'Weekend after' }.freeze
 
   TIME_RANGES = [ 'Early morning',
                   'Breakfast',
@@ -24,7 +24,7 @@ class Submission < ActiveRecord::Base
                   'Afternoon',
                   'Happy hour',
                   'Evening',
-                  'Late night' ]
+                  'Late night' ].freeze
 
   include SearchableSubmission
   include YearScoped
@@ -81,13 +81,37 @@ class Submission < ActiveRecord::Base
 
   def self.for_submittable_tracks
     joins(:track).
-    where(tracks: { is_submittable: true })
+      where(tracks: { is_submittable: true })
   end
 
   def self.for_track(name)
     if name.present?
       joins(:track).
-      where('LOWER(tracks.name) = LOWER(?)', name)
+        where('LOWER(tracks.name) = LOWER(?)', name)
+    else
+      all
+    end
+  end
+
+  def self.for_cluster(name)
+    if name.present?
+      joins(:cluster).
+        where('LOWER(clusters.name) = LOWER(?)', name)
+    else
+      all
+    end
+  end
+
+  def self.for_schedule_filter(filter, user)
+    if filter == 'all'
+      all
+    elsif filter == 'mine'
+      joins(:user_registrations).
+        where(registrations: { user_id: user.id })
+    elsif filter.present?
+      joins(:track).
+        joins('LEFT OUTER JOIN clusters ON submissions.cluster_id = clusters.id').
+        where('LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)', name: filter)
     else
       all
     end
@@ -103,6 +127,14 @@ class Submission < ActiveRecord::Base
 
   def self.for_schedule
     confirmed.where('start_day IS NOT NULL AND end_day IS NOT NULL')
+  end
+
+  def self.for_start_day(day)
+    if day_index = DAYS.invert[day.titleize]
+      where(start_day: day_index)
+    else
+      all
+    end
   end
 
   # State machine

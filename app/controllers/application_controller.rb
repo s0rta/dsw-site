@@ -57,6 +57,10 @@ class ApplicationController < ActionController::Base
     params[:mercury_frame] && (params[:mercury_frame] == true || params[:mercury_frame] == 'true')
   end
 
+  def ensure_registered!
+    redirect_to main_app.new_registration_path unless current_registration
+  end
+
   def current_registration
     current_user && current_user.current_registration
   end

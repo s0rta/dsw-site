@@ -71,6 +71,8 @@ GEM
     arbre (1.1.1)
       activesupport (>= 3.0.0)
     arel (6.0.3)
+    autoprefixer-rails (6.4.0.3)
+      execjs
     bcrypt (3.1.10)
     bourbon (4.2.7)
       sass (~> 3.4)
@@ -380,6 +382,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8.0)
   activeadmin (>= 1.0.0.pre2)
+  autoprefixer-rails
   bourbon
   capybara
   coffee-rails
@@ -442,4 +445,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.11.2
+   1.12.3

@@ -38,4 +38,7 @@ module ApplicationHelper
     VolunteerShift.for_select
   end
 
+  def age_ranges_for_select
+    Registration::AGE_RANGES
+  end
 end

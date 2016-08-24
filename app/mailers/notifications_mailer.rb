@@ -87,7 +87,7 @@ class NotificationsMailer < ActionMailer::Base
 
   def confirm_registration(registration)
     @registration = registration
-    mail to: @registration.contact_email,
+    mail to: @registration.user.email,
       subject: "You are registered for Denver Startup Week #{Date.today.year}"
   end
 
