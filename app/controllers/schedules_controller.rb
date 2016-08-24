@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
         respond_with @sessions
       end
       format.html do
-        redirect_to schedules_by_day_path
+        redirect_to schedules_by_day_path(request.query_parameters)
       end
     end
   end

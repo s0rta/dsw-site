@@ -11,4 +11,4 @@ section.common
       .cluster
         h1 = "#{cluster.name} Cluster"
         p = cluster.description
-        = link_to "Explore #{cluster.name} Sessions", schedules_path, class: 'btn primary'
+        = link_to "Explore #{cluster.name} Sessions", schedules_path(filter: cluster.name), class: 'btn primary'
