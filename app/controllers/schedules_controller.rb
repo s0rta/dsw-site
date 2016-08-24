@@ -7,10 +7,11 @@ class SchedulesController < ApplicationController
   before_filter :authenticate_user!, only: [ :my_schedule, :create, :destroy ]
 
   def index
-    @sessions = Submission.for_current_year.
-                        for_schedule.
-                        order(:start_day).
-                        includes(:venue, :submitter, :track)
+    @sessions = Submission.
+      for_current_year.
+      for_schedule.
+      order(:start_day).
+      includes(:venue, :submitter, :track)
     respond_to do |format|
       format.json do
         respond_with @sessions
@@ -23,11 +24,14 @@ class SchedulesController < ApplicationController
 
   def by_day
     @day_index = Submission::DAYS.invert[params[:start_day].titleize]
-    @submissions = Submission.for_current_year.
-                           for_schedule.
-                           for_start_day(params[:start_day]).
-                           order(:start_hour).
-                           includes(:venue, :submitter, :track)
+    @submissions = Submission.
+      for_current_year.
+      for_schedule.
+      for_start_day(params[:start_day]).
+      for_schedule_filter(params[:filter], current_user).
+      fulltext_search(params[:terms]).
+      order(:start_hour).
+      includes(:venue, :submitter, :track)
     respond_with @sessions
   end
 

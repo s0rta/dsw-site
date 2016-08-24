@@ -2,30 +2,31 @@ nav
   .section-content
     h1 Schedule
 
-section.common.green
-  .section-content
-    - flash.each do |key, message|
-      h6 = message
+- unless flash.empty?
+  section.common.green
+    .section-content
+      - flash.each do |key, message|
+        h6 = message
 
-form.filters(action="#{schedules_by_day_path}")
-  input(name="terms" value="#{params[:terms]}")
+form.filters
+  input(name="terms" value="#{params[:terms]}" placeholder="Search Schedule")
   select(name="filter" value="#{params[:filter]}" onchange="this.form.submit();")
-    option(value="all" selected=("selected" if params[:filter] == 'all')) All Sessions
-    option(value="mine" selected=("selected" if params[:filter] == 'mine')) My Schedule
-    optgroup(label="Tracks")
+    option(value="all" selected=("selected" if params[:filter] == 'all')) View All Sessions
+    option(value="mine" selected=("selected" if params[:filter] == 'mine')) View My Schedule
+    optgroup(label="View Sessions By Track")
     - Track.in_display_order.each do |t|
-      option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) = t.name
-    optgroup(label="Clusters")
+      option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) = "&nbsp;#{t.name}#{t.is_submittable? ? ' Track' : '' }".html_safe
+    optgroup(label="View Sessions By Cluster")
     - Cluster.all.each do |c|
-      option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) = c.name
+      option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) = "&nbsp;#{c.name} Cluster".html_safe
 
 .section-content.schedule-container
   nav
     - if @day_index > 2
-      = link_to image_tag('images/2016_redesign/nav-arrow-left.png'), schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase)
+      = link_to image_tag('images/2016_redesign/nav-arrow-left.png'), schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters)
     span = "#{Submission::DAYS[@day_index]} #{formatted_start_date_for_index(@day_index)}"
     - if @day_index < 6
-      = link_to image_tag('images/2016_redesign/nav-arrow-right.png'), schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase)
+      = link_to image_tag('images/2016_redesign/nav-arrow-right.png'), schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters)
 
   - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
     .time-block

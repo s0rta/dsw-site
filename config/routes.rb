@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   resources :sponsor_signups, only: :create
 
   get '/schedule', to: 'schedules#index', as: :schedules
-  get '/schedule/:start_day', to: 'schedules#by_day', as: :schedules_by_day, constraints: ->(r) { Submission::DAYS.invert.include?(r.params[:start_day].titleize) }, defaults: { start_day: 'monday' }
+  get '/schedule/:start_day', to: 'schedules#by_day', as: :schedules_by_day, constraints: ->(r) { Submission::DAYS.invert.include?(r.params[:start_day].titleize) }, defaults: { start_day: 'monday', format: 'html' }
   get '/my-schedule', to: 'schedules#my_schedule', as: :my_schedule
   get '/schedule/:id', to: 'schedules#show', as: :schedule
   post '/schedule/:id', to: 'schedules#create', as: :add_to_schedule

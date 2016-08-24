@@ -7,23 +7,26 @@ feature 'Registering to attend' do
   end
 
   let(:submitter) do
-    User.create! name: 'Test User', email: 'test@example.com', password: 'password'
+    User.create! name: 'Test User',
+                 email: 'test@example.com',
+                 password: 'password'
   end
 
   let(:track) do
-    Track.create! name: 'Founder', is_submittable: true
+    Track.create! name: 'Founder',
+                  is_submittable: true
   end
 
   let!(:submission) do
     submitter.submissions.create! title: 'I am a session',
-                             description: 'interesting stuff',
-                             track: track,
-                             contact_email: 'test@example.com',
-                             state: 'confirmed',
-                             start_day: 2,
-                             start_hour: 10,
-                             end_day: 2,
-                             end_hour: 11.5
+                                  description: 'interesting stuff',
+                                  track: track,
+                                  contact_email: 'test@example.com',
+                                  state: 'confirmed',
+                                  start_day: 2,
+                                  start_hour: 10,
+                                  end_day: 2,
+                                  end_hour: 11.5
   end
 
   before do
@@ -62,5 +65,4 @@ feature 'Registering to attend' do
     expect(page).to have_content('Registration Is Closed')
     expect(current_path).to eq('/registration/closed')
   end
-
 end

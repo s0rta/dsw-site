@@ -81,13 +81,37 @@ class Submission < ActiveRecord::Base
 
   def self.for_submittable_tracks
     joins(:track).
-    where(tracks: { is_submittable: true })
+      where(tracks: { is_submittable: true })
   end
 
   def self.for_track(name)
     if name.present?
       joins(:track).
-      where('LOWER(tracks.name) = LOWER(?)', name)
+        where('LOWER(tracks.name) = LOWER(?)', name)
+    else
+      all
+    end
+  end
+
+  def self.for_cluster(name)
+    if name.present?
+      joins(:cluster).
+        where('LOWER(clusters.name) = LOWER(?)', name)
+    else
+      all
+    end
+  end
+
+  def self.for_schedule_filter(filter, user)
+    if filter == 'all'
+      all
+    elsif filter == 'mine'
+      joins(:user_registrations).
+        where(registrations: { user_id: user.id })
+    elsif filter.present?
+      joins(:track).
+        joins('LEFT OUTER JOIN clusters ON submissions.cluster_id = clusters.id').
+        where('LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)', name: filter)
     else
       all
     end
