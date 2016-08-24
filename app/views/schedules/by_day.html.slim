@@ -8,6 +8,13 @@ nav
       - flash.each do |key, message|
         h6 = message
 
+- unless registered?
+  section.common
+    .section-content
+      h1 Register and build your schedule
+      h6 Get registered to attend sessions during Denver Startup Week and build your own custom schedule of events. Everything during the week is totally free - we just ask that you register to help us plan appropriately!
+      = link_to 'Register Now', new_registration_path, class: 'btn primary'
+
 form.filters
   input(name="terms" value="#{params[:terms]}" placeholder="Search Schedule")
   select(name="filter" value="#{params[:filter]}" onchange="this.form.submit();")
