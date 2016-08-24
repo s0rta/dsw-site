@@ -19,19 +19,32 @@ section.hero-cta
         h3 Cast your vote before July 15
         h6 The sessions are in, now we need you to help us finalize the best for this year's event. Don't delay, cast your vote and spread the word.
         = link_to 'Vote Now', submissions_path, class: 'btn green'
-  - else
-    article.blue
+  - elsif FeatureToggler.registration_active? && !registered?
+    article.green
       .section-content
-        h2 Pitch Challenge
-        h3 Secure the Championship
-        h6 The Denver Startup Week Challenge is September 15, 2016. Pitch your startup to a panel of celebrity judges and make DSW history.
-        = link_to 'Apply Now', page_path(page: 'pitch'), class: 'btn blue'
-  article.purple
+        h2 Registration is Open
+        h3 Register and build your schedule
+        h6 This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
+        = link_to 'Register Now', new_registration_path, class: 'btn green'
+  - elsif FeatureToggler.registration_active? && registered?
+    article.green
+      .section-content
+        h2 Build Your Schedule
+        h3 Register and build your own schedule
+        h6 This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
+        = link_to 'Build Your Schedule', schedules_path, class: 'btn green'
+  article.blue
     .section-content
-      h2 Get Involved
-      h3 Be a part of something epic
-      h6 Denver Startup Week is powered by the community. Get involved. Make an impact.
-      = link_to 'Contact', page_path(page: 'contact'), class: 'btn purple'
+      h2 Pitch Challenge
+      h3 Secure the Championship
+      h6 The Denver Startup Week Challenge is September 15, 2016. Pitch your startup to a panel of celebrity judges and make DSW history.
+      = link_to 'Apply Now', page_path(page: 'pitch'), class: 'btn blue'
+  /* article.purple */
+  /*   .section-content */
+  /*     h2 Get Involved */
+  /*     h3 Be a part of something epic */
+  /*     h6 Denver Startup Week is powered by the community. Get involved. Make an impact. */
+  /*     = link_to 'Contact', page_path(page: 'contact'), class: 'btn purple' */
 
 section.common.the-what
   .section-content

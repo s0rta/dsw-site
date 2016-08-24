@@ -2,6 +2,7 @@ class RegistrationsController < ApplicationController
 
   before_action :check_registration_open, except: [ :closed ]
   before_action :authenticate_user!, unless: :simple_registration?, except: [ :closed ]
+  before_action :check_existing_registration, unless: :simple_registration?, except: [ :closed ]
 
   def new
     redirect_to closed_registration_path unless FeatureToggler.registration_active?
@@ -39,5 +40,9 @@ class RegistrationsController < ApplicationController
 
   def check_registration_open
     redirect_to closed_registration_path unless FeatureToggler.registration_active?
+  end
+
+  def check_existing_registration
+    redirect_to schedules_path if registered?
   end
 end
