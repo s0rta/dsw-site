@@ -64,10 +64,9 @@ feature 'Registering to attend' do
   end
 
   scenario 'User tries to register when registrations are closed' do
-    pending
     FeatureToggler.deactivate_registration!
     visit '/registration/new'
-    expect(page).to have_content('Registration Is Closed')
+    expect(page).to have_content("Registration for #{Date.today.year} is currently closed")
     expect(current_path).to eq('/registration/closed')
   end
 end

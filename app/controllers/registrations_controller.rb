@@ -1,6 +1,7 @@
 class RegistrationsController < ApplicationController
 
-  before_filter :authenticate_user!, unless: :simple_registration?
+  before_action :check_registration_open, except: [ :closed ]
+  before_action :authenticate_user!, unless: :simple_registration?, except: [ :closed ]
 
   def new
     redirect_to closed_registration_path unless FeatureToggler.registration_active?
@@ -36,4 +37,7 @@ class RegistrationsController < ApplicationController
                                            :track_id)
   end
 
+  def check_registration_open
+    redirect_to closed_registration_path unless FeatureToggler.registration_active?
+  end
 end
