@@ -9,7 +9,8 @@ RSpec.describe Registration, type: :model do
   it { is_expected.to have_many(:session_registrations).dependent(:destroy) }
   it { is_expected.to have_many(:submissions) }
   it { is_expected.to validate_presence_of(:user) }
-  it { is_expected.to validate_presence_of(:contact_email) }
+  it { is_expected.to validate_presence_of(:age_range) }
+  it { is_expected.to validate_presence_of(:primary_role) }
 
   it 'defaults its year to the current year' do
     expect(Registration.new.year).to eq(Date.today.year)

@@ -29,9 +29,9 @@ section.common.sm-centered
       = f.text_field :company
 
       = f.label :primary_role, 'What is your job title?'
-      = f.text_field :primary_role
+      = f.text_field :primary_role, required: 'required'
 
       = f.label :zip, 'What is the zip code of your primary residence?'
-      = f.password_field :zip, required: 'required'
+      = f.text_field :zip, required: 'required'
 
       = f.submit 'Register'

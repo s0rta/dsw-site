@@ -4,7 +4,9 @@ class Registration < ActiveRecord::Base
   has_many :session_registrations, dependent: :destroy
   has_many :submissions, through: :session_registrations
 
-  validates :user, presence: true
+  validates :user,
+            :age_range,
+            :primary_role, presence: true
 
   after_initialize do
     self.year ||= Date.today.year

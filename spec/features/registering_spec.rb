@@ -51,6 +51,11 @@ feature 'Registering to attend' do
     fill_in 'registration_zip', with: '12345'
     click_button 'Register'
     expect(page).to have_content('Thanks for registering!')
+
+    # Confirmation to track chair
+    email = ActionMailer::Base.deliveries.detect { |e| e.to.include?('test2@example.com') }
+    expect(email.subject).to eq("You are registered for Denver Startup Week #{Date.today.year}")
+
     click_link 'I am a session'
     click_link 'Add to My Schedule'
     expect(page).to have_content('ADDED TO MY SCHEDULE')

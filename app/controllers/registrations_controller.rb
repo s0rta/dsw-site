@@ -32,6 +32,7 @@ class RegistrationsController < ApplicationController
                                            :company,
                                            :gender,
                                            :primary_role,
+                                           :age_range,
                                            :track_id)
   end
 
