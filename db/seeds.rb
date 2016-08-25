@@ -33,13 +33,16 @@
     description: "From craft skis to craft beer, robots to 3D printing – the experience of 'making' physical products is totally unique. Through the lens of physical goods across multiple industries, hear the stories behind breakout brands, learn about new technologies in manufacturing, and dig into the micro-production concepts needed to get started.  Connect with the best craftsmen and makers in Colorado and see how they create their work – all in one week!"
   },
   'Headline Events' => {
-    icon: nil
+    icon: 'star',
+    color: 'headline-session'
   },
   'Basecamp' => {
-    icon: nil
+    icon: 'basecamp',
+    color: 'basecamp-session'
   },
   'Social Events' => {
-    icon: nil
+    icon: 'martini',
+    color: 'red'
   }
 }.each do |track_name, attrs|
   t = Track.where(name: track_name).first_or_initialize
