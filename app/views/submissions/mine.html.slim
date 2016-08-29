@@ -29,6 +29,19 @@ section.common.blue
       .section-content
         = link_to 'Sign up to volunteer', new_volunteership_path, class: 'btn primary'
 
+- if FeatureToggler.registration_active?
+  - if registered?
+    section.common.sm-centered
+      h1 Your Registration
+      .section-content
+        = link_to 'View Your Schedule', schedules_path(filter: 'mine'), class: 'btn primary'
+        = link_to 'Download Your Schedule', schedule_feed_path(current_registration.calendar_token, format: 'ics'), class: 'btn primary'
+  - else
+    section.common.sm-centered
+      .section-content
+        h1 Registration
+        = link_to 'Register to attend', new_registration_path, class: 'btn primary'
+
 - if FeatureToggler.submission_active?
   .submission-close-count
     h2 Submissions close in
@@ -36,7 +49,7 @@ section.common.blue
 
 section.common.sm-centered
   .section-content
-    h1 Your #{current_year} Submissions
+    h1 Your Submissions
     - if @submissions.any?
       - @submissions.each do |submission|
         .talk-submission
@@ -56,7 +69,7 @@ section.common.sm-centered
 - if @previous_submissions.any?
   section.common.sm-centered
     .section-content
-      h1 Previous Submissions
+      h1 Previous Years' Submissions
       - @previous_submissions.each do |submission|
         .talk-submission
           h6
