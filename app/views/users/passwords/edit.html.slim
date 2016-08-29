@@ -8,6 +8,9 @@ section.common.green
     - flash.each do |key, message|
       h6 = message
 
+    - unless resource.errors.empty?
+      h6 = "Please correct the following errors: #{resource.errors.full_messages.to_sentence}"
+
 
 section.common.sm-centered
   .section-content
