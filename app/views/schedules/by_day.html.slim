@@ -54,57 +54,8 @@ form.filters
               = link_to submission.title, schedule_path(submission), class: 'session-title'
               .session-location = submission.human_location_name
 
-    /* .scheduled-session */
-    /*   .icon-container.teal */
-    /*     = render partial: 'icons/wrench' */
-    /*   .session-info */
-    /*     .time-slot */
-    /*       .time 10:00 am - 11:30 am */
-    /*       .cluster-name Healthtech */
-    /*     .title-venue */
-    /*       .session-title Title of talk goes here. */
-    /*       .session-location Venue name goes here */
+- if registered? && params[:filter] == 'mine'
+  section.common
+    .section-content
+        = link_to 'Download My Schedule', schedule_feed_path(current_registration.calendar_token, format: 'ics'), class: 'btn primary'
 
-    /* .scheduled-session */
-    /*   .icon-container.blue */
-    /*     = render partial: 'icons/chart' */
-    /*   .session-info */
-    /*     .time-slot */
-    /*       .time 10:00 am - 11:30 am */
-    /*       .cluster-name IOT */
-    /*     .title-venue */
-    /*       .session-title Title of talk goes here and could be extra long name that takes up as much as three lines, truncate if more than three lines. */
-    /*       .session-location Venue name goes here */
-
-    /* .scheduled-session */
-    /*   .icon-container.orange */
-    /*     = render partial: 'icons/person' */
-    /*   .session-info */
-    /*     .time-slot */
-    /*       .time 10:00 am - 11:30 am */
-    /*       .cluster-name IOT */
-    /*     .title-venue */
-    /*       .session-title Title of talk goes here and could be extra long name that takes up as much as three lines, truncate if more than three lines. */
-    /*       .session-location Venue name goes here */
-
-    /* .scheduled-session */
-    /*   .icon-container.gold */
-    /*     = render partial: 'icons/terminal' */
-    /*   .session-info */
-    /*     .time-slot */
-    /*       .time 10:00 am - 11:30 am */
-    /*       .cluster-name IOT */
-    /*     .title-venue */
-    /*       .session-title Title of talk goes here and could be extra long name that takes up as much as three lines, truncate if more than three lines. */
-    /*       .session-location Venue name goes here */
-
-    /* .scheduled-session */
-    /*   .icon-container.purple */
-    /*     = render partial: 'icons/phone' */
-    /*   .session-info */
-    /*     .time-slot */
-    /*       .time 10:00 am - 11:30 am */
-    /*       .cluster-name IOT */
-    /*     .title-venue */
-    /*       .session-title Title of talk goes here and could be extra long name that takes up as much as three lines, truncate if more than three lines. */
-    /*       .session-location Venue name goes here */
