@@ -26,12 +26,32 @@ RSpec.describe Submission, type: :model do
     expect(Submission.new.year).to eq(Date.today.year)
   end
 
-  it 'subscribes after creation' do
-    track = Track.create!(name: 'Test')
-    Submission.create! contact_email: 'test@example.com',
-                       title: 'Test',
-                       description: 'Test',
-                       track: track
-    expect(ListSubscriptionJob).to have_received(:perform_async).with('test@example.com')
+  describe 'subscribing to e-mail lists' do
+    let(:user) { create(:user) }
+    let(:track) { Track.create!(name: 'Test') }
+    let(:year) { Date.today.year.to_s }
+
+    it 'subscribes after creation' do
+      user.submissions.create! contact_email: 'test@example.com',
+                               title: 'Test',
+                               description: 'Test',
+                               track: track
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with('test@example.com', submittedyears: [ year ], confirmedyears: [])
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with(user.email, submittedyears: [ year ], confirmedyears: [])
+    end
+
+    it 'resubscribes with new data after update' do
+      submission = user.submissions.create! contact_email: user.email,
+                                            title: 'Test',
+                                            description: 'Test',
+                                            track: track
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with(user.email, submittedyears: [ year ], confirmedyears: [])
+      submission.update!(state: 'confirmed')
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with(user.email, submittedyears: [ year ], confirmedyears: [ year ])
+    end
   end
 end

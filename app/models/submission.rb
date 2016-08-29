@@ -65,7 +65,7 @@ class Submission < ActiveRecord::Base
 
   after_create :notify_track_chairs
   after_create :send_confirmation_notice
-  after_create :subscribe_to_list
+  after_save :subscribe_to_list
 
   after_initialize do
     self.year ||= Date.today.year
@@ -240,6 +240,23 @@ class Submission < ActiveRecord::Base
   end
 
   def subscribe_to_list
-    ListSubscriptionJob.perform_async(contact_email)
+    [ contact_email, submitter.email ].compact.uniq.each do |email|
+      submitted_years = Submission.
+                        joins(:submitter).
+                        where('contact_email = :email OR users.email = :email', email: email).
+                        pluck(:year).
+                        sort.
+                        map(&:to_s)
+      confirmed_years = Submission.
+                        confirmed.
+                        joins(:submitter).
+                        where('contact_email = :email OR users.email = :email', email: email).
+                        pluck(:year).
+                        sort.
+                        map(&:to_s)
+      ListSubscriptionJob.perform_async(email,
+        submittedyears: submitted_years,
+        confirmedyears: confirmed_years)
+    end
   end
 end
