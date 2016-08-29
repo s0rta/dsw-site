@@ -7,9 +7,8 @@ feature 'Registering to attend' do
   end
 
   let(:submitter) do
-    User.create! name: 'Test User',
-                 email: 'test@example.com',
-                 password: 'password'
+    create(:user, email: 'test@example.com',
+                  password: 'password')
   end
 
   let(:track) do

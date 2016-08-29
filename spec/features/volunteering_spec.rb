@@ -9,7 +9,7 @@ feature 'Signing up to volunteer' do
   end
 
   let!(:user) do
-    User.create! name: 'Test User', email: 'test@example.com', password: 'password'
+    create(:user, email: 'test@example.com', password: 'password')
   end
 
   let!(:monday_shift) do

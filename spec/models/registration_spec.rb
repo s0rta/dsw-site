@@ -22,10 +22,9 @@ RSpec.describe Registration, type: :model do
 
   context 'subscribing to mailing lists' do
     let(:user) do
-      User.create! name: 'Test User',
-                   email: 'test@example.com',
-                   password: 'password',
-                   password_confirmation: 'password'
+      create(:user, name: 'Test User',
+                    email: 'test@example.com',
+                    password: 'password')
     end
 
     it 'subscribes automatically on creation' do

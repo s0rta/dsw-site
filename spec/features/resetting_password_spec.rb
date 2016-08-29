@@ -3,9 +3,8 @@ require 'spec_helper'
 feature 'Resetting my password' do
 
   scenario 'User goes through the password reset flow' do
-    User.create!(name: 'Forgetful User',
-                 email: 'test@example.com',
-                 password: 'password')
+    create(:user, email: 'test@example.com',
+                  password: 'password')
     visit '/'
     find('#menu-icon').click
     click_on 'Sign In'
