@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Creating a submission' do
 
   before do
-    @chair = User.create! name: 'Mr. Chairman', email: 'chair@example.com', password: 'passsword'
+    @chair = create(:user, name: 'Mr. Chairman', email: 'chair@example.com', password: 'passsword')
     @track = Track.new name: 'Bizness', is_submittable: true
     @track.chairs << @chair
     @track.save!
@@ -58,7 +58,7 @@ feature 'Creating a submission' do
   end
 
   scenario 'User tries to submit a new idea but fails to create an account' do
-    User.create! name: 'Here First', email: 'test@example.com', password: 'password', password_confirmation: 'password'
+    create(:user, name: 'Here First', email: 'test@example.com', password: 'password')
     visit '/panel-picker/mine'
     click_on 'Register for an account'
     fill_in 'Name', with: 'New Guy'
