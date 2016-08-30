@@ -3,11 +3,12 @@ nav
     h1 Session Detail
 
 section.common
-  .section-content
-    = link_to 'Back to Schedule', schedules_path, class: 'back-link'
-
-section.common
   .section-content.session-detail
+    - if !registered? || !registered_for_session?(@session)
+      = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
+    - else
+      div.confirmed-btn-container
+        = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
     header
       - if @session.track.icon
         = render partial: "icons/#{@session.track.icon}"
@@ -16,25 +17,20 @@ section.common
     .names
       h6 = "#{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}"
       h6 = @session.human_time_range
+      h6 = "#{@session.registrants.count} attending"
     .description = process_with_pipeline(@session.description)
-    - if !registered? || !registered_for_session?(@session)
-      = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
-    - else
-      div.confirmed-btn-container
-        a.btn.primary.confirmed-btn href='#' Added to My Schedule
-        = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'removal-link'
-    .location-details
-      - if @session.venue
+    - if @session.venue
+      a.location-pin href='#'
+        = render partial: 'icons/map_pin'
+        span Map It
+      .location-details
         p = @session.venue.name
         p = @session.venue.address
-      - else
+      .location-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
+    - else
+      .location-details
         p Location TBA
-    a.location-pin href='#'
-      = render partial: 'icons/map_pin'
-      span Map It
 
-/* - if @session.venue */
-/*   %div#location_map.location-map(data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}") */
-
-
-
+section.common
+  .section-content
+    = link_to 'Back to Schedule', schedules_path, class: 'back-link'
