@@ -10,5 +10,5 @@ section.common
     - Cluster.in_display_order.each do |cluster|
       .cluster
         h1 = "#{cluster.name} Cluster"
-        p = cluster.description
+        p = process_with_pipeline(cluster.description)
         = link_to "Explore #{cluster.name} Sessions", schedules_path(filter: cluster.name), class: 'btn primary'
