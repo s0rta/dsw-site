@@ -1,6 +1,6 @@
 = render partial: 'layouts/2016_shared/basecamp_nav', locals: {item: :bizdev}
 
-section.common.purple
+section.common.blue
   .section-content
     h1 Looking to get your company in front of some bigger partners? We can help.
     h6 Some of the most exciting larger companies in Denver are offering their business and corporate development time to foster connections with the entrepreneurial community.
@@ -8,18 +8,6 @@ section.common.purple
     h6 Individuals can sign up for 15 minute slots with companies and have the opportunity to pitch potential partnership ideas, get feedback on products and/or develop their network.
     br
     h6 All Biz Dev Days sessions will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.)
-
-
-/* section.common */
-/*   .section-content */
-/*     .list-flex-container */
-/*       - bizdev_sessions.each do |m| */
-/*         .list-item */
-/*           h6 = m[:title] */
-/*           h6 = m[:timeslot] */
-/*           .list-icons */
-/*             a href="#{m[:signup_url]}" */
-/*               = render partial: 'icons/arrow_right' */
 
 - bizdev_sessions.each do |m|
   section.common.sm-centered

@@ -1,6 +1,6 @@
 = render partial: 'layouts/2016_shared/basecamp_nav', locals: {item: :mentor}
 
-section.common.purple
+section.common.blue
   .section-content
     h1 Looking for some free advice? Our mentors are here to help.
     h6 Colorado’s top entrepreneurs are volunteering their time and talent to meet with Denver Startup Week attendees. Sign up for a 20-minute, 1:1 meeting with mentors from all walks of the startup world.
@@ -8,18 +8,6 @@ section.common.purple
     h6 All mentor office hours will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.)
     br
     h6 Mentor Office Hours are organized by the Entrepreneurs Foundation of Colorado &mdash; a network of Colorado entrepreneurs whose companies share a common commitment to pledge a portion of founding equity or a portion of annual profits to the communities in which they reside.
-
-
-/* section.common */
-/*   .section-content */
-/*     .list-flex-container */
-/*       - mentor_sessions.each do |m| */
-/*         .list-item */
-/*           h6 = m[:title] */
-/*           h6 = m[:timeslot] */
-/*           .list-icons */
-/*             a href="#{m[:signup_url]}" */
-/*               = render partial: 'icons/arrow_right' */
 
 - mentor_sessions.each do |m|
   section.common.sm-centered
