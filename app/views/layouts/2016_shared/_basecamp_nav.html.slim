@@ -1,0 +1,8 @@
+nav
+  .section-content
+    h1 BASECAMP launched by CHASE FOR BUSINESS
+    = link_to 'Info', page_path(page: 'basecamp'), class: item == :event_info ? 'active' : ''
+    = link_to 'Programs', schedules_path(filter: 'basecamp'), class: item == :programs ? 'active' : ''
+    = link_to 'Mentor Sessions', page_path(page: 'basecamp/mentor'), class: item == :mentor ? 'active' : ''
+    = link_to 'Biz Dev Days', page_path(page: 'basecamp/bizdev'), class: item == :bizdev ? 'active' : ''
+    = link_to 'Financial Fitness', page_path(page: 'basecamp/financial_fitness'), class: item == :financial_fitness ? 'active' : ''

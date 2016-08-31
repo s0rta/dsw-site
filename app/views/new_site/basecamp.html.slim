@@ -1,0 +1,43 @@
+= render partial: 'layouts/2016_shared/basecamp_nav', locals: { item: :event_info }
+
+section.common.green
+  .section-content
+    h1 Your Denver Startup Week Headquarters
+    h6 Located in the heart of downtown at 1515 Arapahoe Street on 16th Street Mall, Basecamp offers something for everyone. You’ll find leading panelists and speakers, opportunities to sharpen your startup idea with seasoned entrepreneurs, complimentary happy hours, and more! 
+
+section.common.sm-centered
+  .section-content
+    h1 Get Inspired
+    h6 Basecamp hosts some of the best Denver Startup Week programs. Monday through Friday on the mainstage, you’ll find inspiring conversations and panel discussions with some of the leading minds from the startup community. Featuring a wide range of topics, each program will highlight incredible stories of inspirational leadership.
+    = link_to 'Explore Schedule', schedules_path(filter: 'basecamp'), class: 'btn primary'
+
+section.common.sm-centered
+  .section-content
+    h1 Gain Feedback
+    h6 Are you a founder looking to sharpen your business idea for that next pitch? You will have the opportunity to sign up for a one-on-one mentor session with a successful entrepreneur in the community. Not only that, there will be biz dev sessions, where you can pitch folks from those companies you’ve been trying to get in with, and Financial Fitness sessions that offer Chase guidance to get your startup finances in gear.
+
+    = link_to 'Book a mentor session', page_path(page: 'basecamp/mentor'), class: 'btn primary'
+    = link_to 'Book a biz dev session', page_path(page: 'basecamp/bizdev'), class: 'btn primary'
+    = link_to 'Book a financial fitness session', page_path(page: 'basecamp/financial_fitness'), class: 'btn primary'
+    / h6 We have zero tolerance for those who seek to diminish, negatively disrupt, or otherwise impede the mission and ethos of DSW. In short - we will not entertain trolls, jerks, naysayers, or just plain rude people who lack respect for the generous, cooperative, supportive community that makes DSW the largest and most successful idea and networking incubator of the year.
+
+section.common.sm-centered
+  .section-content
+    h1 Be Social
+    h6 There is no shortage of things to do during Denver Startup Week. Don’t miss out on happy hour events at Basecamp, including FoodForward, a Monday afternoon kick-off showcase with food companies, brewers, distillers, and more.
+
+    = link_to 'See events', schedules_path(filter: 'basecamp'), class: 'btn primary'
+
+section.common.sm-centered
+  .section-content
+    h1 Refuel
+    h6 Denver Startup Week is jam-packed with activities, so it is important to keep that blood sugar level up! Stop by Basecamp for a coffee refill or complimentary bites during the day. You’ll be glad you did!
+
+section.common.sm-centered
+  .section-content
+    h1 Follow us
+    h6 Basecamp is live on Twitter &mdash; keep up with all the Basecamp happenings during Denver Startup Week at @BasecampLiveDEN &mdash; #BasecampLiveDEN  #ChaseBasecamp  #DENstartupweek
+
+    = link_to 'Follow @BasecampLiveDEN', 'https://twitter.com/basecampliveden', class: 'btn primary'
+
+= render partial: 'layouts/2016_shared/page_footer'
