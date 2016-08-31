@@ -1,5 +1,17 @@
 @import ../config
 
+.basecamp-logo
+  display: none
+  max-width: 200px
+  margin-right: 40px
+  margin-bottom: 20px
+
+.basecamp-hero-copy
+  display: inline-block
+  max-width: 400px
+  vertical-align: 20px
+
+
 #new_site_controller.basecamp-action
   section.common.basecamp-info
     padding: 0
@@ -10,3 +22,7 @@
       background-size: cover
       background-position: 50% 50%
       height: 300px
+
+@media(min-width: 680px)
+  .basecamp-logo
+    display: inline-block

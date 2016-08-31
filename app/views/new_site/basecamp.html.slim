@@ -6,8 +6,10 @@ section.common.basecamp-info
 
 section.common.blue
   .section-content
-    h1 Your Denver Startup Week Headquarters
-    h6 Located in the heart of downtown at 1515 Arapahoe Street on 16th Street Mall, Basecamp offers something for everyone. You’ll find leading panelists and speakers, opportunities to sharpen your startup idea with seasoned entrepreneurs, complimentary happy hours, and more! 
+    = image_tag '2016_redesign/basecamp-logo.png', class:'basecamp-logo'
+    .basecamp-hero-copy
+      h1 Your Denver Startup Week Headquarters
+      h6 Located in the heart of downtown at 1515 Arapahoe Street on 16th Street Mall, Basecamp offers something for everyone. You’ll find leading panelists and speakers, opportunities to sharpen your startup idea with seasoned entrepreneurs, complimentary happy hours, and more! 
 
 section.common.sm-centered
   .section-content
@@ -23,7 +25,6 @@ section.common.sm-centered
     = link_to 'Book a mentor session', page_path(page: 'basecamp/mentor'), class: 'btn primary'
     = link_to 'Book a biz dev session', page_path(page: 'basecamp/bizdev'), class: 'btn primary'
     = link_to 'Book a financial fitness session', page_path(page: 'basecamp/financial_fitness'), class: 'btn primary'
-    / h6 We have zero tolerance for those who seek to diminish, negatively disrupt, or otherwise impede the mission and ethos of DSW. In short - we will not entertain trolls, jerks, naysayers, or just plain rude people who lack respect for the generous, cooperative, supportive community that makes DSW the largest and most successful idea and networking incubator of the year.
 
 section.common.sm-centered
   .section-content
