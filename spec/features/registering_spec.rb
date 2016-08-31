@@ -57,7 +57,6 @@ feature 'Registering to attend' do
 
     click_link 'I am a session'
     click_link 'Add to My Schedule'
-    expect(page).to have_content('ADDED TO MY SCHEDULE')
     click_link 'Remove from My Schedule'
     expect(page).to have_link('Add to My Schedule')
   end
