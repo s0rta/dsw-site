@@ -57,7 +57,7 @@ ActiveAdmin.register Submission do
     column :track, sortable: 'tracks.name'
     column :cluster, sortable: 'clusters.name'
     column :venue, sortable: 'venues.name'
-    column('Time', sortable: false) do |s|
+    column('Time', sortable: 'start_day') do |s|
       "#{s.human_start_day} #{s.human_time_range}".html_safe if s.time_assigned?
     end
     column('Status', sortable: :state) do |s|
