@@ -96,7 +96,7 @@ module ApplicationHelper
       { title: 'Charter Communications', timeslot: 'Wednesday 9/14: 2:30-4pm', signup_url: 'http://slottd.com/events/d5w5irdf2c/slots' },
       { title: 'Twitter', timeslot: 'Wednesday 9/14: 2:30-4pm', signup_url: 'http://slottd.com/events/h19nlsc8o9/slots' },
       { title: 'DaVita', timeslot: 'Thursday 9/15: 2:30-4pm', signup_url: 'http://slottd.com/events/374xrbebbu/slots' },
-      { title: 'AvNet', timeslot: 'Thursday 9/15: 2:30-4pm', signup_url: 'http://slottd.com/events/o384j23qly/slots' }
+      { title: 'Avnet', timeslot: 'Thursday 9/15: 2:30-4pm', signup_url: 'http://slottd.com/events/9td32t11hg/slots' }
     ]
   end
 end
