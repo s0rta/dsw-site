@@ -58,6 +58,8 @@ module ApplicationHelper
       { title: 'David Eichler, Decibel Blue ', timeslot: 'Tuesday 9/13: 9-11am', signup_url: 'http://slottd.com/events/n3nzql26p7/slots' },
       { title: 'Manny Ladis, Dizzion', timeslot: 'Tuesday 9/13: 9-11am', signup_url: 'http://slottd.com/events/lj6lzhoag1/slots' },
       { title: 'Elizabeth Worthington, EA Worthington', timeslot: 'Tuesday 9/13: 9-11am', signup_url: 'http://slottd.com/events/ss3qthcc6g/slots' },
+      { title: 'Sonu Kansal, Trueffect', timeslot: 'Tuesday 9/13: 9-11am', signup_url: 'http://slottd.com/events/k28pmjlr5i/slots' },
+      { title: 'Carlyn Williams, Cooley', timeslot: 'Tuesday 9/13: 9-11am', signup_url: 'http://slottd.com/events/o3oxtl655i/slots' },
       { title: 'Joe Zell, Grotech Ventures', timeslot: 'Wednesday 9/14: 9-11am', signup_url: 'http://slottd.com/events/gn1der5hps/slots' },
       { title: 'Kirk Holland, Access Venture Partners', timeslot: 'Wednesday 9/14: 9-11am', signup_url: 'http://slottd.com/events/o56gvsz2xp/slots' },
       { title: 'Stephan Reckie, Angelus Funding', timeslot: 'Wednesday 9/14: 9-11am', signup_url: 'http://slottd.com/events/klhairngep/slots' },
