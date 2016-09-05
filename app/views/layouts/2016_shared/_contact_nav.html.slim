@@ -1,0 +1,5 @@
+nav
+  .section-content
+    h1 Contact
+    = link_to 'Contact', page_path(page: 'contact'), class: item == :contact ? 'active' : ''
+    = link_to 'FAQ', page_path(page: 'contact/faq'), class: item == :faq ? 'active' : ''

@@ -1,0 +1,51 @@
+= render partial: 'layouts/2016_shared/basecamp_nav', locals: { item: :book_session }
+
+section.common.blue
+  .section-content
+    h1 Gain Feedback
+    h6 Are you a founder looking to sharpen your business idea for that next pitch? You will have the opportunity to sign up for a one-on-one mentor session with a successful entrepreneur in the community. Not only that, there will be biz dev sessions, where you can pitch folks from those companies you’ve been trying to get in with, and Financial Fitness sessions that offer Chase guidance to get your startup finances in gear.
+
+section.common.sm-centered
+  .section-content
+    h1.basecamp-headline Mentor Sessions
+    h6 Looking for some free advice? Our mentors are here to help. Colorado’s top entrepreneurs are volunteering their time and talent to meet with Denver Startup Week attendees. 
+    br
+    h6 Sign up for a 20-minute, 1:1 meeting with mentors from all walks of the startup world. All mentor office hours will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.)
+    br
+    h6 Mentor Office Hours are organized by the Entrepreneurs Foundation of Colorado &mdash; a network of Colorado entrepreneurs whose companies share a common commitment to pledge a portion of founding equity or a portion of annual profits to the communities in which they reside.
+    form.basecamp-bookings
+      select
+        option Choose a Mentor
+        - mentor_sessions.each do |m|
+          option
+            = m[:title]
+            | &nbsp; &vert; &nbsp;
+            = m[:timeslot]
+    = link_to 'Book It', page_path(page: 'basecamp/mentor'), class: 'btn primary'
+
+section.common.sm-centered
+  .section-content
+    h1.basecamp-headline Biz Dev Days
+    h6 Looking to get your company in front of some bigger partners? We can help. Some of the most exciting larger companies in Denver are offering their business and corporate development time to foster connections with the entrepreneurial community.
+    br
+    h6 Individuals can sign up for 15 minute slots with companies and have the opportunity to pitch potential partnership ideas, get feedback on products and/or develop their network.
+    br
+    h6 All Biz Dev Days sessions will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.)
+    form.basecamp-bookings
+      select
+        option Choose a Company
+        - bizdev_sessions.each do |m|
+          option
+            = m[:title]
+            | &nbsp; &vert; &nbsp;
+            = m[:timeslot]
+    = link_to 'Book It', page_path(page: 'basecamp/bizdev'), class: 'btn primary'
+
+section.common.sm-centered
+  .section-content
+    h1.basecamp-headline Financial Fitness
+    h6 Chase for Business Financial Fitness Advice. Sign up for a 15 minute slot with Chase Business Banker, who can help you better understand why it is important to separate your personal and business accounts, how you can start building your business credit history and what you need to consider to get your startup ready to accept funding.
+    br
+    h6 All Financial Fitness sessions will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.) each day from 11am- 2pm. Please use the "Book A Slot" button below to schedule a time.
+    .basecamp-bookings
+      = link_to 'Book a financial fitness session', page_path(page: 'basecamp/financial_fitness'), class: 'btn primary'

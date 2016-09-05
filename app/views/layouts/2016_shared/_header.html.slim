@@ -38,11 +38,7 @@ header.masthead(data-bindable='toggle-nav')
       div
         = link_to 'Contact', page_path(page: 'contact')
       div
-        = link_to 'FAQ', page_path(page: 'faq')
-      div
         = link_to 'Assets', page_path(page: 'assets')
-      div
-        = link_to 'Pitch Challenge', page_path(page: 'pitch')
       - if signed_in? && current_user.is_admin?
         div
           = link_to 'Admin', admin_root_path

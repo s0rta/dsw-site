@@ -1,28 +1,22 @@
 @import ../config
 
-.basecamp-logo
-  display: none
-  max-width: 200px
-  margin-right: 40px
-  margin-bottom: 20px
+header.basecamp
+  width: 100%
+  margin-bottom: 60px
+  .basecamp-logo-container
+    margin: 0 auto
+    width: 200px
+    height: auto
+    img
+      width: 100%
+.basecamp-headline
+  margin-bottom: 30px
+  color: $copy-color-bold
+  text-transform: uppercase
+  font-size: 30px
 
-.basecamp-hero-copy
-  display: inline-block
-  max-width: 400px
-  vertical-align: 20px
-
-
-#new_site_controller.basecamp-action
-  section.common.basecamp-info
-    padding: 0
-    h1
-      text-transform: capitalize
-    .section-image
-      background: image-url('2016_redesign/basecamp.jpg') no-repeat
-      background-size: cover
-      background-position: 50% 50%
-      height: 300px
-
-@media(min-width: 680px)
-  .basecamp-logo
-    display: inline-block
+.section-content
+  .basecamp-bookings
+    margin-top: 30px
+    select
+      margin-bottom: 10px
