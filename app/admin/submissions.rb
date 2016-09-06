@@ -109,6 +109,12 @@ ActiveAdmin.register Submission do
     column(:state) do |submission|
       submission.state.to_s.titleize
     end
+    column(:venue_name) do |s|
+      s.venue.try(:name)
+    end
+    column(:venue_address) do |s|
+      s.venue.try(:combined_address)
+    end
   end
 
   filter :title
