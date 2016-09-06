@@ -84,12 +84,13 @@ ActiveAdmin.register Submission do
       submission.venue.try(:name)
     end
     column :format
-    column :start_day
-    column :end_day
+    column(:start_day) { |s| s.human_start_day }
+    column(:start_time) { |s| s.human_start_time }
+    column(:end_day) { |s| s.human_end_day }
+    column(:end_time) { |s| s.human_end_time }
     column :submitter_name do |submission|
       submission.submitter.try(:name)
     end
-    column :is_public
     column :created_at
     column :updated_at
     column :company_name
