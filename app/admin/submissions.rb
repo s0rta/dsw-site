@@ -65,6 +65,7 @@ ActiveAdmin.register Submission do
     end
     column :submitter, sortable: 'users.name'
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
+    column(:pending_updates, sortable: false) { |s| s.proposed_updates.present? ? 'Yes' : 'No' }
     actions
   end
 
