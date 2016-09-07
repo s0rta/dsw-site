@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'helpscout_hooks/show'
 
+  get '/assets', to: redirect('/contact/assets')
+
   if Rails.env.development?
     mount MailPreview => 'mailers'
   end
@@ -54,4 +56,5 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   get '/(*page)', to: 'new_site#index', as: :page, defaults: { page: :index }
+  root to: 'new_site#index'
 end
