@@ -13,15 +13,15 @@ section.common.sm-centered
     h6 Sign up for a 20-minute, 1:1 meeting with mentors from all walks of the startup world. All mentor office hours will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.)
     br
     h6 Mentor Office Hours are organized by the Entrepreneurs Foundation of Colorado &mdash; a network of Colorado entrepreneurs whose companies share a common commitment to pledge a portion of founding equity or a portion of annual profits to the communities in which they reside.
-    form.basecamp-bookings
+    form.basecamp-bookings(data-bindable="booking-dropdown")
       select
         option Choose a Mentor
         - mentor_sessions.each do |m|
-          option
+          option(value="#{m[:signup_url]}")
             = m[:title]
             | &nbsp; &vert; &nbsp;
             = m[:timeslot]
-    = link_to 'Book It', page_path(page: 'basecamp/mentor'), class: 'btn primary'
+      input(type="submit" value="Book It" class="btn primary")
 
 section.common.sm-centered
   .section-content
@@ -31,15 +31,15 @@ section.common.sm-centered
     h6 Individuals can sign up for 15 minute slots with companies and have the opportunity to pitch potential partnership ideas, get feedback on products and/or develop their network.
     br
     h6 All Biz Dev Days sessions will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.)
-    form.basecamp-bookings
+    form.basecamp-bookings(data-bindable="booking-dropdown")
       select
         option Choose a Company
         - bizdev_sessions.each do |m|
-          option
+          option(value="#{m[:signup_url]}")
             = m[:title]
             | &nbsp; &vert; &nbsp;
             = m[:timeslot]
-    = link_to 'Book It', page_path(page: 'basecamp/bizdev'), class: 'btn primary'
+      input(type="submit" value="Book It" class="btn primary")
 
 section.common.sm-centered
   .section-content
@@ -48,4 +48,4 @@ section.common.sm-centered
     br
     h6 All Financial Fitness sessions will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.) each day from 11am- 2pm. Please use the "Book A Slot" button below to schedule a time.
     .basecamp-bookings
-      = link_to 'Book a financial fitness session', page_path(page: 'basecamp/financial_fitness'), class: 'btn primary'
+      = link_to 'Book a financial fitness session', 'https://www.slotted.co/denfinancialfitness', class: 'btn primary'
