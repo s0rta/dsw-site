@@ -1,6 +1,7 @@
 @import ../config
 
-#new_site_controller.index-action
+#new_site_controller.index-action,
+#new_site_controller.basecamp-action
   section.hero
     h1, h2
       text-align: center
@@ -92,7 +93,7 @@
       flex-direction: column
       justify-content: space-between
       width: 100%
-      margin:  0 auto
+      margin:  40px auto 0 auto
       .btn:first-child
         margin-bottom: 10px
 
@@ -132,7 +133,8 @@
         margin-bottom: 30px
 
 @media(max-width: 400px)
-  #new_site_controller.index-action
+  #new_site_controller.index-action,
+  #new_site_controller.basecamp-action
     section.hero
       h1.countdown
         margin-bottom: 0
@@ -167,7 +169,8 @@
         background: image-url('2016_redesign/2016_logo_sm.svg') no-repeat center
 
 @media(min-width: 640px)
-  #new_site_controller.index-action
+  #new_site_controller.index-action,
+  #new_site_controller.basecamp-action
     section.hero
       h1.countdown
         font-size: 85px
@@ -183,13 +186,15 @@
           margin-right: 10px
 
 @media(min-width: 740px)
-  #new_site_controller.index-action
+  #new_site_controller.index-action,
+  #new_site_controller.basecamp-action
     section.common.title-sponsors
       .title-logo-container
         flex-direction: row
 
 @media(min-width: 1200px)
-  #new_site_controller.index-action
+  #new_site_controller.index-action,
+  #new_site_controller.basecamp-action
     section.hero-cta
       article
         display: inline-block

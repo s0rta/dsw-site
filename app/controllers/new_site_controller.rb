@@ -3,7 +3,7 @@ class NewSiteController < ApplicationController
   before_filter :verify_page_exists!
 
   def index
-    render template: "new_site/#{params[:page]}"
+    render template: "new_site/#{params[:page].presence || 'index'}"
   end
 
   private

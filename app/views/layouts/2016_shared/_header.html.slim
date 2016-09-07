@@ -9,40 +9,36 @@ header.masthead(data-bindable='toggle-nav')
     .inner-modal-container
       a.close href='#'
         = render partial: 'icons/x_mark'
+      div
+        = link_to 'Home', root_path
       - if signed_in?
         div
           = link_to 'My Dashboard', mine_submissions_path
       - elsif FeatureToggler.submission_active?
         div
           = link_to 'Submit Proposal', new_submission_path
+      - elsif FeatureToggler.registration_active? && !registered?
+        div
+          = link_to 'Register', new_registration_path
       - else
         div
-          = link_to 'Sign In', mine_submissions_path
+          = link_to 'Register / Sign In', mine_submissions_path
       - if FeatureToggler.feedback_active?
         div
           = link_to 'Panel Picker', submissions_path
-      - if FeatureToggler.registration_active? && !registered?
-        div
-          = link_to 'Register', new_registration_path
       div
         = link_to 'Program', page_path(page: 'program')
+      div
+        = link_to 'Basecamp', page_path(page: 'basecamp')
       - if FeatureToggler.registration_active?
         div
           = link_to 'Schedule', schedules_path
-      div
-        = link_to 'Basecamp', page_path(page: 'basecamp')
       div
         = link_to 'Attendees', page_path(page: 'attendees')
       div
         = link_to 'Sponsors', page_path(page: 'sponsors')
       div
         = link_to 'Contact', page_path(page: 'contact')
-      div
-        = link_to 'FAQ', page_path(page: 'faq')
-      div
-        = link_to 'Assets', page_path(page: 'assets')
-      div
-        = link_to 'Pitch Challenge', page_path(page: 'pitch')
       - if signed_in? && current_user.is_admin?
         div
           = link_to 'Admin', admin_root_path

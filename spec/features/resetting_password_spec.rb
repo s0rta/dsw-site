@@ -7,7 +7,7 @@ feature 'Resetting my password' do
                   password: 'password')
     visit '/'
     find('#menu-icon').click
-    click_on 'Sign In'
+    click_on 'Register / Sign In'
     click_on 'Reset your password'
     fill_in 'E-mail Address', with: 'test@example.com'
     click_on 'Send reset instructions'
