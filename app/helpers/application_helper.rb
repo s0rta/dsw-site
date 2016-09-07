@@ -97,7 +97,7 @@ module ApplicationHelper
     [
       { title: 'HomeAdvisor', timeslot: 'Monday 9/12: 2:30-4pm', signup_url: 'http://slottd.com/events/f9256ejikx/slots' },
       { title: 'Zayo Group', timeslot: 'Monday 9/12: 2:30-4pm', signup_url: 'http://slottd.com/events/pxe8mwl29r/slots' },
-      { title: 'Charter Communications', timeslot: 'Tueday 9/13: 2:30-4pm', signup_url: 'http://slottd.com/events/w8iqck9qzo/slots' },
+      { title: 'Charter Communications', timeslot: 'Tuesday 9/13: 2:30-4pm', signup_url: 'http://slottd.com/events/w8iqck9qzo/slots' },
       { title: 'Charter Communications', timeslot: 'Wednesday 9/14: 2:30-4pm', signup_url: 'http://slottd.com/events/d5w5irdf2c/slots' },
       { title: 'Twitter', timeslot: 'Wednesday 9/14: 2:30-4pm', signup_url: 'http://slottd.com/events/h19nlsc8o9/slots' },
       { title: 'DaVita', timeslot: 'Thursday 9/15: 2:30-4pm', signup_url: 'http://slottd.com/events/374xrbebbu/slots' },
