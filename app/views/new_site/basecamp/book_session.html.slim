@@ -15,7 +15,7 @@ section.common.sm-centered
     h6 Mentor Office Hours are organized by the Entrepreneurs Foundation of Colorado &mdash; a network of Colorado entrepreneurs whose companies share a common commitment to pledge a portion of founding equity or a portion of annual profits to the communities in which they reside.
     form.basecamp-bookings(data-bindable="booking-dropdown")
       select
-        option Choose a Mentor
+        option(value="#") Choose a Mentor
         - mentor_sessions.each do |m|
           option(value="#{m[:signup_url]}")
             = m[:title]
@@ -33,7 +33,7 @@ section.common.sm-centered
     h6 All Biz Dev Days sessions will be held at Basecamp, 1515 Arapahoe St. (corner of Arapahoe and 16th St.)
     form.basecamp-bookings(data-bindable="booking-dropdown")
       select
-        option Choose a Company
+        option(value="#") Choose a Company
         - bizdev_sessions.each do |m|
           option(value="#{m[:signup_url]}")
             = m[:title]
