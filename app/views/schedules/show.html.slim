@@ -25,7 +25,7 @@ section.common
         span Map It
       .location-details
         p = @session.venue.name
-        p = @session.venue.address
+        p = @session.venue.short_address
       .location-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
     - else
       .location-details
