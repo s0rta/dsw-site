@@ -8,6 +8,7 @@ ActiveAdmin.register Venue do
                 :description,
                 :name,
                 :address,
+                :suite_or_unit,
                 :city,
                 :state
 
