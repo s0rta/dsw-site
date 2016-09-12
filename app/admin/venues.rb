@@ -10,7 +10,8 @@ ActiveAdmin.register Venue do
                 :address,
                 :suite_or_unit,
                 :city,
-                :state
+                :state,
+                :capacity
 
   index do
     selectable_column

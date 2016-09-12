@@ -3,6 +3,8 @@ class Submission < ActiveRecord::Base
   WEEK_START = ActiveSupport::TimeZone.new('America/Denver').local(2016, 9, 12).at_beginning_of_day.freeze
   PUBLIC_STATES = %w(open_for_voting accepted confirmed).freeze
 
+  SHOW_RATE = 0.3
+
   FORMATS = [ 'Presentation',
               'Panel',
               'Workshop',
@@ -225,6 +227,14 @@ class Submission < ActiveRecord::Base
     track.chairs.each do |chair|
       NotificationsMailer.notify_of_submission_update(chair, self).deliver_now
     end
+  end
+
+  def tags
+    [ cluster.try(:name), (popular? ? 'Popular' : nil) ].compact * ', '
+  end
+
+  def popular?
+    user_registrations.count * SHOW_RATE > (venue.try(:capacity) || Venue::DEFAULT_CAPACITY)
   end
 
   private

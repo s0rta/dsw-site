@@ -1,5 +1,7 @@
 class Venue < ActiveRecord::Base
 
+  DEFAULT_CAPACITY = 75
+
   def self.alphabetical
     order(:name)
   end
