@@ -655,7 +655,8 @@ CREATE TABLE venues (
     address character varying(255),
     city character varying(255),
     state character varying(255),
-    suite_or_unit character varying
+    suite_or_unit character varying,
+    capacity integer DEFAULT 0
 );
 
 
@@ -1613,4 +1614,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160823024807');
 INSERT INTO schema_migrations (version) VALUES ('20160823044119');
 
 INSERT INTO schema_migrations (version) VALUES ('20160909225854');
+
+INSERT INTO schema_migrations (version) VALUES ('20160912034451');
 
