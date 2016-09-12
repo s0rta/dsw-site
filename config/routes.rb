@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'helpscout_hooks/show'
 
   get '/assets', to: redirect('/contact/assets')
+  get '/faq', to: redirect('/contact/faq')
 
   if Rails.env.development?
     mount MailPreview => 'mailers'
