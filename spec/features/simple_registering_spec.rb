@@ -22,7 +22,8 @@ feature 'Registering to attend (via kiosk)' do
 
   scenario 'Registering to attend' do
     visit '/'
-    visit page.find_link('Register Now')[:href]
+    find('#menu-icon').click
+    click_link 'Register'
     fill_in 'What is your name?', with: 'Test Registrant'
     fill_in 'What is your e-mail address?', with: 'test2@example.com'
     select 'Male', from: 'registration_gender'
@@ -42,7 +43,8 @@ feature 'Registering to attend (via kiosk)' do
                  password_confirmation: 'password',
                  name: 'Preexisting Registrant')
     visit '/'
-    visit page.find_link('Register Now')[:href]
+    find('#menu-icon').click
+    click_link 'Register'
     fill_in 'What is your name?', with: 'Test Registrant'
     fill_in 'What is your e-mail address?', with: 'test2@example.com'
     select 'Male', from: 'registration_gender'
