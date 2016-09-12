@@ -14,7 +14,11 @@ class RegistrationsController < ApplicationController
     if simple_registration?
       password = SecureRandom.hex
       @registration = Registration.new(registration_params)
-      @user = @registration.build_user(email: registration_params[:email], password: password, password_confirmation: password)
+      @registration.user = User.first_or_initialize(email: registration_user_params[:email]) do |u|
+        u.assign_attributes(password: password,
+                            password_confirmation: password,
+                            name: registration_user_params[:name])
+      end
     else
       @registration = current_user.registrations.build(registration_params)
     end
@@ -28,14 +32,18 @@ class RegistrationsController < ApplicationController
   private
 
   def registration_params
-    params.fetch(:registration, {}).permit(:contact_email,
-                                           :year,
+    params.fetch(:registration, {}).permit(:year,
                                            :zip,
                                            :company,
                                            :gender,
                                            :primary_role,
                                            :age_range,
                                            :track_id)
+  end
+
+  def registration_user_params
+    params.fetch(:registration, {}).permit(:name,
+                                           :email)
   end
 
   def check_registration_open

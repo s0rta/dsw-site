@@ -16,6 +16,13 @@ section.common.green
 section.common.sm-centered
   .section-content
     = form_for(@registration, method: :post, url: registration_path) do |f|
+      - if simple_registration?
+        = f.label :name, 'What is your name?'
+        = f.text_field :name, value: ''
+
+        = f.label :email, 'What is your e-mail address?'
+        = f.text_field :email, value: ''
+
       = f.label :gender, 'What gender do you identify as?'
       = f.select :gender, collection: [ 'Male', 'Female', 'Decline to say' ], required: 'required'
 

@@ -6,6 +6,7 @@ gem 'rails', '~> 4.2.6'
 gem 'rake'
 gem 'pg'
 gem 'puma'
+gem 'rack-timeout'
 
 gem 'jquery-rails'
 gem 'haml-rails'
