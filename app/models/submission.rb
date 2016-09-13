@@ -184,6 +184,14 @@ class Submission < ActiveRecord::Base
     DAYS[end_day]
   end
 
+  def ical_location
+    if venue
+      "#{venue.name}, #{venue.combined_address}"
+    else
+      'Location TBA'
+    end
+  end
+
   def start_datetime
     datetime = WEEK_START + (start_day.to_i - 2).days
     datetime += start_hour.hours if start_hour

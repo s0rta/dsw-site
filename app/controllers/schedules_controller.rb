@@ -76,7 +76,7 @@ class SchedulesController < ApplicationController
           event.dtend = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
           event.summary = submission.title
           event.description = "#{submission.description}\n\nMore details: #{schedule_url(id: submission.id)}"
-          event.location = submission.human_location_name
+          event.location = submission.ical_location
           event.ip_class = 'PUBLIC'
           event.created = submission.created_at
           event.last_modified = submission.updated_at
