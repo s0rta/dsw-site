@@ -139,6 +139,10 @@ class Submission < ActiveRecord::Base
     end
   end
 
+  def self.with_slides_or_video
+    where("(slides_url IS NOT NULL AND slides_url <> '') OR (video_url IS NOT NULL AND video_url <> '')").order('year DESC')
+  end
+
   # State machine
   include SimpleStates
 
