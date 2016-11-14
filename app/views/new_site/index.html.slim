@@ -1,6 +1,6 @@
 section.hero
-  / h1.countdown #{time_remaining_to_deadline('2016/09/12')}
-  h2 September 12 - 16, 2016
+  h1.countdown #{time_remaining_to_deadline('2017/09/25')}
+  h2 September 25 - 29, 2017
   .section-content
     h3 Denver Startup Week. Celebrating the entrepreneurial spirit.
 
@@ -34,25 +34,32 @@ section.hero-cta-4up
           h3 Register and build your own schedule
           h6 This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
           = link_to 'Build Your Schedule', schedules_path, class: 'btn green'
-    article.blue
-      .section-content
-        h2 Chase Basecamp
-        h3 Immerse yourself in the heart of it all
-        h6 Whether you want to find inspiration, hone your business idea, or just refuel, Basecamp powered by Chase is your home base!
-        = link_to 'Learn More', page_path(page: 'basecamp'), class: 'btn blue'
-  section.hero-cta
+    - else
+      article.green
+        .section-content
+          h2 Take the Survey
+          h3 Help us make next year even better
+          h6 We want your candid feedback on what you loved, hated, and want to do differently next year. Help us make 2017 even better!
+          = link_to 'Take the Survey', "https://docs.google.com/forms/d/e/1FAIpQLSfP3VtAo4zymbrzBa1W1zJhtMnb_xsZgFiBq9jEQ-0Xf33GOA/viewform", class: 'btn green'
     article.purple
       .section-content
         h2 Get Involved
         h3 Be a part of something epic
         h6 Denver Startup Week is powered by the community. Get involved. Contact us now for volunteer opportunities.
         = link_to 'Contact', page_path(page: 'contact'), class: 'btn purple'
-    article.teal
-      .section-content
-        h2 Kickoff Breakfast
-        h3 Check out the live stream of the Kickoff breakfast!
-        h6 For the first time ever, we're live streaming the event that gets the whole week rolling.
-        = link_to 'Watch it live', 'https://youtu.be/Ks3GwL-j1Nk', class: 'btn teal'
+  /* section.hero-cta */
+  /*   article.blue */
+  /*     .section-content */
+  /*       h2 Chase Basecamp */
+  /*       h3 Immerse yourself in the heart of it all */
+  /*       h6 Whether you want to find inspiration, hone your business idea, or just refuel, Basecamp powered by Chase is your home base! */
+  /*       = link_to 'Learn More', page_path(page: 'basecamp'), class: 'btn blue' */
+  /*   article.teal */
+  /*     .section-content */
+  /*       h2 Kickoff Breakfast */
+  /*       h3 Check out the live stream of the Kickoff breakfast! */
+  /*       h6 For the first time ever, we're live streaming the event that gets the whole week rolling. */
+  /*       = link_to 'Watch it live', 'https://youtu.be/Ks3GwL-j1Nk', class: 'btn teal' */
 
 section.common.the-what
   .section-content
