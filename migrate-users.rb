@@ -26,9 +26,11 @@ client = Inversoft::PassportClient.new(api_key, passport_url)
 users = []
 rs.each do |row|
   users << {
+      :active => true,
       :fullName => row['name'],
       :email => row['email'],
-      :password => row['encrypted_password'],
+      :password => row['encrypted_password'][7..60],
+      :verified => true,
       :encryptionScheme => 'bcrypt',
       :factor => 10,
       :salt => '',
