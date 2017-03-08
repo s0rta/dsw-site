@@ -74,6 +74,9 @@ gem 'redis-objects'
 # Background processing
 gem 'sucker_punch'
 
+# Passport
+gem 'inversoft-passport_client'
+
 group :development do
   gem 'spring', require: false
   gem 'spring-commands-rspec', require: false

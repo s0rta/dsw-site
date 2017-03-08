@@ -18,3 +18,7 @@
 /public/uploads
 /public/assets
 MK-TODO.md
+
+# IntelliJ files and directories
+*.iml
+.idea

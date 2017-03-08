@@ -2,11 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.4.4
--- Dumped by pg_dump version 9.5.4
+-- Dumped from database version 9.6.1
+-- Dumped by pg_dump version 9.6.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -41,20 +42,6 @@ CREATE EXTENSION IF NOT EXISTS intarray WITH SCHEMA public;
 COMMENT ON EXTENSION intarray IS 'functions, operators, and index support for 1-D arrays of integers';
 
 
---
--- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
-
-
---
--- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
-
-
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -67,14 +54,14 @@ SET default_with_oids = false;
 
 CREATE TABLE active_admin_comments (
     id integer NOT NULL,
-    resource_id character varying(255) NOT NULL,
-    resource_type character varying(255) NOT NULL,
+    resource_id character varying NOT NULL,
+    resource_type character varying NOT NULL,
     author_id integer,
-    author_type character varying(255),
+    author_type character varying,
     body text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    namespace character varying(255)
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    namespace character varying
 );
 
 
@@ -135,14 +122,14 @@ ALTER SEQUENCE clusters_id_seq OWNED BY clusters.id;
 
 CREATE TABLE cmsimple_images (
     id integer NOT NULL,
-    attachment character varying(255),
-    width character varying(255),
-    height character varying(255),
-    file_size character varying(255),
-    content_type character varying(255),
-    title character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    attachment character varying,
+    width character varying,
+    height character varying,
+    file_size character varying,
+    content_type character varying,
+    title character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -171,17 +158,17 @@ ALTER SEQUENCE cmsimple_images_id_seq OWNED BY cmsimple_images.id;
 
 CREATE TABLE cmsimple_pages (
     id integer NOT NULL,
-    uri character varying(255) NOT NULL,
-    template character varying(255),
+    uri character varying NOT NULL,
+    template character varying,
     content text,
-    title character varying(255),
+    title character varying,
     parent_id integer,
     "position" integer DEFAULT 0,
-    slug character varying(255),
+    slug character varying,
     is_root boolean DEFAULT false,
-    keywords character varying(255),
+    keywords character varying,
     description text,
-    browser_title character varying(255),
+    browser_title character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     published_at timestamp without time zone
@@ -213,11 +200,11 @@ ALTER SEQUENCE cmsimple_pages_id_seq OWNED BY cmsimple_pages.id;
 
 CREATE TABLE cmsimple_paths (
     id integer NOT NULL,
-    uri character varying(255),
-    redirect_uri character varying(255),
+    uri character varying,
+    redirect_uri character varying,
     page_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -247,11 +234,11 @@ ALTER SEQUENCE cmsimple_paths_id_seq OWNED BY cmsimple_paths.id;
 CREATE TABLE cmsimple_versions (
     id integer NOT NULL,
     content text,
-    template character varying(255),
+    template character varying,
     published_at timestamp without time zone,
     page_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -283,8 +270,8 @@ CREATE TABLE comments (
     user_id integer,
     submission_id integer,
     body text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -313,12 +300,12 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 CREATE TABLE general_inquiries (
     id integer NOT NULL,
-    contact_name character varying(255),
-    contact_email character varying(255),
+    contact_name character varying,
+    contact_email character varying,
     interest text,
     notes text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -347,11 +334,11 @@ ALTER SEQUENCE general_inquiries_id_seq OWNED BY general_inquiries.id;
 
 CREATE TABLE newsletter_signups (
     id integer NOT NULL,
-    email character varying(255),
-    first_name character varying(255),
-    last_name character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    email character varying,
+    first_name character varying,
+    last_name character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -382,15 +369,15 @@ CREATE TABLE registrations (
     id integer NOT NULL,
     user_id integer,
     year integer,
-    contact_email character varying(255),
-    zip character varying(255),
-    company character varying(255),
-    gender character varying(255),
-    primary_role character varying(255),
+    contact_email character varying,
+    zip character varying,
+    company character varying,
+    gender character varying,
+    primary_role character varying,
     track_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    calendar_token character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    calendar_token character varying,
     age_range character varying
 );
 
@@ -419,7 +406,7 @@ ALTER SEQUENCE registrations_id_seq OWNED BY registrations.id;
 --
 
 CREATE TABLE schema_migrations (
-    version character varying(255) NOT NULL
+    version character varying NOT NULL
 );
 
 
@@ -431,8 +418,8 @@ CREATE TABLE session_registrations (
     id integer NOT NULL,
     registration_id integer,
     submission_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -456,41 +443,6 @@ ALTER SEQUENCE session_registrations_id_seq OWNED BY session_registrations.id;
 
 
 --
--- Name: sponsor_signups; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE sponsor_signups (
-    id integer NOT NULL,
-    contact_name character varying(255),
-    contact_email character varying(255),
-    company character varying(255),
-    interest text,
-    notes text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: sponsor_signups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE sponsor_signups_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: sponsor_signups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE sponsor_signups_id_seq OWNED BY sponsor_signups.id;
-
-
---
 -- Name: submissions; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -498,25 +450,25 @@ CREATE TABLE submissions (
     id integer NOT NULL,
     submitter_id integer,
     track_id integer,
-    format character varying(255),
-    location character varying(255),
-    time_range character varying(255),
-    title character varying(255),
+    format character varying,
+    location character varying,
+    time_range character varying,
+    title character varying,
     description text,
     notes text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    contact_email character varying(255),
-    estimated_size character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    contact_email character varying,
+    estimated_size character varying,
     is_confirmed boolean DEFAULT false NOT NULL,
     is_public boolean DEFAULT true NOT NULL,
     venue_id integer,
     volunteers_needed integer,
     budget_needed integer,
-    start_hour double precision DEFAULT 0 NOT NULL,
-    end_hour double precision DEFAULT 0 NOT NULL,
+    start_hour double precision DEFAULT 0.0 NOT NULL,
+    end_hour double precision DEFAULT 0.0 NOT NULL,
     year integer,
-    state character varying(255),
+    state character varying,
     start_day integer,
     end_day integer,
     internal_notes text,
@@ -553,11 +505,11 @@ ALTER SEQUENCE submissions_id_seq OWNED BY submissions.id;
 
 CREATE TABLE tracks (
     id integer NOT NULL,
-    name character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    icon character varying(255),
-    email_alias character varying(255),
+    name character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    icon character varying,
+    email_alias character varying,
     display_order integer DEFAULT 0 NOT NULL,
     is_submittable boolean DEFAULT false NOT NULL,
     description text,
@@ -600,23 +552,23 @@ CREATE TABLE tracks_users (
 
 CREATE TABLE users (
     id integer NOT NULL,
-    uid character varying(255),
-    name character varying(255),
-    email character varying(255),
-    description character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    uid character varying,
+    name character varying,
+    email character varying,
+    description character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     is_admin boolean DEFAULT false NOT NULL,
-    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
-    reset_password_token character varying(255),
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
     reset_password_sent_at timestamp without time zone,
     remember_created_at timestamp without time zone,
     sign_in_count integer DEFAULT 0 NOT NULL,
     current_sign_in_at timestamp without time zone,
     last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying(255),
-    last_sign_in_ip character varying(255),
-    provider character varying(255)
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
+    provider character varying
 );
 
 
@@ -645,16 +597,16 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 CREATE TABLE venues (
     id integer NOT NULL,
-    name character varying(255),
+    name character varying,
     description text,
-    contact_name character varying(255),
-    contact_email character varying(255),
-    contact_phone character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    address character varying(255),
-    city character varying(255),
-    state character varying(255),
+    contact_name character varying,
+    contact_email character varying,
+    contact_phone character varying,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    address character varying,
+    city character varying,
+    state character varying,
     suite_or_unit character varying,
     capacity integer DEFAULT 0
 );
@@ -685,10 +637,10 @@ ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
 
 CREATE TABLE versions (
     id integer NOT NULL,
-    item_type character varying(255) NOT NULL,
+    item_type character varying NOT NULL,
     item_id integer NOT NULL,
-    event character varying(255) NOT NULL,
-    whodunnit character varying(255),
+    event character varying NOT NULL,
+    whodunnit character varying,
     object text,
     created_at timestamp without time zone
 );
@@ -854,8 +806,8 @@ CREATE TABLE votes (
     id integer NOT NULL,
     user_id integer,
     submission_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
 );
 
 
@@ -879,169 +831,162 @@ ALTER SEQUENCE votes_id_seq OWNED BY votes.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: clusters id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY clusters ALTER COLUMN id SET DEFAULT nextval('clusters_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cmsimple_images id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_images ALTER COLUMN id SET DEFAULT nextval('cmsimple_images_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cmsimple_pages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_pages ALTER COLUMN id SET DEFAULT nextval('cmsimple_pages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cmsimple_paths id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_paths ALTER COLUMN id SET DEFAULT nextval('cmsimple_paths_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cmsimple_versions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_versions ALTER COLUMN id SET DEFAULT nextval('cmsimple_versions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: general_inquiries id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY general_inquiries ALTER COLUMN id SET DEFAULT nextval('general_inquiries_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: newsletter_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY newsletter_signups ALTER COLUMN id SET DEFAULT nextval('newsletter_signups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: registrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY registrations ALTER COLUMN id SET DEFAULT nextval('registrations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: session_registrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY session_registrations ALTER COLUMN id SET DEFAULT nextval('session_registrations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sponsor_signups ALTER COLUMN id SET DEFAULT nextval('sponsor_signups_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: submissions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY submissions ALTER COLUMN id SET DEFAULT nextval('submissions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: tracks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: venues id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: versions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY versions ALTER COLUMN id SET DEFAULT nextval('versions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteer_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteer_shifts ALTER COLUMN id SET DEFAULT nextval('volunteer_shifts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteership_assigned_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_assigned_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_assigned_shifts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteership_available_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_available_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_available_shifts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteerships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteerships ALTER COLUMN id SET DEFAULT nextval('volunteerships_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: votes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regclass);
 
 
 --
--- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_admin_comments active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY active_admin_comments
-    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
 
 
 --
--- Name: clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: clusters clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY clusters
@@ -1049,7 +994,7 @@ ALTER TABLE ONLY clusters
 
 
 --
--- Name: cmsimple_images_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cmsimple_images cmsimple_images_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_images
@@ -1057,7 +1002,7 @@ ALTER TABLE ONLY cmsimple_images
 
 
 --
--- Name: cmsimple_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cmsimple_pages cmsimple_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_pages
@@ -1065,7 +1010,7 @@ ALTER TABLE ONLY cmsimple_pages
 
 
 --
--- Name: cmsimple_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cmsimple_paths cmsimple_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_paths
@@ -1073,7 +1018,7 @@ ALTER TABLE ONLY cmsimple_paths
 
 
 --
--- Name: cmsimple_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cmsimple_versions cmsimple_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_versions
@@ -1081,7 +1026,7 @@ ALTER TABLE ONLY cmsimple_versions
 
 
 --
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY comments
@@ -1089,7 +1034,7 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: general_inquiries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: general_inquiries general_inquiries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY general_inquiries
@@ -1097,7 +1042,7 @@ ALTER TABLE ONLY general_inquiries
 
 
 --
--- Name: newsletter_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: newsletter_signups newsletter_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY newsletter_signups
@@ -1105,7 +1050,7 @@ ALTER TABLE ONLY newsletter_signups
 
 
 --
--- Name: registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: registrations registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY registrations
@@ -1113,7 +1058,7 @@ ALTER TABLE ONLY registrations
 
 
 --
--- Name: session_registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: session_registrations session_registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY session_registrations
@@ -1121,15 +1066,7 @@ ALTER TABLE ONLY session_registrations
 
 
 --
--- Name: sponsor_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY sponsor_signups
-    ADD CONSTRAINT sponsor_signups_pkey PRIMARY KEY (id);
-
-
---
--- Name: submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: submissions submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY submissions
@@ -1137,7 +1074,7 @@ ALTER TABLE ONLY submissions
 
 
 --
--- Name: tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tracks tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tracks
@@ -1145,7 +1082,7 @@ ALTER TABLE ONLY tracks
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY users
@@ -1153,7 +1090,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: venues_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: venues venues_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY venues
@@ -1161,7 +1098,7 @@ ALTER TABLE ONLY venues
 
 
 --
--- Name: versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: versions versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY versions
@@ -1169,7 +1106,7 @@ ALTER TABLE ONLY versions
 
 
 --
--- Name: volunteer_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteer_shifts volunteer_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteer_shifts
@@ -1177,7 +1114,7 @@ ALTER TABLE ONLY volunteer_shifts
 
 
 --
--- Name: volunteership_assigned_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_assigned_shifts volunteership_assigned_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_assigned_shifts
@@ -1185,7 +1122,7 @@ ALTER TABLE ONLY volunteership_assigned_shifts
 
 
 --
--- Name: volunteership_available_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_available_shifts volunteership_available_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_available_shifts
@@ -1193,7 +1130,7 @@ ALTER TABLE ONLY volunteership_available_shifts
 
 
 --
--- Name: volunteerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteerships volunteerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteerships
@@ -1201,7 +1138,7 @@ ALTER TABLE ONLY volunteerships
 
 
 --
--- Name: votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: votes votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY votes
@@ -1244,10 +1181,10 @@ CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments U
 
 
 --
--- Name: index_admin_notes_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_admin_notes_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
+CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
 
 
 --
@@ -1258,17 +1195,17 @@ CREATE INDEX index_cmsimple_pages_on_parent_id ON cmsimple_pages USING btree (pa
 
 
 --
--- Name: index_cmsimple_pages_on_path; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_cmsimple_pages_on_path ON cmsimple_pages USING btree (uri);
-
-
---
 -- Name: index_cmsimple_pages_on_published_at; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_cmsimple_pages_on_published_at ON cmsimple_pages USING btree (published_at);
+
+
+--
+-- Name: index_cmsimple_pages_on_uri; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_cmsimple_pages_on_uri ON cmsimple_pages USING btree (uri);
 
 
 --
@@ -1412,7 +1349,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
--- Name: fk_rails_26e12c935b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteerships fk_rails_26e12c935b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteerships
@@ -1420,7 +1357,7 @@ ALTER TABLE ONLY volunteerships
 
 
 --
--- Name: fk_rails_92f98cffc7; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_assigned_shifts fk_rails_92f98cffc7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_assigned_shifts
@@ -1428,7 +1365,7 @@ ALTER TABLE ONLY volunteership_assigned_shifts
 
 
 --
--- Name: fk_rails_9489760428; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_available_shifts fk_rails_9489760428; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_available_shifts
@@ -1436,7 +1373,7 @@ ALTER TABLE ONLY volunteership_available_shifts
 
 
 --
--- Name: fk_rails_b1f4aeb35b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_assigned_shifts fk_rails_b1f4aeb35b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_assigned_shifts
@@ -1444,7 +1381,7 @@ ALTER TABLE ONLY volunteership_assigned_shifts
 
 
 --
--- Name: fk_rails_e76f764d04; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_available_shifts fk_rails_e76f764d04; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_available_shifts
@@ -1455,7 +1392,7 @@ ALTER TABLE ONLY volunteership_available_shifts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (version) VALUES ('20130116164738');
 
@@ -1540,8 +1477,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130901170747');
 INSERT INTO schema_migrations (version) VALUES ('20130905145009');
 
 INSERT INTO schema_migrations (version) VALUES ('20130905145241');
-
-INSERT INTO schema_migrations (version) VALUES ('20131203145334');
 
 INSERT INTO schema_migrations (version) VALUES ('20140415172844');
 
