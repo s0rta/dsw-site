@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get '/passport/login', to: 'passport#login', as: :passport_login 
   get '/passport/register', to: 'passport#register', as: :passport_register
+  get '/passport/forgot-password', to: 'passport#forgot_password', as: :passport_forgot_password
 
   resource :registration, only: [ :new, :create ] do
     collection do

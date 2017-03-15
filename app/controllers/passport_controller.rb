@@ -13,5 +13,10 @@ class PassportController < ApplicationController
     passport_auth = Inversoft::Auth.new
     passport_auth.register
   end
+
+  def forgot_password
+    passport_auth = Inversoft::Auth.new
+    passport_auth.forgot_password
+  end
   
 end

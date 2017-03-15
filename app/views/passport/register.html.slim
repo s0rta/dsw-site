@@ -6,25 +6,27 @@ section.common.green
   .section-content
     h1 Create An Account
     h6 Please create an account to submit sessions for consideration and voting.
-    
+    - flash.each do |key, message|
+      h6 = message
+
 section.common.sm-centered
   .section-content
     form.new_user
       label for="user_name" Name
       input type="text" name="user[name]" id="user_name" required="required" autofocus="autofocus"
-      
+
       label for="user_email" E-mail Address
       input type="text" name="user[email]" id="user_email" required="required"
 
       label for="user_password" Password
       input type="password" name="user[password]" id="user_password" required="required"
-      
+
       label for="user_password_confirmation" Confirm Password
       input type="password" name="user[password_confirmation]" id="user_password_confirmation" required="required"
-      
+
       input type="submit" name="commit" value="Sign Up"
-      
-  div.section-content.auth-links
-    a href="/passport/login" Sign in /
-    '
-    a href="/users/password/new" Reset your password
+
+  .section-content.auth-links
+    = link_to 'Sign In', passport_login_path
+    = ' / '
+    = link_to 'Reset your password', passport_forgot_password_path
