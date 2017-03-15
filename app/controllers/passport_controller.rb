@@ -4,15 +4,19 @@ class PassportController < ApplicationController
 
   respond_to :html
 
+  before_filter :setup
+
+  def setup
+    @passport_auth = Inversoft::Auth.new
+  end
+
   def login
 
   end
 
   def do_login
     user = params.require(:user)
-
-    passport_auth = Inversoft::Auth.new
-    passport_auth.login(user[:email], user[:password])
+    @passport_auth.login(user[:email], user[:password])
   end
 
   def register
@@ -22,10 +26,8 @@ class PassportController < ApplicationController
   def do_register
     user = params.require(:user)
 
-    # Verify Confirm Password Matches
-
-    passport_auth = Inversoft::Auth.new
-    passport_auth.register(user[:name], user[:email], user[:password])
+    # TODO Verify Confirm Password Matches before registering
+    @passport_auth.register(user[:name], user[:email], user[:password])
   end
 
   def forgot_password
@@ -33,12 +35,8 @@ class PassportController < ApplicationController
   end
 
   def do_forgot_password
-    Rails.logger.debug params.inspect
-
     email = params.require(:email)
-
-    passport_auth = Inversoft::Auth.new
-    passport_auth.forgot_password(email)
+    @passport_auth.forgot_password(email)
   end
   
 end
