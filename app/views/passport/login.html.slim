@@ -12,7 +12,10 @@ section.common.green
 
 section.common.sm-centered
   .section-content
-    form.login
+    form.login method="POST" action="/passport/login"
+      input name="utf8" type="hidden" value="✓"
+      input type="hidden" name="authenticity_token"
+
       label for="user_email" E-mail Address
       input type="text" name="user[email]" id="user_email" required="required" autofocus="autofocus"
 

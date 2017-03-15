@@ -12,9 +12,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  get '/passport/login', to: 'passport#login', as: :passport_login 
+  get '/passport/login', to: 'passport#login', as: :passport_login
   get '/passport/register', to: 'passport#register', as: :passport_register
   get '/passport/forgot-password', to: 'passport#forgot_password', as: :passport_forgot_password
+
+  post '/passport/login', to: 'passport#do_login', as: :passport_do_login
+  post '/passport/register', to: 'passport#do_register', as: :passport_do_register
+  post '/passport/forgot-password', to: 'passport#do_forgot_password', as: :passport_do_forgot_password
 
   resource :registration, only: [ :new, :create ] do
     collection do

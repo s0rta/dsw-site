@@ -11,7 +11,10 @@ section.common.green
 
 section.common.sm-centered
   .section-content
-    form.new_user
+    form.new_user method="POST" action="/passport/register"
+      input name="utf8" type="hidden" value="✓"
+      input type="hidden" name="authenticity_token"
+
       label for="user_name" Name
       input type="text" name="user[name]" id="user_name" required="required" autofocus="autofocus"
 
