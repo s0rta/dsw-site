@@ -17,6 +17,7 @@ class PassportController < ApplicationController
   def do_login
     user = params.require(:user)
     @passport_auth.login(user[:email], user[:password])
+    redirect_to schedules_path, notice: "Welcome back #{user[:email]}, good to see you."
   end
 
   def register
@@ -28,6 +29,7 @@ class PassportController < ApplicationController
 
     # TODO Verify Confirm Password Matches before registering
     @passport_auth.register(user[:name], user[:email], user[:password])
+    redirect_to schedules_path, notice: 'Thanks for registering! You will receive a confirmation e-mail shortly.'
   end
 
   def forgot_password
