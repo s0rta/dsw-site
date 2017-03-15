@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/assets', to: redirect('/contact/assets')
   get '/faq', to: redirect('/contact/faq')
 
+  get '/resources', to: redirect('/program')
+
   if Rails.env.development?
     mount MailPreview => 'mailers'
   end
