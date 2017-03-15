@@ -1,0 +1,25 @@
+nav
+  .section-content
+    h1 Sign In or Create an Account
+
+
+section.common.green
+  .section-content
+    h6 You'll need an account register, vote, volunteer, or submit sessions.
+    br
+    h6 If you previously logged in using LinkedIn, you must reset your password or create a new account.
+    
+section.common.sm-centered
+  .section-content
+    form.new_user
+      label for="user_email" E-mail Address
+      input type="text" name="user[email]" id="user_email" required="required" autofocus="autofocus"
+      label for="user_password" Password
+      
+      input type="password" name="user[password]" id="user_password" required="required"
+      input type="submit" name="commit" value="Sign In"
+
+  div.section-content.auth-links
+    a href="/passport/register" Register for an account /
+    '
+    a href="/users/password/new" Reset your password

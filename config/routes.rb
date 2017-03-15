@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     omniauth_callbacks: 'users/omniauth_callbacks' }
 
+  get '/passport/login', to: 'passport#login', as: :passport_login 
+  get '/passport/register', to: 'passport#register', as: :passport_register
+
   resource :registration, only: [ :new, :create ] do
     collection do
       get :closed
