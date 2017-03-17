@@ -2,10 +2,10 @@ module Inversoft
   class Auth
 
     def initialize
-      @client = Inversoft::PassportClient.new('dsw-api-key', 'https://demo-passport.inversoft.io',
+      @client = Inversoft::PassportClient.new('5918bf05-a35f-49e6-bb9d-3370340db7a2', 'https://dsw-passport.inversoft.io',
                                               ->(cr) { cr.success_response },
                                               ->(cr) { raise "Status = #{cr.status} error body = #{cr.error_response}" })
-      @application_id = '5d972ce8-4a45-4b10-b444-4017b40f6cb2'
+      @application_id = '62c7beed-9271-4850-a71a-ac3bca77bbfa'
     end
 
     def login(email, password)
