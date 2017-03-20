@@ -1,4 +1,4 @@
-= render partial: 'layouts/2016_shared/program_nav', locals: { item: :event_info }
+= render partial: 'layouts/shared/program_nav', locals: { item: :event_info }
 
 section.common.event-info
   .section-content
@@ -14,7 +14,7 @@ section.common.green
 
 / section.common
   / .section-image
-    / = image_tag '2016_redesign/crawford-hotel.png'
+    / = image_tag 'redesign/crawford-hotel.png'
 
 section.common.sm-centered
   / .section-content
@@ -41,4 +41,4 @@ section.common.sm-centered
     h6 Accessibility is of the utmost importance in cultivating a thriving community, which is why DSW will always be a free event. Our generous sponsors support the entrepreneurial ecosystem by underwriting the event, making it accessible for all.
     = link_to 'Become a sponsor', page_path(page: 'contact'), class: 'btn primary'
 
-= render partial: 'layouts/2016_shared/page_footer'
+= render partial: 'layouts/shared/page_footer'

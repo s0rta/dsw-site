@@ -1,4 +1,4 @@
-= render partial: 'layouts/2016_shared/basecamp_nav', locals: {item: :bizdev}
+= render partial: 'layouts/shared/basecamp_nav', locals: {item: :bizdev}
 
 section.common.blue
   .section-content
@@ -16,4 +16,4 @@ section.common.blue
       h6 = m[:timeslot]
       = link_to 'Book a slot', m[:signup_url], class: 'btn primary'
 
-= render partial: 'layouts/2016_shared/page_footer'
+= render partial: 'layouts/shared/page_footer'

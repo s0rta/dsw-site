@@ -1,4 +1,4 @@
-= render partial: 'layouts/2016_shared/program_nav', locals: {item: :previous}
+= render partial: 'layouts/shared/program_nav', locals: {item: :previous}
 
 .section-content
   - Submission.with_slides_or_video.group_by(&:year).each do |year, submissions|
@@ -21,4 +21,4 @@
               a.disabled
                 = render partial: 'icons/download'
 
-= render partial: 'layouts/2016_shared/page_footer'
+= render partial: 'layouts/shared/page_footer'

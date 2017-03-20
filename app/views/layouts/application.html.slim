@@ -5,14 +5,14 @@ html
     meta http-equiv="X-UA-Compatible" content="IE=Edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
     link rel="icon" type="image/png" href="/favicon.ico"
-    = stylesheet_link_tag '2016/application', media: 'all'
+    = stylesheet_link_tag 'redesign/application', media: 'all'
     = csrf_meta_tags
 
   body(id="#{controller_name}_controller" class="#{params[:page] || 'unknown'}-action")
-    = render partial: 'layouts/2016_shared/header'
+    = render partial: 'layouts/shared/header'
     main
       == yield
-    = render partial: 'layouts/2016_shared/site_footer'
+    = render partial: 'layouts/shared/site_footer'
     = javascript_include_tag :application
   javascript:
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
