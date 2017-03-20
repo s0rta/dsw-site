@@ -1,0 +1,22 @@
+button.accordion
+  h6 What is the timeline for selecting sessions? When should I expect to hear back?
+  = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
+  = image_tag 'redesign/grey-x.svg', class: 'faq-x'
+.panel
+  h6 What is the timeline for selecting sessions? When should I expect to hear back?
+  h6 Our tentative schedule is as follows:
+  ul
+    li
+      h6 #{EventSchedule::SUBMISSION_OPEN_DATE.to_s(:month_day)} - Panel Picker opens for submissions
+    li
+      h6 #{EventSchedule::SUBMISSION_OPEN_DATE.to_s(:month_day)} - Call for submissions closes
+    li
+      h6 #{EventSchedule::VOTING_OPEN_DATE.to_s(:month_day)} - Public voting/feedback on submissions begins
+    li
+      h6 #{EventSchedule::VOTING_CLOSE_DATE.to_s(:month_day)} - Public commenting and voting on submissions ends
+    li
+      h6 #{EventSchedule::REGISTRATION_OPEN_DATE.to_s(:month_day)} - Schedule is announced and attendee registration opens
+    li
+      h6 #{EventSchedule::WEEK_START_DATE.to_s(:month_day)} - Denver Startup Week kicks off!
+    li
+  h6 Additional events may be added at the organizers' discretion until a few weeks before the event, but we cannot guarantee promotion and marketing. Get your ideas in early!

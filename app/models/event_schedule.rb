@@ -2,6 +2,11 @@ module EventSchedule
   SUBMISSION_OPEN_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-03-19').freeze
   SUBMISSION_CLOSE_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-04-21').freeze
 
+  VOTING_OPEN_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-05-01').freeze
+  VOTING_CLOSE_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-05-22').freeze
+
+  REGISTRATION_OPEN_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-06-26').freeze
+
   WEEK_START_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-09-25').freeze
   WEEK_END_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-09-29').freeze
 

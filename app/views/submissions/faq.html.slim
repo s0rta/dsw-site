@@ -94,28 +94,7 @@ section#faq.common.sm-centered(data-bindable='toggle-faq')
       h6 What if I have an idea but no venue?
       h6 Not a problem. Denver Startup Week has multiple partnerships with local venues. Please submit your idea and if it is selected for the schedule we will work with you to arrange logistics.
 
-    button.accordion
-      h6 What is the timeline for selecting sessions? When should I expect to hear back?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What is the timeline for selecting sessions? When should I expect to hear back?
-      h6 Our tentative schedule is as follows:
-      ul
-        li
-          h6 #{EventSchedule::SUBMISSION_OPEN_DATE.strftime('%B %e')} - Panel Picker opens for submissions
-        li
-          h6 #{EventSchedule::SUBMISSION_OPEN_DATE.strftime('%B %e')} - Call for submissions closes
-        li
-          h6 June 15 - Public voting/feedback on submissions begins
-        li
-          h6 July 15 - Public commenting and voting on submissions ends
-        li
-          h6 August 16 - Schedule is announced and attendee registration opens
-        li
-          h6 September 12 - Denver Startup Week kicks off!
-        li
-      h6 Additional events may be added at the organizers' discretion until a few weeks before the event, but we cannot guarantee promotion and marketing. Get your ideas in early!
+    = render partial: 'layouts/shared/faq/timeline'
 
     button.accordion
       h6 How does the public voting and commenting process work?

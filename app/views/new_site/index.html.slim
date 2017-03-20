@@ -11,7 +11,7 @@ section.hero-cta-4up
       article.teal
         .section-content
           h2 Call for Submissions
-          h3 Session submissions are open through #{EventSchedule::SUBMISSION_CLOSE_DATE.strftime('%B %e')}
+          h3 Session submissions are open through #{EventSchedule::SUBMISSION_CLOSE_DATE.to_s(:month_day)}
           h6 Denver Startup Week is powered by the community. Submit a topic for consideration for #{Date.today.year}.
           = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
     - elsif FeatureToggler.feedback_active?
