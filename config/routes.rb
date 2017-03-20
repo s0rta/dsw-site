@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       get :submissions_closed
       get :feedback_closed
       get :mine
+      get :faq
       get :search
       get 'track/:track_name', action: :track, as: :track
     end

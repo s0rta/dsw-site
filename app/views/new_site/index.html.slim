@@ -1,17 +1,18 @@
 section.hero
-  h1.countdown #{time_remaining_to_deadline('2017/09/25')}
+  - unless EventSchedule.week_started?
+    h1.countdown #{time_remaining_to_deadline(EventSchedule::WEEK_START_DATE)}
   h2 September 25 - 29, 2017
   .section-content
     h3 Denver Startup Week. Celebrating the entrepreneurial spirit.
 
 section.hero-cta-4up
   section.hero-cta
-    - if FeatureToggler.submission_active?
+    - if EventSchedule.submissions_open?
       article.teal
         .section-content
           h2 Call for Submissions
-          h3 Session submissions are open until June 15
-          h6 Denver Startup Week is powered by the community. Submit a topic for consideration for 2016.
+          h3 Session submissions are open through #{EventSchedule::SUBMISSION_CLOSE_DATE.strftime('%B %e')}
+          h6 Denver Startup Week is powered by the community. Submit a topic for consideration for #{Date.today.year}.
           = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
     - elsif FeatureToggler.feedback_active?
       article.green

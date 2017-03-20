@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
       main_app.schedules_path
     elsif FeatureToggler.registration_active?
       main_app.register_path
-    elsif FeatureToggler.submission_active?
+    elsif EventSchedule.submissions_open?
       main_app.new_submission_path
     elsif FeatureToggler.feedback_active?
       main_app.submissions_path

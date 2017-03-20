@@ -1,15 +1,4 @@
-nav
-  .section-content
-    h1 My Dashboard
-
-section.common.blue
-  .section-content
-    .dash-profile-bar
-      h3 Hello, #{current_user.name}!
-      /* = link_to 'Logout', '#' */
-
-    - flash.each do |key, message|
-      h6 = message
+= render partial: 'nav', locals: { item: :mine }
 
 - if FeatureToggler.volunteership_active?
   - if current_user.volunteered?
@@ -42,11 +31,6 @@ section.common.blue
         h1 Registration
         = link_to 'Register to attend', new_registration_path, class: 'btn primary'
 
-- if FeatureToggler.submission_active?
-  .submission-close-count
-    h2 Submissions close in
-    h1.countdown #{time_remaining_to_deadline('2016/06/15')}
-
 section.common.sm-centered
   .section-content
     h1 Your Submissions
@@ -61,7 +45,7 @@ section.common.sm-centered
     - else
       h6 You have not yet submitted any proposals for this year.
 
-- if FeatureToggler.submission_active?
+- if EventSchedule.submissions_open?
   section.common.sm-centered
     .section-content
       = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'

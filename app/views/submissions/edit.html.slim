@@ -1,19 +1,11 @@
-nav
-  .section-content
-    h1 Edit Submission
-
-section.common.teal
-  .section-content
-    .dash-profile-bar
-      h3 Hello, #{current_user.name}!
-      h6 = link_to 'Return to Dashboard', mine_submissions_path
+= render partial: 'nav', locals: { item: :submit }
 
 section.common.sm-centered
   .section-content.instruction
     h6
       | We encourage you to update the title, description, and/or submitter notes for your session proposal as you see fit. 
       | Before updating your session proposal, please take a minute to read through 
-      = link_to 'our FAQs', page_path(page: 'faq'), target: '_blank', class: 'inline-copy-link'
+      = link_to 'our FAQs', faq_submissions_path, target: '_blank', class: 'inline-copy-link'
       |  for more information about the submission and selection process.
       br
       br

@@ -17,17 +17,14 @@ module ApplicationHelper
     Date.today.year
   end
 
-  def time_remaining_to_deadline(deadline_str)
-    Time.use_zone('Mountain Time (US & Canada)') do
-      deadline_date =  (Time.zone.parse(deadline_str) + 1.day).at_midnight
-      days = ((deadline_date - Time.zone.now) / 1.day)
-      full_days = days.floor
-      hours = (days - full_days) * 24
-      full_hours = hours.floor
-      minutes = (hours - full_hours) * 60
-      full_minutes = minutes.floor
-      "#{full_days} : #{full_hours.to_s.rjust(2, "0")} : #{full_minutes.to_s.rjust(2, "0")}"
-    end
+  def time_remaining_to_deadline(deadline_date)
+    days = ((deadline_date.at_end_of_day - Time.zone.now) / 1.day)
+    full_days = days.floor
+    hours = (days - full_days) * 24
+    full_hours = hours.floor
+    minutes = (hours - full_hours) * 60
+    full_minutes = minutes.floor
+    "#{full_days} : #{full_hours.to_s.rjust(2, "0")} : #{full_minutes.to_s.rjust(2, "0")}"
   end
 
   def tracks_for_select

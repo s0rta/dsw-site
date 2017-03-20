@@ -2,11 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.4.4
--- Dumped by pg_dump version 9.5.4
+-- Dumped from database version 9.6.1
+-- Dumped by pg_dump version 9.6.1
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -524,7 +525,10 @@ CREATE TABLE submissions (
     video_url character varying,
     cluster_id integer,
     company_name character varying,
-    proposed_updates json
+    proposed_updates json,
+    open_to_collaborators boolean,
+    from_underrepresented_group boolean,
+    target_audience_description text
 );
 
 
@@ -879,161 +883,161 @@ ALTER SEQUENCE votes_id_seq OWNED BY votes.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: clusters id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY clusters ALTER COLUMN id SET DEFAULT nextval('clusters_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cmsimple_images id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_images ALTER COLUMN id SET DEFAULT nextval('cmsimple_images_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cmsimple_pages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_pages ALTER COLUMN id SET DEFAULT nextval('cmsimple_pages_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cmsimple_paths id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_paths ALTER COLUMN id SET DEFAULT nextval('cmsimple_paths_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: cmsimple_versions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_versions ALTER COLUMN id SET DEFAULT nextval('cmsimple_versions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: general_inquiries id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY general_inquiries ALTER COLUMN id SET DEFAULT nextval('general_inquiries_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: newsletter_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY newsletter_signups ALTER COLUMN id SET DEFAULT nextval('newsletter_signups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: registrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY registrations ALTER COLUMN id SET DEFAULT nextval('registrations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: session_registrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY session_registrations ALTER COLUMN id SET DEFAULT nextval('session_registrations_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: sponsor_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sponsor_signups ALTER COLUMN id SET DEFAULT nextval('sponsor_signups_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: submissions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY submissions ALTER COLUMN id SET DEFAULT nextval('submissions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: tracks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: venues id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: versions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY versions ALTER COLUMN id SET DEFAULT nextval('versions_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteer_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteer_shifts ALTER COLUMN id SET DEFAULT nextval('volunteer_shifts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteership_assigned_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_assigned_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_assigned_shifts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteership_available_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_available_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_available_shifts_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteerships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteerships ALTER COLUMN id SET DEFAULT nextval('volunteerships_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: votes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regclass);
 
 
 --
--- Name: admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_admin_comments admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY active_admin_comments
@@ -1041,7 +1045,7 @@ ALTER TABLE ONLY active_admin_comments
 
 
 --
--- Name: clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: clusters clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY clusters
@@ -1049,7 +1053,7 @@ ALTER TABLE ONLY clusters
 
 
 --
--- Name: cmsimple_images_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cmsimple_images cmsimple_images_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_images
@@ -1057,7 +1061,7 @@ ALTER TABLE ONLY cmsimple_images
 
 
 --
--- Name: cmsimple_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cmsimple_pages cmsimple_pages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_pages
@@ -1065,7 +1069,7 @@ ALTER TABLE ONLY cmsimple_pages
 
 
 --
--- Name: cmsimple_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cmsimple_paths cmsimple_paths_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_paths
@@ -1073,7 +1077,7 @@ ALTER TABLE ONLY cmsimple_paths
 
 
 --
--- Name: cmsimple_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: cmsimple_versions cmsimple_versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY cmsimple_versions
@@ -1081,7 +1085,7 @@ ALTER TABLE ONLY cmsimple_versions
 
 
 --
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY comments
@@ -1089,7 +1093,7 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: general_inquiries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: general_inquiries general_inquiries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY general_inquiries
@@ -1097,7 +1101,7 @@ ALTER TABLE ONLY general_inquiries
 
 
 --
--- Name: newsletter_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: newsletter_signups newsletter_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY newsletter_signups
@@ -1105,7 +1109,7 @@ ALTER TABLE ONLY newsletter_signups
 
 
 --
--- Name: registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: registrations registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY registrations
@@ -1113,7 +1117,7 @@ ALTER TABLE ONLY registrations
 
 
 --
--- Name: session_registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: session_registrations session_registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY session_registrations
@@ -1121,7 +1125,7 @@ ALTER TABLE ONLY session_registrations
 
 
 --
--- Name: sponsor_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: sponsor_signups sponsor_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY sponsor_signups
@@ -1129,7 +1133,7 @@ ALTER TABLE ONLY sponsor_signups
 
 
 --
--- Name: submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: submissions submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY submissions
@@ -1137,7 +1141,7 @@ ALTER TABLE ONLY submissions
 
 
 --
--- Name: tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: tracks tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY tracks
@@ -1145,7 +1149,7 @@ ALTER TABLE ONLY tracks
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY users
@@ -1153,7 +1157,7 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: venues_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: venues venues_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY venues
@@ -1161,7 +1165,7 @@ ALTER TABLE ONLY venues
 
 
 --
--- Name: versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: versions versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY versions
@@ -1169,7 +1173,7 @@ ALTER TABLE ONLY versions
 
 
 --
--- Name: volunteer_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteer_shifts volunteer_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteer_shifts
@@ -1177,7 +1181,7 @@ ALTER TABLE ONLY volunteer_shifts
 
 
 --
--- Name: volunteership_assigned_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_assigned_shifts volunteership_assigned_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_assigned_shifts
@@ -1185,7 +1189,7 @@ ALTER TABLE ONLY volunteership_assigned_shifts
 
 
 --
--- Name: volunteership_available_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_available_shifts volunteership_available_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_available_shifts
@@ -1193,7 +1197,7 @@ ALTER TABLE ONLY volunteership_available_shifts
 
 
 --
--- Name: volunteerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteerships volunteerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteerships
@@ -1201,7 +1205,7 @@ ALTER TABLE ONLY volunteerships
 
 
 --
--- Name: votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: votes votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY votes
@@ -1412,7 +1416,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
--- Name: fk_rails_26e12c935b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteerships fk_rails_26e12c935b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteerships
@@ -1420,7 +1424,7 @@ ALTER TABLE ONLY volunteerships
 
 
 --
--- Name: fk_rails_92f98cffc7; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_assigned_shifts fk_rails_92f98cffc7; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_assigned_shifts
@@ -1428,7 +1432,7 @@ ALTER TABLE ONLY volunteership_assigned_shifts
 
 
 --
--- Name: fk_rails_9489760428; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_available_shifts fk_rails_9489760428; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_available_shifts
@@ -1436,7 +1440,7 @@ ALTER TABLE ONLY volunteership_available_shifts
 
 
 --
--- Name: fk_rails_b1f4aeb35b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_assigned_shifts fk_rails_b1f4aeb35b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_assigned_shifts
@@ -1444,7 +1448,7 @@ ALTER TABLE ONLY volunteership_assigned_shifts
 
 
 --
--- Name: fk_rails_e76f764d04; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_available_shifts fk_rails_e76f764d04; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY volunteership_available_shifts
@@ -1455,7 +1459,7 @@ ALTER TABLE ONLY volunteership_available_shifts
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user",public;
+SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (version) VALUES ('20130116164738');
 
@@ -1616,4 +1620,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160823044119');
 INSERT INTO schema_migrations (version) VALUES ('20160909225854');
 
 INSERT INTO schema_migrations (version) VALUES ('20160912034451');
+
+INSERT INTO schema_migrations (version) VALUES ('20170320052451');
 

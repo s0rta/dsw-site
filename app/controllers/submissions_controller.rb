@@ -116,11 +116,15 @@ class SubmissionsController < ApplicationController
                                        :track_id,
                                        :contact_email,
                                        :estimated_size,
-                                       :venue_id)
+                                       :venue_id,
+                                       :open_to_collaborators,
+                                       :from_underrepresented_group,
+                                       :company_name,
+                                       :target_audience_description)
   end
 
   def check_submissions_open
-    redirect_to submissions_closed_submissions_path unless FeatureToggler.submission_active?
+    redirect_to submissions_closed_submissions_path unless EventSchedule.submissions_open?
   end
 
   def check_feedback_open
