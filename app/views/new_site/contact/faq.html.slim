@@ -146,31 +146,4 @@ section#faq.common.sm-centered(data-bindable='toggle-faq')
       h6 How do I become a sponsor?
       h6 Sponsorship information is available on our <a href='/sponsors'>Sponsors</a> page. You do not have to sponsor to organize a session, though we’d certainly appreciate your support to make the week the best it can be!
 
-    button.accordion
-      h6 Who can I contact with questions?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 Who can I contact with questions?
-      h6 If you have a general question, please feel free to hit us up via Twitter or e-mail <a href='mailto:info@denverstartupweek.org'>info@denverstartupweek.org</a>.
-      br
-      h6 For specific inquiries, you may also contact a member of the organizing committee:
-      ul
-        li
-          h6 Developer Track: Jay Zeschin / Conor Swanson
-          h6 <a href='mailto:developer@denverstartupweek.org'>developer@denverstartupweek.org</a>
-        li
-          h6 Designer Track: Castle Searcy
-          h6 <a href='mailto:designer@denverstartupweek.org'>designer@denverstartupweek.org</a>
-        li
-          h6 Maker Track: Chuck Sullivan
-          h6 <a href='mailto:maker@denverstartupweek.org'>maker@denverstartupweek.org</a>
-        li
-          h6 Founder Track: Nate Greenlee
-          h6 <a href='mailto:founder@denverstartupweek.org'>founder@denverstartupweek.org</a>
-        li
-          h6 Growth Track: Nate Greenlee
-          h6 <a href='mailto:growth@denverstartupweek.org'>growth@denverstartupweek.org</a>
-        li
-          h6 Sponsorhip: Brian Pontarelli
-          h6 <a href='mailto:sponsorship@denverstartupweek.org'>sponsorship@denverstartupweek.org</a>
+    = render partial: 'layouts/shared/faq/contact'
