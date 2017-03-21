@@ -6,7 +6,7 @@
     icon: 'person',
     color: 'orange',
     is_submittable: true,
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     Whether you're just dreaming about starting a business, on your first, or a seasoned entrepreneur,
     the founder track will provide you with the skills and knowledge you need to found a company. Initial
     product development, go-to-market strategies, finding funding, and building a team are just some of the
@@ -17,7 +17,7 @@
     icon: 'chart',
     color: 'blue',
     is_submittable: true,
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     No matter how good it is, no product sells itself. A team that markets, sells, and supports the product
     well is a huge advantage for any startup. Every aspect of digital marketing, inbound and outbound sales,
     and customer experience is going to be covered at Denver Startup Week. Growing a startup depends on these
@@ -28,7 +28,7 @@
     icon: 'eyeball',
     color: 'green',
     is_submittable: true,
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     Seeing things others do not see is an art and our design track is packed with creative outlets to expand your
     thinking and ability to design.  From fashion to architecture to breakout digital design and artwork – the
     design track is focused on the critical elements of design. Learn new skills, hear from those responsible for
@@ -40,7 +40,7 @@
     icon: 'phone',
     color: 'purple',
     is_submittable: true,
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     Product management, development, and marketing, all different sides of the same coin that somehow bridges the gap
     between building the product and delivering it to the market. Product skills are in huge demand but there aren't
     very many places where you can go to acquire them. Come improve your product game at Denver Startup Week!
@@ -50,7 +50,7 @@
     icon: 'terminal',
     color: 'gold',
     is_submittable: true,
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     Frontend, backend, full stack, big data, APIs, architecture, methodologies, junior, senior, we have it all. Learn
     new technologies, refine your skills, or just check out something completely different. Walk away a better engineer
     than you were before!
@@ -60,7 +60,7 @@
     icon: 'wrench',
     color: 'teal',
     is_submittable: true,
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     From craft skis to craft beer, robots to 3D printing – the experience of 'making' physical products is totally unique.
     Through the lens of physical goods across multiple industries, hear the stories behind breakout brands, learn about new
     technologies in manufacturing, and dig into the micro-production concepts needed to get started.  Connect with the best
@@ -90,28 +90,28 @@ end
 
 {
   'IoT' => {
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     From smart devices to integrated homes to intelligent vehicles, the Internet of Things is rapidly transforming the
     way that we interact with the world around us. Check out the latest technologies and trends in the IoT realm, and
     take a look behind the scenes at what it takes to concept, design and build a connected product.
     EOF
   },
   'Diversity & Inclusion' => {
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     Building an inclusive organization and culture is a critical part of any early-stage company, particularly in a
     world of increasingly global and diverse customer bases. Explore the what, how and why of building a diverse team,
     and hear firsthand the experiences of those on the front lines enabling diversity in the startup realm.
     EOF
   },
   'Cannabis' => {
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     Colorado is at the forefront not only of entrepreneurship and technology, but also in the emerging cannabis industry.
     Beyond just the leaf, explore the intersection of technology and cannabis, how these two seemingly different fields
     interoperate, and the challenges of building a company at the intersection of emerging markets and regulatory frameworks.
     EOF
   },
   'Healthtech' => {
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     As healthcare costs continue to rise, individuals and companies find themselves in an increasingly unstable economic
     situation. Enter digital health technologies, exploding on the scene with engaging, low-cost, and convenient tools
     that will have a lasting impact on large populations both here in Colorado and throughout the country.\n\nExplore the
@@ -121,14 +121,14 @@ end
     EOF
   },
   'Social Impact' => {
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     Many companies are beginning to understand that the impact they have on the world around them isn't just measured in dollars
     and cents, but also the lasting effects they have on the people and communities around them. Learn about how these
     companies are both thinking and acting differently, and how you can start to build social good into your company as well.
     EOF
   },
   'Business Basics' => {
-    description: <<-EOF
+    description: <<-EOF.strip_heredoc.squish
     Having the fundamental skills required to run a successful company are key to getting your startup off the ground. From
     accounting and finance to operations to marketing to accessing capital, come learn the ins and outs of running your company
     from the people in the community who have done it most sucessfully.
