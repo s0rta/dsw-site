@@ -2,15 +2,12 @@ Hi <%= @submission.submitter.try(:name) || @submission.contact_email %>,
 
 Thanks for submitting "<%= @submission.title %>" for consideration for Denver Startup Week <%= Date.today.year %>!
 
-We're taking submissions until June 15, and you're welcome to submit additional proposal until then. At that point we'll be reviewing everything we've received, and we'll fire up the feedback engine for the startup community to comment and vote on the sessions they want to see in the final schedule.
-
-Sessions will be accepted on a rolling basis throughout June and early July, and our final schedule will be released in mid-July. We'll be in touch with you with more details as commenting and voting opens.
+The final day for submitting sessions is <%= EventSchedule::SUBMISSION_CLOSE_DATE.to_s(:month_day) %>.  During the month of May, we'll review everything that we've received and fire up the feedback engine for the startup community to comment and vote on the sessions that they want to see in the final schedule.  We'll be in touch with you in late April with more details as the commenting and voting process opens.
 
 If you have any questions in the meantime, please hit us up on Twitter (@denstartupweek) or via e-mail (info@denverstartupweek.org).
 
-Thanks again for volunteering to be a part of Denver Startup Week. This is a community event, so we couldn't do it without you!
+Thank you again for volunteering to be a part of Denver Startup Week. This is a community event that would not be possible without you!
 
 Cheers,
 
 The DSW Organizing Committee
-
