@@ -22,7 +22,7 @@ function initialize() {
 	var infoString = '<div class="infowindow">' +
         '<h3>Basecamp</h3>' +
         '<div class="infowindow-content">' +
-        '<p>1515 Arapahoe St. Denver, CO <br> (corner of Arapahoe and 16th St. Mall)</p>' +
+        '<p>1245 Champa Street, Denver, CO</p>' +
         '</div>' +
         '</div>';
     var infoWindow = new google.maps.InfoWindow({
