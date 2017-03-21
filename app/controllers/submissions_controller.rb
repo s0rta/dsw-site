@@ -117,6 +117,7 @@ class SubmissionsController < ApplicationController
                                        :contact_email,
                                        :estimated_size,
                                        :venue_id,
+                                       :cluster_id,
                                        :open_to_collaborators,
                                        :from_underrepresented_group,
                                        :company_name,

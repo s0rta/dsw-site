@@ -5,44 +5,82 @@
   'Founder' => {
     icon: 'person',
     color: 'orange',
-    description: "Whether you're just dreaming about starting a business, on your first, or a seasoned entrepreneur, the founder track will provide you with the skills and knowledge you need to found a company. Initial product development, go-to-market strategies, finding funding, and building a team are just some of the topics that are covered. Start down the path of creating your startup!"
+    is_submittable: true,
+    description: <<-EOF
+    Whether you're just dreaming about starting a business, on your first, or a seasoned entrepreneur,
+    the founder track will provide you with the skills and knowledge you need to found a company. Initial
+    product development, go-to-market strategies, finding funding, and building a team are just some of the
+    topics that are covered. Start down the path of creating your startup!
+    EOF
   },
   'Growth' => {
     icon: 'chart',
     color: 'blue',
-    description: "No matter how good it is, no product sells itself. A team that markets, sells, and supports the product well is a huge advantage for any startup. Every aspect of digital marketing, inbound and outbound sales, and customer experience is going to be covered at Denver Startup Week. Growing a startup depends on these skills, don't miss your chance to improve them!"
+    is_submittable: true,
+    description: <<-EOF
+    No matter how good it is, no product sells itself. A team that markets, sells, and supports the product
+    well is a huge advantage for any startup. Every aspect of digital marketing, inbound and outbound sales,
+    and customer experience is going to be covered at Denver Startup Week. Growing a startup depends on these
+    skills, don't miss your chance to improve them!
+    EOF
   },
   'Designer' => {
     icon: 'eyeball',
     color: 'green',
-    description: "Seeing things others do not see is an art and our design track is packed with creative outlets to expand your thinking and ability to design.  From fashion to architecture to breakout digital design and artwork – the design track is focused on the critical elements of design. Learn new skills, hear from those responsible for some of the best projects in Colorado, and let your creative juices flow. Enjoy connecting with fellow design leaders and leave the week with fresh inspiration!",
+    is_submittable: true,
+    description: <<-EOF
+    Seeing things others do not see is an art and our design track is packed with creative outlets to expand your
+    thinking and ability to design.  From fashion to architecture to breakout digital design and artwork – the
+    design track is focused on the critical elements of design. Learn new skills, hear from those responsible for
+    some of the best projects in Colorado, and let your creative juices flow. Enjoy connecting with fellow design
+    leaders and leave the week with fresh inspiration!
+    EOF
   },
   'Product' => {
     icon: 'phone',
     color: 'purple',
-    description: "Product management, development, and marketing, all different sides of the same coin that somehow bridges the gap between building the product and delivering it to the market. Product skills are in huge demand but there aren't very many places where you can go to acquire them. Come improve your product game at Denver Startup Week!"
+    is_submittable: true,
+    description: <<-EOF
+    Product management, development, and marketing, all different sides of the same coin that somehow bridges the gap
+    between building the product and delivering it to the market. Product skills are in huge demand but there aren't
+    very many places where you can go to acquire them. Come improve your product game at Denver Startup Week!
+    EOF
   },
   'Developer' => {
     icon: 'terminal',
     color: 'gold',
-    description: 'Frontend, backend, full stack, big data, APIs, architecture, methodologies, junior, senior, we have it all. Learn new technologies, refine your skills, or just check out something completely different. Walk away a better engineer than you were before!'
+    is_submittable: true,
+    description: <<-EOF
+    Frontend, backend, full stack, big data, APIs, architecture, methodologies, junior, senior, we have it all. Learn
+    new technologies, refine your skills, or just check out something completely different. Walk away a better engineer
+    than you were before!
+    EOF
   },
   'Maker' => {
     icon: 'wrench',
     color: 'teal',
-    description: "From craft skis to craft beer, robots to 3D printing – the experience of 'making' physical products is totally unique. Through the lens of physical goods across multiple industries, hear the stories behind breakout brands, learn about new technologies in manufacturing, and dig into the micro-production concepts needed to get started.  Connect with the best craftsmen and makers in Colorado and see how they create their work – all in one week!"
+    is_submittable: true,
+    description: <<-EOF
+    From craft skis to craft beer, robots to 3D printing – the experience of 'making' physical products is totally unique.
+    Through the lens of physical goods across multiple industries, hear the stories behind breakout brands, learn about new
+    technologies in manufacturing, and dig into the micro-production concepts needed to get started.  Connect with the best
+    craftspeple and makers in Colorado and see how they create their work – all in one week!
+    EOF
   },
   'Headline Events' => {
     icon: 'star',
-    color: 'headline-session'
+    color: 'headline-session',
+    is_submittable: true,
   },
   'Basecamp' => {
     icon: 'basecamp',
-    color: 'basecamp-session'
+    color: 'basecamp-session',
+    is_submittable: false,
   },
   'Social Events' => {
     icon: 'martini',
-    color: 'red'
+    color: 'red',
+    is_submittable: false,
   }
 }.each do |track_name, attrs|
   t = Track.where(name: track_name).first_or_initialize
@@ -52,16 +90,49 @@ end
 
 {
   'IoT' => {
-    description: 'From smart devices to integrated homes to intelligent vehicles, the Internet of Things is rapidly transforming the way that we interact with the world around us. Check out the latest technologies and trends in the IoT realm, and take a look behind the scenes at what it takes to concept, design and build a connected product.'
+    description: <<-EOF
+    From smart devices to integrated homes to intelligent vehicles, the Internet of Things is rapidly transforming the
+    way that we interact with the world around us. Check out the latest technologies and trends in the IoT realm, and
+    take a look behind the scenes at what it takes to concept, design and build a connected product.
+    EOF
   },
-  'Diversity' => {
-    description: 'Building an inclusive organization and culture is a critical part of any early-stage company, particularly in a world of increasingly global and diverse customer bases. Explore the what, how and why of building a diverse team, and hear firsthand the experiences of those on the front lines enabling diversity in the startup realm.'
+  'Diversity & Inclusion' => {
+    description: <<-EOF
+    Building an inclusive organization and culture is a critical part of any early-stage company, particularly in a
+    world of increasingly global and diverse customer bases. Explore the what, how and why of building a diverse team,
+    and hear firsthand the experiences of those on the front lines enabling diversity in the startup realm.
+    EOF
   },
-  'Cannatech' => {
-    description: 'Colorado is at the forefront not only of entrepreneurship and technology, but also in the emerging cannabis industry. Beyond just the leaf, explore the intersection of technology and cannabis, how these two seemingly different fields interoperate, and the challenges of building a company at the intersection of emerging markets and regulatory frameworks.',
+  'Cannabis' => {
+    description: <<-EOF
+    Colorado is at the forefront not only of entrepreneurship and technology, but also in the emerging cannabis industry.
+    Beyond just the leaf, explore the intersection of technology and cannabis, how these two seemingly different fields
+    interoperate, and the challenges of building a company at the intersection of emerging markets and regulatory frameworks.
+    EOF
   },
   'Healthtech' => {
-    description: "Healthcare costs continue to rise, putting individuals and companies in an economically unstable situation. Enter digital health technologies, exploding on to the scene with engaging, low-cost, and convenient tools that will have a lasting impact on large populations both here in Colorado and throughout the country.\n\nExplore the significant transformations coming to, and already being implemented in, the healthcare industry from both technologists and healthcare professionals. Plus, see the technological innovations that could be making a real difference to your health care in the near future."
+    description: <<-EOF
+    As healthcare costs continue to rise, individuals and companies find themselves in an increasingly unstable economic
+    situation. Enter digital health technologies, exploding on the scene with engaging, low-cost, and convenient tools
+    that will have a lasting impact on large populations both here in Colorado and throughout the country.\n\nExplore the
+    significant transformations coming to, and already being implemented in, the healthcare industry from both technologists
+    and healthcare professionals. Plus, see the technological innovations that could be making a real difference in your
+    own health care in the near future
+    EOF
+  },
+  'Social Impact' => {
+    description: <<-EOF
+    Many companies are beginning to understand that the impact they have on the world around them isn't just measured in dollars
+    and cents, but also the lasting effects they have on the people and communities around them. Learn about how these
+    companies are both thinking and acting differently, and how you can start to build social good into your company as well.
+    EOF
+  },
+  'Business Basics' => {
+    description: <<-EOF
+    Having the fundamental skills required to run a successful company are key to getting your startup off the ground. From
+    accounting and finance to operations to marketing to accessing capital, come learn the ins and outs of running your company
+    from the people in the community who have done it most sucessfully.
+    EOF
   }
 }.each do |cluster_name, attrs|
   c = Cluster.where(name: cluster_name).first_or_initialize
