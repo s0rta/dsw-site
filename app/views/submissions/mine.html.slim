@@ -39,7 +39,8 @@ section.common.sm-centered
         .talk-submission
           h6
             | #{submission.title} (#{submission.track.name})
-            = link_to 'Propose Update', edit_submission_path(submission), class: 'btn'
+            - if submission.accepted? || submission.confirmed?
+              = link_to 'Propose Update', edit_submission_path(submission), class: 'btn'
           /* a href='#' */
           /*   = render partial: 'icons/pencil' */
     - else
