@@ -61,10 +61,13 @@
     color: 'teal',
     is_submittable: true,
     description: <<-EOF.strip_heredoc.squish
-    From craft skis to craft beer, robots to 3D printing – the experience of 'making' physical products is totally unique.
-    Through the lens of physical goods across multiple industries, hear the stories behind breakout brands, learn about new
-    technologies in manufacturing, and dig into the micro-production concepts needed to get started.  Connect with the best
-    craftspeple and makers in Colorado and see how they create their work – all in one week!
+    If you don’t think you fit the mold of a typical startup, think again! The Maker Track encompasses all physical
+    products and provides entrepreneurs and small businesses with events and seminars for every type of maker under the
+    sun - from outdoor rec, distilling (or brewing!), and crafting, to connected devices, open-source hardware, 3D
+    printing, and IOT (just to name a few). Join us to hear stories behind breakout brands, learn about new technologies
+    in manufacturing, and dig into implications of early design choices. The Maker Track is your one-stop-shop to connect
+    with the best artisans, engineers, manufacturers and enterprises to see what they’ve learned through their product
+    development journeys!
     EOF
   },
   'Headline Events' => {
