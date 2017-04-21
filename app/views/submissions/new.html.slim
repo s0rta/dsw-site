@@ -2,7 +2,7 @@
 
 .submission-close-count
   h2 Submissions close in
-  h1.countdown #{time_remaining_to_deadline(EventSchedule::SUBMISSION_CLOSE_DATE)}
+  h1.countdown #{time_remaining_to_deadline(EventSchedule::SUBMISSION_CLOSE_DATE.at_end_of_day)}
 
 section.common.sm-centered
   .section-content.instruction

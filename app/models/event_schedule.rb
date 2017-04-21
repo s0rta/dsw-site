@@ -13,7 +13,7 @@ module EventSchedule
   class << self
     def submissions_open?
       Time.zone.now > SUBMISSION_OPEN_DATE.at_beginning_of_day &&
-        Time.zone.now < SUBMISSION_CLOSE_DATE.at_beginning_of_day
+        Time.zone.now < SUBMISSION_CLOSE_DATE.at_end_of_day
     end
 
     def week_started?
