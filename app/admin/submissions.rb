@@ -151,13 +151,13 @@ ActiveAdmin.register Submission do
       f.input :cluster_id, as: :select, collection: Cluster.all.map {|c| [ c.name, c.id ]}, include_blank: true
       f.input :title
       f.input :description
-      f.input :location
       f.input :contact_email
       f.input :company_name
       f.input :estimated_size
       f.input :budget_needed
       f.input :volunteers_needed
-      f.input :notes
+      f.input :notes, label: 'Pitch from submitter'
+      f.input :target_audience_description, label: 'Pitch from submitter'
       f.input :internal_notes
       f.input :slides_url
       f.input :video_url
