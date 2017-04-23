@@ -157,7 +157,7 @@ ActiveAdmin.register Submission do
       f.input :budget_needed
       f.input :volunteers_needed
       f.input :notes, label: 'Pitch from submitter'
-      f.input :target_audience_description, label: 'Pitch from submitter'
+      f.input :target_audience_description
       f.input :internal_notes
       f.input :slides_url
       f.input :video_url
