@@ -31,7 +31,11 @@ ActiveAdmin.register Submission do
 
   controller do
     def scoped_collection
-      resource_class.includes(:track, :submitter, :votes, :venue)
+      resource_class.includes(:track,
+                              :submitter,
+                              :votes,
+                              :venue,
+                              :cluster)
     end
 
     def show
