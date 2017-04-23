@@ -10,6 +10,7 @@ ActiveAdmin.register Submission do
                 :location,
                 :notes,
                 :internal_notes,
+                :target_audience_description,
                 :time_range,
                 :title,
                 :track_id,
