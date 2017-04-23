@@ -305,7 +305,7 @@ GEM
     rspec-support (3.2.2)
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
-    rubyzip (1.2.0)
+    rubyzip (1.2.1)
     safe_yaml (1.0.4)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
