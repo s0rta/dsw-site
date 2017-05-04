@@ -1,5 +1,6 @@
 @import ../config
 
+
 nav
   text-transform: uppercase
   margin-bottom: 30px
@@ -11,7 +12,6 @@ nav
   a
     display: inline-block
     margin-right: 24px
-    padding-bottom: 5px
     font-family: 'Montserrat-Regular'
     font-size: 14px
     border-bottom: 5px solid #fff
@@ -24,19 +24,31 @@ nav
       color: $teal-dark
 
 .outer-modal-container
-  display: none
-  z-index: 2
-  justify-content: center
-  align-content: center
-  position: fixed
-  top: 0
-  bottom: 0
-  left: 0
-  right: 0
-  background: rgba(5, 211, 216, 0.95)
+  // display: flex
+  // margin-bottom: 0
+  // background: rgba(5, 211, 216, 0.95)
   &.nav-open
     display: flex
     margin-bottom: 0
+
+
+
+@media(max-width: 739px)
+  .outer-modal-container
+    display: none
+    z-index: 2
+    justify-content: center
+    align-content: center
+    position: fixed
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background: rgba(5, 211, 216, 0.95)
+    &.nav-open
+      display: flex
+      margin-bottom: 0
+
 
 .inner-modal-container
   position: relative
@@ -46,7 +58,7 @@ nav
   background: transparent
   a
     margin-right: 0
-    margin-bottom: 10px
+    margin-bottom: 8px
     color: $teal-dark
     font-size: 20px
     border-bottom: 5px solid transparent

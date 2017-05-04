@@ -9,32 +9,32 @@ header.masthead(data-bindable='toggle-nav')
     .inner-modal-container
       a.close href='#'
         = render partial: 'icons/x_mark'
-      div
-        = link_to 'Home', root_path
+      / div
+      /   = link_to 'Home', root_path
       - if signed_in?
         div
           = link_to 'My Dashboard', dashboard_path
       - elsif EventSchedule.cfp_open?
-        div
-          = link_to 'Submit Proposal', new_submission_path
+        div.primary
+          = link_to 'Submit a talk', new_submission_path
       - elsif EventSchedule.registration_open? && !registered?
         div
           = link_to 'Register', new_registration_path
       - else
-        div
-          = link_to 'Register / Sign In', dashboard_path
+        div.primary
+          = link_to 'Sign In / Sign Up', mine_submissions_path
       - if EventSchedule.voting_open?
         div
           = link_to 'Panel Picker', submissions_path
       div
+        / = link_to 'Program', page_path(page: 'program'), class: item == :program ? 'active' : ''
         = link_to 'Program', page_path(page: 'program')
-      div
-        = link_to 'Basecamp', page_path(page: 'basecamp')
-      - if EventSchedule.registration_open?
+      /   = link_to 'Basecamp', page_path(page: 'basecamp')
+      - if FeatureToggler.registration_active?
         div
           = link_to 'Schedule', schedules_path
-      div
-        = link_to 'Attendees', page_path(page: 'attendees')
+      / div
+      /   = link_to 'Attendees', page_path(page: 'attendees')
       div
         = link_to 'Sponsors', page_path(page: 'sponsors')
       div
