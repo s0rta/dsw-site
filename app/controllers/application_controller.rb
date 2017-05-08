@@ -3,6 +3,7 @@ require "application_responder"
 class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_paper_trail_whodunnit
 
   self.responder = ApplicationResponder
   respond_to :html
