@@ -215,6 +215,8 @@ ActiveAdmin.register Submission do
 
     attributes_table(*(default_attribute_table_rows - [:proposed_updates]))
 
+    active_admin_comments
+
     panel 'Recent Updates' do
       table_for submission.versions do
         column 'Modified at' do |v|
