@@ -74,21 +74,14 @@ gem 'redis-objects'
 # Background processing
 gem 'sucker_punch'
 
-group :development do
-  gem 'spring', require: false
-  gem 'spring-commands-rspec', require: false
-end
-
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
-  gem 'rspec-rails'
-  gem 'teaspoon'
+  gem 'rspec-rails', '~> 3.6.0'
   gem 'quiet_assets'
 end
 
 group :test do
-  gem 'test-unit', '~> 3.0'
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'selenium-webdriver'
