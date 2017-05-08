@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
   respond_to  :html,
               :atom
   before_action :check_submissions_open, only: [ :new, :create ]
-  before_action :authenticate_user!, only: [ :new, :create, :mine ]
+  before_action :authenticate_user!, only: [ :new, :create, :mine, :submissions_closed ]
   before_action :check_feedback_open, only: [ :index ]
   before_action :set_submissions, only: [:edit, :update]
 
