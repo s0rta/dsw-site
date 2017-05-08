@@ -6,7 +6,6 @@ feature 'Registering to attend (via kiosk)' do
     allow(ListSubscriptionJob).to receive(:perform_async)
     @track = Track.create! name: 'Bizness'
     FeatureToggler.activate_registration!
-    FeatureToggler.deactivate_submission!
     visit '/enable-simple-reg'
   end
 
