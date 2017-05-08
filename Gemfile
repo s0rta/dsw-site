@@ -97,6 +97,7 @@ group :test do
   gem 'email_spec', '~> 2.1.0'
   gem 'webmock'
   gem 'factory_girl_rails'
+  gem 'rspec-rails-time-metadata'
 end
 
 group :production do
