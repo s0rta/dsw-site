@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+  include ActiveAdmin::AjaxFilter
 
   permit_params :email,
                 :password,
