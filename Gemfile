@@ -64,7 +64,8 @@ gem 'honeybadger'
 gem 'rack-canonical-host'
 
 # Admin interface
-gem 'activeadmin', '>=1.0.0.pre2'
+gem 'activeadmin', '~> 1.0.0'
+gem 'activeadmin-ajax_filter'
 # gem 'meta_search',   '>= 1.1.0.pre'
 gem 'paper_trail'
 
