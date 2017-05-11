@@ -71,6 +71,10 @@
     icon: 'star',
     color: 'headline-session',
     is_submittable: true,
+    description: <<-EOF.strip_heredoc.squish
+    Drawing together members of the community across the boundaries of industry, job function, and background, our Headline
+    Events provide entertaining and interesting content, unique perspectives, and a forum for our community to connect and share ideas.
+    EOF
   },
   'Basecamp' => {
     icon: 'basecamp',
