@@ -21,4 +21,8 @@ class Track < ActiveRecord::Base
   def self.submittable
     where(is_submittable: true)
   end
+
+  def name_for_partial
+    name.downcase.tr(' ', '_')
+  end
 end

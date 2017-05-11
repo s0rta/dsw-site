@@ -2,7 +2,7 @@
   .card-frame
     div class=("card-content #{submission.track.color}")
       = link_to submission, class: 'vote-detail' do
-        = render partial: "submissions/headers/#{submission.track.name.downcase}"
+        = render partial: "submissions/headers/#{submission.track.name_for_partial}"
         .title
           = truncate(submission.title, length: 100, separator: ' ')
         .names
