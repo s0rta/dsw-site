@@ -91,7 +91,7 @@ class ApplicationController < ActionController::Base
       main_app.register_path
     elsif EventSchedule.submissions_open?
       main_app.new_submission_path
-    elsif FeatureToggler.feedback_active?
+    elsif EventSchedule.feedback_open?
       main_app.submissions_path
     elsif user.is_admin?
       main_app.admin_root_path

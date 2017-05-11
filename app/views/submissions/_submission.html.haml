@@ -12,5 +12,5 @@
   %div.voting-cell(data-bindable="ajax-voter")
     %h4.voting-heading= submission.votes.size > 0 ? submission.votes.size : 'No votes yet'
     %div.voting-engine
-      - if FeatureToggler.feedback_active? && signed_in?
+      - if EventSchedule.feedback_open? && signed_in?
         = link_to '', submission_votes_path(submission), remote: true, method: :post, class: 'dswacon dswacon-vote-yes'

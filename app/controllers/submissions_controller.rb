@@ -129,7 +129,7 @@ class SubmissionsController < ApplicationController
   end
 
   def check_feedback_open
-    redirect_to feedback_closed_submissions_path unless FeatureToggler.feedback_active?
+    redirect_to feedback_closed_submissions_path unless EventSchedule.feedback_open?
   end
 
   def set_submissions
