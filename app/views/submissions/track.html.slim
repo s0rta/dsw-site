@@ -2,16 +2,17 @@
 
 form.filters(action="#{search_submissions_path}")
   input(name="terms" value="#{params[:terms]}")
-  select(name="track_name" value="#{params[:track_name]}" onchange="this.form.submit();")
-    - if !params[:track_name].present?
-      option(selected="selected" value="") All
+  select(name="track_name" onchange="this.form.submit();")
+    - if params[:track_name].blank?
+      option(selected="selected" value="all") All
     - else
-      option(value="") All
-    - Track.submittable.in_display_order.each do |track|
-      - if params[:track_name] == track.name.downcase
-        option(selected="selected" value="#{track.name.downcase}") = track.name
-      - else
-        option(value="#{track.name.downcase}") = track.name
+      option(value="all") All
+    optgroup(label="View Sessions By Track")
+    - Track.submittable.in_display_order.each do |t|
+      option(value="#{t.name.downcase}" selected=("selected" if params[:track_name] == t.name.downcase)) &nbsp;#{t.name} Track
+    optgroup(label="View Sessions By Cluster")
+    - Cluster.all.each do |c|
+      option(value="#{c.name.downcase}" selected=("selected" if params[:track_name] == c.name.downcase)) &nbsp;#{c.name} Cluster
 
 .card-container(data-bindable='ajax-voter')
   = render partial: 'track_contents'

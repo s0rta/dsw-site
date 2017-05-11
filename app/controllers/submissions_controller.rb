@@ -21,7 +21,7 @@ class SubmissionsController < ApplicationController
         fulltext_search(params[:terms]).
         for_current_year.
         for_submittable_tracks.
-        for_track(params[:track_name]).
+        for_schedule_filter(params[:track_name], current_user).
         for_voting.
         page(params[:page])
       respond_to do |format|
@@ -44,7 +44,7 @@ class SubmissionsController < ApplicationController
         fulltext_search(params[:terms]).
         for_current_year.
         for_submittable_tracks.
-        for_track(params[:track_name]).
+        for_schedule_filter(params[:track_name], current_user).
         for_voting.
         page(params[:page])
       respond_to do |format|
