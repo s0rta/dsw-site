@@ -6,7 +6,6 @@ gem 'rails', '~> 4.2.6'
 gem 'rake'
 gem 'pg'
 gem 'puma'
-gem 'rack-timeout'
 
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -95,6 +94,7 @@ group :test do
 end
 
 group :production do
+  gem 'rack-timeout'
   gem 'rails_12factor'
   gem 'lograge'
   gem 'memcachier'
