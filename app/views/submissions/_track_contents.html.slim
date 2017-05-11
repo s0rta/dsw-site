@@ -1,6 +1,6 @@
 - @submissions.each do |submission|
   .card-frame
-    div class=("card-content #{submission.track.name.downcase}")
+    div class=("card-content #{submission.track.color}")
       = link_to submission, class: 'vote-detail' do
         = render partial: "submissions/headers/#{submission.track.name.downcase}"
         .title
