@@ -12,6 +12,7 @@ class SubmissionsController < ApplicationController
       for_current_year.
       for_submittable_tracks.
       for_voting.
+      order('created_at DESC').
       page(params[:page])
   end
 
@@ -23,6 +24,7 @@ class SubmissionsController < ApplicationController
         for_submittable_tracks.
         for_schedule_filter(params[:track_name], current_user).
         for_voting.
+        order('created_at DESC').
         page(params[:page])
       respond_to do |format|
         format.html
