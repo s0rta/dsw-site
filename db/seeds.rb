@@ -61,13 +61,10 @@
     color: 'teal',
     is_submittable: true,
     description: <<-EOF.strip_heredoc.squish
-    If you don’t think you fit the mold of a typical startup, think again! The Maker Track encompasses all physical
-    products and provides entrepreneurs and small businesses with events and seminars for every type of maker under the
-    sun - from outdoor rec, distilling (or brewing!), and crafting, to connected devices, open-source hardware, 3D
-    printing, and IOT (just to name a few). Join us to hear stories behind breakout brands, learn about new technologies
-    in manufacturing, and dig into implications of early design choices. The Maker Track is your one-stop-shop to connect
-    with the best artisans, engineers, manufacturers and enterprises to see what they’ve learned through their product
-    development journeys!
+    Encompasses all physical products for every type of maker under the sun - from outdoor rec, distilling (or brewing!),
+    and crafting, to connected devices, open-source hardware, 3D printing, and IOT (just to name a few) - join us to hear
+    stories behind breakout brands, learn about new technologies in manufacturing, and connect other artisans, engineers,
+    manufacturers and enterprises!
     EOF
   },
   'Headline Events' => {
