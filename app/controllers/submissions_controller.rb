@@ -11,7 +11,7 @@ class SubmissionsController < ApplicationController
     @submissions = Submission.
       for_current_year.
       for_submittable_tracks.
-      public.
+      for_voting.
       page(params[:page])
   end
 
@@ -22,7 +22,7 @@ class SubmissionsController < ApplicationController
         for_current_year.
         for_submittable_tracks.
         for_track(params[:track_name]).
-        public.
+        for_voting.
         page(params[:page])
       respond_to do |format|
         format.html
@@ -45,7 +45,7 @@ class SubmissionsController < ApplicationController
         for_current_year.
         for_submittable_tracks.
         for_track(params[:track_name]).
-        public.
+        for_voting.
         page(params[:page])
       respond_to do |format|
         format.json do
