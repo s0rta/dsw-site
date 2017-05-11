@@ -3,7 +3,7 @@
 .card-container.voting-categories
   - Track.submittable.in_display_order.each do |track|
     .card-frame
-      div class=("card-content #{track.name.downcase}")
+      div class=("card-content #{track.color}")
         = link_to track_submissions_path(track_name: track.name.downcase) do
           = render partial: "submissions/headers/#{track.name.downcase.tr(' ', '_')}"
           .title = "#{track.submissions.public.for_current_year.count} Topics"
