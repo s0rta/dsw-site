@@ -81,10 +81,6 @@ class Submission < ActiveRecord::Base
     where(state: PUBLIC_STATES)
   end
 
-  def self.for_voting
-    where(state: 'open_for_voting')
-  end
-
   def self.for_submittable_tracks
     joins(:track).
       where(tracks: { is_submittable: true })
