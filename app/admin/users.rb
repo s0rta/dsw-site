@@ -4,9 +4,6 @@ ActiveAdmin.register User do
   permit_params :email,
                 :password,
                 :password_confirmation,
-                :remember_me,
-                :uid,
-                :provider,
                 :name,
                 :description,
                 :is_admin
@@ -20,7 +17,30 @@ ActiveAdmin.register User do
     actions
   end
 
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :description
+      f.input :email
+      f.input :password
+      f.input :password_confirmation
+      f.input :is_admin
+    end
+
+    f.actions
+  end
+
   filter :name
   filter :email
+
+  controller do
+    def update
+      if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        params[:user].delete('password')
+        params[:user].delete('password_confirmation')
+      end
+      super
+    end
+  end
 
 end
