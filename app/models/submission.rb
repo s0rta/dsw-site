@@ -249,6 +249,14 @@ class Submission < ActiveRecord::Base
     user_registrations.count * SHOW_RATE > (venue.try(:capacity) || Venue::DEFAULT_CAPACITY)
   end
 
+  def company_or_submitter
+    if company_name.present?
+      "#{submitter.name} (#{company_name})"
+    else
+      submitter.name
+    end
+  end
+
   private
 
   def notify_track_chairs
