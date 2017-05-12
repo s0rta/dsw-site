@@ -11,7 +11,7 @@ section.common
     = render partial: "submissions/headers/#{@submission.track.name_for_partial}"
     .title = @submission.title
     .names
-      h6 = @submission.submitter.name
+      h6 = @submission.company_or_submitter
     .description = process_with_pipeline(@submission.description)
 
     footer
