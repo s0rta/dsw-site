@@ -6,7 +6,6 @@ feature 'Resetting my password' do
     create(:user, email: 'test@example.com',
                   password: 'password')
     visit '/'
-    find('#menu-icon').click
     click_on 'Register'
     click_on 'Reset your password'
     fill_in 'E-mail Address', with: 'test@example.com'

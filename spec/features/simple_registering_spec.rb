@@ -26,7 +26,6 @@ feature 'Registering to attend (via kiosk)' do
 
   scenario 'Registering to attend' do
     visit '/'
-    find('#menu-icon').click
     click_link 'Register'
     fill_in 'What is your name?', with: 'Test Registrant'
     fill_in 'What is your e-mail address?', with: 'test2@example.com'
@@ -47,7 +46,6 @@ feature 'Registering to attend (via kiosk)' do
                  password_confirmation: 'password',
                  name: 'Preexisting Registrant')
     visit '/'
-    find('#menu-icon').click
     click_link 'Register'
     fill_in 'What is your name?', with: 'Test Registrant'
     fill_in 'What is your e-mail address?', with: 'test2@example.com'
@@ -62,5 +60,4 @@ feature 'Registering to attend (via kiosk)' do
     expect(current_path).to include('/schedule')
     expect(user.reload.name).to eq('Preexisting Registrant')
   end
-
 end
