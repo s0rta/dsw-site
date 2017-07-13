@@ -168,7 +168,7 @@ ActiveAdmin.register Submission do
 
   sidebar :actions, only: [ :edit, :show ]  do
     para { link_to('View in panel picker', submission_path(submission)) }
-    para { link_to('View in schedule', schedule_path(id: submission.id)) }
+    para { link_to('View in schedule', schedule_path(submission)) }
   end
 
   sidebar 'Status', except: :index do
