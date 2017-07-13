@@ -425,6 +425,40 @@ CREATE TABLE schema_migrations (
 
 
 --
+-- Name: sent_notifications; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sent_notifications (
+    id integer NOT NULL,
+    submission_id integer,
+    kind character varying NOT NULL,
+    recipient_email character varying NOT NULL,
+    body text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sent_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sent_notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sent_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sent_notifications_id_seq OWNED BY sent_notifications.id;
+
+
+--
 -- Name: session_registrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -953,6 +987,13 @@ ALTER TABLE ONLY registrations ALTER COLUMN id SET DEFAULT nextval('registration
 
 
 --
+-- Name: sent_notifications id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sent_notifications ALTER COLUMN id SET DEFAULT nextval('sent_notifications_id_seq'::regclass);
+
+
+--
 -- Name: session_registrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1114,6 +1155,14 @@ ALTER TABLE ONLY newsletter_signups
 
 ALTER TABLE ONLY registrations
     ADD CONSTRAINT registrations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sent_notifications sent_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sent_notifications
+    ADD CONSTRAINT sent_notifications_pkey PRIMARY KEY (id);
 
 
 --
@@ -1311,6 +1360,13 @@ CREATE INDEX index_registrations_on_user_id ON registrations USING btree (user_i
 
 
 --
+-- Name: index_sent_notifications_on_submission_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sent_notifications_on_submission_id ON sent_notifications USING btree (submission_id);
+
+
+--
 -- Name: index_session_registrations_on_registration_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1445,6 +1501,14 @@ ALTER TABLE ONLY volunteership_available_shifts
 
 ALTER TABLE ONLY volunteership_assigned_shifts
     ADD CONSTRAINT fk_rails_b1f4aeb35b FOREIGN KEY (volunteer_shift_id) REFERENCES volunteer_shifts(id);
+
+
+--
+-- Name: sent_notifications fk_rails_da20014dea; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sent_notifications
+    ADD CONSTRAINT fk_rails_da20014dea FOREIGN KEY (submission_id) REFERENCES submissions(id);
 
 
 --
@@ -1622,4 +1686,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160909225854');
 INSERT INTO schema_migrations (version) VALUES ('20160912034451');
 
 INSERT INTO schema_migrations (version) VALUES ('20170320052451');
+
+INSERT INTO schema_migrations (version) VALUES ('20170713164355');
 

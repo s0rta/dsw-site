@@ -3,8 +3,11 @@ namespace :email do
   task :notify_of_acceptance => :environment do
     Submission.for_current_year.where(state: 'accepted').each do |submission|
       Rails.logger.info "Sending acceptance notification to submission #{submission.id}"
-      NotificationsMailer.notify_of_submission_acceptance(submission ).deliver_now!
-      submission.update_column :internal_notes, submission.notes + "\nSent acceptance e-mail on #{Date.today.to_s(:long)}"
+      message = NotificationsMailer.notify_of_submission_acceptance(submission)
+      message.deliver_now!
+      submission.sent_notifications.create! kind: SentNotification::ACCEPTANCE_KIND,
+                                            recipient_email: submission.contact_email,
+                                            body: message.message.to_yaml
     end
   end
 
