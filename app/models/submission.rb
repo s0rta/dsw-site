@@ -1,6 +1,5 @@
 class Submission < ActiveRecord::Base
 
-  WEEK_START = ActiveSupport::TimeZone.new('America/Denver').local(2016, 9, 12).at_beginning_of_day.freeze
   PUBLIC_STATES = %w(open_for_voting accepted confirmed).freeze
 
   SHOW_RATE = 0.3
@@ -199,13 +198,13 @@ class Submission < ActiveRecord::Base
   end
 
   def start_datetime
-    datetime = WEEK_START + (start_day.to_i - 2).days
+    datetime = EventSchedule::WEEK_START_DATE + (start_day.to_i - 2).days
     datetime += start_hour.hours if start_hour
     datetime
   end
 
   def end_datetime
-    datetime = WEEK_START + (end_day.to_i - 2).days
+    datetime = EventSchedule::WEEK_START_DATE + (end_day.to_i - 2).days
     datetime += end_hour.hours if end_hour
     datetime
   end

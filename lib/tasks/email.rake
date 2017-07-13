@@ -1,13 +1,16 @@
 namespace :email do
 
   task :notify_of_acceptance => :environment do
-    Submission.for_current_year.where(state: 'accepted').each do |submission|
-      Rails.logger.info "Sending acceptance notification to submission #{submission.id}"
-      message = NotificationsMailer.notify_of_submission_acceptance(submission)
-      message.deliver_now!
-      submission.sent_notifications.create! kind: SentNotification::ACCEPTANCE_KIND,
-                                            recipient_email: submission.contact_email,
-                                            body: message.message.to_yaml
+    Track.submittable.each do |t|
+      Rails.logger.info "Processing submissions for #{t.name} track"
+      t.submissions.for_current_year.where(state: 'accepted').each do |submission|
+        Rails.logger.info "Sending acceptance notification to submission #{submission.id}"
+        message = NotificationsMailer.notify_of_submission_acceptance(submission)
+        message.deliver_now!
+        submission.sent_notifications.create! kind: SentNotification::ACCEPTANCE_KIND,
+                                              recipient_email: submission.contact_email,
+                                              body: message.message.to_yaml
+      end
     end
   end
 

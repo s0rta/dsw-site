@@ -54,7 +54,7 @@ class NotificationsMailer < ActionMailer::Base
   def notify_of_submission_acceptance(submission)
     @submission = submission
     mail to: @submission.contact_email,
-         subject: 'Your session proposal for Denver Startup Week',
+         subject: 'RESPONSE NEEDED: Your Denver Startup Week session has been accepted!',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,
          cc: @submission.track.email_alias
