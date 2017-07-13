@@ -23,7 +23,7 @@ Lint/EndAlignment:
   # The value `variable` means that in assignments, `end` should be aligned
   # with the start of the variable on the left hand side of `=`. In all other
   # situations, `end` should still be aligned with the keyword.
-  AlignWith: variable
+  EnforcedStyleAlignWith: variable
   SupportedStyles:
     - keyword
     - variable
@@ -32,7 +32,7 @@ Lint/UnusedMethodArgument:
     - app/interactors/**/*.rb
 Lint/UselessAccessModifier:
   Enabled: false
-SingleSpaceBeforeFirstArg:
+Layout/SpaceBeforeFirstArg:
   Enabled: false
 SpaceInsideBrackets:
   Enabled: false
@@ -50,5 +50,5 @@ Style/BracesAroundHashParameters:
     - braces
     - no_braces
     - context_dependent
-Style/IndentHash:
+Layout/IndentHash:
   Enabled: false

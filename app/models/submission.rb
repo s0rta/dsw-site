@@ -47,6 +47,8 @@ class Submission < ActiveRecord::Base
                          class_name: 'User',
                          source: :user
 
+  has_many :sent_notifications, dependent: :destroy
+
   belongs_to :cluster
 
   validates :title, presence: true
