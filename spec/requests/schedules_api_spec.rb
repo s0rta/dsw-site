@@ -28,8 +28,8 @@ describe 'Schedule API', type: :request do
       "track_name"=>"Tech",
       "venue_name"=>nil,
       "venue_address"=>nil,
-      "start_datetime"=>"2016-09-11T00:00:00.000-06:00",
-      "end_datetime"=>"2016-09-11T00:00:00.000-06:00",
+      "start_datetime"=>"2017-09-24T00:00:00.000-06:00",
+      "end_datetime"=>"2017-09-24T00:00:00.000-06:00",
       "registrant_count"=>0 })
   end
 
