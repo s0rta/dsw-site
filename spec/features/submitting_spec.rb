@@ -86,7 +86,7 @@ feature 'Creating a submission' do
       expect(page).to have_content 'Some talk'
       expect(page).to have_content 'Your changes have been submitted'
 
-      Submission.last.promote_updates
+      Submission.last.promote_updates!
       visit page.current_path
 
       expect(page).to have_content 'Updated talk'

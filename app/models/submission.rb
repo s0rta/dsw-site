@@ -232,16 +232,6 @@ class Submission < ActiveRecord::Base
     event
   end
 
-  def promote_updates
-    update(proposed_updates.merge(proposed_updates: nil))
-  end
-
-  def notify_track_chairs_of_update
-    track.chairs.each do |chair|
-      NotificationsMailer.notify_of_submission_update(chair, self).deliver_now
-    end
-  end
-
   def tags
     [ cluster.try(:name), (popular? ? 'Popular' : nil) ].compact * ', '
   end
@@ -255,6 +245,49 @@ class Submission < ActiveRecord::Base
       "#{submitter.name} (#{company_name})"
     else
       submitter.name
+    end
+  end
+
+  # Actions
+  def send_venue_match_email!
+    message = NotificationsMailer.notify_of_submission_venue_match(self)
+    message.deliver_now!
+    sent_notifications.create! kind: SentNotification::VENUE_MATCH_KIND,
+                               recipient_email: submission.contact_email,
+                               body: message.message.to_yaml
+  end
+
+  def send_accept_email!
+    message = NotificationsMailer.notify_of_submission_acceptance(self)
+    message.deliver_now!
+    sent_notifications.create! kind: SentNotification::ACCEPTANCE_KIND,
+                               recipient_email: submission.contact_email,
+                               body: message.message.to_yaml
+  end
+
+  def send_reject_email!
+    message = NotificationsMailer.notify_of_submission_rejection(self)
+    message.deliver_now!
+    sent_notifications.create! kind: SentNotification::REJECTION_KIND,
+                               recipient_email: submission.contact_email,
+                               body: message.message.to_yaml
+  end
+
+  def send_waitlist_email!
+    message = NotificationsMailer.notify_of_submission_waitlisting(self)
+    message.deliver_now!
+    sent_notifications.create! kind: SentNotification::WAITLISTING_KIND,
+                               recipient_email: submission.contact_email,
+                               body: message.message.to_yaml
+  end
+
+  def promote_updates!
+    update(proposed_updates.merge(proposed_updates: nil))
+  end
+
+  def notify_track_chairs_of_update!
+    track.chairs.each do |chair|
+      NotificationsMailer.notify_of_submission_update(chair, self).deliver_now
     end
   end
 

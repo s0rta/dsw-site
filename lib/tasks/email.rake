@@ -5,11 +5,7 @@ namespace :email do
       Rails.logger.info "Processing submissions for #{t.name} track"
       t.submissions.for_current_year.where(state: 'accepted').each do |submission|
         Rails.logger.info "Sending acceptance notification to submission #{submission.id}"
-        message = NotificationsMailer.notify_of_submission_acceptance(submission)
-        message.deliver_now!
-        submission.sent_notifications.create! kind: SentNotification::ACCEPTANCE_KIND,
-                                              recipient_email: submission.contact_email,
-                                              body: message.message.to_yaml
+        submission.send_accept_email!
       end
     end
   end
@@ -18,11 +14,7 @@ namespace :email do
     Track.submittable.each do |t|
       t.submissions.for_current_year.where(state: 'rejected').each do |submission|
         Rails.logger.info "Sending rejection notification to submission #{submission.id}"
-        message = NotificationsMailer.notify_of_submission_rejection(submission)
-        message.deliver_now!
-        submission.sent_notifications.create! kind: SentNotification::REJECTION_KIND,
-                                              recipient_email: submission.contact_email,
-                                              body: message.message.to_yaml
+        submission.send_reject_email!
       end
     end
   end
@@ -30,8 +22,7 @@ namespace :email do
   task :notify_of_waitlisting => :environment do
     Submission.for_current_year.where(state: 'waitlisted').each do |submission|
       Rails.logger.info "Sending waitlisted notification to submission #{submission.id}"
-      NotificationsMailer.notify_of_submission_waitlisting(submission ).deliver_now!
-      submission.update_column :internal_notes, submission.notes + "\nSent waitlisting e-mail on #{Date.today.to_s(:long)}"
+      submission.send_waitlist_email!
     end
   end
 

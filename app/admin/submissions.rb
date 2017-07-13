@@ -254,9 +254,8 @@ ActiveAdmin.register Submission do
 
   member_action :send_venue_match_email, method: :post do
     submission = Submission.find(params[:id])
-    NotificationsMailer.notify_of_submission_venue_match(submission).deliver_now
+    submission.send_venue_match_email!
     flash[:notice] = 'Email sent!'
-    submission.update_column :notes, submission.notes + "\nSent venue match e-mail on #{Date.today.to_s(:long)}"
     redirect_to admin_submission_path(submission)
   end
 
@@ -269,7 +268,7 @@ ActiveAdmin.register Submission do
 
   member_action :accept_update, method: :post do
     submission = Submission.find(params[:id])
-    submission.promote_updates
+    submission.promote_updates!
     redirect_to admin_submission_path(submission)
   end
 
