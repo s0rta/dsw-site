@@ -50,5 +50,5 @@ Style/BracesAroundHashParameters:
     - braces
     - no_braces
     - context_dependent
-Style/IndentHash:
+Layout/IndentHash:
   Enabled: false
