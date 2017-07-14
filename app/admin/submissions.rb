@@ -217,6 +217,15 @@ ActiveAdmin.register Submission do
 
     active_admin_comments
 
+    # Contact History
+    panel 'E-mail Notifications' do
+      table_for submission.sent_notifications.order('created_at DESC') do
+        column(:kind) { |submission| submission.kind.titleize }
+        column :recipient_email
+        column 'Sent At', :created_at
+      end
+    end
+
     panel 'Recent Updates' do
       table_for submission.versions do
         column 'Modified at' do |v|
