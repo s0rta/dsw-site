@@ -21,7 +21,7 @@ class NotificationsMailer < ActionMailer::Base
     @chair = chair
     @submission = submission
     @track = @submission.track
-    mail to: chair.email, subject: "#{@submission.submitter} has proposed an update needing your approval for the #{@track.name} track."
+    mail to: chair.email, subject: "#{@submission.submitter.name} has proposed an update needing your approval for the #{@track.name} track."
   end
 
   def confirm_new_submission(submission)
