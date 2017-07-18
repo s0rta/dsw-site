@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-#
+
 ActiveAdmin.register HomepageCta do
 
   menu label: 'Homepage Calls-to-Action'
