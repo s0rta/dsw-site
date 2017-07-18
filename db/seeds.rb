@@ -143,3 +143,70 @@ end
   c.assign_attributes(attrs)
   c.save!
 end
+
+[
+  {
+    title: 'Call for Submissions',
+    subtitle: 'Session submissions are open through {{ submission_close_date | date: "%B %e" }}',
+
+    body: <<-EOF.strip_heredoc.squish,
+      Denver Startup Week is powered by the community.
+      Submit a topic for consideration for {{ current_date | date: "%Y" }}.
+    EOF
+    link_text: 'Submit a Topic',
+    link_href: '/panel-picker/mine',
+    relevant_to_cycle: 'cfp'
+  },
+  {
+    title: 'Voting is Open',
+    subtitle: 'Cast your vote by {{ voting_close_date | date: "%B %e" }}',
+    body: <<-EOF.strip_heredoc.squish,
+      The sessions are in, now we need you to help us finalize the best for this year's event.
+      Don't delay, cast your vote and spread the word.
+    EOF
+    link_text: 'Vote Now',
+    link_href: '/panel-picker',
+    relevant_to_cycle: 'voting'
+  },
+  {
+    title: 'Read our blog',
+    subtitle: 'Stay up to date with DSW',
+    body: 'Our new blog features the latest updates on DSW and the Denver entrepreneurial community.',
+    link_text: 'Visit the blog',
+    link_href: 'https://medium.com/denver-startup-week'
+  },
+  {
+    title: 'Registration is Open',
+    subtitle: 'Register & build your personalized {{ current_date | date: "%Y" }} schedule',
+    body: <<-EOF.strip_heredoc.squish,
+      This year is going to be epic. We are excited to bring you the best of the best,
+      and we couldn't have done this without you. Don't delay.
+    EOF
+    link_text: 'Check it out',
+    link_href: '/schedule',
+    relevant_to_cycle: 'registration'
+  },
+  {
+    title: 'Chase Basecamp',
+    subtitle: 'Immerse yourself in the heart of it all',
+    body: <<-EOF.strip_heredoc.squish,
+      Whether you want to find inspiration,
+      hone your business idea, or just refuel,
+      Basecamp powered by Chase is your home base!
+    EOF
+    link_text: 'Learn More',
+    link_href: '/basecamp',
+    relevant_to_cycle: 'week'
+  },
+  {
+    title: 'Get Involved',
+    subtitle: 'Be a part of something epic',
+    body: 'We are actively looking for sponsors and volunteers! Contact us now to learn more.',
+    link_text: 'Contact',
+    link_href: '/contact'
+  }
+].each do |attrs|
+  c = HomepageCta.where(title: attrs[:title]).first_or_initialize
+  c.assign_attributes(attrs)
+  c.save!
+end

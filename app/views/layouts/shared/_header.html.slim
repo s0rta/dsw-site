@@ -14,7 +14,7 @@ header.masthead(data-bindable='toggle-nav')
       - if signed_in?
         div
           = link_to 'My Dashboard', mine_submissions_path
-      - elsif EventSchedule.submissions_open?
+      - elsif EventSchedule.cfp_open?
         div
           = link_to 'Submit Proposal', new_submission_path
       - elsif FeatureToggler.registration_active? && !registered?
@@ -23,7 +23,7 @@ header.masthead(data-bindable='toggle-nav')
       - else
         div
           = link_to 'Register / Sign In', mine_submissions_path
-      - if EventSchedule.feedback_open?
+      - if EventSchedule.voting_open?
         div
           = link_to 'Panel Picker', submissions_path
       div

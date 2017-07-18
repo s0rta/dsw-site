@@ -1,4 +1,15 @@
 module ApplicationHelper
+
+  def process_with_liquid(content)
+    context = {
+      'submission_close_date' => EventSchedule::SUBMISSION_CLOSE_DATE,
+      'voting_close_date' => EventSchedule::VOTING_CLOSE_DATE,
+      'current_date' => DateTime.now
+    }
+    template = Liquid::Template.parse(content)
+    template.render(context)
+  end
+
   def process_with_pipeline(content)
     context = {
       asset_root: "/images/icons"

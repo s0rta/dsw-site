@@ -343,6 +343,43 @@ ALTER SEQUENCE general_inquiries_id_seq OWNED BY general_inquiries.id;
 
 
 --
+-- Name: homepage_ctas; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE homepage_ctas (
+    id integer NOT NULL,
+    title character varying NOT NULL,
+    subtitle character varying NOT NULL,
+    body character varying NOT NULL,
+    link_text character varying NOT NULL,
+    link_href character varying NOT NULL,
+    relevant_to_cycle character varying,
+    is_active boolean DEFAULT true NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: homepage_ctas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE homepage_ctas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: homepage_ctas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE homepage_ctas_id_seq OWNED BY homepage_ctas.id;
+
+
+--
 -- Name: newsletter_signups; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -973,6 +1010,13 @@ ALTER TABLE ONLY general_inquiries ALTER COLUMN id SET DEFAULT nextval('general_
 
 
 --
+-- Name: homepage_ctas id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY homepage_ctas ALTER COLUMN id SET DEFAULT nextval('homepage_ctas_id_seq'::regclass);
+
+
+--
 -- Name: newsletter_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1139,6 +1183,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY general_inquiries
     ADD CONSTRAINT general_inquiries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: homepage_ctas homepage_ctas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY homepage_ctas
+    ADD CONSTRAINT homepage_ctas_pkey PRIMARY KEY (id);
 
 
 --
@@ -1688,4 +1740,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160912034451');
 INSERT INTO schema_migrations (version) VALUES ('20170320052451');
 
 INSERT INTO schema_migrations (version) VALUES ('20170713164355');
+
+INSERT INTO schema_migrations (version) VALUES ('20170718164505');
 

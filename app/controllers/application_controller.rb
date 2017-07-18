@@ -87,11 +87,11 @@ class ApplicationController < ActionController::Base
       session[:previous_url]
     elsif user.registered?
       main_app.schedules_path
-    elsif FeatureToggler.registration_active?
+    elsif EventSchedule.registration_open?
       main_app.register_path
-    elsif EventSchedule.submissions_open?
+    elsif EventSchedule.cfp_open?
       main_app.new_submission_path
-    elsif EventSchedule.feedback_open?
+    elsif EventSchedule.voting_open?
       main_app.submissions_path
     elsif user.is_admin?
       main_app.admin_root_path
