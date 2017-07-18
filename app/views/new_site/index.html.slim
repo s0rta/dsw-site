@@ -1,5 +1,5 @@
 section.hero
-  - unless EventSchedule.week_started?
+  - unless EventSchedule.in_week?
     h1.countdown #{time_remaining_to_deadline(EventSchedule::WEEK_START_DATE)}
   h2 September 25 - 29, 2017
   .section-content
@@ -7,41 +7,16 @@ section.hero
 
 section.hero-cta-4up
   section.hero-cta
-    - if EventSchedule.submissions_open?
-      article.teal
-        .section-content
-          h2 Call for Submissions
-          h3 Session submissions are open through #{EventSchedule::SUBMISSION_CLOSE_DATE.to_s(:month_day)}
-          h6 Denver Startup Week is powered by the community. Submit a topic for consideration for #{Date.today.year}.
-          = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
-    - elsif EventSchedule.feedback_open?
-      article.green
-        .section-content
-          h2 Voting is Open
-          h3 Cast your vote before #{EventSchedule::VOTING_CLOSE_DATE.to_s(:month_day)}
-          h6 The sessions are in, now we need you to help us finalize the best for this year's event. Don't delay, cast your vote and spread the word.
-          = link_to 'Vote Now', submissions_path, class: 'btn green'
-    - elsif FeatureToggler.registration_active? && !registered?
-      article.green
-        .section-content
-          h2 Registration is Open
-          h3 Register and build your schedule
-          h6 This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
-          = link_to 'Register Now', new_registration_path, class: 'btn green'
-    - elsif FeatureToggler.registration_active? && registered?
-      article.green
-        .section-content
-          h2 Build Your Schedule
-          h3 Register and build your own schedule
-          h6 This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
-          = link_to 'Build Your Schedule', schedules_path, class: 'btn green'
-    - else
-      article.green
-        .section-content
-          h2 Read our blog
-          h3 Stay up to date with DSW
-          h6 Our new blog features the latest updates on DSW and the Denver entrepreneurial community.
-          = link_to 'Visit the blog', 'https://medium.com/denver-startup-week', class: 'btn green'
+    - @ctas.each do |cta|
+      - cycle('teal', 'green', 'purple', 'blue', name: 'colors')
+      article(class="#{current_cycle('colors')}")
+        - cache(cta, current_cycle('colors')) do
+          .section-content
+            h2 = process_with_liquid cta.title
+            h3 = process_with_liquid cta.subtitle
+            h6 = process_with_liquid cta.body
+            = link_to cta.link_text, cta.link_href, class: "btn #{current_cycle('colors')}"
+
     article.purple
       .section-content
         h2 Get Involved

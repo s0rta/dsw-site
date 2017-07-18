@@ -46,7 +46,7 @@ section.common.sm-centered
     - else
       h6 You have not yet submitted any proposals for this year.
 
-- if EventSchedule.submissions_open?
+- if EventSchedule.cfp_open?
   section.common.sm-centered
     .section-content
       = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'

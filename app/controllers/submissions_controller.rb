@@ -127,11 +127,11 @@ class SubmissionsController < ApplicationController
   end
 
   def check_submissions_open
-    redirect_to submissions_closed_submissions_path unless EventSchedule.submissions_open?
+    redirect_to submissions_closed_submissions_path unless EventSchedule.cfp_open?
   end
 
   def check_feedback_open
-    redirect_to feedback_closed_submissions_path unless EventSchedule.feedback_open?
+    redirect_to feedback_closed_submissions_path unless EventSchedule.voting_open?
   end
 
   def set_submissions

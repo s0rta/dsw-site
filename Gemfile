@@ -39,6 +39,7 @@ gem 'github-markdown'
 gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
+gem 'liquid'
 
 gem 'textacular'
 
