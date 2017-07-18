@@ -10,7 +10,7 @@ section.hero-cta-4up
     - @ctas.each do |cta|
       - cycle('teal', 'green', 'purple', 'blue', name: 'colors')
       article(class="#{current_cycle('colors')}")
-        - cache(cta, current_cycle('colors')) do
+        - cache([ cta, current_cycle('colors') ]) do
           .section-content
             h2 = process_with_liquid cta.title
             h3 = process_with_liquid cta.subtitle
