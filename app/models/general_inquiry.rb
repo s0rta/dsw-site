@@ -1,4 +1,4 @@
-class GeneralInquiry < ActiveRecord::Base
+class GeneralInquiry < ApplicationRecord
 
   after_create :notify_inbox,
                :subscribe_to_list

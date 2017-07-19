@@ -1,4 +1,4 @@
-class NewsletterSignup < ActiveRecord::Base
+class NewsletterSignup < ApplicationRecord
 
   after_create :subscribe_to_list
 

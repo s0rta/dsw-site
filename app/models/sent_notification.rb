@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class SentNotification < ActiveRecord::Base
+class SentNotification < ApplicationRecord
 
   ACCEPTANCE_KIND = 'accepted'
   REJECTION_KIND = 'rejected'

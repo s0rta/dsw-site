@@ -1,4 +1,4 @@
-class Submission < ActiveRecord::Base
+class Submission < ApplicationRecord
 
   PUBLIC_STATES = %w(open_for_voting accepted confirmed).freeze
 

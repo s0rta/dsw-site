@@ -1,4 +1,4 @@
-class Volunteership < ActiveRecord::Base
+class Volunteership < ApplicationRecord
 
   include YearScoped
 

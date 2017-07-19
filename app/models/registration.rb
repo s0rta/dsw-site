@@ -1,4 +1,4 @@
-class Registration < ActiveRecord::Base
+class Registration < ApplicationRecord
 
   AGE_RANGES = [
     'Under 18 years old',
