@@ -45,7 +45,6 @@ gem 'multi_fetch_fragments'
 
 gem 'icalendar'
 
-gem 'mail_view', github: 'basecamp/mail_view'
 gem 'premailer-rails'
 
 # State machines

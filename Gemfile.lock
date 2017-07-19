@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/basecamp/mail_view.git
-  revision: 50831ad31c6f9042469a33dab1394bd2a4042fd8
-  specs:
-    mail_view (2.0.4)
-      tilt
-
-GIT
   remote: git://github.com/myemma/EmmaRuby.git
   revision: 47b7978bb750a3dd676f51173a532dabb88bcfdd
   specs:
@@ -430,7 +423,6 @@ DEPENDENCIES
   kaminari
   liquid
   lograge
-  mail_view!
   memcachier
   multi_fetch_fragments
   navigasmic
