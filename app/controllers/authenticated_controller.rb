@@ -1,5 +1,3 @@
 class AuthenticatedController < ApplicationController
-
-  before_filter :ensure_linkedin_and_admin!
-
+  before_action :ensure_linkedin_and_admin!
 end

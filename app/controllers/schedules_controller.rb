@@ -3,8 +3,8 @@ class SchedulesController < ApplicationController
   respond_to :html
   respond_to :json, only: :index
 
-  before_filter :ensure_registered!, only: [ :my_schedule, :create, :destroy ]
-  before_filter :authenticate_user!, only: [ :my_schedule, :create, :destroy ]
+  before_action :ensure_registered!, only: [ :my_schedule, :create, :destroy ]
+  before_action :authenticate_user!, only: [ :my_schedule, :create, :destroy ]
 
   def index
     @sessions = Submission.
