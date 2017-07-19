@@ -1,6 +1,6 @@
 language: ruby
-dist: trusty
 sudo: false
+dist: trusty
 services:
 - redis-server
 cache:
