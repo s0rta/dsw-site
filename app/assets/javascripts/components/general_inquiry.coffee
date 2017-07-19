@@ -46,6 +46,7 @@ class dsw.GeneralInquiry
             notes: notes
         success: =>
           @button.val 'Thanks! We will be in touch shortly'
+          @button.prop 'disabled', true
         error: =>
           @button.val 'An error occurred - please try again later!'
 

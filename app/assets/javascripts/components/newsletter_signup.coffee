@@ -40,6 +40,7 @@ class dsw.NewsletterSignup
             email: email
         success: =>
           @button.val 'Thanks! You are signed up for updates.'
+          @button.prop 'disabled', true
         error: =>
           @button.val 'An error occurred - please try again later!'
 

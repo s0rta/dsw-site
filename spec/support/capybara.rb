@@ -1,6 +1,13 @@
 require 'capybara/rails'
 require 'capybara/rspec'
 
+Capybara.register_driver :selenium do |app|
+  caps = Selenium::WebDriver::Remote::Capabilities.firefox(marionette: false)
+  Capybara::Selenium::Driver.new(app,
+                                 browser: :firefox,
+                                 desired_capabilities: caps)
+end
+
 Capybara.default_driver = :selenium
 
 RSpec.configure do |config|
