@@ -37,13 +37,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email,
-               :remember_me,
-               :name,
-               :password,
-               :password_confirmation)
-    end
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i(email remember_me name password password_confirmation))
   end
 
   def registered?
