@@ -15,10 +15,15 @@ namespace :email do
   end
 
   task :notify_of_rejection => :environment do
-    Submission.for_current_year.where(state: 'rejected').each do |submission|
-      Rails.logger.info "Sending rejection notification to submission #{submission.id}"
-      NotificationsMailer.notify_of_submission_rejection(submission ).deliver_now!
-      submission.update_column :internal_notes, submission.notes + "\nSent rejection e-mail on #{Date.today.to_s(:long)}"
+    Track.submittable.each do |t|
+      t.submissions.for_current_year.where(state: 'rejected').each do |submission|
+        Rails.logger.info "Sending rejection notification to submission #{submission.id}"
+        message = NotificationsMailer.notify_of_submission_rejection(submission)
+        message.deliver_now!
+        submission.sent_notifications.create! kind: SentNotification::REJECTION_KIND,
+                                              recipient_email: submission.contact_email,
+                                              body: message.message.to_yaml
+      end
     end
   end
 
