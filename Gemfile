@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '~> 4.2.6'
+gem 'rails', '~> 5.0.0'
 gem 'rake'
 gem 'pg'
 gem 'puma'
@@ -19,8 +19,6 @@ gem 'responders'
 gem 'navigasmic'
 gem 'font_assets'
 gem "autoprefixer-rails"
-
-gem 'temporal-rails'
 
 # Simple transparent captchas
 gem 'honeypot-captcha'
@@ -79,7 +77,6 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.6.0'
-  gem 'quiet_assets'
 end
 
 group :test do
