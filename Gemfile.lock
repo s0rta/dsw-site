@@ -95,6 +95,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    commonmarker (0.16.8)
+      ruby-enum (~> 0.5)
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -131,7 +133,6 @@ GEM
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
     gemoji (2.1.0)
-    github-markdown (0.6.5)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     haml (5.0.1)
@@ -200,7 +201,7 @@ GEM
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     memcachier (0.0.2)
-    method_source (0.8.1)
+    method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -320,6 +321,8 @@ GEM
       activesupport (>= 4.1.0)
       rspec (~> 3.0)
     rspec-support (3.6.0)
+    ruby-enum (0.7.1)
+      i18n
     ruby_parser (3.10.0)
       sexp_processor (~> 4.9)
     rubyzip (1.2.1)
@@ -402,6 +405,7 @@ DEPENDENCIES
   bourbon
   capybara
   coffee-rails
+  commonmarker
   dalli
   database_cleaner
   devise
@@ -411,7 +415,6 @@ DEPENDENCIES
   factory_girl_rails
   font_assets
   gemoji
-  github-markdown
   haml-rails
   honeybadger
   honeypot-captcha

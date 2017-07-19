@@ -33,7 +33,7 @@ gem 'omniauth-linkedin'
 gem 'devise'
 
 gem 'html-pipeline', require: 'html/pipeline'
-gem 'github-markdown'
+gem 'commonmarker'
 gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
