@@ -79,7 +79,11 @@ class ApplicationController < ActionController::Base
   end
 
   def user_for_paper_trail
-    current_user || 'Unknown user'
+    if user_signed_in?
+      current_user.id
+    else
+      'Unknown user'
+    end
   end
 
   def after_sign_in_path_for(user)
