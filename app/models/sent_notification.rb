@@ -3,7 +3,8 @@
 class SentNotification < ActiveRecord::Base
 
   ACCEPTANCE_KIND = 'accepted'
-  KINDS = [ ACCEPTANCE_KIND ].freeze
+  REJECTION_KIND = 'rejected'
+  KINDS = [ ACCEPTANCE_KIND, REJECTION_KIND ].freeze
 
   belongs_to :submission
 
