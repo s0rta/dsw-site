@@ -77,7 +77,7 @@ feature 'Creating a submission' do
       fill_in 'submission_contact_email', with: 'test2@example.com'
       click_button 'Submit'
 
-      click_on 'Propose Update'
+      click_on 'Propose Updates'
       fill_in 'submission_title', with: 'Updated talk'
       fill_in 'submission_description', with: 'Here is my udpated idea'
       fill_in 'submission_notes', with: 'I have even more things to say now.'
