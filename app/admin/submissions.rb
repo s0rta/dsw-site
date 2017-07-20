@@ -245,86 +245,6 @@ ActiveAdmin.register Submission do
     end
   end
 
-  # Notify of venue match
-  action_item only: :show do
-    if submission.venue &&
-       submission.venue.contact_email &&
-       submission.contact_email &&
-       submission.venue.contact_name
-      link_to 'Send venue match email',
-              send_venue_match_email_admin_submission_path(submission),
-              method: :post,
-              confirm: 'Are you sure?'
-    end
-  end
-
-  member_action :send_venue_match_email, method: :post do
-    submission = Submission.find(params[:id])
-    submission.send_venue_match_email!
-    flash[:notice] = 'Email sent!'
-    redirect_to admin_submission_path(submission)
-  end
-
-  # Notify of acceptance
-  action_item only: :show do
-    link_to 'Send acceptance email',
-            send_acceptance_email_admin_submission_path(submission),
-            method: :post,
-            confirm: 'Are you sure?'
-  end
-
-  member_action :send_acceptance_email, method: :post do
-    submission = Submission.find(params[:id])
-    submission.send_acceptance_email!
-    flash[:notice] = 'Email sent!'
-    redirect_to admin_submission_path(submission)
-  end
-
-  batch_action :sent_acceptance_email, confirm: 'Are you sure?' do |submission_ids|
-    Submission.find(submission_ids).each(&:send_acceptance_email!)
-    redirect_to admin_submissions_path
-  end
-
-  # Notify of rejection
-  action_item only: :show do
-    link_to 'Send rejection email',
-            send_rejection_email_admin_submission_path(submission),
-            method: :post,
-            confirm: 'Are you sure?'
-  end
-
-  member_action :send_rejection_email, method: :post do
-    submission = Submission.find(params[:id])
-    submission.send_rejection_email!
-    flash[:notice] = 'Email sent!'
-    redirect_to admin_submission_path(submission)
-  end
-
-  batch_action :sent_rejection_email, confirm: 'Are you sure?' do |submission_ids|
-    Submission.find(submission_ids).each(&:send_rejection_email!)
-    redirect_to admin_submissions_path
-  end
-
-  # Notify of waitlisting
-  action_item only: :show do
-    link_to 'Send waitlist email',
-            send_waitlist_email_admin_submission_path(submission),
-            method: :post,
-            confirm: 'Are you sure?'
-  end
-
-  member_action :send_waitlist_email, method: :post do
-    submission = Submission.find(params[:id])
-    submission.send_waitlist_email!
-    flash[:notice] = 'Email sent!'
-    redirect_to admin_submission_path(submission)
-  end
-
-  batch_action :sent_waitlist_email, confirm: 'Are you sure?' do |submission_ids|
-    Submission.find(submission_ids).each(&:send_waitlist_email!)
-    redirect_to admin_submissions_path
-  end
-
   # Accept proposed session changes
   action_item only: :show do
     if submission.proposed_updates
@@ -464,6 +384,86 @@ ActiveAdmin.register Submission do
 
   batch_action :waitlist do |submission_ids|
     Submission.find(submission_ids).each(&:waitlist!)
+    redirect_to admin_submissions_path
+  end
+
+  # Notify of venue match
+  action_item only: :show do
+    if submission.venue &&
+       submission.venue.contact_email &&
+       submission.contact_email &&
+       submission.venue.contact_name
+      link_to 'Send venue match email',
+              send_venue_match_email_admin_submission_path(submission),
+              method: :post,
+              confirm: 'Are you sure?'
+    end
+  end
+
+  member_action :send_venue_match_email, method: :post do
+    submission = Submission.find(params[:id])
+    submission.send_venue_match_email!
+    flash[:notice] = 'Email sent!'
+    redirect_to admin_submission_path(submission)
+  end
+
+  # Notify of acceptance
+  action_item only: :show do
+    link_to 'Send acceptance email',
+            send_acceptance_email_admin_submission_path(submission),
+            method: :post,
+            confirm: 'Are you sure?'
+  end
+
+  member_action :send_acceptance_email, method: :post do
+    submission = Submission.find(params[:id])
+    submission.send_acceptance_email!
+    flash[:notice] = 'Email sent!'
+    redirect_to admin_submission_path(submission)
+  end
+
+  batch_action :send_acceptance_email, confirm: 'Are you sure?' do |submission_ids|
+    Submission.find(submission_ids).each(&:send_acceptance_email!)
+    redirect_to admin_submissions_path
+  end
+
+  # Notify of rejection
+  action_item only: :show do
+    link_to 'Send rejection email',
+            send_rejection_email_admin_submission_path(submission),
+            method: :post,
+            confirm: 'Are you sure?'
+  end
+
+  member_action :send_rejection_email, method: :post do
+    submission = Submission.find(params[:id])
+    submission.send_rejection_email!
+    flash[:notice] = 'Email sent!'
+    redirect_to admin_submission_path(submission)
+  end
+
+  batch_action :send_rejection_email, confirm: 'Are you sure?' do |submission_ids|
+    Submission.find(submission_ids).each(&:send_rejection_email!)
+    redirect_to admin_submissions_path
+  end
+
+  # Notify of waitlisting
+  action_item only: :show do
+    link_to 'Send waitlist email',
+            send_waitlist_email_admin_submission_path(submission),
+            method: :post,
+            confirm: 'Are you sure?'
+  end
+
+  member_action :send_waitlist_email, method: :post do
+    submission = Submission.find(params[:id])
+    submission.send_waitlist_email!
+    flash[:notice] = 'Email sent!'
+    redirect_to admin_submission_path(submission)
+  end
+
+  batch_action :send_waitlist_email, confirm: 'Are you sure?' do |submission_ids|
+    Submission.find(submission_ids).each(&:send_waitlist_email!)
     redirect_to admin_submissions_path
   end
 
