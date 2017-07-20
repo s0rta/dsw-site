@@ -14,12 +14,19 @@ class HomepageCta < ActiveRecord::Base
             :subtitle,
             :body, liquid: true
 
+  validates :priority,
+            numericality: { only_integer: true }
+
   validates :relevant_to_cycle,
             inclusion: { in: EventSchedule::CYCLES,
                          allow_blank: true }
 
   def self.active
     where(is_active: true)
+  end
+
+  def self.in_priority_order
+    order('priority DESC')
   end
 
   def self.relevant_to_cycles(cycles)

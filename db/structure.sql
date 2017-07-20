@@ -356,7 +356,8 @@ CREATE TABLE homepage_ctas (
     relevant_to_cycle character varying,
     is_active boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    priority integer DEFAULT 0 NOT NULL
 );
 
 
@@ -1742,4 +1743,6 @@ INSERT INTO schema_migrations (version) VALUES ('20170320052451');
 INSERT INTO schema_migrations (version) VALUES ('20170713164355');
 
 INSERT INTO schema_migrations (version) VALUES ('20170718164505');
+
+INSERT INTO schema_migrations (version) VALUES ('20170720060259');
 
