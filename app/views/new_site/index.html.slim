@@ -8,7 +8,7 @@ section.hero
 section.hero-cta-4up
   section.hero-cta
     - @ctas.each do |cta|
-      - cycle('teal', 'green', 'purple', 'blue', name: 'colors')
+      - cycle('teal', 'purple', 'blue', 'green', name: 'colors')
       article(class="#{current_cycle('colors')}")
         - cache([ cta, current_cycle('colors') ]) do
           .section-content
@@ -16,20 +16,6 @@ section.hero-cta-4up
             h3 = process_with_liquid cta.subtitle
             h6 = process_with_liquid cta.body
             = link_to cta.link_text, cta.link_href, class: "btn #{current_cycle('colors')}"
-
-  /* section.hero-cta */
-  /*   article.blue */
-  /*     .section-content */
-  /*       h2 Chase Basecamp */
-  /*       h3 Immerse yourself in the heart of it all */
-  /*       h6 Whether you want to find inspiration, hone your business idea, or just refuel, Basecamp powered by Chase is your home base! */
-  /*       = link_to 'Learn More', page_path(page: 'basecamp'), class: 'btn blue' */
-  /*   article.teal */
-  /*     .section-content */
-  /*       h2 Kickoff Breakfast */
-  /*       h3 Check out the live stream of the Kickoff breakfast! */
-  /*       h6 For the first time ever, we're live streaming the event that gets the whole week rolling. */
-  /*       = link_to 'Watch it live', 'https://youtu.be/Ks3GwL-j1Nk', class: 'btn teal' */
 
 section.common.the-what
   .section-content
