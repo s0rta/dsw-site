@@ -7,12 +7,14 @@ ActiveAdmin.register HomepageCta do
   permit_params :title,
                 :subtitle,
                 :body,
+                :priority,
                 :link_text,
                 :link_href,
                 :is_active
 
   index do
     selectable_column
+    column :priority
     column :title
     column :subtitle
     column :is_active
@@ -24,6 +26,7 @@ ActiveAdmin.register HomepageCta do
 
   form do |f|
     f.inputs do
+      f.input :priority
       f.input :title
       f.input :subtitle
       f.input :body
@@ -39,5 +42,4 @@ ActiveAdmin.register HomepageCta do
 
     f.actions
   end
-
 end

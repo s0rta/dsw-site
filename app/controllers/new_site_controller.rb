@@ -3,7 +3,7 @@ class NewSiteController < ApplicationController
   before_filter :verify_page_exists!
 
   def index
-    @ctas = HomepageCta.active.relevant_to_cycles(EventSchedule.active_cycles).order('created_at DESC')
+    @ctas = HomepageCta.active.relevant_to_cycles(EventSchedule.active_cycles).in_priority_order
     render template: "new_site/#{params[:page].presence || 'index'}"
   end
 

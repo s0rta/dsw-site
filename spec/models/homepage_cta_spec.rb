@@ -9,6 +9,7 @@ RSpec.describe HomepageCta, type: :model do
   it { is_expected.to validate_presence_of(:link_text) }
   it { is_expected.to validate_presence_of(:link_text) }
   it { is_expected.to validate_inclusion_of(:relevant_to_cycle).in_array(EventSchedule::CYCLES) }
+  it { is_expected.to validate_numericality_of(:priority) }
 
   context 'Liquid syntax validation' do
     it { is_expected.to allow_value('{{ current_date }}').for(:title) }

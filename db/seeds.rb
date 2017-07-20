@@ -155,7 +155,8 @@ end
     EOF
     link_text: 'Submit a Topic',
     link_href: '/panel-picker/mine',
-    relevant_to_cycle: 'cfp'
+    relevant_to_cycle: 'cfp',
+    priority: 100
   },
   {
     title: 'Voting is Open',
@@ -166,14 +167,16 @@ end
     EOF
     link_text: 'Vote Now',
     link_href: '/panel-picker',
-    relevant_to_cycle: 'voting'
+    relevant_to_cycle: 'voting',
+    priority: 100
   },
   {
     title: 'Read our blog',
     subtitle: 'Stay up to date with DSW',
     body: 'Our new blog features the latest updates on DSW and the Denver entrepreneurial community.',
     link_text: 'Visit the blog',
-    link_href: 'https://medium.com/denver-startup-week'
+    link_href: 'https://medium.com/denver-startup-week',
+    priority: 0
   },
   {
     title: 'Registration is Open',
@@ -184,7 +187,8 @@ end
     EOF
     link_text: 'Check it out',
     link_href: '/schedule',
-    relevant_to_cycle: 'registration'
+    relevant_to_cycle: 'registration',
+    priority: 100
   },
   {
     title: 'Chase Basecamp',
@@ -196,14 +200,16 @@ end
     EOF
     link_text: 'Learn More',
     link_href: '/basecamp',
-    relevant_to_cycle: 'week'
+    relevant_to_cycle: 'week',
+    priority: 10
   },
   {
     title: 'Get Involved',
     subtitle: 'Be a part of something epic',
     body: 'We are actively looking for sponsors and volunteers! Contact us now to learn more.',
     link_text: 'Contact',
-    link_href: '/contact'
+    link_href: '/contact',
+    priority: 10
   }
 ].each do |attrs|
   c = HomepageCta.where(title: attrs[:title]).first_or_initialize
