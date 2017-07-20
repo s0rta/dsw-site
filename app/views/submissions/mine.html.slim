@@ -18,7 +18,7 @@
       .section-content
         = link_to 'Sign up to volunteer', new_volunteership_path, class: 'btn primary'
 
-- if FeatureToggler.registration_active?
+- if EventSchedule.registration_open?
   - if registered?
     section.common.sm-centered
       h1 Your Registration

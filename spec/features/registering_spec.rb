@@ -28,43 +28,54 @@ feature 'Registering to attend' do
                                   end_hour: 11.5
   end
 
-  before do
-    FeatureToggler.activate_registration!
+  describe 'when registration is open' do
+    around(:each) do |example|
+      travel_to EventSchedule::REGISTRATION_OPEN_DATE + 1.day do
+        example.run
+      end
+    end
+
+    scenario 'Registering to attend from the schedule page' do
+      visit '/schedule'
+      click_link 'I am a session'
+      click_link 'Add to My Schedule'
+      click_link 'Register for an account'
+      fill_in 'Name', with: 'Test Registrant'
+      fill_in 'E-mail Address', with: 'test2@example.com'
+      fill_in 'Password', with: 'password'
+      fill_in 'Confirm Password', with: 'password'
+      click_button 'Sign Up'
+      select 'Male', from: 'registration_gender'
+      select '25-34 years old', from: 'registration_age_range'
+      select 'Founder', from: 'registration_track_id'
+      fill_in 'registration_company', with: 'Example.com'
+      fill_in 'registration_primary_role', with: 'Developer'
+      fill_in 'registration_zip', with: '12345'
+      click_button 'Register'
+      expect(page).to have_content('Thanks for registering!')
+
+      # Confirmation e-mail
+      email = ActionMailer::Base.deliveries.detect { |e| e.to.include?('test2@example.com') }
+      expect(email.subject).to eq("You are registered for Denver Startup Week #{Date.today.year}")
+
+      click_link 'I am a session'
+      click_link 'Add to My Schedule'
+      click_link 'Remove from My Schedule'
+      expect(page).to have_link('Add to My Schedule')
+    end
   end
 
-  scenario 'Registering to attend from the schedule page' do
-    visit '/schedule'
-    click_link 'I am a session'
-    click_link 'Add to My Schedule'
-    click_link 'Register for an account'
-    fill_in 'Name', with: 'Test Registrant'
-    fill_in 'E-mail Address', with: 'test2@example.com'
-    fill_in 'Password', with: 'password'
-    fill_in 'Confirm Password', with: 'password'
-    click_button 'Sign Up'
-    select 'Male', from: 'registration_gender'
-    select '25-34 years old', from: 'registration_age_range'
-    select 'Founder', from: 'registration_track_id'
-    fill_in 'registration_company', with: 'Example.com'
-    fill_in 'registration_primary_role', with: 'Developer'
-    fill_in 'registration_zip', with: '12345'
-    click_button 'Register'
-    expect(page).to have_content('Thanks for registering!')
+  describe 'when registration is closed' do
+    around(:each) do |example|
+      travel_to EventSchedule::REGISTRATION_OPEN_DATE - 1.day do
+        example.run
+      end
+    end
 
-    # Confirmation to track chair
-    email = ActionMailer::Base.deliveries.detect { |e| e.to.include?('test2@example.com') }
-    expect(email.subject).to eq("You are registered for Denver Startup Week #{Date.today.year}")
-
-    click_link 'I am a session'
-    click_link 'Add to My Schedule'
-    click_link 'Remove from My Schedule'
-    expect(page).to have_link('Add to My Schedule')
-  end
-
-  scenario 'User tries to register when registrations are closed' do
-    FeatureToggler.deactivate_registration!
-    visit '/registration/new'
-    expect(page).to have_content("Registration for #{Date.today.year} is currently closed")
-    expect(current_path).to eq('/registration/closed')
+    scenario 'User tries to register when registrations are closed' do
+      visit '/registration/new'
+      expect(page).to have_content("Registration for #{Date.today.year} is currently closed")
+      expect(current_path).to eq('/registration/closed')
+    end
   end
 end
