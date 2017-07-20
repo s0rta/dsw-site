@@ -76,7 +76,7 @@ feature 'Providing feedback on submissions' do
     end
   end
 
-  describe 'when voting areisclosed' do
+  describe 'when voting is closed' do
     around(:each) do |example|
       travel_to EventSchedule::VOTING_CLOSE_DATE + 1.day do
         example.run

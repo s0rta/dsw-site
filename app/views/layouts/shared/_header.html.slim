@@ -17,7 +17,7 @@ header.masthead(data-bindable='toggle-nav')
       - elsif EventSchedule.cfp_open?
         div
           = link_to 'Submit Proposal', new_submission_path
-      - elsif FeatureToggler.registration_active? && !registered?
+      - elsif EventSchedule.registration_open? && !registered?
         div
           = link_to 'Register', new_registration_path
       - else
@@ -30,7 +30,7 @@ header.masthead(data-bindable='toggle-nav')
         = link_to 'Program', page_path(page: 'program')
       div
         = link_to 'Basecamp', page_path(page: 'basecamp')
-      - if FeatureToggler.registration_active?
+      - if EventSchedule.registration_open?
         div
           = link_to 'Schedule', schedules_path
       div

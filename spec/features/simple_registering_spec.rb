@@ -5,8 +5,13 @@ feature 'Registering to attend (via kiosk)' do
   before do
     allow(ListSubscriptionJob).to receive(:perform_async)
     @track = Track.create! name: 'Bizness'
-    FeatureToggler.activate_registration!
     visit '/enable-simple-reg'
+  end
+
+  around(:each) do |example|
+    travel_to EventSchedule::REGISTRATION_OPEN_DATE + 1.day do
+      example.run
+    end
   end
 
   after do

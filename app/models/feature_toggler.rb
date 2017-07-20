@@ -2,7 +2,7 @@ class FeatureToggler
 
   include Redis::Objects
 
-  TOGGLES = %w(registration volunteership).freeze
+  TOGGLES = %w(volunteership).freeze
 
   TOGGLES.each do |toggle|
     value "#{toggle}_active", global: true, marshal: true
