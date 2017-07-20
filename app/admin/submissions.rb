@@ -217,6 +217,15 @@ ActiveAdmin.register Submission do
 
     active_admin_comments
 
+    # Contact History
+    panel 'E-mail Notifications' do
+      table_for submission.sent_notifications.order('created_at DESC') do
+        column(:kind) { |submission| submission.kind.titleize }
+        column :recipient_email
+        column 'Sent At', :created_at
+      end
+    end
+
     panel 'Recent Updates' do
       table_for submission.versions do
         column 'Modified at' do |v|
@@ -238,36 +247,105 @@ ActiveAdmin.register Submission do
 
   # Notify of venue match
   action_item only: :show do
-    if submission.venue && submission.venue.contact_email && submission.contact_email && submission.venue.contact_name
-      link_to('Send venue match email', send_venue_match_email_admin_submission_path(submission), method: :post)
+    if submission.venue &&
+       submission.venue.contact_email &&
+       submission.contact_email &&
+       submission.venue.contact_name
+      link_to 'Send venue match email',
+              send_venue_match_email_admin_submission_path(submission),
+              method: :post,
+              confirm: 'Are you sure?'
     end
   end
 
   member_action :send_venue_match_email, method: :post do
     submission = Submission.find(params[:id])
-    NotificationsMailer.notify_of_submission_venue_match(submission).deliver_now
+    submission.send_venue_match_email!
     flash[:notice] = 'Email sent!'
-    submission.update_column :notes, submission.notes + "\nSent venue match e-mail on #{Date.today.to_s(:long)}"
     redirect_to admin_submission_path(submission)
+  end
+
+  # Notify of acceptance
+  action_item only: :show do
+    link_to 'Send acceptance email',
+            send_acceptance_email_admin_submission_path(submission),
+            method: :post,
+            confirm: 'Are you sure?'
+  end
+
+  member_action :send_acceptance_email, method: :post do
+    submission = Submission.find(params[:id])
+    submission.send_acceptance_email!
+    flash[:notice] = 'Email sent!'
+    redirect_to admin_submission_path(submission)
+  end
+
+  batch_action :sent_acceptance_email, confirm: 'Are you sure?' do |submission_ids|
+    Submission.find(submission_ids).each(&:send_acceptance_email!)
+    redirect_to admin_submissions_path
+  end
+
+  # Notify of rejection
+  action_item only: :show do
+    link_to 'Send rejection email',
+            send_rejection_email_admin_submission_path(submission),
+            method: :post,
+            confirm: 'Are you sure?'
+  end
+
+  member_action :send_rejection_email, method: :post do
+    submission = Submission.find(params[:id])
+    submission.send_rejection_email!
+    flash[:notice] = 'Email sent!'
+    redirect_to admin_submission_path(submission)
+  end
+
+  batch_action :sent_rejection_email, confirm: 'Are you sure?' do |submission_ids|
+    Submission.find(submission_ids).each(&:send_rejection_email!)
+    redirect_to admin_submissions_path
+  end
+
+  # Notify of waitlisting
+  action_item only: :show do
+    link_to 'Send waitlist email',
+            send_waitlist_email_admin_submission_path(submission),
+            method: :post,
+            confirm: 'Are you sure?'
+  end
+
+  member_action :send_waitlist_email, method: :post do
+    submission = Submission.find(params[:id])
+    submission.send_waitlist_email!
+    flash[:notice] = 'Email sent!'
+    redirect_to admin_submission_path(submission)
+  end
+
+  batch_action :sent_waitlist_email, confirm: 'Are you sure?' do |submission_ids|
+    Submission.find(submission_ids).each(&:send_waitlist_email!)
+    redirect_to admin_submissions_path
   end
 
   # Accept proposed session changes
   action_item only: :show do
     if submission.proposed_updates
-      link_to('Accept updates', accept_update_admin_submission_path(submission), method: :post)
+      link_to 'Accept updates',
+              accept_update_admin_submission_path(submission),
+              method: :post
     end
   end
 
   member_action :accept_update, method: :post do
     submission = Submission.find(params[:id])
-    submission.promote_updates
+    submission.promote_updates!
     redirect_to admin_submission_path(submission)
   end
 
   # State machine actions
   action_item only: :show do
     unless submission.on_hold?
-      link_to('Place on hold', place_on_hold_admin_submission_path(submission), method: :post)
+      link_to 'Place on hold',
+              place_on_hold_admin_submission_path(submission),
+              method: :post
     end
   end
 
@@ -279,7 +357,9 @@ ActiveAdmin.register Submission do
 
   action_item only: [ :edit, :show ] do
     unless submission.open_for_voting?
-      link_to('Open for voting', open_for_voting_admin_submission_path(submission), method: :post)
+      link_to 'Open for voting',
+              open_for_voting_admin_submission_path(submission),
+              method: :post
     end
   end
 
@@ -289,9 +369,16 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  batch_action :open_for_voting do |submission_ids|
+    Submission.find(submission_ids).each(&:open_for_voting!)
+    redirect_to admin_submissions_path
+  end
+
   action_item only: [ :edit, :show ] do
     if submission.open_for_voting?
-      link_to('Accept', accept_admin_submission_path(submission), method: :post)
+      link_to 'Accept',
+              accept_admin_submission_path(submission),
+              method: :post
     end
   end
 
@@ -301,9 +388,16 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  batch_action :accept do |submission_ids|
+    Submission.find(submission_ids).each(&:accept!)
+    redirect_to admin_submissions_path
+  end
+
   action_item only: [ :edit, :show ] do
     if submission.accepted?
-      link_to('Confirm', confirm_admin_submission_path(submission), method: :post)
+      link_to 'Confirm',
+              confirm_admin_submission_path(submission),
+              method: :post
     end
   end
 
@@ -313,8 +407,15 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  batch_action :confirm do |submission_ids|
+    Submission.find(submission_ids).each(&:confirm!)
+    redirect_to admin_submissions_path
+  end
+
   action_item only: [ :edit, :show ] do
-    link_to('Withdraw', withdraw_admin_submission_path(submission), method: :post)
+    link_to 'Withdraw',
+            withdraw_admin_submission_path(submission),
+            method: :post
   end
 
   member_action :withdraw, method: :post do
@@ -323,9 +424,16 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  batch_action :withdraw do |submission_ids|
+    Submission.find(submission_ids).each(&:withdraw!)
+    redirect_to admin_submissions_path
+  end
+
   action_item only: [ :edit, :show ] do
     if submission.open_for_voting?
-      link_to('Reject', reject_admin_submission_path(submission), method: :post)
+      link_to 'Reject',
+              reject_admin_submission_path(submission),
+              method: :post
     end
   end
 
@@ -333,6 +441,11 @@ ActiveAdmin.register Submission do
     submission = Submission.find(params[:id])
     submission.reject!
     redirect_to admin_submission_path(submission)
+  end
+
+  batch_action :reject do |submission_ids|
+    Submission.find(submission_ids).each(&:reject!)
+    redirect_to admin_submissions_path
   end
 
   member_action :waitlist, method: :post do
@@ -343,37 +456,14 @@ ActiveAdmin.register Submission do
 
   action_item only: [ :edit, :show ] do
     if submission.open_for_voting?
-      link_to('Waitlist', waitlist_admin_submission_path(submission), method: :post)
+      link_to 'Waitlist',
+              waitlist_admin_submission_path(submission),
+              method: :post
     end
   end
 
-  batch_action :open_for_voting do |submissions|
-    Submission.find(submissions).each(&:open_for_voting!)
-    redirect_to admin_submissions_path
-  end
-
-  batch_action :accept do |submissions|
-    Submission.find(submissions).each(&:accept!)
-    redirect_to admin_submissions_path
-  end
-
-  batch_action :reject do |submissions|
-    Submission.find(submissions).each(&:reject!)
-    redirect_to admin_submissions_path
-  end
-
-  batch_action :waitlist do |submissions|
-    Submission.find(submissions).each(&:waitlist!)
-    redirect_to admin_submissions_path
-  end
-
-  batch_action :withdraw do |submissions|
-    Submission.find(submissions).each(&:withdraw!)
-    redirect_to admin_submissions_path
-  end
-
-  batch_action :confirm do |submissions|
-    Submission.find(submissions).each(&:confirm!)
+  batch_action :waitlist do |submission_ids|
+    Submission.find(submission_ids).each(&:waitlist!)
     redirect_to admin_submissions_path
   end
 
