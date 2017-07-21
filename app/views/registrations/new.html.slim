@@ -23,8 +23,8 @@ section.common.sm-centered
         = f.label :email, 'What is your e-mail address?'
         = f.text_field :email, value: ''
 
-      = f.label :gender, 'What gender do you identify as?'
-      = f.select :gender, collection: [ 'Male', 'Female', 'Decline to say' ], required: 'required'
+      = f.label :gender, 'What gender do you most closely identify as?'
+      = f.select :gender, collection: [ 'Male', 'Female', 'Nonbinary', 'Something else', 'Decline to say' ], required: 'required'
 
       = f.label :age_range, 'How old are you?'
       = f.select :age_range, collection: age_ranges_for_select, required: 'required'
