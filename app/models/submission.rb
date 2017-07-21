@@ -253,7 +253,7 @@ class Submission < ActiveRecord::Base
     message = NotificationsMailer.notify_of_submission_venue_match(self)
     message.deliver_now!
     sent_notifications.create! kind: SentNotification::VENUE_MATCH_KIND,
-                               recipient_email: submission.contact_email,
+                               recipient_email: contact_email,
                                body: message.message.to_yaml
   end
 
@@ -261,7 +261,7 @@ class Submission < ActiveRecord::Base
     message = NotificationsMailer.notify_of_submission_acceptance(self)
     message.deliver_now!
     sent_notifications.create! kind: SentNotification::ACCEPTANCE_KIND,
-                               recipient_email: submission.contact_email,
+                               recipient_email: contact_email,
                                body: message.message.to_yaml
   end
 
@@ -269,7 +269,7 @@ class Submission < ActiveRecord::Base
     message = NotificationsMailer.notify_of_submission_rejection(self)
     message.deliver_now!
     sent_notifications.create! kind: SentNotification::REJECTION_KIND,
-                               recipient_email: submission.contact_email,
+                               recipient_email: contact_email,
                                body: message.message.to_yaml
   end
 
@@ -277,7 +277,7 @@ class Submission < ActiveRecord::Base
     message = NotificationsMailer.notify_of_submission_waitlisting(self)
     message.deliver_now!
     sent_notifications.create! kind: SentNotification::WAITLISTING_KIND,
-                               recipient_email: submission.contact_email,
+                               recipient_email: contact_email,
                                body: message.message.to_yaml
   end
 

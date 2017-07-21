@@ -20,9 +20,11 @@ namespace :email do
   end
 
   task :notify_of_waitlisting => :environment do
-    Submission.for_current_year.where(state: 'waitlisted').each do |submission|
-      Rails.logger.info "Sending waitlisted notification to submission #{submission.id}"
-      submission.send_waitlist_email!
+    Track.submittable.each do |t|
+      t.submissions.for_current_year.where(state: 'waitlisted').each do |submission|
+        Rails.logger.info "Sending waitlisted notification to submission #{submission.id}"
+        submission.send_waitlist_email!
+      end
     end
   end
 
