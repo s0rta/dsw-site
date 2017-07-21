@@ -409,41 +409,41 @@ ActiveAdmin.register Submission do
 
   # Notify of acceptance
   action_item only: :show do
-    link_to 'Send acceptance email',
-            send_acceptance_email_admin_submission_path(submission),
+    link_to 'Send accept email',
+            send_accept_email_admin_submission_path(submission),
             method: :post,
             confirm: 'Are you sure?'
   end
 
-  member_action :send_acceptance_email, method: :post do
+  member_action :send_accept_email, method: :post do
     submission = Submission.find(params[:id])
-    submission.send_acceptance_email!
+    submission.send_accept_email!
     flash[:notice] = 'Email sent!'
     redirect_to admin_submission_path(submission)
   end
 
-  batch_action :send_acceptance_email, confirm: 'Are you sure?' do |submission_ids|
-    Submission.find(submission_ids).each(&:send_acceptance_email!)
+  batch_action :send_accept_email, confirm: 'Are you sure?' do |submission_ids|
+    Submission.find(submission_ids).each(&:send_accept_email!)
     redirect_to admin_submissions_path
   end
 
   # Notify of rejection
   action_item only: :show do
-    link_to 'Send rejection email',
-            send_rejection_email_admin_submission_path(submission),
+    link_to 'Send reject email',
+            send_reject_email_admin_submission_path(submission),
             method: :post,
             confirm: 'Are you sure?'
   end
 
-  member_action :send_rejection_email, method: :post do
+  member_action :send_reject_email, method: :post do
     submission = Submission.find(params[:id])
-    submission.send_rejection_email!
+    submission.send_reject_email!
     flash[:notice] = 'Email sent!'
     redirect_to admin_submission_path(submission)
   end
 
-  batch_action :send_rejection_email, confirm: 'Are you sure?' do |submission_ids|
-    Submission.find(submission_ids).each(&:send_rejection_email!)
+  batch_action :send_reject_email, confirm: 'Are you sure?' do |submission_ids|
+    Submission.find(submission_ids).each(&:send_reject_email!)
     redirect_to admin_submissions_path
   end
 
