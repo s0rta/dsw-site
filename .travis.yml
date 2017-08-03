@@ -21,7 +21,7 @@ before_script:
 - cp config/database.travis.yml config/database.yml
 - cp .env.example .env
 script:
-- travis_retry bundle exec rake db:setup spec
+- bundle exec rake db:setup spec
 notifications:
   email: false
   slack:
