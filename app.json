@@ -1,23 +1,20 @@
 {
   "name": "dsw-site",
   "description": "Denver Startup Week Website, Panel Picker, Scheduler, and Admin Tools",
-  "scripts": {
-  },
-  "env": {
-  },
+  "repository": "https://github.com/denverstartupweek/dsw-site",
+  "scripts": { },
+  "env": { },
   "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
   },
   "addons": [
-    "newrelic",
-    "sendgrid",
-    "honeybadger",
-    "rediscloud",
-    "papertrail",
-    "scheduler",
-    "heroku-postgresql",
-    "heroku-redis",
-    "memcachier",
-    "cloudinary"
+    "sendgrid:starter",
+    "heroku-postgresql:hobby-dev",
+    "heroku-redis:hobby-dev",
+    "memcachier:dev"
   ],
   "buildpacks": [
     {
