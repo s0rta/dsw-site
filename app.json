@@ -10,6 +10,7 @@
       "size": "free"
     }
   },
+  "stack": "cedar-14",
   "addons": [
     "sendgrid:starter",
     "heroku-postgresql:hobby-dev",
