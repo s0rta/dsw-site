@@ -50,6 +50,8 @@ Style/BracesAroundHashParameters:
     - braces
     - no_braces
     - context_dependent
+Style/FrozenStringLiteralComment:
+  Enabled: false
 Layout/IndentHash:
   Enabled: false
 Metrics/BlockLength:
