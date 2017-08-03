@@ -81,7 +81,7 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 2.53'
   gem 'database_cleaner'
   gem 'email_spec', '~> 2.1.0'
   gem 'webmock'
