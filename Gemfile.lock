@@ -440,7 +440,6 @@ DEPENDENCIES
   rack-canonical-host
   rack-timeout
   rails (~> 5.0.0)
-  rails_12factor
   rake
   redis-objects
   responders

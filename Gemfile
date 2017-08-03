@@ -91,7 +91,6 @@ end
 
 group :production do
   gem 'rack-timeout'
-  gem 'rails_12factor'
   gem 'lograge'
   gem 'memcachier'
   gem 'dalli'
