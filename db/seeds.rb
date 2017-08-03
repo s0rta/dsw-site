@@ -1,6 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
+Track.reset_column_information
 {
   'Founder' => {
     icon: 'person',
@@ -92,6 +93,7 @@
   t.save!
 end
 
+Cluster.reset_column_information
 {
   'IoT' => {
     description: <<-EOF.strip_heredoc.squish
@@ -144,6 +146,7 @@ end
   c.save!
 end
 
+HomepageCta.reset_column_information
 [
   {
     title: 'Call for Submissions',
