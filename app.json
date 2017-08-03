@@ -18,6 +18,9 @@
   ],
   "buildpacks": [
     {
+      "url": " https://github.com/ello/heroku-buildpack-cmake.git"
+    },
+    {
       "url": "heroku/ruby"
     }
   ]
