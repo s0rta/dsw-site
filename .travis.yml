@@ -2,7 +2,6 @@ language: ruby
 sudo: false
 services:
 - redis-server
-- postgresql
 cache:
 - bundler
 bundler_args: "--without staging,production"
