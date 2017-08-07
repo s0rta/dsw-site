@@ -8,6 +8,7 @@ cache:
 bundler_args: "--without staging,production"
 addons:
   postgresql: "9.5"
+  firefox: "46.0.1"
 before_install:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
