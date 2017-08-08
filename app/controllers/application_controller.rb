@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     end
   end)
 
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, prepend: true
 
   before_action :store_location
 
@@ -37,20 +37,14 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email,
-               :remember_me,
-               :name,
-               :password,
-               :password_confirmation)
-    end
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i(email remember_me name password password_confirmation))
   end
 
   def registered?
     current_registration.present?
   end
 
-  def ensure_linkedin_and_admin!
+  def ensure_admin!
     redirect_to main_app.new_user_session_path unless current_user && current_user.is_admin?
   end
 

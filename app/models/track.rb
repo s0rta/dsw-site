@@ -1,4 +1,4 @@
-class Track < ActiveRecord::Base
+class Track < ApplicationRecord
 
   # Add to ActiveAdmin as strong params
   # attr_accessible :name,

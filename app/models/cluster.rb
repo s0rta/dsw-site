@@ -1,4 +1,4 @@
-class Cluster < ActiveRecord::Base
+class Cluster < ApplicationRecord
   validates :name, presence: true
   has_many :submissions, dependent: :nullify
 

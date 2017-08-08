@@ -10,6 +10,7 @@
       "size": "free"
     }
   },
+  "stack": "cedar-14",
   "addons": [
     "sendgrid:starter",
     "heroku-postgresql:hobby-dev",
@@ -17,6 +18,9 @@
     "memcachier:dev"
   ],
   "buildpacks": [
+    {
+      "url": "https://github.com/ello/heroku-buildpack-cmake.git"
+    },
     {
       "url": "heroku/ruby"
     }

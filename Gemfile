@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '~> 4.2.6'
+gem 'rails', '~> 5.1.0'
 gem 'rake'
 gem 'pg'
 gem 'puma'
@@ -20,22 +20,18 @@ gem 'navigasmic'
 gem 'font_assets'
 gem "autoprefixer-rails"
 
-gem 'temporal-rails'
-
 # Simple transparent captchas
-gem 'honeypot-captcha'
+gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'
 
 gem 'simple_form'
 gem 'kaminari'
 
 gem 'emma', github: 'myemma/EmmaRuby'
 
-gem 'omniauth'
-gem 'omniauth-linkedin'
 gem 'devise'
 
 gem 'html-pipeline', require: 'html/pipeline'
-gem 'github-markdown'
+gem 'commonmarker'
 gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
@@ -43,11 +39,8 @@ gem 'liquid'
 
 gem 'textacular'
 
-gem 'multi_fetch_fragments'
-
 gem 'icalendar'
 
-gem 'mail_view', github: 'basecamp/mail_view'
 gem 'premailer-rails'
 
 # State machines
@@ -75,19 +68,21 @@ gem 'redis-objects'
 # Background processing
 gem 'sucker_punch'
 
+group :development do
+  gem 'listen'
+end
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.6.0'
-  gem 'quiet_assets'
 end
 
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 2.53'
   gem 'database_cleaner'
-  gem 'test_after_commit'
   gem 'email_spec', '~> 2.1.0'
   gem 'webmock'
   gem 'factory_girl_rails'
@@ -96,7 +91,6 @@ end
 
 group :production do
   gem 'rack-timeout'
-  gem 'rails_12factor'
   gem 'lograge'
   gem 'memcachier'
   gem 'dalli'

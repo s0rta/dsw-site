@@ -13,7 +13,7 @@ feature 'Filling out the contact form' do
     fill_in 'What are you interested in?', with: 'Helping out'
     fill_in 'Any additional notes?', with: 'Nope'
     click_button 'Submit'
-    expect(page).to have_button('Thanks! We will be in touch shortly')
+    expect(page).to have_button('Thanks! We will be in touch shortly', disabled: true)
 
     # Saved to DB
     expect(GeneralInquiry.count).to eq(1)

@@ -1,4 +1,4 @@
-class MailPreview < MailView
+class MailPreview < ActionMailer::Preview
 
   def notify_of_monday_daily_schedule
     registration = Registration.find(5)

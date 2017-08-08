@@ -11,8 +11,7 @@ Rails.application.routes.draw do
     mount MailPreview => 'mailers'
   end
 
-  devise_for :users, controllers: { registrations: 'users/registrations',
-                                    omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   resource :registration, only: [ :new, :create ] do
     collection do

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class HomepageCta < ActiveRecord::Base
+class HomepageCta < ApplicationRecord
 
   self.table_name = 'homepage_ctas'
 

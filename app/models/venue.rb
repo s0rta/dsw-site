@@ -1,4 +1,4 @@
-class Venue < ActiveRecord::Base
+class Venue < ApplicationRecord
 
   DEFAULT_CAPACITY = 75
 

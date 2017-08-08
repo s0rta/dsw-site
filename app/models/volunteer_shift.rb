@@ -1,4 +1,4 @@
-class VolunteerShift < ActiveRecord::Base
+class VolunteerShift < ApplicationRecord
 
   include YearScoped
 
