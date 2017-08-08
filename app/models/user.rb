@@ -6,9 +6,7 @@ class User < ApplicationRecord
          :registerable,
          :recoverable,
          :trackable,
-         :validatable,
-         :omniauthable,
-         omniauth_providers: [ :linkedin ]
+         :validatable
 
   default_scope { order('LOWER(name) ASC') }
 
@@ -19,14 +17,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :volunteerships, dependent: :destroy
-
-  def self.from_omniauth(auth_hash)
-    User.where(uid: auth_hash[:uid], provider: auth_hash[:provider]).first_or_create do |u|
-      u.name = auth_hash[:info][:name]
-      u.email = auth_hash[:info][:email]
-      u.password = Devise.friendly_token[0,20]
-    end
-  end
 
   def current_registration
     registrations.for_current_year.first
@@ -43,5 +33,4 @@ class User < ApplicationRecord
   def volunteered?
     current_volunteership.present?
   end
-
 end

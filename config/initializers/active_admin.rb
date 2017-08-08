@@ -56,7 +56,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  config.authentication_method = :ensure_linkedin_and_admin!
+  config.authentication_method = :ensure_admin!
 
   # == User Authorization
   #

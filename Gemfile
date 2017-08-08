@@ -28,8 +28,6 @@ gem 'kaminari'
 
 gem 'emma', github: 'myemma/EmmaRuby'
 
-gem 'omniauth'
-gem 'omniauth-linkedin'
 gem 'devise'
 
 gem 'html-pipeline', require: 'html/pipeline'
