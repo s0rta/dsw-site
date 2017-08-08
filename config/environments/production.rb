@@ -88,4 +88,12 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Enable serving of images, stylesheets, and JavaScripts from an asset server.
+  if ENV['ASSET_HOST']
+    config.action_controller.asset_host = config.action_mailer.asset_host = ENV['ASSET_HOST']
+  end
+
+  # Disable the spoofing filter
+  config.action_dispatch.ip_spoofing_check = false
 end
