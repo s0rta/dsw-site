@@ -60,8 +60,17 @@ feature 'Registering to attend' do
 
       click_link 'I am a session'
       click_link 'Add to My Schedule'
+      expect(page).not_to have_link('Add to My Schedule')
       click_link 'Remove from My Schedule'
       expect(page).to have_link('Add to My Schedule')
+
+      click_link 'Add to My Schedule'
+      visit '/schedule'
+      select 'View My Schedule', from: 'filter'
+      ical = open(find(:link, 'Add to Outlook/iCal')[:href].gsub('webcal://', 'http://'))
+      calendars = Icalendar.parse(ical)
+      expect(calendars.first.events.size).to eq(1)
+      expect(calendars.first.events.first.summary).to eq('I am a session')
     end
   end
 

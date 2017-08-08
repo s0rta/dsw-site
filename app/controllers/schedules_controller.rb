@@ -2,6 +2,7 @@ class SchedulesController < ApplicationController
 
   respond_to :html
   respond_to :json, only: :index
+  respond_to :ics, only: :index
 
   before_action :ensure_registered!, only: %i(my_schedule create destroy)
   before_action :authenticate_user!, only: %i(my_schedule create destroy)
@@ -84,7 +85,7 @@ class SchedulesController < ApplicationController
           calendar.add_event(event)
         end
         calendar.publish
-        render text: calendar.to_ical
+        render body: calendar.to_ical, content_type: 'text/calendar'
       end
     end
   end
