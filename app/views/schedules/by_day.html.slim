@@ -61,5 +61,5 @@ form.filters
       h1 Export my schedule
       h6 Use Google Calendar, iCal, or Outlook? Use the buttons below to subscribe to your schedule and make it easy to look up all of the details on-the-go.
       = link_to 'Add to Outlook/iCal', schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal'), class: 'btn primary left'
-      = link_to 'Add to Google Calendar', "http://www.google.com/calendar/render?cid=#{schedule_feed_url(current_registration.calendar_token, format: 'ics')}", class: 'btn primary right'
+      = link_to 'Add to Google Calendar', "http://www.google.com/calendar/render?cid=#{schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')}", class: 'btn primary right'
 
