@@ -7,7 +7,7 @@ cache:
 - bundler
 bundler_args: "--without staging,production"
 addons:
-  postgresql: "9.5"
+  postgresql: "9.6"
   firefox: "46.0.1"
   apt:
     sources:
