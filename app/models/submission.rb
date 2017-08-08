@@ -34,7 +34,8 @@ class Submission < ApplicationRecord
 
   belongs_to :submitter, class_name: 'User'
   belongs_to :track
-  belongs_to :venue
+  belongs_to :venue, optional: true
+  belongs_to :cluster, optional: true
 
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -47,8 +48,6 @@ class Submission < ApplicationRecord
                          source: :user
 
   has_many :sent_notifications, dependent: :destroy
-
-  belongs_to :cluster
 
   validates :title, presence: true
   validates :description, presence: true

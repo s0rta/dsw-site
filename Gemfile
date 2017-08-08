@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
-gem 'rails', '~> 5.0.5'
+gem 'rails', '~> 5.1.0'
 gem 'rake'
 gem 'pg'
 gem 'puma'
@@ -21,7 +21,7 @@ gem 'font_assets'
 gem "autoprefixer-rails"
 
 # Simple transparent captchas
-gem 'honeypot-captcha'
+gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'
 
 gem 'simple_form'
 gem 'kaminari'
@@ -40,8 +40,6 @@ gem 'gemoji'
 gem 'liquid'
 
 gem 'textacular'
-
-gem 'multi_fetch_fragments'
 
 gem 'icalendar'
 
@@ -71,6 +69,10 @@ gem 'redis-objects'
 
 # Background processing
 gem 'sucker_punch'
+
+group :development do
+  gem 'listen'
+end
 
 group :development, :test do
   gem 'dotenv-rails'

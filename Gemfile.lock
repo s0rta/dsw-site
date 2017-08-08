@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/RandieM/honeypot-captcha.git
+  revision: 10c0ad1874ca75a99be93efec3bd0129894c7fea
+  branch: master
+  specs:
+    honeypot-captcha (0.0.3)
+
+GIT
   remote: git://github.com/myemma/EmmaRuby.git
   revision: 47b7978bb750a3dd676f51173a532dabb88bcfdd
   specs:
@@ -9,27 +16,27 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (5.0.5)
-      actionpack (= 5.0.5)
-      nio4r (>= 1.2, < 3.0)
+    actioncable (5.1.3)
+      actionpack (= 5.1.3)
+      nio4r (~> 2.0)
       websocket-driver (~> 0.6.1)
-    actionmailer (5.0.5)
-      actionpack (= 5.0.5)
-      actionview (= 5.0.5)
-      activejob (= 5.0.5)
+    actionmailer (5.1.3)
+      actionpack (= 5.1.3)
+      actionview (= 5.1.3)
+      activejob (= 5.1.3)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 2.0)
-    actionpack (5.0.5)
-      actionview (= 5.0.5)
-      activesupport (= 5.0.5)
+    actionpack (5.1.3)
+      actionview (= 5.1.3)
+      activesupport (= 5.1.3)
       rack (~> 2.0)
       rack-test (~> 0.6.3)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
-    actionview (5.0.5)
-      activesupport (= 5.0.5)
+    actionview (5.1.3)
+      activesupport (= 5.1.3)
       builder (~> 3.1)
-      erubis (~> 2.7.0)
+      erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
     active_model_serializers (0.8.3)
@@ -52,16 +59,16 @@ GEM
       activeadmin (>= 1.0.0.pre1)
       coffee-rails (>= 4.1.0)
       selectize-rails (>= 0.11.2)
-    activejob (5.0.5)
-      activesupport (= 5.0.5)
+    activejob (5.1.3)
+      activesupport (= 5.1.3)
       globalid (>= 0.3.6)
-    activemodel (5.0.5)
-      activesupport (= 5.0.5)
-    activerecord (5.0.5)
-      activemodel (= 5.0.5)
-      activesupport (= 5.0.5)
-      arel (~> 7.0)
-    activesupport (5.0.5)
+    activemodel (5.1.3)
+      activesupport (= 5.1.3)
+    activerecord (5.1.3)
+      activemodel (= 5.1.3)
+      activesupport (= 5.1.3)
+      arel (~> 8.0)
+    activesupport (5.1.3)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
       minitest (~> 5.1)
@@ -70,8 +77,8 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arbre (1.1.1)
       activesupport (>= 3.0.0)
-    arel (7.1.4)
-    autoprefixer-rails (6.4.0.3)
+    arel (8.0.0)
+    autoprefixer-rails (7.1.2.4)
       execjs
     bcrypt (3.1.11)
     bourbon (4.3.4)
@@ -87,7 +94,7 @@ GEM
       xpath (~> 2.0)
     childprocess (0.7.1)
       ffi (~> 1.0, >= 1.0.11)
-    coderay (1.0.9)
+    coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -100,10 +107,11 @@ GEM
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
-    css_parser (1.4.1)
+    crass (1.0.2)
+    css_parser (1.5.0)
       addressable
-    dalli (2.0.2)
-    database_cleaner (1.5.1)
+    dalli (2.7.6)
+    database_cleaner (1.6.1)
     devise (4.3.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -115,10 +123,11 @@ GEM
     dotenv-rails (2.2.1)
       dotenv (= 2.2.1)
       railties (>= 3.2, < 5.2)
-    email_spec (2.1.0)
+    email_spec (2.1.1)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
-      mail (~> 2.6.3)
+      mail (~> 2.6)
+    erubi (1.6.1)
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -127,7 +136,7 @@ GEM
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
     ffi (1.9.18)
-    font_assets (0.1.7)
+    font_assets (0.1.14)
       rack
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
@@ -135,7 +144,7 @@ GEM
     gemoji (2.1.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
-    haml (5.0.1)
+    haml (5.0.2)
       temple (>= 0.8.0)
       tilt
     haml-rails (1.0.0)
@@ -150,8 +159,7 @@ GEM
     hashdiff (0.3.5)
     hashie (3.4.4)
     hashr (0.0.22)
-    honeybadger (2.6.0)
-    honeypot-captcha (0.0.2)
+    honeybadger (3.1.2)
     html-pipeline (2.6.0)
       activesupport (>= 2)
       nokogiri (>= 1.4)
@@ -193,9 +201,15 @@ GEM
     launchy (2.4.3)
       addressable (~> 2.3)
     liquid (4.0.0)
-    lograge (0.2.0)
-      actionpack
-      activesupport
+    listen (3.1.5)
+      rb-fsevent (~> 0.9, >= 0.9.4)
+      rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
+    lograge (0.6.0)
+      actionpack (>= 4, < 5.2)
+      activesupport (>= 4, < 5.2)
+      railties (>= 4, < 5.2)
+      request_store (~> 1.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.6)
@@ -207,10 +221,9 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.2.0)
     minitest (5.10.3)
-    multi_fetch_fragments (0.0.17)
     multi_xml (0.5.5)
     navigasmic (1.1.0)
-    newrelic_rpm (3.15.2.317)
+    newrelic_rpm (4.3.0.335)
     nio4r (2.1.0)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
@@ -223,6 +236,8 @@ GEM
     omniauth-oauth (1.1.0)
       oauth
       omniauth (~> 1.0)
+    nokogumbo (1.4.13)
+      nokogiri
     orm_adapter (0.5.0)
     paper_trail (7.1.0)
       activerecord (>= 4.0, < 5.2)
@@ -236,12 +251,12 @@ GEM
     premailer-rails (1.9.2)
       actionmailer (>= 3, < 6)
       premailer (~> 1.7, >= 1.7.9)
-    pry (0.9.12.1)
-      coderay (~> 1.0.5)
-      method_source (~> 0.8)
+    pry (0.10.4)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-rails (0.2.2)
-      pry (>= 0.9.10)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
     public_suffix (2.0.5)
     puma (3.9.1)
     rack (2.0.3)
@@ -251,26 +266,26 @@ GEM
     rack-test (0.6.3)
       rack (>= 1.0)
     rack-timeout (0.4.2)
-    rails (5.0.5)
-      actioncable (= 5.0.5)
-      actionmailer (= 5.0.5)
-      actionpack (= 5.0.5)
-      actionview (= 5.0.5)
-      activejob (= 5.0.5)
-      activemodel (= 5.0.5)
-      activerecord (= 5.0.5)
-      activesupport (= 5.0.5)
+    rails (5.1.3)
+      actioncable (= 5.1.3)
+      actionmailer (= 5.1.3)
+      actionpack (= 5.1.3)
+      actionview (= 5.1.3)
+      activejob (= 5.1.3)
+      activemodel (= 5.1.3)
+      activerecord (= 5.1.3)
+      activesupport (= 5.1.3)
       bundler (>= 1.3.0)
-      railties (= 5.0.5)
+      railties (= 5.1.3)
       sprockets-rails (>= 2.0.0)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
-    railties (5.0.5)
-      actionpack (= 5.0.5)
-      activesupport (= 5.0.5)
+    railties (5.1.3)
+      actionpack (= 5.1.3)
+      activesupport (= 5.1.3)
       method_source
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
@@ -318,12 +333,15 @@ GEM
     rspec-support (3.6.0)
     ruby-enum (0.7.1)
       i18n
+    ruby_dep (1.5.0)
     ruby_parser (3.10.0)
       sexp_processor (~> 4.9)
     rubyzip (1.2.1)
     safe_yaml (1.0.4)
-    sanitize (2.1.0)
+    sanitize (4.5.0)
+      crass (~> 1.0.2)
       nokogiri (>= 1.4.4)
+      nokogumbo (~> 1.4.1)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -356,7 +374,7 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (~> 3.0)
-    slop (3.4.4)
+    slop (3.6.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -364,14 +382,14 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sucker_punch (2.0.1)
+    sucker_punch (2.0.2)
       concurrent-ruby (~> 1.0.0)
     temple (0.8.0)
     textacular (5.0.1)
       activerecord (>= 3.0, < 5.2)
     thor (0.19.4)
     thread_safe (0.3.6)
-    tilt (2.0.7)
+    tilt (2.0.8)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.0.0)
@@ -415,15 +433,15 @@ DEPENDENCIES
   gemoji
   haml-rails
   honeybadger
-  honeypot-captcha
+  honeypot-captcha!
   html-pipeline
   icalendar
   jquery-rails
   kaminari
   liquid
+  listen
   lograge
   memcachier
-  multi_fetch_fragments
   navigasmic
   newrelic_rpm
   omniauth
@@ -435,7 +453,7 @@ DEPENDENCIES
   puma
   rack-canonical-host
   rack-timeout
-  rails (~> 5.0.5)
+  rails (~> 5.1.0)
   rake
   redis-objects
   responders

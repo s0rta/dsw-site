@@ -7,6 +7,8 @@ RSpec.describe Submission, type: :model do
   end
 
   it { is_expected.to belong_to(:track) }
+  it { is_expected.to belong_to(:venue) }
+  it { is_expected.to belong_to(:cluster) }
   it { is_expected.to have_many(:votes).dependent(:destroy) }
   it { is_expected.to have_many(:comments).dependent(:destroy) }
   it { is_expected.to have_many(:session_registrations).dependent(:destroy) }
