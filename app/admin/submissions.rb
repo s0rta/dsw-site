@@ -188,7 +188,7 @@ ActiveAdmin.register Submission do
 
   member_action :export_attendees, method: :get do
     registrations = Submission.find(params[:id]).user_registrations.includes(:user)
-    csv_text = CSV.generate do |csv|
+    csv_text = ::CSV.generate do |csv|
       registrations.each do |registration|
         csv << [ registration.user.name,
                  registration.primary_role,
