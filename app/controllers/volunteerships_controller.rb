@@ -10,8 +10,8 @@ class VolunteershipsController < ApplicationController
   def create
     @volunteership = current_user.volunteerships.new(volunteership_params)
     if @volunteership.save
-      flash[:notice] = 'Thanks for volunteering! We will reach out to you shortly to confirm details.'
-      redirect_to mine_submissions_path
+      flash[:notice] = 'Thanks for volunteering! You will receive a confirmation e-mail shortly.'
+      redirect_to volunteership_path
     else
       respond_with @volunteership
     end
@@ -25,8 +25,8 @@ class VolunteershipsController < ApplicationController
   def update
     @volunteership = current_user.current_volunteership
     if @volunteership.update(volunteership_params)
-      flash[:notice] = 'Your changes have been saved!'
-      redirect_to mine_submissions_path
+      flash[:notice] = 'Your changes have been saved. You will receive a confirmation e-mail shortly.'
+      redirect_to volunteership_path
     else
       respond_with @volunteership
     end
@@ -38,12 +38,15 @@ class VolunteershipsController < ApplicationController
   private
 
   def check_volunteership_open
-    redirect_to mine_submissions_path unless FeatureToggler.volunteership_active?
+    unless FeatureToggler.volunteership_active?
+      redirect_to dashboard_path,
+        notice: "Volunteer signup for #{Date.today.year} is currently closed"
+    end
   end
 
   def volunteership_params
     params.require(:volunteership).permit(:mobile_phone_number,
                                           :affiliated_organization,
-                                          available_shift_ids: [])
+                                          volunteer_shift_ids: [])
   end
 end

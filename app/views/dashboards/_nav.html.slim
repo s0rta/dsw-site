@@ -1,9 +1,13 @@
 nav
   .section-content
     h1 My Dashboard
-    = link_to 'My Proposals', mine_submissions_path, class: item == :mine ? 'active' : ''
+    = link_to 'My Proposals', dashboard_path, class: item == :mine ? 'active' : ''
     - if EventSchedule.cfp_open?
       = link_to 'Submit a Proposal', new_submission_path, class: item == :submit ? 'active' : ''
+    - if EventSchedule.registration_open?
+      = link_to 'Registration & Schedule', schedules_path(filter: 'mine'), class: item == :register ? 'active' : ''
+    - if EventSchedule.registration_open?
+      = link_to 'Volunteer', volunteership_path, class: item == :volunteer ? 'active' : ''
     = link_to 'FAQ', faq_submissions_path, class: item == :faq ? 'active' : ''
     = link_to 'Logout', destroy_user_session_path, method: :delete
 

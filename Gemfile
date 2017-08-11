@@ -15,10 +15,12 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'underscore-rails'
 gem 'uglifier'
+gem 'font_assets'
+gem 'autoprefixer-rails'
+gem 'select2-rails'
+
 gem 'responders'
 gem 'navigasmic'
-gem 'font_assets'
-gem "autoprefixer-rails"
 
 # Simple transparent captchas
 gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'
@@ -81,6 +83,7 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
+  gem 'capybara-select2', github: 'goodwill/capybara-select2'
   gem 'selenium-webdriver', '~> 2.53'
   gem 'database_cleaner'
   gem 'email_spec', '~> 2.1.0'

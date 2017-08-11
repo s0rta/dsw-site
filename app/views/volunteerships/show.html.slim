@@ -1,0 +1,16 @@
+= render partial: 'dashboards/nav', locals: { item: :volunteer }
+
+- if current_user.volunteered?
+  section.common.sm-centered
+    .section-content
+      h1 Your Volunteer Shifts
+      - if current_user.current_volunteership.volunteer_shifts.any?
+        h6= current_user.current_volunteership.volunteer_shifts.map(&:full_name) * ', '
+      - else
+        h6 You have not signed up for any volunteer shifts yet.
+
+      = link_to 'Change my volunteer shifts', edit_volunteership_path, class: 'btn primary'
+- else
+  section.common.sm-centered
+    .section-content
+      = link_to 'Sign up to volunteer', new_volunteership_path, class: 'btn primary'

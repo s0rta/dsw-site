@@ -20,13 +20,14 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/panel-picker/mine', to: redirect('/dashboard')
+
   resources :submissions, except: [:destroy ], path: 'panel-picker', path_names: { new: 'submit' } do
     collection do
       get :thanks
       get :by_day
       get :submissions_closed
       get :feedback_closed
-      get :mine
       get :faq
       get :search
       get 'track/:track_name', action: :track, as: :track
@@ -34,6 +35,8 @@ Rails.application.routes.draw do
     resources :votes, only: :create
     resources :comments, only: :create
   end
+
+  resource :dashboard, only: :show
 
   resource :volunteership, path: 'volunteer', path_names: { new: 'signup' }
 
