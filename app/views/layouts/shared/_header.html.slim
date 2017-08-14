@@ -14,16 +14,16 @@ header.masthead.section__wrap(data-bindable='toggle-nav')
         - if signed_in?
           div
             = link_to 'My Dashboard', mine_submissions_path
-        - elsif EventSchedule.submissions_open?
+        - elsif EventSchedule.cfp_open?
           div.primary
             = link_to 'Submit a talk', new_submission_path
-        - elsif FeatureToggler.registration_active? && !registered?
+        - elsif EventSchedule.registration_open? && !registered?
           div
             = link_to 'Register', new_registration_path
         - else
           div.primary
             = link_to 'Sign In/ Sign Up', mine_submissions_path
-        - if EventSchedule.feedback_open?
+        - if EventSchedule.voting_open?
           div
             = link_to 'Panel Picker', submissions_path
         div

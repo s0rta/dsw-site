@@ -17,25 +17,25 @@ section.hero-cta-4up
   /*           h6 = process_with_liquid cta.body */
   /*           = link_to cta.link_text, cta.link_href, class: "btn #{current_cycle('colors')}" */
   ul.hero-cta
-    - if EventSchedule.submissions_open?
+    - if EventSchedule.cfp_open?
       li.card.card__featuredSubmissions
           h3.card__heading Call for Submissions
           h4.card__subHeading Session submissions are open through #{EventSchedule::SUBMISSION_CLOSE_DATE.to_s(:month_day)}
           p.card__copy Denver Startup Week is powered by the community. Submit a topic for consideration for #{Date.today.year}.
           = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
-    - elsif EventSchedule.feedback_open?
+    - elsif EventSchedule.voting_open?
         li.card.card__featuredPrimary
           h3.card__heading Voting is Open
           h4.card__subHeading Cast your vote before #{EventSchedule::VOTING_CLOSE_DATE.to_s(:month_day)}
           p.card__copy The sessions are in, now we need you to help us finalize the best for this year's event. Don't delay, cast your vote and spread the word.
           = link_to 'Vote Now', submissions_path, class: 'btn green'
-    - elsif FeatureToggler.registration_active? && !registered?
+    - elsif EventSchedule.registration_open? && !registered?
       li.card.card__featuredPrimary
           h3.card__heading Registration is Open
           h4.card__subHeading Register and build your schedule
           p.card__copy This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
           = link_to 'Register Now', new_registration_path, class: 'btn green'
-    - elsif FeatureToggler.registration_active? && registered?
+    - elsif EventSchedule.registration_open? && registered?
       li.card.card__featuredPrimary
           h2 Build Your Schedule
           h3 Register and build your own schedule
