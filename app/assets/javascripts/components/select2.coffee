@@ -9,9 +9,4 @@ class dsw.Select2
   initialize: ->
     @el.select2()
 
-# PUBLIC #
-
-  dispose: ->
-
-
 utensils.Bindable.register 'select2', dsw.Select2

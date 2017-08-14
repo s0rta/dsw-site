@@ -40,7 +40,7 @@ class VolunteershipsController < ApplicationController
   def check_volunteership_open
     unless FeatureToggler.volunteership_active?
       redirect_to dashboard_path,
-        notice: "Volunteer signup for #{Date.today.year} is currently closed"
+                  notice: "Volunteer signup for #{Date.today.year} is currently closed"
     end
   end
 
