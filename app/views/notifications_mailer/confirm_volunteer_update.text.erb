@@ -1,0 +1,18 @@
+Hi <%= @volunteership.user.name %>,
+
+This e-mail is a confirmation that we've received your updated shift selections. We have you signed up to volunteer at the following shifts:
+
+<%- @volunteership.volunteer_shifts.each do |shift| -%>
+  - <%= shift.full_name %>
+<%- end -%>
+
+You can always visit <%= volunteership_url %> to view details for your shifts or change what you've signed up for.
+
+We will send you a reminder for your shifts the week before the event.
+
+If you have any questions in the meantime, please reply back or send us an e-mail at volunteer@denverstartupweek.org.
+
+Cheers,
+
+The DSW Organizing Committee
+

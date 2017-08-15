@@ -10,8 +10,8 @@ class VolunteershipsController < ApplicationController
   def create
     @volunteership = current_user.volunteerships.new(volunteership_params)
     if @volunteership.save
-      flash[:notice] = 'Thanks for volunteering! You will receive a confirmation e-mail shortly.'
-      redirect_to volunteership_path
+      NotificationsMailer.confirm_volunteer_signup(@volunteership).deliver_now
+      redirect_to volunteership_path, notice: 'Thanks for volunteering! You will receive a confirmation e-mail shortly.'
     else
       respond_with @volunteership
     end
@@ -26,6 +26,7 @@ class VolunteershipsController < ApplicationController
     @volunteership = current_user.current_volunteership
     if @volunteership.update(volunteership_params)
       flash[:notice] = 'Your changes have been saved. You will receive a confirmation e-mail shortly.'
+      NotificationsMailer.confirm_volunteer_update(@volunteership).deliver_now
       redirect_to volunteership_path
     else
       respond_with @volunteership

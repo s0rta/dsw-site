@@ -56,8 +56,8 @@ feature 'Signing up to volunteer' do
     click_button 'Submit'
     expect(page). to have_content('Thanks for volunteering! You will receive a confirmation e-mail shortly.')
 
-    email = ActionMailer::Base.deliveries.detect { |e| e.to.include?('test@example.com') }
-    expect(email.subject).to eq('Thanks for volunteering to help out with Denver Startup Week!')
+    expect(last_sent_email).to deliver_to('test@example.com')
+    expect(last_sent_email).to have_subject('Thanks for volunteering to help out with Denver Startup Week!')
   end
 
   scenario 'User registers to volunteer using an organiation deeplink'
@@ -81,5 +81,9 @@ feature 'Signing up to volunteer' do
     expect(page).to have_content('Your changes have been saved. You will receive a confirmation e-mail shortly.')
     expect(page).to have_content('YOUR VOLUNTEER SHIFTS')
     expect(page).to have_content('Tuesday Afternoon')
+
+    expect(last_email_sent).to deliver_to('test@example.com')
+    expect(last_email_sent).to deliver_from('Denver Startup Week <volunteer@denverstartupweek.org>')
+    expect(last_email_sent).to have_subject('Confirming your updated volunteer shifts for Denver Startup Week')
   end
 end
