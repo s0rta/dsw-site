@@ -1,4 +1,4 @@
-class ConvertSubmissionDaysToIntegers < ActiveRecord::Migration
+class ConvertSubmissionDaysToIntegers < ActiveRecord::Migration[4.2]
   def up
     add_column :submissions, :start_day_integer, :integer
     add_column :submissions, :end_day_integer, :integer

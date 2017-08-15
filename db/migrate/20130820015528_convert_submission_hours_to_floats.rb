@@ -1,4 +1,4 @@
-class ConvertSubmissionHoursToFloats < ActiveRecord::Migration
+class ConvertSubmissionHoursToFloats < ActiveRecord::Migration[4.2]
   def up
     change_column :submissions, :start_hour, :float
     change_column :submissions, :end_hour, :float

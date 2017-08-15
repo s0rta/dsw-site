@@ -1,4 +1,4 @@
-class TracksHaveManyChairs < ActiveRecord::Migration
+class TracksHaveManyChairs < ActiveRecord::Migration[4.2]
   def up
     create_table :tracks_users, id: false do |t|
       t.references :track

@@ -1,4 +1,4 @@
-class CreateOldVolunteerSignups < ActiveRecord::Migration
+class CreateOldVolunteerSignups < ActiveRecord::Migration[4.2]
   def change
     create_table :volunteer_signups do |t|
       t.string :contact_name

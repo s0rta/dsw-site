@@ -1,4 +1,4 @@
-class CreateVolunteerShifts < ActiveRecord::Migration
+class CreateVolunteerShifts < ActiveRecord::Migration[4.2]
   def change
     create_table :volunteer_shifts do |t|
       t.string :name

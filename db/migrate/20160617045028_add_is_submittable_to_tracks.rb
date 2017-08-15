@@ -1,4 +1,4 @@
-class AddIsSubmittableToTracks < ActiveRecord::Migration
+class AddIsSubmittableToTracks < ActiveRecord::Migration[4.2]
   def change
     add_column :tracks, :is_submittable, :boolean, default: false, null: false
     Track.reset_column_information

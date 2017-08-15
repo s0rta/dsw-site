@@ -1,5 +1,5 @@
 # This migration comes from cmsimple (originally 20120410041105)
-class AddTimestampsToCmsimplePages < ActiveRecord::Migration
+class AddTimestampsToCmsimplePages < ActiveRecord::Migration[4.2]
   def change
     change_table :cmsimple_pages do |t|
       t.timestamps

@@ -1,4 +1,4 @@
-class CreateVolunteerships < ActiveRecord::Migration
+class CreateVolunteerships < ActiveRecord::Migration[4.2]
   def change
     create_table :volunteerships do |t|
       t.string :mobile_phone_number

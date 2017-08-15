@@ -1,4 +1,4 @@
-class PopulateSubmissionHours < ActiveRecord::Migration
+class PopulateSubmissionHours < ActiveRecord::Migration[4.2]
   def up
     Submission.all.each do |s|
       next unless s.time_range.present?

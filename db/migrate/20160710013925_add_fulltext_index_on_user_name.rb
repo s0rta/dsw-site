@@ -1,4 +1,4 @@
-class AddFulltextIndexOnUserName < ActiveRecord::Migration
+class AddFulltextIndexOnUserName < ActiveRecord::Migration[4.2]
   disable_ddl_transaction!
 
   def up

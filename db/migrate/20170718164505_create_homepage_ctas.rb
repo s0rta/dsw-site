@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class CreateHomepageCtas < ActiveRecord::Migration
+class CreateHomepageCtas < ActiveRecord::Migration[4.2]
   def change
     create_table :homepage_ctas do |t|
       t.string :title, null: false

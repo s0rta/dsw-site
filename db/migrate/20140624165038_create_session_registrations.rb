@@ -1,4 +1,4 @@
-class CreateSessionRegistrations < ActiveRecord::Migration
+class CreateSessionRegistrations < ActiveRecord::Migration[4.2]
   def change
     create_table :session_registrations do |t|
       t.references :registration

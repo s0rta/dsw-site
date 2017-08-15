@@ -1,4 +1,4 @@
-class RemoveZeristaTrackIdFromTracks < ActiveRecord::Migration
+class RemoveZeristaTrackIdFromTracks < ActiveRecord::Migration[4.2]
   def up
     remove_column :tracks, :zerista_track_id
   end

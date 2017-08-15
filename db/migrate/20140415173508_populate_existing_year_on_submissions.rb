@@ -1,4 +1,4 @@
-class PopulateExistingYearOnSubmissions < ActiveRecord::Migration
+class PopulateExistingYearOnSubmissions < ActiveRecord::Migration[4.2]
 
   def up
     Submission.update_all 'year = 2013'

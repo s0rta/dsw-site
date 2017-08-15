@@ -1,5 +1,5 @@
 # This migration comes from cmsimple (originally 20120201221410)
-class CreateCmsimplePages < ActiveRecord::Migration
+class CreateCmsimplePages < ActiveRecord::Migration[4.2]
   def change
     create_table :cmsimple_pages do |t|
       t.string :path, :null => false

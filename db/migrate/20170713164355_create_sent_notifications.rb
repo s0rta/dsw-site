@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class CreateSentNotifications < ActiveRecord::Migration
+class CreateSentNotifications < ActiveRecord::Migration[4.2]
   def change
     create_table :sent_notifications do |t|
       t.references :submission, index: true, foreign_key: true

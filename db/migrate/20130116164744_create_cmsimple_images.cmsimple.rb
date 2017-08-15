@@ -1,5 +1,5 @@
 # This migration comes from cmsimple (originally 20120407024752)
-class CreateCmsimpleImages < ActiveRecord::Migration
+class CreateCmsimpleImages < ActiveRecord::Migration[4.2]
   def change
     create_table :cmsimple_images do |t|
       t.string :attachment

@@ -1,5 +1,5 @@
 # This migration comes from cmsimple (originally 20120430175047)
-class CreateCmsimpleVersions < ActiveRecord::Migration
+class CreateCmsimpleVersions < ActiveRecord::Migration[4.2]
   def up
     create_table :cmsimple_versions do |t|
       t.text     :content

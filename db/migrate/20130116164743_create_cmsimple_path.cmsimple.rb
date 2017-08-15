@@ -1,5 +1,5 @@
 # This migration comes from cmsimple (originally 20120329172857)
-class CreateCmsimplePath < ActiveRecord::Migration
+class CreateCmsimplePath < ActiveRecord::Migration[4.2]
   def change
     create_table :cmsimple_paths do |t|
       t.string :uri

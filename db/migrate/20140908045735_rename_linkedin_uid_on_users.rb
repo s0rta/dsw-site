@@ -1,4 +1,4 @@
-class RenameLinkedinUidOnUsers < ActiveRecord::Migration
+class RenameLinkedinUidOnUsers < ActiveRecord::Migration[4.2]
   def up
     rename_column :users, :linkedin_uid, :uid
   end

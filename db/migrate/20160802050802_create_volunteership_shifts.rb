@@ -1,4 +1,4 @@
-class CreateVolunteershipShifts < ActiveRecord::Migration
+class CreateVolunteershipShifts < ActiveRecord::Migration[4.2]
   def change
     create_table :volunteership_available_shifts do |t|
       t.references :volunteership, index: true, foreign_key: true
