@@ -23,8 +23,9 @@ feature 'Filling out the contact form' do
     expect(GeneralInquiry.last.notes).to eq('Nope')
 
     # Confirmation to volunteers box
-    email = ActionMailer::Base.deliveries.find { |e| e.to.include?('volunteer@example.com')}
-    expect(email.subject).to eq('Someone has inquired about DSW')
+    expect(last_email_sent).to have_subject('Someone has inquired about DSW')
+    expect(last_email_sent).to deliver_to('volunteer@example.com')
+    expect(last_email_sent).to reply_to('test@example.com')
   end
 
 end
