@@ -19,7 +19,7 @@ section.common
       h6 = @session.human_time_range
       h6 = "#{@session.registrants.count} attending"
     .description = process_with_pipeline(@session.description)
-    - if @session.venue
+    - if @session.venue_confirmed?
       a.location-pin href='#'
         = render partial: 'icons/map_pin'
         span Map It
@@ -29,7 +29,7 @@ section.common
       .location-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
     - else
       .location-details
-        p Location TBA
+        p = @session.human_location_name
 
 section.common
   .section-content

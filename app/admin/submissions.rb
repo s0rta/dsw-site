@@ -385,6 +385,25 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
+  member_action :confirm_venue, method: :post do
+    submission = Submission.find(params[:id])
+    submission.confirm_venue!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item :confirm_venue, only: %i(edit show) do
+    if submission.confirmed?
+      link_to 'Confirm Venue',
+              confirm_venue_admin_submission_path(submission),
+              method: :post
+    end
+  end
+
+  batch_action :confirm_venue do |submission_ids|
+    Submission.find(submission_ids).each(&:confirm_venue!)
+    redirect_to admin_submissions_path
+  end
+
   # Notify of venue match
   action_item :send_venue_match_email, only: :show do
     if submission.venue &&

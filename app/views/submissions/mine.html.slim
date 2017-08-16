@@ -38,7 +38,7 @@ section.common.sm-centered
       - @submissions.each do |submission|
         .talk-submission
           h6 #{submission.title} (#{submission.track.name})
-          - if submission.created? || submission.open_for_voting? || submission.accepted? || submission.confirmed?
+          - if submission.editable?
             = link_to edit_submission_path(submission), title: 'Propose Updates' do
               = render partial: 'icons/pencil'
     - else
