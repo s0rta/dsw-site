@@ -1,19 +1,27 @@
 @import ../config
 
+.icon-outer-container
+  display: flex
+  justify-content: center
+  max-width: 960px
+  margin: 60px auto
+  padding: 0 20px
+
 .icon-flex-container
-  margin-top: 60px
   display: flex
   flex-direction: row
   flex-wrap: wrap
-  align-items: baseline
-  justify-content: space-around
+  justify-content: center
+  align-items: center
 
 .icon-item
   display: inline-block
-  min-width: 300px
-  max-width: 300px
-  margin-bottom: 50px
+  width: 100%
+  height: 340px
+  padding: 30px
+  margin-bottom: 15px
   text-align: center
+  background-color: #e5e5e5
   a
     color: $copy-color-bold
     &:hover
@@ -26,8 +34,8 @@
     fill: $purple-light
   h4
     margin-bottom: 5px
-  &.spacer
-    height: 0
+  &:empty
+    opacity: 0
 
 .avatar
   width: 100px
@@ -37,4 +45,13 @@
   filter: grayscale(100%)
   -webkit-filter: grayscale(100%)
 
+@media(min-width: 640px)
+  .icon-flex-container
+    margin-left: -15px
+  .icon-item
+    margin-left: 15px
+    width: calc(50% - 30px)
 
+@media(min-width: 800px)
+  .icon-item
+    width: calc(33.33333% - 30px)
