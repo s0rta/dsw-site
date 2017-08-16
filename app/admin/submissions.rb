@@ -16,8 +16,6 @@ ActiveAdmin.register Submission do
                 :track_id,
                 :contact_email,
                 :estimated_size,
-                :is_public,
-                :is_confirmed,
                 :venue_id,
                 :cluster_id,
                 :budget_needed,
