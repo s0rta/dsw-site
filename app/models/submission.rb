@@ -1,6 +1,6 @@
 class Submission < ApplicationRecord
 
-  PUBLIC_STATES = %w(open_for_voting accepted confirmed).freeze
+  PUBLIC_STATES = %w(open_for_voting accepted confirmed venue_confimed).freeze
 
   SHOW_RATE = 0.3
 
@@ -123,12 +123,13 @@ class Submission < ApplicationRecord
     PUBLIC_STATES.include?(state)
   end
 
-  def self.confirmed
-    where(state: 'confirmed')
+  def editable?
+    created? || open_for_voting? || accepted? || confirmed? || venue_confirmed?
   end
 
   def self.for_schedule
-    confirmed.where('start_day IS NOT NULL AND end_day IS NOT NULL')
+    where(state: %w(confirmed venue_confirmed)).
+      where('start_day IS NOT NULL AND end_day IS NOT NULL')
   end
 
   def self.for_start_day(day)
@@ -152,6 +153,7 @@ class Submission < ApplicationRecord
           :accepted,
           :waitlisted,
           :confirmed,
+          :venue_confirmed,
           :rejected,
           :withdrawn
 
@@ -161,6 +163,7 @@ class Submission < ApplicationRecord
   event :accept,              to: :accepted
   event :reject,              to: :rejected
   event :confirm,             to: :confirmed
+  event :confirm_venue,       to: :venue_confirmed
   event :withdraw,            to: :withdrawn
 
   # Helpers
@@ -173,7 +176,7 @@ class Submission < ApplicationRecord
   end
 
   def human_location_name
-    if venue
+    if venue_confirmed?
       venue.name
     else
       'Location TBA'
@@ -189,7 +192,7 @@ class Submission < ApplicationRecord
   end
 
   def ical_location
-    if venue
+    if venue_confirmed?
       "#{venue.name}, #{venue.combined_address}"
     else
       'Location TBA'
@@ -237,6 +240,10 @@ class Submission < ApplicationRecord
 
   def popular?
     user_registrations.count * SHOW_RATE > (venue.try(:capacity) || Venue::DEFAULT_CAPACITY)
+  end
+
+  def venue_confirmed?
+    venue.present? && state == 'venue_confirmed'.freeze
   end
 
   def company_or_submitter
@@ -311,7 +318,7 @@ class Submission < ApplicationRecord
                         sort.
                         map(&:to_s)
       confirmed_years = Submission.
-                        confirmed.
+                        where(state: %w(accepted confirmed venue_confirmed)).
                         joins(:submitter).
                         where('contact_email = :email OR users.email = :email', email: email).
                         pluck(:year).

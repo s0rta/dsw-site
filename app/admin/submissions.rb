@@ -16,8 +16,6 @@ ActiveAdmin.register Submission do
                 :track_id,
                 :contact_email,
                 :estimated_size,
-                :is_public,
-                :is_confirmed,
                 :venue_id,
                 :cluster_id,
                 :budget_needed,
@@ -384,6 +382,25 @@ ActiveAdmin.register Submission do
 
   batch_action :waitlist do |submission_ids|
     Submission.find(submission_ids).each(&:waitlist!)
+    redirect_to admin_submissions_path
+  end
+
+  member_action :confirm_venue, method: :post do
+    submission = Submission.find(params[:id])
+    submission.confirm_venue!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item :confirm_venue, only: %i(edit show) do
+    if submission.confirmed?
+      link_to 'Confirm Venue',
+              confirm_venue_admin_submission_path(submission),
+              method: :post
+    end
+  end
+
+  batch_action :confirm_venue do |submission_ids|
+    Submission.find(submission_ids).each(&:confirm_venue!)
     redirect_to admin_submissions_path
   end
 
