@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   helper_method :registered?
   helper_method :current_user
   helper_method :current_registration
-  helper_method :current_body_class
+  helper_method :base_navigation_path
   helper_method :in_mercury_invasion?
   helper_method :simple_registration?
 
@@ -61,12 +61,8 @@ class ApplicationController < ActionController::Base
     cookies.signed[:simple_registration] == true
   end
 
-  def current_body_class
-    if respond_to?(:current_page)
-      current_page.try(:template)
-    else
-      controller_name
-    end
+  def base_navigation_path
+    request.fullpath.split('/')[1] || 'home'
   end
 
   def user_for_paper_trail

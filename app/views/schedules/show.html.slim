@@ -2,7 +2,7 @@ nav
   .section-content
     h1 Session Detail
 
-section.common
+section.common.sm-centered
   .section-content.session-detail
     - if !registered? || !registered_for_session?(@session)
       = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
@@ -33,6 +33,6 @@ section.common
       .location-details
         p = @session.human_location_name
 
-section.common
+section.common.sm-centered
   .section-content
     = link_to 'Back to Schedule', schedules_path, class: 'back-link'

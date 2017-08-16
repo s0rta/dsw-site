@@ -80,6 +80,15 @@ a.disabled
   font-size: 14px
   text-transform: uppercase
 
+.clearfix::after
+  content: ""
+  display: table
+  clear: both
+
+.site-max-and-center
+  max-width: 1360px
+  margin: 0 auto
+
 @media(min-width: 740px)
   main
-    padding-top: 0
+    padding-top: 30px

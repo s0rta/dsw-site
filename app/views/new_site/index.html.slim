@@ -2,20 +2,20 @@ section.hero
   - unless EventSchedule.in_week?
     / h1.countdown #{time_remaining_to_deadline(EventSchedule::WEEK_START_DATE)}
   h2 September 25&#8211;29, 2017
-  .section-content
+  .section-content(style="text-align: center; max-width: 800px;")
     h3 Denver Startup Week is about innovation for founders, developers, product managers, designers, marketers, sales teams, and makers.
 
-section.hero-cta-4up
-  /* section.hero-cta */
-  /*   - @ctas.each do |cta| */
-  /*     - cycle('teal', 'purple', 'blue', 'green', name: 'colors') */
-  /*     article(class="#{current_cycle('colors')}") */
-  /*       - cache([ cta, current_cycle('colors') ]) do */
-  /*         .section-content */
-  /*           h2 = process_with_liquid cta.title */
-  /*           h3 = process_with_liquid cta.subtitle */
-  /*           h6 = process_with_liquid cta.body */
-  /*           = link_to cta.link_text, cta.link_href, class: "btn #{current_cycle('colors')}" */
+section.hero-cta-4up.site-max-and-center
+  section.hero-cta
+    - @ctas.each do |cta|
+      - cycle('teal', 'purple', 'blue', 'green', name: 'colors')
+      article(class="#{current_cycle('colors')}")
+        - cache([ cta, current_cycle('colors') ]) do
+          .section-content
+            h2 = process_with_liquid cta.title
+            h3 = process_with_liquid cta.subtitle
+            h6 = process_with_liquid cta.body
+            = link_to cta.link_text, cta.link_href, class: "btn #{current_cycle('colors')}"
   ul.hero-cta
     - if EventSchedule.cfp_open?
       li.card.card__featuredSubmissions
@@ -52,49 +52,49 @@ section.hero-cta-4up
         h4.card__subHeading Be a part of something epic
         p.card__copy We are actively looking for sponsors and volunteers! Contact us now to learn more.
         = link_to 'Contact', page_path(page: 'contact'), class: 'btn purple'
-  /* section.hero-cta */
-  /*   article.blue */
-  /*     .section-content */
-  /*       h2 Chase Basecamp */
-  /*       h3 Immerse yourself in the heart of it all */
-  /*       h6 Whether you want to find inspiration, hone your business idea, or just refuel, Basecamp powered by Chase is your home base! */
-  /*       = link_to 'Learn More', page_path(page: 'basecamp'), class: 'btn blue' */
-  /*   article.teal */
-  /*     .section-content */
-  /*       h2 Kickoff Breakfast */
-  /*       h3 Check out the live stream of the Kickoff breakfast! */
-  /*       h6 For the first time ever, we're live streaming the event that gets the whole week rolling. */
-  /*       = link_to 'Watch it live', 'https://youtu.be/Ks3GwL-j1Nk', class: 'btn teal' */
+  section.hero-cta
+    article.blue
+      .section-content
+        h2 Chase Basecamp
+        h3 Immerse yourself in the heart of it all
+        h6 Whether you want to find inspiration, hone your business idea, or just refuel, Basecamp powered by Chase is your home base!
+        = link_to 'Learn More', page_path(page: 'basecamp'), class: 'btn blue'
+    article.teal
+      .section-content
+        h2 Kickoff Breakfast
+        h3 Check out the live stream of the Kickoff breakfast!
+        h6 For the first time ever, we're live streaming the event that gets the whole week rolling.
+        = link_to 'Watch it live', 'https://youtu.be/Ks3GwL-j1Nk', class: 'btn teal'
 
-ul.card__list
+ul.card__list.site-max-and-center
   li.card.card__DSW
     h3.card__heading The Team Behind Denver Startup Week 2017
     p.card__copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit. Lorem dolere sit amet nonummy consecuter es quid ipsum. Lorem ipsum dolere sit adspecit amet nonummy consecuter es quid dolere adspecit.
     a.card__action.btn.gray Meet the Team
   
 
-section.common.the-what
-  .section-content
-    h1 What
-  .section-image
-    / = image_tag 'redesign/crawford-hotel.jpg'
-  .section-content
-    h6
-      | The largest event of its kind in North America, Denver Startup Week is the summit of entrepreneurial energy, innovation, and connection. 
-      | Powered by the local community, our sessions represent the very best in tech, design, DIY-making, marketing and leadership. 
-      | Whether a founder, developer, designer, marketer, maker, or anything in between - Denver Startup Week will inspire. 
+/ section.common.the-what
+/   .section-content
+/     h1 What
+/   .section-image
+/     / = image_tag 'redesign/crawford-hotel.jpg'
+/   .section-content
+/     h6
+/       | The largest event of its kind in North America, Denver Startup Week is the summit of entrepreneurial energy, innovation, and connection. 
+/       | Powered by the local community, our sessions represent the very best in tech, design, DIY-making, marketing and leadership. 
+/       | Whether a founder, developer, designer, marketer, maker, or anything in between - Denver Startup Week will inspire. 
 
-section.common.the-why
-  .section-content
-    h1 Why
-  .section-image
-    / = image_tag 'redesign/gather.jpg'
-  .section-content
-    h6 Innovation is everywhere. Bringing it to life takes the skills and drive of an entire team; founders, developers, product managers, designers, marketers, sales teams, and makers. The mission of Denver Startup Week is to foster an environment where every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge.
+/ section.common.the-why
+/   .section-content
+/     h1 Why
+/   .section-image
+/     / = image_tag 'redesign/gather.jpg'
+/   .section-content
+/     h6 Innovation is everywhere. Bringing it to life takes the skills and drive of an entire team; founders, developers, product managers, designers, marketers, sales teams, and makers. The mission of Denver Startup Week is to foster an environment where every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge.
 
-    .buttons
-      = link_to 'View Program', page_path(page: 'program'), class: 'btn primary'
-      = link_to 'Meet the Team', page_path(page: 'program/team'), class: 'btn primary'
+/     .buttons
+/       = link_to 'View Program', page_path(page: 'program'), class: 'btn primary'
+/       = link_to 'Meet the Team', page_path(page: 'program/team'), class: 'btn primary'
 
 = render partial: 'layouts/shared/page_footer'
 section.common.title-sponsors

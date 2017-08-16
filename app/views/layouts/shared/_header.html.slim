@@ -1,5 +1,6 @@
+- active_item = base_navigation_path
 header.masthead.section__wrap(data-bindable='toggle-nav')
-  .section-content
+  .section-content.clearfix
     a#menu-icon href='#'
       = render partial: 'icons/hamburger'
     h1.logo-container
@@ -9,36 +10,30 @@ header.masthead.section__wrap(data-bindable='toggle-nav')
       .inner-modal-container
         a.close href='#'
           = render partial: 'icons/x_mark'
-        / div
-        /   = link_to 'Home', root_path
         - if signed_in?
           div
-            = link_to 'My Dashboard', mine_submissions_path
+            = link_to 'My Dashboard', mine_submissions_path, class: active_item == 'users' ? 'active' : ''
         - elsif EventSchedule.cfp_open?
           div.primary
-            = link_to 'Submit a talk', new_submission_path
+            = link_to 'Submit a talk', new_submission_path, class: active_item == 'users' ? 'active' : ''
         - elsif EventSchedule.registration_open? && !registered?
-          div
-            = link_to 'Register', new_registration_path
+          div.primary
+            = link_to 'Register', new_registration_path, class: active_item == 'users' ? 'active' : ''
         - else
           div.primary
-            = link_to 'Sign In/ Sign Up', mine_submissions_path
+            = link_to 'Sign In/ Sign Up', mine_submissions_path, class: active_item == 'users' ? 'active' : ''
         - if EventSchedule.voting_open?
           div
-            = link_to 'Panel Picker', submissions_path
+            = link_to 'Panel Picker', submissions_path, class: active_item == 'users' ? 'active' : ''
         div
-          / = link_to 'Program', page_path(page: 'program'), class: item == :program ? 'active' : ''
-          = link_to 'Program', page_path(page: 'program')
-        /   = link_to 'Basecamp', page_path(page: 'basecamp')
+          = link_to 'Program', page_path(page: 'program'), class: active_item == 'program' ? 'active' : ''
         - if EventSchedule.registration_open?
           div
-            = link_to 'Schedule', schedules_path
-        / div
-        /   = link_to 'Attendees', page_path(page: 'attendees')
+            = link_to 'Schedule', schedules_path, class: active_item == 'schedule' ? 'active' : ''
         div
-          = link_to 'Sponsors', page_path(page: 'sponsors')
+          = link_to 'Sponsors', page_path(page: 'sponsors'), class: active_item == 'sponsors' ? 'active' : ''
         div
-          = link_to 'Contact', page_path(page: 'contact')
+          = link_to 'Contact', page_path(page: 'contact'), class: active_item == 'contact' ? 'active' : ''
         - if signed_in? && current_user.is_admin?
           div
             = link_to 'Admin', admin_root_path
