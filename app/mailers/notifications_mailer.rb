@@ -45,7 +45,7 @@ class NotificationsMailer < ActionMailer::Base
     @inquiry = inquiry
     mail to: ENV['VOLUNTEER_SIGNUP_EMAIL_RECIPIENTS'].split(','),
          subject: 'Someone has inquired about DSW',
-         reply_to: "#{@inquiry.name} <#{@inquiry.contact_email}>"
+         reply_to: "#{@inquiry.contact_name} <#{@inquiry.contact_email}>"
   end
 
   def notify_of_new_sponsor_signup(sponsor_signup)
