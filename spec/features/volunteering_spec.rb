@@ -56,8 +56,8 @@ feature 'Signing up to volunteer' do
     click_button 'Submit'
     expect(page). to have_content('Thanks for volunteering! You will receive a confirmation e-mail shortly.')
 
-    expect(last_sent_email).to deliver_to('test@example.com')
-    expect(last_sent_email).to have_subject('Thanks for volunteering to help out with Denver Startup Week!')
+    expect(last_email_sent).to deliver_to('test@example.com')
+    expect(last_email_sent).to have_subject('Thanks for volunteering to help out with Denver Startup Week!')
   end
 
   scenario 'User registers to volunteer using an organiation deeplink'
