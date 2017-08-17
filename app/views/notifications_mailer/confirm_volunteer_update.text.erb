@@ -1,8 +1,6 @@
 Hi <%= @volunteership.user.name %>,
 
-Thank you for signing up to volunteer for Denver Startup Week <%= Date.today.year %>!
-
-We have you signed up to volunteer at the following shifts:
+This e-mail is a confirmation that we've received your updated shift selections. We have you signed up to volunteer at the following shifts:
 
 <%- @volunteership.volunteer_shifts.each do |shift| -%>
   - <%= shift.full_name %>

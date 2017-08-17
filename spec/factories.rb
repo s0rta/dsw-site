@@ -9,4 +9,10 @@ FactoryGirl.define do
   factory :submission do
     association :submitter, factory: :user
   end
+
+  factory :venue do
+    address '1060 W Addison St'
+    city 'Chicago'
+    state 'IL'
+  end
 end

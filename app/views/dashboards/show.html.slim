@@ -1,23 +1,5 @@
 = render partial: 'nav', locals: { item: :mine }
 
-- if FeatureToggler.volunteership_active?
-  - if current_user.volunteered?
-    section.common.sm-centered
-      .section-content
-        h1 Your #{current_year} Volunteer Slots
-        p
-          = "Available: #{(current_user.current_volunteership.available_shifts.map(&:name) * ', ').presence || 'None'}"
-        p
-          = "Assigned: #{(current_user.current_volunteership.assigned_shifts.map(&:name) * ', ').presence || 'None'}"
-
-
-
-        = link_to 'Edit my availability', edit_volunteership_path, class: 'btn primary'
-  - else
-    section.common.sm-centered
-      .section-content
-        = link_to 'Sign up to volunteer', new_volunteership_path, class: 'btn primary'
-
 - if EventSchedule.registration_open?
   - if registered?
     section.common.sm-centered

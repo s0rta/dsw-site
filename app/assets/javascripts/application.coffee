@@ -1,6 +1,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require underscore
+#= require select2
 
 #= require utensils/bindable
 
@@ -12,6 +13,7 @@
 #= require components/ajax_load_more
 #= require components/mapquest_map
 #= require components/booking_dropdown
+#= require components/select2
 
 createBindable = ->
   utensils.bindable = new utensils.Bindable().bindAll()

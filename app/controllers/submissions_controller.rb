@@ -59,11 +59,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  def mine
-    @submissions = current_user.submissions.for_current_year
-    @previous_submissions = current_user.submissions.for_previous_years.order('created_at DESC')
-  end
-
   def by_day
     @submissions = Submission.for_current_year.public.where(start_day: params[:day]).order('start_hour ASC').includes(:submitter, :track, :votes)
   end
@@ -77,7 +72,7 @@ class SubmissionsController < ApplicationController
     @submission.year = Date.today.year
     if @submission.save
       flash[:notice] = 'Thanks! Your proposal has been received and you will receive an e-mail confirmation shortly'
-      redirect_to mine_submissions_path
+      redirect_to dashboard_path
     else
       respond_with @submission
     end
@@ -91,7 +86,7 @@ class SubmissionsController < ApplicationController
     if @submission.save
       flash[:notice] = 'Thanks! Your changes have been submitted and are pending review.'
       @submission.notify_track_chairs_of_update!
-      redirect_to mine_submissions_path
+      redirect_to dashboard_path
     else
       respond_with @submission
     end

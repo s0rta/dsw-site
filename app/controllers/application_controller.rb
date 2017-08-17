@@ -48,10 +48,6 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.new_user_session_path unless current_user && current_user.is_admin?
   end
 
-  def in_mercury_invasion?
-    params[:mercury_frame] && (params[:mercury_frame] == true || params[:mercury_frame] == 'true')
-  end
-
   def ensure_registered!
     redirect_to main_app.new_registration_path unless current_registration
   end

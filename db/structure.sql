@@ -1,10 +1,3 @@
---
--- PostgreSQL database dump
---
-
--- Dumped from database version 9.6.1
--- Dumped by pg_dump version 9.6.1
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -813,7 +806,8 @@ CREATE TABLE volunteer_shifts (
     end_hour double precision,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    year integer
+    year integer,
+    venue_id bigint
 );
 
 
@@ -837,23 +831,23 @@ ALTER SEQUENCE volunteer_shifts_id_seq OWNED BY volunteer_shifts.id;
 
 
 --
--- Name: volunteership_assigned_shifts; Type: TABLE; Schema: public; Owner: -
+-- Name: volunteership_shifts; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE volunteership_assigned_shifts (
-    id integer NOT NULL,
-    volunteership_id integer,
-    volunteer_shift_id integer,
+CREATE TABLE volunteership_shifts (
+    id bigint NOT NULL,
+    volunteership_id bigint,
+    volunteer_shift_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: volunteership_assigned_shifts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: volunteership_shifts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE volunteership_assigned_shifts_id_seq
+CREATE SEQUENCE volunteership_shifts_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -862,42 +856,10 @@ CREATE SEQUENCE volunteership_assigned_shifts_id_seq
 
 
 --
--- Name: volunteership_assigned_shifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: volunteership_shifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE volunteership_assigned_shifts_id_seq OWNED BY volunteership_assigned_shifts.id;
-
-
---
--- Name: volunteership_available_shifts; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE volunteership_available_shifts (
-    id integer NOT NULL,
-    volunteership_id integer,
-    volunteer_shift_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: volunteership_available_shifts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE volunteership_available_shifts_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: volunteership_available_shifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE volunteership_available_shifts_id_seq OWNED BY volunteership_available_shifts.id;
+ALTER SEQUENCE volunteership_shifts_id_seq OWNED BY volunteership_shifts.id;
 
 
 --
@@ -1107,17 +1069,10 @@ ALTER TABLE ONLY volunteer_shifts ALTER COLUMN id SET DEFAULT nextval('volunteer
 
 
 --
--- Name: volunteership_assigned_shifts id; Type: DEFAULT; Schema: public; Owner: -
+-- Name: volunteership_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY volunteership_assigned_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_assigned_shifts_id_seq'::regclass);
-
-
---
--- Name: volunteership_available_shifts id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY volunteership_available_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_available_shifts_id_seq'::regclass);
+ALTER TABLE ONLY volunteership_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_shifts_id_seq'::regclass);
 
 
 --
@@ -1303,19 +1258,11 @@ ALTER TABLE ONLY volunteer_shifts
 
 
 --
--- Name: volunteership_assigned_shifts volunteership_assigned_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_shifts volunteership_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY volunteership_assigned_shifts
-    ADD CONSTRAINT volunteership_assigned_shifts_pkey PRIMARY KEY (id);
-
-
---
--- Name: volunteership_available_shifts volunteership_available_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY volunteership_available_shifts
-    ADD CONSTRAINT volunteership_available_shifts_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY volunteership_shifts
+    ADD CONSTRAINT volunteership_shifts_pkey PRIMARY KEY (id);
 
 
 --
@@ -1489,31 +1436,24 @@ CREATE INDEX index_versions_on_item_type_and_item_id ON versions USING btree (it
 
 
 --
--- Name: index_volunteership_assigned_shifts_on_volunteer_shift_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_volunteer_shifts_on_venue_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_volunteership_assigned_shifts_on_volunteer_shift_id ON volunteership_assigned_shifts USING btree (volunteer_shift_id);
-
-
---
--- Name: index_volunteership_assigned_shifts_on_volunteership_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_volunteership_assigned_shifts_on_volunteership_id ON volunteership_assigned_shifts USING btree (volunteership_id);
+CREATE INDEX index_volunteer_shifts_on_venue_id ON volunteer_shifts USING btree (venue_id);
 
 
 --
--- Name: index_volunteership_available_shifts_on_volunteer_shift_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_volunteership_shifts_on_volunteer_shift_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_volunteership_available_shifts_on_volunteer_shift_id ON volunteership_available_shifts USING btree (volunteer_shift_id);
+CREATE INDEX index_volunteership_shifts_on_volunteer_shift_id ON volunteership_shifts USING btree (volunteer_shift_id);
 
 
 --
--- Name: index_volunteership_available_shifts_on_volunteership_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_volunteership_shifts_on_volunteership_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_volunteership_available_shifts_on_volunteership_id ON volunteership_available_shifts USING btree (volunteership_id);
+CREATE INDEX index_volunteership_shifts_on_volunteership_id ON volunteership_shifts USING btree (volunteership_id);
 
 
 --
@@ -1553,27 +1493,27 @@ ALTER TABLE ONLY volunteerships
 
 
 --
--- Name: volunteership_assigned_shifts fk_rails_92f98cffc7; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_shifts fk_rails_4deb72ee78; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY volunteership_assigned_shifts
-    ADD CONSTRAINT fk_rails_92f98cffc7 FOREIGN KEY (volunteership_id) REFERENCES volunteerships(id);
-
-
---
--- Name: volunteership_available_shifts fk_rails_9489760428; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY volunteership_available_shifts
-    ADD CONSTRAINT fk_rails_9489760428 FOREIGN KEY (volunteer_shift_id) REFERENCES volunteer_shifts(id);
+ALTER TABLE ONLY volunteership_shifts
+    ADD CONSTRAINT fk_rails_4deb72ee78 FOREIGN KEY (volunteership_id) REFERENCES volunteerships(id);
 
 
 --
--- Name: volunteership_assigned_shifts fk_rails_b1f4aeb35b; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: volunteership_shifts fk_rails_8ff1f98788; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY volunteership_assigned_shifts
-    ADD CONSTRAINT fk_rails_b1f4aeb35b FOREIGN KEY (volunteer_shift_id) REFERENCES volunteer_shifts(id);
+ALTER TABLE ONLY volunteership_shifts
+    ADD CONSTRAINT fk_rails_8ff1f98788 FOREIGN KEY (volunteer_shift_id) REFERENCES volunteer_shifts(id);
+
+
+--
+-- Name: volunteer_shifts fk_rails_9c4ffa0245; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY volunteer_shifts
+    ADD CONSTRAINT fk_rails_9c4ffa0245 FOREIGN KEY (venue_id) REFERENCES venues(id);
 
 
 --
@@ -1582,14 +1522,6 @@ ALTER TABLE ONLY volunteership_assigned_shifts
 
 ALTER TABLE ONLY sent_notifications
     ADD CONSTRAINT fk_rails_da20014dea FOREIGN KEY (submission_id) REFERENCES submissions(id);
-
-
---
--- Name: volunteership_available_shifts fk_rails_e76f764d04; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY volunteership_available_shifts
-    ADD CONSTRAINT fk_rails_e76f764d04 FOREIGN KEY (volunteership_id) REFERENCES volunteerships(id);
 
 
 --
@@ -1682,6 +1614,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170320052451'),
 ('20170713164355'),
 ('20170718164505'),
-('20170720060259');
+('20170720060259'),
+('20170811224733'),
+('20170814173357');
 
 

@@ -13,7 +13,7 @@ header.masthead(data-bindable='toggle-nav')
         = link_to 'Home', root_path
       - if signed_in?
         div
-          = link_to 'My Dashboard', mine_submissions_path
+          = link_to 'My Dashboard', dashboard_path
       - elsif EventSchedule.cfp_open?
         div
           = link_to 'Submit Proposal', new_submission_path
@@ -22,7 +22,7 @@ header.masthead(data-bindable='toggle-nav')
           = link_to 'Register', new_registration_path
       - else
         div
-          = link_to 'Register / Sign In', mine_submissions_path
+          = link_to 'Register / Sign In', dashboard_path
       - if EventSchedule.voting_open?
         div
           = link_to 'Panel Picker', submissions_path
