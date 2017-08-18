@@ -5,96 +5,179 @@ section.hero
   .section-content(style="text-align: center; max-width: 800px;")
     h3 Denver Startup Week is about innovation for founders, developers, product managers, designers, marketers, sales teams, and makers.
 
-section.hero-cta-4up.site-max-and-center
-  section.hero-cta
+section.site-max-and-center
+  div.cards.cards-2up
     - @ctas.each do |cta|
       - cycle('teal', 'purple', 'blue', 'green', name: 'colors')
-      article(class="#{current_cycle('colors')}")
+      article(class="card card-#{current_cycle('colors')}")
         - cache([ cta, current_cycle('colors') ]) do
-          .section-content
-            h2 = process_with_liquid cta.title
-            h3 = process_with_liquid cta.subtitle
-            h6 = process_with_liquid cta.body
-            = link_to cta.link_text, cta.link_href, class: "btn #{current_cycle('colors')}"
-  ul.hero-cta
+          div.card-elements
+            h2.card-heading = process_with_liquid cta.title
+            h3.card-subheading = process_with_liquid cta.subtitle
+            p.card-copy = process_with_liquid cta.body
+            = link_to cta.link_href, class: "card-btn" do
+              = content_tag :span, cta.link_text, class: "card-btn-text"
+  div.cards.cards-3up
     - if EventSchedule.cfp_open?
-      li.card.card__featuredSubmissions
-          h3.card__heading Call for Submissions
-          h4.card__subHeading Session submissions are open through #{EventSchedule::SUBMISSION_CLOSE_DATE.to_s(:month_day)}
-          p.card__copy Denver Startup Week is powered by the community. Submit a topic for consideration for #{Date.today.year}.
-          = link_to 'Submit a Topic', mine_submissions_path, class: 'btn blue'
+      article.card.card-grey
+        div.card-elements
+          h2.card-heading Call for Submissions
+          h3.card-subheading Session submissions are open through #{EventSchedule::SUBMISSION_CLOSE_DATE.to_s(:month_day)}
+          p.card-copy Denver Startup Week is powered by the community. Submit a topic for consideration for #{Date.today.year}.
+          = link_to mine_submissions_path, class: "card-btn" do
+            = content_tag :span, 'Submit a Topic', class: "card-btn-text"
     - elsif EventSchedule.voting_open?
-        li.card.card__featuredPrimary
-          h3.card__heading Voting is Open
-          h4.card__subHeading Cast your vote before #{EventSchedule::VOTING_CLOSE_DATE.to_s(:month_day)}
-          p.card__copy The sessions are in, now we need you to help us finalize the best for this year's event. Don't delay, cast your vote and spread the word.
-          = link_to 'Vote Now', submissions_path, class: 'btn green'
+      article.card.card-grey
+        div.card-elements
+          h2.card-heading Voting is Open
+          h3.card-subheading Cast your vote before #{EventSchedule::VOTING_CLOSE_DATE.to_s(:month_day)}
+          p.card-copy The sessions are in, now we need you to help us finalize the best for this year's event. Don't delay, cast your vote and spread the word.
+          = link_to submissions_path, class: "card-btn" do
+            = content_tag :span, 'Vote Now', class: "card-btn-text"
     - elsif EventSchedule.registration_open? && !registered?
-      li.card.card__featuredPrimary
-          h3.card__heading Registration is Open
-          h4.card__subHeading Register and build your schedule
-          p.card__copy This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
-          = link_to 'Register Now', new_registration_path, class: 'btn green'
+      article.card.card-grey
+        div.card-elements
+          h2.card-heading Registration is Open
+          h3.card-subheading Register and build your schedule
+          p.card-copy This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
+          = link_to new_registration_path, class: "card-btn" do
+            = content_tag :span, 'Register Now', class: "card-btn-text"
     - elsif EventSchedule.registration_open? && registered?
-      li.card.card__featuredPrimary
-          h2 Build Your Schedule
-          h3 Register and build your own schedule
-          p.card__copy This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
-          = link_to 'Build Your Schedule', schedules_path, class: 'btn green'
+      article.card.card-grey
+        div.card-elements
+          h2.card-heading Build Your Schedule
+          h3.card-subheading Register and build your own schedule
+          p.card-copy This year is going to be epic. We are excited to bring you the best of the best, and we couldn't have done this without you. Don't delay.
+          = link_to schedules_path, class: "card-btn" do
+            = content_tag :span, 'Build Your Schedule', class: "card-btn-text"
     - else
-      li.card.card__featuredPrimary
-        h3.card__heading Read our blog
-        h4.card__subHeading Stay up to date with DSW
-        p.card__copy Our new blog features the latest updates on DSW and the Denver entrepreneurial community.
-        = link_to 'Visit the blog', 'https://medium.com/denver-startup-week', class: 'btn green'
-    li.card.card__featuredVolunteer
-        h3.card__heading Get Involved
-        h4.card__subHeading Be a part of something epic
-        p.card__copy We are actively looking for sponsors and volunteers! Contact us now to learn more.
-        = link_to 'Contact', page_path(page: 'contact'), class: 'btn purple'
-  section.hero-cta
-    article.blue
-      .section-content
-        h2 Chase Basecamp
-        h3 Immerse yourself in the heart of it all
-        h6 Whether you want to find inspiration, hone your business idea, or just refuel, Basecamp powered by Chase is your home base!
-        = link_to 'Learn More', page_path(page: 'basecamp'), class: 'btn blue'
-    article.teal
-      .section-content
-        h2 Kickoff Breakfast
-        h3 Check out the live stream of the Kickoff breakfast!
-        h6 For the first time ever, we're live streaming the event that gets the whole week rolling.
-        = link_to 'Watch it live', 'https://youtu.be/Ks3GwL-j1Nk', class: 'btn teal'
+      article.card.card-grey
+        div.card-elements
+          h2.card-heading Read our blog
+          h3.card-subheading Stay up to date with DSW
+          p.card-copy Our new blog features the latest updates on DSW and the Denver entrepreneurial community.
+          = link_to 'https://medium.com/denver-startup-week', class: "card-btn" do
+            = content_tag :span, 'Visit the blog', class: "card-btn-text"
+    article.card.card-teal
+      div.card-elements
+        h2.card-heading Get Involved
+        h3.card-subheading Be a part of something epic
+        p.card-copy We are actively looking for sponsors and volunteers! Contact us now to learn more.
+        = link_to page_path(page: 'contact'), class: "card-btn" do
+          = content_tag :span, 'Contact', class: "card-btn-text"
+    article.card.card-purple
+      div.card-elements
+        h2.card-heading Chase Basecamp
+        h3.card-subheading Immerse yourself in the heart of it all
+        p.card-copy Whether you want to find inspiration, hone your business idea, or just refuel, Basecamp powered by Chase is your home base!
+        = link_to page_path(page: 'basecamp'), class: "card-btn" do
+          = content_tag :span, 'Learn More', class: "card-btn-text"
+    article.card.card-blue
+      div.card-elements
+        h2.card-heading Kickoff Breakfast
+        h3.card-subheading Check out the live stream of the Kickoff breakfast!
+        p.card-copy For the first time ever, we're live streaming the event that gets the whole week rolling.
+        = link_to 'https://youtu.be/Ks3GwL-j1Nk', class: "card-btn" do
+          = content_tag :span, 'Watch it live', class: "card-btn-text"
+    article.card.card-grey
+      div.card-elements
+        h2.card-heading The Team Behind Denver Startup Week 2017
+        h3.card-subheading Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Meet the Team', class: "card-btn-text"
 
-ul.card__list.site-max-and-center
-  li.card.card__DSW
-    h3.card__heading The Team Behind Denver Startup Week 2017
-    p.card__copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit. Lorem dolere sit amet nonummy consecuter es quid ipsum. Lorem ipsum dolere sit adspecit amet nonummy consecuter es quid dolere adspecit.
-    a.card__action.btn.gray Meet the Team
-  
-
-/ section.common.the-what
-/   .section-content
-/     h1 What
-/   .section-image
-/     / = image_tag 'redesign/crawford-hotel.jpg'
-/   .section-content
-/     h6
-/       | The largest event of its kind in North America, Denver Startup Week is the summit of entrepreneurial energy, innovation, and connection. 
-/       | Powered by the local community, our sessions represent the very best in tech, design, DIY-making, marketing and leadership. 
-/       | Whether a founder, developer, designer, marketer, maker, or anything in between - Denver Startup Week will inspire. 
-
-/ section.common.the-why
-/   .section-content
-/     h1 Why
-/   .section-image
-/     / = image_tag 'redesign/gather.jpg'
-/   .section-content
-/     h6 Innovation is everywhere. Bringing it to life takes the skills and drive of an entire team; founders, developers, product managers, designers, marketers, sales teams, and makers. The mission of Denver Startup Week is to foster an environment where every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge.
-
-/     .buttons
-/       = link_to 'View Program', page_path(page: 'program'), class: 'btn primary'
-/       = link_to 'Meet the Team', page_path(page: 'program/team'), class: 'btn primary'
+  div.cards.cards-3up(style="margin-top: 10em")
+    / Card color examples with icons
+    article.card.card-red
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/martini"
+          span Social
+        h2.card-heading This is the Social card
+        h3.card-subheading Social butterfly
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Social', class: "card-btn-text"
+    article.card.card-lightblue
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/basecamp"
+          span Basecamp
+        h2.card-heading This is the Basecamp card
+        h3.card-subheading Not 37 signals
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Basecamped', class: "card-btn-text"
+    article.card.card-darkblue
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/star"
+          span Headline
+        h2.card-heading This is the Headline card
+        h3.card-subheading You're a star
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Shined', class: "card-btn-text"
+    article.card.card-gold
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/terminal"
+          span Developer
+        h2.card-heading This is the Developer card
+        h3.card-subheading Key masher
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Mashing', class: "card-btn-text"
+    article.card.card-blue
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/chart"
+          span Growth
+        h2.card-heading This is the Growth card
+        h3.card-subheading Make some charts
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Growing', class: "card-btn-text"
+    article.card.card-purple
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/phone"
+          span Product
+        h2.card-heading This is the Product card
+        h3.card-subheading You are not a product
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Producting', class: "card-btn-text"
+    article.card.card-green
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/eyeball"
+          span Designer
+        h2.card-heading This is the Designer card
+        h3.card-subheading Make stuff with scissors
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Designing', class: "card-btn-text"
+    article.card.card-teal
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/wrench"
+          span Maker
+        h2.card-heading This is the Maker card
+        h3.card-subheading Make stuff with glue
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Making', class: "card-btn-text"
+    article.card.card-orange
+      div.card-elements
+        div.card-icon
+          = render partial: "icons/person"
+          span Founder
+        h2.card-heading This is the Founder card
+        h3.card-subheading Find stuff on your own
+        p.card-copy Lorem ipsum dolere sit amet dolere nonummy consecuter es quid dolere adspecit.
+        = link_to '#', class: "card-btn" do
+          = content_tag :span, 'Get Founding', class: "card-btn-text"
 
 = render partial: 'layouts/shared/page_footer'
 section.common.title-sponsors

@@ -1,54 +1,140 @@
-
 @import ../config
 
 .card
-  padding: 2.5em 5% 1.5em 5%
-  margin: 3% 5%
-  color: $copy-color-bold
-  display: block
-  background: $backfill-grey
-  // margin: 20px
-  // padding: 50px 0 0 0
-  .section-content
-    // max-width: 590px
-  .card__heading
+  display: inline-block
+  width: 100%
+  height: 480px
+  margin-bottom: 10px
+  padding: 45px 25px 25px
+  color: black
+  background-color: #e5e5e5
+  overflow: hidden
 
-    margin-bottom: 2.25rem
-    text-transform: uppercase
-    font-size: 32px
-    font-weight: 200
-  .card__subHeading
-    margin-bottom: 1rem
-    font-family: 'Montserrat-Regular'
-    font-size: 16px
-  .card__copy
-    font-size: 1rem
-    line-height: 1.5rem
-    margin-bottom: 3.125rem
+.cards-2up .card
+  height: 380px
 
+.card-elements
+  display: flex
+  flex-direction: column
+  flex-wrap: wrap
+  width: 100%
+  height: 100%
 
-.card__featuredPrimary
-  background-color: $green-light
-  .card__heading, .card__subHeading, .card__copy
-    color: $green-dark
-
-
-.card__featuredVolunteer
-  background-color: $blue-light
-  .card__heading, .card__subHeading, .card__copy
-    color: $blue-dark
-
-.card__DSW
-
-
-.card__heading
-  font-size: 1.75rem
+.card-icon
+  display: flex
+  align-items: center
+  margin-bottom: 30px
+  text-indent: 10px
+  font-family: 'Montserrat-Regular'
+  font-size: 11
+  font-weight: 600
   text-transform: uppercase
 
-.card__subHeading
-  font-size: 1rem
-  font-weight: 700
+.card-icon svg *
+  fill: currentColor
 
-@media(min-width: 36rem)
+.card-heading
+  margin-bottom: 30px
+  font-family: 'Montserrat-Light'
+  font-size: 32px
+  font-weight: 200
+  text-transform: uppercase
+
+.card-subheading
+  margin-bottom: 20px
+  font-size: 16px
+  font-weight: 600
+
+.card-copy
+  flex: 2
+  font-size: 16px
+
+.card-btn
+  display: inline-block
+  width: 100%
+  margin-top: auto
+  padding: 20px
+  font-family: 'Montserrat-Regular'
+  font-size: 14px
+  text-transform: uppercase
+  text-align: center
+  color: inherit
+  background-color: currentColor
+
+.card-btn-text
+  color: #666
+
+@media(min-width: 48em)
+  .cards
+    margin-left: -15px
   .card
-    padding: 2.5em 1.875rem 1.5em 1.875rem
+    margin-left: 15px
+    width: calc(50% - 30px)
+  .cards-2up .card
+    height: 320px
+
+@media(min-width: 80em)
+  .cards-3up .card
+    width: calc(33.33333% - 30px)
+
+// Colors...
+.card-blue
+  color: $blue-dark
+  background-color: $blue-light
+.card-blue .card-btn-text
+  color: $blue-light
+
+.card-darkblue
+  color: #113c5b
+  background-color: #1d8ecc
+.card-darkblue .card-btn-text
+  color: #1d8ecc
+
+.card-gold
+  color: $gold-dark
+  background-color: $gold-light
+.card-gold .card-btn-text
+  color: $gold-light
+
+.card-green
+  color: $green-dark
+  background-color: $green-light
+.card-green .card-btn-text
+  color: $green-light
+
+.card-grey
+  color: #4d4d4d
+  background-color: #e5e5e5
+.card-grey .card-btn-text
+  color: #e5e5e5
+
+.card-lightblue
+  color: $basecamp-color-dark
+  background-color: $basecamp-color-light
+.card-lightblue .card-btn-text
+  color: $basecamp-color-light
+
+.card-orange
+  color: $orange-dark
+  background-color: $orange-light
+.card-orange .card-btn-text
+  color: $orange-light
+
+.card-purple
+  color: $purple-dark
+  background-color: $purple-light
+.card-purple .card-btn-text
+  color: $purple-light
+
+.card-red
+  color: $red-dark
+  background-color: $red-light
+.card-red .card-btn-text
+  color: $red-light
+
+.card-teal
+  color: $teal-dark
+  background-color: $teal-light
+.card-teal .card-btn-text
+  color: $teal-light
+
