@@ -435,7 +435,8 @@ CREATE TABLE registrations (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     calendar_token character varying(255),
-    age_range character varying
+    age_range character varying,
+    learn_more_pledge_1p boolean DEFAULT false NOT NULL
 );
 
 
@@ -1616,6 +1617,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170718164505'),
 ('20170720060259'),
 ('20170811224733'),
-('20170814173357');
+('20170814173357'),
+('20170818174841');
 
 
