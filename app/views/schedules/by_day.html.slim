@@ -22,11 +22,11 @@ form.filters
     option(value="all" selected=("selected" if params[:filter] == 'all')) View All Sessions
     option(value="mine" selected=("selected" if params[:filter] == 'mine')) View My Schedule
     optgroup(label="View Sessions By Track")
-    - Track.in_display_order.each do |t|
-      option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) = "&nbsp;#{t.name}#{t.is_submittable? ? ' Track' : '' }".html_safe
+      - Track.in_display_order.each do |t|
+        option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) #{t.name}#{t.is_submittable? ? ' Track' : '' }
     optgroup(label="View Sessions By Cluster")
-    - Cluster.all.each do |c|
-      option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) = "&nbsp;#{c.name} Cluster".html_safe
+      - Cluster.all.each do |c|
+        option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) #{c.name} Cluster
 
 .section-content.schedule-container
   nav

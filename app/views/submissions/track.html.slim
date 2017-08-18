@@ -8,11 +8,11 @@ form.filters(action="#{search_submissions_path}")
     - else
       option(value="all") All
     optgroup(label="View Sessions By Track")
-    - Track.submittable.in_display_order.each do |t|
-      option(value="#{t.name.downcase}" selected=("selected" if params[:track_name] == t.name.downcase)) &nbsp;#{t.name} Track
+      - Track.submittable.in_display_order.each do |t|
+        option(value="#{t.name.downcase}" selected=("selected" if params[:track_name] == t.name.downcase)) #{t.name} Track
     optgroup(label="View Sessions By Cluster")
-    - Cluster.all.each do |c|
-      option(value="#{c.name.downcase}" selected=("selected" if params[:track_name] == c.name.downcase)) &nbsp;#{c.name} Cluster
+      - Cluster.all.each do |c|
+        option(value="#{c.name.downcase}" selected=("selected" if params[:track_name] == c.name.downcase)) #{c.name} Cluster
 
 .card-container(data-bindable='ajax-voter')
   = render partial: 'track_contents'
