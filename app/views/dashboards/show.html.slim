@@ -6,7 +6,7 @@
       h1 Your Registration
       .section-content
         = link_to 'View Your Schedule', schedules_path(filter: 'mine'), class: 'btn primary'
-        = link_to 'Download Your Schedule', schedule_feed_path(current_registration.calendar_token, format: 'ics'), class: 'btn primary'
+        = link_to 'Download Your Schedule', schedule_feed_path(current_registration.calendar_token, format: 'ics'), class: 'btn primary copy-btn'
   - else
     section.common.sm-centered
       .section-content
