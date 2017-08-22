@@ -1,8 +1,8 @@
 = render partial: 'layouts/shared/program_nav', locals: {item: :previous}
 
-.section-content
+.section-content.sm-centered
   - Submission.with_slides_or_video.group_by(&:year).each do |year, submissions|
-    h1 = year
+    h1 #{year} Slides &amp; Videos
     .list-flex-container
       - submissions.each do |submission|
         .list-item
