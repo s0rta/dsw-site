@@ -738,7 +738,8 @@ CREATE TABLE venues (
     city character varying(255),
     state character varying(255),
     suite_or_unit character varying,
-    capacity integer DEFAULT 0
+    capacity integer DEFAULT 0,
+    extra_directions text
 );
 
 
@@ -1618,6 +1619,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170720060259'),
 ('20170811224733'),
 ('20170814173357'),
-('20170818174841');
+('20170818174841'),
+('20170822225752');
 
 
