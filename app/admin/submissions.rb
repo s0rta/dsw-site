@@ -424,6 +424,11 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  batch_action :send_venue_match_email do |submission_ids|
+    Submission.find(submission_ids).each(&:send_venue_match_email!)
+    redirect_to admin_submissions_path
+  end
+
   # Notify of acceptance
   action_item :send_accept_email, only: :show do
     link_to 'Send accept email',
