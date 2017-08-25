@@ -69,6 +69,7 @@ gem 'redis-objects'
 
 # Background processing
 gem 'sucker_punch'
+gem 'retries'
 
 group :development do
   gem 'listen'
