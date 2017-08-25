@@ -1,5 +1,7 @@
 class NewSiteController < ApplicationController
 
+  respond_to :html
+
   before_action :verify_page_exists!
 
   def index
