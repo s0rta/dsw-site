@@ -69,4 +69,12 @@ module ApplicationHelper
       #   signup_url: 'http://slottd.com/events/f9256ejikx/slots' }
     ]
   end
+
+  def basecamp_sessions
+    Submission.
+      for_current_year.
+      for_schedule.
+      joins(:track).
+      where(tracks: { name: 'Basecamp' })
+  end
 end
