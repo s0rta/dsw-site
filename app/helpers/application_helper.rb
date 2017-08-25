@@ -56,13 +56,17 @@ module ApplicationHelper
 
   def mentor_sessions
     [
-      # { title: 'Adam Schlegel, EatDenver', timeslot: 'Monday 9/12: 9-11am', signup_url: 'http://slottd.com/events/tv98le5rg9/slots' },
+      # { title: 'Adam Schlegel, EatDenver',
+      #   timeslot: 'Monday 9/12: 9-11am',
+      #   signup_url: 'http://slottd.com/events/tv98le5rg9/slots' }
     ]
   end
 
   def group_mentor_sessions
     [
-      # { title: 'HomeAdvisor', timeslot: 'Monday 9/12: 2:30-4pm', signup_url: 'http://slottd.com/events/f9256ejikx/slots' },
+      # { title: 'HomeAdvisor',
+      #   timeslot: 'Monday 9/12: 2:30-4pm',
+      #   signup_url: 'http://slottd.com/events/f9256ejikx/slots' }
     ]
   end
 end
