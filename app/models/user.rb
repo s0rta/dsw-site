@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  has_many :submissions, foreign_key: 'submitter_id'
+  has_many :submissions, foreign_key: 'submitter_id', dependent: :restrict_with_error
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :registrations, dependent: :destroy
