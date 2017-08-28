@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     mount MailPreview => 'mailers'
+    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
   end
+
+  post '/graphql', to: 'graphql#execute'
 
   # Helpscout sidebar hook
   get 'helpscout_hooks/show'
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resource :registration, only: [ :new, :create ] do
+  resource :registration, only: %i[new create] do
     collection do
       get :closed
       get :confirm
@@ -57,7 +60,7 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
 
-  resources :feedback, only: %i(new create)
+  resources :feedback, only: %i[new create]
 
   resource :dashboard, only: :show
 
@@ -94,7 +97,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :company_search, only: %i(show)
+  resource :company_search, only: %i[show]
 
   get 'enable-simple-reg', to: 'simple_registrations#enable', as: :enable_simple_reg
   get 'disable-simple-reg', to: 'simple_registrations#disable', as: :disable_simple_reg

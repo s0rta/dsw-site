@@ -49,6 +49,7 @@ gem 'simple_states'
 
 # API
 gem 'active_model_serializers', '~> 0.8.0'
+gem 'graphql'
 
 # Production support
 gem 'utf8-cleaner'
@@ -97,3 +98,5 @@ group :production do
   gem 'dalli'
   gem 'heroku-deflater'
 end
+
+gem 'graphiql-rails', group: :development
