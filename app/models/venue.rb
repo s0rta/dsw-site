@@ -16,14 +16,14 @@ class Venue < ApplicationRecord
   end
 
   def address_for_google_maps
-    URI.escape([ address, city, state ].compact * ', ')
+    URI.escape([ address, city, state ].map(&:presence).compact * ', ')
   end
 
   def combined_address
-    [ address, suite_or_unit, city, state ].compact * ', '
+    [ address, suite_or_unit, city, state ].map(&:presence).compact * ', '
   end
 
   def short_address
-    [ address, suite_or_unit ].compact * ', '
+    [ address, suite_or_unit ].map(&:presence).compact * ', '
   end
 end
