@@ -22,6 +22,9 @@ RSpec.describe Submission, type: :model do
   # it { is_expected.to ensure_inclusion_of(:start_day).in_array(Submission::DAYS) }
   # it { is_expected.to ensure_inclusion_of(:end_day).in_array(Submission::DAYS) }
   # it { is_expected.to ensure_inclusion_of(:time_range).in_array(Submission::TIME_RANGES) }
+  it { is_expected.to allow_value('test@example.com').for(:contact_email) }
+  it { is_expected.not_to allow_value('test@ example').for(:contact_email) }
+  it { is_expected.not_to allow_value('test').for(:contact_email) }
   it { is_expected.to validate_length_of(:location).is_at_most(255) }
 
   it 'defaults its year to the current year' do

@@ -51,9 +51,9 @@ class Submission < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :contact_email, presence: true
-  validates :format, inclusion: {   in: FORMATS,
-                                    allow_blank: true }
+  validates :contact_email, presence: true, format: { with: Devise.email_regexp }
+  validates :format, inclusion: { in: FORMATS,
+                                  allow_blank: true }
   # validates :start_day, inclusion: {  in: DAYS,
                                 # allow_blank: true }
   # validates :end_day, inclusion: {  in: DAYS,
