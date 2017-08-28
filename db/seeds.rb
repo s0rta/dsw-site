@@ -91,7 +91,7 @@ Track.reset_column_information
   t = Track.where(name: track_name).first_or_initialize
 
   # Skip if the record has been updated since it was populated
-  next unless t.updated_at == t.created_at
+  next if t.updated_at && t.updated_at > t.created_at
 
   t.assign_attributes(attrs)
   t.save!
@@ -148,7 +148,7 @@ Cluster.reset_column_information
   c = Cluster.where(name: cluster_name).first_or_initialize
 
   # Skip if the record has been updated since it was populated
-  next unless c.updated_at == c.created_at
+  next if c.updated_at && c.updated_at > c.created_at
 
   c.assign_attributes(attrs)
   c.save!
@@ -226,7 +226,7 @@ HomepageCta.reset_column_information
   c = HomepageCta.where(title: attrs[:title]).first_or_initialize
 
   # Skip if the record has been updated since it was populated
-  next unless c.updated_at == c.created_at
+  next if c.updated_at && c.updated_at > c.created_at
 
   c.assign_attributes(attrs)
   c.save!
@@ -251,7 +251,7 @@ Sponsorship.reset_column_information
     description: <<-EOF.strip_heredoc.squish,
       Chase for Business is the bank for business. We offer a complete suite of industry leading financial products and resources, backed by expert advice. Learn more at chase.com/forbusiness.
     EOF
-    logo: 'chase-biz.png',
+    logo: 'chase-biz.jpg',
     level: Sponsorship::TITLE_LEVEL,
     link_href: 'https://www.chase.com/business',
     track_id: nil
@@ -262,7 +262,7 @@ Sponsorship.reset_column_information
     description: <<-EOF.strip_heredoc.squish,
       Comcast brings together the best in media and technology. We drive innovation to create the world’s best entertainment and online experiences.
     EOF
-    logo: 'comcast.png',
+    logo: 'comcast.jpg',
     level: Sponsorship::TITLE_LEVEL,
     link_href: 'https://www.xfinity.com/',
     track_id: nil
@@ -273,7 +273,7 @@ Sponsorship.reset_column_information
     description: <<-EOF.strip_heredoc.squish,
       The Downtown Denver Partnership, Inc. partners with public, private and non-profit entities to implement high-impact strategies, outlined in the organization’s long-term strategy the 2007 Downtown Area Plan, to support its vision for an economically healthy, growing and vital Downtown Denver.
     EOF
-    logo: 'ddp.png',
+    logo: 'ddp.jpg',
     level: Sponsorship::TITLE_LEVEL,
     link_href: 'http://www.downtowndenver.com/',
     track_id: nil
@@ -289,11 +289,77 @@ Sponsorship.reset_column_information
     link_href: 'https://www.wework.com/',
     track_id: nil
   },
+  {
+    year: 2017,
+    name: 'Herman Miller',
+    description: <<-EOF.strip_heredoc.squish,
+      Herman Miller helps companies create offices uniquely suited to the culture they’ve built and the ways their people work. The result is a workplace that makes people and customers proud to work with you, and has the flexibility to keep up as you grow. We use a potent mix of problem-solving products, a special pricing structure, and financing options to make this type of space a reality for companies of all sizes, including startups with limited budgets.
+    EOF
+    logo: 'herman-miller.png',
+    level: Sponsorship::TRACK_LEVEL,
+    link_href: 'https://www.hermanmiller.com/',
+    track: Track.find_by!(name: 'Designer')
+  },
+  {
+    year: 2017,
+    name: 'Fanatics',
+    description: <<-EOF.strip_heredoc.squish,
+      As the global leader in licensed sports merchandise, Fanatics is changing the way fans purchase their favorite team apparel and jerseys across retail channels through an innovative, tech-infused approach to making and selling fan gear in today’s on-demand culture.
+    EOF
+    logo: 'fanatics.png',
+    level: Sponsorship::TRACK_LEVEL,
+    link_href: 'http://www.fanatics.com/',
+    track: Track.find_by!(name: 'Developer')
+  },
+  {
+    year: 2017,
+    name: 'Healthgrades',
+    description: <<-EOF.strip_heredoc.squish,
+      Healthgrades is dedicated to empowering stronger and more meaningful connections between patients and their healthcare providers. We help 30 million consumers a month find and schedule appointments with their provider of choice. With our scheduling solutions and advanced analytics applications, we help more than 500 hospitals across the country to cultivate new patient relationships, improve patient access, and build customer loyalty.
+    EOF
+    logo: 'healthgrades.png',
+    level: Sponsorship::TRACK_LEVEL,
+    link_href: 'http://www.healthgrades.com/',
+    track: Track.find_by!(name: 'Founder')
+  },
+  {
+    year: 2017,
+    name: 'AARP Colorado',
+    description: <<-EOF.strip_heredoc.squish,
+      The Innovation@50+™ initiative aims to spark entrepreneurial activity across public and private sectors. Anchored by the AARP social mission – to enhance the quality of life for all as we age – the initiative enlists the expertise of visionary thinkers, entrepreneurs, the investment community, industry and not-for-profits to spur innovation to meet the needs and wants of people over 50.
+    EOF
+    logo: 'aarp.png',
+    level: Sponsorship::TRACK_LEVEL,
+    link_href: 'http://states.aarp.org/region/colorado/',
+    track: Track.find_by!(name: 'Growth')
+  },
+  {
+    year: 2017,
+    name: 'Colorado Lending Source',
+    description: <<-EOF.strip_heredoc.squish,
+      Colorado Lending Source helps turn dreamers into doers. By partnering with local lenders, government agencies and resource partners, we make access to capital more attainable for entrepreneurs. Through our 26 year history we’ve helped 3,533 small businesses start, grow and expand resulting in the creation of 25,845 jobs and more than $4 billion lent.
+    EOF
+    logo: 'colorado-lending-source.png',
+    level: Sponsorship::TRACK_LEVEL,
+    link_href: 'http://www.coloradolendingsource.org/',
+    track: Track.find_by!(name: 'Maker')
+  },
+  {
+    year: 2017,
+    name: 'Pendo',
+    description: <<-EOF.strip_heredoc.squish,
+      Pendo helps companies create products that customers love. With powerful analytics, in-application user feedback, and contextual guidance designed to help companies measure and elevate the product experience in their applications, Pendo is on a mission to improve society’s experiences with software. Start a free trial at http://go.pendo.io/denverstartup.
+    EOF
+    logo: 'pendo.png',
+    level: Sponsorship::TRACK_LEVEL,
+    link_href: 'https://www.pendo.io/',
+    track: Track.find_by!(name: 'Product')
+  },
 ].each do |attrs|
   s = Sponsorship.where(name: attrs[:name], year: attrs[:year]).first_or_initialize
 
   # Skip if the record has been updated since it was populated
-  next unless s.updated_at == s.created_at
+  next if s.updated_at && s.updated_at > s.created_at
 
   s.assign_attributes(attrs)
   s.save!
