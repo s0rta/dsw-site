@@ -77,4 +77,8 @@ module ApplicationHelper
       joins(:track).
       where(tracks: { name: 'Basecamp' })
   end
+
+  def sponsorships_by_level
+    @_sponsorships_by_level ||= Sponsorship.for_current_year.alphabetical.includes(:track).group_by(&:level)
+  end
 end

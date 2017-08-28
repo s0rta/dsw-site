@@ -10,3 +10,20 @@ section.common.gold
     h6 Have immediate questions regarding sponsorship opportunities? Contact <a class='section-inline-link' href='mailto:kbarton@downtowndenver.com'>Kate Barton</a>. 
     h6 Have available space to host sessions/events? Contact <a class='section-inline-link' href='mailto:rfinegan@downtowndenver.com'>Rye Finegan</a>.
     a.btn.copy-btn.gold href='/DenverStartupWeek2017Sponsorship.pdf' target='_blank' Download Sponsorship Prospectus
+
+section.common.sponsor
+  - Sponsorship::LEVELS.each do |level|
+    - sponsorships_by_level[level].tap do |sponsorships|
+      - if sponsorships.present? && sponsorships.any?
+          .section-content
+            h1 = level.titleize
+            - sponsorships.each do |sponsorship|
+              .sponsor-container
+                a.sponsor-logo href="#{sponsorship.link_href}" target='_blank'
+                  = image_tag "redesign/sponsors/#{sponsorship.logo}"
+                .sponsor-copy
+                  - if sponsorship.track.present?
+                    div(class="sponsor-track #{sponsorship.track.color}")
+                      = render partial: "icons/#{sponsorship.track.icon}"
+                      span = sponsorship.track.name
+                  span = sponsorship.description

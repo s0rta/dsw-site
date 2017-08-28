@@ -2,7 +2,7 @@
 
 ActiveAdmin.register HomepageCta do
 
-  menu label: 'Homepage Calls-to-Action'
+  menu parent: 'Site Content', label: 'Homepage Calls-to-Action'
 
   permit_params :title,
                 :subtitle,

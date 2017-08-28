@@ -89,6 +89,10 @@ Track.reset_column_information
   }
 }.each do |track_name, attrs|
   t = Track.where(name: track_name).first_or_initialize
+
+  # Skip if the record has been updated since it was populated
+  next unless t.updated_at == t.created_at
+
   t.assign_attributes(attrs)
   t.save!
 end
@@ -142,6 +146,10 @@ Cluster.reset_column_information
   }
 }.each do |cluster_name, attrs|
   c = Cluster.where(name: cluster_name).first_or_initialize
+
+  # Skip if the record has been updated since it was populated
+  next unless c.updated_at == c.created_at
+
   c.assign_attributes(attrs)
   c.save!
 end
@@ -216,6 +224,77 @@ HomepageCta.reset_column_information
   }
 ].each do |attrs|
   c = HomepageCta.where(title: attrs[:title]).first_or_initialize
+
+  # Skip if the record has been updated since it was populated
+  next unless c.updated_at == c.created_at
+
   c.assign_attributes(attrs)
   c.save!
+end
+
+Sponsorship.reset_column_information
+[
+  {
+    year: 2017,
+    name: 'Aging 2.0 - Seniors Matter',
+    description: <<-EOF.strip_heredoc.squish,
+      Founded in 2012 by Stephen Johnston and Katy Fike, Aging2.0 supports innovators taking on the biggest challenges and opportunities in aging with an emphasis on enhancing access to innovation to improve the lives of the aging population across the globe.   Aging2.0 is international, interdisciplinary and intergenerational - focused on changing the conversation from local, clinical, siloed approaches to collaborative, lifestyle oriented, opportunity driven options.
+    EOF
+    logo: 'aging20.jpg',
+    level: Sponsorship::TITLE_LEVEL,
+    link_href: 'https://www.aging2.com/denver/',
+    track_id: nil
+  },
+  {
+    year: 2017,
+    name: 'Chase for Business',
+    description: <<-EOF.strip_heredoc.squish,
+      Chase for Business is the bank for business. We offer a complete suite of industry leading financial products and resources, backed by expert advice. Learn more at chase.com/forbusiness.
+    EOF
+    logo: 'chase-biz.png',
+    level: Sponsorship::TITLE_LEVEL,
+    link_href: 'https://www.chase.com/business',
+    track_id: nil
+  },
+  {
+    year: 2017,
+    name: 'Comcast',
+    description: <<-EOF.strip_heredoc.squish,
+      Comcast brings together the best in media and technology. We drive innovation to create the world’s best entertainment and online experiences.
+    EOF
+    logo: 'comcast.png',
+    level: Sponsorship::TITLE_LEVEL,
+    link_href: 'https://www.xfinity.com/',
+    track_id: nil
+  },
+  {
+    year: 2017,
+    name: 'Downtown Denver Partnership',
+    description: <<-EOF.strip_heredoc.squish,
+      The Downtown Denver Partnership, Inc. partners with public, private and non-profit entities to implement high-impact strategies, outlined in the organization’s long-term strategy the 2007 Downtown Area Plan, to support its vision for an economically healthy, growing and vital Downtown Denver.
+    EOF
+    logo: 'ddp.png',
+    level: Sponsorship::TITLE_LEVEL,
+    link_href: 'http://www.downtowndenver.com/',
+    track_id: nil
+  },
+  {
+    year: 2017,
+    name: 'WeWork',
+    description: <<-EOF.strip_heredoc.squish,
+      WeWork is a platform for creators, providing over 130,000 members around the world with space, community, and services through both physical and virtual offerings. WeWork currently has more than 160 physical locations in 52 cities and 16 countries around the world.
+    EOF
+    logo: 'wework.jpg',
+    level: Sponsorship::TITLE_LEVEL,
+    link_href: 'https://www.wework.com/',
+    track_id: nil
+  },
+].each do |attrs|
+  s = Sponsorship.where(name: attrs[:name], year: attrs[:year]).first_or_initialize
+
+  # Skip if the record has been updated since it was populated
+  next unless s.updated_at == s.created_at
+
+  s.assign_attributes(attrs)
+  s.save!
 end

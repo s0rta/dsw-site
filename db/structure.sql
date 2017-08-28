@@ -570,6 +570,43 @@ ALTER SEQUENCE sponsor_signups_id_seq OWNED BY sponsor_signups.id;
 
 
 --
+-- Name: sponsorships; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE sponsorships (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    logo character varying,
+    link_href character varying NOT NULL,
+    description text,
+    year integer NOT NULL,
+    level character varying NOT NULL,
+    track_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: sponsorships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE sponsorships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: sponsorships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE sponsorships_id_seq OWNED BY sponsorships.id;
+
+
+--
 -- Name: submissions; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1029,6 +1066,13 @@ ALTER TABLE ONLY sponsor_signups ALTER COLUMN id SET DEFAULT nextval('sponsor_si
 
 
 --
+-- Name: sponsorships id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sponsorships ALTER COLUMN id SET DEFAULT nextval('sponsorships_id_seq'::regclass);
+
+
+--
 -- Name: submissions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1209,6 +1253,14 @@ ALTER TABLE ONLY session_registrations
 
 ALTER TABLE ONLY sponsor_signups
     ADD CONSTRAINT sponsor_signups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sponsorships sponsorships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sponsorships
+    ADD CONSTRAINT sponsorships_pkey PRIMARY KEY (id);
 
 
 --
@@ -1400,6 +1452,13 @@ CREATE INDEX index_session_registrations_on_registration_id ON session_registrat
 --
 
 CREATE INDEX index_session_registrations_on_submission_id ON session_registrations USING btree (submission_id);
+
+
+--
+-- Name: index_sponsorships_on_track_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sponsorships_on_track_id ON sponsorships USING btree (track_id);
 
 
 --
@@ -1620,6 +1679,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170811224733'),
 ('20170814173357'),
 ('20170818174841'),
-('20170822225752');
+('20170822225752'),
+('20170828185347');
 
 
