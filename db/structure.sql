@@ -203,6 +203,37 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: companies; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE companies (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE companies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE companies_id_seq OWNED BY companies.id;
+
+
+--
 -- Name: general_inquiries; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -419,7 +450,7 @@ CREATE TABLE registrations (
     year integer,
     contact_email character varying(255),
     zip character varying(255),
-    company character varying(255),
+    company_name character varying(255),
     gender character varying(255),
     primary_role character varying(255),
     track_id integer,
@@ -427,7 +458,8 @@ CREATE TABLE registrations (
     updated_at timestamp without time zone NOT NULL,
     calendar_token character varying(255),
     age_range character varying,
-    learn_more_pledge_1p boolean DEFAULT false NOT NULL
+    learn_more_pledge_1p boolean DEFAULT false NOT NULL,
+    company_id bigint
 );
 
 
@@ -637,7 +669,8 @@ CREATE TABLE submissions (
     from_underrepresented_group boolean,
     target_audience_description text,
     cached_similar_item_ids integer[] DEFAULT '{}'::integer[],
-    live_stream_url character varying
+    live_stream_url character varying,
+    company_id bigint
 );
 
 
@@ -990,6 +1023,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 
 
 --
+-- Name: companies id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
+
+
+--
 -- Name: general_inquiries id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1167,6 +1207,14 @@ ALTER TABLE ONLY clusters
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: companies companies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY companies
+    ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
 
 
 --
@@ -1393,6 +1441,20 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
+-- Name: index_companies_on_lower_name_unique; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_companies_on_lower_name_unique ON companies USING btree (lower((name)::text) varchar_pattern_ops);
+
+
+--
+-- Name: index_companies_on_name; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_companies_on_name ON companies USING btree (name);
+
+
+--
 -- Name: index_homepage_ctas_on_track_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1418,6 +1480,13 @@ CREATE INDEX index_pitch_contest_votes_on_user_id ON pitch_contest_votes USING b
 --
 
 CREATE UNIQUE INDEX index_registrations_on_calendar_token ON registrations USING btree (calendar_token);
+
+
+--
+-- Name: index_registrations_on_company_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_registrations_on_company_id ON registrations USING btree (company_id);
 
 
 --
@@ -1467,6 +1536,13 @@ CREATE INDEX index_sponsorships_on_track_id ON sponsorships USING btree (track_i
 --
 
 CREATE INDEX index_submissions_on_cluster_id ON submissions USING btree (cluster_id);
+
+
+--
+-- Name: index_submissions_on_company_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_submissions_on_company_id ON submissions USING btree (company_id);
 
 
 --
@@ -1579,6 +1655,14 @@ ALTER TABLE ONLY pitch_contest_votes
 
 
 --
+-- Name: registrations fk_rails_4dafc7e520; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY registrations
+    ADD CONSTRAINT fk_rails_4dafc7e520 FOREIGN KEY (company_id) REFERENCES companies(id);
+
+
+--
 -- Name: volunteership_shifts fk_rails_4deb72ee78; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1624,6 +1708,14 @@ ALTER TABLE ONLY homepage_ctas
 
 ALTER TABLE ONLY sent_notifications
     ADD CONSTRAINT fk_rails_da20014dea FOREIGN KEY (submission_id) REFERENCES submissions(id);
+
+
+--
+-- Name: submissions fk_rails_fdef407c4c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY submissions
+    ADD CONSTRAINT fk_rails_fdef407c4c FOREIGN KEY (company_id) REFERENCES companies(id);
 
 
 --
@@ -1722,6 +1814,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170818174841'),
 ('20170822225752'),
 ('20170828185347'),
+('20170828224353'),
+('20170828225347'),
+('20170828225639'),
 ('20170830195828'),
 ('20170906024523'),
 ('20170908145727'),
@@ -1735,6 +1830,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170920024945'),
 ('20170925061912'),
 ('20171010165924'),
-('20171018232858');
+('20171018232421'),
+('20171018232858'),
+('20171023230412'),
+('20171023230539');
 
 

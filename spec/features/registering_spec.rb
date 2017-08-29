@@ -48,7 +48,7 @@ feature 'Registering to attend' do
       select 'he/him/his', from: 'registration_gender'
       select '25-34 years old', from: 'registration_age_range'
       select 'Founder', from: 'registration_track_id'
-      fill_in 'registration_company', with: 'Example.com'
+      fill_in 'registration_company_name', with: 'Example.com'
       fill_in 'registration_primary_role', with: 'Developer'
       fill_in 'registration_zip', with: '12345'
       click_button 'Register'

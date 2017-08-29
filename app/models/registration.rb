@@ -12,6 +12,7 @@ class Registration < ApplicationRecord
   ].freeze
 
   belongs_to :user
+  belongs_to :company, optional: true
   has_many :session_registrations, dependent: :destroy
   has_many :submissions, through: :session_registrations
 
@@ -42,4 +43,11 @@ class Registration < ApplicationRecord
     where(year: Date.today.year)
   end
 
+  def company_name
+    company.try(:name)
+  end
+
+  def company_name=(value)
+    self.company = Company.where('LOWER(name) = LOWER(?)', value).first_or_initialize(name: value)
+  end
 end
