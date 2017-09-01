@@ -19,7 +19,7 @@ section.common.sm-centered
     - if @submissions.any?
       - @submissions.each do |submission|
         .talk-submission
-          h6 #{submission.title} (#{submission.track.name})
+          h6 #{submission.full_title} (#{submission.track.name})
           - if submission.editable?
             = link_to edit_submission_path(submission), title: 'Propose Updates' do
               = render partial: 'icons/pencil'
@@ -38,4 +38,4 @@ section.common.sm-centered
       - @previous_submissions.each do |submission|
         .talk-submission
           h6
-            | #{truncate(submission.title, length: 70)} (#{submission.year}, #{submission.track.name})
+            | #{truncate(submission.full_title, length: 70)} (#{submission.year}, #{submission.track.name})

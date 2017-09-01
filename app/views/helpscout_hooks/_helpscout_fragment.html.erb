@@ -5,7 +5,7 @@
 <ul>
   <%- if @user %>
     <%- @user.submissions.each do |submission| %>
-      <li><%= link_to "#{submission.title} (#{submission.year})", admin_submission_url(submission) %></li>
+      <li><%= link_to "#{submission.full_title} (#{submission.year})", admin_submission_url(submission) %></li>
     <%- end %>
   <%- end %>
 </ul>

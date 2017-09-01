@@ -13,6 +13,7 @@ class Sponsorship < ApplicationRecord
              MEMBER_LEVEL ].freeze
 
   belongs_to :track, optional: true
+  belongs_to :submission, optional: true
 
   include YearScoped
 

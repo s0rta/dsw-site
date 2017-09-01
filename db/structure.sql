@@ -583,7 +583,8 @@ CREATE TABLE sponsorships (
     level character varying NOT NULL,
     track_id bigint,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    submission_id bigint
 );
 
 
@@ -1455,6 +1456,13 @@ CREATE INDEX index_session_registrations_on_submission_id ON session_registratio
 
 
 --
+-- Name: index_sponsorships_on_submission_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_sponsorships_on_submission_id ON sponsorships USING btree (submission_id);
+
+
+--
 -- Name: index_sponsorships_on_track_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1543,6 +1551,14 @@ CREATE INDEX index_votes_on_user_id ON votes USING btree (user_id);
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: sponsorships fk_rails_10fd4596a4; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY sponsorships
+    ADD CONSTRAINT fk_rails_10fd4596a4 FOREIGN KEY (submission_id) REFERENCES submissions(id);
 
 
 --
@@ -1680,6 +1696,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170814173357'),
 ('20170818174841'),
 ('20170822225752'),
-('20170828185347');
+('20170828185347'),
+('20170830195828');
 
 

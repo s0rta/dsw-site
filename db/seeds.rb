@@ -355,6 +355,94 @@ Sponsorship.reset_column_information
     link_href: 'https://www.pendo.io/',
     track: Track.find_by!(name: 'Product')
   },
+  {
+    year: 2017,
+    name: 'SendGrid',
+    description: <<-EOF.strip_heredoc.squish,
+      SendGrid is a proven, cloud-based customer communication platform that drives engagement and business growth. A leader in email deliverability, SendGrid has successfully sent over 30 billion monthly emails for Internet and mobile-based customers like Airbnb, Pandora, Spotify, Uber and Foursquare as well as more traditional enterprises like Intuit and Costco.
+    EOF
+    logo: 'sendgrid.png',
+    level: Sponsorship::HEADLINE_LEVEL,
+    link_href: 'https://www.sendgrid.com/',
+    submission: Submission.find_by(id: 3695)
+  },
+  {
+    year: 2017,
+    name: 'AARP Colorado',
+    description: <<-EOF.strip_heredoc.squish,
+      The Innovation@50+™ initiative aims to spark entrepreneurial activity across public and private sectors. Anchored by the AARP social mission – to enhance the quality of life for all as we age – the initiative enlists the expertise of visionary thinkers, entrepreneurs, the investment community, industry and not-for-profits to spur innovation to meet the needs and wants of people over 50.
+    EOF
+    logo: 'aarp.png',
+    level: Sponsorship::HEADLINE_LEVEL,
+    link_href: 'http://states.aarp.org/region/colorado/',
+    submission: Submission.find_by(id: 3678)
+  },
+  {
+    year: 2017,
+    name: 'Next50 Initiative',
+    description: <<-EOF.strip_heredoc.squish,
+      NextFifty Initiative is an independent, Colorado-based, nonprofit organization, dedicated to funding mission-driven initiatives that improve community services for the elderly population and caregivers. This newly formed foundation will seek, vet and fund game-changing breakthroughs to improve and sustain quality of life for people in the second 50 years of their life via grants and financial support to organizations committed to the elderly population and their caregivers.
+    EOF
+    logo: 'next-fifty.png',
+    level: Sponsorship::HEADLINE_LEVEL,
+    link_href: 'http://www.next50initiative.org/',
+    submission: Submission.find_by(id: 3652)
+  },
+  {
+    year: 2017,
+    name: 'Spectrum',
+    description: <<-EOF.strip_heredoc.squish,
+      Charter Communications is America’s fastest growing TV, internet and voice company. We’re committed to integrating the highest quality service with superior entertainment and communications products. Charter is at the intersection of technology and entertainment, facilitating essential communications that connect more than 26 million residential and business customers in 41 states.
+    EOF
+    logo: 'spectrum.png',
+    level: Sponsorship::HEADLINE_LEVEL,
+    link_href: 'http://www.spectrumco.com/',
+    submission: Submission.find_by(id: 3679)
+  },
+  {
+    year: 2017,
+    name: 'Avnet',
+    description: <<-EOF.strip_heredoc.squish,
+      From idea to design and from prototype to production, Avnet supports customers at each stage of a product’s lifecycle. A comprehensive portfolio of design and supply chain services makes Avnet the go-to guide for innovators who set the pace for technological change. For nearly a century, Avnet has helped its customers and suppliers around the world realize the transformative possibilities of technology.
+    EOF
+    logo: 'avnet.png',
+    level: Sponsorship::HEADLINE_LEVEL,
+    link_href: 'https://www.avnet.com/wps/portal/us/',
+    submission: Submission.find_by(id: 3681)
+  },
+  {
+    year: 2017,
+    name: 'Xero',
+    description: <<-EOF.strip_heredoc.squish,
+      Denver small businesses really love Xero and our online accounting software. From Union Station, RINO, LoDo and every mile-high spot in between – businesses turn to Xero for accounting, time-tracking, ecommerce, inventory and more. Log in online anytime, anywhere on your Mac, PC, tablet or phone to get a real-time view of your cash flow. It’s small business accounting software that’s simple, smart and occasionally magical. Whatever the need, Xero has the solution to fit.
+    EOF
+    logo: 'xero.png',
+    level: Sponsorship::HEADLINE_LEVEL,
+    link_href: 'https://www.xero.com/us/',
+    submission: Submission.find_by(id: 3680)
+  },
+  {
+    year: 2017,
+    name: 'Bold Legal',
+    description: <<-EOF.strip_heredoc.squish,
+      Bold Legal is a boutique transactional and business law firm boldly committed to providing clients with sophisticated legal services, business acumen and practical efficiency while maintaining a firm culture and work environment steadfastly honoring certain unassailable core values: integrity, accountability, mutual respect, and boldness. With offices in Denver and Boulder serving clients both statewide and nationally, Bold provides counsel on a variety of matters including mergers and acquisitions, securities, venture capital, private equity, credit finance, start-up formations, legal entity governance, employment, equity incentive plans, technology licensing, and commercial contracts. Bold Legal provides innovative and intelligent solutions to legal and business issues and challenges the norms and conventions of traditional legal practice.
+    EOF
+    logo: 'bold-legal.png',
+    level: Sponsorship::HEADLINE_LEVEL,
+    link_href: 'http://bold.legal/'
+  },
+
+  {
+    year: 2017,
+    name: 'Pear Workplace Solutions',
+    description: <<-EOF.strip_heredoc.squish,
+      Have you ever had a lengthy to-do list, showed up at the office, and felt like you couldn’t make the progress you needed due to distractions in your workplace?  One of the major complaints in workplace satisfaction today is an employee’s inability to have a truly productive workday.  Pear Workplace Solutions addresses this challenge for our clients on a daily basis.  We accomplish this by designing space specific to each organizations’ culture, and the needs of their employees.  Our unique approach focuses on providing office spaces that enhance the workplace experience, while increasing employee engagement and breaking down the barriers to productivity.
+    EOF
+    logo: 'pear.png',
+    level: Sponsorship::HEADLINE_LEVEL,
+    link_href: 'http://www.pearcom.com/',
+    submission: Submission.find_by(id: 3680)
+  },
 ].each do |attrs|
   s = Sponsorship.where(name: attrs[:name], year: attrs[:year]).first_or_initialize
 

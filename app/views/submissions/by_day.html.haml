@@ -1,7 +1,7 @@
 %div(data-bindable="autoscroller" data-scroll-time="3.0")
   - @submissions.each do |submission|
     %section.section-container(style="padding: 0.5em;")
-      %h2.secondary-heading= submission.title
+      %h2.secondary-heading= submission.full_title
       %div.p-copy
         = "#{submission.track.name} Track"
         %br
