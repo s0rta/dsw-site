@@ -64,9 +64,6 @@ gem 'activeadmin-ajax_filter', '>= 0.3.7', github: 'jayzes/activeadmin-ajax_filt
 # gem 'meta_search',   '>= 1.1.0.pre'
 gem 'paper_trail'
 
-# Feature toggle
-gem 'redis-objects'
-
 # Background processing
 gem 'sucker_punch'
 gem 'retries'

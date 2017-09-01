@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :registrations, dependent: :destroy
-  has_many :volunteerships, dependent: :destroy
 
   def current_registration
     registrations.for_current_year.first
@@ -24,13 +23,5 @@ class User < ApplicationRecord
 
   def registered?
     current_registration.present?
-  end
-
-  def current_volunteership
-    volunteerships.for_current_year.first
-  end
-
-  def volunteered?
-    current_volunteership.present?
   end
 end
