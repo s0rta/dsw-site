@@ -46,10 +46,6 @@ module ApplicationHelper
     Cluster.in_display_order.map { |c| [ c.name, c.id ] }
   end
 
-  def volunteer_shifts_for_select
-    VolunteerShift.for_select
-  end
-
   def age_ranges_for_select
     Registration::AGE_RANGES
   end

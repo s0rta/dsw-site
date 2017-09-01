@@ -7,7 +7,6 @@ class Venue < ApplicationRecord
             :state, presence: true
 
   has_many :submissions, dependent: :restrict_with_error
-  has_many :volunteer_shifts, dependent: :restrict_with_error
 
   DEFAULT_CAPACITY = 75
 

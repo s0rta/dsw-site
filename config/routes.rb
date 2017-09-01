@@ -38,8 +38,6 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: :show
 
-  resource :volunteership, path: 'volunteer', path_names: { new: 'signup' }
-
   resources :newsletter_signups, only: :create
   resources :general_inquiries, only: :create
   resources :sponsor_signups, only: :create

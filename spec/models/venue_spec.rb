@@ -7,5 +7,4 @@ describe Venue, type: :model do
   it { is_expected.to validate_presence_of(:city) }
   it { is_expected.to validate_presence_of(:state) }
   it { is_expected.to have_many(:submissions).dependent(:restrict_with_error) }
-  it { is_expected.to have_many(:volunteer_shifts).dependent(:restrict_with_error) }
 end
