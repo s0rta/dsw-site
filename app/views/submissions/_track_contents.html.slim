@@ -4,7 +4,7 @@
       = link_to submission, class: 'vote-detail' do
         = render partial: "submissions/headers/#{submission.track.name_for_partial}"
         .title
-          = truncate(submission.title, length: 100, separator: ' ')
+          = truncate(submission.full_title, length: 100, separator: ' ')
         .names
           h6 = submission.company_or_submitter
         .description = truncate(submission.description, length: 100, separator: ' ')

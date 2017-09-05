@@ -26,4 +26,8 @@ section.common.sponsor
                     div(class="sponsor-track #{sponsorship.track.color}")
                       = render partial: "icons/#{sponsorship.track.icon}"
                       span = sponsorship.track.name
+                  - if sponsorship.submission.present?
+                    div(class="sponsor-track #{sponsorship.submission.track.color}")
+                      = render partial: "icons/#{sponsorship.submission.track.icon}"
+                      span = link_to sponsorship.submission.title, sponsorship.submission
                   span = sponsorship.description

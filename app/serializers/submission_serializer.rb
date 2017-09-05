@@ -9,6 +9,10 @@ class SubmissionSerializer < ActiveModel::Serializer
              :end_datetime,
              :registrant_count
 
+  def title
+    object.full_title
+  end
+
   def track_name
     object.track.name
   end

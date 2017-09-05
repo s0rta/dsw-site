@@ -52,7 +52,7 @@ form.filters
               - if submission.tags
                 .cluster-name = submission.tags
             .title-venue
-              = link_to submission.title, schedule_path(submission), class: 'session-title'
+              = link_to submission.full_title, schedule_path(submission), class: 'session-title'
               .session-location = submission.human_location_name
 
 - if registered? && params[:filter] == 'mine'

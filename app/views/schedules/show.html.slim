@@ -13,7 +13,7 @@ section.common
       - if @session.track.icon
         = render partial: "icons/#{@session.track.icon}"
       span.track-title = @session.track.name
-    .title = @session.title
+    .title = @session.full_title
     .names
       h6 = "#{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}"
       h6 = @session.human_time_range

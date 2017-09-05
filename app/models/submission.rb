@@ -48,6 +48,7 @@ class Submission < ApplicationRecord
                          source: :user
 
   has_many :sent_notifications, dependent: :destroy
+  has_one :sponsorship, dependent: :restrict_with_error
 
   validates :title, presence: true
   validates :description, presence: true
@@ -74,7 +75,7 @@ class Submission < ApplicationRecord
   end
 
   def to_param
-    "#{self.id}-#{self.title.parameterize}"
+    "#{id}-#{full_title.parameterize}"
   end
 
   def self.public
@@ -251,6 +252,14 @@ class Submission < ApplicationRecord
       "#{submitter.name} (#{company_name})"
     else
       submitter.name
+    end
+  end
+
+  def full_title
+    if sponsorship.present?
+      "#{title} sponsored by #{sponsorship.name}"
+    else
+      title
     end
   end
 
