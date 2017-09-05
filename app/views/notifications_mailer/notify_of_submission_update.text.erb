@@ -12,7 +12,9 @@ Submitter's notes:
 
 It was submitted by <%= @submission.submitter.name %> (<%= @submission.contact_email %>).
 
-If you approve of these changes, please sign into the admin to accept them.
+If you approve of these changes, please visit this URL to accept them:
+
+<%= admin_submission_url(@submission) %>
 
 Cheers,
 
