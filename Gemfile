@@ -10,7 +10,6 @@ gem 'puma'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'slim-rails'
-gem 'bourbon'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'underscore-rails'
@@ -20,7 +19,6 @@ gem 'autoprefixer-rails'
 gem 'select2-rails'
 
 gem 'responders'
-gem 'navigasmic'
 
 # Simple transparent captchas
 gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'
@@ -55,13 +53,11 @@ gem 'active_model_serializers', '~> 0.8.0'
 gem 'utf8-cleaner'
 gem 'newrelic_rpm'
 gem 'honeybadger'
-
 gem 'rack-canonical-host'
 
 # Admin interface
 gem 'activeadmin'
 gem 'activeadmin-ajax_filter', '>= 0.3.7', github: 'jayzes/activeadmin-ajax_filter'
-# gem 'meta_search',   '>= 1.1.0.pre'
 gem 'paper_trail'
 
 # Background processing

@@ -236,7 +236,6 @@ GEM
     mini_portile2 (2.2.0)
     minitest (5.10.3)
     multi_xml (0.5.5)
-    navigasmic (1.1.0)
     newrelic_rpm (4.3.0.335)
     nio4r (2.1.0)
     nokogiri (1.8.0)
@@ -423,7 +422,6 @@ DEPENDENCIES
   activeadmin
   activeadmin-ajax_filter (>= 0.3.7)!
   autoprefixer-rails
-  bourbon
   capybara
   capybara-select2!
   coffee-rails
@@ -448,7 +446,6 @@ DEPENDENCIES
   listen
   lograge
   memcachier
-  navigasmic
   newrelic_rpm
   paper_trail
   pg
