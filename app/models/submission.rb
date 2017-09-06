@@ -108,7 +108,7 @@ class Submission < ApplicationRecord
   def self.for_schedule_filter(filter, user)
     if filter == 'all'
       all
-    elsif filter == 'mine'
+    elsif filter == 'mine' && user
       joins(:user_registrations).
         where(registrations: { user_id: user.id })
     elsif filter.present?
