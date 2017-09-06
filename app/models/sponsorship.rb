@@ -6,12 +6,14 @@ class Sponsorship < ApplicationRecord
   PARTNER_LEVEL = 'partner'.freeze
   MEMBER_LEVEL = 'member'.freeze
   IN_KIND_LEVEL = 'in-kind'.freeze
+  MEDIA_LEVEL = 'media'.freeze
 
   LEVELS = [ TITLE_LEVEL,
              TRACK_LEVEL,
              HEADLINE_LEVEL,
              PARTNER_LEVEL,
              MEMBER_LEVEL,
+             MEDIA_LEVEL,
              IN_KIND_LEVEL ].freeze
 
   belongs_to :track, optional: true
