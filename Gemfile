@@ -29,6 +29,8 @@ gem 'kaminari'
 gem 'emma', github: 'myemma/EmmaRuby'
 
 gem 'devise'
+gem 'carrierwave', '~> 1.0'
+gem 'fog-aws'
 
 gem 'html-pipeline', require: 'html/pipeline'
 gem 'commonmarker'

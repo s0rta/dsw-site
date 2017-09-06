@@ -17,8 +17,11 @@ class Sponsorship < ApplicationRecord
 
   include YearScoped
 
+  mount_uploader :logo, LogoUploader
+
   validates :name,
             :link_href,
+            :logo,
             :year, presence: true
 
   validates :level,
