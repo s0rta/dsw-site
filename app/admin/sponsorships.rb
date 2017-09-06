@@ -44,8 +44,8 @@ ActiveAdmin.register Sponsorship do
       f.input :logo, as: :file, hint: f.object.logo.present? ? image_tag(f.object.logo.url, width: '100') : content_tag(:span, 'No logo yet')
       f.input :link_href, hint: 'Destination when a user clicks on the logo on the sponsors page'
       f.input :level, as: :select, collection: Sponsorship::LEVELS.map { |l| [ l.titleize, l ] }, include_blank: false
-      f.input :track_id, as: :select, collection: Track.all
-      f.input :submission_id, as: :select, collection: Submission.for_current_year.for_schedule
+      f.input :track_id, as: :select, collection: Track.order('name DESC'), hint: 'Only relevant for track-level sponsors'
+      f.input :submission_id, as: :select, collection: Submission.for_current_year.for_schedule.order('title DESC'), hint: 'Only relevant for event sponsors'
       f.input :year
     end
     f.actions
