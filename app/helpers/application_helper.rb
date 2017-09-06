@@ -52,9 +52,9 @@ module ApplicationHelper
 
   def mentor_sessions
     [
-      # { title: 'Adam Schlegel, EatDenver',
-      #   timeslot: 'Monday 9/12: 9-11am',
-      #   signup_url: 'http://slottd.com/events/tv98le5rg9/slots' }
+      { title: 'Travis Ladue, Designer, Studio Mast',
+        timeslot: 'Friday 9/29: 12-2pm',
+        signup_url: 'http://slottd.com/events/rgchfrcyb9/slots' }
     ]
   end
 
