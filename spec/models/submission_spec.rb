@@ -23,8 +23,6 @@ RSpec.describe Submission, type: :model do
   # it { is_expected.to ensure_inclusion_of(:end_day).in_array(Submission::DAYS) }
   # it { is_expected.to ensure_inclusion_of(:time_range).in_array(Submission::TIME_RANGES) }
   it { is_expected.to allow_value('test@example.com').for(:contact_email) }
-  it { is_expected.not_to allow_value('test@ example').for(:contact_email) }
-  it { is_expected.not_to allow_value('test').for(:contact_email) }
   it { is_expected.to validate_length_of(:location).is_at_most(255) }
 
   it 'defaults its year to the current year' do
@@ -47,6 +45,19 @@ RSpec.describe Submission, type: :model do
         with(user.email, submittedyears: [ year ], confirmedyears: [])
     end
 
+    it 'subscribes multiple e-mails after creation' do
+      user.submissions.create! contact_email: 'test1@example.com, test2@example.com',
+                               title: 'Test',
+                               description: 'Test',
+                               track: track
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with('test1@example.com', submittedyears: [ year ], confirmedyears: [])
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with('test2@example.com', submittedyears: [ year ], confirmedyears: [])
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with(user.email, submittedyears: [ year ], confirmedyears: [])
+    end
+
     it 'resubscribes with new data after update' do
       submission = user.submissions.create! contact_email: user.email,
                                             title: 'Test',
@@ -57,6 +68,27 @@ RSpec.describe Submission, type: :model do
       submission.update!(state: 'confirmed')
       expect(ListSubscriptionJob).to have_received(:perform_async).
         with(user.email, submittedyears: [ year ], confirmedyears: [ year ])
+    end
+
+    it 'resubscribes multiple e-mails with new data after update' do
+      submission = user.submissions.create! contact_email: 'test1@example.com, test2@example.com',
+                                            title: 'Test',
+                                            description: 'Test',
+                                            track: track
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with(user.email, submittedyears: [ year ], confirmedyears: [])
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with('test1@example.com', submittedyears: [ year ], confirmedyears: [])
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with('test2@example.com', submittedyears: [ year ], confirmedyears: [])
+
+      submission.update!(state: 'confirmed')
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with(user.email, submittedyears: [ year ], confirmedyears: [ year ])
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with('test1@example.com', submittedyears: [ year ], confirmedyears: [ year ])
+      expect(ListSubscriptionJob).to have_received(:perform_async).
+        with('test2@example.com', submittedyears: [ year ], confirmedyears: [ year ])
     end
   end
 end

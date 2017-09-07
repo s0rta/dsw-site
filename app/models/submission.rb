@@ -52,7 +52,7 @@ class Submission < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :contact_email, presence: true, format: { with: Devise.email_regexp }
+  validates :contact_email, presence: true
   validates :format, inclusion: { in: FORMATS,
                                   allow_blank: true }
   # validates :start_day, inclusion: {  in: DAYS,
@@ -76,6 +76,10 @@ class Submission < ApplicationRecord
 
   def to_param
     "#{id}-#{full_title.parameterize}"
+  end
+
+  def contact_emails
+    contact_email.split(',').map(&:strip)
   end
 
   def self.public
@@ -319,17 +323,21 @@ class Submission < ApplicationRecord
   end
 
   def subscribe_to_list
-    [ contact_email, submitter.email ].compact.uniq.each do |email|
+    [ contact_emails, submitter.email ].flatten.compact.uniq.each do |email|
       submitted_years = Submission.
                         joins(:submitter).
-                        where('contact_email = :email OR users.email = :email', email: email).
+                        where('contact_email ILIKE :email_like OR users.email = :email',
+                              email_like: "%#{email}%",
+                              email: email).
                         pluck(:year).
                         sort.
                         map(&:to_s)
       confirmed_years = Submission.
                         where(state: %w(accepted confirmed venue_confirmed)).
                         joins(:submitter).
-                        where('contact_email = :email OR users.email = :email', email: email).
+                        where('contact_email ILIKE :email_like OR users.email = :email',
+                              email_like: "%#{email}%",
+                              email: email).
                         pluck(:year).
                         sort.
                         map(&:to_s)
