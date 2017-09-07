@@ -93,4 +93,5 @@ group :production do
   gem 'lograge'
   gem 'memcachier'
   gem 'dalli'
+  gem 'heroku-deflater'
 end
