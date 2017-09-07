@@ -60,9 +60,30 @@ module ApplicationHelper
 
   def group_mentor_sessions
     [
-      # { title: 'HomeAdvisor',
-      #   timeslot: 'Monday 9/12: 2:30-4pm',
-      #   signup_url: 'http://slottd.com/events/f9256ejikx/slots' }
+      { title: 'Bryan Leach, Founder & CEO, Ibotta',
+        timeslot: 'Monday 9/25: 11:00am-12:00pm',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3771-group-mentor-session-with-bryan-leach-founder-ceo-of-ibotta' },
+      { title: 'Jackie Ros, Co-Founder & CCO, Revolar',
+        timeslot: 'Monday 9/25: 1:30pm-2:30pm',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3774-group-mentor-session-with-jackie-ros-co-founder-cco-of-revolar' },
+      { title: 'Kimbal Musk, Co-Founder, The Kitchen',
+        timeslot: 'Monday 9/25: 3:30pm-4:00pm',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3773-group-mentor-session-with-kimbal-musk-co-founder-of-the-kitchen' },
+      { title: 'Sameer Dholakia, CEO, SendGrid',
+        timeslot: 'Tuesday 9/26: 10:00am-11:00am',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3776-group-mentor-session-with-sameer-dholakia-ceo-of-sendgrid' },
+      { title: 'Justin Cucci, Composer & Chef, Edible Beats',
+        timeslot: 'Tuesday 9/26: 2:00pm-3:00pm',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3775-group-mentor-session-with-justin-cucci-composer-chef-edible-beats' },
+      { title: 'Lee Mayer, Co-Founder & CEO, Havenly',
+        timeslot: 'Tuesday 9/26: 3:00pm-4:00pm',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3777-group-mentor-session-with-lee-mayer-co-founder-ceo-of-havenly' },
+      { title: 'Ryan Kirkpatrick, Partner, CO Impact Fund',
+        timeslot: 'Wednesday 9/27: 10:00am-11:00am',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3778-group-mentor-session-with-ryan-kirkpatrick-partner-at-colorado-impact-fund' },
+       { title: 'Nancy Phillips, Founder & President, ViaWest',
+        timeslot: 'Thursday 9/28: 2:00pm-3:00pm',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3772-group-mentor-session-with-nancy-phillips-president-ceo-of-viawest' },
     ]
   end
 
