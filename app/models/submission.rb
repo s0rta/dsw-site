@@ -60,6 +60,9 @@ class Submission < ApplicationRecord
 
   accepts_nested_attributes_for :publishing, allow_destroy: true
 
+  has_many :presenterships, dependent: :destroy
+  has_many :presenters, through: :presenterships, source: :user
+
   validates :title, presence: true
   validates :description, presence: true
   validates :contact_email, presence: true

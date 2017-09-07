@@ -18,6 +18,9 @@ RSpec.describe Submission, type: :model do
   it { is_expected.to have_many(:feedback).dependent(:destroy) }
   it { is_expected.to have_one(:publishing).dependent(:destroy) }
 
+  it { is_expected.to have_many(:presenterships).dependent(:destroy) }
+  it { is_expected.to have_many(:presenters) }
+
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:description) }
   it { is_expected.to validate_presence_of(:contact_email) }
