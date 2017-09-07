@@ -82,7 +82,7 @@ module ApplicationHelper
        { title: 'Nichole Montoya, "Investment, Funding, Planning & Strategy", Cheddar Up',
         timeslot: 'Friday 9/29: 11-1pm',
         signup_url: 'http://slottd.com/events/oscjdvy3i5/slots' },
-       { title: 'Travis Ladue, Designer, Studio Mast',
+       { title: 'Travis Ladue, "Designer", Studio Mast',
         timeslot: 'Friday 9/29: 12-2pm',
         signup_url: 'http://slottd.com/events/rgchfrcyb9/slots' },
        { title: 'Karyn Miller, "Funding, Planning & Strategy, Talent & HR", Craftsy',
