@@ -55,6 +55,9 @@ module ApplicationHelper
       { title: 'Travis Ladue, Designer, Studio Mast',
         timeslot: 'Friday 9/29: 12-2pm',
         signup_url: 'http://slottd.com/events/rgchfrcyb9/slots' }
+       { title: 'More Sessions Coming Soon!',
+        timeslot: 'TBA',
+        signup_url: '' }
     ]
   end
 
