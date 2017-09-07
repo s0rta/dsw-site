@@ -15,6 +15,8 @@ section.common
       span.track-title = @session.track.name
     .title = @session.full_title
     .names
+      - if @session.tags
+        h6 = submission.tags
       h6 = "#{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}"
       h6 = @session.human_time_range
       h6 = "#{@session.registrants.count} attending"
