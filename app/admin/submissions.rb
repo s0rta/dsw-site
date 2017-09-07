@@ -150,7 +150,7 @@ ActiveAdmin.register Submission do
       f.input :cluster_id, as: :select, collection: Cluster.all.map {|c| [ c.name, c.id ]}, include_blank: true
       f.input :title
       f.input :description
-      f.input :contact_email
+      f.input :contact_email, hint: 'Multiple addresses are allowed; separate them with commas'
       f.input :company_name
       f.input :estimated_size
       f.input :budget_needed

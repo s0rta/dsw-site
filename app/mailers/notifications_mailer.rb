@@ -26,12 +26,12 @@ class NotificationsMailer < ActionMailer::Base
 
   def confirm_new_submission(submission)
     @submission = submission
-    mail to: @submission.contact_email, subject: 'Thanks for submitting a session proposal for Denver Startup Week!'
+    mail to: @submission.contact_emails, subject: 'Thanks for submitting a session proposal for Denver Startup Week!'
   end
 
   def voting_open(submission)
     @submission = submission
-    mail to: @submission.contact_email, subject: 'Voting for Denver Startup Week Sessions Is Now Open!'
+    mail to: @submission.contact_emails, subject: 'Voting for Denver Startup Week Sessions Is Now Open!'
   end
 
   def notify_of_new_inquiry(inquiry)
@@ -48,7 +48,7 @@ class NotificationsMailer < ActionMailer::Base
 
   def notify_of_submission_acceptance(submission)
     @submission = submission
-    mail to: @submission.contact_email,
+    mail to: @submission.contact_emails,
          subject: 'RESPONSE NEEDED: Your Denver Startup Week session has been accepted!',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,
@@ -57,13 +57,13 @@ class NotificationsMailer < ActionMailer::Base
 
   def notify_of_submission_rejection(submission)
     @submission = submission
-    mail to: @submission.contact_email,
+    mail to: @submission.contact_emails,
          subject: 'Your session proposal for Denver Startup Week'
   end
 
   def notify_of_submission_waitlisting(submission)
     @submission = submission
-    mail to: @submission.contact_email,
+    mail to: @submission.contact_emails,
          subject: 'Your session proposal for Denver Startup Week',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,
@@ -72,8 +72,8 @@ class NotificationsMailer < ActionMailer::Base
 
   def notify_of_submission_venue_match(submission)
     @submission = submission
-    mail to: [ @submission.contact_email,
-               @submission.venue.contact_email ],
+    mail to: [ @submission.contact_emails,
+               @submission.venue.contact_emails ].flatten,
          subject: 'Denver Startup Week session location intro',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,

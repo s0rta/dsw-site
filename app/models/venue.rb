@@ -25,4 +25,8 @@ class Venue < ApplicationRecord
   def short_address
     [ address, suite_or_unit ].map(&:presence).compact * ', '
   end
+
+  def contact_emails
+    contact_email.split(',').map(&:strip)
+  end
 end
