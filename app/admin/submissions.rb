@@ -135,31 +135,37 @@ ActiveAdmin.register Submission do
   filter :cluster, as: :select, collection: -> { Cluster.all }
 
   form do |f|
-    f.inputs do
+    f.inputs 'Basics' do
       f.input :year
       f.input :submitter_id, as: :ajax_select, data: { url: filter_admin_users_path, search_fields: [ :name, :email ] }
       f.input :track_id, as: :select, collection: Track.all.map {|t| [ t.name, t.id ]}, include_blank: false
-      f.input :state, as: :select, collection: Submission.states.map { |s| [ s.name.titleize, s.name ] }, include_blank: false
-      f.input :format, as: :select, collection: Submission::FORMATS, include_blank: true
-      f.input :time_range, as: :select, label: 'Submitted Time Range', collection: Submission::TIME_RANGES, include_blank: true, input_html: { disabled: true }
+      f.input :cluster_id, as: :select, collection: Cluster.all.map {|c| [ c.name, c.id ]}, include_blank: true
+      f.input :state, as: :select, collection: Submission.states.map { |s| [ s.to_s.titleize, s ] }, include_blank: false
+      f.input :title
+      f.input :description, hint: 'This is processed with Markdown, and can include additional formatting'
+    end
+    f.inputs 'Time and Location' do
       f.input :start_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :start_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :end_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :venue_id, as: :select, collection: Venue.alphabetical.map {|v| [ v.name, v.id ]}, include_blank: true
-      f.input :cluster_id, as: :select, collection: Cluster.all.map {|c| [ c.name, c.id ]}, include_blank: true
-      f.input :title
-      f.input :description
+    end
+    f.inputs 'Submitter' do
       f.input :contact_email, hint: 'Multiple addresses are allowed; separate them with commas'
       f.input :company_name
+      f.input :open_to_collaborators
+      f.input :from_underrepresented_group
+      f.input :notes, label: 'Pitch'
+      f.input :target_audience_description
+      f.input :slides_url
+      f.input :video_url
+    end
+    f.inputs 'Additional Information' do
       f.input :estimated_size
       f.input :budget_needed
       f.input :volunteers_needed
-      f.input :notes, label: 'Pitch from submitter'
-      f.input :target_audience_description
       f.input :internal_notes
-      f.input :slides_url
-      f.input :video_url
     end
     f.actions
   end
