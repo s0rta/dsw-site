@@ -240,7 +240,7 @@ module ApplicationHelper
       { title: 'Ryan Kirkpatrick, Partner, CO Impact Fund',
         timeslot: 'Wednesday 9/27: 10:00am-11:00am',
         signup_url: 'https://www.denverstartupweek.org/schedule/3778-group-mentor-session-with-ryan-kirkpatrick-partner-at-colorado-impact-fund' },
-       { title: 'Nancy Phillips, Founder & President, ViaWest',
+       { title: 'Nancy Phillips, Founder & Executive Chair to the Board, ViaWest',
         timeslot: 'Thursday 9/28: 2:00pm-3:00pm',
         signup_url: 'https://www.denverstartupweek.org/schedule/3772-group-mentor-session-with-nancy-phillips-president-ceo-of-viawest' },
       { title: 'Linda Appel Lipsius, Co-Founder & CEO, Teatulia Organic Teas & The Mamahood',
