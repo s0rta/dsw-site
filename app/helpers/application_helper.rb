@@ -216,10 +216,7 @@ module ApplicationHelper
         signup_url: 'http://slottd.com/events/nenvpqamdg/slots' },
         { title: 'Rich Piech, "Growth, Marketing & Sales", Sales Engineered Systems',
         timeslot: 'Friday 9/29: 1-2pm',
-        signup_url: 'http://slottd.com/events/lfwmplvbar/slots' },
-      { title: 'More Sessions Coming Soon!',
-        timeslot: 'TBA',
-        signup_url: '' },
+        signup_url: 'http://slottd.com/events/lfwmplvbar/slots' }
     ]
   end
 
