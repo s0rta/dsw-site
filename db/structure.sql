@@ -104,6 +104,40 @@ CREATE TABLE ar_internal_metadata (
 
 
 --
+-- Name: attendee_messages; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE attendee_messages (
+    id bigint NOT NULL,
+    subject character varying NOT NULL,
+    body text NOT NULL,
+    submission_id bigint NOT NULL,
+    sent_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: attendee_messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE attendee_messages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: attendee_messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE attendee_messages_id_seq OWNED BY attendee_messages.id;
+
+
+--
 -- Name: clusters; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -976,6 +1010,13 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 
 
 --
+-- Name: attendee_messages id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY attendee_messages ALTER COLUMN id SET DEFAULT nextval('attendee_messages_id_seq'::regclass);
+
+
+--
 -- Name: clusters id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1150,6 +1191,14 @@ ALTER TABLE ONLY active_admin_comments
 
 ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: attendee_messages attendee_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY attendee_messages
+    ADD CONSTRAINT attendee_messages_pkey PRIMARY KEY (id);
 
 
 --
@@ -1379,6 +1428,13 @@ CREATE INDEX index_admin_notes_on_resource_type_and_resource_id ON active_admin_
 
 
 --
+-- Name: index_attendee_messages_on_submission_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_attendee_messages_on_submission_id ON attendee_messages USING btree (submission_id);
+
+
+--
 -- Name: index_cmsimple_pages_on_parent_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1578,6 +1634,14 @@ ALTER TABLE ONLY volunteership_shifts
 
 
 --
+-- Name: attendee_messages fk_rails_555266c0e1; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY attendee_messages
+    ADD CONSTRAINT fk_rails_555266c0e1 FOREIGN KEY (submission_id) REFERENCES submissions(id);
+
+
+--
 -- Name: volunteership_shifts fk_rails_8ff1f98788; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1698,6 +1762,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170822225752'),
 ('20170828185347'),
 ('20170830195828'),
-('20170906024523');
+('20170906024523'),
+('20170908145727');
 
 

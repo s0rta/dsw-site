@@ -44,6 +44,7 @@ gem 'textacular'
 gem 'icalendar'
 
 gem 'premailer-rails'
+gem 'sendgrid'
 
 # State machines
 gem 'simple_states'
