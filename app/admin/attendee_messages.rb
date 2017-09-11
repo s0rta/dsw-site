@@ -1,18 +1,24 @@
 ActiveAdmin.register AttendeeMessage do
 
+  config.sort_order = 'created_at DESC'
+
   belongs_to :submission, optional: true
 
-  config.sort_order = 'created_at DESC'
+  permit_params :submission_id,
+                :subject,
+                :body
 
   menu parent: 'Sessions', priority: 3
 
-  permit_params :subject,
-                :body,
-                :submission_id
-
   controller do
     def scoped_collection
-      resource_class.includes(:submission)
+      end_of_association_chain.includes(:submission)
+    end
+
+    # This is a workaround for https://github.com/activeadmin/activeadmin/issues/3556
+    # Otherwise the nested `new` action doesn't work properly
+    define_method :permitted_params do
+      params.permit(*active_admin_namespace.permitted_params, :submission_id)
     end
   end
 
@@ -63,5 +69,4 @@ ActiveAdmin.register AttendeeMessage do
     end
     redirect_to admin_attendee_messages_path
   end
-
 end
