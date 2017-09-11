@@ -6,14 +6,18 @@ class NewSiteController < ApplicationController
 
   def index
     @ctas = HomepageCta.active.relevant_to_cycles(EventSchedule.active_cycles).in_priority_order
-    render template: "new_site/#{params[:page].presence || 'index'}"
+    render template: "new_site/#{page_name}"
   end
 
   private
 
+  def page_name
+    params[:page].presence || 'index'
+  end
+
   def verify_page_exists!
-    unless template_exists?(params[:page], _prefixes, false)
-      raise ActionController::RoutingError.new("#{params[:page]} not found")
+    unless template_exists?(page_name, _prefixes, false)
+      raise ActionController::RoutingError.new("#{page_name} not found")
     end
   end
 end
