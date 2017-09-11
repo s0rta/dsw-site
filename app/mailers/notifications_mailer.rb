@@ -126,7 +126,7 @@ class NotificationsMailer < ActionMailer::Base
   def send_attendee_message(message, users)
     @message = message
     sendgrid_recipients users.map(&:email)
-    mail to: 'info@denverstartupweek.org',
+    mail to: 'Denver Startup Week <info@denverstartupweek.org>',
          subject: "Regarding '#{message.submission.full_title}': #{message.subject}"
   end
 
