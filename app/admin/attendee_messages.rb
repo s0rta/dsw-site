@@ -29,7 +29,10 @@ ActiveAdmin.register AttendeeMessage do
     f.inputs do
       f.input :submission_id,
               as: :select,
-              collection: Submission.for_current_year.for_schedule.order(:title),
+              collection: Submission.
+                          for_current_year.
+                          where(state: %w(confirmed venue_confirmed withdrawn)).
+                          order(:title),
               include_blank: false
       f.input :subject, hint: 'Must not exceed 100 characters'
       f.input :body
