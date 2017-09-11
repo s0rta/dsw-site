@@ -16,7 +16,7 @@ describe SendAttendeeMessageJob, job: true do
   it 'sends a message' do
     msg.submission.user_registrations << registration
     SendAttendeeMessageJob.new.perform(msg)
-    expect(last_email_sent).to deliver_to('info@denverstartupweek.org')
+    expect(last_email_sent).to deliver_to('Denver Startup Week <info@denverstartupweek.org>')
     expect(last_email_sent).to have_subject("Regarding '#{msg.submission.full_title}': Important")
     expect(last_email_sent).to have_body_text(/Please read me/)
     expect(last_email_sent).to have_header('X-SMTPAPI', "{\"to\": [\"#{registration.user.email}\"]}")
