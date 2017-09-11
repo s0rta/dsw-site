@@ -14,12 +14,6 @@ ActiveAdmin.register AttendeeMessage do
     def scoped_collection
       end_of_association_chain.includes(:submission)
     end
-
-    # This is a workaround for https://github.com/activeadmin/activeadmin/issues/3556
-    # Otherwise the nested `new` action doesn't work properly
-    define_method :permitted_params do
-      params.permit(*active_admin_namespace.permitted_params, :submission_id)
-    end
   end
 
   index do
