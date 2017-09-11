@@ -14,6 +14,8 @@ RSpec.describe Submission, type: :model do
   it { is_expected.to have_many(:session_registrations).dependent(:destroy) }
   it { is_expected.to have_many(:user_registrations) }
   it { is_expected.to have_many(:registrants) }
+  it { is_expected.to have_many(:sent_notifications).dependent(:destroy) }
+  it { is_expected.to have_many(:attendee_messages).dependent(:restrict_with_error) }
 
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:description) }

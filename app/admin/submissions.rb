@@ -179,6 +179,11 @@ ActiveAdmin.register Submission do
     status_tag submission.state.to_s.titleize, status_for_submission(submission)
   end
 
+  sidebar 'Message', except: :index do
+    link_to "E-mail #{number_with_delimiter(submission.registrants.count)} attendees &rarr;".html_safe,
+            new_admin_submission_attendee_message_path(submission)
+  end
+
   sidebar :versionate, partial: 'admin/version', only: :show
 
   # Attendee export

@@ -3,6 +3,8 @@ class NotificationsMailer < ActionMailer::Base
   include ScheduleHelper
   helper ScheduleHelper
 
+  include SendGrid
+
   default from: 'Denver Startup Week <info@denverstartupweek.org>'
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -119,6 +121,13 @@ class NotificationsMailer < ActionMailer::Base
     @registration = registration
     @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
     mail to: @registration.user.email, subject: "Your Denver Startup Week Daily Schedule for #{formatted_start_date_for_index(@day + 2, '%A %-m/%-d')}"
+  end
+
+  def send_attendee_message(message, users)
+    @message = message
+    sendgrid_recipients users.map(&:email)
+    mail to: 'info@denverstartupweek.org',
+         subject: "Regarding '#{message.submission.full_title}': #{message.subject}"
   end
 
 end
