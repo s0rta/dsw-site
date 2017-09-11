@@ -77,7 +77,7 @@ class Submission < ApplicationRecord
   end
 
   def to_param
-    "#{id}-#{full_title.parameterize}"
+    "#{id}-#{full_title.try(:parameterize)}"
   end
 
   def contact_emails
