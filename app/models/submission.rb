@@ -303,7 +303,9 @@ class Submission < ApplicationRecord
   end
 
   def promote_updates!
-    update(proposed_updates.merge(proposed_updates: nil))
+    with_lock do
+      update(proposed_updates.merge(proposed_updates: nil))
+    end
   end
 
   def notify_track_chairs_of_update!
