@@ -12,7 +12,7 @@ class AttendeeMessage < ApplicationRecord
     if sent?
       "Sent at #{sent_at.to_s(:long)}"
     else
-      "Unsent"
+      'Unsent'
     end
   end
 end

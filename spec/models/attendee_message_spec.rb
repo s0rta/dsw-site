@@ -11,7 +11,8 @@ RSpec.describe AttendeeMessage, type: :model do
     end
 
     it 'is "Sent at <time>" when sent_at is present' do
-      expect(AttendeeMessage.new(sent_at: DateTime.new(2017, 01, 02)).sent_status).to eq('Sent at January 02, 2017 00:00')
+      expect(AttendeeMessage.new(sent_at: DateTime.new(2017, 1, 2)).sent_status).
+        to eq('Sent at January 02, 2017 00:00')
     end
   end
 end
