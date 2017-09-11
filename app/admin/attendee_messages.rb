@@ -1,13 +1,24 @@
 ActiveAdmin.register AttendeeMessage do
 
+  belongs_to :submission, optional: true
+
+  config.sort_order = 'created_at DESC'
+
   menu parent: 'Sessions', priority: 3
 
   permit_params :subject,
                 :body,
                 :submission_id
 
+  controller do
+    def scoped_collection
+      resource_class.includes(:submission)
+    end
+  end
+
   index do
     selectable_column
+    column :submission
     column :subject
     column :sent_status
     actions
