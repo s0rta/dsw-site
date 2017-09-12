@@ -64,3 +64,4 @@ Metrics/BlockLength:
     - namespace
     - draw
     - register
+    - feature
