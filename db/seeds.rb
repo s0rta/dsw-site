@@ -231,3 +231,136 @@ HomepageCta.reset_column_information
   c.assign_attributes(attrs)
   c.save!
 end
+
+PitchContest::Entry.reset_column_information
+[
+  {
+    name: 'InMotion Albums',
+    year: 2017,
+    video_url: 'https://youtu.be/CWj_SwOmycs'
+  },
+  {
+    name: 'Boogaloo Beds',
+    year: 2017,
+    video_url: 'https://youtu.be/5-0djJFDqaY'
+  },
+  {
+    name: 'CampChamp',
+    year: 2017,
+    video_url: 'https://youtu.be/aOaJhHTYZR8'
+  },
+  {
+    name: 'Contract Simply',
+    year: 2017,
+    video_url: 'https://youtu.be/hRTkreHA-vg'
+  },
+  {
+    name: 'To Market',
+    year: 2017,
+    video_url: 'https://youtu.be/1mPdvEUD3Tg'
+  },
+  {
+    name: 'Pocket Change',
+    year: 2017,
+    video_url: 'https://youtu.be/NIGjg1vhPI0'
+  },
+  {
+    name: 'Evoke Medical',
+    year: 2017,
+    video_url: 'https://youtu.be/C2fxvd-Nsfw'
+  },
+  {
+    name: 'Fireless Cremation',
+    year: 2017,
+    video_url: 'https://youtu.be/hoEsybqIWgI'
+  },
+  {
+    name: 'Getting Home',
+    year: 2017,
+    video_url: 'https://youtu.be/u_qkX1Sty0U'
+  },
+  {
+    name: 'Grownetics',
+    year: 2017,
+    video_url: 'https://youtu.be/X_d6jmy9P4I'
+  },
+  {
+    name: 'WalletGyde',
+    year: 2017,
+    video_url: 'https://youtu.be/sn2euYvF6mU'
+  },
+  {
+    name: 'Lacuna Diagnostics',
+    year: 2017,
+    video_url: 'https://youtu.be/ptkjR4Bg0Co'
+  },
+  {
+    name: 'Leaf',
+    year: 2017,
+    video_url: 'https://youtu.be/Tpm_R8tgt9g'
+  },
+  {
+    name: 'NStall',
+    year: 2017,
+    video_url: 'https://youtu.be/-m0GY6MS9Es'
+  },
+  {
+    name: 'Nikola Power',
+    year: 2017,
+    video_url: 'https://youtu.be/RlhFbIkH3vQ'
+  },
+  {
+    name: 'Paranoms',
+    year: 2017,
+    video_url: 'https://youtu.be/00lwYsdJqYU'
+  },
+  {
+    name: 'Phoncert',
+    year: 2017,
+    video_url: 'https://youtu.be/lgh54xcHFiw'
+  },
+  {
+    name: 'Phoodio',
+    year: 2017,
+    video_url: 'https://youtu.be/s8BjfRqWM9U'
+  },
+  {
+    name: 'Recoup Fitness',
+    year: 2017,
+    video_url: 'https://youtu.be/uidLcG2ew7g'
+  },
+  {
+    name: 'Salti Sweet',
+    year: 2017,
+    video_url: 'https://youtu.be/mNgmrog1hMk'
+  },
+  {
+    name: 'Scrubber',
+    year: 2017,
+    video_url: 'https://youtu.be/AESry_0pYrU'
+  },
+  {
+    name: 'Stackup',
+    year: 2017,
+    video_url: 'https://youtu.be/kjOlHfQXh90'
+  },
+  {
+    name: 'Scraps',
+    year: 2017,
+    video_url: 'https://youtu.be/2jIHRa_sKLw'
+  },
+  {
+    name: 'Clingless',
+    year: 2017,
+    video_url: 'https://youtu.be/XwX-EzXuanM'
+  },
+
+].each do |attrs|
+  e = PitchContest::Entry.where(name: attrs[:name]).first_or_initialize
+
+  # Skip if the record has been updated since it was populated
+  next if e.updated_at && e.updated_at > e.created_at
+
+  e.assign_attributes(attrs)
+  e.save!
+end
