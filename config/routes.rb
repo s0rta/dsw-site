@@ -52,6 +52,12 @@ Rails.application.routes.draw do
 
   get '/register', to: 'registrations#new', as: :register
 
+  namespace :pitch_contest do
+    resources :entries, only: :index do
+      resources :votes, only: :create
+    end
+  end
+
   get 'enable-simple-reg', to: 'simple_registrations#enable', as: :enable_simple_reg
   get 'disable-simple-reg', to: 'simple_registrations#disable', as: :disable_simple_reg
 

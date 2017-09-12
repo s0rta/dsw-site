@@ -7,7 +7,13 @@ section.common.sm-centered
     h1 What is it?
     h6 The second annual Denver Startup Week Pitch Challenge will highlight and harness our city's entrepreneurial energy. This year’s challenge takes the typical pitch competition and spins it on its head, inviting the 15,000 attendees at DSW to cast their votes to determine the final six contenders.
     h6 With a prize packaged valued at $100,000 in cash, services, and product, this pitch competition will showcase the best ideas and the brightest startups from Denver’s innovation community!
-    = link_to 'Applications are now closed', '#', class: 'btn primary'
+    - if EventSchedule.pitch_application_open?
+      = link_to 'Apply Now', 'https://projectxite.typeform.com/to/ImeCDU', class: 'btn primary'
+    - elsif EventSchedule.pitch_voting_open?
+      = link_to 'Vote Now', pitch_contest_entries_path, class: 'btn primary'
+    - else
+      = link_to 'Applications are currently closed', '#', class: 'btn primary'
+
 
 section#faq.common.sm-centered(data-bindable='toggle-faq')
   .section-content
