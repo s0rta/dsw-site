@@ -37,7 +37,7 @@ feature 'Submitting and voting on pitch contest applications' do
       expect(page).to have_css('.vote-count', text: '1 vote')
     end
 
-    scenario 'User votes for a session after being prompted to sign in' do
+    scenario 'User votes for a session after being prompted to sign in and register' do
       visit '/pitch'
       click_link 'Vote Now'
       expect(page).to have_content('Globex Corporation')
@@ -46,6 +46,14 @@ feature 'Submitting and voting on pitch contest applications' do
       fill_in 'E-mail Address', with: 'test@example.com'
       fill_in 'Password', with: 'password', match: :prefer_exact
       click_button 'Sign In'
+
+      select 'Male', from: 'registration_gender'
+      select '25-34 years old', from: 'registration_age_range'
+      select 'Founder', from: 'registration_track_id'
+      fill_in 'registration_company', with: 'Example.com'
+      fill_in 'registration_primary_role', with: 'Developer'
+      fill_in 'registration_zip', with: '12345'
+      click_button 'Register'
 
       click_link "Vote for 'Globex Corporation'"
       expect(page).to have_css('.vote-count', text: '1 vote')

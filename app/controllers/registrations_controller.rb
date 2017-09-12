@@ -3,6 +3,7 @@ class RegistrationsController < ApplicationController
   before_action :check_registration_open, except: [ :closed ]
   before_action :authenticate_user!, unless: :simple_registration?, except: [ :closed ]
   before_action :check_existing_registration, unless: :simple_registration?, except: [ :closed ]
+  before_action :save_after_registration_path, unless: :simple_registration?, except: [ :closed ]
 
   def new
     redirect_to closed_registration_path unless EventSchedule.registration_open?
@@ -23,7 +24,8 @@ class RegistrationsController < ApplicationController
       @registration = current_user.registrations.build(registration_params)
     end
     if @registration.save
-      redirect_to schedules_path, notice: 'Thanks for registering! You will receive a confirmation e-mail shortly.'
+      redirect_to (session.delete(:after_registration_path) || schedules_path),
+                  notice: 'Thanks for registering! You will receive a confirmation e-mail shortly.'
     else
       respond_with @registration
     end
@@ -52,5 +54,11 @@ class RegistrationsController < ApplicationController
 
   def check_existing_registration
     redirect_to schedules_path if registered?
+  end
+
+  def save_after_registration_path
+    if params[:after_registration_path].present?
+      session[:after_registration_path] = params[:after_registration_path]
+    end
   end
 end
