@@ -453,6 +453,84 @@ ALTER SEQUENCE newsletter_signups_id_seq OWNED BY newsletter_signups.id;
 
 
 --
+-- Name: pitch_contest_entries; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE pitch_contest_entries (
+    id bigint NOT NULL,
+    video_url character varying,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    year integer
+);
+
+
+--
+-- Name: pitch_contest_entries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE pitch_contest_entries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: pitch_contest_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE pitch_contest_entries_id_seq OWNED BY pitch_contest_entries.id;
+
+
+--
+-- Name: pitch_contest_votes; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE pitch_contest_votes (
+    id bigint NOT NULL,
+    user_id bigint,
+    pitch_contest_entry_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: pitch_contest_votes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE pitch_contest_votes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: pitch_contest_votes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE pitch_contest_votes_id_seq OWNED BY pitch_contest_votes.id;
+
+
+--
+-- Name: presenterships; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE presenterships (
+    id bigint NOT NULL,
+    submission_id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
 -- Name: registrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1080,6 +1158,20 @@ ALTER TABLE ONLY newsletter_signups ALTER COLUMN id SET DEFAULT nextval('newslet
 
 
 --
+-- Name: pitch_contest_entries id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pitch_contest_entries ALTER COLUMN id SET DEFAULT nextval('pitch_contest_entries_id_seq'::regclass);
+
+
+--
+-- Name: pitch_contest_votes id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pitch_contest_votes ALTER COLUMN id SET DEFAULT nextval('pitch_contest_votes_id_seq'::regclass);
+
+
+--
 -- Name: registrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1271,6 +1363,22 @@ ALTER TABLE ONLY homepage_ctas
 
 ALTER TABLE ONLY newsletter_signups
     ADD CONSTRAINT newsletter_signups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pitch_contest_entries pitch_contest_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pitch_contest_entries
+    ADD CONSTRAINT pitch_contest_entries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: pitch_contest_votes pitch_contest_votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pitch_contest_votes
+    ADD CONSTRAINT pitch_contest_votes_pkey PRIMARY KEY (id);
 
 
 --
@@ -1484,6 +1592,20 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
+-- Name: index_pitch_contest_votes_on_pitch_contest_entry_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_pitch_contest_votes_on_pitch_contest_entry_id ON pitch_contest_votes USING btree (pitch_contest_entry_id);
+
+
+--
+-- Name: index_pitch_contest_votes_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_pitch_contest_votes_on_user_id ON pitch_contest_votes USING btree (user_id);
+
+
+--
 -- Name: index_registrations_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1610,6 +1732,14 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: pitch_contest_votes fk_rails_051f1858c3; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pitch_contest_votes
+    ADD CONSTRAINT fk_rails_051f1858c3 FOREIGN KEY (pitch_contest_entry_id) REFERENCES pitch_contest_entries(id);
+
+
+--
 -- Name: sponsorships fk_rails_10fd4596a4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1623,6 +1753,14 @@ ALTER TABLE ONLY sponsorships
 
 ALTER TABLE ONLY volunteerships
     ADD CONSTRAINT fk_rails_26e12c935b FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: pitch_contest_votes fk_rails_4daa05456f; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY pitch_contest_votes
+    ADD CONSTRAINT fk_rails_4daa05456f FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
@@ -1763,6 +1901,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170828185347'),
 ('20170830195828'),
 ('20170906024523'),
-('20170908145727');
+('20170908145727'),
+('20170912152330'),
+('20170912153018'),
+('20170912155744');
 
 

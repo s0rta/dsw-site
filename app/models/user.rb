@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :votes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :registrations, dependent: :destroy
+  has_many :pitch_contest_votes, class_name: PitchContest::Vote, dependent: :destroy
 
   def current_registration
     registrations.for_current_year.first
