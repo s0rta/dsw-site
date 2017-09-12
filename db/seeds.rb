@@ -275,7 +275,7 @@ PitchContest::Entry.reset_column_information
     video_url: 'https://youtu.be/hoEsybqIWgI'
   },
   {
-    name: 'Getting Home',
+    name: 'AIHealth',
     year: 2017,
     video_url: 'https://youtu.be/u_qkX1Sty0U'
   },
@@ -300,7 +300,7 @@ PitchContest::Entry.reset_column_information
     video_url: 'https://youtu.be/Tpm_R8tgt9g'
   },
   {
-    name: 'NStall',
+    name: 'Boldr Architecture',
     year: 2017,
     video_url: 'https://youtu.be/-m0GY6MS9Es'
   },
