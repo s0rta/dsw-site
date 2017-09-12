@@ -13,7 +13,7 @@ feature 'Submitting and voting on pitch contest applications' do
 
   let!(:pitch) do
     PitchContest::Entry.create!(name: 'Globex Corporation',
-                                video_url: 'https://www.youtube.com/watch?v=oruC0LSuYgM')
+                                video_url: 'https://youtu.be/oruC0LSuYgM')
   end
 
   describe 'when voting is open' do
