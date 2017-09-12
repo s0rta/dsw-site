@@ -21,6 +21,8 @@ class HomepageCta < ApplicationRecord
             inclusion: { in: EventSchedule::CYCLES,
                          allow_blank: true }
 
+  belongs_to :track, optional: true
+
   def self.active
     where(is_active: true)
   end

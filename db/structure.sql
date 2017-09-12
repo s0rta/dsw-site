@@ -396,7 +396,8 @@ CREATE TABLE homepage_ctas (
     is_active boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    priority integer DEFAULT 0 NOT NULL
+    priority integer DEFAULT 0 NOT NULL,
+    track_id bigint
 );
 
 
@@ -1591,6 +1592,13 @@ CREATE INDEX index_comments_on_submission_id ON comments USING btree (submission
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
+
+
+--
+-- Name: index_homepage_ctas_on_track_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_homepage_ctas_on_track_id ON homepage_ctas USING btree (track_id);
 --
 -- Name: index_pitch_contest_votes_on_pitch_contest_entry_id; Type: INDEX; Schema: public; Owner: -
 --
@@ -1796,6 +1804,14 @@ ALTER TABLE ONLY volunteer_shifts
 
 
 --
+-- Name: homepage_ctas fk_rails_d6aa0aad97; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY homepage_ctas
+    ADD CONSTRAINT fk_rails_d6aa0aad97 FOREIGN KEY (track_id) REFERENCES tracks(id);
+
+
+--
 -- Name: sent_notifications fk_rails_da20014dea; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1902,6 +1918,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170830195828'),
 ('20170906024523'),
 ('20170908145727'),
+('20170911231704'),
 ('20170912152330'),
 ('20170912153018'),
 ('20170912155744');
