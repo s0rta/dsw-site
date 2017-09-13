@@ -30,11 +30,10 @@ class HomepageCta < ApplicationRecord
   end
 
   def self.relevant_to_cycles(cycles)
-    # TODO: Change this to a `.or` when we move to Rails 5
     if cycles.any?
-      where('relevant_to_cycle IS NULL OR relevant_to_cycle IN (?)', cycles)
+      where(relevant_to_cycle: nil).or(where(relevant_to_cycle: cycles))
     else
-      where('relevant_to_cycle IS NULL')
+      where(relevant_to_cycle: nil)
     end
   end
 end
