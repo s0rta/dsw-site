@@ -43,7 +43,6 @@ class ApplicationController < ActionController::Base
   def registered?
     current_registration.present?
   end
-  
 
   def ensure_admin!
     redirect_to main_app.new_user_session_path unless current_user && current_user.is_admin?
