@@ -14,7 +14,7 @@ class PitchContest::Entry < ApplicationRecord
 
   has_many :votes, class_name: PitchContest::Vote, dependent: :destroy, foreign_key: :pitch_contest_entry_id
 
-  def embed_video_url
-    "https://www.youtube.com/embed/#{YOUTUBE_REGEX.match(video_url)[1]}"
+  def embed_video_url(extra_params = { modestbranding: 1, showinfo: 0 })
+    "https://www.youtube.com/embed/#{YOUTUBE_REGEX.match(video_url)[1]}?#{extra_params.to_query}"
   end
 end
