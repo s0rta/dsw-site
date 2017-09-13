@@ -33,6 +33,7 @@ ActiveAdmin.register Submission do
       resource_class.includes(:track,
                               :submitter,
                               :votes,
+                              :user_registrations,
                               :venue,
                               :cluster)
     end
@@ -68,6 +69,7 @@ ActiveAdmin.register Submission do
     end
     column :submitter, sortable: 'users.name'
     column(:votes, sortable: 'COUNT(votes.id)') { |s| s.votes.size }
+    column(:attendees, sortable: 'COUNT(user_registrations.id)') { |s| s.user_registrations.size }
     column(:pending_updates, sortable: false) { |s| s.proposed_updates.present? ? 'Yes' : 'No' }
     actions
   end
