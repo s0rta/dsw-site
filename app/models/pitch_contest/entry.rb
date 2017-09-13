@@ -2,7 +2,7 @@ class PitchContest::Entry < ApplicationRecord
 
   include YearScoped
 
-  YOUTUBE_REGEX = %r(youtu.be/(\S+))
+  YOUTUBE_REGEX = %r(youtu.be/(\S+)\z)
 
   self.table_name = 'pitch_contest_entries'
 
