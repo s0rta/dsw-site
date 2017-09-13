@@ -274,25 +274,25 @@ module ApplicationHelper
 
   def ambassador_host_company_sponsorships
     @_ambassador_host_company_sponsorships ||= Sponsorship.
-      for_current_year.
-      where(level: Sponsorship::AMBASSADOR_HOST_LEVEL).
-      alphabetical.
-      includes(:track, submission: :track)
+                                               for_current_year.
+                                               where(level: Sponsorship::AMBASSADOR_HOST_LEVEL).
+                                               alphabetical.
+                                               includes(:track, submission: :track)
   end
 
   def ambassador_sponsorships
     @_ambassador_sponsorships ||= Sponsorship.
-      for_current_year.
-      where(level: Sponsorship::AMBASSADOR_SPONSOR_LEVEL).
-      alphabetical.
-      includes(:track, submission: :track)
+                                  for_current_year.
+                                  where(level: Sponsorship::AMBASSADOR_SPONSOR_LEVEL).
+                                  alphabetical.
+                                  includes(:track, submission: :track)
   end
 
   def ambassador_partners
     @_ambassador_partners ||= Sponsorship.
-      for_current_year.
-      where(level: Sponsorship::AMBASSADOR_PARTNER_LEVEL).
-      alphabetical.
-      includes(:track, submission: :track)
+                              for_current_year.
+                              where(level: Sponsorship::AMBASSADOR_PARTNER_LEVEL).
+                              alphabetical.
+                              includes(:track, submission: :track)
   end
 end

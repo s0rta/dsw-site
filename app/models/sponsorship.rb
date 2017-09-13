@@ -24,8 +24,8 @@ class Sponsorship < ApplicationRecord
              AMBASSADOR_PARTNER_LEVEL ].freeze
 
   AMBASSADORS_PAGE_LEVELS = [ AMBASSADOR_HOST_LEVEL,
-                             AMBASSADOR_SPONSOR_LEVEL,
-                             AMBASSADOR_PARTNER_LEVEL ].freeze
+                              AMBASSADOR_SPONSOR_LEVEL,
+                              AMBASSADOR_PARTNER_LEVEL ].freeze
 
   SPONSORS_PAGE_LEVELS = (LEVELS - AMBASSADORS_PAGE_LEVELS).freeze
 
