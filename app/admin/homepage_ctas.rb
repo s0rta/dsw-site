@@ -10,7 +10,8 @@ ActiveAdmin.register HomepageCta do
                 :priority,
                 :link_text,
                 :link_href,
-                :is_active
+                :is_active,
+                :relevant_to_cycle
 
   index do
     selectable_column
