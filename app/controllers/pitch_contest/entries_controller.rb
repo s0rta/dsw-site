@@ -3,7 +3,7 @@ class PitchContest::EntriesController < ApplicationController
   before_action :check_voting_open
 
   def index
-    @entries = PitchContest::Entry.for_current_year.order('name DESC').includes(:votes)
+    @entries = PitchContest::Entry.for_current_year.order(:name).includes(:votes)
   end
 
   private
