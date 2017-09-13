@@ -18,4 +18,24 @@ section.common.sm-centered
     h1 For Companies
     h6 We are looking for 8-10 amazing companies to serve as "Hosts" during Denver Startup Week. The Ambassadors will spend 2 hours of dedicated time onsite with each host company, and will also engage in special social events and programming related to Denver Startup Week.
     = link_to 'Apply to become a Host company', 'https://docs.google.com/forms/d/1EHoRPTWsCIDOWN7Xxa34lMAe66scg_QrO0PgC2Amfxc/viewform', class: 'btn primary'
+- if ambassador_host_company_sponsorships.any?
+  section.common.sponsor
+    .section-content
+      h1 Host Companies
+      h6 Some of Denver’s most exciting and innovative technology companies have been chosen to participate as Host Companies in the 2017 DSW Ambassador Program.  The Ambassadors will visit each Host Company’s office and meet with top executives. Being a Host Company serves as an opportunity to celebrate Denver’s thriving entrepreneurial ecosystem, engage with the some of the most talented technology professionals, and build our city’s culture of innovation. 
+      - ambassador_host_company_sponsorships.each do |sponsorship|
+        = render partial: 'layouts/shared/sponsorship', object: sponsorship
 
+- if ambassador_sponsorships.any?
+  section.common.sponsor
+    .section-content
+      h1 Sponsors
+      - ambassador_sponsorships.each do |sponsorship|
+        = render partial: 'layouts/shared/sponsorship', object: sponsorship
+
+- if ambassador_partners.any?
+  section.common.sponsor
+    .section-content
+      h1 Partners
+      - ambassador_partners.each do |sponsorship|
+        = render partial: 'layouts/shared/sponsorship', object: sponsorship

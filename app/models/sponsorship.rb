@@ -23,10 +23,11 @@ class Sponsorship < ApplicationRecord
              AMBASSADOR_SPONSOR_LEVEL,
              AMBASSADOR_PARTNER_LEVEL ].freeze
 
-  SPONSORSHIP_PAGE_LEVELS = LEVELS - [
-             AMBASSADOR_HOST_LEVEL,
-             AMBASSADOR_SPONSOR_LEVEL,
-             AMBASSADOR_PARTNER_LEVEL ].freeze
+  AMBASSADORS_PAGE_LEVELS = [ AMBASSADOR_HOST_LEVEL,
+                             AMBASSADOR_SPONSOR_LEVEL,
+                             AMBASSADOR_PARTNER_LEVEL ].freeze
+
+  SPONSORS_PAGE_LEVELS = (LEVELS - AMBASSADORS_PAGE_LEVELS).freeze
 
   belongs_to :track, optional: true
   belongs_to :submission, optional: true
@@ -44,8 +45,8 @@ class Sponsorship < ApplicationRecord
             presence: true,
             inclusion: { in: LEVELS }
 
-  def self.for_sponsorship_page
-    where(level: SPONSORSHIP_PAGE_LEVELS)
+  def self.for_sponsors_page
+    where(level: SPONSORS_PAGE_LEVELS)
   end
 
   def self.title

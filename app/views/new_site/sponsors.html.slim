@@ -13,22 +13,10 @@ section.common.gold
 
 - if sponsorships_by_level.any?
   section.common.sponsor
-    - Sponsorship::LEVELS.each do |level|
+    - Sponsorship::SPONSORS_PAGE_LEVELS.each do |level|
       - sponsorships_by_level[level].tap do |sponsorships|
         - if sponsorships.present? && sponsorships.any?
             .section-content
               h1 = level.titleize
               - sponsorships.each do |sponsorship|
-                .sponsor-container
-                  a.sponsor-logo href="#{sponsorship.link_href}" target='_blank' title="#{sponsorship.name}"
-                    = image_tag sponsorship.logo.url, alt: sponsorship.name
-                  .sponsor-copy
-                    - if sponsorship.track.present?
-                      div(class="sponsor-track #{sponsorship.track.color}")
-                        = render partial: "icons/#{sponsorship.track.icon}"
-                        span = sponsorship.track.name
-                    - if sponsorship.submission.present?
-                      div(class="sponsor-track #{sponsorship.submission.track.color}")
-                        = render partial: "icons/#{sponsorship.submission.track.icon}"
-                        span = link_to sponsorship.submission.title, schedule_path(sponsorship.submission)
-                    span = sponsorship.description
+                = render partial: 'layouts/shared/sponsorship', object: sponsorship
