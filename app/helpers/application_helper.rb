@@ -266,6 +266,7 @@ module ApplicationHelper
   def sponsorships_by_level
     @_sponsorships_by_level ||= Sponsorship.
                                 for_current_year.
+                                for_sponsorship_page.
                                 alphabetical.
                                 includes(:track, submission: :track).
                                 group_by(&:level)
