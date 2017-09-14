@@ -519,19 +519,6 @@ ALTER SEQUENCE pitch_contest_votes_id_seq OWNED BY pitch_contest_votes.id;
 
 
 --
--- Name: presenterships; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE presenterships (
-    id bigint NOT NULL,
-    submission_id bigint NOT NULL,
-    user_id bigint NOT NULL,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
 -- Name: registrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1592,13 +1579,13 @@ CREATE INDEX index_comments_on_submission_id ON comments USING btree (submission
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
-
-
 --
 -- Name: index_homepage_ctas_on_track_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_homepage_ctas_on_track_id ON homepage_ctas USING btree (track_id);
+
+
 --
 -- Name: index_pitch_contest_votes_on_pitch_contest_entry_id; Type: INDEX; Schema: public; Owner: -
 --
