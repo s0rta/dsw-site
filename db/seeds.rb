@@ -300,7 +300,7 @@ PitchContest::Entry.reset_column_information
     video_url: 'https://youtu.be/Tpm_R8tgt9g'
   },
   {
-    name: 'Boldr Architecture',
+    name: 'N[STALL]',
     year: 2017,
     video_url: 'https://youtu.be/-m0GY6MS9Es'
   },
