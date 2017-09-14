@@ -212,7 +212,8 @@ HomepageCta.reset_column_information
     link_text: 'Learn More',
     link_href: '/basecamp',
     relevant_to_cycle: 'week',
-    priority: 10
+    priority: 10,
+    track: Track.find_by!(name: 'Basecamp')
   },
   {
     title: 'Get Involved',
