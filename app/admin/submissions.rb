@@ -35,7 +35,8 @@ ActiveAdmin.register Submission do
                               :votes,
                               :user_registrations,
                               :venue,
-                              :cluster)
+                              :cluster,
+                              sponsorship: :track)
     end
 
     def show

@@ -32,7 +32,7 @@ class SchedulesController < ApplicationController
                    for_schedule_filter(params[:filter], current_user).
                    fulltext_search(params[:terms]).
                    order(:start_hour).
-                   includes(:venue, :submitter, :track)
+                   includes(:venue, :submitter, :track, sponsorship: :track)
     respond_with @sessions
   end
 
