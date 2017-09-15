@@ -15,5 +15,5 @@
             = link_to pitch_contest_entry_votes_path(entry), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{entry.name}'" do
               = render partial: 'icons/thumbsup'
           - else
-            = link_to new_registration_path(after_registration_path: pitch_contest_entries_path), class: 'register-vote', title: "Vote for '#{entry.name}'" do
+            = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{entry.name}'" do
               = render partial: 'icons/thumbsup'
