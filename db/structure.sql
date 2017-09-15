@@ -1606,6 +1606,13 @@ CREATE INDEX index_pitch_contest_votes_on_user_id ON pitch_contest_votes USING b
 
 
 --
+-- Name: index_registrations_on_calendar_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_registrations_on_calendar_token ON registrations USING btree (calendar_token);
+
+
+--
 -- Name: index_registrations_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1904,6 +1911,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170908145727'),
 ('20170912152330'),
 ('20170912153018'),
-('20170912155744');
+('20170912155744'),
+('20170915145833');
 
 
