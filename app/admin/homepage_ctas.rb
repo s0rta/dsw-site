@@ -11,7 +11,8 @@ ActiveAdmin.register HomepageCta do
                 :link_text,
                 :link_href,
                 :is_active,
-                :relevant_to_cycle
+                :relevant_to_cycle,
+                :track_id
 
   index do
     selectable_column
@@ -19,11 +20,15 @@ ActiveAdmin.register HomepageCta do
     column :title
     column :subtitle
     column :is_active
+    column :track
     column :relevant_to_cycle
     actions
   end
 
   filter :title
+  filter :track
+  filter :is_active
+  filter :relevant_to_cycle
 
   form do |f|
     f.inputs do
@@ -38,6 +43,7 @@ ActiveAdmin.register HomepageCta do
               include_blank: 'All',
               as: :select,
               collection: EventSchedule::CYCLES.map { |c| [ c.to_s.titleize, c ] }
+      f.input :track_id, as: :select, collection: Track.all.order(:name)
       f.input :is_active
     end
 

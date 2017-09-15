@@ -10,11 +10,16 @@ footer.site-footer
           = image_tag 'redesign/twitter.png'
         a href='https://plus.google.com/+Denverstartupweek/videos' target='_blank'
           = image_tag 'redesign/google.png'
+        div.guiceworks
+        /   a href='http://www.guiceworks.com/' target='_blank'
+        /     = image_tag 'redesign/guice.png'
+        /   h5 Site UX/UI Design by <a href='http://www.guiceworks.com/' target='_blank'>Guiceworks</a>.
 
     .footer-block
       .company-container
-        / a href='http://www.guiceworks.com/' target='_blank'
-        /   = image_tag 'redesign/guice.png'
-        / h5 Site UX/UI Design by <a href='http://www.guiceworks.com/' target='_blank'>Guiceworks</a>.
 
-
+      - if signed_in? && current_user.is_admin?
+        div.footer-link= link_to 'Admin', admin_root_path
+        div.footer-link= link_to 'Previous Events', page_path(page: 'program/previous')
+        div.footer-link= link_to 'Blog', 'https://medium.com/denver-startup-week'
+        div.footer-link= link_to 'Volunteer', page_path(page: 'contact')

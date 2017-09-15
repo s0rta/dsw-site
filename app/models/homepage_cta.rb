@@ -21,19 +21,24 @@ class HomepageCta < ApplicationRecord
             inclusion: { in: EventSchedule::CYCLES,
                          allow_blank: true }
 
+  belongs_to :track, optional: true
+
   def self.active
     where(is_active: true)
   end
 
   def self.in_priority_order
-    order('priority DESC')
+    order('CASE WHEN track_id <> null THEN 0 ELSE 1 END DESC, priority DESC')
   end
 
   def self.relevant_to_cycles(cycles)
     if cycles.any?
-      where(relevant_to_cycle: nil).or(where(relevant_to_cycle: cycles))
+      where(relevant_to_cycle: nil).
+        or(where(relevant_to_cycle: '')).
+        or(where(relevant_to_cycle: cycles))
     else
-      where(relevant_to_cycle: nil)
+      where(relevant_to_cycle: nil).
+        or(where(relevant_to_cycle: ''))
     end
   end
 end

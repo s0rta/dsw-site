@@ -1,44 +1,37 @@
 section.hero
   - unless EventSchedule.in_week?
-    h1.countdown #{time_remaining_to_deadline(EventSchedule::WEEK_START_DATE)}
-  h2 September 25 - 29, 2017
-  .section-content
-    h3 Denver Startup Week. Celebrating the entrepreneurial spirit.
+    / h1.countdown #{time_remaining_to_deadline(EventSchedule::WEEK_START_DATE)}
+  h2 September 25&#8211;29, 2017
+  .section-content(style="text-align: center; max-width: 800px;")
+    h3 Denver Startup Week is about innovation for founders, developers, product managers, designers, marketers, sales teams, and makers.
 
-section.hero-cta-4up
-  section.hero-cta
-    - @ctas.each do |cta|
+section.site-max-and-center
+  div.cards.cards-2up
+    - @two_up_ctas.each do |cta|
       - cycle('teal', 'purple', 'blue', 'green', name: 'colors')
-      article(class="#{current_cycle('colors')}")
+      article(class="card card-#{current_cycle('colors')}")
         - cache([ cta, current_cycle('colors') ]) do
-          .section-content
-            h2 = process_with_liquid cta.title
-            h3 = process_with_liquid cta.subtitle
-            h6 = process_with_liquid cta.body
-            = link_to cta.link_text, cta.link_href, class: "btn #{current_cycle('colors')}"
+          div.card-elements
+            h2.card-heading = process_with_liquid cta.title
+            h3.card-subheading = process_with_liquid cta.subtitle
+            p.card-copy = process_with_liquid cta.body
+            = link_to cta.link_href, class: "card-btn" do
+              = content_tag :span, cta.link_text, class: "card-btn-text"
+  div.cards.cards-3up
+    - @three_up_ctas.each do |cta|
+      article(class="card card-#{cta.track.present? ? cta.track.color : 'grey'}")
+        div.card-elements
+          - if cta.track.present?
+            div.card-icon
+              = render partial: "icons/#{cta.track.icon}"
+              span = cta.track.name
+          h2.card-heading = process_with_liquid cta.title
+          h3.card-subheading = process_with_liquid cta.subtitle
+          p.card-copy = process_with_liquid cta.body
+          = link_to cta.link_href, class: "card-btn" do
+            = content_tag :span, cta.link_text, class: "card-btn-text"
 
-section.common.the-what
-  .section-content
-    h1 What
-  .section-image
-    / = image_tag 'redesign/crawford-hotel.jpg'
-  .section-content
-    h6
-      | The largest event of its kind in North America, Denver Startup Week is the summit of entrepreneurial energy, innovation, and connection. 
-      | Powered by the local community, our sessions represent the very best in tech, design, DIY-making, marketing and leadership. 
-      | Whether a founder, developer, designer, marketer, maker, or anything in between - Denver Startup Week will inspire. 
-
-section.common.the-why
-  .section-content
-    h1 Why
-  .section-image
-    / = image_tag 'redesign/gather.jpg'
-  .section-content
-    h6 Innovation is everywhere. Bringing it to life takes the skills and drive of an entire team; founders, developers, product managers, designers, marketers, sales teams, and makers. The mission of Denver Startup Week is to foster an environment where every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge.
-
-    .buttons
-      = link_to 'View Program', page_path(page: 'program'), class: 'btn primary'
-      = link_to 'Meet the Team', page_path(page: 'program/team'), class: 'btn primary'
+  div.cards.cards-3up(style="margin-top: 10em")
 
 = render partial: 'layouts/shared/page_footer'
 section.common.title-sponsors

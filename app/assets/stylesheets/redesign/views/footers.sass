@@ -1,9 +1,11 @@
 @import ../config
 
 footer.page-footer
-  max-width: 590px
-  margin: 40px auto 0 auto
+  max-width: 810px
+  margin: 60px auto
   section.common.stay-in-touch
+    max-width: 600px
+    padding: 0
   h1
     color: $copy-color-bold
 
@@ -35,18 +37,26 @@ footer.site-footer
     text-decoration: underline
     color: #4d4d4d
 
-.company-container
-  img
-    vertical-align: middle
-    margin-right: 10px
+.guiceworks
+  margin-top: 30px
   h5
+    font-size: 14px
+    margin-top: 1em
+  img
     display: inline-block
+    vertical-align: middle
 
+.footer-link
+  margin-top: 1em
+  font-size: 14px
+
+.footer-link a
+  text-decoration: none
+  text-transform: uppercase
 
 @media(min-width: 640px)
-  footer.page-footer
-    .section-content
-      padding: 0
+  footer.page-footer .section-content
+    padding: 0
   .footer-blocks
     flex-direction: row
   .footer-block
@@ -54,5 +64,8 @@ footer.site-footer
       margin-bottom: 0
 
 @media(min-width: 800px)
+  footer.page-footer
+    margin-top: 150px
+    margin-bottom: 150px
   .company-container
     float: right

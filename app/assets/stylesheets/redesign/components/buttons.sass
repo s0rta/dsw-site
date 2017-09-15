@@ -16,14 +16,6 @@ input[type='submit']
   &.hidden
     display: none
 
-a.btn.left
-  width: 45%
-  float: left
-
-a.btn.right
-  width: 45%
-  float: right
-
 a.btn.primary,
 input[type='submit']
   background: $teal-light
@@ -48,6 +40,10 @@ a.btn.purple
 a.btn.gold
   background: $gold-dark
   color: #fff
+a.btn.gray
+  background: $copy-color-bold
+  color: #fff
+
 
 .confirmed-btn-container
   text-align: center
@@ -56,3 +52,22 @@ a.btn.gold
     margin-top: 20px
     color: $copy-color
 
+.btn-cta
+  display: inline-block
+  vertical-align: middle
+  font-family: 'Montserrat-Regular'
+  font-size: 14px
+  text-transform: uppercase
+  color: $teal-light
+  &::after
+    content: ''
+    display: inline-block
+    vertical-align: middle
+    width: 20px
+    height: 18px
+    margin-left: 40px
+    background-color: transparent
+    background-image: image-url('redesign/nav-arrow-right.png')
+    background-position: 0 0
+    background-repeat: no-repeat
+    background-size: cover

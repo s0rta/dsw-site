@@ -9,26 +9,27 @@ nav
         h6 = message
 
 - unless registered?
-  section.common
+  section.common.sm-centered
     .section-content
       h1 Register and build your schedule
       h6 Get registered to attend sessions during Denver Startup Week and build your own custom schedule of events. Everything during the week is totally free - we just ask that you register to help us plan appropriately!
       br
       = link_to 'Register Now', new_registration_path, class: 'btn primary'
 
-form.filters
-  input(name="terms" value="#{params[:terms]}" placeholder="Search Schedule")
-  select(name="filter" value="#{params[:filter]}" onchange="this.form.submit();")
-    option(value="all" selected=("selected" if params[:filter] == 'all')) View All Sessions
-    option(value="mine" selected=("selected" if params[:filter] == 'mine')) View My Schedule
-    optgroup(label="View Sessions By Track")
-      - Track.in_display_order.each do |t|
-        option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) #{t.name}#{t.is_submittable? ? ' Track' : '' }
-    optgroup(label="View Sessions By Cluster")
-      - Cluster.all.each do |c|
-        option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) #{c.name} Cluster
+section.common.sm-centered
+  form.filters
+    input(name="terms" value="#{params[:terms]}" placeholder="Search Schedule")
+    select(name="filter" value="#{params[:filter]}" onchange="this.form.submit();")
+      option(value="all" selected=("selected" if params[:filter] == 'all')) View All Sessions
+      option(value="mine" selected=("selected" if params[:filter] == 'mine')) View My Schedule
+      optgroup(label="View Sessions By Track")
+        - Track.in_display_order.each do |t|
+          option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) #{t.name}#{t.is_submittable? ? ' Track' : '' }
+      optgroup(label="View Sessions By Cluster")
+        - Cluster.all.each do |c|
+          option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) #{c.name} Cluster
 
-.section-content.schedule-container
+.section-content.schedule-container.sm-centered
   nav
     - if @day_index > 2
       = link_to image_tag('redesign/nav-arrow-left.png'), schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters)
@@ -60,6 +61,6 @@ form.filters
     .section-content
       h1 Export my schedule
       h6 Use Google Calendar, iCal, or Outlook? Use the buttons below to subscribe to your schedule and make it easy to look up all of the details on-the-go.
-      = link_to 'Add to Outlook/iCal', schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal'), class: 'btn primary left'
-      = link_to 'Add to Google Calendar', "http://www.google.com/calendar/render?cid=#{schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')}", class: 'btn primary right'
+      = link_to 'Add to Outlook/iCal', schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal'), class: 'btn primary copy-btn'
+      = link_to 'Add to Google Calendar', "http://www.google.com/calendar/render?cid=#{schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')}", class: 'btn primary copy-btn'
 
