@@ -118,8 +118,9 @@ class Submission < ApplicationRecord
       joins(:user_registrations).
         where(registrations: { user_id: user.id })
     elsif filter.present?
-      joins(:track).
-        joins('LEFT OUTER JOIN clusters ON submissions.cluster_id = clusters.id').
+      # I don't think this will work if we want to filter on both track & cluster
+      # Fine for now, but something to be aware of in the future
+      joins(:track, :cluster).
         where('LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)', name: filter)
     else
       all
@@ -130,7 +131,6 @@ class Submission < ApplicationRecord
     includes(:venue,
              :submitter,
              :track,
-             :cluster,
              sponsorship: :track)
   end
 
