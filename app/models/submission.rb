@@ -126,6 +126,14 @@ class Submission < ApplicationRecord
     end
   end
 
+  def self.fully_loaded
+    includes(:venue,
+             :submitter,
+             :track,
+             :cluster,
+             sponsorship: :track)
+  end
+
   def public?
     PUBLIC_STATES.include?(state)
   end
