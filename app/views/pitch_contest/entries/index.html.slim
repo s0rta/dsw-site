@@ -1,19 +1,20 @@
 = render partial: 'voting_header'
 
-.card-container(data-bindable='ajax-voter')
-  - @entries.each do |entry|
-    .card-frame
-      div class=("card-content")
-        = link_to entry.video_url, class: 'vote-detail' do
-          .title
-            = truncate(entry.name, length: 100, separator: ' ')
-        iframe id="ytplayer-#{entry.id}" type="text/html" width="100%" src="#{entry.embed_video_url}" frameborder="0"
-        footer
-          div.vote-count
-            span = pluralize(entry.votes.size, 'vote')
-          - if current_user
-            = link_to pitch_contest_entry_votes_path(entry), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{entry.name}'" do
-              = render partial: 'icons/thumbsup'
-          - else
-            = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{entry.name}'" do
-              = render partial: 'icons/thumbsup'
+.icon-outer-container
+  .icon-flex-container(data-bindable='ajax-voter')
+    - @entries.each do |entry|
+      .card-frame
+        div class=("card-content")
+          = link_to entry.video_url, class: 'vote-detail' do
+            .title
+              = truncate(entry.name, length: 100, separator: ' ')
+          iframe id="ytplayer-#{entry.id}" type="text/html" width="100%" src="#{entry.embed_video_url}" frameborder="0"
+          footer
+            div.vote-count
+              span = pluralize(entry.votes.size, 'vote')
+            - if current_user
+              = link_to pitch_contest_entry_votes_path(entry), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{entry.name}'" do
+                = render partial: 'icons/thumbsup'
+            - else
+              = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{entry.name}'" do
+                = render partial: 'icons/thumbsup'
