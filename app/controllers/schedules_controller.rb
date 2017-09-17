@@ -4,8 +4,8 @@ class SchedulesController < ApplicationController
   respond_to :json, only: :index
   respond_to :ics, only: :index
 
-  before_action :ensure_registered!, only: %i(my_schedule create destroy)
-  before_action :authenticate_user!, only: %i(my_schedule create destroy)
+  before_action :ensure_registered!, only: %i(create destroy)
+  before_action :authenticate_user!, only: %i(create destroy)
 
   def index
     @sessions = Submission.
@@ -44,16 +44,6 @@ class SchedulesController < ApplicationController
                order(:start_day).
                includes(:venue, :submitter, :track, comments: :user).
                first!
-  end
-
-  def my_schedule
-    @my_schedule = true
-    @sessions = current_registration.
-                submissions.
-                for_current_year.
-                for_schedule.
-                includes(:venue, :submitter, :track)
-    render action: :index
   end
 
   def feed
