@@ -5,8 +5,8 @@ section.common.green
     h1 What are you interested in?
     h6 It takes a lot of effort to put on an event of this size, and we're always looking for help! Please provide a few details in the form below and we'll be in touch shortly.
 
-section.common.sm-centered
-  .section-content
+section.common
+  .section-content.sm-centered
     = form_for GeneralInquiry.new, html: { class: 'contact-us', data: { bindable: 'general-inquiry' } }, honeypot: true do |f|
       = f.label :contact_name, 'Name'
       = f.text_field :contact_name, required: 'required'
