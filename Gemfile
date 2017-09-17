@@ -8,7 +8,6 @@ gem 'pg'
 gem 'puma'
 
 gem 'jquery-rails'
-gem 'haml-rails'
 gem 'slim-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
