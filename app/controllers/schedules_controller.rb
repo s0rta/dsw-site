@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
                 for_current_year.
                 for_schedule.
                 order(:start_day).
-                fully_loaded
+                includes(:venue, :submitter, :track)
     respond_to do |format|
       format.json do
         respond_with @sessions
@@ -32,7 +32,7 @@ class SchedulesController < ApplicationController
                    for_schedule_filter(params[:filter], current_user).
                    fulltext_search(params[:terms]).
                    order(:start_hour).
-                   fully_loaded
+                   includes(:venue, :submitter, :track, sponsorship: :track)
     respond_with @sessions
   end
 
@@ -42,8 +42,18 @@ class SchedulesController < ApplicationController
                for_schedule.
                where(id: params[:id].to_i).
                order(:start_day).
-               fully_loaded.
+               includes(:venue, :submitter, :track, comments: :user).
                first!
+  end
+
+  def my_schedule
+    @my_schedule = true
+    @sessions = current_registration.
+                submissions.
+                for_current_year.
+                for_schedule.
+                includes(:venue, :submitter, :track)
+    render action: :index
   end
 
   def feed
@@ -51,7 +61,7 @@ class SchedulesController < ApplicationController
     @sessions = registration.
                 submissions.for_current_year.
                 for_schedule.
-                fully_loaded
+                includes(:venue, :submitter, :track)
     respond_to do |format|
       format.ics do
         calendar = Icalendar::Calendar.new
@@ -92,6 +102,7 @@ class SchedulesController < ApplicationController
   def destroy
     @session = Submission.for_schedule.
       where(id: params[:id].to_i).
+      includes(:submitter, :track, comments: :user).
       first!
     current_registration.session_registrations.where(submission_id: @session.id).destroy_all
     render action: :show
