@@ -18,7 +18,7 @@ feature 'Creating a submission' do
 
     scenario 'User submits a new idea' do
       visit '/panel-picker/mine' # Can't click on the homepage for some reason
-      click_on 'Register for an account'
+      click_on 'Create an account'
       fill_in 'Name', with: 'New Guy'
       fill_in 'E-mail Address', with: 'test@example.com'
       fill_in 'Password', with: 'password', match: :prefer_exact
@@ -50,7 +50,7 @@ feature 'Creating a submission' do
     scenario 'User tries to submit a new idea but fails to create an account' do
       create(:user, name: 'Here First', email: 'test@example.com', password: 'password')
       visit '/panel-picker/mine'
-      click_on 'Register for an account'
+      click_on 'Create an account'
       fill_in 'Name', with: 'New Guy'
       fill_in 'E-mail Address', with: 'test@example.com'
       fill_in 'Password', with: 'password', match: :prefer_exact
@@ -61,7 +61,7 @@ feature 'Creating a submission' do
 
     scenario 'User edits an existing submission' do
       visit '/panel-picker/mine' # Can't click on the homepage for some reason
-      click_on 'Register for an account'
+      click_on 'Create an account'
       fill_in 'Name', with: 'New Guy'
       fill_in 'E-mail Address', with: 'test@example.com'
       fill_in 'Password', with: 'password', match: :prefer_exact
@@ -104,7 +104,7 @@ feature 'Creating a submission' do
     scenario 'User tries to submit a new idea' do
       visit '/panel-picker/mine'
 
-      click_on 'Register for an account'
+      click_on 'Create an account'
       fill_in 'Name', with: 'New Guy'
       fill_in 'E-mail Address', with: 'test@example.com'
       fill_in 'Password', with: 'password', match: :prefer_exact
