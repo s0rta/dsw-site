@@ -1,7 +1,7 @@
 = render partial: 'layouts/shared/program_nav', locals: { item: :ambassadors }
 
-section.common
-  .section-content.sm-centered
+section.common.sm-centered
+  .section-content
     h1 Ambassadors Program
     h6 Denver Startup Week is bringing 50 non-local startup and tech industry leaders to Denver to attend the largest free entrepreneurial event in North America, meet local leaders, and experience the Denver tech scene first hand. The Ambassadors program provides an avenue for local tech and startup companies to build relationships with other startup communities, share best practices, and identify opportunities for collaboration.
 
@@ -22,7 +22,7 @@ section.common
       = link_to 'Apply to become a Host company', 'https://docs.google.com/forms/d/1EHoRPTWsCIDOWN7Xxa34lMAe66scg_QrO0PgC2Amfxc/viewform', class: 'btn primary'
 
 - if ambassador_host_company_sponsorships.any?
-  section.common.sponsor
+  section.common.sponsor.sm-centered
     .section-content
       h1 Host Companies
       h6 Some of Denver’s most exciting and innovative technology companies have been chosen to participate as Host Companies in the 2017 DSW Ambassador Program.  The Ambassadors will visit each Host Company’s office and meet with top executives. Being a Host Company serves as an opportunity to celebrate Denver’s thriving entrepreneurial ecosystem, engage with the some of the most talented technology professionals, and build our city’s culture of innovation. 
@@ -30,14 +30,14 @@ section.common
         = render partial: 'layouts/shared/sponsorship', object: sponsorship
 
 - if ambassador_sponsorships.any?
-  section.common.sponsor
+  section.common.sponsor.sm-centered
     .section-content
       h1 Sponsors
       - ambassador_sponsorships.each do |sponsorship|
         = render partial: 'layouts/shared/sponsorship', object: sponsorship
 
 - if ambassador_partners.any?
-  section.common.sponsor
+  section.common.sponsor.sm-centered
     .section-content
       h1 Partners
       - ambassador_partners.each do |sponsorship|
