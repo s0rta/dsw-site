@@ -4,15 +4,15 @@ class SchedulesController < ApplicationController
   respond_to :json, only: :index
   respond_to :ics, only: :index
 
-  before_action :ensure_registered!, only: %i(my_schedule create destroy)
-  before_action :authenticate_user!, only: %i(my_schedule create destroy)
+  before_action :ensure_registered!, only: %i(create destroy)
+  before_action :authenticate_user!, only: %i(create destroy)
 
   def index
     @sessions = Submission.
                 for_current_year.
                 for_schedule.
                 order(:start_day).
-                fully_loaded
+                includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
     respond_to do |format|
       format.json do
         respond_with @sessions
@@ -32,7 +32,7 @@ class SchedulesController < ApplicationController
                    for_schedule_filter(params[:filter], current_user).
                    fulltext_search(params[:terms]).
                    order(:start_hour).
-                   fully_loaded
+                   includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
     respond_with @sessions
   end
 
@@ -42,7 +42,7 @@ class SchedulesController < ApplicationController
                for_schedule.
                where(id: params[:id].to_i).
                order(:start_day).
-               fully_loaded.
+               includes(:venue, :submitter, :track, :cluster, sponsorship: :track).
                first!
   end
 
@@ -51,7 +51,7 @@ class SchedulesController < ApplicationController
     @sessions = registration.
                 submissions.for_current_year.
                 for_schedule.
-                fully_loaded
+                includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
     respond_to do |format|
       format.ics do
         calendar = Icalendar::Calendar.new
@@ -81,20 +81,20 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @session = Submission.for_schedule.
-      where(id: params[:id].to_i).
-      includes(:submitter, :track, comments: :user).
-      first!
+    @session = Submission.
+               for_schedule.
+               where(id: params[:id].to_i).
+               first!
     current_registration.submissions << @session unless current_registration.submissions.include?(@session)
-    render action: :show
+    redirect_to schedule_path(@session)
   end
 
   def destroy
-    @session = Submission.for_schedule.
-      where(id: params[:id].to_i).
-      first!
+    @session = Submission.
+               for_schedule.
+               where(id: params[:id].to_i).
+               first!
     current_registration.session_registrations.where(submission_id: @session.id).destroy_all
-    render action: :show
+    redirect_to schedule_path(@session)
   end
-
 end

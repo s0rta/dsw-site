@@ -3,8 +3,8 @@ nav
     h1 Our #{Date.current.year} Sponsors
 
 - if EventSchedule.sponsorship_open?
-  section.common.gold
-    .section-content.sm-centered
+  section.common.gold.sm-centered
+    .section-content
       h6 Denver Startup Week is made possible through the generous help of our sponsors. Take a minute to get to know these amazing companies.
       br
       h6 Interested in sponsorship? Download the prospectus now and support the community.
@@ -13,7 +13,7 @@ nav
       a.btn.copy-btn.gold href='/DenverStartupWeek2017Sponsorship.pdf' target='_blank' Download Sponsorship Prospectus
 
 - if sponsorships_by_level.any?
-  section.common.sponsor
+  section.common.sponsor.sm-centered
     - Sponsorship::SPONSORS_PAGE_LEVELS.each do |level|
       - sponsorships_by_level[level].tap do |sponsorships|
         - if sponsorships.present? && sponsorships.any?

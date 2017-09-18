@@ -7,35 +7,38 @@ section.hero
   .section-content
     h3 Located in the heart of downtown in The Commons on Champa at 1245 Champa Street, Basecamp offers something for everyone. You’ll find leading panelists and speakers, opportunities to sharpen your startup idea with seasoned entrepreneurs, complimentary happy hours, and more!
 
-section.hero-cta
-  article.green
-    .section-content
-      h2 Programs
-      h3 Basecamp hosts some of the best of Denver Startup Week.
-      h6 Monday through Friday on the main stage, you’ll find inspiring conversations and panel discussions with some of the leading minds from the startup community. Featuring a wide range of topics, each program will highlight incredible stories of inspirational leadership.
-      - if basecamp_sessions.any?
-        = link_to 'Explore Schedule', schedules_path(filter: 'basecamp'), class: 'btn green'
-      - else
-        = link_to 'Coming Soon', '#', class: 'btn green'
-  article.blue
-    .section-content
-      h2 Mentorship
-      h3 Presented by The Commons on Champa
-      h6 Connect with experienced mentors who can offer advice and support to launch you to the next level. Take advantage of individual, group and online mentorship opportunities throughout the week to get you over the top.
-      = link_to 'Get Started', page_path(page: 'basecamp/mentorship'), class: 'btn blue'
+section.site-max-and-center
+  div.cards.cards-2up
 
-section.common.sm-centered
-  .section-content
+    article.card.card-green
+      div.card-elements
+        h2.card-heading Programs
+        h3.card-subheading Basecamp hosts some of the best of Denver Startup Week.
+        p.card-copy Monday through Friday on the main stage, you’ll find inspiring conversations and panel discussions on a wide variety of topics with some of the leading minds from the startup community.
+        - if basecamp_sessions.any?
+          = link_to 'Explore Schedule', schedules_path(filter: 'basecamp'), class: 'btn green'
+        - else
+          = link_to 'Coming Soon', '#', class: 'btn green'
+
+    article.card.card-blue
+      div.card-elements
+        h2.card-heading Mentorship
+        h3.card-subheading Presented by The Commons on Champa
+        p.card-copy Connect with experienced mentors who can offer advice and support to launch you to the next level. Take advantage of individual, group and online mentorship opportunities throughout the week.
+        = link_to 'Get Started', page_path(page: 'basecamp/mentorship'), class: 'btn blue'
+
+section.common
+  .section-content.sm-centered
     h1 Be Social
     h6 There is no shortage of things to do during Denver Startup Week. Don’t miss out on happy hour events at Basecamp, including FoodForward, a Monday afternoon kick-off showcase with food companies, brewers, distillers, and more.
 
-section.common.sm-centered
-  .section-content
+section.common
+  .section-content.sm-centered
     h1 Refuel
     h6 Denver Startup Week is jam-packed with activities, so it is important to keep that blood sugar level up! Stop by Basecamp for a coffee refill or complimentary bites during the day. You’ll be glad you did!
 
-section.common.sm-centered
-  .section-content
+section.common
+  .section-content.sm-centered
     h1 Follow us
     h6 Basecamp is live on Twitter &mdash; keep up with all the Basecamp happenings during Denver Startup Week at @BasecampLiveDEN &mdash; #BasecampLiveDEN  #ChaseBasecamp  #DENstartupweek
     = link_to 'Follow @BasecampLiveDEN', 'https://twitter.com/basecampliveden', class: 'btn primary copy-btn'

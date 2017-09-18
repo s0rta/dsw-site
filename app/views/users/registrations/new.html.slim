@@ -1,19 +1,7 @@
-nav
-  .section-content
-    h1 Account
+= render partial: 'layouts/shared/auth_nav'
 
-section.common.green
-  .section-content
-    h1 Create an account
-    h6 Please create an account to submit sessions for consideration and voting.
-    - flash.each do |key, message|
-      h6 = message
-    - unless resource.errors.empty?
-      h6 = "Please correct the following errors: #{resource.errors.full_messages.to_sentence}"
-
-
-section.common.sm-centered
-  .section-content
+section.common
+  .section-content.sm-centered
     = form_for(resource, as: resource_name, url: user_registration_path) do |f|
 
       = f.label :name, 'Name'
@@ -29,7 +17,3 @@ section.common.sm-centered
       = f.password_field :password_confirmation, required: 'required'
 
       = f.submit 'Sign Up'
-  .section-content.auth-links
-    = link_to 'Sign in', new_user_session_path
-    = " / "
-    = link_to 'Reset your password', new_password_path(resource_name)

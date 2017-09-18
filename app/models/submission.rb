@@ -118,20 +118,11 @@ class Submission < ApplicationRecord
       joins(:user_registrations).
         where(registrations: { user_id: user.id })
     elsif filter.present?
-      # I don't think this will work if we want to filter on both track & cluster
-      # Fine for now, but something to be aware of in the future
-      joins(:track, :cluster).
+      references(:tracks, :clusters).
         where('LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)', name: filter)
     else
       all
     end
-  end
-
-  def self.fully_loaded
-    includes(:venue,
-             :submitter,
-             :track,
-             sponsorship: :track)
   end
 
   def public?

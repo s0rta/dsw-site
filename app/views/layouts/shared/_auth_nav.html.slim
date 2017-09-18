@@ -1,0 +1,17 @@
+nav.section-nav
+  .section-content
+    h1 My Account
+    = link_to 'Sign in', new_user_session_path, class: current_page?(new_user_session_path) ? 'active' : ''
+    = link_to 'Create an account', new_user_registration_path, class: current_page?(new_user_registration_path) ? 'active' : ''
+    = link_to 'Reset your password', new_password_path(resource_name), class: current_page?(new_password_path(resource_name)) ? 'active' : ''
+
+section.common.green
+  .section-content.sm-centered
+    - if flash.empty?
+      h6 You need an account to register, vote, or submit sessions. Please sign in or create one.
+    - flash.each do |key, message|
+      h6 = message
+    - unless resource.errors.empty?
+      h6 = "Please correct the following errors: #{resource.errors.full_messages.to_sentence}"
+
+

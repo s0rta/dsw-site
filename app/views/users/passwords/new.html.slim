@@ -1,25 +1,10 @@
-nav
-  .section-content
-    h1 Panel Picker
+= render partial: 'layouts/shared/auth_nav'
 
-section.common.green
-  .section-content
-    h1 Reset your password
-    - flash.each do |key, message|
-      h6 = message
-    - unless resource.errors.empty?
-      h6 = "Please correct the following errors: #{resource.errors.full_messages.to_sentence}"
-
-
-section.common.sm-centered
-  .section-content
+section.common
+  .section-content.sm-centered
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
 
       = f.label :email, 'E-mail Address'
       = f.text_field :email, required: 'required', autofocus: 'autofocus'
 
       = f.submit 'Send reset instructions'
-  .section-content.auth-links
-    = link_to 'Sign in', new_user_session_path
-    = " / "
-    = link_to 'Create an account', new_user_registration_path

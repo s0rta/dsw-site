@@ -3,7 +3,7 @@ nav
     h1 Register to Attend
 
 section.common.green
-  .section-content
+  .section-content.sm-centered
     h1 Register for Denver Startup Week #{Date.today.year}
     h6 Denver Startup Week is an event by and for the entrepreneurial community. It's open to anyone and everyone, and registration is totally free!
 
@@ -13,8 +13,8 @@ section.common.green
       h6 = "Please correct the following errors: #{@registration.errors.full_messages.to_sentence}"
 
 
-section.common.sm-centered
-  .section-content
+section.common
+  .section-content.sm-centered
     = form_for(@registration, method: :post, url: registration_path) do |f|
       - if simple_registration?
         = f.label :name, 'What is your name?'
