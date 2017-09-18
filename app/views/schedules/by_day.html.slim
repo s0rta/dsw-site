@@ -31,11 +31,12 @@ section.common.sm-centered
 
 .section-content.schedule-container.sm-centered
   nav
-    - if @day_index > 2
-      = link_to image_tag('redesign/nav-arrow-left.png'), schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters)
-    span = "#{Submission::DAYS[@day_index]} #{formatted_start_date_for_index(@day_index)}"
-    - if @day_index < 6
-      = link_to image_tag('redesign/nav-arrow-right.png'), schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters)
+    .chiclets-row
+      - Submission::DAYS.each do |index, day|
+        = link_to schedules_by_day_path(Submission::DAYS[index].downcase, request.query_parameters), class: "chiclet #{@day_index == index ? 'active' : ''}" do
+          .month = formatted_start_date_for_index(index, '%b')
+          .day = formatted_start_date_for_index(index, '%-d')
+          .day_of_week = formatted_start_date_for_index(index, '%A')
 
   - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
     .time-block

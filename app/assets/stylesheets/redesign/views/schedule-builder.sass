@@ -1,6 +1,8 @@
 @import ../config
 
 .schedule-container
+  margin: -40px auto
+
   nav
     margin-bottom: 30px
     a
@@ -15,10 +17,63 @@
       font-size: 20px
       color: $copy-color-bold
 
+  .chiclets-row
+    display: flex
+    flex-direction: row
+
+  .chiclet
+    position: relative
+    padding: 8px
+    width: calc(20% - 8px)
+    margin-right: 10px
+    border-bottom: none
+    color: $copy-color-bold
+    background: $backfill-grey
+    text-align: center
+
+    &:last-child
+      margin-right: 0
+
+    .month
+      margin-top: 10px
+      font-family: 'Montserrat-Light'
+
+    .day
+      font-family: 'Montserrat-Light'
+      margin: -5px 0 10px 0
+
+    .day_of_week
+      padding: 4px
+      color: $backfill-grey
+      background: $copy-color-bold
+
+    &.active
+      background: $teal-light
+      .day_of_week
+        color: $teal-light
+
+    // Arrow from http://www.cssarrowplease.com/
+    &.active:after
+      top: 100%
+      left: 50%
+      border: solid transparent
+      content: " "
+      height: 0
+      width: 0
+      position: absolute
+      pointer-events: none
+      border-color: rgba(136, 183, 213, 0)
+      border-top-color: $teal-light
+      border-width: 20px
+      margin-left: -20px
+
 .time-block
   margin-bottom: 20px
+
 .time-tag
+  font-family: 'Montserrat-Regular'
   margin-bottom: 10px
+
 .scheduled-session
   text-decoration: none
   color: inherit
@@ -118,6 +173,14 @@
   .time-slot
     .cluster-name
       font-size: 12px
+  .schedule-container
+    .chiclet
+      .month
+        font-size: 8px
+      .day
+        font-size: 24px
+      .day_of_week
+        font-size: 6px
 
 @media(min-width: 600px)
   .time-slot
@@ -132,3 +195,12 @@
   .title-venue
     display: inline-block
     width: 70%
+
+  .schedule-container
+    .chiclet
+      .month
+        font-size: 10px
+      .day
+        font-size: 48px
+      .day_of_week
+        font-size: 12px
