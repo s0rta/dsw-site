@@ -2,13 +2,12 @@ nav
   .section-content
     h1 Session Detail
 
-section.common.sm-centered
-  .section-content.session-detail
-    - if !registered? || !registered_for_session?(@session)
-      = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
-    - else
-      div.confirmed-btn-container
-        = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
+section.back-link-section
+  .section-content.sm-centered
+    = link_to 'Back to Schedule', schedules_path, class: 'back-link'
+
+section.common
+  div(class="section-content session-detail sm-centered #{@session.track.color}")
     header
       - if @session.track.icon
         = render partial: "icons/#{@session.track.icon}"
@@ -33,6 +32,14 @@ section.common.sm-centered
       .location-details
         p = @session.human_location_name
 
-section.common.sm-centered
-  .section-content
+section.common
+  .section-content.sm-centered
+    - if !registered? || !registered_for_session?(@session)
+      = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
+    - else
+      div.confirmed-btn-container
+        = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
+
+section.common
+  .section-content.sm-centered
     = link_to 'Back to Schedule', schedules_path, class: 'back-link'
