@@ -1,33 +1,43 @@
 = render partial: 'layouts/shared/attendee_nav', locals: { item: :attendees }
 
 section.common.blue
-  .section-content
+  .section-content.sm-centered
     h1 Getting Around Denver
     h6
       | There are more transportation options in Downtown Denver than anywhere else in the region. 
       | Light rail, commuter rail, highways, bus and bicycle routes converge in Downtown to provide 
       | seamless multi-modal access for commuters and visitors alike – all of which make getting into and around Downtown simple and easy.
 
-.icon-flex-container
-  .icon-item
-    a href='https://www.lyft.com/invite/DENSTARTUP16' target='_blank'
-      = image_tag 'redesign/lyft.png'
-      h4 Lyft
-      h6 The Lyft app matches you with friendly local drivers at the tap of a button. Just request and go. After the ride, simply pay through your phone.
-  .icon-item
-    a href='https://www.uber.com/cities/denver/' target='_blank'
-      = image_tag 'redesign/uber.png'
-      h4 Uber
-      h6 Uber connects you with a reliable ride in minutes. One tap and a car comes directly to you. Your driver knows exactly where to go. And payment is completely cashless.
-  .icon-item
-    a href='https://denver.bcycle.com/' target='_blank'
-      = image_tag 'redesign/b-cycle.png'
-      h4 B Cycle
-      h6 Denver’s bike sharing system. With 87 stations and 700 bikes throughout ten central Denver neighborhoods, you can check out and return a B-cycle at any station 5 a.m. to midnight, 365 days a year.
-  .icon-item
-    a href='http://www.rtd-denver.com/' target='_blank'
-      = image_tag 'redesign/rtd.png'
-      h4 RTD
-      h6 With more than 150 bus routes, seven rail lines, and many specialty services, RTD makes it easy to get around town.
-  .icon-item.spacer
-  .icon-item.spacer
+.icon-outer-container
+  .icon-flex-container
+    .icon-item.tall
+      a href='https://www.southwest.com/' target='_blank'
+        .logo
+          = image_tag 'redesign/southwest.png'
+        h4 Southwest Airlines
+        h6 Coming from out of town?  Southwest is Denver Startup Week’s official and incredibly awesome airline partner!
+    .icon-item.tall
+      a href='https://www.lyft.com/invite/DENSTARTUP25OFF' target='_blank'
+        .logo
+          = image_tag 'redesign/lyft.png'
+        h4 Lyft
+        h6 Denver Startup Week’s ridesharing partner has your transportation needs covered! New and existing users get 25% off a ride to any Denver Startup Week venue with code DENSTARTUP25OFF.
+    .icon-item.tall
+      a href='http://members.zipcar.com/denverstartupweek' target='_blank'
+        .logo
+          = image_tag 'redesign/zipcar.png'
+        h4 Zipcar
+        h6 Enjoy discounts from our partners at Zipcar to make your Denver Startup Week experience a breeze.
+    .icon-item.tall
+      a href='https://denver.bcycle.com/' target='_blank'
+        .logo
+          = image_tag 'redesign/b-cycle.png'
+        h4 B Cycle
+        h6 Denver’s bike sharing system. With 87 stations and 700 bikes throughout ten central Denver neighborhoods, you can check out and return a B-cycle at any station 5 a.m. to midnight, 365 days a year.
+    .icon-item.tall
+      a href='http://www.rtd-denver.com/' target='_blank'
+        .logo
+          = image_tag 'redesign/rtd.png'
+        h4 RTD
+        h6 With more than 150 bus routes, seven rail lines, and many specialty services, RTD makes it easy to get around town.
+    .icon-item.spacer
