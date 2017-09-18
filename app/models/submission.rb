@@ -17,6 +17,14 @@ class Submission < ApplicationRecord
            6 => 'Friday',
            7 => 'Weekend after' }.freeze
 
+  SHORT_DAYS = { 1 => 'Wknd bf',
+                 2 => 'Mon',
+                 3 => 'Tue',
+                 4 => 'Wed',
+                 5 => 'Thu',
+                 6 => 'Fri',
+                 7 => 'Wknd af' }.freeze
+
   TIME_RANGES = [ 'Early morning',
                   'Breakfast',
                   'Morning',
@@ -68,7 +76,7 @@ class Submission < ApplicationRecord
   validates :track_id, presence: true
   validates :location, length: { maximum: 255 }
 
-  after_create :notify_track_chairs
+  after_create :notify_track_chairs_of_new_submission!
   after_create :send_confirmation_notice
   after_save :subscribe_to_list
 
@@ -193,8 +201,16 @@ class Submission < ApplicationRecord
     DAYS[start_day]
   end
 
+  def human_short_start_day
+    SHORT_DAYS[start_day]
+  end
+
   def human_end_day
     DAYS[end_day]
+  end
+
+  def human_short_end_day
+    SHORT_DAYS[end_day]
   end
 
   def ical_location
@@ -313,9 +329,7 @@ class Submission < ApplicationRecord
     end
   end
 
-  private
-
-  def notify_track_chairs
+  def notify_track_chairs_of_new_submission!
     track.chairs.each do |chair|
       NotificationsMailer.notify_of_new_submission(chair, self).deliver_now
     end
@@ -348,5 +362,40 @@ class Submission < ApplicationRecord
         submittedyears: submitted_years,
         confirmedyears: confirmed_years)
     end
+  end
+
+  # Recommendation logic
+  # Based off of https://github.com/geoffreylitt/simple_recommender
+  # Customized to scope to the current year
+
+  def refresh_similar_item_cache!
+    update_column :cached_similar_item_ids, similar_items.map(&:id)
+  end
+
+  def similar_items(num = 10)
+    sql = <<-EOF
+      WITH similar_items AS (
+        SELECT
+        t2.submission_id,
+        (# (array_agg(DISTINCT t1.registration_id) & array_agg(DISTINCT t2.registration_id)))::float/
+        (# (array_agg(DISTINCT t1.registration_id) | array_agg(DISTINCT t2.registration_id)))::float as similarity
+        FROM session_registrations AS t1, session_registrations AS t2
+        INNER JOIN registrations ON t2.registration_id = registrations.id AND registrations.year = '2017'
+        WHERE t1.submission_id = #{id} and t2.submission_id != #{id}
+        GROUP BY t2.submission_id
+        ORDER BY similarity DESC
+        LIMIT #{num}
+      )
+      SELECT submissions.*, similarity
+      FROM similar_items
+      JOIN submissions ON submissions.id = similar_items.submission_id
+      ORDER BY similarity DESC;
+    EOF
+    self.class.find_by_sql(sql)
+  end
+
+  def cached_similar_items
+    order = ActiveRecord::Base.send(:sanitize_sql_array, ['position(id::text in ?)', cached_similar_item_ids.join(',')])
+    self.class.where(id: cached_similar_item_ids).order(order)
   end
 end

@@ -40,6 +40,14 @@ section.common
       div.confirmed-btn-container
         = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
 
+- if @related_sessions.any?
+  section.common
+    .section-content.sm-centered
+      h1 You may also be interested in
+      div
+        - @related_sessions.each do |submission|
+          = render partial: 'scheduled_session', locals: { submission: submission, include_day: true }
+
 section.common
   .section-content.sm-centered
     = link_to 'Back to Schedule', schedules_path, class: 'back-link'

@@ -44,6 +44,11 @@ class SchedulesController < ApplicationController
                order(:start_day).
                includes(:venue, :submitter, :track, :cluster, sponsorship: :track).
                first!
+
+    @related_sessions = @session.
+                        cached_similar_items.
+                        limit(3).
+                        includes(:venue, :track, :cluster, sponsorship: :track)
   end
 
   def feed
