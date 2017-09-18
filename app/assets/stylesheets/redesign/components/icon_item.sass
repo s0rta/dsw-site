@@ -22,6 +22,8 @@
   margin-bottom: 15px
   text-align: center
   background-color: #e5e5e5
+  &.tall
+    height: 340px
   a
     color: $copy-color-bold
     &:hover
@@ -37,13 +39,23 @@
   &:empty
     opacity: 0
 
-.avatar
-  width: 100px
-  height: 100px
-  margin-bottom: 15px
-  border-radius: 50%
-  filter: grayscale(100%)
-  -webkit-filter: grayscale(100%)
+  .avatar
+    width: 100px
+    height: 100px
+    margin-bottom: 15px
+    border-radius: 50%
+    filter: grayscale(100%)
+    -webkit-filter: grayscale(100%)
+
+  .logo
+    line-height: 100px
+    text-align: center
+    margin-bottom: 10px
+    overflow: hidden
+    img
+      vertical-align: middle
+      width: 100px
+      margin-bottom: 0
 
 @media(min-width: 640px)
   .icon-flex-container
