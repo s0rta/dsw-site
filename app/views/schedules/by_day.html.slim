@@ -41,20 +41,7 @@ section.common.sm-centered
     .time-block
       .time-tag = grouping.first.human_start_time
       - grouping.each do |submission|
-        .scheduled-session
-          div(class="icon-container #{submission.track.color}")
-            - if submission.track.icon
-              = render partial: "icons/#{submission.track.icon}"
-            - else
-              .icon
-          .session-info
-            .time-slot
-              .time = submission.human_time_range
-              - if submission.tags
-                .cluster-name = submission.tags
-            .title-venue
-              = link_to submission.full_title, schedule_path(submission), class: 'session-title'
-              .session-location = submission.human_location_name
+        = render partial: 'scheduled_session', locals: { submission: submission }
 
 - if registered? && params[:filter] == 'mine'
   section.common.sm-centered
