@@ -62,10 +62,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  def by_day
-    @submissions = Submission.for_current_year.public.where(start_day: params[:day]).order('start_hour ASC').includes(:submitter, :track, :votes)
-  end
-
   def new
     @submission = Submission.new(contact_email: current_user.try(:email))
   end
