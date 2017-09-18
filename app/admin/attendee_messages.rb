@@ -1,6 +1,6 @@
 ActiveAdmin.register AttendeeMessage do
 
-  config.sort_order = 'created_at DESC'
+  config.sort_order = 'attendee_messages.created_at DESC'
 
   belongs_to :submission, optional: true
 

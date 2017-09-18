@@ -9,23 +9,25 @@ class SubmissionsController < ApplicationController
 
   def index
     @submissions = Submission.
-      for_current_year.
-      for_submittable_tracks.
-      public.
-      order('created_at ASC').
-      page(params[:page])
+                   for_current_year.
+                   for_submittable_tracks.
+                   public.
+                   includes(:submitter, :track, :cluster).
+                   order('submissions.created_at ASC').
+                   page(params[:page])
   end
 
   def track
     if params[:track_name].present?
       @submissions = Submission.
-        fulltext_search(params[:terms]).
-        for_current_year.
-        for_submittable_tracks.
-        for_schedule_filter(params[:track_name], current_user).
-        public.
-        order('created_at ASC').
-        page(params[:page])
+                     fulltext_search(params[:terms]).
+                     for_current_year.
+                     for_submittable_tracks.
+                     for_schedule_filter(params[:track_name], current_user).
+                     public.
+                     includes(:submitter, :track, :cluster).
+                     order('submissions.created_at ASC').
+                     page(params[:page])
       respond_to do |format|
         format.html
         format.js do
@@ -43,12 +45,13 @@ class SubmissionsController < ApplicationController
       redirect_to track_submissions_path(track_name: params[:track_name], terms: params[:terms])
     else
       @submissions = Submission.
-        fulltext_search(params[:terms]).
-        for_current_year.
-        for_submittable_tracks.
-        for_schedule_filter(params[:track_name], current_user).
-        public.
-        page(params[:page])
+                     fulltext_search(params[:terms]).
+                     for_current_year.
+                     for_submittable_tracks.
+                     for_schedule_filter(params[:track_name], current_user).
+                     public.
+                     includes(:submitter, :track, :cluster).
+                     page(params[:page])
       respond_to do |format|
         format.json do
           render json: { fragment: render_to_string(partial: 'track_contents', formats: [ :html ]),

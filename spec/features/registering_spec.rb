@@ -58,6 +58,8 @@ feature 'Registering to attend' do
       email = ActionMailer::Base.deliveries.detect { |e| e.to.include?('test2@example.com') }
       expect(email.subject).to eq("You are registered for Denver Startup Week #{Date.today.year}")
 
+      select('Founder Track', from: 'filter')
+
       click_link 'I am a session'
       click_link 'Add to My Schedule'
       expect(page).not_to have_link('Add to My Schedule')
