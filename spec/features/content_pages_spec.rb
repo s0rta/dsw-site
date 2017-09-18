@@ -4,6 +4,6 @@ feature 'Content-only pages' do
   scenario 'the sponsors page' do
     visit '/'
     click_link 'Sponsors'
-    expect(page).to have_content("Our #{Date.today.year} Sponsors")
+    expect(page).to have_content("OUR #{Date.today.year} SPONSORS")
   end
 end
