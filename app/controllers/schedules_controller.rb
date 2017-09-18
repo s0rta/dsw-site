@@ -47,6 +47,8 @@ class SchedulesController < ApplicationController
 
     @related_sessions = @session.
                         cached_similar_items.
+                        for_current_year.
+                        for_schedule.
                         limit(3).
                         includes(:venue, :track, :cluster, sponsorship: :track)
   end
