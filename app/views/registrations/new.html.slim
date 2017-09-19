@@ -15,7 +15,7 @@ section.common.green
 
 section.common
   .section-content.sm-centered
-    = form_for(@registration, method: :post, url: registration_path) do |f|
+    = form_for(@registration, method: :post, url: registration_path, honeypot: true) do |f|
       - if simple_registration?
         = f.label :name, 'What is your name?'
         = f.text_field :name, value: ''
