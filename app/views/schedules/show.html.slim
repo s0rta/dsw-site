@@ -1,3 +1,9 @@
+- content_for(:title, @session.full_title)
+- content_for(:extra_meta_tags) do
+  meta(property="og:title" content="Denver Startup Week | #{@session.full_title}")
+  meta(property="og:site_name" content="Denver Startup Week")
+  meta(property="og:url" content="#{schedule_url(@session)}")
+  meta(property="og:description" content="#{@session.description}")
 nav
   .section-content
     h1 Session Detail
@@ -13,12 +19,12 @@ section.common
         = render partial: "icons/#{@session.track.icon}"
       span.track-title = @session.track.name
     .title = @session.full_title
-    .names
-      - if @session.tags
+    - if @session.tags
+      .names
         h6 = @session.tags
-      h6 = "#{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}"
-      h6 = @session.human_time_range
-      h6 = "#{@session.registrants.count} attending"
+    .date #{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}
+    .time #{@session.human_time_range}
+    .attendee_count = "#{@session.registrants.count} attending"
     .description = process_with_pipeline(@session.description)
     - if @session.venue_confirmed?
       a.location-pin href='#'
