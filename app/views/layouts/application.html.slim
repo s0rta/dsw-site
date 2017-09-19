@@ -1,12 +1,15 @@
 doctype html
 html
   head
-    title Denver Startup Week
+    title = [ 'Denver Startup Week', content_for(:title) ].compact.join(' | ')
     meta http-equiv="X-UA-Compatible" content="IE=Edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
     link rel="icon" type="image/png" href="/favicon.ico"
     = stylesheet_link_tag 'redesign/application', media: 'all'
     = csrf_meta_tags
+    meta(name="twitter:site" content="@denstartupweek")
+    meta(name="twitter:card" content="summary")
+    = content_for(:extra_meta_tags)
 
   body(id="#{controller_name}_controller" class="#{params[:page] || 'unknown'}-action")
     = render partial: 'layouts/shared/header'
