@@ -261,6 +261,9 @@ module ApplicationHelper
       { title: 'Linda Appel Lipsius, Co-Founder & CEO, Teatulia Organic Teas & The Mamahood',
         timeslot: 'Friday 9/29: 1:00pm-2:00pm',
         signup_url: 'https://www.denverstartupweek.org/schedule/3819-group-mentor-session-with-linda-appel-lipsius-co-founder-ceo-of-teatulia-organic-teas-the-mama-hood' },
+       { title: 'Nicole Glaros, Chief Innovation Officer, Techstars',
+        timeslot: 'Friday 9/29: 11:00am-12:00pm',
+        signup_url: 'https://www.denverstartupweek.org/schedule/3840-group-mentor-session-with-nicole-glaros-chief-innovation-officer-techstars'},
     ]
   end
 
