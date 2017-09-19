@@ -29,25 +29,39 @@ section.common.sm-centered
         - Cluster.all.each do |c|
           option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) #{c.name} Cluster
 
-.section-content.schedule-container.sm-centered
-  nav
-    - if @day_index > 2
-      = link_to image_tag('redesign/nav-arrow-left.png'), schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters)
-    span = "#{Submission::DAYS[@day_index]} #{formatted_start_date_for_index(@day_index)}"
-    - if @day_index < 6
-      = link_to image_tag('redesign/nav-arrow-right.png'), schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters)
+section.common
+  .section-content.schedule-container.sm-centered
+    nav
+      .chiclets-row
+        - Submission::DAYS.each do |index, day|
+          = link_to schedules_by_day_path(Submission::DAYS[index].downcase, request.query_parameters), class: "chiclet #{@day_index == index ? 'active' : ''}" do
+            .month = formatted_start_date_for_index(index, '%b')
+            .day = formatted_start_date_for_index(index, '%-d')
+            .day_of_week = formatted_start_date_for_index(index, '%A')
 
-  - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
-    .time-block
-      .time-tag = grouping.first.human_start_time
-      - grouping.each do |submission|
-        = render partial: 'scheduled_session', locals: { submission: submission }
+    - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
+      .time-block
+        .time-tag = grouping.first.human_start_time
+        - grouping.each do |submission|
+          = render partial: 'scheduled_session', locals: { submission: submission }
+
+    .day-buttons
+      - if @day_index == 6
+        = link_to Submission::DAYS[@day_index - 1], schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left'
+      - elsif @day_index == 2
+        = link_to Submission::DAYS[@day_index + 1], schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right'
+      - else
+        = link_to Submission::DAYS[@day_index - 1], schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left btn-half'
+        = link_to Submission::DAYS[@day_index + 1], schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right btn-half'
 
 - if registered? && params[:filter] == 'mine'
-  section.common.sm-centered
-    .section-content
+  section.common
+    .section-content.sm-centered
       h1 Export my schedule
       h6 Use Google Calendar, iCal, or Outlook? Use the buttons below to subscribe to your schedule and make it easy to look up all of the details on-the-go.
       = link_to 'Add to Outlook/iCal', schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal'), class: 'btn primary copy-btn'
       = link_to 'Add to Google Calendar', "http://www.google.com/calendar/render?cid=#{schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')}", class: 'btn primary copy-btn'
+
+section.common
+  .section-content
 

@@ -9,21 +9,17 @@ class Submission < ApplicationRecord
               'Workshop',
               'Social event' ].freeze
 
-  DAYS = { 1 => 'Weekend before',
-           2 => 'Monday',
+  DAYS = { 2 => 'Monday',
            3 => 'Tuesday',
            4 => 'Wednesday',
            5 => 'Thursday',
-           6 => 'Friday',
-           7 => 'Weekend after' }.freeze
+           6 => 'Friday' }.freeze
 
-  SHORT_DAYS = { 1 => 'Wknd bf',
-                 2 => 'Mon',
+  SHORT_DAYS = { 2 => 'Mon',
                  3 => 'Tue',
                  4 => 'Wed',
                  5 => 'Thu',
-                 6 => 'Fri',
-                 7 => 'Wknd af' }.freeze
+                 6 => 'Fri' }.freeze
 
   TIME_RANGES = [ 'Early morning',
                   'Breakfast',

@@ -1,6 +1,8 @@
 @import ../config
 
 .schedule-container
+  margin: -40px auto
+
   nav
     margin-bottom: 30px
     a
@@ -15,10 +17,63 @@
       font-size: 20px
       color: $copy-color-bold
 
+  .chiclets-row
+    display: flex
+    flex-direction: row
+
+  .chiclet
+    position: relative
+    padding: 8px
+    width: calc(20% - 8px)
+    margin-right: 10px
+    border-bottom: none
+    color: $copy-color-bold
+    background: $backfill-grey
+    text-align: center
+
+    &:last-child
+      margin-right: 0
+
+    .month
+      margin-top: 10px
+      font-family: 'Montserrat-Light'
+
+    .day
+      font-family: 'Montserrat-Light'
+      margin: -5px 0 10px 0
+
+    .day_of_week
+      padding: 4px
+      color: $backfill-grey
+      background: $copy-color-bold
+
+    &.active
+      background: $teal-light
+      .day_of_week
+        color: $teal-light
+
+    // Arrow from http://www.cssarrowplease.com/
+    &.active:after
+      top: 100%
+      left: 50%
+      border: solid transparent
+      content: " "
+      height: 0
+      width: 0
+      position: absolute
+      pointer-events: none
+      border-color: rgba(136, 183, 213, 0)
+      border-top-color: $teal-light
+      border-width: 20px
+      margin-left: -20px
+
 .time-block
   margin-bottom: 20px
+
 .time-tag
+  font-family: 'Montserrat-Regular'
   margin-bottom: 10px
+
 .scheduled-session
   text-decoration: none
   color: inherit
@@ -108,6 +163,49 @@
     font-family: 'Montserrat-Regular'
     font-size: 10px
 
+.day-buttons
+  width: 80%
+  margin-top: 20px
+  margin: auto
+
+  .btn-half
+    width: calc(50% - 10px)
+
+  .btn-left, .btn-right
+    display: inline-block
+    vertical-align: middle
+    font-family: 'Montserrat-Regular'
+    text-transform: uppercase
+    background: $teal-light
+    color: $teal-dark
+
+  .btn-left
+    margin-right: 10px
+
+  .btn-left
+    &::before
+      content: ''
+      display: inline-block
+      vertical-align: middle
+      margin-right: 10px
+      background-color: transparent
+      background-image: image-url('redesign/nav-arrow-left-dark.png')
+      background-position: 0 0
+      background-repeat: no-repeat
+      background-size: cover
+
+  .btn-right
+    &::after
+      content: ''
+      display: inline-block
+      vertical-align: middle
+      margin-left: 10px
+      background-color: transparent
+      background-image: image-url('redesign/nav-arrow-right-dark.png')
+      background-position: 0 0
+      background-repeat: no-repeat
+      background-size: cover
+
 
 @media(min-width: 375px)
   .session-info
@@ -118,6 +216,28 @@
   .time-slot
     .cluster-name
       font-size: 12px
+  .schedule-container
+    .chiclet
+      .month
+        font-size: 8px
+      .day
+        font-size: 24px
+      .day_of_week
+        font-size: 6px
+
+  .day-buttons
+    .btn-left, .btn-right
+      font-size: 10px
+      padding: 15px
+
+    .btn-right
+      &::after
+        width: 10px
+        height: 9px
+    .btn-left
+      &::before
+        width: 10px
+        height: 9px
 
 @media(min-width: 600px)
   .time-slot
@@ -132,3 +252,26 @@
   .title-venue
     display: inline-block
     width: 70%
+
+  .schedule-container
+    .chiclet
+      .month
+        font-size: 10px
+      .day
+        font-size: 48px
+      .day_of_week
+        font-size: 12px
+
+  .day-buttons
+    .btn-left, .btn-right
+      font-size: 14px
+      padding: 20px
+
+    .btn-right
+      &::after
+        width: 20px
+        height: 18px
+    .btn-left
+      &::before
+        width: 20px
+        height: 18px
