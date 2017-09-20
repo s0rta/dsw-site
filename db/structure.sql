@@ -463,7 +463,8 @@ CREATE TABLE pitch_contest_entries (
     name character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    year integer
+    year integer,
+    is_active boolean DEFAULT true NOT NULL
 );
 
 
@@ -1919,6 +1920,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170912155744'),
 ('20170915145833'),
 ('20170918194840'),
-('20170918201311');
+('20170918201311'),
+('20170920024945');
 
 
