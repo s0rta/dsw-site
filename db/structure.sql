@@ -746,7 +746,8 @@ CREATE TABLE submissions (
     open_to_collaborators boolean,
     from_underrepresented_group boolean,
     target_audience_description text,
-    cached_similar_item_ids integer[] DEFAULT '{}'::integer[]
+    cached_similar_item_ids integer[] DEFAULT '{}'::integer[],
+    session_registrations_count integer DEFAULT 0
 );
 
 
@@ -1921,6 +1922,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170915145833'),
 ('20170918194840'),
 ('20170918201311'),
-('20170920024945');
+('20170920024945'),
+('20170921185331');
 
 

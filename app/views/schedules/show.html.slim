@@ -24,7 +24,7 @@ section.common
         h6 = @session.tags
     .date #{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}
     .time #{@session.human_time_range}
-    .attendee_count = "#{@session.registrants.count} attending"
+    .attendee_count = "#{@session.session_registrations_count} attending"
     .description = process_with_pipeline(@session.description)
     - if @session.venue_confirmed?
       a.location-pin href='#'
