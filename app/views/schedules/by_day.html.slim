@@ -42,10 +42,10 @@ section.common
             .day_of_week = formatted_start_date_for_index(index, '%A')
 
     - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
-      .time-block
-        .time-tag = grouping.first.human_start_time
-        - grouping.each do |submission|
-          = render partial: 'scheduled_session', locals: { submission: submission }
+      - cache [ start_hour, grouping ] do
+        .time-block
+          .time-tag = grouping.first.human_start_time
+          = render partial: 'scheduled_session', collection: grouping, as: :submission
 
     .day-buttons
       - if @day_index == 6
