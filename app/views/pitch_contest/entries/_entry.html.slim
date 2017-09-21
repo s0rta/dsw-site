@@ -7,7 +7,7 @@
     footer
       div.vote-count
         span = pluralize(entry.votes.size, 'vote')
-      - if current_user
+      - if user_signed_in?
         = link_to pitch_contest_entry_votes_path(entry), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{entry.name}'" do
           = render partial: 'icons/thumbsup'
       - else

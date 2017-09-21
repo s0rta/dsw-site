@@ -2,4 +2,4 @@
 
 .icon-outer-container
   .icon-flex-container(data-bindable='ajax-voter')
-    = render partial: 'entry', collection: @entries, cached: true
+    = render partial: 'entry', collection: @entries, cached: lambda { |e| [ e, user_signed_in? ] }
