@@ -1,8 +1,7 @@
 .card-frame
   div class=("card-content")
     = link_to entry.video_url, class: 'vote-detail' do
-      .title
-        = entry.name
+      .title = entry.name
     iframe id="ytplayer-#{entry.id}" type="text/html" width="100%" src="#{entry.embed_video_url}" frameborder="0"
     footer
       div.vote-count
