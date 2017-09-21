@@ -15,7 +15,7 @@
 </h4>
 <p>
   <%- if @user %>
-    <%- @user.registrations.each do |registration| %>
+    <%- @user.registrations.order('year ASC').each do |registration| %>
       <span class="badge"><%= registration.year %></span>
     <%- end %>
   <%- end %>
