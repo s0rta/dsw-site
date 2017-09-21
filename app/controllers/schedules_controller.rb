@@ -54,7 +54,7 @@ class SchedulesController < ApplicationController
   end
 
   def feed
-    registration = Registration.where(calendar_token: params[:id]).first!
+    registration = Registration.where(calendar_token: params[:id]).includes(:user).first!
     @sessions = registration.
                 submissions.for_current_year.
                 for_schedule.
@@ -62,6 +62,7 @@ class SchedulesController < ApplicationController
     respond_to do |format|
       format.ics do
         calendar = Icalendar::Calendar.new
+        calendar.x_wr_calname = "#{registration.user.name}'s Denver Startup Week #{Date.today.year} Schedule"
         @sessions.each do |submission|
           event_start = submission.start_datetime
           event_end = submission.end_datetime
