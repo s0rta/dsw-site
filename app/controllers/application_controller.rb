@@ -57,7 +57,8 @@ class ApplicationController < ActionController::Base
   end
 
   def simple_registration?
-    cookies.signed[:simple_registration] == true
+    request.headers['X-DSW-Simple-Registration'] ||
+      cookies.signed[:simple_registration] == true
   end
 
   def base_navigation_path
