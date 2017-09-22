@@ -21,6 +21,13 @@ ActiveAdmin.register AttendeeMessage do
     column :submission
     column :subject
     column :sent_status
+    column :author do |m|
+      if user = User.where(id: m.paper_trail.originator).first
+        link_to user.name, admin_user_path(user)
+      else
+        'Unknown'
+      end
+    end
     actions
   end
 
