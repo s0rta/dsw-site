@@ -70,17 +70,18 @@ class SchedulesController < ApplicationController
           tz = TZInfo::Timezone.get(tzid)
           timezone = tz.ical_timezone(event_start)
           calendar.add_timezone(timezone)
-          event = Icalendar::Event.new
-          event.dtstart = Icalendar::Values::DateTime.new(event_start, 'tzid' => tzid)
-          event.dtend = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
-          event.summary = submission.full_title
-          event.description = "#{submission.description}\n\nMore details: #{schedule_url(id: submission.id)}"
-          event.location = submission.ical_location
-          event.ip_class = 'PUBLIC'
-          event.created = submission.created_at
-          event.last_modified = submission.updated_at
-          event.uid = event.url = schedule_url(id: submission.id)
-          calendar.add_event(event)
+          calendar.add_event Icalendar::Event.new.tap do |e|
+            e.dtstart       = Icalendar::Values::DateTime.new(event_start, 'tzid' => tzid)
+            e.dtend         = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
+            e.summary       = submission.full_title
+            e.description   = "#{submission.description}\n\nMore details: #{schedule_url(submission)}"
+            e.location      = submission.ical_location
+            e.ip_class      = 'PUBLIC'
+            e.created       = submission.created_at
+            e.last_modified = submission.updated_at
+            e.uid           schedule_url(submission)
+            e.url           schedule_url(submission)
+          end
         end
         calendar.publish
         render body: calendar.to_ical, content_type: 'text/calendar'
