@@ -70,7 +70,7 @@ class SchedulesController < ApplicationController
           tz = TZInfo::Timezone.get(tzid)
           timezone = tz.ical_timezone(event_start)
           calendar.add_timezone(timezone)
-          calendar.add_event Icalendar::Event.new.tap do |e|
+          event = Icalendar::Event.new.tap do |e|
             e.dtstart       = Icalendar::Values::DateTime.new(event_start, 'tzid' => tzid)
             e.dtend         = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
             e.summary       = submission.full_title
@@ -82,6 +82,7 @@ class SchedulesController < ApplicationController
             e.uid           schedule_url(submission)
             e.url           schedule_url(submission)
           end
+          calendar.add_event event
         end
         calendar.publish
         render body: calendar.to_ical, content_type: 'text/calendar'
