@@ -79,8 +79,8 @@ class SchedulesController < ApplicationController
             e.ip_class      = 'PUBLIC'
             e.created       = submission.created_at
             e.last_modified = submission.updated_at
-            e.uid           schedule_url(submission)
-            e.url           schedule_url(submission)
+            e.uid           = schedule_url(submission)
+            e.url           = schedule_url(submission)
           end
           calendar.add_event event
         end
