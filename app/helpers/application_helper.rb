@@ -52,7 +52,7 @@ module ApplicationHelper
 
   def mentor_sessions
     [
-      { title: 'Mentors & Advisors, "Roster by Specialty"',
+      { title: 'Mentors & Advisors, "Roster by Specialty - to see list click "Book It""',
         timeslot: 'Monday 9/25 - Friday 9/29: 11am-3pm',
         signup_url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT-sHP3qtTXcm54cnKDd4DKcGPO9iKCGvvYqM_3kZx2JH-K3gqRBzubNaSfSaELEpgyK2U0heh1ApDz/pubhtml?gid=2083275987&single=true' },
       { title: 'Colleen Kazemi, "Founder, Growth, Marketing & Sales, Planning & Strategy, Talent & HR, Content Strategy", Pure Cultures',
