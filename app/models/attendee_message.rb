@@ -1,4 +1,7 @@
 class AttendeeMessage < ApplicationRecord
+
+  has_paper_trail
+
   belongs_to :submission
 
   validates :subject, presence: true, length: { maximum: 100 }
