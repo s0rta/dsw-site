@@ -9,6 +9,7 @@ html
     = csrf_meta_tags
     meta(name="twitter:site" content="@denstartupweek")
     meta(name="twitter:card" content="summary")
+    meta(name="og:image" content="#{image_url('redesign/dsw-logo.png')}")
     = content_for(:extra_meta_tags)
 
   body(id="#{controller_name}_controller" class="#{params[:page] || 'unknown'}-action")
