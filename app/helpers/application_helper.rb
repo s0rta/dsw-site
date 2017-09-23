@@ -120,7 +120,7 @@ module ApplicationHelper
         signup_url: 'http://slottd.com/events/52qqovfvel/slots' },
          { title: 'UB Ciminieri, "Founder, Marketing & Sales, Talent & HR, Talent and Creative Strategy", Jobber Group',
         timeslot: 'Tuesday 9/26: 1-2pm',
-        signup_url: 'http://slottd.com/events/ezh5fjezkf/slots' },
+        signup_url: 'http://slottd.com/events/y39xtxgci4/slots' },
        { title: 'Cory Finney, "Founder, Money, Investment, Funding, Planning & Strategy", Boomtown / Kokopelli Capital',
         timeslot: 'Wednesday 9/27: 11-1pm',
         signup_url: 'http://slottd.com/events/27hfvgpdx7/slots' },
