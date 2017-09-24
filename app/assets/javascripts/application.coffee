@@ -12,6 +12,7 @@
 #= require components/ajax_voter
 #= require components/ajax_load_more
 #= require components/mapquest_map
+#= require components/schedule_map
 #= require components/booking_dropdown
 #= require components/select2
 

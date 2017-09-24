@@ -122,8 +122,8 @@ class Submission < ApplicationRecord
       joins(:user_registrations).
         where(registrations: { user_id: user.id })
     elsif filter.present?
-      references(:tracks, :clusters).
-        where('LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)', name: filter)
+      where('LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)', name: filter).
+        references(:tracks, :clusters)
     else
       all
     end

@@ -41,20 +41,23 @@ section.common
             .day = formatted_start_date_for_index(index, '%-d')
             .day_of_week = formatted_start_date_for_index(index, '%A')
 
-    - cache [ @submissions.maximum(:updated_at), @submissions.pluck(:id) ] do
-      - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
-        .time-block
-          .time-tag = grouping.first.human_start_time
-          = render partial: 'scheduled_session', collection: grouping, as: :submission
+    - if params[:display] != 'map'
+      - cache [ @submissions.maximum(:updated_at), @submissions.pluck(:id) ] do
+        - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
+          .time-block
+            .time-tag = grouping.first.human_start_time
+            = render partial: 'scheduled_session', collection: grouping, as: :submission
 
-    .day-buttons
-      - if @day_index == 6
-        = link_to Submission::DAYS[@day_index - 1], schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left'
-      - elsif @day_index == 2
-        = link_to Submission::DAYS[@day_index + 1], schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right'
-      - else
-        = link_to Submission::DAYS[@day_index - 1], schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left btn-half'
-        = link_to Submission::DAYS[@day_index + 1], schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right btn-half'
+      .day-buttons
+        - if @day_index == 6
+          = link_to Submission::DAYS[@day_index - 1], schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left'
+        - elsif @day_index == 2
+          = link_to Submission::DAYS[@day_index + 1], schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right'
+        - else
+          = link_to Submission::DAYS[@day_index - 1], schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left btn-half'
+          = link_to Submission::DAYS[@day_index + 1], schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right btn-half'
+    - else
+      div.schedule-map(data-bindable='schedule-map', data-items="#{json_for_map(@submissions)}")
 
 - if registered? && params[:filter] == 'mine'
   section.common
