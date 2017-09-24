@@ -41,7 +41,7 @@ section.common
             .day = formatted_start_date_for_index(index, '%-d')
             .day_of_week = formatted_start_date_for_index(index, '%A')
 
-    - cache [ @submissions.maximum(:updated_at), @submissions.pluck(:id) ] do
+    - cache [ @submissions.maximum(:updated_at), @submissions.map(&:id) ] do
       - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
         .time-block
           .time-tag = grouping.first.human_start_time
