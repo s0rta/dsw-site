@@ -59,9 +59,11 @@
     margin-bottom: 40px
     p
       margin: 1em 0px
-  .location-details p:first-child
+  .location-details
+    margin-top: 20px
+    & .location-details p:first-child
     font-size: 18px
-  .location-pin
+  .location-pin, .stream-pin
     display: block
     margin-top: 30px
     svg
@@ -74,6 +76,12 @@
       color: $teal-light
       text-transform: uppercase
       font-size: 15px
+
+    .stream-details
+      margin: 20px auto
+      width: 320px
+      height: 180px
+
   footer
     display: flex
     flex-wrap: nowrap
@@ -141,3 +149,10 @@
 
 section.back-link-section
   padding: 0 0 40px 0
+
+@media(min-width: 400px)
+  .section-content.session-detail
+    .stream-pin
+      .stream-details
+        width: 640px
+        height: 360px

@@ -26,6 +26,7 @@ ActiveAdmin.register Submission do
                 :submitter_id,
                 :slides_url,
                 :video_url,
+                :live_stream_url,
                 :company_name
 
   controller do
@@ -163,6 +164,7 @@ ActiveAdmin.register Submission do
       f.input :target_audience_description
       f.input :slides_url
       f.input :video_url
+      f.input :live_stream_url
     end
     f.inputs 'Additional Information' do
       f.input :estimated_size
