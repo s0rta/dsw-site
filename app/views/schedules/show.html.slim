@@ -26,6 +26,13 @@ section.common
     .time #{@session.human_time_range}
     .attendee_count = "#{@session.registrants.count} attending"
     .description = process_with_pipeline(@session.description)
+
+    - if @session.live_stream_url.present?
+      a.stream-pin href='#'
+        = render partial: 'icons/eyeball'
+        span Watch it
+        .stream-details
+          iframe(src="#{@session.live_stream_url}" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="100%" height="100%")
     - if @session.venue_confirmed?
       a.location-pin href='#'
         = render partial: 'icons/map_pin'
