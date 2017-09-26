@@ -35,7 +35,7 @@ class Registration < ApplicationRecord
   after_create :send_confirmation_email
 
   def send_confirmation_email
-    ConfirmRegistrationJob.perform_async(self)
+    ConfirmRegistrationJob.perform_async(id)
   end
 
   def self.for_current_year

@@ -63,7 +63,7 @@ gem 'activeadmin-ajax_filter', '>= 0.3.7', github: 'jayzes/activeadmin-ajax_filt
 gem 'paper_trail'
 
 # Background processing
-gem 'sucker_punch'
+gem 'sidekiq'
 gem 'retries'
 
 group :development do

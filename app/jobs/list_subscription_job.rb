@@ -1,6 +1,6 @@
 class ListSubscriptionJob
 
-  include SuckerPunch::Job
+  include Sidekiq::Worker
 
   def perform(email, extra_fields = {})
     with_retries(max_tries: 5) do
