@@ -1,12 +1,4 @@
-class NotificationsMailer < ActionMailer::Base
-
-  include ScheduleHelper
-  helper ScheduleHelper
-
-  include SendGrid
-
-  default from: 'Denver Startup Week <info@denverstartupweek.org>'
-
+class NotificationsMailer < ApplicationMailer
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -86,41 +78,6 @@ class NotificationsMailer < ActionMailer::Base
     @registration = registration
     mail to: @registration.user.email,
       subject: "You are registered for Denver Startup Week #{Date.today.year}"
-  end
-
-  def notify_of_monday_daily_schedule(registration)
-    @day = 0
-    @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day+ 2).order('start_hour ASC')
-    mail to: @registration.user.email, subject: "Your Denver Startup Week Daily Schedule for #{formatted_start_date_for_index(@day + 2, '%A %-m/%-d')}"
-  end
-
-  def notify_of_tuesday_daily_schedule(registration)
-    @day = 1
-    @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
-    mail to: @registration.user.email, subject: "Your Denver Startup Week Daily Schedule for #{formatted_start_date_for_index(@day + 2, '%A %-m/%-d')}"
-  end
-
-  def notify_of_wednesday_daily_schedule(registration)
-    @day = 2
-    @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
-    mail to: @registration.user.email, subject: "Your Denver Startup Week Daily Schedule for #{formatted_start_date_for_index(@day + 2, '%A %-m/%-d')}"
-  end
-
-  def notify_of_thursday_daily_schedule(registration)
-    @day = 3
-    @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
-    mail to: @registration.user.email, subject: "Your Denver Startup Week Daily Schedule for #{formatted_start_date_for_index(@day + 2, '%A %-m/%-d')}"
-  end
-
-  def notify_of_friday_daily_schedule(registration)
-    @day = 4
-    @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
-    mail to: @registration.user.email, subject: "Your Denver Startup Week Daily Schedule for #{formatted_start_date_for_index(@day + 2, '%A %-m/%-d')}"
   end
 
   def send_attendee_message(message, users)

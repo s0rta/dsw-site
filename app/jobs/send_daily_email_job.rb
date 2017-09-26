@@ -4,6 +4,6 @@ class SendDailyEmailJob
 
   def perform(registration_id, day)
     registration = Registration.find(registration_id)
-    NotificationsMailer.send("notify_of_#{day}_daily_schedule", registration).deliver_now!
+    DailyScheduleMailer.send("notify_of_#{day}_daily_schedule", registration).deliver_now!
   end
 end
