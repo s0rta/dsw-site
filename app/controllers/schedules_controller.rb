@@ -18,7 +18,7 @@ class SchedulesController < ApplicationController
         respond_with @sessions
       end
       format.html do
-        redirect_to schedules_by_day_path(request.query_parameters)
+        redirect_to schedules_by_day_path({ start_day:  current_day_or_default }.merge(request.query_parameters))
       end
     end
   end
@@ -106,5 +106,16 @@ class SchedulesController < ApplicationController
                first!
     current_registration.session_registrations.where(submission_id: @session.id).destroy_all
     redirect_to schedule_path(@session)
+  end
+
+  private
+
+  def current_day_or_default
+    if EventSchedule.in_week?
+      day_index = ((Time.zone.now.at_beginning_of_day - EventSchedule::WEEK_START_DATE.at_beginning_of_day) / 1.day).ceil + 2
+      Submission::DAYS[day_index].downcase
+    else
+      'monday'
+    end
   end
 end
