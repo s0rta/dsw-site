@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
   get 'helpscout_hooks/show'
@@ -62,6 +64,10 @@ Rails.application.routes.draw do
   get 'disable-simple-reg', to: 'simple_registrations#disable', as: :disable_simple_reg
 
   post '/helpscout_hook', to: 'helpscout_hooks#create', as: :helpscout_hook
+
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   ActiveAdmin.routes(self)
 

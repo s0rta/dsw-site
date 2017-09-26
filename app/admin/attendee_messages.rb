@@ -60,7 +60,7 @@ ActiveAdmin.register AttendeeMessage do
 
   member_action :deliver, method: :post do
     msg = AttendeeMessage.find(params[:id])
-    SendAttendeeMessageJob.perform_async(msg)
+    SendAttendeeMessageJob.perform_async(msg.id)
     redirect_to admin_attendee_message_path(msg), notice: 'Send in progress!'
   end
 

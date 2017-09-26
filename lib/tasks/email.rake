@@ -37,7 +37,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_monday_daily_schedule(registration).deliver_now!
+        SendDailyEmailJob.perform_async(registration.id, 'monday')
       end
   end
 
@@ -50,7 +50,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_tuesday_daily_schedule(registration).deliver_now!
+        SendDailyEmailJob.perform_async(registration.id, 'tuesday')
       end
   end
 
@@ -63,7 +63,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_wednesday_daily_schedule(registration).deliver_now!
+        SendDailyEmailJob.perform_async(registration.id, 'wednesday')
       end
   end
 
@@ -76,7 +76,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_thursday_daily_schedule(registration).deliver_now!
+        SendDailyEmailJob.perform_async(registration.id, 'thursday')
       end
   end
 
@@ -89,7 +89,7 @@ namespace :email do
       group('registrations.id').
       order('registrations.id').each do |registration|
         Rails.logger.info "Sending daily e-mail to registration #{registration.id}"
-        NotificationsMailer.notify_of_friday_daily_schedule(registration).deliver_now!
+        SendDailyEmailJob.perform_async(registration.id, 'friday')
       end
   end
 end
