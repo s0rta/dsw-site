@@ -43,7 +43,7 @@ gem 'textacular'
 gem 'icalendar'
 
 gem 'premailer-rails'
-gem 'sendgrid'
+gem 'sendgrid', github: 'caring/sendgrid'
 
 # State machines
 gem 'simple_states'
