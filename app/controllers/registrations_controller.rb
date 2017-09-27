@@ -40,6 +40,7 @@ class RegistrationsController < ApplicationController
                                            :gender,
                                            :primary_role,
                                            :age_range,
+                                           :learn_more_pledge_1p,
                                            :track_id)
   end
 
