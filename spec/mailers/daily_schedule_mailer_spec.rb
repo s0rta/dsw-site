@@ -28,7 +28,6 @@ RSpec.describe DailyScheduleMailer, type: :mailer do
     let(:mail) { described_class.notify_of_wednesday_daily_schedule(registration) }
 
     it 'renders properly' do
-      pending
       expect(mail).to deliver_from('Denver Startup Week <info@denverstartupweek.org>')
       expect(mail).to deliver_to(registration.user.email)
       expect(mail).to have_subject('Your Denver Startup Week Daily Schedule for Wednesday 9/27')
