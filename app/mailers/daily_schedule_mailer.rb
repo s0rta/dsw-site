@@ -1,8 +1,9 @@
 class DailyScheduleMailer < ApplicationMailer
 
-  sendgrid_asm_group_id 3437
   sendgrid_enable :subscriptiontrack
-  sendgrid_subscriptiontrack_text replace: '|unsub|'
+  sendgrid_category :daily_schedule
+  sendgrid_subscriptiontrack_text replace: '[unsub]'
+  sendgrid_asm_group_id 3437
 
   def notify_of_monday_daily_schedule(registration)
     @day = 0
