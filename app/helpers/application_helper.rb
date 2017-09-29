@@ -52,7 +52,7 @@ module ApplicationHelper
 
   def mentor_sessions
     [
-      { title: 'Mentors & Advisors, "Roster by Specialty - to see list click "Book It""',
+      { title: 'Mentors & Advisors, "Roster by Specialty - to see list click "Book It"',
         timeslot: 'Friday 9/29: 11am-2pm',
         signup_url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT-sHP3qtTXcm54cnKDd4DKcGPO9iKCGvvYqM_3kZx2JH-K3gqRBzubNaSfSaELEpgyK2U0heh1ApDz/pubhtml?gid=2083275987&single=true' },
        { title: 'Dave Harris, "Marketing & Sales, Money, Investment, Funding, Planning & Strategy", Rockies Venture Fund',
@@ -66,7 +66,7 @@ module ApplicationHelper
         signup_url: 'http://slottd.com/events/oscjdvy3i5/slots' }
         { title: 'Rich Piech, "Growth, Marketing & Sales", Sales Engineered Systems',
         timeslot: 'Friday 9/29: 11-12pm',
-        signup_url: 'http://slottd.com/events/af5ustdpta/slots' },,
+        signup_url: 'http://slottd.com/events/af5ustdpta/slots' },
        { title: 'Natty Zola, "Growth, Money, Investment", TechStars',
         timeslot: 'Friday 9/29: 1-2pm',
         signup_url: 'http://slottd.com/events/nenvpqamdg/slots' },
