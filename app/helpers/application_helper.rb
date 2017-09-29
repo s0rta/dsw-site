@@ -63,17 +63,17 @@ module ApplicationHelper
         signup_url: 'http://slottd.com/events/7e752b1i58/slots' },
       { title: 'Nichole Montoya, "Investment, Funding, Planning & Strategy", Cheddar Up',
         timeslot: 'Friday 9/29: 11-1pm',
-        signup_url: 'http://slottd.com/events/oscjdvy3i5/slots' }
-        { title: 'Rich Piech, "Growth, Marketing & Sales", Sales Engineered Systems',
+        signup_url: 'http://slottd.com/events/oscjdvy3i5/slots' },
+      { title: 'Rich Piech, "Growth, Marketing & Sales", Sales Engineered Systems',
         timeslot: 'Friday 9/29: 11-12pm',
         signup_url: 'http://slottd.com/events/af5ustdpta/slots' },
-       { title: 'Natty Zola, "Growth, Money, Investment", TechStars',
+      { title: 'Natty Zola, "Growth, Money, Investment", TechStars',
         timeslot: 'Friday 9/29: 1-2pm',
         signup_url: 'http://slottd.com/events/nenvpqamdg/slots' },
-        { title: 'Terrance Carroll, "Legal, Money, Investment, Funding", Butler Snow LLP',
+      { title: 'Terrance Carroll, "Legal, Money, Investment, Funding", Butler Snow LLP',
         timeslot: 'Friday 9/29: 1-2pm',
         signup_url: 'http://slottd.com/events/vf5y9q6vk4/slots' },
-        { title: 'Rich Piech, "Growth, Marketing & Sales", Sales Engineered Systems',
+      { title: 'Rich Piech, "Growth, Marketing & Sales", Sales Engineered Systems',
         timeslot: 'Friday 9/29: 1-2pm',
         signup_url: 'http://slottd.com/events/lfwmplvbar/slots' }
     ]
