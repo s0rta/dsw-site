@@ -8,7 +8,11 @@ class DailyScheduleMailer < ApplicationMailer
     sendgrid_asm_group_id 3437
     @day = 0
     @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
+    @sessions = @registration.
+                submissions.
+                for_schedule.
+                where(start_day: @day + 2).
+                order('start_hour ASC')
     mail to: @registration.user.email,
          subject: "Your Denver Startup Week Daily Schedule for #{formatted_day_for_subject(@day + 2)}"
   end
@@ -17,7 +21,11 @@ class DailyScheduleMailer < ApplicationMailer
     sendgrid_asm_group_id 3437
     @day = 1
     @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
+    @sessions = @registration.
+                submissions.
+                for_schedule.
+                where(start_day: @day + 2).
+                order('start_hour ASC')
     mail to: @registration.user.email,
          subject: "Your Denver Startup Week Daily Schedule for #{formatted_day_for_subject(@day + 2)}"
   end
@@ -26,7 +34,11 @@ class DailyScheduleMailer < ApplicationMailer
     sendgrid_asm_group_id 3437
     @day = 2
     @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
+    @sessions = @registration.
+                submissions.
+                for_schedule.
+                where(start_day: @day + 2).
+                order('start_hour ASC')
     mail to: @registration.user.email,
          subject: "Your Denver Startup Week Daily Schedule for #{formatted_day_for_subject(@day + 2)}"
   end
@@ -35,7 +47,11 @@ class DailyScheduleMailer < ApplicationMailer
     sendgrid_asm_group_id 3437
     @day = 3
     @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
+    @sessions = @registration.
+                submissions.
+                for_schedule.
+                where(start_day: @day + 2).
+                order('start_hour ASC')
     mail to: @registration.user.email,
          subject: "Your Denver Startup Week Daily Schedule for #{formatted_day_for_subject(@day + 2)}"
   end
@@ -44,7 +60,11 @@ class DailyScheduleMailer < ApplicationMailer
     sendgrid_asm_group_id 3437
     @day = 4
     @registration = registration
-    @sessions = @registration.submissions.where(start_day: @day + 2).order('start_hour ASC')
+    @sessions = @registration.
+                submissions.
+                for_schedule.
+                where(start_day: @day + 2).
+                order('start_hour ASC')
     mail to: @registration.user.email,
          subject: "Your Denver Startup Week Daily Schedule for #{formatted_day_for_subject(@day + 2)}"
   end
