@@ -315,7 +315,7 @@ class Submission < ApplicationRecord
 
   def promote_updates!
     with_lock do
-      update(proposed_updates.merge(proposed_updates: nil))
+      update((proposed_updates || {}).merge(proposed_updates: nil))
     end
   end
 
