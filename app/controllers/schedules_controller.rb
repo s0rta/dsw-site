@@ -112,7 +112,8 @@ class SchedulesController < ApplicationController
 
   def current_day_or_default
     if EventSchedule.in_week?
-      day_index = ((Time.zone.now.at_beginning_of_day - EventSchedule::WEEK_START_DATE.at_beginning_of_day) / 1.day).ceil + 2
+      zone = ActiveSupport::TimeZone['America/Denver']
+      day_index = ((zone.now.at_beginning_of_day - EventSchedule::WEEK_START_DATE.at_beginning_of_day) / 1.day).ceil + 2
       Submission::DAYS[day_index].downcase
     else
       'monday'
