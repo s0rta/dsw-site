@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.4'
 
+gem 'mime-types', '>= 2.6.1', require: 'mime/types/columnar'
 gem 'rails', '~> 5.1.0'
 gem 'rake'
 gem 'pg'
@@ -22,9 +23,6 @@ gem 'responders'
 # Simple transparent captchas
 gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'
 
-gem 'simple_form'
-gem 'kaminari'
-
 gem 'emma', github: 'myemma/EmmaRuby'
 
 gem 'devise'
@@ -44,6 +42,7 @@ gem 'icalendar'
 
 gem 'premailer-rails'
 gem 'sendgrid', github: 'caring/sendgrid'
+gem 'retries'
 
 # State machines
 gem 'simple_states'
@@ -64,7 +63,6 @@ gem 'paper_trail'
 
 # Background processing
 gem 'sidekiq'
-gem 'retries'
 
 group :development do
   gem 'listen'

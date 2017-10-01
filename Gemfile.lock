@@ -382,9 +382,6 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.3, >= 3.3.3)
-    simple_form (3.5.0)
-      actionpack (> 4, < 5.2)
-      activemodel (> 4, < 5.2)
     simple_states (1.0.0)
       activesupport
       hashr (~> 0.0.10)
@@ -458,11 +455,11 @@ DEPENDENCIES
   html-pipeline
   icalendar
   jquery-rails
-  kaminari
   liquid
   listen
   lograge
   memcachier
+  mime-types (>= 2.6.1)
   newrelic_rpm
   paper_trail
   pg
@@ -485,7 +482,6 @@ DEPENDENCIES
   sendgrid!
   shoulda-matchers
   sidekiq
-  simple_form
   simple_states
   slim-rails
   textacular
