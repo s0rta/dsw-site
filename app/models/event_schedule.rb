@@ -4,6 +4,7 @@ module EventSchedule
   VOTING_CYCLE = 'voting'.freeze
   REGISTRATION_CYCLE = 'registration'.freeze
   WEEK_CYCLE = 'week'.freeze
+  POST_WEEK_CYCLE = 'post_week'.freeze
   PITCH_APPLICATION_CYCLE = 'pitch_application'.freeze
   PITCH_VOTING_CYCLE = 'pitch_voting'.freeze
   AMBASSADOR_APPLICATION_CYCLE = 'ambassador_application'.freeze
@@ -13,6 +14,7 @@ module EventSchedule
              VOTING_CYCLE,
              REGISTRATION_CYCLE,
              WEEK_CYCLE,
+             POST_WEEK_CYCLE,
              PITCH_APPLICATION_CYCLE,
              PITCH_VOTING_CYCLE,
              AMBASSADOR_APPLICATION_CYCLE,
@@ -28,6 +30,9 @@ module EventSchedule
 
   WEEK_START_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-09-25').freeze
   WEEK_END_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-09-29').freeze
+
+  POST_WEEK_START_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-09-30').freeze
+  POST_WEEK_END_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2018-03-01').freeze
 
   PITCH_APPLICATION_OPEN_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-08-08').freeze
   PITCH_APPLICATION_CLOSE_DATE = ActiveSupport::TimeZone['America/Denver'].parse('2017-08-31').freeze
@@ -82,12 +87,18 @@ module EventSchedule
         Time.zone.now < WEEK_END_DATE.at_end_of_day
     end
 
+    def post_week?
+      Time.zone.now > POST_WEEK_START_DATE.at_beginning_of_day &&
+        Time.zone.now < POST_WEEK_END_DATE.at_end_of_day
+    end
+
     def active_cycles
       cycles = []
       cycles << CFP_CYCLE if cfp_open?
       cycles << VOTING_CYCLE if voting_open?
       cycles << REGISTRATION_CYCLE if registration_open?
       cycles << WEEK_CYCLE if in_week?
+      cycles << POST_WEEK_CYCLE if post_week?
       cycles << PITCH_APPLICATION_CYCLE if pitch_application_open?
       cycles << PITCH_VOTING_CYCLE if pitch_voting_open?
       cycles << SPONSORSHIP_CYCLE if pitch_application_open?
