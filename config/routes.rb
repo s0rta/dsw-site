@@ -2,16 +2,34 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
-  get 'helpscout_hooks/show'
-
-  get '/assets', to: redirect('/contact/assets')
-  get '/faq', to: redirect('/contact/faq')
-
-  get '/resources', to: redirect('/program')
-
   if Rails.env.development?
     mount MailPreview => 'mailers'
   end
+
+  # Helpscout sidebar hook
+  get 'helpscout_hooks/show'
+  post '/helpscout_hook', to: 'helpscout_hooks#create', as: :helpscout_hook
+
+  # Admin tools
+  authenticate :user, ->(u) { u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
+  ActiveAdmin.routes(self)
+
+  # Redirects for old paths
+  get '/assets', to: redirect('/contact/assets')
+  get '/faq', to: redirect('/contact/faq')
+
+  get '/resources', to: redirect('/about')
+  get '/program', to: redirect('/about')
+  get '/program/ambassadors', to: redirect('/about/ambassadors')
+  get '/program/clusters', to: redirect('/about/clusters')
+  get '/program/previous', to: redirect('/about/previous')
+  get '/program/team', to: redirect('/about/team')
+  get '/program/tracks', to: redirect('/about/tracks')
+  get '/program/youth', to: redirect('/about/youth')
+  get '/panel-picker/mine', to: redirect('/dashboard')
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
@@ -21,8 +39,6 @@ Rails.application.routes.draw do
       get :confirm
     end
   end
-
-  get '/panel-picker/mine', to: redirect('/dashboard')
 
   resources :submissions, except: [:destroy ], path: 'panel-picker', path_names: { new: 'submit' } do
     collection do
@@ -62,14 +78,6 @@ Rails.application.routes.draw do
   get 'enable-simple-reg', to: 'simple_registrations#enable', as: :enable_simple_reg
   get 'disable-simple-reg', to: 'simple_registrations#disable', as: :disable_simple_reg
 
-  post '/helpscout_hook', to: 'helpscout_hooks#create', as: :helpscout_hook
-
-  authenticate :user, lambda { |u| u.is_admin? } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
-
-  ActiveAdmin.routes(self)
-
-  get '/(*page)', to: 'new_site#index', as: :page, defaults: { page: :index }
-  root to: 'new_site#index'
+  get '/(*page)', to: 'site#index', as: :page, defaults: { page: :index }
+  root to: 'site#index'
 end
