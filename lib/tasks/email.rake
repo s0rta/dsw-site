@@ -1,6 +1,6 @@
 namespace :email do
 
-  task :notify_of_acceptance => :environment do
+  task notify_of_acceptance: :environment do
     Track.submittable.each do |t|
       Rails.logger.info "Processing submissions for #{t.name} track"
       t.submissions.for_current_year.where(state: 'accepted').each do |submission|
@@ -10,7 +10,7 @@ namespace :email do
     end
   end
 
-  task :notify_of_rejection => :environment do
+  task notify_of_rejection: :environment do
     Track.submittable.each do |t|
       t.submissions.for_current_year.where(state: 'rejected').each do |submission|
         Rails.logger.info "Sending rejection notification to submission #{submission.id}"
@@ -19,7 +19,7 @@ namespace :email do
     end
   end
 
-  task :notify_of_waitlisting => :environment do
+  task notify_of_waitlisting: :environment do
     Track.submittable.each do |t|
       t.submissions.for_current_year.where(state: 'waitlisted').each do |submission|
         Rails.logger.info "Sending waitlisted notification to submission #{submission.id}"
@@ -28,7 +28,7 @@ namespace :email do
     end
   end
 
-  task :monday_schedule => :environment do
+  task monday_schedule: :environment do
     Registration.
       for_current_year.
       joins(:submissions).
@@ -41,7 +41,7 @@ namespace :email do
       end
   end
 
-  task :tuesday_schedule => :environment do
+  task tuesday_schedule: :environment do
     Registration.
       for_current_year.
       joins(:submissions).
@@ -54,7 +54,7 @@ namespace :email do
       end
   end
 
-  task :wednesday_schedule => :environment do
+  task wednesday_schedule: :environment do
     Registration.
       for_current_year.
       joins(:submissions).
@@ -67,7 +67,7 @@ namespace :email do
       end
   end
 
-  task :thursday_schedule => :environment do
+  task thursday_schedule: :environment do
     Registration.
       for_current_year.
       joins(:submissions).
@@ -80,7 +80,7 @@ namespace :email do
       end
   end
 
-  task :friday_schedule => :environment do
+  task friday_schedule: :environment do
     Registration.
       for_current_year.
       joins(:submissions).
@@ -93,7 +93,7 @@ namespace :email do
       end
   end
 
-  task :give_thanks => :environment do
+  task give_thanks: :environment do
     Submissions.for_current_year.for_schedule.each do |submission|
       Rails.logger.info "Giving thanks to submission #{submission.id}"
       NotificationsMailer.session_thanks(submission).deliver!
