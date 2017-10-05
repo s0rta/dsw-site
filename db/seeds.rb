@@ -7,7 +7,8 @@ Track.reset_column_information
     icon: 'person',
     color: 'orange',
     is_submittable: true,
-    description: <<-EOF.strip_heredoc.squish
+    email_alias: 'founder@denverstartupweek.org',
+    description: <<-EOF.strip_heredoc.squish,
     Whether you're just dreaming about starting a business, on your first, or a seasoned entrepreneur,
     the founder track will provide you with the skills and knowledge you need to found a company. Initial
     product development, go-to-market strategies, finding funding, and building a team are just some of the
@@ -18,7 +19,8 @@ Track.reset_column_information
     icon: 'chart',
     color: 'blue',
     is_submittable: true,
-    description: <<-EOF.strip_heredoc.squish
+    email_alias: 'growth@denverstartupweek.org',
+    description: <<-EOF.strip_heredoc.squish,
     No matter how good it is, no product sells itself. A team that markets, sells, and supports the product
     well is a huge advantage for any startup. Every aspect of digital marketing, inbound and outbound sales,
     and customer experience is going to be covered at Denver Startup Week. Growing a startup depends on these
@@ -29,7 +31,8 @@ Track.reset_column_information
     icon: 'eyeball',
     color: 'green',
     is_submittable: true,
-    description: <<-EOF.strip_heredoc.squish
+    email_alias: 'designer@denverstartupweek.org',
+    description: <<-EOF.strip_heredoc.squish,
     Seeing things others do not see is an art and our design track is packed with creative outlets to expand your
     thinking and ability to design.  From fashion to architecture to breakout digital design and artwork – the
     design track is focused on the critical elements of design. Learn new skills, hear from those responsible for
@@ -41,7 +44,8 @@ Track.reset_column_information
     icon: 'phone',
     color: 'purple',
     is_submittable: true,
-    description: <<-EOF.strip_heredoc.squish
+    email_alias: 'product@denverstartupweek.org',
+    description: <<-EOF.strip_heredoc.squish,
     Product management, development, and marketing, all different sides of the same coin that somehow bridges the gap
     between building the product and delivering it to the market. Product skills are in huge demand but there aren't
     very many places where you can go to acquire them. Come improve your product game at Denver Startup Week!
@@ -51,7 +55,8 @@ Track.reset_column_information
     icon: 'terminal',
     color: 'gold',
     is_submittable: true,
-    description: <<-EOF.strip_heredoc.squish
+    email_alias: 'developer@denverstartupweek.org',
+    description: <<-EOF.strip_heredoc.squish,
     Frontend, backend, full stack, big data, APIs, architecture, methodologies, junior, senior, we have it all. Learn
     new technologies, refine your skills, or just check out something completely different. Walk away a better engineer
     than you were before!
@@ -61,7 +66,8 @@ Track.reset_column_information
     icon: 'wrench',
     color: 'teal',
     is_submittable: true,
-    description: <<-EOF.strip_heredoc.squish
+    email_alias: 'maker@denverstartupweek.org',
+    description: <<-EOF.strip_heredoc.squish,
     Encompasses all physical products for every type of maker under the sun - from outdoor rec, distilling (or brewing!),
     and crafting, to connected devices, open-source hardware, 3D printing, and IOT (just to name a few) - join us to hear
     stories behind breakout brands, learn about new technologies in manufacturing, and connect other artisans, engineers,
@@ -72,7 +78,8 @@ Track.reset_column_information
     icon: 'star',
     color: 'headline-session',
     is_submittable: true,
-    description: <<-EOF.strip_heredoc.squish
+    email_alias: 'info@denverstartupweek.org',
+    description: <<-EOF.strip_heredoc.squish,
     Drawing together members of the community across the boundaries of industry, job function, and background, our Headline
     Events provide entertaining and interesting content, unique perspectives, and a forum for our community to connect and share ideas.
     EOF
@@ -81,11 +88,13 @@ Track.reset_column_information
     icon: 'basecamp',
     color: 'basecamp-session',
     is_submittable: false,
+    email_alias: 'info@denverstartupweek.org',
   },
   'Social Events' => {
     icon: 'martini',
     color: 'red',
     is_submittable: false,
+    email_alias: 'info@denverstartupweek.org',
   }
 }.each do |track_name, attrs|
   t = Track.where(name: track_name).first_or_initialize
