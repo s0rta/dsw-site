@@ -33,7 +33,7 @@ RSpec.describe Submission, type: :model do
 
   describe 'subscribing to e-mail lists' do
     let(:user) { create(:user) }
-    let(:track) { Track.create!(name: 'Test') }
+    let(:track) { create(:track, name: 'Test') }
     let(:year) { Date.today.year.to_s }
 
     it 'subscribes after creation' do
@@ -91,6 +91,49 @@ RSpec.describe Submission, type: :model do
         with('test1@example.com', submittedyears: [ year ], confirmedyears: [ year ])
       expect(ListSubscriptionJob).to have_received(:perform_async).
         with('test2@example.com', submittedyears: [ year ], confirmedyears: [ year ])
+    end
+  end
+
+  describe 'sending e-mails' do
+    let(:user) { create(:user, email: 'user@example.com') }
+    let(:chair) { create(:user) }
+    let(:track) { create(:track, chair_ids: [ chair.id ]) }
+    let(:submission) do
+      create(:submission,
+             submitter: user,
+             contact_email: 'test1@example.com, test2@example.com')
+    end
+
+    it 'sends and records an acceptance e-mail' do
+      submission.send_accept_email!
+      expect(submission.sent_notifications.size).to eq(1)
+      last_sent_notification = submission.sent_notifications.last
+      expect(last_sent_notification.kind).to eq(SentNotification::ACCEPTANCE_KIND)
+      expect(last_sent_notification.recipient_email).to eq('test1@example.com, test2@example.com, user@example.com')
+    end
+
+    it 'sends and records a rejection e-mail' do
+      submission.send_reject_email!
+      expect(submission.sent_notifications.size).to eq(1)
+      last_sent_notification = submission.sent_notifications.last
+      expect(last_sent_notification.kind).to eq(SentNotification::REJECTION_KIND)
+      expect(last_sent_notification.recipient_email).to eq('test1@example.com, test2@example.com, user@example.com')
+    end
+
+    it 'sends and records a waitlisting e-mail' do
+      submission.send_waitlist_email!
+      expect(submission.sent_notifications.size).to eq(1)
+      last_sent_notification = submission.sent_notifications.last
+      expect(last_sent_notification.kind).to eq(SentNotification::WAITLISTING_KIND)
+      expect(last_sent_notification.recipient_email).to eq('test1@example.com, test2@example.com, user@example.com')
+    end
+
+    it 'sends and records a thanks e-mail' do
+      submission.send_thanks_email!
+      expect(submission.sent_notifications.size).to eq(1)
+      last_sent_notification = submission.sent_notifications.last
+      expect(last_sent_notification.kind).to eq(SentNotification::THANKS_KIND)
+      expect(last_sent_notification.recipient_email).to eq('test1@example.com, test2@example.com, user@example.com')
     end
   end
 end

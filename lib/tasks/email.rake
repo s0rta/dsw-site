@@ -96,7 +96,7 @@ namespace :email do
   task give_thanks: :environment do
     Submission.for_current_year.for_schedule.each do |submission|
       Rails.logger.info "Giving thanks to submission #{submission.id}"
-      NotificationsMailer.session_thanks(submission).deliver!
+      submission.send_thanks_email!
     end
   end
 end

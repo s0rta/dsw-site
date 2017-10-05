@@ -285,7 +285,7 @@ class Submission < ApplicationRecord
     message = NotificationsMailer.notify_of_submission_venue_match(self)
     message.deliver_now!
     sent_notifications.create! kind: SentNotification::VENUE_MATCH_KIND,
-                               recipient_email: contact_email,
+                               recipient_email: message.to.join(', '),
                                body: message.message.to_yaml
   end
 
@@ -293,7 +293,7 @@ class Submission < ApplicationRecord
     message = NotificationsMailer.notify_of_submission_acceptance(self)
     message.deliver_now!
     sent_notifications.create! kind: SentNotification::ACCEPTANCE_KIND,
-                               recipient_email: contact_email,
+                               recipient_email: message.to.join(', '),
                                body: message.message.to_yaml
   end
 
@@ -301,7 +301,7 @@ class Submission < ApplicationRecord
     message = NotificationsMailer.notify_of_submission_rejection(self)
     message.deliver_now!
     sent_notifications.create! kind: SentNotification::REJECTION_KIND,
-                               recipient_email: contact_email,
+                               recipient_email: message.to.join(', '),
                                body: message.message.to_yaml
   end
 
@@ -309,7 +309,15 @@ class Submission < ApplicationRecord
     message = NotificationsMailer.notify_of_submission_waitlisting(self)
     message.deliver_now!
     sent_notifications.create! kind: SentNotification::WAITLISTING_KIND,
-                               recipient_email: contact_email,
+                               recipient_email: message.to.join(', '),
+                               body: message.message.to_yaml
+  end
+
+  def send_thanks_email!
+    message = NotificationsMailer.session_thanks(self)
+    message.deliver_now!
+    sent_notifications.create! kind: SentNotification::THANKS_KIND,
+                               recipient_email: message.to.join(', '),
                                body: message.message.to_yaml
   end
 

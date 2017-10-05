@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Schedule API', type: :request do
 
   let(:submitter) { User.create!(name: 'Test User', email: 'test@example.com', password: 'password') }
-  let(:track) { Track.create!(name: 'Tech') }
+  let(:track) { create(:track, name: 'Tech') }
   let!(:submission) do
     submitter.submissions.create!(track_id: track.id,
                                   title: 'Hello!',

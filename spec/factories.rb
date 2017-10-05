@@ -14,6 +14,9 @@ FactoryGirl.define do
 
   factory :track do
     sequence(:name) { |n| "Track #{n}" }
+    email_alias { "#{name.parameterize}@example.com" }
+    color 'teal'
+    icon 'eyeball'
   end
 
   factory :submission do

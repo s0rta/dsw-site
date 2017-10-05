@@ -2,17 +2,12 @@ require 'spec_helper'
 
 feature 'Providing feedback on submissions' do
 
-  before do
-    @track = Track.new name: 'Bizness'
-    @track.save!
-  end
-
   let(:user) do
     create(:user, email: 'test@example.com', password: 'password')
   end
 
   let(:track) do
-    Track.create! name: 'Founder', is_submittable: true
+    create(:track, name: 'Founder', is_submittable: true)
   end
 
   let!(:submission) do

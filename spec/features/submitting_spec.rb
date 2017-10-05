@@ -4,9 +4,7 @@ feature 'Creating a submission' do
 
   before do
     @chair = create(:user, name: 'Mr. Chairman', email: 'chair@example.com', password: 'passsword')
-    @track = Track.new name: 'Bizness', is_submittable: true
-    @track.chairs << @chair
-    @track.save!
+    @track = create(:track, name: 'Bizness', is_submittable: true, chair_ids: [ @chair.id ])
   end
 
   describe 'when submissions are open' do

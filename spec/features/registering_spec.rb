@@ -12,8 +12,8 @@ feature 'Registering to attend' do
   end
 
   let(:track) do
-    Track.create! name: 'Founder',
-                  is_submittable: true
+    create(:track, name: 'Founder',
+                   is_submittable: true)
   end
 
   let!(:submission) do

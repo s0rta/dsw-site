@@ -42,7 +42,8 @@ class NotificationsMailer < ApplicationMailer
 
   def notify_of_submission_acceptance(submission)
     @submission = submission
-    mail to: @submission.contact_emails,
+    mail to: [ @submission.contact_emails,
+               @submission.submitter.email ].flatten.uniq,
          subject: 'RESPONSE NEEDED: Your Denver Startup Week session has been accepted!',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,
@@ -51,13 +52,15 @@ class NotificationsMailer < ApplicationMailer
 
   def notify_of_submission_rejection(submission)
     @submission = submission
-    mail to: @submission.contact_emails,
+    mail to: [ @submission.contact_emails,
+               @submission.submitter.email ].flatten.uniq,
          subject: 'Your session proposal for Denver Startup Week'
   end
 
   def notify_of_submission_waitlisting(submission)
     @submission = submission
-    mail to: @submission.contact_emails,
+    mail to: [ @submission.contact_emails,
+               @submission.submitter.email ].flatten.uniq,
          subject: 'Your session proposal for Denver Startup Week',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,
@@ -67,7 +70,8 @@ class NotificationsMailer < ApplicationMailer
   def notify_of_submission_venue_match(submission)
     @submission = submission
     mail to: [ @submission.contact_emails,
-               @submission.venue.contact_emails ].flatten,
+               @submission.venue.contact_emails,
+               @submission.submitter.email ].flatten.uniq,
          subject: 'Denver Startup Week session location intro',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,

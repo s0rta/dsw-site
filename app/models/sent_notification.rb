@@ -6,10 +6,13 @@ class SentNotification < ApplicationRecord
   REJECTION_KIND = 'rejected'
   VENUE_MATCH_KIND = 'venue_match'
   WAITLISTING_KIND = 'waitlisted'
+  THANKS_KIND = 'thanks'
+
   KINDS = [ ACCEPTANCE_KIND,
             REJECTION_KIND,
             VENUE_MATCH_KIND,
-            WAITLISTING_KIND ].freeze
+            WAITLISTING_KIND,
+            THANKS_KIND ].freeze
 
   belongs_to :submission
 

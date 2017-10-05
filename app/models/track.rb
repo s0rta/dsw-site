@@ -5,7 +5,10 @@ class Track < ApplicationRecord
   #                 :icon,
   #                 :email_alias
 
-  validates :name, presence: true
+  validates :name,
+            :email_alias,
+            :icon,
+            :color, presence: true
 
   has_many :submissions, dependent: :destroy
   has_and_belongs_to_many :chairs, class_name: 'User'

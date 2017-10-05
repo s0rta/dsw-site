@@ -4,7 +4,6 @@ feature 'Registering to attend (via kiosk)' do
 
   before do
     allow(ListSubscriptionJob).to receive(:perform_async)
-    @track = Track.create! name: 'Bizness'
     visit '/enable-simple-reg'
   end
 
@@ -19,8 +18,8 @@ feature 'Registering to attend (via kiosk)' do
   end
 
   let!(:track) do
-    Track.create! name: 'Founder',
-                  is_submittable: true
+    create :track, name: 'Founder',
+                   is_submittable: true
   end
 
 
