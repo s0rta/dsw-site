@@ -25,4 +25,9 @@ class MailPreview < ActionMailer::Preview
     DailyScheduleMailer.notify_of_friday_daily_schedule(registration)
   end
 
+  def session_thanks
+    session = Submission.first
+    NotificationsMailer.session_thanks(session)
+  end
+
 end

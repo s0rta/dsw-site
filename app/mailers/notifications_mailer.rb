@@ -87,4 +87,11 @@ class NotificationsMailer < ApplicationMailer
          subject: "Regarding '#{message.submission.full_title}': #{message.subject}"
   end
 
+  def session_thanks(submission)
+    @submission = submission
+    mail to: [ @submission.contact_emails,
+               @submission.submitter.email ].flatten.uniq,
+         subject: 'Thank you, DSW session organizers!'
+  end
+
 end
