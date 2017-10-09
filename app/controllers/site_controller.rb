@@ -1,4 +1,4 @@
-class NewSiteController < ApplicationController
+class SiteController < ApplicationController
 
   respond_to :html
 
@@ -31,7 +31,7 @@ class NewSiteController < ApplicationController
   private
 
   def page_partial
-    template_name = "new_site/#{params[:page].presence || 'index'}"
+    template_name = "site/#{params[:page].presence || 'index'}"
     lookup_context.find(template_name).virtual_path
   end
 end
