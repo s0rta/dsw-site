@@ -45,7 +45,7 @@ feature 'Registering to attend' do
       fill_in 'Password', with: 'password'
       fill_in 'Confirm Password', with: 'password'
       click_button 'Sign Up'
-      select 'Male', from: 'registration_gender'
+      select 'he/him/his', from: 'registration_gender'
       select '25-34 years old', from: 'registration_age_range'
       select 'Founder', from: 'registration_track_id'
       fill_in 'registration_company', with: 'Example.com'
