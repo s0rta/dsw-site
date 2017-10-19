@@ -309,6 +309,41 @@ ALTER SEQUENCE newsletter_signups_id_seq OWNED BY newsletter_signups.id;
 
 
 --
+-- Name: newsroom_items; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE newsroom_items (
+    id bigint NOT NULL,
+    title character varying NOT NULL,
+    attachment character varying,
+    external_link character varying,
+    is_active boolean DEFAULT true NOT NULL,
+    release_date date NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: newsroom_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE newsroom_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: newsroom_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE newsroom_items_id_seq OWNED BY newsroom_items.id;
+
+
+--
 -- Name: pitch_contest_entries; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -976,6 +1011,13 @@ ALTER TABLE ONLY newsletter_signups ALTER COLUMN id SET DEFAULT nextval('newslet
 
 
 --
+-- Name: newsroom_items id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY newsroom_items ALTER COLUMN id SET DEFAULT nextval('newsroom_items_id_seq'::regclass);
+
+
+--
 -- Name: pitch_contest_entries id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1149,6 +1191,14 @@ ALTER TABLE ONLY homepage_ctas
 
 ALTER TABLE ONLY newsletter_signups
     ADD CONSTRAINT newsletter_signups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: newsroom_items newsroom_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY newsroom_items
+    ADD CONSTRAINT newsroom_items_pkey PRIMARY KEY (id);
 
 
 --
@@ -1684,6 +1734,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170918201311'),
 ('20170920024945'),
 ('20170925061912'),
-('20171010165924');
+('20171010165924'),
+('20171018232858');
 
 

@@ -1,0 +1,22 @@
+= render partial: 'layouts/shared/contact_nav', locals: { item: :press }
+
+section.common.purple
+  .section-content.sm-centered
+    h1 Latest Press Releases & Mentions
+    h6 For all press inquiries, please e-mail #{link_to 'info@denverstartupweek.org', 'mailto:info@denverstartupweek.org?subject=Denver%20Startup%Week%20Press'}.
+
+- if NewsroomItem.active.any?
+  .section-content.sm-centered
+    .list-flex-container
+      - NewsroomItem.active.order('created_at DESC').each do |ni|
+        .list-item
+          h6 = ni.title_with_date
+          .list-icons
+            - if ni.attachment.present?
+              = link_to ni.attachment.url do
+                = render partial: 'icons/download'
+            - else
+              = link_to ni.external_link do
+                = render partial: 'icons/arrow_right'
+
+
