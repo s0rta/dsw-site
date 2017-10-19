@@ -202,16 +202,20 @@ ActiveAdmin.register Submission do
 
   member_action :export_attendees, method: :get do
     registrations = Submission.find(params[:id]).user_registrations.includes(:user)
-    csv_text = ::CSV.generate do |csv|
-      registrations.each do |registration|
-        csv << [ registration.user.name,
-                 registration.primary_role,
-                 registration.user.email,
-                 registration.zip,
-                 registration.gender ]
+    csv_text = Enumerator.new do |lines|
+      registrations.find_each do |registration|
+        lines << [ registration.user.name,
+                   registration.primary_role,
+                   registration.user.email,
+                   registration.zip,
+                   registration.gender ].to_csv
       end
     end
-    render csv: csv_text
+    response.headers['Content-Type'] ||= 'text/csv'
+    response.headers['Content-Disposition'] = 'attachment; filename=attendees.csv'
+    response.headers['Content-Transfer-Encoding'] = 'binary'
+    response.headers['Cache-Control'] = 'no-cache'
+    self.response_body = csv_text
   end
 
   show do
