@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
+  before_action :set_honeybager_context
 
   self.responder = ApplicationResponder
   respond_to :html
@@ -70,6 +71,15 @@ class ApplicationController < ActionController::Base
       current_user.id
     else
       'Unknown user'
+    end
+  end
+
+  def set_honeybager_context
+    if user_signed_in?
+      Honeybadger.context({
+        user_id: current_user.id,
+        user_email: current_user.email
+      })
     end
   end
 
