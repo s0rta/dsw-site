@@ -8,15 +8,12 @@ gem 'rake'
 gem 'pg'
 gem 'puma'
 
-gem 'jquery-rails'
 gem 'slim-rails'
 gem 'sass-rails'
-gem 'coffee-rails'
-gem 'underscore-rails'
 gem 'uglifier'
 gem 'font_assets'
 gem 'autoprefixer-rails'
-gem 'select2-rails'
+gem 'webpacker', '~> 3.0'
 
 gem 'responders'
 
