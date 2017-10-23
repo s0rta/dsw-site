@@ -4,6 +4,7 @@ RSpec.configure do |config|
     # http://code.dblock.org/2013/08/04/precompiling-rails-assets-before-rspeccapybara-integration-tests.html
     message = 'Precompiling assets to preempt Capybara timeout issues'
     ms = Benchmark.ms do
+      Webpacker.compile
       assets = Rails.application.config.assets.precompile
       ActionView::Base.assets_manifest.compile(assets)
     end
