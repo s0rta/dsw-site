@@ -13,14 +13,6 @@ GIT
       json
 
 GIT
-  remote: git://github.com/goodwill/capybara-select2.git
-  revision: 585192e4bb0db8d52e761ab68f08c17294806447
-  specs:
-    capybara-select2 (1.0.1)
-      capybara
-      rspec
-
-GIT
   remote: git://github.com/jayzes/activeadmin-ajax_filter.git
   revision: 55d8ebfb45fa7181ead12eae54c99fe8037285a0
   specs:
@@ -438,7 +430,6 @@ DEPENDENCIES
   activeadmin-ajax_filter (>= 0.3.7)!
   autoprefixer-rails
   capybara
-  capybara-select2!
   carrierwave (~> 1.0)
   commonmarker
   dalli
