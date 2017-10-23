@@ -27,6 +27,6 @@ export default class BookingDropdown {
     const url = $(e.target).find('select').val();
     window.location.href = url;
   }
-};
+}
 
 Bindable.register('booking-dropdown', BookingDropdown);

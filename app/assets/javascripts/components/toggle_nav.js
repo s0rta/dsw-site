@@ -41,6 +41,6 @@ export default class ToggleNav {
   close() {
     return $('.outer-modal-container').removeClass('nav-open');
   }
-};
+}
 
 Bindable.register('toggle-nav', ToggleNav);

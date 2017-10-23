@@ -52,6 +52,6 @@ export default class GeneralInquiry {
       });
     }
   }
-};
+}
 
 Bindable.register('general-inquiry', GeneralInquiry);

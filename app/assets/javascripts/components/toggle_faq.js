@@ -25,6 +25,6 @@ export default class ToggleFaq {
     const selector = $(e.currentTarget).next('.panel');
     return $(selector).toggleClass('show');
   }
-};
+}
 
 Bindable.register('toggle-faq', ToggleFaq);

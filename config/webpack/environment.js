@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 const { environment } = require('@rails/webpacker')
 const webpack = require('webpack')
 

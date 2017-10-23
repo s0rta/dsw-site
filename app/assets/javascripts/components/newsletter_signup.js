@@ -46,6 +46,6 @@ export default class NewsletterSignup {
       });
     }
   }
-};
+}
 
 Bindable.register('newsletter-signup', NewsletterSignup);

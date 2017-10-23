@@ -26,9 +26,9 @@ class Bindable {
 
   dispose() {
     for (let bindable of Array.from(this.bindables)) {
-      var instance;
       bindable = $(bindable);
-      if (instance = bindable.data(this.instanceKey)) {
+      const instance = bindable.data(this.instanceKey)
+      if (instance) {
         if (typeof (instance != null ? instance.release : undefined) === 'function') { instance.release(); }
         if (typeof (instance != null ? instance.dispose : undefined) === 'function') { instance.dispose(); }
         bindable.data(this.instanceKey, null);
@@ -48,14 +48,14 @@ class Bindable {
 
 
   bind(el, dataKey) {
-    let _class;
     if (dataKey == null) { ({ dataKey } = this); }
     el = $(el);
     const key = el.data(dataKey);
-    if (_class = this.getClass(key)) {
+    const _class = this.getClass(key)
+    if (_class) {
       if (!el.data(this.instanceKey)) { return el.data(this.instanceKey, new _class(el)); }
     } else {
-      return (typeof console !== 'undefined' && console !== null ? console.error(`Bindable for key: ${key} not found in Bindable.registry for instance`, el) : undefined);
+      return (typeof console !== 'undefined' && console !== null ? console.error(`Bindable for key: ${key} not found in Bindable.registry for instance`, el) : undefined); // eslint-disable-line no-console
     }
   }
 
@@ -69,7 +69,7 @@ class Bindable {
     this.registry[key] = {class: klass};
     return null;
   }
-};
+}
 
 export { Bindable }
 

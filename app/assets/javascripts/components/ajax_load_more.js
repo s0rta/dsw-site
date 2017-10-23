@@ -1,4 +1,5 @@
 import Bindable from 'utensils/bindable'
+import throttle from 'lodash.throttle'
 
 export default class AjaxLoadMore {
   constructor(el, data) {
@@ -15,7 +16,7 @@ export default class AjaxLoadMore {
 
   addListeners() {
     this.el.on('ajax:success', 'a.load-more', this.appendMore);
-    this.throttledScroll = _.throttle(this.handleScroll, 250, { trailingEdge: false });
+    this.throttledScroll = throttle(this.handleScroll, 250, { trailingEdge: false });
     $(window).on('scroll', this.throttledScroll);
   }
 
@@ -35,6 +36,6 @@ export default class AjaxLoadMore {
       return $.ajax({url: this.el.find('a').attr('href'), dataType: 'json'}).then(json => this.appendMore(event,json));
     }
   }
-};
+}
 
 Bindable.register('ajax-load-more', AjaxLoadMore)

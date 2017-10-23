@@ -25,6 +25,6 @@ export default class AjaxVoter {
     const noun = data.count === 1 ? 'vote' : 'votes';
     return countEl.html(`${data.count} ${noun}`);
   }
-};
+}
 
 Bindable.register('ajax-voter', AjaxVoter);

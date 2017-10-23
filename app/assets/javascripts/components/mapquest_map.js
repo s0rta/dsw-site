@@ -1,3 +1,4 @@
+/* global L, MQ */
 import Bindable from 'utensils/bindable'
 
 export default class MapquestMap {
@@ -24,6 +25,6 @@ export default class MapquestMap {
         .openPopup();
     });
   }
-};
+}
 
 Bindable.register('mapquest-map', MapquestMap);
