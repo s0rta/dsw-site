@@ -24,7 +24,7 @@ feature 'Resetting my password' do
       fill_in 'New Password', with: 'password1'
       fill_in 'Confirm Your New Password', with: 'password1'
       click_on 'Change Password'
-      expect(page).to have_content('Your password was changed successfully. You are now signed in.')
+      expect(page).to have_content('Your password has been changed successfully. You are now signed in.')
     end
   end
 end
