@@ -8,15 +8,12 @@ gem 'rake'
 gem 'pg'
 gem 'puma'
 
-gem 'jquery-rails'
 gem 'slim-rails'
 gem 'sass-rails'
-gem 'coffee-rails'
-gem 'underscore-rails'
 gem 'uglifier'
 gem 'font_assets'
 gem 'autoprefixer-rails'
-gem 'select2-rails'
+gem 'webpacker', '~> 3.0'
 
 gem 'responders'
 
@@ -77,7 +74,6 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'capybara-select2', github: 'goodwill/capybara-select2'
   gem 'selenium-webdriver', '~> 2.53'
   gem 'database_cleaner'
   gem 'email_spec', '~> 2.1.0'
