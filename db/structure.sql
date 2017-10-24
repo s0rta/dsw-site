@@ -450,7 +450,7 @@ CREATE TABLE registrations (
     year integer,
     contact_email character varying(255),
     zip character varying(255),
-    company_name character varying(255),
+    original_company_name character varying(255),
     gender character varying(255),
     primary_role character varying(255),
     track_id integer,
@@ -663,7 +663,7 @@ CREATE TABLE submissions (
     slides_url character varying,
     video_url character varying,
     cluster_id integer,
-    company_name character varying,
+    original_company_name character varying,
     proposed_updates json,
     open_to_collaborators boolean,
     from_underrepresented_group boolean,
@@ -1833,6 +1833,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171018232421'),
 ('20171018232858'),
 ('20171023230412'),
-('20171023230539');
+('20171023230539'),
+('20171024210033');
 
 
