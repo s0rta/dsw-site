@@ -11,7 +11,6 @@ ActiveAdmin.register Company do
     actions
   end
 
-
   filter :name
 
 end

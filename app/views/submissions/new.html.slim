@@ -1,3 +1,6 @@
+- content_for :extra_body_tags do
+  = stylesheet_pack_tag 'application'
+
 = render partial: 'dashboards/nav', locals: { item: :submit }
 
 .submission-close-count
@@ -29,7 +32,7 @@ section.common.sm-centered
       = f.text_field :title, required: 'required', placeholder: 'Session Title'
 
       = f.label :company_name, 'Are you submitting this proposal on behalf of a company or group? If so please provide the name of it here.'
-      = f.text_field :company_name
+      = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
 
       = f.label :open_to_collaborators, 'We periodically receive inquiries from potential panelists or session organizers who are interested in collaborating with others to put on a session on a particular topic. Are you open to collaborating with others on this proposal?'
       = f.select :open_to_collaborators, [ [ 'Yes', true ], [ 'No', false ] ], selected: true, required: 'required'

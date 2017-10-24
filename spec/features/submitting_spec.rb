@@ -14,6 +14,10 @@ feature 'Creating a submission' do
       end
     end
 
+    before do
+      create(:company, name: 'Example.com')
+    end
+
     scenario 'User submits a new idea' do
       visit '/panel-picker/mine' # Can't click on the homepage for some reason
       click_on 'Create an account'
@@ -30,6 +34,11 @@ feature 'Creating a submission' do
       fill_in 'submission_target_audience_description', with: 'People who like talks.'
       fill_in 'submission_notes', with: 'Please pick my talk.'
       fill_in 'submission_contact_email', with: 'test2@example.com'
+
+      # Use the autocompleter to select
+      fill_in 'submission_company_name', with: 'Exa'
+      find('.awesomplete li', text: 'Example.com').click
+
       click_button 'Submit'
       expect(page).to have_content('Thanks!')
 
