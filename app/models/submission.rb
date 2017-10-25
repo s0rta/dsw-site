@@ -39,6 +39,7 @@ class Submission < ApplicationRecord
   belongs_to :submitter, class_name: 'User'
   belongs_to :track
   belongs_to :venue, optional: true
+  belongs_to :company, optional: true
   belongs_to :cluster, optional: true
 
   has_many :votes, dependent: :destroy
@@ -278,6 +279,14 @@ class Submission < ApplicationRecord
     else
       title
     end
+  end
+
+  def company_name
+    company.try(:name)
+  end
+
+  def company_name=(value)
+    self.company = Company.where('LOWER(name) = LOWER(?)', value).first_or_initialize(name: value)
   end
 
   # Actions

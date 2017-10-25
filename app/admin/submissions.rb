@@ -27,7 +27,7 @@ ActiveAdmin.register Submission do
                 :slides_url,
                 :video_url,
                 :live_stream_url,
-                :company_name
+                :company_id
 
   controller do
     def scoped_collection
@@ -37,6 +37,7 @@ ActiveAdmin.register Submission do
                               :user_registrations,
                               :venue,
                               :cluster,
+                              :company,
                               sponsorship: :track)
     end
 
@@ -101,7 +102,7 @@ ActiveAdmin.register Submission do
     end
     column :created_at
     column :updated_at
-    column :company_name
+    column(:company_name) { |s| s.company.try(:name) }
     column :contact_email
     column :estimated_size
     column :volunteers_needed
@@ -128,7 +129,7 @@ ActiveAdmin.register Submission do
   filter :description
   filter :track
   filter :venue, as: :select, collection: -> { Venue.alphabetical }
-  filter :company_name
+  filter :company, as: :select, collection: -> { Company.all }
   filter :format
   filter :submitter_name_cont, as: :string, label: 'Submitter Name'
   filter :start_day, as: :select, collection: Submission::DAYS.invert
@@ -157,7 +158,7 @@ ActiveAdmin.register Submission do
     end
     f.inputs 'Submitter' do
       f.input :contact_email, hint: 'Multiple addresses are allowed; separate them with commas'
-      f.input :company_name
+      f.input :company_id, as: :ajax_select, data: { url: filter_admin_companies_path, search_fields: [ :name ] }
       f.input :open_to_collaborators
       f.input :from_underrepresented_group
       f.input :notes, label: 'Pitch'

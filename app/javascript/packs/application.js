@@ -21,6 +21,9 @@ import 'components/ajax_voter'
 import 'components/ajax_load_more'
 import 'components/mapquest_map'
 import 'components/booking_dropdown'
+import 'components/autocompleter'
+
+import 'awesomplete/awesomplete.css'
 
 document.addEventListener('DOMContentLoaded', () => {
   bindable.dispose()

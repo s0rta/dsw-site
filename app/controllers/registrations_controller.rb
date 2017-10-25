@@ -36,7 +36,7 @@ class RegistrationsController < ApplicationController
   def registration_params
     params.fetch(:registration, {}).permit(:year,
                                            :zip,
-                                           :company,
+                                           :company_name,
                                            :gender,
                                            :primary_role,
                                            :age_range,

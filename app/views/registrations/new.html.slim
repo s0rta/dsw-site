@@ -1,3 +1,5 @@
+- content_for :extra_body_tags do
+  = stylesheet_pack_tag 'application'
 nav
   .section-content
     h1 Register to Attend
@@ -32,8 +34,8 @@ section.common
       = f.label :track_id, 'Which track are you most interested in?'
       = f.select :track_id, tracks_for_select, required: 'required'
 
-      = f.label :company, 'What company do you work for?'
-      = f.text_field :company
+      = f.label :company_name, 'What company do you work for?'
+      = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
 
       = f.label :primary_role, 'What is your job title?'
       = f.text_field :primary_role, required: 'required'

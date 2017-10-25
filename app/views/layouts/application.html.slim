@@ -18,15 +18,16 @@ html
       == yield
     = render partial: 'layouts/shared/site_footer'
     = javascript_pack_tag 'application'
-  javascript:
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    javascript:
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-40894134-1', 'auto');
-    ga('send', 'pageview');
-  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css")
-  script(src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js")
-  script(src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=#{ENV['MAPQUEST_API_KEY']}")
-  script(src="https://www.mapquestapi.com/sdk/leaflet/v1.s/mq-geocoding.js?key=#{ENV['MAPQUEST_API_KEY']}")
+      ga('create', 'UA-40894134-1', 'auto');
+      ga('send', 'pageview');
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js")
+    script(src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=#{ENV['MAPQUEST_API_KEY']}")
+    script(src="https://www.mapquestapi.com/sdk/leaflet/v1.s/mq-geocoding.js?key=#{ENV['MAPQUEST_API_KEY']}")
+    = content_for(:extra_body_tags)
