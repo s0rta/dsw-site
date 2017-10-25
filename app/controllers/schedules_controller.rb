@@ -59,33 +59,11 @@ class SchedulesController < ApplicationController
                 submissions.for_current_year.
                 for_schedule.
                 includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
-    respond_to do |format|
-      format.ics do
-        calendar = Icalendar::Calendar.new
-        calendar.x_wr_calname = "#{registration.user.name}'s Denver Startup Week #{Date.today.year} Schedule"
-        @sessions.each do |submission|
-          event_start = submission.start_datetime
-          event_end = submission.end_datetime
-          tzid = submission.start_datetime.time_zone.tzinfo.identifier
-          tz = TZInfo::Timezone.get(tzid)
-          timezone = tz.ical_timezone(event_start)
-          calendar.add_timezone(timezone)
-          event = Icalendar::Event.new.tap do |e|
-            e.dtstart       = Icalendar::Values::DateTime.new(event_start, 'tzid' => tzid)
-            e.dtend         = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
-            e.summary       = submission.full_title
-            e.description   = "#{submission.description}\n\nMore details: #{schedule_url(submission)}"
-            e.location      = submission.ical_location
-            e.ip_class      = 'PUBLIC'
-            e.created       = submission.created_at
-            e.last_modified = submission.updated_at
-            e.uid           = schedule_url(submission)
-            e.url           = schedule_url(submission)
-          end
-          calendar.add_event event
+    if stale?(@sessions)
+      respond_to do |format|
+        format.ics do
+          render body: to_calendar(registration, @sessions).to_ical, content_type: 'text/calendar'
         end
-        calendar.publish
-        render body: calendar.to_ical, content_type: 'text/calendar'
       end
     end
   end
@@ -118,5 +96,33 @@ class SchedulesController < ApplicationController
     else
       'monday'
     end
+  end
+
+  def to_calendar(registration, sessions)
+    calendar = Icalendar::Calendar.new
+    calendar.x_wr_calname = "#{registration.user.name}'s Denver Startup Week #{Date.today.year} Schedule"
+    sessions.each do |submission|
+      event_start = submission.start_datetime
+      event_end = submission.end_datetime
+      tzid = submission.start_datetime.time_zone.tzinfo.identifier
+      tz = TZInfo::Timezone.get(tzid)
+      timezone = tz.ical_timezone(event_start)
+      calendar.add_timezone(timezone)
+      event = Icalendar::Event.new.tap do |e|
+        e.dtstart       = Icalendar::Values::DateTime.new(event_start, 'tzid' => tzid)
+        e.dtend         = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
+        e.summary       = submission.full_title
+        e.description   = "#{submission.description}\n\nMore details: #{schedule_url(submission)}"
+        e.location      = submission.ical_location
+        e.ip_class      = 'PUBLIC'
+        e.created       = submission.created_at
+        e.last_modified = submission.updated_at
+        e.uid           = schedule_url(submission)
+        e.url           = schedule_url(submission)
+      end
+      calendar.add_event event
+    end
+    calendar.publish
+    calendar
   end
 end
