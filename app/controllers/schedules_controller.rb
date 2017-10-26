@@ -58,6 +58,7 @@ class SchedulesController < ApplicationController
     @sessions = registration.
                 submissions.for_current_year.
                 for_schedule.
+                order('created_at asc').
                 includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
     if stale?(@sessions)
       respond_to do |format|
