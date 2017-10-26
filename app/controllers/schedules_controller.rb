@@ -100,30 +100,31 @@ class SchedulesController < ApplicationController
   end
 
   def to_calendar(registration, sessions)
-    calendar = Icalendar::Calendar.new
-    calendar.x_wr_calname = "#{registration.user.name}'s Denver Startup Week #{Date.today.year} Schedule"
-    sessions.each do |submission|
-      event_start = submission.start_datetime
-      event_end = submission.end_datetime
-      tzid = submission.start_datetime.time_zone.tzinfo.identifier
-      tz = TZInfo::Timezone.get(tzid)
-      timezone = tz.ical_timezone(event_start)
-      calendar.add_timezone(timezone)
-      event = Icalendar::Event.new.tap do |e|
-        e.dtstart       = Icalendar::Values::DateTime.new(event_start, 'tzid' => tzid)
-        e.dtend         = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
-        e.summary       = submission.full_title
-        e.description   = "#{submission.description}\n\nMore details: #{schedule_url(submission)}"
-        e.location      = submission.ical_location
-        e.ip_class      = 'PUBLIC'
-        e.created       = submission.created_at
-        e.last_modified = submission.updated_at
-        e.uid           = schedule_url(submission)
-        e.url           = schedule_url(submission)
+    Icalendar::Calendar.new.tap do |calendar|
+      calendar.x_wr_calname = "#{registration.user.name}'s Denver Startup Week #{Date.today.year} Schedule"
+      sessions.each do |submission|
+        url = schedule_url(submission)
+        event_start = submission.start_datetime
+        event_end = submission.end_datetime
+        tzid = submission.start_datetime.time_zone.tzinfo.identifier
+        tz = TZInfo::Timezone.get(tzid)
+        timezone = tz.ical_timezone(event_start)
+        calendar.add_timezone(timezone)
+        event = Icalendar::Event.new.tap do |e|
+          e.dtstart       = Icalendar::Values::DateTime.new(event_start, 'tzid' => tzid)
+          e.dtend         = Icalendar::Values::DateTime.new(event_end, 'tzid' => tzid)
+          e.summary       = submission.full_title
+          e.description   = "#{submission.description}\n\nMore details: #{url}"
+          e.location      = submission.ical_location
+          e.ip_class      = 'PUBLIC'
+          e.created       = submission.created_at
+          e.last_modified = submission.updated_at
+          e.uid           = url
+          e.url           = url
+        end
+        calendar.add_event(event)
       end
-      calendar.add_event event
+      calendar.publish
     end
-    calendar.publish
-    calendar
   end
 end
