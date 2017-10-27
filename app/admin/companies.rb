@@ -3,6 +3,8 @@ ActiveAdmin.register Company do
 
   menu parent: 'Users', priority: 1
 
+  config.sort_order = 'name_asc'
+
   permit_params :name
 
   index do
