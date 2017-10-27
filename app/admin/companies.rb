@@ -13,4 +13,10 @@ ActiveAdmin.register Company do
 
   filter :name
 
+  batch_action :combine do |company_ids|
+    companies = Company.find(company_ids)
+    Company.combine!(*companies)
+    redirect_to admin_companies_path
+  end
+
 end
