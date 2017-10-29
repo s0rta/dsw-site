@@ -333,7 +333,17 @@ class Submission < ApplicationRecord
   def promote_updates!
     with_lock do
       update((proposed_updates || {}).merge(proposed_updates: nil))
+      notify_submitter_of_update_acceptance!
     end
+  end
+
+  def notify_submitter_of_update_acceptance!
+    message = NotificationsMailer.notify_of_update_acceptance(self)
+    message.deliver_now!
+    sent_notifications.create! kind: SentNotification::UPDATES_ACCEPTED_KIND,
+                               recipient_email: message.to.join(', '),
+                               body: message.message.to_yaml
+
   end
 
   def notify_track_chairs_of_update!
