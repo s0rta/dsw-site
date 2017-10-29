@@ -328,8 +328,8 @@ class Submission < ApplicationRecord
   def promote_updates!
     with_lock do
       update((proposed_updates || {}).merge(proposed_updates: nil))
-      notify_submitter_of_update_acceptance!
     end
+    notify_submitter_of_update_acceptance!
   end
 
   def notify_submitter_of_update_acceptance!
