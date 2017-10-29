@@ -500,7 +500,6 @@ CREATE TABLE sent_notifications (
     submission_id integer,
     kind character varying NOT NULL,
     recipient_email character varying NOT NULL,
-    body text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1830,10 +1829,10 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170920024945'),
 ('20170925061912'),
 ('20171010165924'),
-('20171018232421'),
 ('20171018232858'),
 ('20171023230412'),
 ('20171023230539'),
-('20171024210033');
+('20171024210033'),
+('20171029211526');
 
 
