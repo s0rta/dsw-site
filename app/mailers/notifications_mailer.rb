@@ -18,6 +18,12 @@ class NotificationsMailer < ApplicationMailer
     mail to: chair.email, subject: "#{@submission.submitter.name} has proposed an update needing your approval for the #{@track.name} track."
   end
 
+  def notify_of_update_acceptance(submission)
+    @submission = submission
+    mail to:  notification_emails(@submission),
+         subject: 'Your proposed session updates have been accepted'
+  end
+
   def confirm_new_submission(submission)
     @submission = submission
     mail to: @submission.contact_emails, subject: 'Thanks for submitting a session proposal for Denver Startup Week!'
@@ -42,8 +48,7 @@ class NotificationsMailer < ApplicationMailer
 
   def notify_of_submission_acceptance(submission)
     @submission = submission
-    mail to: [ @submission.contact_emails,
-               @submission.submitter.email ].flatten.uniq,
+    mail to:  notification_emails(@submission),
          subject: 'RESPONSE NEEDED: Your Denver Startup Week session has been accepted!',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,
@@ -52,15 +57,13 @@ class NotificationsMailer < ApplicationMailer
 
   def notify_of_submission_rejection(submission)
     @submission = submission
-    mail to: [ @submission.contact_emails,
-               @submission.submitter.email ].flatten.uniq,
+    mail to:  notification_emails(@submission),
          subject: 'Your session proposal for Denver Startup Week'
   end
 
   def notify_of_submission_waitlisting(submission)
     @submission = submission
-    mail to: [ @submission.contact_emails,
-               @submission.submitter.email ].flatten.uniq,
+    mail to:  notification_emails(@submission),
          subject: 'Your session proposal for Denver Startup Week',
          from: @submission.track.email_alias,
          reply_to: @submission.track.email_alias,
@@ -81,7 +84,7 @@ class NotificationsMailer < ApplicationMailer
   def confirm_registration(registration)
     @registration = registration
     mail to: @registration.user.email,
-      subject: "You are registered for Denver Startup Week #{Date.today.year}"
+         subject: "You are registered for Denver Startup Week #{Date.today.year}"
   end
 
   def send_attendee_message(message, users)
@@ -93,9 +96,14 @@ class NotificationsMailer < ApplicationMailer
 
   def session_thanks(submission)
     @submission = submission
-    mail to: [ @submission.contact_emails,
-               @submission.submitter.email ].flatten.uniq,
+    mail to: notification_emails(@submission),
          subject: 'Thank you, DSW session organizers!'
+  end
+
+  private
+
+  def notification_emails(submission)
+    [submission.contact_emails, submission.submitter.email].flatten.uniq
   end
 
 end

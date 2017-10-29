@@ -93,11 +93,15 @@ feature 'Creating a submission' do
       expect(page).to have_content 'Some talk'
       expect(page).to have_content 'Your changes have been submitted'
 
-      Submission.last.promote_updates!
+      submission = Submission.last
+      submission.promote_updates!
       visit page.current_path
 
       expect(page).to have_content 'Updated talk'
       expect(page).to_not have_content 'Some talk'
+      expect(last_email_sent).to deliver_to('test@example.com', 'test2@example.com')
+      expect(last_email_sent).to have_subject 'Your proposed session updates have been accepted'
+      expect(submission.sent_notifications.last.kind).to eq(SentNotification::UPDATES_ACCEPTED_KIND)
     end
   end
 
