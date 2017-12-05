@@ -11,4 +11,9 @@ feature 'Content-only pages' do
     visit '/basecamp'
     expect(page).to have_content('BASECAMP LAUNCHED BY CHASE FOR BUSINESS')
   end
+
+  scenario 'the about page' do
+    visit '/about'
+    expect(page).to have_content('THE ENTREPRENEURIAL SPIRIT')
+  end
 end

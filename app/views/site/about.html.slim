@@ -2,7 +2,7 @@
 
 section.common.event-info.sm-centered
   .section-content
-    h1 #{EventSchedule::WEEK_START_DATE.strftime('%B %e')} &mdash; #{EventSchedule::WEEK_END_DATE.strftime('%e, %Y')}
+    h1 #{AnnualSchedule.current.week_start_at.strftime('%B %e')} &mdash; #{AnnualSchedule.current.week_end_at.strftime('%e, %Y')}
 
 section.section-image
 

@@ -5,7 +5,7 @@ class SiteController < ApplicationController
   def index
     ctas = HomepageCta.
            active.
-           relevant_to_cycles(EventSchedule.active_cycles).
+           relevant_to_cycles(AnnualSchedule.active_cycles).
            includes(:track).
            in_priority_order
     @two_up_ctas, @three_up_ctas = ctas.each_with_object([[], []]) do |cta, acc|

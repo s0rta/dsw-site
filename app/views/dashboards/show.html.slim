@@ -1,6 +1,6 @@
 = render partial: 'nav', locals: { item: :mine }
 
-- if EventSchedule.registration_open?
+- if AnnualSchedule.registration_open?
   - if registered?
     section.common
       .section-content.sm-centered
@@ -25,7 +25,7 @@ section.common
     - else
       h6 You have not yet submitted any proposals for this year.
 
-- if EventSchedule.cfp_open?
+- if AnnualSchedule.cfp_open?
   section.common
     .section-content.sm-centered
       = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'

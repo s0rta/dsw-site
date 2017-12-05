@@ -8,13 +8,8 @@ feature 'Creating a submission' do
   end
 
   describe 'when submissions are open' do
-    around(:each) do |example|
-      travel_to EventSchedule::SUBMISSION_OPEN_DATE + 1.day do
-        example.run
-      end
-    end
-
     before do
+      travel_to AnnualSchedule.current.cfp_open_at.to_datetime + 1.day
       create(:company, name: 'Example.com')
     end
 
@@ -106,10 +101,8 @@ feature 'Creating a submission' do
   end
 
   describe 'when submissions are closed' do
-    around(:each) do |example|
-      travel_to EventSchedule::SUBMISSION_CLOSE_DATE + 1.day do
-        example.run
-      end
+    before do
+      travel_to AnnualSchedule.current.cfp_close_at.to_datetime + 2.days
     end
 
     scenario 'User tries to submit a new idea' do

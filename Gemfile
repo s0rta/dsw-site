@@ -16,6 +16,7 @@ gem 'autoprefixer-rails'
 gem 'webpacker', '~> 3.0'
 
 gem 'responders'
+gem 'jsonb_accessor'
 
 # Simple transparent captchas
 gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'

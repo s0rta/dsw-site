@@ -5,7 +5,7 @@ section.common.sm-centered
     h1 Ambassadors Program
     h6 Denver Startup Week is bringing 50 non-local startup and tech industry leaders to Denver to attend the largest free entrepreneurial event in North America, meet local leaders, and experience the Denver tech scene first hand. The Ambassadors program provides an avenue for local tech and startup companies to build relationships with other startup communities, share best practices, and identify opportunities for collaboration.
 
-- if EventSchedule.ambassador_application_open?
+- if AnnualSchedule.ambassador_application_open?
   section.common.sm-centered
     .section-content
       h1 For Individuals
@@ -14,7 +14,7 @@ section.common.sm-centered
       h6 This is an all-expenses paid opportunity.
       = link_to 'Apply to be an Ambassador', 'https://docs.google.com/forms/d/e/1FAIpQLSeavG2SWuK9jlvDMmhtfsil0JZFtqzM3f7kktnAurBJQVDmog/viewform', class: 'btn primary'
 
-- if EventSchedule.sponsorship_open?
+- if AnnualSchedule.sponsorship_open?
   section.common.sm-centered
     .section-content
       h1 For Companies

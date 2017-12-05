@@ -9,6 +9,6 @@ class PitchContest::EntriesController < ApplicationController
   private
 
   def check_voting_open
-    redirect_to page_path(page: 'pitch') unless EventSchedule.pitch_voting_open?
+    redirect_to page_path(page: 'pitch') unless AnnualSchedule.pitch_voting_open?
   end
 end

@@ -1,16 +1,12 @@
 require 'spec_helper'
 
 feature 'Registering to attend (via kiosk)' do
-
   before do
-    allow(ListSubscriptionJob).to receive(:perform_async)
     visit '/enable-simple-reg'
   end
 
-  around(:each) do |example|
-    travel_to EventSchedule::REGISTRATION_OPEN_DATE + 1.day do
-      example.run
-    end
+  before do
+    travel_to AnnualSchedule.current.registration_open_at.to_datetime + 1.day
   end
 
   after do

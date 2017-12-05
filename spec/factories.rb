@@ -1,5 +1,25 @@
 FactoryBot.define do
 
+  factory :annual_schedule do
+    # This is the actual 2017 schedule for reference
+    year 2017
+    cfp_open_at Date.parse('2017-03-19').freeze
+    cfp_close_at Date.parse('2017-04-21').freeze
+    voting_open_at Date.parse('2017-05-10').freeze
+    voting_close_at Date.parse('2017-05-29').freeze
+    registration_open_at Date.parse('2017-07-20').freeze
+    week_start_at Date.parse('2017-09-25').freeze
+    week_end_at Date.parse('2017-09-29').freeze
+    pitch_application_open_at Date.parse('2017-08-08').freeze
+    pitch_application_close_at Date.parse('2017-08-31').freeze
+    pitch_voting_open_at Date.parse('2017-09-12').freeze
+    pitch_voting_close_at Date.parse('2017-09-22').freeze
+    sponsorship_open_at Date.parse('2017-03-01').freeze
+    sponsorship_close_at Date.parse('2017-09-09').freeze
+    ambassador_application_open_at Date.parse('2017-07-01').freeze
+    ambassador_application_close_at Date.parse('2017-08-11').freeze
+  end
+
   factory :company do
     sequence(:name) { |n| "Company #{n}" }
   end
