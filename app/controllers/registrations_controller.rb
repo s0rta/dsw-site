@@ -6,7 +6,7 @@ class RegistrationsController < ApplicationController
   before_action :save_after_registration_path, unless: :simple_registration?, except: [ :closed ]
 
   def new
-    redirect_to closed_registration_path unless EventSchedule.registration_open?
+    redirect_to closed_registration_path unless AnnualSchedule.registration_open?
     registration_attributes = { contact_email: current_user.try(:email) }.merge(registration_params)
     @registration = Registration.new(registration_attributes)
   end
@@ -50,7 +50,7 @@ class RegistrationsController < ApplicationController
   end
 
   def check_registration_open
-    redirect_to closed_registration_path unless EventSchedule.registration_open?
+    redirect_to closed_registration_path unless AnnualSchedule.registration_open?
   end
 
   def check_existing_registration

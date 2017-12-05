@@ -17,10 +17,8 @@ feature 'Submitting and voting on pitch contest applications' do
   end
 
   describe 'when voting is open' do
-    around(:each) do |example|
-      travel_to EventSchedule::PITCH_VOTING_OPEN_DATE + 1.day do
-        example.run
-      end
+    before do
+      travel_to AnnualSchedule.current.pitch_voting_open_at.to_datetime + 1.day
     end
 
     scenario 'User votes for an entry when already signed in' do
@@ -57,10 +55,8 @@ feature 'Submitting and voting on pitch contest applications' do
   end
 
   describe 'when voting is closed' do
-    around(:each) do |example|
-      travel_to EventSchedule::PITCH_VOTING_CLOSE_DATE + 1.day do
-        example.run
-      end
+    before do
+      travel_to AnnualSchedule.current.pitch_application_close_at.to_datetime + 1.day
     end
 
     scenario 'User tries to access voting when feedback is closed' do

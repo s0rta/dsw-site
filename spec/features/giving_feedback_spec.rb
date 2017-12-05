@@ -19,10 +19,8 @@ feature 'Providing feedback on submissions' do
   end
 
   describe 'when voting is open' do
-    around(:each) do |example|
-      travel_to EventSchedule::VOTING_OPEN_DATE + 1.day do
-        example.run
-      end
+    before do
+      travel_to AnnualSchedule.current.voting_open_at.to_datetime + 2.days
     end
 
     scenario 'User votes for a session when already signed in' do
@@ -72,10 +70,8 @@ feature 'Providing feedback on submissions' do
   end
 
   describe 'when voting is closed' do
-    around(:each) do |example|
-      travel_to EventSchedule::VOTING_CLOSE_DATE + 1.day do
-        example.run
-      end
+    before do
+      travel_to AnnualSchedule.current.voting_close_at.to_datetime + 2.days
     end
 
     scenario 'User tries to access feedback when feedback is closed' do

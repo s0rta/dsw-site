@@ -2,9 +2,9 @@ nav.section-nav
   .section-content
     h1 My Dashboard
     = link_to 'My Proposals', dashboard_path, class: item == :mine ? 'active' : ''
-    - if EventSchedule.cfp_open?
+    - if AnnualSchedule.cfp_open?
       = link_to 'Submit a Proposal', new_submission_path, class: item == :submit ? 'active' : ''
-    - if EventSchedule.registration_open?
+    - if AnnualSchedule.registration_open?
       = link_to 'Registration & Schedule', schedules_path(filter: 'mine'), class: item == :register ? 'active' : ''
     = link_to 'My Profile', edit_user_registration_path, class: item == :profile ? 'active' : ''
     = link_to 'FAQ', faq_submissions_path, class: item == :faq ? 'active' : ''

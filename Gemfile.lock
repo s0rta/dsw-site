@@ -202,6 +202,10 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
+    jsonb_accessor (1.0.0)
+      activerecord (>= 5.0)
+      activesupport (>= 5.0)
+      pg (>= 0.18.1)
     kaminari (1.0.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.0.1)
@@ -447,6 +451,7 @@ DEPENDENCIES
   honeypot-captcha!
   html-pipeline
   icalendar
+  jsonb_accessor
   liquid
   listen
   lograge

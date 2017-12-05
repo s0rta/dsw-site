@@ -42,7 +42,7 @@ ActiveAdmin.register HomepageCta do
               label: 'Show during',
               include_blank: 'All',
               as: :select,
-              collection: EventSchedule::CYCLES.map { |c| [ c.to_s.titleize, c ] }
+              collection: AnnualSchedule::CYCLES.map { |c| [ c.to_s.titleize, c ] }
       f.input :track_id, as: :select, collection: Track.all.order(:name)
       f.input :is_active
     end

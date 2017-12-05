@@ -219,13 +219,13 @@ class Submission < ApplicationRecord
   end
 
   def start_datetime
-    datetime = EventSchedule::WEEK_START_DATE + (start_day.to_i - 2).days
+    datetime = AnnualSchedule.current.week_start_at.in_time_zone('America/Denver') + (start_day.to_i - 2).days
     datetime += start_hour.hours if start_hour
     datetime
   end
 
   def end_datetime
-    datetime = EventSchedule::WEEK_START_DATE + (end_day.to_i - 2).days
+    datetime = AnnualSchedule.current.week_start_at.in_time_zone('America/Denver') + (end_day.to_i - 2).days
     datetime += end_hour.hours if end_hour
     datetime
   end

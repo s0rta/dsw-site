@@ -92,6 +92,38 @@ ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 
 
 --
+-- Name: annual_schedules; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE annual_schedules (
+    id bigint NOT NULL,
+    year integer,
+    dates jsonb,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: annual_schedules_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE annual_schedules_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: annual_schedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE annual_schedules_id_seq OWNED BY annual_schedules.id;
+
+
+--
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1001,6 +1033,13 @@ ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('acti
 
 
 --
+-- Name: annual_schedules id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY annual_schedules ALTER COLUMN id SET DEFAULT nextval('annual_schedules_id_seq'::regclass);
+
+
+--
 -- Name: attendee_messages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1174,6 +1213,14 @@ ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regcl
 
 ALTER TABLE ONLY active_admin_comments
     ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: annual_schedules annual_schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY annual_schedules
+    ADD CONSTRAINT annual_schedules_pkey PRIMARY KEY (id);
 
 
 --
@@ -1416,6 +1463,13 @@ CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments U
 --
 
 CREATE INDEX index_admin_notes_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- Name: index_annual_schedules_on_year; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_annual_schedules_on_year ON annual_schedules USING btree (year);
 
 
 --
@@ -1833,6 +1887,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171023230412'),
 ('20171023230539'),
 ('20171024210033'),
-('20171029211526');
+('20171029211526'),
+('20171130230321');
 
 

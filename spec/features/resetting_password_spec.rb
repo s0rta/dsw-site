@@ -2,10 +2,8 @@ require 'spec_helper'
 
 feature 'Resetting my password' do
   describe 'when registration is open' do
-    around(:each) do |example|
-      travel_to EventSchedule::REGISTRATION_OPEN_DATE + 1.day do
-        example.run
-      end
+    before do
+      travel_to AnnualSchedule.current.registration_open_at.to_datetime + 1.day
     end
 
     scenario 'User goes through the password reset flow' do

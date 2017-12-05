@@ -18,7 +18,7 @@ class HomepageCta < ApplicationRecord
             numericality: { only_integer: true }
 
   validates :relevant_to_cycle,
-            inclusion: { in: EventSchedule::CYCLES,
+            inclusion: { in: AnnualSchedule::CYCLES,
                          allow_blank: true }
 
   belongs_to :track, optional: true

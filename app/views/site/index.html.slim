@@ -1,7 +1,8 @@
 section.hero
-  - unless EventSchedule.in_week?
-    / h1.countdown #{time_remaining_to_deadline(EventSchedule::WEEK_START_DATE)}
-  h2 September 25&#8211;29, 2017
+  - if AnnualSchedule.post_week? && AnnualSchedule.next.present?
+    h2 #{AnnualSchedule.next.week_start_at.strftime('%B %-d')}&ndash;#{AnnualSchedule.next.week_end_at.strftime('%-d, %Y')}
+  - else
+    h2 #{AnnualSchedule.current.week_start_at.strftime('%B %-d')}&ndash;#{AnnualSchedule.current.week_end_at.strftime('%-d, %Y')}
   .section-content(style="text-align: center; max-width: 800px;")
     h3 Denver Startup Week is about innovation for founders, developers, product managers, designers, marketers, sales teams, and makers.
 
