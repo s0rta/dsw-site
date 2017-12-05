@@ -21,3 +21,4 @@ MK-TODO.md
 /public/packs
 /public/packs-test
 /node_modules
+vendor/firefox
