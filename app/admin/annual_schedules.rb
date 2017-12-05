@@ -8,7 +8,7 @@ ActiveAdmin.register AnnualSchedule do
                 :cfp_open_at,
                 :cfp_close_at,
                 :voting_open_at,
-                :coting_close_at,
+                :voting_close_at,
                 :registration_open_at,
                 :week_start_at,
                 :week_end_at,
@@ -27,7 +27,51 @@ ActiveAdmin.register AnnualSchedule do
     actions
   end
 
-  show title: :year
+  show(title: :year) do
+    attributes_table do
+      row :year
+      row 'Week' do |r|
+        "#{r.week_start_at.to_s(:month_day)} &ndash; #{r.week_end_at.to_s(:month_day)}".html_safe
+      end
+      row 'CFP' do |r|
+        if r.cfp_open_at.present? && r.cfp_close_at.present?
+          "#{r.cfp_open_at.to_s(:month_day)} &ndash; #{r.cfp_close_at.to_s(:month_day)}".html_safe
+        end
+      end
+      row 'Voting' do |r|
+        if r.voting_open_at.present? && r.voting_close_at.present?
+          "#{r.voting_open_at.to_s(:month_day)} &ndash; #{r.voting_close_at.to_s(:month_day)}".html_safe
+        end
+      end
+      row 'Registration' do |r|
+        if r.registration_open_at.present?
+          "#{r.registration_open_at.to_s(:month_day)} &ndash; #{r.week_end_at.to_s(:month_day)}".html_safe
+        end
+      end
+      row 'Sponsorship' do |r|
+        if r.sponsorship_open_at.present? && r.sponsorship_close_at.present?
+          "#{r.sponsorship_open_at.to_s(:month_day)} &ndash; #{r.sponsorship_close_at.to_s(:month_day)}".html_safe
+        end
+      end
+      row 'Pitch Application' do |r|
+        if r.pitch_application_open_at.present? && r.pitch_application_close_at.present?
+          "#{r.pitch_application_open_at.to_s(:month_day)} &ndash; #{r.pitch_application_close_at.to_s(:month_day)}".html_safe
+        end
+      end
+      row 'Pitch Voting' do |r|
+        if r.pitch_voting_open_at.present? && r.pitch_voting_close_at.present?
+          "#{r.pitch_voting_open_at.to_s(:month_day)} &ndash; #{r.pitch_voting_close_at.to_s(:month_day)}".html_safe
+        end
+      end
+      row 'Ambassador Application' do |r|
+        if r.ambassador_application_open_at.present? && r.ambassador_application_close_at.present?
+          "#{r.ambassador_application_open_at.to_s(:month_day)} &ndash; #{r.ambassador_application_close_at.to_s(:month_day)}".html_safe
+        end
+      end
+    end
+
+    active_admin_comments
+  end
 
   form do |f|
     f.inputs do
