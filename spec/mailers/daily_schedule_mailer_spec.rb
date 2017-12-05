@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe DailyScheduleMailer, type: :mailer do
 
-  let(:registration) { FactoryGirl.build(:registration) }
+  let(:registration) { build(:registration) }
 
   describe 'the Monday e-mail' do
     let(:mail) { described_class.notify_of_monday_daily_schedule(registration) }

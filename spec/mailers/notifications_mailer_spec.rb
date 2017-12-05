@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe NotificationsMailer, type: :mailer do
 
-  let(:session) { FactoryGirl.build(:submission) }
+  let(:session) { build(:submission) }
 
   describe 'the thanks e-mail' do
     let(:mail) { described_class.session_thanks(session) }

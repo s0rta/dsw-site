@@ -78,7 +78,7 @@ group :test do
   gem 'database_cleaner'
   gem 'email_spec', '~> 2.1.0'
   gem 'webmock'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rspec-rails-time-metadata'
 end
 

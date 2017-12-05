@@ -6,12 +6,10 @@ describe SendAttendeeMessageJob, job: true do
   end
 
   let(:msg) do
-    FactoryGirl.create(:attendee_message, subject: 'Important', body: 'Please read me')
+    create(:attendee_message, subject: 'Important', body: 'Please read me')
   end
 
-  let(:registration) do
-    FactoryGirl.create(:registration)
-  end
+  let(:registration) { create(:registration) }
 
   it 'sends a message' do
     msg.submission.user_registrations << registration
