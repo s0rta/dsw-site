@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class AnnualSchedule < ApplicationRecord
 
-  CFP_CYCLE = 'cfp'.freeze
-  VOTING_CYCLE = 'voting'.freeze
-  REGISTRATION_CYCLE = 'registration'.freeze
-  WEEK_CYCLE = 'week'.freeze
-  POST_WEEK_CYCLE = 'post_week'.freeze
-  PITCH_APPLICATION_CYCLE = 'pitch_application'.freeze
-  PITCH_VOTING_CYCLE = 'pitch_voting'.freeze
-  AMBASSADOR_APPLICATION_CYCLE = 'ambassador_application'.freeze
-  SPONSORSHIP_CYCLE = 'sponsorship'.freeze
+  CFP_CYCLE = 'cfp'
+  VOTING_CYCLE = 'voting'
+  REGISTRATION_CYCLE = 'registration'
+  WEEK_CYCLE = 'week'
+  POST_WEEK_CYCLE = 'post_week'
+  PITCH_APPLICATION_CYCLE = 'pitch_application'
+  PITCH_VOTING_CYCLE = 'pitch_voting'
+  AMBASSADOR_APPLICATION_CYCLE = 'ambassador_application'
+  SPONSORSHIP_CYCLE = 'sponsorship'
 
   CYCLES = [ CFP_CYCLE,
              VOTING_CYCLE,
