@@ -1,7 +1,7 @@
 class ListSubscriptionJob
 
-  EMMA_FIELDS = %i(submittedyears confirmedyears registeredyears first_name last_name)
-  SENDGRID_FIELDS = %i(first_name last_name)
+  EMMA_FIELDS = %i(submittedyears confirmedyears registeredyears first_name last_name).freeze
+  SENDGRID_FIELDS = %i(first_name last_name).freeze
 
   include Sidekiq::Worker
 
@@ -34,7 +34,7 @@ class ListSubscriptionJob
     response = sg.client.contactdb.recipients.patch(request_body: [ data ])
     raise SendGridContactCreateFailedError.new('Error updating recipient!') unless response.status_code.to_s == '201'
     recipient_id = JSON.parse(response.body)['persisted_recipients'].first
-    response = sg.client.contactdb.lists._(list_id).recipients._(recipient_id).post()
+    response = sg.client.contactdb.lists._(list_id).recipients._(recipient_id).post
     raise SendGridListAddFailedError.new('Error adding recipient to list!') unless response.status_code.to_s == '201'
   end
 
