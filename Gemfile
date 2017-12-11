@@ -40,6 +40,7 @@ gem 'icalendar'
 
 gem 'premailer-rails'
 gem 'sendgrid', github: 'caring/sendgrid'
+gem 'sendgrid-ruby'
 gem 'retries'
 
 # State machines
@@ -78,7 +79,8 @@ group :test do
   gem 'selenium-webdriver', '~> 2.53'
   gem 'database_cleaner'
   gem 'email_spec', '~> 2.1.0'
-  gem 'webmock'
+  gem 'vcr'
+  gem 'webmock', require: false
   gem 'factory_bot_rails'
   gem 'rspec-rails-time-metadata'
 end

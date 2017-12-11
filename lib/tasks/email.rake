@@ -99,4 +99,13 @@ namespace :email do
       submission.send_thanks_email!
     end
   end
+
+  task resync_subscriptions: :environment do
+    Rails.logger.info 'Resyncing newsletter subscriptions (1/3)'
+    NewsletterSubscription.find_each(&:subscribe_to_list)
+    Rails.logger.info 'Resyncing session submissions (2/3)'
+    Submission.find_each(&:subscribe_to_list)
+    Rails.logger.info 'Resyncing registrations (3/3)'
+    Registration.find_each(&:subscribe_to_list)
+  end
 end
