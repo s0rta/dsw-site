@@ -356,7 +356,7 @@ class Submission < ApplicationRecord
   end
 
   def subscribe_to_list
-    [ contact_emails, submitter.email ].flatten.compact.uniq.each do |email|
+    [ contact_emails, submitter.try(:email) ].flatten.compact.uniq.each do |email|
       submitted_years = Submission.
                         joins(:submitter).
                         where('contact_email ILIKE :email_like OR users.email = :email',
