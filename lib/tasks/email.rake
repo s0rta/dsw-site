@@ -102,7 +102,7 @@ namespace :email do
 
   task resync_subscriptions: :environment do
     Rails.logger.info 'Resyncing newsletter subscriptions (1/3)'
-    NewsletterSubscription.find_each(&:subscribe_to_list)
+    NewsletterSignup.find_each(&:subscribe_to_list)
     Rails.logger.info 'Resyncing session submissions (2/3)'
     Submission.find_each(&:subscribe_to_list)
     Rails.logger.info 'Resyncing registrations (3/3)'
