@@ -100,12 +100,37 @@ namespace :email do
     end
   end
 
-  task resync_subscriptions: :environment do
-    Rails.logger.info "Resyncing newsletter subscriptions (#{NewsletterSignup.count}) (1/3)"
-    NewsletterSignup.find_each(&:subscribe_to_list)
-    Rails.logger.info "Resyncing session submissions (#{Submission.count}) (2/3)"
-    Submission.find_each(&:subscribe_to_list)
-    Rails.logger.info "Resyncing registrations (#{Registration.count}) (3/3)"
-    Registration.find_each(&:subscribe_to_list)
+  namespace :sendgrid do
+    task resync_subscriptions: :environment do
+      sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
+      list_id = ENV['SENDGRID_LIST_ID']
+      Rails.logger.info "Resyncing newsletter subscriptions (#{NewsletterSignup.count}) (1/3)"
+      NewsletterSignup.find_in_batches do |batch|
+        payload = batch.map do |ns|
+          { email: ns.email, first_name: ns.first_name, last_name: ns.last_name }
+        end
+        response = sg.client.contactdb.recipients.post(request_body: payload)
+        recipient_ids = JSON.parse(response.body)['persisted_recipients']
+        response = sg.client.contactdb.lists._(list_id).recipients.post(request_body: recipient_ids)
+      end
+      Rails.logger.info "Resyncing session submissions (#{Submission.count}) (2/3)"
+      Submission.find_in_batches do |batch|
+        payload = batch.map do |s|
+          { email: s.email }
+        end
+        response = sg.client.contactdb.recipients.post(request_body: payload)
+        recipient_ids = JSON.parse(response.body)['persisted_recipients']
+        response = sg.client.contactdb.lists._(list_id).recipients.post(request_body: recipient_ids)
+      end
+      Rails.logger.info "Resyncing registrations (#{Registration.count}) (3/3)"
+      Registration.find_in_batches do |batch|
+        payload = batch.map do |r|
+          { email: r.email }
+        end
+        response = sg.client.contactdb.recipients.post(request_body: payload)
+        recipient_ids = JSON.parse(response.body)['persisted_recipients']
+        response = sg.client.contactdb.lists._(list_id).recipients.post(request_body: recipient_ids)
+      end
+    end
   end
 end
