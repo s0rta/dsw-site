@@ -116,7 +116,7 @@ namespace :email do
       Rails.logger.info "Resyncing session submissions (#{Submission.count}) (2/3)"
       Submission.includes(:submitter).find_in_batches(batch_size: 250) do |batch|
         payload = batch.map do |s|
-          [ contact_emails, submitter.try(:email) ]
+          [ s.contact_emails, s.submitter.try(:email) ]
         end.flatten.compact.map do |email|
           { email: email }
         end
