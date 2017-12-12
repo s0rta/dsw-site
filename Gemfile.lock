@@ -383,6 +383,8 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.3, >= 3.3.3)
+    sidekiq-throttled (0.8.1)
+      sidekiq
     simple_states (1.0.0)
       activesupport
       hashr (~> 0.0.10)
@@ -490,6 +492,7 @@ DEPENDENCIES
   sendgrid-ruby
   shoulda-matchers
   sidekiq
+  sidekiq-throttled
   simple_states
   slim-rails
   textacular
