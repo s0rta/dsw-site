@@ -62,6 +62,7 @@ gem 'paper_trail'
 
 # Background processing
 gem 'sidekiq'
+gem 'sidekiq-throttled'
 
 group :development do
   gem 'listen'

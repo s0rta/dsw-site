@@ -4,6 +4,11 @@ class ListSubscriptionJob
   SENDGRID_FIELDS = %i(first_name last_name).freeze
 
   include Sidekiq::Worker
+  include Sidekiq::Throttled::Worker
+  sidekiq_throttle(
+    concurrency: { limit: 10 },
+    threshold: { limit: 3, period: 2.seconds }
+  )
 
   def perform(email, extra_fields = {})
     subscribe_to_emma(email, extra_fields)
