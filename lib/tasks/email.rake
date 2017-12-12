@@ -105,7 +105,7 @@ namespace :email do
       sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
       list_id = ENV['SENDGRID_LIST_ID']
       Rails.logger.info "Resyncing newsletter subscriptions (#{NewsletterSignup.count}) (1/3)"
-      NewsletterSignup.find_in_batches do |batch|
+      NewsletterSignup.find_in_batches(batch_size: 1000) do |batch|
         payload = batch.map do |ns|
           { email: ns.email, first_name: ns.first_name, last_name: ns.last_name }
         end
@@ -114,7 +114,7 @@ namespace :email do
         response = sg.client.contactdb.lists._(list_id).recipients.post(request_body: recipient_ids)
       end
       Rails.logger.info "Resyncing session submissions (#{Submission.count}) (2/3)"
-      Submission.find_in_batches do |batch|
+      Submission.find_in_batches(batch_size: 1000) do |batch|
         payload = batch.map do |s|
           { email: s.email }
         end
@@ -123,7 +123,7 @@ namespace :email do
         response = sg.client.contactdb.lists._(list_id).recipients.post(request_body: recipient_ids)
       end
       Rails.logger.info "Resyncing registrations (#{Registration.count}) (3/3)"
-      Registration.find_in_batches do |batch|
+      Registration.find_in_batches(batch_size: 1000) do |batch|
         payload = batch.map do |r|
           { email: r.email }
         end
