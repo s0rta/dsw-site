@@ -1700,6 +1700,14 @@ ALTER TABLE ONLY volunteerships
 
 
 --
+-- Name: registrations fk_rails_2e0658f554; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY registrations
+    ADD CONSTRAINT fk_rails_2e0658f554 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
 -- Name: pitch_contest_votes fk_rails_4daa05456f; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1888,6 +1896,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171023230539'),
 ('20171024210033'),
 ('20171029211526'),
-('20171130230321');
+('20171130230321'),
+('20171212024445');
 
 
