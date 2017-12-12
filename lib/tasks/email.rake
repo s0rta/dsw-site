@@ -114,18 +114,20 @@ namespace :email do
         response = sg.client.contactdb.lists._(list_id).recipients.post(request_body: recipient_ids)
       end
       Rails.logger.info "Resyncing session submissions (#{Submission.count}) (2/3)"
-      Submission.find_in_batches(batch_size: 1000) do |batch|
+      Submission.includes(:submitter).find_in_batches(batch_size: 250) do |batch|
         payload = batch.map do |s|
-          { email: s.email }
+          [ contact_emails, submitter.try(:email) ]
+        end.flatten.compact.map do |email|
+          { email: email }
         end
         response = sg.client.contactdb.recipients.post(request_body: payload)
         recipient_ids = JSON.parse(response.body)['persisted_recipients']
         response = sg.client.contactdb.lists._(list_id).recipients.post(request_body: recipient_ids)
       end
       Rails.logger.info "Resyncing registrations (#{Registration.count}) (3/3)"
-      Registration.find_in_batches(batch_size: 1000) do |batch|
+      Registration.includes(:user).find_in_batches(batch_size: 1000) do |batch|
         payload = batch.map do |r|
-          { email: r.email }
+          { email: r.user.email }
         end
         response = sg.client.contactdb.recipients.post(request_body: payload)
         recipient_ids = JSON.parse(response.body)['persisted_recipients']
