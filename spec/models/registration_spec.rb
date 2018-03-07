@@ -22,6 +22,16 @@ RSpec.describe Registration, type: :model do
     end
   end
 
+  describe 'with an existing registration' do
+    subject { create(:registration) }
+
+    it do
+      is_expected.to validate_uniqueness_of(:user_id).
+        scoped_to(:year).
+        with_message('may only register once per year')
+    end
+  end
+
   it 'defaults its year to the current year' do
     expect(Registration.new.year).to eq(Date.today.year)
   end
