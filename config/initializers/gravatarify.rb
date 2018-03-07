@@ -1,1 +1,1 @@
-Gravatarify.styles[:thumb] = { size: 80, html: { class: 'gravatar' } }
+Gravatarify.styles[:thumb] = { size: 100, html: { class: 'gravatar' } }
