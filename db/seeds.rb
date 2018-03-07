@@ -430,12 +430,8 @@ AnnualSchedule.where(year: 2017).first_or_create!(
     team_position: 'Maker Track Co-Chair',
     description: 'Colorado Lending Source',
     team_priority: 1 },
-  { name: 'Nate Greenlee',
-    team_position: 'Founder & Growth Tracks Co-Chair',
-    description: 'Team & Culture',
-    team_priority: 1 },
   { name: 'Leah Zions',
-    team_position: 'Founder & Growth Tracks, Editor',
+    team_position: 'Blog Editor',
     description: 'Team & Culture',
     team_priority: 1 },
   { name: 'Aaron Duke',
@@ -459,8 +455,7 @@ AnnualSchedule.where(year: 2017).first_or_create!(
     team_priority: 2 }
 ].each do |attrs|
   User.where(name: attrs[:name]).each do |user|
-    # raise "#{attrs[:name]} matches #{scope.count} users!" if scope.count > 1
-    if user && !user.avatar?
+    if user && !user.avatar? && user.team_position.blank?
       avatar_path = Rails.root.join('app', 'assets', 'images', 'redesign', "#{user.name.parameterize}.jpg")
       user.update_attributes(attrs.merge(avatar: File.open(avatar_path)))
     end
