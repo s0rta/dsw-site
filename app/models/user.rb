@@ -29,7 +29,8 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   def self.on_team
-    reorder('team_priority ASC, team_position DESC, name DESC').where.not(team_position: nil)
+    reorder('team_priority ASC, team_position DESC, name DESC').
+      where("team_position IS NOT NULL AND team_position <> ''")
   end
 
   def current_registration
