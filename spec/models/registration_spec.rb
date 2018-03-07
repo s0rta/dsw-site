@@ -11,7 +11,16 @@ RSpec.describe Registration, type: :model do
   it { is_expected.to validate_presence_of(:user) }
   it { is_expected.to validate_presence_of(:age_range) }
   it { is_expected.to validate_presence_of(:primary_role) }
-  it { is_expected.to validate_uniqueness_of(:user_id).scoped_to(:year) }
+
+  describe 'with an existing registration' do
+    subject { create(:registration) }
+
+    it do
+      is_expected.to validate_uniqueness_of(:user_id).
+        scoped_to(:year).
+        with_message('may only register once per year')
+    end
+  end
 
   describe 'with an existing registration' do
     subject { create(:registration) }
