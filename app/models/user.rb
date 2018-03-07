@@ -13,7 +13,12 @@ class User < ApplicationRecord
   validates :name, presence: true
 
   validates :team_priority,
-            numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 10, allow_nil: true }
+            numericality: {
+              only_integer: true,
+              greater_than_or_equal_to: 0,
+              less_than_or_equal_to: 10,
+              allow_nil: true
+            }
 
   has_many :submissions, foreign_key: 'submitter_id', dependent: :restrict_with_error
   has_many :votes, dependent: :destroy
