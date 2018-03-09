@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   # Redirects for old paths
   get '/assets', to: redirect('/contact/assets')
+    resources :faqs, only: :index
   get '/faq', to: redirect('/contact/faq')
 
   get '/resources', to: redirect('/about')
