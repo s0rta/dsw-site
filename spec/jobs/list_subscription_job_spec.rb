@@ -2,13 +2,32 @@ require 'spec_helper'
 
 describe ListSubscriptionJob, job: true, vcr: true do
   it 'subscribes to a list' do
-    ENV['EMMA_GROUP_ID'] = '12345'
-    expect_any_instance_of(Emma::Client).to receive(:add_member).with(email: 'test@example.com',
-                                                                      group_ids: [ '12345' ],
-                                                                      fields: {
+    # This is not a great test, but I'm at a loss for better ways to handle this kind of stubbing
+    allow_any_instance_of(SendGrid::API).to receive_message_chain(:client,
+                                                                  :contactdb,
+                                                                  :recipients,
+                                                                  :patch).with(
+                                                                    request_body: [
+                                                                      {
+                                                                        email: 'test@example.com',
                                                                         first_name: 'Test',
                                                                         last_name: 'User'
-                                                                      })
+                                                                      }
+                                                                    ]) do
+                                                                      instance_double('SendGrid::Response',
+                                                                                      body: '{ "persisted_recipients": [ 1 ] }',
+                                                                                      status_code: 201)
+                                                                    end
+
+    allow_any_instance_of(SendGrid::API).to receive_message_chain(:client,
+                                                                  :contactdb,
+                                                                  :lists,
+                                                                  :_,
+                                                                  :recipients,
+                                                                  :_,
+                                                                  :post) do
+                                                                    instance_double('SendGrid::Response', status_code: 201)
+                                                                  end
 
     ListSubscriptionJob.perform_async('test@example.com',
                                       first_name: 'Test',
