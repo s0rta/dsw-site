@@ -375,6 +375,26 @@ PitchContest::Entry.reset_column_information
   e.save!
 end
 
+AnnualSchedule.where(year: 2013).first_or_create!(
+  week_start_at: Date.parse('2013-09-16').freeze,
+  week_end_at: Date.parse('2013-09-20').freeze,
+)
+
+AnnualSchedule.where(year: 2014).first_or_create!(
+  week_start_at: Date.parse('2014-09-15').freeze,
+  week_end_at: Date.parse('2014-09-19').freeze,
+)
+
+AnnualSchedule.where(year: 2015).first_or_create!(
+  week_start_at: Date.parse('2015-09-28').freeze,
+  week_end_at: Date.parse('2015-10-02').freeze,
+)
+
+AnnualSchedule.where(year: 2016).first_or_create!(
+  week_start_at: Date.parse('2016-09-12').freeze,
+  week_end_at: Date.parse('2016-09-16').freeze,
+)
+
 AnnualSchedule.where(year: 2017).first_or_create!(
   cfp_open_at: Date.parse('2017-03-19').freeze,
   cfp_close_at: Date.parse('2017-04-21').freeze,
