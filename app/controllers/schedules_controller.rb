@@ -12,7 +12,11 @@ class SchedulesController < ApplicationController
                 for_year(params[:year]).
                 for_schedule.
                 order(:start_day).
-                includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
+                includes(:venue,
+                         :submitter,
+                         :track,
+                         :cluster,
+                         sponsorship: :track)
     respond_to do |format|
       format.json do
         respond_with @sessions
@@ -26,13 +30,17 @@ class SchedulesController < ApplicationController
   def by_day
     @day_index = Submission::DAYS.invert[params[:start_day].titleize]
     @sessions = Submission.
-                   for_year(params[:year]).
-                   for_schedule.
-                   for_start_day(params[:start_day]).
-                   for_schedule_filter(params[:filter], current_user).
-                   fulltext_search(params[:terms]).
-                   order(:start_hour).
-                   includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
+                for_year(params[:year]).
+                for_schedule.
+                for_start_day(params[:start_day]).
+                for_schedule_filter(params[:filter], current_user).
+                fulltext_search(params[:terms]).
+                order(:start_hour).
+                includes(:venue,
+                         :submitter,
+                         :track,
+                         :cluster,
+                         sponsorship: :track)
     respond_with @sessions
   end
 
@@ -41,14 +49,21 @@ class SchedulesController < ApplicationController
                for_schedule.
                where(id: params[:id].to_i).
                order(:start_day).
-               includes(:venue, :submitter, :track, :cluster, sponsorship: :track).
+               includes(:venue,
+                        :submitter,
+                        :track,
+                        :cluster,
+                        sponsorship: :track).
                first!
 
     @related_sessions = @session.
                         cached_similar_items.
                         for_schedule.
                         limit(3).
-                        includes(:venue, :track, :cluster, sponsorship: :track)
+                        includes(:venue,
+                                 :track,
+                                 :cluster,
+                                 sponsorship: :track)
   end
 
   def feed
@@ -57,7 +72,11 @@ class SchedulesController < ApplicationController
                 submissions.for_current_year.
                 for_schedule.
                 order('created_at asc').
-                includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
+                includes(:venue,
+                         :submitter,
+                         :track,
+                         :cluster,
+                         sponsorship: :track)
     if stale?(@sessions)
       respond_to do |format|
         format.ics do
@@ -84,7 +103,6 @@ class SchedulesController < ApplicationController
     current_registration.session_registrations.where(submission_id: @session.id).destroy_all
     redirect_to schedule_path(@session)
   end
-
 
   private
 

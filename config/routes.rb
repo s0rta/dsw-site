@@ -63,19 +63,20 @@ Rails.application.routes.draw do
 
   get '/schedule', to: 'schedules#index', as: :schedules
   get '/schedule/:year',
-    to: 'schedules#index',
-    as: :schedules_by_year,
-    constraints: { year: %r(\d{4}) },
-    defaults: { year: Date.today.year }
-  get '/schedule/:start_day', to: 'schedules#by_day',
-    as: :schedules_by_day,
-    constraints: ->(r) { Submission::DAYS.invert.include?(r.params[:start_day].titleize) },
-    defaults: { start_day: 'monday', format: 'html' }
+      to: 'schedules#index',
+      as: :schedules_by_year,
+      constraints: { year: /\d{4}/ },
+      defaults: { year: Date.today.year }
+  get '/schedule/:start_day',
+      to: 'schedules#by_day',
+      as: :schedules_by_day,
+      constraints: ->(r) { Submission::DAYS.invert.include?(r.params[:start_day].titleize) },
+      defaults: { start_day: 'monday', format: 'html' }
   get '/schedule/:year/:start_day',
-    to: 'schedules#by_day',
-    as: :schedules_by_year_by_day,
-    constraints: ->(r) { Submission::DAYS.invert.include?(r.params[:start_day].titleize) && r.params[:year] =~ %r(\d{4}) },
-    defaults: { start_day: 'monday', year: Date.today.year, format: 'html' }
+      to: 'schedules#by_day',
+      as: :schedules_by_year_by_day,
+      constraints: ->(r) { Submission::DAYS.invert.include?(r.params[:start_day].titleize) && r.params[:year] =~ /\d{4}/ },
+      defaults: { start_day: 'monday', year: Date.today.year, format: 'html' }
   get '/schedule/:id', to: 'schedules#show', as: :schedule
   post '/schedule/:id', to: 'schedules#create', as: :add_to_schedule
   delete '/schedule/:id', to: 'schedules#destroy', as: :remove_from_schedule
