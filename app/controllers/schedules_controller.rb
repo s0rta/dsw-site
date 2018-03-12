@@ -9,7 +9,7 @@ class SchedulesController < ApplicationController
 
   def index
     @sessions = Submission.
-                for_current_year.
+                for_year(params[:year]).
                 for_schedule.
                 order(:start_day).
                 includes(:venue, :submitter, :track, :cluster, sponsorship: :track)
@@ -18,15 +18,15 @@ class SchedulesController < ApplicationController
         respond_with @sessions
       end
       format.html do
-        redirect_to schedules_by_day_path({ start_day:  current_day_or_default }.merge(request.query_parameters))
+        redirect_to schedules_by_year_by_day_path({ year: current_year_or_default, start_day:  current_day_or_default }.merge(request.query_parameters))
       end
     end
   end
 
   def by_day
     @day_index = Submission::DAYS.invert[params[:start_day].titleize]
-    @submissions = Submission.
-                   for_current_year.
+    @sessions = Submission.
+                   for_year(params[:year]).
                    for_schedule.
                    for_start_day(params[:start_day]).
                    for_schedule_filter(params[:filter], current_user).
@@ -38,7 +38,6 @@ class SchedulesController < ApplicationController
 
   def show
     @session = Submission.
-               for_current_year.
                for_schedule.
                where(id: params[:id].to_i).
                order(:start_day).
@@ -47,7 +46,6 @@ class SchedulesController < ApplicationController
 
     @related_sessions = @session.
                         cached_similar_items.
-                        for_current_year.
                         for_schedule.
                         limit(3).
                         includes(:venue, :track, :cluster, sponsorship: :track)
@@ -87,6 +85,7 @@ class SchedulesController < ApplicationController
     redirect_to schedule_path(@session)
   end
 
+
   private
 
   def current_day_or_default
@@ -98,6 +97,20 @@ class SchedulesController < ApplicationController
       'monday'
     end
   end
+
+  helper_method :current_day_or_default
+
+  def current_year_or_default
+    if params[:year].present?
+      params[:year]
+    elsif AnnualSchedule.registration_open? || AnnualSchedule.post_week?
+      Date.today.year
+    else
+      Date.today.year - 1
+    end
+  end
+
+  helper_method :current_year_or_default
 
   def to_calendar(registration, sessions)
     Icalendar::Calendar.new.tap do |calendar|

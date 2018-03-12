@@ -10,7 +10,7 @@ nav
       - flash.each do |key, message|
         h6 = message
 
-- unless registered?
+- if AnnualSchedule.registration_open? && !registered?
   section.common.sm-centered
     .section-content
       h1 Register and build your schedule
@@ -24,37 +24,41 @@ section.common.sm-centered
     select(name="filter" value="#{params[:filter]}" onchange="this.form.submit();")
       option(value="all" selected=("selected" if params[:filter] == 'all')) View All Sessions
       option(value="mine" selected=("selected" if params[:filter] == 'mine')) View My Schedule
-      optgroup(label="View Sessions By Track")
+      optgroup(label="View Sessions by Track")
         - Track.in_display_order.each do |t|
           option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) #{t.name}#{t.is_submittable? ? ' Track' : '' }
-      optgroup(label="View Sessions By Cluster")
+      optgroup(label="View Sessions by Cluster")
         - Cluster.all.each do |c|
           option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) #{c.name} Cluster
+    select(name="year" value="#{params[:year]}" onchange="window.location.href = this.form.elements[2].value;")
+      optgroup(label="View Sessions by Year")
+        = Submission.distinct.order('year DESC').pluck(:year).each do |y|
+          option(value="#{schedules_by_year_by_day_path(y, current_day_or_default)}" selected=("selected" if params[:year] == y.to_s)) = y
 
 section.common
   .section-content.schedule-container.sm-centered
     nav
       .chiclets-row
         - Submission::DAYS.each do |index, day|
-          = link_to schedules_by_day_path(Submission::DAYS[index].downcase, request.query_parameters), class: "chiclet #{@day_index == index ? 'active' : ''}" do
+          = link_to schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[index].downcase, request.query_parameters), class: "chiclet #{@day_index == index ? 'active' : ''}" do
             .month = formatted_start_date_for_index(index, '%b')
             .day = formatted_start_date_for_index(index, '%-d')
             .day_of_week = formatted_start_date_for_index(index, '%A')
 
-    - cache [ @submissions.maximum(:updated_at), @submissions.map(&:id) ] do
-      - @submissions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
+    - cache [ @sessions.maximum(:updated_at), @sessions.map(&:id) ] do
+      - @sessions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
         .time-block
           .time-tag = grouping.first.human_start_time
           = render partial: 'scheduled_session', collection: grouping, as: :submission
 
     .day-buttons
       - if @day_index == 6
-        = link_to Submission::DAYS[@day_index - 1], schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left'
+        = link_to Submission::DAYS[@day_index - 1], schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left'
       - elsif @day_index == 2
-        = link_to Submission::DAYS[@day_index + 1], schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right'
+        = link_to Submission::DAYS[@day_index + 1], schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right'
       - else
-        = link_to Submission::DAYS[@day_index - 1], schedules_by_day_path(Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left btn-half'
-        = link_to Submission::DAYS[@day_index + 1], schedules_by_day_path(Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right btn-half'
+        = link_to Submission::DAYS[@day_index - 1], schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left btn-half'
+        = link_to Submission::DAYS[@day_index + 1], schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right btn-half'
 
 - if registered? && params[:filter] == 'mine'
   section.common

@@ -10,7 +10,7 @@ nav
 
 section.back-link-section
   .section-content.sm-centered
-    = link_to 'Back to Schedule', schedules_path, class: 'back-link'
+    = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'
 
 section.common
   div(class="section-content session-detail sm-centered #{@session.track.color}")
