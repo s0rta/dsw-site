@@ -2,7 +2,10 @@
 
 nav
   .section-content
-    h1 Schedule
+    - if current_year_or_default == Date.today.year
+      h1 Schedule
+    - else
+      h1 #{current_year_or_default} Schedule
 
 - unless flash.empty?
   section.common.green
