@@ -1,0 +1,3 @@
+refresh_current_recommendations_job:
+  class: RefreshCurrentRecommendationsJob
+  cron: "01 1 * * *" # Daily overnight
