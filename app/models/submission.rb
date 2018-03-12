@@ -407,7 +407,7 @@ class Submission < ApplicationRecord
       JOIN submissions ON submissions.id = similar_items.submission_id
       ORDER BY similarity DESC;
     EOF
-    self.class.find_by_sql(ActiveRecord::Base.send(:sanitize_sql_array, [ sql, id: id, year: Date.today.year, num: num ]))
+    self.class.find_by_sql(ActiveRecord::Base.send(:sanitize_sql_array, [ sql, id: id, year: year, num: num ]))
   end
 
   def cached_similar_items
