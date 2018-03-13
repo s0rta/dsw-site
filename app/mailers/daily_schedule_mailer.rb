@@ -72,6 +72,6 @@ class DailyScheduleMailer < ApplicationMailer
   private
 
   def formatted_day_for_subject(day)
-    formatted_start_date_for_index(day, '%A %-m/%-d')
+    formatted_start_date_for_index(day, Date.today.year, '%A %-m/%-d')
   end
 end

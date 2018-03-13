@@ -1,4 +1,4 @@
-- content_for(:title, "Schedule for #{formatted_start_date_for_index(@day_index, '%A %B %-d, %Y')}")
+- content_for(:title, "Schedule for #{formatted_start_date_for_index(@day_index, current_year_or_default, '%A %B %-d, %Y')}")
 
 nav
   .section-content
@@ -44,9 +44,9 @@ section.common
       .chiclets-row
         - Submission::DAYS.each do |index, day|
           = link_to schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[index].downcase, request.query_parameters), class: "chiclet #{@day_index == index ? 'active' : ''}" do
-            .month = formatted_start_date_for_index(index, '%b')
-            .day = formatted_start_date_for_index(index, '%-d')
-            .day_of_week = formatted_start_date_for_index(index, '%A')
+            .month = formatted_start_date_for_index(index, current_year_or_default, '%b')
+            .day = formatted_start_date_for_index(index, current_year_or_default, '%-d')
+            .day_of_week = formatted_start_date_for_index(index, current_year_or_default, '%A')
 
     - cache [ @sessions.maximum(:updated_at), @sessions.map(&:id) ] do
       - @sessions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
