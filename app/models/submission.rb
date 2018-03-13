@@ -218,14 +218,18 @@ class Submission < ApplicationRecord
     end
   end
 
+  def current_year?
+    year == Date.today.year
+  end
+
   def start_datetime
-    datetime = AnnualSchedule.current.week_start_at.in_time_zone('America/Denver') + (start_day.to_i - 2).days
+    datetime = schedule.week_start_at.in_time_zone('America/Denver') + (start_day.to_i - 2).days
     datetime += start_hour.hours if start_hour
     datetime
   end
 
   def end_datetime
-    datetime = AnnualSchedule.current.week_start_at.in_time_zone('America/Denver') + (end_day.to_i - 2).days
+    datetime = schedule.week_start_at.in_time_zone('America/Denver') + (end_day.to_i - 2).days
     datetime += end_hour.hours if end_hour
     datetime
   end
@@ -413,5 +417,11 @@ class Submission < ApplicationRecord
   def cached_similar_items
     order = ActiveRecord::Base.send(:sanitize_sql_array, ['position(id::text in ?)', cached_similar_item_ids.join(',')])
     self.class.where(id: cached_similar_item_ids).order(order)
+  end
+
+  private
+
+  def schedule
+    AnnualSchedule.find_by!(year: year)
   end
 end

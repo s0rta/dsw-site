@@ -6,11 +6,15 @@
   meta(property="og:description" content="#{@session.description}")
 nav
   .section-content
-    h1 Session Detail
+    - if @session.current_year?
+      h1 Session Detail
+    - else
+      h1 #{@session.year} Schedule
+
 
 section.back-link-section
   .section-content.sm-centered
-    = link_to 'Back to Schedule', schedules_path, class: 'back-link'
+    = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'
 
 section.common
   div(class="section-content session-detail sm-centered #{@session.track.color}")
@@ -45,13 +49,14 @@ section.common
       .location-details
         p = @session.human_location_name
 
-section.common
-  .section-content.sm-centered
-    - if !registered? || !registered_for_session?(@session)
-      = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
-    - else
-      div.confirmed-btn-container
-        = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
+- if AnnualSchedule.registration_open?
+  section.common
+    .section-content.sm-centered
+      - if !registered? || !registered_for_session?(@session)
+        = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
+      - else
+        div.confirmed-btn-container
+          = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
 
 - if @related_sessions.any?
   section.common
@@ -63,4 +68,4 @@ section.common
 
 section.common
   .section-content.sm-centered
-    = link_to 'Back to Schedule', schedules_path, class: 'back-link'
+    = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'

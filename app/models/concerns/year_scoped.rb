@@ -8,6 +8,15 @@ module YearScoped
   end
 
   class_methods do
+
+    def for_year(year)
+      if year
+        where(year: year)
+      else
+        for_current_year
+      end
+    end
+
     def for_current_year
       where(year: Date.today.year)
     end
