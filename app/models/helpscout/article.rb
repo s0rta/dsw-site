@@ -1,17 +1,17 @@
 module Helpscout
   class Article
-    ARTICLE_CACHE_KEY = "helpscout-article-cache".freeze
+    ARTICLE_CACHE_KEY = 'helpscout-article-cache'.freeze
 
     def initialize(json_data)
       @data = json_data
     end
 
     def name
-      @data["name"]
+      @data['name']
     end
 
     def content
-      @data["text"]
+      @data['text']
     end
 
     def self.fetch!
@@ -31,7 +31,7 @@ module Helpscout
     end
 
     def self.all
-      JSON.parse(Redis.current.get(ARTICLE_CACHE_KEY) || "[]").map do |article|
+      JSON.parse(Redis.current.get(ARTICLE_CACHE_KEY) || '[]').map do |article|
         Article.new(article)
       end
     end

@@ -13,10 +13,10 @@ section.common.purple
           h6 = ni.title_with_date
           .list-icons
             - if ni.attachment.present?
-              = link_to ni.attachment.url do
+              = link_to ni.attachment.url, title: ni.title_with_date do
                 = render partial: 'icons/download'
             - else
-              = link_to ni.external_link do
+              = link_to ni.external_link, title: ni.title_with_date do
                 = render partial: 'icons/arrow_right'
 
 
