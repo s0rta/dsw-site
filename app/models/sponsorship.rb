@@ -50,7 +50,7 @@ class Sponsorship < ApplicationRecord
   end
 
   def self.title
-    where(level: 'title')
+    where(level: TITLE_LEVEL)
   end
 
   def self.alphabetical
