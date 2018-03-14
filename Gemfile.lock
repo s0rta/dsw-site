@@ -188,6 +188,8 @@ GEM
       activesupport (>= 2)
       nokogiri (>= 1.4)
     htmlentities (4.3.4)
+    httparty (0.16.1)
+      multi_xml (>= 0.5.2)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     icalendar (2.1.2)
@@ -245,6 +247,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.12.2)
+    multi_xml (0.6.0)
     mustermann (1.0.2)
     newrelic_rpm (4.4.0.336)
     nio4r (2.2.0)
@@ -521,4 +524,4 @@ RUBY VERSION
    ruby 2.3.4p301
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
