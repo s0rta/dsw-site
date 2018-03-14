@@ -145,4 +145,8 @@ module ApplicationHelper
                               alphabetical.
                               includes(:track, submission: :track)
   end
+
+  def footer_sponsors
+    @_footer_sponsors ||= Sponsorship.for_current_year.title.alphabetical
+  end
 end

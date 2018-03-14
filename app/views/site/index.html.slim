@@ -35,11 +35,10 @@ section.site-max-and-center
   div.cards.cards-3up(style="margin-top: 10em")
 
 = render partial: 'layouts/shared/page_footer'
-section.common.title-sponsors
-  h3 Title Sponsors
-  .title-logo-container
-    = image_tag 'redesign/sponsors/aging20.jpg'
-    = image_tag 'redesign/sponsors/chase-biz.jpg'
-    = image_tag 'redesign/sponsors/comcast.jpg'
-    = image_tag 'redesign/sponsors/ddp.jpg'
-    = image_tag 'redesign/sponsors/wework.jpg'
+- if footer_sponsors.any?
+  section.common.title-sponsors
+    h3 Title Sponsors
+    .title-logo-container
+      - footer_sponsors.each do |s|
+        = link_to s.link_href, title: s.name do
+          = image_tag s.logo.url, alt: s.name
