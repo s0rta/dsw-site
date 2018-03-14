@@ -1,0 +1,1462 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/categories/5aa2b5f02c7d3a75495181d5/articles
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - d585a696-7923-41c0-a985-329e584a0b92
+      Date:
+      - Tue, 13 Mar 2018 23:56:24 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1981'
+      X-Ratelimit-Reset:
+      - '279'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1716'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhcnRpY2xlcyI6eyJwYWdlIjoxLCJwYWdlcyI6MSwiY291bnQiOjE3LCJp
+        dGVtcyI6W3siaWQiOiI1YWEzMjdkZTA0Mjg2Mzc0ZjcwOGMyODYiLCJudW1i
+        ZXIiOjEyLCJjb2xsZWN0aW9uSWQiOiI1OWI5NmQ5MjJjN2QzYTczNDg4Y2Q2
+        MzkiLCJzbHVnIjoid2h5LWRvLXdlLW5lZWQtdG8tdm90ZS1vbi1zZXNzaW9u
+        cyIsInN0YXR1cyI6InB1Ymxpc2hlZCIsImhhc0RyYWZ0IjpmYWxzZSwibmFt
+        ZSI6IldoeSBkbyB3ZSBuZWVkIHRvIHZvdGUgb24gc2Vzc2lvbnM/IiwicHVi
+        bGljVXJsIjoiaHR0cHM6Ly9kZW52ZXItc3RhcnR1cC13ZWVrLmhlbHBzY291
+        dGRvY3MuY29tL2FydGljbGUvMTItd2h5LWRvLXdlLW5lZWQtdG8tdm90ZS1v
+        bi1zZXNzaW9ucyIsInBvcHVsYXJpdHkiOjAuMCwidmlld0NvdW50IjowLCJj
+        cmVhdGVkQnkiOjEzMzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgsImNyZWF0ZWRB
+        dCI6IjIwMTgtMDMtMTBUMDA6MzM6MzRaIiwidXBkYXRlZEF0IjoiMjAxOC0w
+        My0xMFQwMDozMzo0N1oiLCJsYXN0UHVibGlzaGVkQXQiOiIyMDE4LTAzLTEw
+        VDAwOjMzOjQ3WiJ9LHsiaWQiOiI1YWEyZjA2MTA0Mjg2Mzc0ZjcwOGMwZTEi
+        LCJudW1iZXIiOjgsImNvbGxlY3Rpb25JZCI6IjU5Yjk2ZDkyMmM3ZDNhNzM0
+        ODhjZDYzOSIsInNsdWciOiJob3ctZG8taS1zdWJtaXQtbXktc2Vzc2lvbi1p
+        ZGVhIiwic3RhdHVzIjoicHVibGlzaGVkIiwiaGFzRHJhZnQiOmZhbHNlLCJu
+        YW1lIjoiSG93IGRvIEkgc3VibWl0IG15IHNlc3Npb24gaWRlYT8iLCJwdWJs
+        aWNVcmwiOiJodHRwczovL2RlbnZlci1zdGFydHVwLXdlZWsuaGVscHNjb3V0
+        ZG9jcy5jb20vYXJ0aWNsZS84LWhvdy1kby1pLXN1Ym1pdC1teS1zZXNzaW9u
+        LWlkZWEiLCJwb3B1bGFyaXR5IjowLjAsInZpZXdDb3VudCI6MCwiY3JlYXRl
+        ZEJ5IjoxMzM3MTgsInVwZGF0ZWRCeSI6MTMzNzE4LCJjcmVhdGVkQXQiOiIy
+        MDE4LTAzLTA5VDIwOjM2OjQ5WiIsInVwZGF0ZWRBdCI6IjIwMTgtMDMtMDlU
+        MjA6Mzc6MTFaIiwibGFzdFB1Ymxpc2hlZEF0IjoiMjAxOC0wMy0wOVQyMDoz
+        NzoxMVoifSx7ImlkIjoiNWFhMmYwOTAwNDI4NjM3NGY3MDhjMGUyIiwibnVt
+        YmVyIjo5LCJjb2xsZWN0aW9uSWQiOiI1OWI5NmQ5MjJjN2QzYTczNDg4Y2Q2
+        MzkiLCJzbHVnIjoid2hvLW9yZ2FuaXplcy10aGUtc2Vzc2lvbnMiLCJzdGF0
+        dXMiOiJwdWJsaXNoZWQiLCJoYXNEcmFmdCI6ZmFsc2UsIm5hbWUiOiJXaG8g
+        b3JnYW5pemVzIHRoZSBzZXNzaW9ucz8iLCJwdWJsaWNVcmwiOiJodHRwczov
+        L2RlbnZlci1zdGFydHVwLXdlZWsuaGVscHNjb3V0ZG9jcy5jb20vYXJ0aWNs
+        ZS85LXdoby1vcmdhbml6ZXMtdGhlLXNlc3Npb25zIiwicG9wdWxhcml0eSI6
+        MC4wLCJ2aWV3Q291bnQiOjAsImNyZWF0ZWRCeSI6MTMzNzE4LCJ1cGRhdGVk
+        QnkiOjEzMzcxOCwiY3JlYXRlZEF0IjoiMjAxOC0wMy0wOVQyMDozNzozNloi
+        LCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTA5VDIwOjM3OjQ4WiIsImxhc3RQdWJs
+        aXNoZWRBdCI6IjIwMTgtMDMtMDlUMjA6Mzc6NDhaIn0seyJpZCI6IjVhYTJm
+        MGFkMDQyODYzNzRmNzA4YzBlMyIsIm51bWJlciI6MTAsImNvbGxlY3Rpb25J
+        ZCI6IjU5Yjk2ZDkyMmM3ZDNhNzM0ODhjZDYzOSIsInNsdWciOiJ3aGF0LWtp
+        bmQtb2YtaWRlYXMtaGF2ZS10aGUtYmVzdC1jaGFuY2Utb2YtYmVpbmctc2Vs
+        ZWN0ZWQiLCJzdGF0dXMiOiJwdWJsaXNoZWQiLCJoYXNEcmFmdCI6ZmFsc2Us
+        Im5hbWUiOiJXaGF0IGtpbmQgb2YgaWRlYXMgaGF2ZSB0aGUgYmVzdCBjaGFu
+        Y2Ugb2YgYmVpbmcgc2VsZWN0ZWQ/IiwicHVibGljVXJsIjoiaHR0cHM6Ly9k
+        ZW52ZXItc3RhcnR1cC13ZWVrLmhlbHBzY291dGRvY3MuY29tL2FydGljbGUv
+        MTAtd2hhdC1raW5kLW9mLWlkZWFzLWhhdmUtdGhlLWJlc3QtY2hhbmNlLW9m
+        LWJlaW5nLXNlbGVjdGVkIiwicG9wdWxhcml0eSI6MC4wLCJ2aWV3Q291bnQi
+        OjAsImNyZWF0ZWRCeSI6MTMzNzE4LCJ1cGRhdGVkQnkiOjEzMzcxOCwiY3Jl
+        YXRlZEF0IjoiMjAxOC0wMy0wOVQyMDozODowNVoiLCJ1cGRhdGVkQXQiOiIy
+        MDE4LTAzLTA5VDIwOjM4OjI1WiIsImxhc3RQdWJsaXNoZWRBdCI6IjIwMTgt
+        MDMtMDlUMjA6Mzg6MjVaIn0seyJpZCI6IjVhYTJmMGY2MDQyODYzNzRmNzA4
+        YzBlNSIsIm51bWJlciI6MTEsImNvbGxlY3Rpb25JZCI6IjU5Yjk2ZDkyMmM3
+        ZDNhNzM0ODhjZDYzOSIsInNsdWciOiJ3aGF0LWFyZS10aGUtcHJvZ3JhbW1p
+        bmctdHJhY2tzIiwic3RhdHVzIjoicHVibGlzaGVkIiwiaGFzRHJhZnQiOmZh
+        bHNlLCJuYW1lIjoiV2hhdCBhcmUgdGhlIHByb2dyYW1taW5nIHRyYWNrcz8i
+        LCJwdWJsaWNVcmwiOiJodHRwczovL2RlbnZlci1zdGFydHVwLXdlZWsuaGVs
+        cHNjb3V0ZG9jcy5jb20vYXJ0aWNsZS8xMS13aGF0LWFyZS10aGUtcHJvZ3Jh
+        bW1pbmctdHJhY2tzIiwicG9wdWxhcml0eSI6MC4wLCJ2aWV3Q291bnQiOjAs
+        ImNyZWF0ZWRCeSI6MTMzNzE4LCJ1cGRhdGVkQnkiOjEzMzcxOCwiY3JlYXRl
+        ZEF0IjoiMjAxOC0wMy0wOVQyMDozOToxOFoiLCJ1cGRhdGVkQXQiOiIyMDE4
+        LTAzLTA5VDIwOjQwOjQ2WiIsImxhc3RQdWJsaXNoZWRBdCI6IjIwMTgtMDMt
+        MDlUMjA6NDA6NDZaIn0seyJpZCI6IjVhYTMyODBhMmM3ZDNhNzU0OTUxODU5
+        NiIsIm51bWJlciI6MTMsImNvbGxlY3Rpb25JZCI6IjU5Yjk2ZDkyMmM3ZDNh
+        NzM0ODhjZDYzOSIsInNsdWciOiJob3ctb2Z0ZW4tY2FuLWktdm90ZSIsInN0
+        YXR1cyI6InB1Ymxpc2hlZCIsImhhc0RyYWZ0IjpmYWxzZSwibmFtZSI6Ikhv
+        dyBvZnRlbiBjYW4gSSB2b3RlPyIsInB1YmxpY1VybCI6Imh0dHBzOi8vZGVu
+        dmVyLXN0YXJ0dXAtd2Vlay5oZWxwc2NvdXRkb2NzLmNvbS9hcnRpY2xlLzEz
+        LWhvdy1vZnRlbi1jYW4taS12b3RlIiwicG9wdWxhcml0eSI6MC4wLCJ2aWV3
+        Q291bnQiOjAsImNyZWF0ZWRCeSI6MTMzNzE4LCJ1cGRhdGVkQnkiOjEzMzcx
+        OCwiY3JlYXRlZEF0IjoiMjAxOC0wMy0xMFQwMDozNDoxOFoiLCJ1cGRhdGVk
+        QXQiOiIyMDE4LTAzLTEwVDAwOjM0OjM3WiIsImxhc3RQdWJsaXNoZWRBdCI6
+        IjIwMTgtMDMtMTBUMDA6MzQ6MzdaIn0seyJpZCI6IjVhYTMyOTVlMDQyODYz
+        NzRmNzA4YzI4YSIsIm51bWJlciI6MTYsImNvbGxlY3Rpb25JZCI6IjU5Yjk2
+        ZDkyMmM3ZDNhNzM0ODhjZDYzOSIsInNsdWciOiJ3aGF0LWlmLWktaGF2ZS1h
+        bi1pZGVhLWJ1dC1uby12ZW51ZSIsInN0YXR1cyI6InB1Ymxpc2hlZCIsImhh
+        c0RyYWZ0IjpmYWxzZSwibmFtZSI6IldoYXQgaWYgSSBoYXZlIGFuIGlkZWEg
+        YnV0IG5vIHZlbnVlPyIsInB1YmxpY1VybCI6Imh0dHBzOi8vZGVudmVyLXN0
+        YXJ0dXAtd2Vlay5oZWxwc2NvdXRkb2NzLmNvbS9hcnRpY2xlLzE2LXdoYXQt
+        aWYtaS1oYXZlLWFuLWlkZWEtYnV0LW5vLXZlbnVlIiwicG9wdWxhcml0eSI6
+        MC4wLCJ2aWV3Q291bnQiOjAsImNyZWF0ZWRCeSI6MTMzNzE4LCJ1cGRhdGVk
+        QnkiOjEzMzcxOCwiY3JlYXRlZEF0IjoiMjAxOC0wMy0xMFQwMDozOTo1OFoi
+        LCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTEwVDAwOjQxOjE1WiIsImxhc3RQdWJs
+        aXNoZWRBdCI6IjIwMTgtMDMtMTBUMDA6NDE6MTVaIn0seyJpZCI6IjVhYTMy
+        ODM3MmM3ZDNhNzU0OTUxODU5NyIsIm51bWJlciI6MTQsImNvbGxlY3Rpb25J
+        ZCI6IjU5Yjk2ZDkyMmM3ZDNhNzM0ODhjZDYzOSIsInNsdWciOiJ3aGF0LWlz
+        LXRoZS1zY2hlZHVsZS1mb3ItdGhlLXdlZWsiLCJzdGF0dXMiOiJwdWJsaXNo
+        ZWQiLCJoYXNEcmFmdCI6ZmFsc2UsIm5hbWUiOiJXaGF0IGlzIHRoZSBzY2hl
+        ZHVsZSBmb3IgdGhlIHdlZWs/IiwicHVibGljVXJsIjoiaHR0cHM6Ly9kZW52
+        ZXItc3RhcnR1cC13ZWVrLmhlbHBzY291dGRvY3MuY29tL2FydGljbGUvMTQt
+        d2hhdC1pcy10aGUtc2NoZWR1bGUtZm9yLXRoZS13ZWVrIiwicG9wdWxhcml0
+        eSI6MC4wLCJ2aWV3Q291bnQiOjAsImNyZWF0ZWRCeSI6MTMzNzE4LCJ1cGRh
+        dGVkQnkiOjEzMzcxOCwiY3JlYXRlZEF0IjoiMjAxOC0wMy0xMFQwMDozNTow
+        M1oiLCJ1cGRhdGVkQXQiOiIyMDE4LTAzLTEwVDAwOjM4OjEyWiIsImxhc3RQ
+        dWJsaXNoZWRBdCI6IjIwMTgtMDMtMTBUMDA6Mzg6MTJaIn0seyJpZCI6IjVh
+        YTMyOTE4MDQyODYzNzRmNzA4YzI4OCIsIm51bWJlciI6MTUsImNvbGxlY3Rp
+        b25JZCI6IjU5Yjk2ZDkyMmM3ZDNhNzM0ODhjZDYzOSIsInNsdWciOiJjYW4t
+        aS1jaGFyZ2UtZm9yLW15LWV2ZW50LWRvLWktaGF2ZS1hLWJ1ZGdldC1jYW4t
+        aS1maW5kLW15LW93bi1zcG9uc29ycyIsInN0YXR1cyI6InB1Ymxpc2hlZCIs
+        Imhhc0RyYWZ0IjpmYWxzZSwibmFtZSI6IkNhbiBJIGNoYXJnZSBmb3IgbXkg
+        ZXZlbnQ/IERvIEkgaGF2ZSBhIGJ1ZGdldD8gQ2FuIEkgZmluZCBteSBvd24g
+        c3BvbnNvcnM/IiwicHVibGljVXJsIjoiaHR0cHM6Ly9kZW52ZXItc3RhcnR1
+        cC13ZWVrLmhlbHBzY291dGRvY3MuY29tL2FydGljbGUvMTUtY2FuLWktY2hh
+        cmdlLWZvci1teS1ldmVudC1kby1pLWhhdmUtYS1idWRnZXQtY2FuLWktZmlu
+        ZC1teS1vd24tc3BvbnNvcnMiLCJwb3B1bGFyaXR5IjowLjAsInZpZXdDb3Vu
+        dCI6MCwiY3JlYXRlZEJ5IjoxMzM3MTgsInVwZGF0ZWRCeSI6MTMzNzE4LCJj
+        cmVhdGVkQXQiOiIyMDE4LTAzLTEwVDAwOjM4OjQ4WiIsInVwZGF0ZWRBdCI6
+        IjIwMTgtMDMtMTBUMDA6Mzk6NDJaIiwibGFzdFB1Ymxpc2hlZEF0IjoiMjAx
+        OC0wMy0xMFQwMDozOTo0MloifSx7ImlkIjoiNWFhMzI5YjMwNDI4NjM3NGY3
+        MDhjMjhkIiwibnVtYmVyIjoxNywiY29sbGVjdGlvbklkIjoiNTliOTZkOTIy
+        YzdkM2E3MzQ4OGNkNjM5Iiwic2x1ZyI6IndoYXQtaXMtdGhlLXRpbWVsaW5l
+        LWZvci1zZWxlY3Rpbmctc2Vzc2lvbnMtd2hlbi1zaG91bGQtaS1leHBlY3Qt
+        dG8taGVhci1iYWNrIiwic3RhdHVzIjoicHVibGlzaGVkIiwiaGFzRHJhZnQi
+        OmZhbHNlLCJuYW1lIjoiV2hhdCBpcyB0aGUgdGltZWxpbmUgZm9yIHNlbGVj
+        dGluZyBzZXNzaW9ucz8gV2hlbiBzaG91bGQgSSBleHBlY3QgdG8gaGVhciBi
+        YWNrPyIsInB1YmxpY1VybCI6Imh0dHBzOi8vZGVudmVyLXN0YXJ0dXAtd2Vl
+        ay5oZWxwc2NvdXRkb2NzLmNvbS9hcnRpY2xlLzE3LXdoYXQtaXMtdGhlLXRp
+        bWVsaW5lLWZvci1zZWxlY3Rpbmctc2Vzc2lvbnMtd2hlbi1zaG91bGQtaS1l
+        eHBlY3QtdG8taGVhci1iYWNrIiwicG9wdWxhcml0eSI6MC4wLCJ2aWV3Q291
+        bnQiOjAsImNyZWF0ZWRCeSI6MTMzNzE4LCJ1cGRhdGVkQnkiOjEzMzcxOCwi
+        Y3JlYXRlZEF0IjoiMjAxOC0wMy0xMFQwMDo0MToyM1oiLCJ1cGRhdGVkQXQi
+        OiIyMDE4LTAzLTEwVDAwOjU0OjA4WiIsImxhc3RQdWJsaXNoZWRBdCI6IjIw
+        MTgtMDMtMTBUMDA6NTQ6MDhaIn0seyJpZCI6IjVhYTMyZjdjMmM3ZDNhNzU0
+        OTUxODVhNCIsIm51bWJlciI6MjAsImNvbGxlY3Rpb25JZCI6IjU5Yjk2ZDky
+        MmM3ZDNhNzM0ODhjZDYzOSIsInNsdWciOiJ3aG8tcy1pbi1jaGFyZ2Utb2Yt
+        ZGVudmVyLXN0YXJ0dXAtd2VlayIsInN0YXR1cyI6InB1Ymxpc2hlZCIsImhh
+        c0RyYWZ0IjpmYWxzZSwibmFtZSI6Ildob+KAmXMgaW4gY2hhcmdlIG9mIERl
+        bnZlciBTdGFydHVwIFdlZWs/IiwicHVibGljVXJsIjoiaHR0cHM6Ly9kZW52
+        ZXItc3RhcnR1cC13ZWVrLmhlbHBzY291dGRvY3MuY29tL2FydGljbGUvMjAt
+        d2hvcy1pbi1jaGFyZ2Utb2YtZGVudmVyLXN0YXJ0dXAtd2VlayIsInBvcHVs
+        YXJpdHkiOjAuMCwidmlld0NvdW50IjowLCJjcmVhdGVkQnkiOjEzMzcxOCwi
+        dXBkYXRlZEJ5IjoxMzM3MTgsImNyZWF0ZWRBdCI6IjIwMTgtMDMtMTBUMDE6
+        MDY6MDRaIiwidXBkYXRlZEF0IjoiMjAxOC0wMy0xMFQwMTowNjo1OVoiLCJs
+        YXN0UHVibGlzaGVkQXQiOiIyMDE4LTAzLTEwVDAxOjA2OjU5WiJ9LHsiaWQi
+        OiI1YWEzMmNlMjA0Mjg2Mzc0ZjcwOGMyOTUiLCJudW1iZXIiOjE4LCJjb2xs
+        ZWN0aW9uSWQiOiI1OWI5NmQ5MjJjN2QzYTczNDg4Y2Q2MzkiLCJzbHVnIjoi
+        aG93LWRvZXMtdGhlLXB1YmxpYy12b3RpbmctYW5kLWNvbW1lbnRpbmctcHJv
+        Y2Vzcy13b3JrIiwic3RhdHVzIjoicHVibGlzaGVkIiwiaGFzRHJhZnQiOmZh
+        bHNlLCJuYW1lIjoiSG93IGRvZXMgdGhlIHB1YmxpYyB2b3RpbmcgYW5kIGNv
+        bW1lbnRpbmcgcHJvY2VzcyB3b3JrPyIsInB1YmxpY1VybCI6Imh0dHBzOi8v
+        ZGVudmVyLXN0YXJ0dXAtd2Vlay5oZWxwc2NvdXRkb2NzLmNvbS9hcnRpY2xl
+        LzE4LWhvdy1kb2VzLXRoZS1wdWJsaWMtdm90aW5nLWFuZC1jb21tZW50aW5n
+        LXByb2Nlc3Mtd29yayIsInBvcHVsYXJpdHkiOjAuMCwidmlld0NvdW50Ijow
+        LCJjcmVhdGVkQnkiOjEzMzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgsImNyZWF0
+        ZWRBdCI6IjIwMTgtMDMtMTBUMDA6NTQ6NThaIiwidXBkYXRlZEF0IjoiMjAx
+        OC0wMy0xMFQwMDo1OTozN1oiLCJsYXN0UHVibGlzaGVkQXQiOiIyMDE4LTAz
+        LTEwVDAwOjU5OjM3WiJ9LHsiaWQiOiI1YWEzMmYwNTJjN2QzYTc1NDk1MTg1
+        YTIiLCJudW1iZXIiOjE5LCJjb2xsZWN0aW9uSWQiOiI1OWI5NmQ5MjJjN2Qz
+        YTczNDg4Y2Q2MzkiLCJzbHVnIjoid2hhdC1hcmUtdGhlLXNlbGVjdGlvbi1j
+        cml0ZXJpYS1mb3Itc3VibWlzc2lvbnMiLCJzdGF0dXMiOiJwdWJsaXNoZWQi
+        LCJoYXNEcmFmdCI6ZmFsc2UsIm5hbWUiOiJXaGF0IGFyZSB0aGUgc2VsZWN0
+        aW9uIGNyaXRlcmlhIGZvciBzdWJtaXNzaW9ucz8iLCJwdWJsaWNVcmwiOiJo
+        dHRwczovL2RlbnZlci1zdGFydHVwLXdlZWsuaGVscHNjb3V0ZG9jcy5jb20v
+        YXJ0aWNsZS8xOS13aGF0LWFyZS10aGUtc2VsZWN0aW9uLWNyaXRlcmlhLWZv
+        ci1zdWJtaXNzaW9ucyIsInBvcHVsYXJpdHkiOjAuMCwidmlld0NvdW50Ijow
+        LCJjcmVhdGVkQnkiOjEzMzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgsImNyZWF0
+        ZWRBdCI6IjIwMTgtMDMtMTBUMDE6MDQ6MDVaIiwidXBkYXRlZEF0IjoiMjAx
+        OC0wMy0xMFQwMTowNToyM1oiLCJsYXN0UHVibGlzaGVkQXQiOiIyMDE4LTAz
+        LTEwVDAxOjA1OjIzWiJ9LHsiaWQiOiI1YWEzMmZjMzA0Mjg2Mzc0ZjcwOGMy
+        OWEiLCJudW1iZXIiOjIxLCJjb2xsZWN0aW9uSWQiOiI1OWI5NmQ5MjJjN2Qz
+        YTczNDg4Y2Q2MzkiLCJzbHVnIjoid2h5LWlzLWRlbnZlci1zdGFydHVwLXdl
+        ZWstb3JnYW5pemluZy10aGlzLWV2ZW50Iiwic3RhdHVzIjoicHVibGlzaGVk
+        IiwiaGFzRHJhZnQiOmZhbHNlLCJuYW1lIjoiV2h5IGlzIERlbnZlciBTdGFy
+        dHVwIFdlZWsgb3JnYW5pemluZyB0aGlzIGV2ZW50PyIsInB1YmxpY1VybCI6
+        Imh0dHBzOi8vZGVudmVyLXN0YXJ0dXAtd2Vlay5oZWxwc2NvdXRkb2NzLmNv
+        bS9hcnRpY2xlLzIxLXdoeS1pcy1kZW52ZXItc3RhcnR1cC13ZWVrLW9yZ2Fu
+        aXppbmctdGhpcy1ldmVudCIsInBvcHVsYXJpdHkiOjAuMCwidmlld0NvdW50
+        IjowLCJjcmVhdGVkQnkiOjEzMzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgsImNy
+        ZWF0ZWRBdCI6IjIwMTgtMDMtMTBUMDE6MDc6MTVaIiwidXBkYXRlZEF0Ijoi
+        MjAxOC0wMy0xMFQwMTowNzozOVoiLCJsYXN0UHVibGlzaGVkQXQiOiIyMDE4
+        LTAzLTEwVDAxOjA3OjM5WiJ9LHsiaWQiOiI1YWEzMmZmMzA0Mjg2Mzc0Zjcw
+        OGMyOWIiLCJudW1iZXIiOjIyLCJjb2xsZWN0aW9uSWQiOiI1OWI5NmQ5MjJj
+        N2QzYTczNDg4Y2Q2MzkiLCJzbHVnIjoiYXJlLXRoZS1vcmdhbml6ZXJzLW1h
+        a2luZy1tb25leS1vZmYtb2YtdGhlLWV2ZW50Iiwic3RhdHVzIjoicHVibGlz
+        aGVkIiwiaGFzRHJhZnQiOmZhbHNlLCJuYW1lIjoiQXJlIHRoZSBvcmdhbml6
+        ZXJzIG1ha2luZyBtb25leSBvZmYgb2YgdGhlIGV2ZW50PyIsInB1YmxpY1Vy
+        bCI6Imh0dHBzOi8vZGVudmVyLXN0YXJ0dXAtd2Vlay5oZWxwc2NvdXRkb2Nz
+        LmNvbS9hcnRpY2xlLzIyLWFyZS10aGUtb3JnYW5pemVycy1tYWtpbmctbW9u
+        ZXktb2ZmLW9mLXRoZS1ldmVudCIsInBvcHVsYXJpdHkiOjAuMCwidmlld0Nv
+        dW50IjowLCJjcmVhdGVkQnkiOjEzMzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgs
+        ImNyZWF0ZWRBdCI6IjIwMTgtMDMtMTBUMDE6MDg6MDNaIiwidXBkYXRlZEF0
+        IjoiMjAxOC0wMy0xMFQwMTowOTowN1oiLCJsYXN0UHVibGlzaGVkQXQiOiIy
+        MDE4LTAzLTEwVDAxOjA5OjA3WiJ9LHsiaWQiOiI1YWEzMzA1NTJjN2QzYTc1
+        NDk1MTg1YTciLCJudW1iZXIiOjIzLCJjb2xsZWN0aW9uSWQiOiI1OWI5NmQ5
+        MjJjN2QzYTczNDg4Y2Q2MzkiLCJzbHVnIjoiaG93LWRvLWktYmVjb21lLWEt
+        c3BvbnNvciIsInN0YXR1cyI6InB1Ymxpc2hlZCIsImhhc0RyYWZ0IjpmYWxz
+        ZSwibmFtZSI6IkhvdyBkbyBJIGJlY29tZSBhIHNwb25zb3I/IiwicHVibGlj
+        VXJsIjoiaHR0cHM6Ly9kZW52ZXItc3RhcnR1cC13ZWVrLmhlbHBzY291dGRv
+        Y3MuY29tL2FydGljbGUvMjMtaG93LWRvLWktYmVjb21lLWEtc3BvbnNvciIs
+        InBvcHVsYXJpdHkiOjAuMCwidmlld0NvdW50IjowLCJjcmVhdGVkQnkiOjEz
+        MzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgsImNyZWF0ZWRBdCI6IjIwMTgtMDMt
+        MTBUMDE6MDk6NDFaIiwidXBkYXRlZEF0IjoiMjAxOC0wMy0xMFQwMToyNTox
+        MFoiLCJsYXN0UHVibGlzaGVkQXQiOiIyMDE4LTAzLTEwVDAxOjI1OjEwWiJ9
+        LHsiaWQiOiI1YWEzMzQ0MTJjN2QzYTc1NDk1MTg1YjMiLCJudW1iZXIiOjI0
+        LCJjb2xsZWN0aW9uSWQiOiI1OWI5NmQ5MjJjN2QzYTczNDg4Y2Q2MzkiLCJz
+        bHVnIjoid2hvLWNhbi1pLWNvbnRhY3Qtd2l0aC1xdWVzdGlvbnMiLCJzdGF0
+        dXMiOiJwdWJsaXNoZWQiLCJoYXNEcmFmdCI6ZmFsc2UsIm5hbWUiOiJXaG8g
+        Y2FuIEkgY29udGFjdCB3aXRoIHF1ZXN0aW9ucz8iLCJwdWJsaWNVcmwiOiJo
+        dHRwczovL2RlbnZlci1zdGFydHVwLXdlZWsuaGVscHNjb3V0ZG9jcy5jb20v
+        YXJ0aWNsZS8yNC13aG8tY2FuLWktY29udGFjdC13aXRoLXF1ZXN0aW9ucyIs
+        InBvcHVsYXJpdHkiOjAuMCwidmlld0NvdW50IjowLCJjcmVhdGVkQnkiOjEz
+        MzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgsImNyZWF0ZWRBdCI6IjIwMTgtMDMt
+        MTBUMDE6MjY6MjVaIiwidXBkYXRlZEF0IjoiMjAxOC0wMy0xMFQwMToyNzo0
+        NFoiLCJsYXN0UHVibGlzaGVkQXQiOiIyMDE4LTAzLTEwVDAxOjI3OjQ0WiJ9
+        XX19
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:24 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa327de04286374f708c286
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - b8bea46c-00f6-4777-a0cd-ffe46a2af104
+      Date:
+      - Tue, 13 Mar 2018 23:56:24 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1980'
+      X-Ratelimit-Reset:
+      - '278'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '589'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhcnRpY2xlIjp7ImlkIjoiNWFhMzI3ZGUwNDI4NjM3NGY3MDhjMjg2Iiwi
+        bnVtYmVyIjoxMiwiY29sbGVjdGlvbklkIjoiNTliOTZkOTIyYzdkM2E3MzQ4
+        OGNkNjM5Iiwic2x1ZyI6IndoeS1kby13ZS1uZWVkLXRvLXZvdGUtb24tc2Vz
+        c2lvbnMiLCJzdGF0dXMiOiJwdWJsaXNoZWQiLCJoYXNEcmFmdCI6ZmFsc2Us
+        Im5hbWUiOiJXaHkgZG8gd2UgbmVlZCB0byB2b3RlIG9uIHNlc3Npb25zPyIs
+        InRleHQiOiI8cD5UaGUgdm90aW5nIHByb2Nlc3MgbWFrZXMgRGVudmVyIFN0
+        YXJ0dXAgV2VlayBhIHRydWUgY29tbXVuaXR5IGZ1ZWxlZCBldmVudCBhbmQg
+        ZW5jb3VyYWdlcyB0aG91c2FuZHMgb2YgcGVvcGxlIHRvIGJlIGEgY29udHJp
+        YnV0aW5nIHBhcnQgb2YgYnVpbGRpbmcgdGhlIHdlZWvigJlzIGFnZW5kYS4g
+        VGhlIGNvbW11bml0eSBpcyBlbmNvdXJhZ2VkIHRvIGNhc3QgdGhlaXIgdm90
+        ZXMgZm9yIGV2ZW50IGFuZCBzZXNzaW9uIGlkZWFzIHRocm91Z2ggSnVseSBh
+        bmQgb3JnYW5pemVycyB3aWxsIGFubm91bmNlIHRoZSBmaW5hbCBldmVudHMg
+        c2VsZWN0ZWQgdGhyb3VnaCB0aGUgcGFuZWwgcGlja2VyIGluIG1pZC1BdWd1
+        c3QuIDwvcD4iLCJjYXRlZ29yaWVzIjpbIjVhYTJiNWYwMmM3ZDNhNzU0OTUx
+        ODFkNSJdLCJyZWxhdGVkIjpudWxsLCJrZXl3b3JkcyI6bnVsbCwidmlld0Nv
+        dW50IjowLCJjcmVhdGVkQnkiOjEzMzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgs
+        InB1YmxpY1VybCI6Imh0dHBzOi8vZGVudmVyLXN0YXJ0dXAtd2Vlay5oZWxw
+        c2NvdXRkb2NzLmNvbS9hcnRpY2xlLzEyLXdoeS1kby13ZS1uZWVkLXRvLXZv
+        dGUtb24tc2Vzc2lvbnMiLCJwb3B1bGFyaXR5IjowLjAsImNyZWF0ZWRBdCI6
+        IjIwMTgtMDMtMTBUMDA6MzM6MzRaIiwidXBkYXRlZEF0IjoiMjAxOC0wMy0x
+        MFQwMDozMzo0N1oiLCJsYXN0UHVibGlzaGVkQXQiOiIyMDE4LTAzLTEwVDAw
+        OjMzOjQ3WiJ9fQ==
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:24 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa2f06104286374f708c0e1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - cf3251ca-3261-4f91-931c-595e203e6b0f
+      Date:
+      - Tue, 13 Mar 2018 23:56:24 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1979'
+      X-Ratelimit-Reset:
+      - '278'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '492'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa2f06104286374f708c0e1","number":8,"collectionId":"59b96d922c7d3a73488cd639","slug":"how-do-i-submit-my-session-idea","status":"published","hasDraft":false,"name":"How
+        do I submit my session idea?","text":"<p>\n\tThe community is encouraged to
+        submit session ideas every year for Denver Startup Week.  There is a submission
+        period in the spring of each year where we open the panel picker for session
+        submissions.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/8-how-do-i-submit-my-session-idea","popularity":0.0,"createdAt":"2018-03-09T20:36:49Z","updatedAt":"2018-03-09T20:37:11Z","lastPublishedAt":"2018-03-09T20:37:11Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:24 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa2f09004286374f708c0e2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 4ef61290-654c-4f72-a0b6-52d450f87e84
+      Date:
+      - Tue, 13 Mar 2018 23:56:25 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1978'
+      X-Ratelimit-Reset:
+      - '278'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '499'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa2f09004286374f708c0e2","number":9,"collectionId":"59b96d922c7d3a73488cd639","slug":"who-organizes-the-sessions","status":"published","hasDraft":false,"name":"Who
+        organizes the sessions?","text":"<p>Denver Startup Week is a community organized
+        event. Sessions and events are organized by the community, voted on by the
+        community and produced by the community. In addition, the Denver Startup Week
+        organizing committee plans and hosts all keynote and headline events throughout
+        the week.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/9-who-organizes-the-sessions","popularity":0.0,"createdAt":"2018-03-09T20:37:36Z","updatedAt":"2018-03-09T20:37:48Z","lastPublishedAt":"2018-03-09T20:37:48Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:25 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa2f0ad04286374f708c0e3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 6641fcee-b127-47cb-a555-19f775f38879
+      Date:
+      - Tue, 13 Mar 2018 23:56:25 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1977'
+      X-Ratelimit-Reset:
+      - '277'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '613'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa2f0ad04286374f708c0e3","number":10,"collectionId":"59b96d922c7d3a73488cd639","slug":"what-kind-of-ideas-have-the-best-chance-of-being-selected","status":"published","hasDraft":false,"name":"What
+        kind of ideas have the best chance of being selected?","text":"<p>All manner
+        of sessions are welcome! In the past, individual or group presentations, panels,
+        workshops, and social events have all worked quite well. Ideas focused on
+        transferring knowledge to the community have the best chance of being selected,
+        and we will give particular consideration to those that are unique, new or
+        different. Pitches for a product or service will not be accepted.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/10-what-kind-of-ideas-have-the-best-chance-of-being-selected","popularity":0.0,"createdAt":"2018-03-09T20:38:05Z","updatedAt":"2018-03-09T20:38:25Z","lastPublishedAt":"2018-03-09T20:38:25Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:25 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa2f0f604286374f708c0e5
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 21099f1b-34c8-47ef-9d7a-d693ba831632
+      Date:
+      - Tue, 13 Mar 2018 23:56:25 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1976'
+      X-Ratelimit-Reset:
+      - '277'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '457'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa2f0f604286374f708c0e5","number":11,"collectionId":"59b96d922c7d3a73488cd639","slug":"what-are-the-programming-tracks","status":"published","hasDraft":false,"name":"What
+        are the programming tracks?","text":"<p>\n\tTrack listing and descriptions
+        can be found on our <a href=\"https://www.denverstartupweek.org/about/tracks\">About
+        Page</a>.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/11-what-are-the-programming-tracks","popularity":0.0,"createdAt":"2018-03-09T20:39:18Z","updatedAt":"2018-03-09T20:40:46Z","lastPublishedAt":"2018-03-09T20:40:46Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:25 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa3280a2c7d3a7549518596
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 82769465-0f97-4e43-bad8-0ca2aba0c765
+      Date:
+      - Tue, 13 Mar 2018 23:56:26 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1975'
+      X-Ratelimit-Reset:
+      - '277'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '440'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa3280a2c7d3a7549518596","number":13,"collectionId":"59b96d922c7d3a73488cd639","slug":"how-often-can-i-vote","status":"published","hasDraft":false,"name":"How
+        often can I vote?","text":"<p>You may vote for as many events as you want,
+        albeit only once per event. Be sure to tell your friends and colleagues to
+        vote too!</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/13-how-often-can-i-vote","popularity":0.0,"createdAt":"2018-03-10T00:34:18Z","updatedAt":"2018-03-10T00:34:37Z","lastPublishedAt":"2018-03-10T00:34:37Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:26 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa3295e04286374f708c28a
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 3fe643f9-f1d0-409a-a200-beb8bf484ed9
+      Date:
+      - Tue, 13 Mar 2018 23:56:26 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1974'
+      X-Ratelimit-Reset:
+      - '277'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '510'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa3295e04286374f708c28a","number":16,"collectionId":"59b96d922c7d3a73488cd639","slug":"what-if-i-have-an-idea-but-no-venue","status":"published","hasDraft":false,"name":"What
+        if I have an idea but no venue?","text":"<p>\n\tNot a problem. Denver Startup
+        Week has multiple partnerships with local venues. Please submit your idea
+        and if it is selected for the schedule we will work with you to arrange logistics.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/16-what-if-i-have-an-idea-but-no-venue","popularity":0.0,"createdAt":"2018-03-10T00:39:58Z","updatedAt":"2018-03-10T00:41:15Z","lastPublishedAt":"2018-03-10T00:41:15Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:26 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa328372c7d3a7549518597
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 2c05f97a-7261-4f88-b084-7976f5dea394
+      Date:
+      - Tue, 13 Mar 2018 23:56:26 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1973'
+      X-Ratelimit-Reset:
+      - '276'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '733'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa328372c7d3a7549518597","number":14,"collectionId":"59b96d922c7d3a73488cd639","slug":"what-is-the-schedule-for-the-week","status":"published","hasDraft":false,"name":"What
+        is the schedule for the week?","text":"<p>\n\tEvents take place throughout
+        each day, beginning Monday morning through Friday afternoon. Each slot is
+        scheduled for 90 minutes, with 30 minute breaks between sessions for venue
+        changeover and attendee transit. Please note that 90 minutes is just a suggestion
+        - it is not required to fill the entire 90 minutes. Many successful sessions
+        consist of 60 minutes of programming followed by 15 minutes of Q&amp;A.</p><p>The
+        available time slots are:</p><ul><li>Breakfast: 8:00am - 9:30am</li><li>Morning:&nbsp;10:00am
+        - 11:30am</li><li>Lunch/Early Afternoon:&nbsp;12:00pm - 1:30pm</li><li>Afternoon:&nbsp;2:00pm
+        - 3:30pm</li><li>Late Afternoon: 4:00pm - 5:30pm</li><li>Evening: 6:00pm -
+        8:00pm</li></ul>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/14-what-is-the-schedule-for-the-week","popularity":0.0,"createdAt":"2018-03-10T00:35:03Z","updatedAt":"2018-03-10T00:38:12Z","lastPublishedAt":"2018-03-10T00:38:12Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:26 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa3291804286374f708c288
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 95c5e292-b013-4299-adfe-074d043c1d15
+      Date:
+      - Tue, 13 Mar 2018 23:56:27 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1972'
+      X-Ratelimit-Reset:
+      - '276'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '671'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa3291804286374f708c288","number":15,"collectionId":"59b96d922c7d3a73488cd639","slug":"can-i-charge-for-my-event-do-i-have-a-budget-can-i-find-my-own-sponsors","status":"published","hasDraft":false,"name":"Can
+        I charge for my event? Do I have a budget? Can I find my own sponsors?","text":"<p>Our
+        goal is to be a week of free and open events for the startup community, with
+        costs generously covered by our sponsors, but we do realize that some events
+        cost money to organize and may exceed our sponsorship dollars. Please contact
+        us if you require a budget for your event and we will work with you. In the
+        case of sponsorship coordinated by others, we ask that you notify us in advance
+        to avoid potential conflict with other DSW sponsorship efforts.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/15-can-i-charge-for-my-event-do-i-have-a-budget-can-i-find-my-own-sponsors","popularity":0.0,"createdAt":"2018-03-10T00:38:48Z","updatedAt":"2018-03-10T00:39:42Z","lastPublishedAt":"2018-03-10T00:39:42Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:27 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa329b304286374f708c28d
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 385a8460-c4ca-4d89-aba5-a410908b0a1f
+      Date:
+      - Tue, 13 Mar 2018 23:56:27 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1971'
+      X-Ratelimit-Reset:
+      - '276'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '950'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa329b304286374f708c28d","number":17,"collectionId":"59b96d922c7d3a73488cd639","slug":"what-is-the-timeline-for-selecting-sessions-when-should-i-expect-to-hear-back","status":"published","hasDraft":false,"name":"What
+        is the timeline for selecting sessions? When should I expect to hear back?","text":"<p>\n\tOur
+        tentative schedule is as follows:</p><ul>\n\t\n<li>\n\t\n<p>\n\t\t<strong>April
+        4 - Panel Picker opens for submissions</strong>\n\t</p></li>\t\n<li>\n\t\n<p>\n\t\t<strong>April
+        30 - Call for submissions closes</strong>\n\t</p></li>\t\n<li>\n\t\n<p>\n\t\t<strong>May
+        2 - Public voting/feedback on submissions begins</strong>\n\t</p></li>\t\n<li>\n\t\n<p>\n\t\t<strong>May
+        18 - Public commenting and voting on submissions ends</strong>\n\t</p></li>\t\n<li>\n\t\n<p>\n\t\t<strong>July
+        18 - Schedule is announced and attendee registration opens</strong>\n\t</p></li>\t\n<li>\n\t\n<p>\n\t\t<strong>September
+        24 - Denver Startup Week kicks off!</strong>\n\t</p></li></ul><p>\n\tPlease
+        note that exact dates may be subject to slight change.</p><p>We kindly request
+        that all sessions be submitted through the Panel Picker within the CFP window.
+        Due to the volume of session proposal received, we cannot guarantee consideration
+        of submissions submitted through alternate means and/or after the close of
+        the CFP. Additional events may be added at the organizers'' discretion up
+        until a few weeks before the event, but we cannot guarantee promotional or
+        marketing support. Get your ideas in early!</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/17-what-is-the-timeline-for-selecting-sessions-when-should-i-expect-to-hear-back","popularity":0.0,"createdAt":"2018-03-10T00:41:23Z","updatedAt":"2018-03-10T00:54:08Z","lastPublishedAt":"2018-03-10T00:54:08Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:27 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa32f7c2c7d3a75495185a4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - f72435ac-3449-4bc2-97b6-752fca59ce37
+      Date:
+      - Tue, 13 Mar 2018 23:56:27 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1970'
+      X-Ratelimit-Reset:
+      - '275'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '461'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhcnRpY2xlIjp7ImlkIjoiNWFhMzJmN2MyYzdkM2E3NTQ5NTE4NWE0Iiwi
+        bnVtYmVyIjoyMCwiY29sbGVjdGlvbklkIjoiNTliOTZkOTIyYzdkM2E3MzQ4
+        OGNkNjM5Iiwic2x1ZyI6Indoby1zLWluLWNoYXJnZS1vZi1kZW52ZXItc3Rh
+        cnR1cC13ZWVrIiwic3RhdHVzIjoicHVibGlzaGVkIiwiaGFzRHJhZnQiOmZh
+        bHNlLCJuYW1lIjoiV2hv4oCZcyBpbiBjaGFyZ2Ugb2YgRGVudmVyIFN0YXJ0
+        dXAgV2Vlaz8iLCJ0ZXh0IjoiPHA+RGVudmVyIFN0YXJ0dXAgV2VlayBpcyBv
+        cmdhbml6ZWQgYnkgYSBzbWFsbCBncm91cCBvZiBjb21taXR0ZWQsIHllYXIt
+        cm91bmQgdm9sdW50ZWVycyBpbiBjb25qdW5jdGlvbiB3aXRoIHRoZSBEb3du
+        dG93biBEZW52ZXIgUGFydG5lcnNoaXAuPC9wPiIsImNhdGVnb3JpZXMiOlsi
+        NWFhMmI1ZjAyYzdkM2E3NTQ5NTE4MWQ1Il0sInJlbGF0ZWQiOm51bGwsImtl
+        eXdvcmRzIjpudWxsLCJ2aWV3Q291bnQiOjAsImNyZWF0ZWRCeSI6MTMzNzE4
+        LCJ1cGRhdGVkQnkiOjEzMzcxOCwicHVibGljVXJsIjoiaHR0cHM6Ly9kZW52
+        ZXItc3RhcnR1cC13ZWVrLmhlbHBzY291dGRvY3MuY29tL2FydGljbGUvMjAt
+        d2hvLXMtaW4tY2hhcmdlLW9mLWRlbnZlci1zdGFydHVwLXdlZWsiLCJwb3B1
+        bGFyaXR5IjowLjAsImNyZWF0ZWRBdCI6IjIwMTgtMDMtMTBUMDE6MDY6MDRa
+        IiwidXBkYXRlZEF0IjoiMjAxOC0wMy0xMFQwMTowNjo1OVoiLCJsYXN0UHVi
+        bGlzaGVkQXQiOiIyMDE4LTAzLTEwVDAxOjA2OjU5WiJ9fQ==
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:27 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa32ce204286374f708c295
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 3db1dc81-7021-48a7-b94b-311239fe7186
+      Date:
+      - Tue, 13 Mar 2018 23:56:27 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1969'
+      X-Ratelimit-Reset:
+      - '275'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '774'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa32ce204286374f708c295","number":18,"collectionId":"59b96d922c7d3a73488cd639","slug":"how-does-the-public-voting-and-commenting-process-work","status":"published","hasDraft":false,"name":"How
+        does the public voting and commenting process work?","text":"<p>Once a track
+        chair has approved a submission for posting to the panel picker, the community
+        will be able to vote and comment on their favorite proposals. The organizing
+        committee will use the vote totals and comments to guide final selection and
+        scheduling decisions.</p><p>Track chairs reserve the right to withhold from
+        public voting at their discretion&nbsp;any submission containing profanity,
+        hateful or offensive language, or content that otherwise violates our Code
+        of Conduct. Denver Startup Week is a community-driven event focused on knowledge
+        sharing and relationship building. Sessions consisting solely of pitches for
+        products or services will not be considered.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/18-how-does-the-public-voting-and-commenting-process-work","popularity":0.0,"createdAt":"2018-03-10T00:54:58Z","updatedAt":"2018-03-10T00:59:37Z","lastPublishedAt":"2018-03-10T00:59:37Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:27 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa32f052c7d3a75495185a2
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 6f9d7949-bcb9-4306-8936-c7acc2e05007
+      Date:
+      - Tue, 13 Mar 2018 23:56:28 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1968'
+      X-Ratelimit-Reset:
+      - '275'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '932'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJhcnRpY2xlIjp7ImlkIjoiNWFhMzJmMDUyYzdkM2E3NTQ5NTE4NWEyIiwi
+        bnVtYmVyIjoxOSwiY29sbGVjdGlvbklkIjoiNTliOTZkOTIyYzdkM2E3MzQ4
+        OGNkNjM5Iiwic2x1ZyI6IndoYXQtYXJlLXRoZS1zZWxlY3Rpb24tY3JpdGVy
+        aWEtZm9yLXN1Ym1pc3Npb25zIiwic3RhdHVzIjoicHVibGlzaGVkIiwiaGFz
+        RHJhZnQiOmZhbHNlLCJuYW1lIjoiV2hhdCBhcmUgdGhlIHNlbGVjdGlvbiBj
+        cml0ZXJpYSBmb3Igc3VibWlzc2lvbnM/IiwidGV4dCI6IjxwPldlJ3JlIHBy
+        aW1hcmlseSBsb29raW5nIGZvciBzZXNzaW9ucyB0aGF0IGVtYm9keSB0aGUg
+        Z29hbHMgYW5kIHZhbHVlcyBvZiB0aGUgd2VlaywgcHJvdmlkZSByZWFsIHZh
+        bHVlIHRvIGF0dGVuZGVlcywgYW5kIHByb21vdGUgdGhlIGxvY2FsIGNvbW11
+        bml0eS4gV2UgdXNlIGEgbnVtYmVyIG9mIGRpZmZlcmVudCBjcml0ZXJpYSB0
+        byBldmFsdWF0ZSBzZXNzaW9ucywgaW5jbHVkaW5nIHRoZSBhcHByb3ByaWF0
+        ZW5lc3Mgb2YgdGhlIHNlc3Npb24gdG8gdGhlIGdvYWxzIG9mIHRoZSB3ZWVr
+        LCB0aGUgcXVhbGl0eSBhbmQgdGhvdWdodGZ1bG5lc3Mgb2YgdGhlIHNlc3Np
+        b24gZGVzY3JpcHRpb24sIHRoZSByZXN1bHRzIG9mIHRoZSBwdWJsaWMgdm90
+        aW5nL2NvbW1lbnRpbmcgcGVyaW9kLCB0aGUgb3ZlcmFsbCBiYWxhbmNlIG9m
+        IGNvbnRlbnQgZm9yIHRoZSB3ZWVrLCB0aGUgb3ZlcmFsbCBiYWxhbmNlIG9m
+        IHNwZWFrZXJzL2NvbXBhbmllcyByZXByZXNlbnRlZCBkdXJpbmcgdGhlIHdl
+        ZWssIGFuZCBvdGhlciBmYWN0b3JzLjwvcD4gPGRpdj5XZSBhbHNvIHRlbmQg
+        dG8gZ2V0IG1hbnkgc2Vzc2lvbiBwcm9wb3NhbHMgY292ZXJpbmcgc2ltaWxh
+        ciB0b3BpY3MuIEluIHRob3NlIGNhc2VzLCB3ZSBtYXkgZWl0aGVyIHBpY2sg
+        cmVwcmVzZW50YXRpdmUgc2Vzc2lvbnMgb3IgdHJ5IHRvIGNvbWJpbmUgbXVs
+        dGlwbGUgc2Vzc2lvbnMgaW50byBhIHNpbmdsZSBwYW5lbC4gSG93ZXZlciwg
+        aW4gbWFueSBvZiB0aGVzZSBjYXNlcyB3ZSBkbyBmZWVsIHRoYXQgaXQgaXMg
+        aW1wb3J0YW50IHRvIG9wZW4gdXAgdGhlIHNjaGVkdWxlIHRvIGRpZmZlcmVu
+        dCBzcGVha2VycyBhbmQgdG9waWNzIHRoYW4gd2XigJl2ZSBoYWQgaW4gcHJl
+        dmlvdXMgeWVhcnMgaW4gb3JkZXIgdG8gZXhwYW5kIG91ciBhdWRpZW5jZSBh
+        bmQgc3ViamVjdCBhcmVhcy4gT2NjYXNpb25hbGx5LCB0aGlzIG1heSBtZWFu
+        IHRoYXQgc2Vzc2lvbnMgd2l0aCBoaWdoIHZvdGUgY291bnRzIGZyb20gdGhl
+        IHB1YmxpYyB2b3RpbmcgcGVyaW9kIGFyZSBub3Qgc2VsZWN0ZWQgZm9yIGlu
+        Y2x1c2lvbiBpbiB0aGUgY3VycmVudCB5ZWFyJ3MgcHJvZ3JhbS48L2Rpdj4i
+        LCJjYXRlZ29yaWVzIjpbIjVhYTJiNWYwMmM3ZDNhNzU0OTUxODFkNSJdLCJy
+        ZWxhdGVkIjpudWxsLCJrZXl3b3JkcyI6bnVsbCwidmlld0NvdW50IjowLCJj
+        cmVhdGVkQnkiOjEzMzcxOCwidXBkYXRlZEJ5IjoxMzM3MTgsInB1YmxpY1Vy
+        bCI6Imh0dHBzOi8vZGVudmVyLXN0YXJ0dXAtd2Vlay5oZWxwc2NvdXRkb2Nz
+        LmNvbS9hcnRpY2xlLzE5LXdoYXQtYXJlLXRoZS1zZWxlY3Rpb24tY3JpdGVy
+        aWEtZm9yLXN1Ym1pc3Npb25zIiwicG9wdWxhcml0eSI6MC4wLCJjcmVhdGVk
+        QXQiOiIyMDE4LTAzLTEwVDAxOjA0OjA1WiIsInVwZGF0ZWRBdCI6IjIwMTgt
+        MDMtMTBUMDE6MDU6MjNaIiwibGFzdFB1Ymxpc2hlZEF0IjoiMjAxOC0wMy0x
+        MFQwMTowNToyM1oifX0=
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:28 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa32fc304286374f708c29a
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - d3f0a112-d7dd-4626-bdc8-07aaade5355c
+      Date:
+      - Tue, 13 Mar 2018 23:56:28 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1967'
+      X-Ratelimit-Reset:
+      - '275'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '513'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa32fc304286374f708c29a","number":21,"collectionId":"59b96d922c7d3a73488cd639","slug":"why-is-denver-startup-week-organizing-this-event","status":"published","hasDraft":false,"name":"Why
+        is Denver Startup Week organizing this event?","text":"<p>There are several
+        reasons, but the the one thing that is consistent is that we all want to make
+        Denver an entrepreneurial center supported by a strong community of entrepreneurs,
+        investors, government, and education.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/21-why-is-denver-startup-week-organizing-this-event","popularity":0.0,"createdAt":"2018-03-10T01:07:15Z","updatedAt":"2018-03-10T01:07:39Z","lastPublishedAt":"2018-03-10T01:07:39Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:28 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa32ff304286374f708c29b
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - a602fc1b-140e-4cd7-9125-de8f0fdf9c16
+      Date:
+      - Tue, 13 Mar 2018 23:56:28 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1966'
+      X-Ratelimit-Reset:
+      - '274'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '516'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa32ff304286374f708c29b","number":22,"collectionId":"59b96d922c7d3a73488cd639","slug":"are-the-organizers-making-money-off-of-the-event","status":"published","hasDraft":false,"name":"Are
+        the organizers making money off of the event?","text":"<p>No. Denver Startup
+        Week operates under the 501(c)(3) umbrella of Denver Civic Ventures. All sponsorship
+        income goes towards covering costs for the week and/or for future editions
+        of DSW.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/22-are-the-organizers-making-money-off-of-the-event","popularity":0.0,"createdAt":"2018-03-10T01:08:03Z","updatedAt":"2018-03-10T01:09:07Z","lastPublishedAt":"2018-03-10T01:09:07Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:28 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa330552c7d3a75495185a7
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 05a3fe06-ab32-4dc3-a903-50f3a69dbb51
+      Date:
+      - Tue, 13 Mar 2018 23:56:29 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1965'
+      X-Ratelimit-Reset:
+      - '274'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '595'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa330552c7d3a75495185a7","number":23,"collectionId":"59b96d922c7d3a73488cd639","slug":"how-do-i-become-a-sponsor","status":"published","hasDraft":false,"name":"How
+        do I become a sponsor?","text":"<p>Sponsorship information is available on
+        our&nbsp;<a href=\"https://www.denverstartupweek.org/sponsors\">Sponsors</a>&nbsp;page.
+        You do not have to sponsor to organize a session, nor do we require sponsors
+        to organize sessions.&nbsp;We could not produce an event the size or caliber
+        of DSW without the generous support of our sponsors and we are extremely&nbsp;appreciative
+        of any support to make the week the best it can be!</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/23-how-do-i-become-a-sponsor","popularity":0.0,"createdAt":"2018-03-10T01:09:41Z","updatedAt":"2018-03-10T01:25:10Z","lastPublishedAt":"2018-03-10T01:25:10Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:29 GMT
+- request:
+    method: get
+    uri: https://docsapi.helpscout.net/v1/articles/5aa334412c7d3a75495185b3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Basic <HELPSCOUT_DOCS_AUTH_HEADER>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Authorization
+      Access-Control-Allow-Methods:
+      - GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Type:
+      - application/json; charset=utf-8
+      Correlation-Id:
+      - 7d7cfc55-9ce8-41dc-a48e-b2bf27cf6c11
+      Date:
+      - Tue, 13 Mar 2018 23:56:29 GMT
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains;
+      Vary:
+      - Accept-Encoding
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit-Limit:
+      - '2000'
+      X-Ratelimit-Remaining:
+      - '1964'
+      X-Ratelimit-Reset:
+      - '274'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '456'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"article":{"id":"5aa334412c7d3a75495185b3","number":24,"collectionId":"59b96d922c7d3a73488cd639","slug":"who-can-i-contact-with-questions","status":"published","hasDraft":false,"name":"Who
+        can I contact with questions?","text":"<p>For general inquiries, we''d love
+        to hear from you at info@denverstartupweek.org.</p><p>For questions related
+        to sponsorships, please email sponsorship@denverstartupweek.org.</p>","categories":["5aa2b5f02c7d3a75495181d5"],"related":null,"keywords":null,"viewCount":0,"createdBy":133718,"updatedBy":133718,"publicUrl":"https://denver-startup-week.helpscoutdocs.com/article/24-who-can-i-contact-with-questions","popularity":0.0,"createdAt":"2018-03-10T01:26:25Z","updatedAt":"2018-03-10T01:27:44Z","lastPublishedAt":"2018-03-10T01:27:44Z"}}'
+    http_version: 
+  recorded_at: Tue, 13 Mar 2018 23:56:29 GMT
+recorded_with: VCR 4.0.0

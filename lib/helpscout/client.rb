@@ -8,7 +8,6 @@ module Helpscout
 
     def articles
       data = self.class.get('/categories/5aa2b5f02c7d3a75495181d5/articles', basic_auth: auth)
-
       data.dig('articles', 'items').map do |article|
         article['id']
       end
@@ -16,7 +15,6 @@ module Helpscout
 
     def article_details(article_id)
       data = self.class.get("/articles/#{article_id}", basic_auth: auth)
-
       data['article']
     end
 

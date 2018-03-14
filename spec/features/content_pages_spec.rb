@@ -24,7 +24,8 @@ feature 'Content-only pages' do
     end
 
     scenario 'the FAQ page' do
-      allow(Helpscout::Article).to receive(:all).and_return([ Helpscout::Article.new('name' => 'What is 2 + 2?', 'text' => '4') ])
+      allow(Helpscout::Article).to receive(:all).
+        and_return([ Helpscout::Article.new('name' => 'What is 2 + 2?', 'text' => '4') ])
       visit '/contact'
       click_link 'FAQ'
       expect(page).to have_content('FREQUENTLY ASKED QUESTIONS')

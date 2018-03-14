@@ -15,19 +15,11 @@ module Helpscout
     end
 
     def self.fetch!
-      data = fetch_articles.map do |id|
-        fetch_article_details(id)
+      data = helpscout_client.articles.map do |id|
+        helpscout_client.article_details(id)
       end
 
       Redis.current.set(ARTICLE_CACHE_KEY, data.to_json)
-    end
-
-    def self.fetch_articles
-      helpscout_client.articles
-    end
-
-    def self.fetch_article_details(id)
-      helpscout_client.article_details(id)
     end
 
     def self.all
