@@ -23,14 +23,6 @@ GIT
       rails (>= 4)
       selectize-rails (>= 0.11.2)
 
-GIT
-  remote: git://github.com/myemma/EmmaRuby.git
-  revision: 47b7978bb750a3dd676f51173a532dabb88bcfdd
-  specs:
-    emma (0.0.1)
-      httparty
-      json
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -189,9 +181,6 @@ GEM
       activesupport (>= 2)
       nokogiri (>= 1.4)
     htmlentities (4.3.4)
-    httparty (0.13.7)
-      json (~> 1.8)
-      multi_xml (>= 0.5.2)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     icalendar (2.1.2)
@@ -249,7 +238,6 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.12.2)
-    multi_xml (0.5.5)
     mustermann (1.0.2)
     newrelic_rpm (4.4.0.336)
     nio4r (2.2.0)
@@ -469,7 +457,6 @@ DEPENDENCIES
   devise
   dotenv-rails
   email_spec (~> 2.1.0)
-  emma!
   factory_bot_rails
   fog-aws
   font_assets

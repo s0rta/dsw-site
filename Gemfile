@@ -21,8 +21,6 @@ gem 'jsonb_accessor'
 # Simple transparent captchas
 gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'
 
-gem 'emma', github: 'myemma/EmmaRuby'
-
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
