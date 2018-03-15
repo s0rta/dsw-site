@@ -149,4 +149,8 @@ module ApplicationHelper
   def footer_sponsors
     @_footer_sponsors ||= Sponsorship.for_current_year.title.alphabetical
   end
+
+  def helpscout_articles
+    @_helpscout_articles ||= Helpscout::Article.all
+  end
 end

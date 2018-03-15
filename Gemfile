@@ -17,6 +17,7 @@ gem 'webpacker', '~> 3.0'
 
 gem 'responders'
 gem 'jsonb_accessor'
+gem 'httparty'
 
 # Simple transparent captchas
 gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'
@@ -67,6 +68,8 @@ gem 'sidecloq'
 
 group :development do
   gem 'listen'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do

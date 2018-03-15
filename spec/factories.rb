@@ -63,4 +63,9 @@ FactoryBot.define do
     subject 'Important'
     body 'I am a message!'
   end
+
+  factory :newsroom_item do
+    title 'Good news!'
+    release_date 1.day.ago
+  end
 end

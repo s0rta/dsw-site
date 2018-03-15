@@ -1,3 +1,7 @@
 refresh_current_recommendations_job:
   class: RefreshCurrentRecommendationsJob
   cron: "01 1 * * *" # Daily overnight
+
+fetch_helpscout_articles_job:
+  class: FetchHelpscoutArticlesJob
+  cron: "*/10 * * * *" # Every 10 minutes
