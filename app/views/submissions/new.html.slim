@@ -52,7 +52,7 @@ section.common.sm-centered
       = f.label :target_audience_description, 'Tell us about the ideal audience for your session. Is the content oriented towards beginners or experts? Specific to an industry or broadly applicable? Well-suited for a large room or limited to just a few attendees?  This content will only be visible to the review committee.'
       = f.text_area :target_audience_description, required: 'required', rows: 8, placeholder: 'Target audience (for reviewers only)'
 
-      = f.check_box :coc_acknowledgement, required: 'required'
-      = f.label :coc_acknowledgement, 'I have read and agree to be bound by the Denver Startup Week Code of Conduct.'
+      = f.check_box :coc_acknowledgement, class: 'code-of-conduct', required: 'required'
+      = render partial: 'layouts/shared/coc_acknowledgement'
 
       = f.submit 'Submit'
