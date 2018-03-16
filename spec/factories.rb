@@ -48,6 +48,7 @@ FactoryBot.define do
     sequence(:title) { |n| "Session #{n}" }
     description 'I am a session'
     contact_email 'test@example.com'
+    coc_acknowledgement true
     association :track
     association :submitter, factory: :user
   end

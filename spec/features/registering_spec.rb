@@ -25,7 +25,8 @@ feature 'Registering to attend' do
                                   start_day: 2,
                                   start_hour: 10,
                                   end_day: 2,
-                                  end_hour: 11.5
+                                  end_hour: 11.5,
+                                  coc_acknowledgement: true
   end
 
   describe 'when registration is open' do
