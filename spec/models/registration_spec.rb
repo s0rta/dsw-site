@@ -11,6 +11,7 @@ RSpec.describe Registration, type: :model do
   it { is_expected.to validate_presence_of(:user) }
   it { is_expected.to validate_presence_of(:age_range) }
   it { is_expected.to validate_presence_of(:primary_role) }
+  it { is_expected.to validate_acceptance_of(:coc_acknowledgement) }
 
   describe 'with an existing registration' do
     subject { create(:registration) }

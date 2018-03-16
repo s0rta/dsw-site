@@ -491,7 +491,8 @@ CREATE TABLE registrations (
     calendar_token character varying(255),
     age_range character varying,
     learn_more_pledge_1p boolean DEFAULT false NOT NULL,
-    company_id bigint
+    company_id bigint,
+    coc_acknowledgement boolean DEFAULT false NOT NULL
 );
 
 
@@ -1918,6 +1919,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180218043834'),
 ('20180218194540'),
 ('20180220163023'),
-('20180316161624');
+('20180316161624'),
+('20180316194849');
 
 

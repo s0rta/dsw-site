@@ -21,6 +21,7 @@ class Registration < ApplicationRecord
             :primary_role, presence: true
 
   validates :user_id, uniqueness: { scope: :year, message: 'may only register once per year' }
+  validates :coc_acknowledgement, acceptance: true
 
   after_initialize do
     self.year ||= Date.today.year

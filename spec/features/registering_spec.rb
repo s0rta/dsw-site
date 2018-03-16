@@ -58,6 +58,7 @@ feature 'Registering to attend' do
 
       fill_in 'registration_primary_role', with: 'Developer'
       fill_in 'registration_zip', with: '12345'
+      check 'registration_coc_acknowledgement'
       click_button 'Register'
       expect(page).to have_content('Thanks for registering!')
 

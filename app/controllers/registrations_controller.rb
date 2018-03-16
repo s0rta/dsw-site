@@ -41,7 +41,8 @@ class RegistrationsController < ApplicationController
                                            :primary_role,
                                            :age_range,
                                            :learn_more_pledge_1p,
-                                           :track_id)
+                                           :track_id,
+                                           :coc_acknowledgement)
   end
 
   def registration_user_params
