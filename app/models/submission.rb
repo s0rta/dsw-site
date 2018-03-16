@@ -71,6 +71,7 @@ class Submission < ApplicationRecord
   # validates :start_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
   # validates :end_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
   validates :track_id, presence: true
+  validates :coc_acknowledgement, acceptance: true
   validates :location, length: { maximum: 255 }
 
   after_create :notify_track_chairs_of_new_submission!
