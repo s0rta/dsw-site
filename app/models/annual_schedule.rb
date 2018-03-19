@@ -69,36 +69,43 @@ class AnnualSchedule < ApplicationRecord
   end
 
   def cfp_open?
+    return false if cfp_open_at.blank? || cfp_close_at.blank?
     Time.zone.now > date_in_time_zone(cfp_open_at).at_beginning_of_day &&
       Time.zone.now < date_in_time_zone(cfp_close_at).at_end_of_day
   end
 
   def voting_open?
+    return false if voting_open_at.blank? || voting_close_at.blank?
     Time.zone.now > date_in_time_zone(voting_open_at).at_beginning_of_day &&
       Time.zone.now < date_in_time_zone(voting_close_at).at_end_of_day
   end
 
   def registration_open?
+    return false if registration_open_at.blank?
     Time.zone.now > date_in_time_zone(registration_open_at).at_beginning_of_day &&
       Time.zone.now < date_in_time_zone(week_end_at).at_end_of_day
   end
 
   def pitch_application_open?
+    return false if pitch_application_open_at.blank? || pitch_application_close_at.blank?
     Time.zone.now > date_in_time_zone(pitch_application_open_at).at_beginning_of_day &&
       Time.zone.now < date_in_time_zone(pitch_application_close_at).at_end_of_day
   end
 
   def pitch_voting_open?
+    return false if pitch_voting_open_at.blank? || pitch_voting_close_at.blank?
     Time.zone.now > date_in_time_zone(pitch_voting_open_at).at_beginning_of_day &&
       Time.zone.now < date_in_time_zone(pitch_voting_close_at).at_end_of_day
   end
 
   def sponsorship_open?
+    return false if sponsorship_open_at.blank? || sponsorship_close_at.blank?
     Time.zone.now > date_in_time_zone(sponsorship_open_at).at_beginning_of_day &&
       Time.zone.now < date_in_time_zone(sponsorship_close_at).at_end_of_day
   end
 
   def ambassador_application_open?
+    return false if ambassador_application_open_at.blank? || ambassador_application_close_at.blank?
     Time.zone.now > date_in_time_zone(ambassador_application_open_at).at_beginning_of_day &&
       Time.zone.now < date_in_time_zone(ambassador_application_close_at).at_end_of_day
   end

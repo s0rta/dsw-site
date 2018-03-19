@@ -413,6 +413,15 @@ AnnualSchedule.where(year: 2017).first_or_create!(
   ambassador_application_close_at: Date.parse('2017-08-11').freeze
 )
 
+AnnualSchedule.where(year: 2018).first_or_create!(
+  cfp_open_at: Date.parse('2018-04-04').freeze,
+  cfp_close_at: Date.parse('2018-04-30').freeze,
+  voting_open_at: Date.parse('2018-05-02').freeze,
+  voting_close_at: Date.parse('2018-05-18').freeze,
+  week_start_at: Date.parse('2018-09-24').freeze,
+  week_end_at: Date.parse('2018-09-28').freeze,
+)
+
 [
   { name: 'Tami Door',
     team_position: 'Organizing Chair',
