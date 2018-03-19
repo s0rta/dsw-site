@@ -31,6 +31,7 @@ feature 'Registering to attend (via kiosk)' do
     fill_in 'registration_company_name', with: 'Example.com'
     fill_in 'registration_primary_role', with: 'Developer'
     fill_in 'registration_zip', with: '12345'
+    check 'registration_coc_acknowledgement'
     click_button 'Register'
     expect(page).to have_content('Thanks for registering')
     expect(current_path).to include('/schedule')
@@ -56,6 +57,7 @@ feature 'Registering to attend (via kiosk)' do
     fill_in 'registration_company_name', with: 'Example.com'
     fill_in 'registration_primary_role', with: 'Developer'
     fill_in 'registration_zip', with: '12345'
+    check 'registration_coc_acknowledgement'
     click_button 'Register'
     expect(page).to have_content('Thanks for registering')
     expect(current_path).to include('/schedule')

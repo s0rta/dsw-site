@@ -8,7 +8,8 @@ describe 'Schedule API', type: :request do
     submitter.submissions.create!(track_id: track.id,
                                   title: 'Hello!',
                                   description: 'Hey there!',
-                                  contact_email: 'test@example.com')
+                                  contact_email: 'test@example.com',
+                                  coc_acknowledgement: true)
   end
 
 

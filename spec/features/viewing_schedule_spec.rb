@@ -26,7 +26,8 @@ feature 'Viewing the schedule' do
                                   start_hour: 10,
                                   end_day: 2,
                                   end_hour: 11.5,
-                                  year: AnnualSchedule.current.registration_open_at.year
+                                  year: AnnualSchedule.current.registration_open_at.year,
+                                  coc_acknowledgement: true
   end
 
   let!(:previous_submission) do
@@ -39,7 +40,8 @@ feature 'Viewing the schedule' do
                                   start_hour: 10,
                                   end_day: 2,
                                   end_hour: 11.5,
-                                  year: AnnualSchedule.current.registration_open_at.year - 1
+                                  year: AnnualSchedule.current.registration_open_at.year - 1,
+                                  coc_acknowledgement: true
   end
 
   describe 'in the current year/registration cycle' do
