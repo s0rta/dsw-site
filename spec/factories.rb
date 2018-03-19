@@ -35,6 +35,7 @@ FactoryBot.define do
     association :user
     age_range Registration::AGE_RANGES.first
     primary_role 'Founder'
+    coc_acknowledgement true
   end
 
   factory :track do
