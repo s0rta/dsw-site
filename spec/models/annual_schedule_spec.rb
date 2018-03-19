@@ -39,6 +39,16 @@ RSpec.describe AnnualSchedule, type: :model do
           expect(AnnualSchedule.cfp_open?).to be_falsy
         end
       end
+
+      it 'returns false when the CFP open date is nil' do
+        allow(schedule).to receive(:cfp_open_at).and_return(nil)
+        expect(AnnualSchedule.cfp_open?).to be_falsy
+      end
+
+      it 'returns false when the CFP close date is nil' do
+        allow(schedule).to receive(:cfp_close_at).and_return(nil)
+        expect(AnnualSchedule.cfp_open?).to be_falsy
+      end
     end
 
     describe 'voting_open?' do
@@ -52,6 +62,16 @@ RSpec.describe AnnualSchedule, type: :model do
         travel_to Date.parse('2017-06-01') do
           expect(AnnualSchedule.voting_open?).to be_falsy
         end
+      end
+
+      it 'returns false when the voting open date is nil' do
+        allow(schedule).to receive(:voting_open_at).and_return(nil)
+        expect(AnnualSchedule.voting_open?).to be_falsy
+      end
+
+      it 'returns false when the voting close date is nil' do
+        allow(schedule).to receive(:voting_close_at).and_return(nil)
+        expect(AnnualSchedule.voting_open?).to be_falsy
       end
     end
 
@@ -67,6 +87,11 @@ RSpec.describe AnnualSchedule, type: :model do
           expect(AnnualSchedule.registration_open?).to be_falsy
         end
       end
+
+      it 'returns false when the registration open date is nil' do
+        allow(schedule).to receive(:registration_open_at).and_return(nil)
+        expect(AnnualSchedule.registration_open?).to be_falsy
+      end
     end
 
     describe 'pitch_application_open?' do
@@ -80,6 +105,16 @@ RSpec.describe AnnualSchedule, type: :model do
         travel_to Date.parse('2017-09-02') do
           expect(AnnualSchedule.pitch_application_open?).to be_falsy
         end
+      end
+
+      it 'returns false when the pitch application open date is nil' do
+        allow(schedule).to receive(:pitch_application_open_at).and_return(nil)
+        expect(AnnualSchedule.pitch_application_open?).to be_falsy
+      end
+
+      it 'returns false when the pitch application close date is nil' do
+        allow(schedule).to receive(:pitch_application_close_at).and_return(nil)
+        expect(AnnualSchedule.pitch_application_open?).to be_falsy
       end
     end
 
@@ -95,6 +130,16 @@ RSpec.describe AnnualSchedule, type: :model do
           expect(AnnualSchedule.pitch_voting_open?).to be_falsy
         end
       end
+
+      it 'returns false when the pitch voting open date is nil' do
+        allow(schedule).to receive(:pitch_voting_open_at).and_return(nil)
+        expect(AnnualSchedule.pitch_voting_open?).to be_falsy
+      end
+
+      it 'returns false when the pitch voting close date is nil' do
+        allow(schedule).to receive(:pitch_voting_close_at).and_return(nil)
+        expect(AnnualSchedule.pitch_voting_open?).to be_falsy
+      end
     end
 
     describe 'sponsorship_open?' do
@@ -109,6 +154,16 @@ RSpec.describe AnnualSchedule, type: :model do
           expect(AnnualSchedule.sponsorship_open?).to be_falsy
         end
       end
+
+      it 'returns false when the sponsorship open date is nil' do
+        allow(schedule).to receive(:sponsorship_open_at).and_return(nil)
+        expect(AnnualSchedule.sponsorship_open?).to be_falsy
+      end
+
+      it 'returns false when the sponsorship close date is nil' do
+        allow(schedule).to receive(:sponsorship_close_at).and_return(nil)
+        expect(AnnualSchedule.sponsorship_open?).to be_falsy
+      end
     end
 
     describe 'ambassador_application_open?' do
@@ -122,6 +177,16 @@ RSpec.describe AnnualSchedule, type: :model do
         travel_to Date.parse('2017-09-24') do
           expect(AnnualSchedule.ambassador_application_open?).to be_falsy
         end
+      end
+
+      it 'returns false when the ambassador application open date is nil' do
+        allow(schedule).to receive(:ambassador_application_open_at).and_return(nil)
+        expect(AnnualSchedule.ambassador_application_open?).to be_falsy
+      end
+
+      it 'returns false when the ambassador application close date is nil' do
+        allow(schedule).to receive(:ambassador_application_close_at).and_return(nil)
+        expect(AnnualSchedule.ambassador_application_open?).to be_falsy
       end
     end
 
@@ -146,7 +211,7 @@ RSpec.describe AnnualSchedule, type: :model do
         end
       end
 
-      it 'returns false when the current date is outside the ambassador application period' do
+      it 'returns false when the current date is before the week' do
         travel_to Date.parse('2017-09-01') do
           expect(AnnualSchedule.post_week?).to be_falsy
         end
