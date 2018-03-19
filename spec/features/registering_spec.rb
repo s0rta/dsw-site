@@ -17,16 +17,17 @@ feature 'Registering to attend' do
   end
 
   let!(:submission) do
-    submitter.submissions.create! title: 'I am a session',
-                                  description: 'interesting stuff',
-                                  track: track,
-                                  contact_email: 'test@example.com',
-                                  state: 'confirmed',
-                                  start_day: 2,
-                                  start_hour: 10,
-                                  end_day: 2,
-                                  end_hour: 11.5,
-                                  coc_acknowledgement: true
+    create(:submission,
+           submitter: submitter,
+           title: 'I am a session',
+           description: 'interesting stuff',
+           track: track,
+           contact_email: 'test@example.com',
+           state: 'confirmed',
+           start_day: 2,
+           start_hour: 10,
+           end_day: 2,
+           end_hour: 11.5)
   end
 
   describe 'when registration is open' do
