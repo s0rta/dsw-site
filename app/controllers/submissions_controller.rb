@@ -63,7 +63,7 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    @submission = Submission.new(contact_email: current_user.try(:email), coc_acknowledgement: false)
+    @submission = Submission.new(contact_email: current_user.try(:email))
   end
 
   def create
