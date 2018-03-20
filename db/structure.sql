@@ -491,7 +491,8 @@ CREATE TABLE registrations (
     calendar_token character varying(255),
     age_range character varying,
     learn_more_pledge_1p boolean DEFAULT false NOT NULL,
-    company_id bigint
+    company_id bigint,
+    coc_acknowledgement boolean DEFAULT false NOT NULL
 );
 
 
@@ -701,7 +702,8 @@ CREATE TABLE submissions (
     target_audience_description text,
     cached_similar_item_ids integer[] DEFAULT '{}'::integer[],
     live_stream_url character varying,
-    company_id bigint
+    company_id bigint,
+    coc_acknowledgement boolean DEFAULT false NOT NULL
 );
 
 
@@ -1026,6 +1028,19 @@ CREATE SEQUENCE votes_id_seq
 --
 
 ALTER SEQUENCE votes_id_seq OWNED BY votes.id;
+
+
+--
+-- Name: zip_decoding; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE zip_decoding (
+    zip character varying,
+    city character varying,
+    state character varying,
+    lat numeric,
+    long numeric
+);
 
 
 --
@@ -1903,6 +1918,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20171212024445'),
 ('20180218043834'),
 ('20180218194540'),
-('20180220163023');
+('20180220163023'),
+('20180316161624'),
+('20180316194849');
 
 

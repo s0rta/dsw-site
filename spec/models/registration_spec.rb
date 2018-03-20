@@ -11,6 +11,7 @@ RSpec.describe Registration, type: :model do
   it { is_expected.to validate_presence_of(:user) }
   it { is_expected.to validate_presence_of(:age_range) }
   it { is_expected.to validate_presence_of(:primary_role) }
+  it { is_expected.to validate_acceptance_of(:coc_acknowledgement) }
 
   describe 'with an existing registration' do
     subject { create(:registration) }
@@ -48,10 +49,10 @@ RSpec.describe Registration, type: :model do
     end
 
     it 'subscribes automatically on creation' do
-      user.registrations.create! contact_email: 'test@example.com',
-                                 year: 2015,
-                                 age_range: Registration::AGE_RANGES.first,
-                                 primary_role: 'Testing'
+      create(:registration,
+             user: user,
+             contact_email: 'test@example.com',
+             year: 2015)
       expect(ListSubscriptionJob).to have_received(:perform_async).with('test@example.com',
                                                                         registered_years: [ '2015' ])
     end
@@ -60,11 +61,13 @@ RSpec.describe Registration, type: :model do
       user.registrations.create! contact_email: 'test@example.com',
                                  year: 2015,
                                  age_range: Registration::AGE_RANGES.first,
-                                 primary_role: 'Testing'
+                                 primary_role: 'Testing',
+                                 coc_acknowledgement: true
       user.registrations.create! contact_email: 'test@example.com',
                                  year: 2016,
                                  age_range: Registration::AGE_RANGES.first,
-                                 primary_role: 'Testing'
+                                 primary_role: 'Testing',
+                                 coc_acknowledgement: true
       expect(ListSubscriptionJob).to have_received(:perform_async).with('test@example.com',
                                                                         registered_years: %w(2015 2016))
     end

@@ -10,7 +10,7 @@
 section.common.sm-centered
   .section-content.instruction
     h6
-      | Before submitting a session proposal, please take a minute to read through 
+      | Before submitting a session proposal, please take a minute to read through
       = link_to 'our FAQs', faq_submissions_path, target: '_blank', class: 'inline-copy-link'
       |  for more information about the submission and selection process.
 
@@ -43,7 +43,6 @@ section.common.sm-centered
       = f.label :contact_email, 'Please confirm your e-mail address. Once your idea is submitted, you will receive a confirmation email. We may also reach out if we have any questions.'
       = f.text_field :contact_email, required: 'required'
 
-
       = f.label :description, 'Provide a concise description for the session (limited to 600 characters or less). The description field is where you write a short paragraph to quickly tell us what you\'re going to talk about. This will be published in the program along with the title, so it’s the public face of your session. It should be compelling and to the point. Tell a story. Why should attendees come to your session and what will they get out of it?'
       = f.text_area :description, required: 'required', rows: 8, placeholder: 'Session description (public facing)'
 
@@ -52,5 +51,8 @@ section.common.sm-centered
 
       = f.label :target_audience_description, 'Tell us about the ideal audience for your session. Is the content oriented towards beginners or experts? Specific to an industry or broadly applicable? Well-suited for a large room or limited to just a few attendees?  This content will only be visible to the review committee.'
       = f.text_area :target_audience_description, required: 'required', rows: 8, placeholder: 'Target audience (for reviewers only)'
+
+      = f.check_box :coc_acknowledgement, class: 'code-of-conduct', required: 'required'
+      = render partial: 'layouts/shared/coc_acknowledgement'
 
       = f.submit 'Submit'

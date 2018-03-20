@@ -17,29 +17,33 @@ feature 'Viewing the schedule' do
   end
 
   let!(:submission) do
-    submitter.submissions.create! title: 'I am a session',
-                                  description: 'interesting stuff',
-                                  track: track,
-                                  contact_email: 'test@example.com',
-                                  state: 'confirmed',
-                                  start_day: 2,
-                                  start_hour: 10,
-                                  end_day: 2,
-                                  end_hour: 11.5,
-                                  year: AnnualSchedule.current.registration_open_at.year
+    create(:submission,
+           submitter: submitter,
+           title: 'I am a session',
+           description: 'interesting stuff',
+           track: track,
+           contact_email: 'test@example.com',
+           state: 'confirmed',
+           start_day: 2,
+           start_hour: 10,
+           end_day: 2,
+           end_hour: 11.5,
+           year: AnnualSchedule.current.registration_open_at.year)
   end
 
   let!(:previous_submission) do
-    submitter.submissions.create! title: 'I am an older session',
-                                  description: 'interesting stuff',
-                                  track: track,
-                                  contact_email: 'test@example.com',
-                                  state: 'confirmed',
-                                  start_day: 2,
-                                  start_hour: 10,
-                                  end_day: 2,
-                                  end_hour: 11.5,
-                                  year: AnnualSchedule.current.registration_open_at.year - 1
+    create(:submission,
+           submitter: submitter,
+           title: 'I am an older session',
+           description: 'interesting stuff',
+           track: track,
+           contact_email: 'test@example.com',
+           state: 'confirmed',
+           start_day: 2,
+           start_hour: 10,
+           end_day: 2,
+           end_hour: 11.5,
+           year: AnnualSchedule.current.registration_open_at.year - 1)
   end
 
   describe 'in the current year/registration cycle' do

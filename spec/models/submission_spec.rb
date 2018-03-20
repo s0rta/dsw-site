@@ -24,6 +24,7 @@ RSpec.describe Submission, type: :model do
   # it { is_expected.to ensure_inclusion_of(:start_day).in_array(Submission::DAYS) }
   # it { is_expected.to ensure_inclusion_of(:end_day).in_array(Submission::DAYS) }
   # it { is_expected.to ensure_inclusion_of(:time_range).in_array(Submission::TIME_RANGES) }
+  it { is_expected.to validate_acceptance_of(:coc_acknowledgement) }
   it { is_expected.to allow_value('test@example.com').for(:contact_email) }
   it { is_expected.to validate_length_of(:location).is_at_most(255) }
 
@@ -40,7 +41,8 @@ RSpec.describe Submission, type: :model do
       user.submissions.create! contact_email: 'test@example.com',
                                title: 'Test',
                                description: 'Test',
-                               track: track
+                               track: track,
+                               coc_acknowledgement: true
       expect(ListSubscriptionJob).to have_received(:perform_async).
         with('test@example.com', submittedyears: [ year ], confirmedyears: [])
       expect(ListSubscriptionJob).to have_received(:perform_async).
@@ -51,7 +53,9 @@ RSpec.describe Submission, type: :model do
       user.submissions.create! contact_email: 'test1@example.com, test2@example.com',
                                title: 'Test',
                                description: 'Test',
-                               track: track
+                               track: track,
+                               coc_acknowledgement: true
+
       expect(ListSubscriptionJob).to have_received(:perform_async).
         with('test1@example.com', submittedyears: [ year ], confirmedyears: [])
       expect(ListSubscriptionJob).to have_received(:perform_async).
@@ -64,7 +68,8 @@ RSpec.describe Submission, type: :model do
       submission = user.submissions.create! contact_email: user.email,
                                             title: 'Test',
                                             description: 'Test',
-                                            track: track
+                                            track: track,
+                                            coc_acknowledgement: true
       expect(ListSubscriptionJob).to have_received(:perform_async).
         with(user.email, submittedyears: [ year ], confirmedyears: [])
       submission.update!(state: 'confirmed')
@@ -76,7 +81,8 @@ RSpec.describe Submission, type: :model do
       submission = user.submissions.create! contact_email: 'test1@example.com, test2@example.com',
                                             title: 'Test',
                                             description: 'Test',
-                                            track: track
+                                            track: track,
+                                            coc_acknowledgement: true
       expect(ListSubscriptionJob).to have_received(:perform_async).
         with(user.email, submittedyears: [ year ], confirmedyears: [])
       expect(ListSubscriptionJob).to have_received(:perform_async).
@@ -101,7 +107,8 @@ RSpec.describe Submission, type: :model do
     let(:submission) do
       create(:submission,
              submitter: user,
-             contact_email: 'test1@example.com, test2@example.com')
+             contact_email: 'test1@example.com, test2@example.com',
+             coc_acknowledgement: true)
     end
 
     it 'sends and records an acceptance e-mail' do

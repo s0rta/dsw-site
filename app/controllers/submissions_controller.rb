@@ -117,7 +117,8 @@ class SubmissionsController < ApplicationController
                                        :open_to_collaborators,
                                        :from_underrepresented_group,
                                        :company_name,
-                                       :target_audience_description)
+                                       :target_audience_description,
+                                       :coc_acknowledgement)
   end
 
   def check_submissions_open

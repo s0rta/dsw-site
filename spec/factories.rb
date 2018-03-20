@@ -35,6 +35,7 @@ FactoryBot.define do
     association :user
     age_range Registration::AGE_RANGES.first
     primary_role 'Founder'
+    coc_acknowledgement true
   end
 
   factory :track do
@@ -48,6 +49,7 @@ FactoryBot.define do
     sequence(:title) { |n| "Session #{n}" }
     description 'I am a session'
     contact_email 'test@example.com'
+    coc_acknowledgement true
     association :track
     association :submitter, factory: :user
   end

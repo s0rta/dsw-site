@@ -31,7 +31,7 @@ class SiteController < ApplicationController
   private
 
   def page_partial
-    template_name = "site/#{params[:page].presence || 'index'}"
+    template_name = "site/#{params[:page].presence || 'index'}".underscore
     lookup_context.find(template_name).virtual_path
   end
 end
