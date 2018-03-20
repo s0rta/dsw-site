@@ -1,0 +1,5 @@
+nav.section-nav
+  .section-content
+    h1 Press
+    = link_to 'Newsroom', page_path(page: 'press'), class: item == :newsroom ? 'active' : ''
+    = link_to 'Assets', page_path(page: 'assets'), class: item == :assets ? 'active' : ''

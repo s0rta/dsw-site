@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # Redirects for old paths
-  get '/assets', to: redirect('/contact/assets')
   get '/faq', to: redirect('/contact/faq')
 
   get '/resources', to: redirect('/about')
@@ -30,6 +29,8 @@ Rails.application.routes.draw do
   get '/program/team', to: redirect('/about/team')
   get '/program/tracks', to: redirect('/about/tracks')
   get '/program/youth', to: redirect('/about/youth')
+  get '/contact/press', to: redirect('/press')
+  get '/contact/assets', to: redirect('/assets')
   get '/panel-picker/mine', to: redirect('/dashboard')
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
