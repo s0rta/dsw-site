@@ -418,6 +418,7 @@ AnnualSchedule.where(year: 2018).first_or_create!(
   cfp_close_at: Date.parse('2018-04-30').freeze,
   voting_open_at: Date.parse('2018-05-02').freeze,
   voting_close_at: Date.parse('2018-05-18').freeze,
+  registration_open_at: Date.parse('2018-07-15').freeze,
   week_start_at: Date.parse('2018-09-24').freeze,
   week_end_at: Date.parse('2018-09-28').freeze,
 )
