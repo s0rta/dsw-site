@@ -7,7 +7,7 @@ feature 'Filling out the contact form' do
   end
 
   scenario 'User submits a contact request' do
-    visit '/contact' # Can't click on the element for some reason
+    visit '/get-involved' # Can't click on the element for some reason
     fill_in 'Name', with: 'Some person'
     fill_in 'E-mail Address', with: 'test@example.com'
     fill_in 'What are you interested in?', with: 'Helping out'
