@@ -16,7 +16,7 @@ section.common
   .section-content.sm-centered
     h1 Volunteer
     h6 Volunteers make up the vast majority of the Denver Startup Week organization and serve as the backbone of the event. From the Organizing Committee to our session attendants, Denver Startup Week would not be possible without the help and support of the entire community.
-    = link_to 'Learn more', '', class: 'btn-cta'
+    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
 
 section.common
   .section-content.sm-centered
@@ -28,13 +28,13 @@ section.common
   .section-content.sm-centered
     h1 Host
     h6 The events, sessions and other activities during Denver Startup Week are hosted in an array of venues around Downtown Denver.  A variety of venues are needed to accommodate the diverse selection of programs.
-    = link_to 'Learn more', '', class: 'btn-cta'
+    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
 
 section.common
   .section-content.sm-centered
     h1 Job Fair & Showcase
     h6 The Denver Startup Week Job Fair and Showcase is open to all companies with a priority given to Colorado-based startups and growth-stage companies, qualified non-profits, and training institutions. 
-    = link_to 'Learn more', '', class: 'btn-cta'
+    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
 
 section.common
   .section-content.sm-centered
@@ -42,19 +42,38 @@ section.common
     h6 The third annual Denver Startup Week Pitch Challenge will highlight and harness our city's entrepreneurial energy. This year’s challenge takes the typical pitch competition and spins it on its head, inviting the 15,000 attendees at DSW to cast their votes to determine the final six contenders.
     h6 With a prize package valued at $100,000 in cash, services, and product, this pitch competition will showcase the best ideas and the brightest startups from Denver’s innovation community!
 
-    = link_to 'Learn more', '', class: 'btn-cta'
+    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
 
 section.common
   .section-content.sm-centered
+    h1 Startup Crawl
+    h6 The annual Startup Crawl features many of the hottest startup pads in Denver. Participants embark on a route throughout Downtown Denver, stopping at quintessential Denver startup offices to eat, drink, and celebrate our homegrown entrepreneurial culture. The crawl gives participants a chance to go behind the scenes and experience the company culture first hand.
+
+    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
+
+section.common
+  .section-content.sm-centered
+    h1 Mentorship
+    h6 Mentorship opportunities are offered at Basecamp throughout the week. Come connect with experienced mentors who can offer advice and support to launch you to the next level. Take advantage of individual, group, and online mentorship opportunities.
+
+    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
+
+section.common#contact-form
+  .section-content.sm-centered
+    h1 Get Involved
+    h6 Please fill out as much information as you can. We'll be in touch shortly!
     = form_for GeneralInquiry.new, html: { class: 'contact-us', data: { bindable: 'general-inquiry' } }, honeypot: true do |f|
       = f.label :contact_name, 'Name'
       = f.text_field :contact_name, required: 'required'
+
+      = f.label :company, 'Company or Organization (optional)'
+      = f.text_field :company
 
       = f.label :contact_email, 'E-mail Address'
       = f.text_field :contact_email, required: 'required'
 
       = f.label :interest, 'What are you interested in?'
-      = f.text_field :interest, required: 'required'
+      = f.select :interest, GeneralInquiry::INTERESTS.invert, required: 'required', include_blank: "I'm not sure"
 
       = f.label :notes, 'Any additional notes?'
       = f.text_field :notes, required: 'required'

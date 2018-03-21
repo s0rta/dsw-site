@@ -25,6 +25,7 @@ export default class GeneralInquiry {
     e.preventDefault();
     const email = this.el.find("#general_inquiry_contact_email").val();
     const name = this.el.find("#general_inquiry_contact_name").val();
+    const company = this.el.find("#general_inquiry_company").val();
     const interest = this.el.find("#general_inquiry_interest").val();
     const notes = this.el.find("#general_inquiry_notes").val();
     if (!email || !name) {
@@ -38,6 +39,7 @@ export default class GeneralInquiry {
           general_inquiry: {
             contact_email: email,
             contact_name: name,
+            company,
             interest,
             notes
           }

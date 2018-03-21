@@ -9,8 +9,9 @@ feature 'Filling out the contact form' do
   scenario 'User submits a contact request' do
     visit '/get-involved' # Can't click on the element for some reason
     fill_in 'Name', with: 'Some person'
+    fill_in 'Company or Organization (optional)', with: 'Acme Corp'
     fill_in 'E-mail Address', with: 'test@example.com'
-    fill_in 'What are you interested in?', with: 'Helping out'
+    select 'Sponsorship', from: 'What are you interested in?'
     fill_in 'Any additional notes?', with: 'Nope'
     click_button 'Submit'
     expect(page).to have_button('Thanks! We will be in touch shortly', disabled: true)
@@ -19,7 +20,8 @@ feature 'Filling out the contact form' do
     expect(GeneralInquiry.count).to eq(1)
     expect(GeneralInquiry.last.contact_email).to eq('test@example.com')
     expect(GeneralInquiry.last.contact_name).to eq('Some person')
-    expect(GeneralInquiry.last.interest).to eq('Helping out')
+    expect(GeneralInquiry.last.company).to eq('Acme Corp')
+    expect(GeneralInquiry.last.interest).to eq('sponsorship')
     expect(GeneralInquiry.last.notes).to eq('Nope')
 
     # Confirmation to volunteers box

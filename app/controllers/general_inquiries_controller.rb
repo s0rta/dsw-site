@@ -14,7 +14,11 @@ class GeneralInquiriesController < ApplicationController
   private
 
   def general_inquiry_params
-    params.require(:general_inquiry).permit(:contact_email, :contact_name, :interest, :notes)
+    params.require(:general_inquiry).permit(:contact_email,
+                                            :contact_name,
+                                            :company,
+                                            :interest,
+                                            :notes)
   end
 
 end
