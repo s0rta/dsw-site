@@ -1,0 +1,6 @@
+nav.section-nav
+  .section-content
+    h1 Initiatives
+    = link_to 'Overview', page_path(page: 'initiatives'), class: item == :overview ? 'active' : ''
+    = link_to 'Ambassadors', page_path(page: 'initiatives/ambassadors'), class: item == :ambassadors ? 'active' : ''
+    = link_to 'Youth', page_path(page: 'initiatives/youth'), class: item == :youth ? 'active' : ''
