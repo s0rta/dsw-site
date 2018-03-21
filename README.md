@@ -8,7 +8,7 @@ Run `$ gem install bundler` if you don't have the ruby bundler
 
 Run `bundle` to install dependencies.  
 
-`yarn install`
+Run `yarn install` if you don't have yarn installed.
 
 Copy `.env.example` to your own `.env` file. `.env.example` is already
 pre-populated with dummy environment variables that are sufficient for local
