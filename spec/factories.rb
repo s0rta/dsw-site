@@ -70,4 +70,8 @@ FactoryBot.define do
     title 'Good news!'
     release_date 1.day.ago
   end
+
+  factory :general_inquiry do
+    sequence(:contact_email) { |n| "#{n}@example.com" }
+  end
 end

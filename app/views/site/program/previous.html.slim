@@ -1,4 +1,4 @@
-= render partial: 'layouts/shared/about_nav', locals: {item: :previous}
+= render partial: 'layouts/shared/program_nav', locals: { item: :previous }
 
 .section-content.sm-centered
   - Submission.with_slides_or_video.group_by(&:year).each do |year, submissions|

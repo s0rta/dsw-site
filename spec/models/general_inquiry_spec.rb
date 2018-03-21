@@ -1,12 +1,18 @@
 require 'spec_helper'
 
-describe GeneralInquiry do
+RSpec.describe GeneralInquiry, type: :model do
   before do
     allow(ListSubscriptionJob).to receive(:perform_async)
   end
 
+  it { is_expected.to allow_value(nil).for(:interest) }
+  it { is_expected.to allow_value('').for(:interest) }
+  it { is_expected.to allow_value('volunteer').for(:interest) }
+  it { is_expected.to allow_value('crawl').for(:interest) }
+  it { is_expected.not_to allow_value('blah').for(:interest) }
+
   it 'subscribes after creation' do
-    described_class.create! contact_email: 'test@example.com'
+    create(:general_inquiry, contact_email: 'test@example.com')
     expect(ListSubscriptionJob).to have_received(:perform_async).with('test@example.com')
   end
 end

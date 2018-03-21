@@ -19,17 +19,18 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # Redirects for old paths
-  get '/assets', to: redirect('/contact/assets')
-  get '/faq', to: redirect('/contact/faq')
+  get '/contact/press', to: redirect('/press')
+  get '/contact/assets', to: redirect('/assets')
+  get '/faq', to: redirect('/get-involved/faq')
 
-  get '/resources', to: redirect('/about')
-  get '/program', to: redirect('/about')
-  get '/program/ambassadors', to: redirect('/about/ambassadors')
-  get '/program/clusters', to: redirect('/about/clusters')
-  get '/program/previous', to: redirect('/about/previous')
-  get '/program/team', to: redirect('/about/team')
-  get '/program/tracks', to: redirect('/about/tracks')
-  get '/program/youth', to: redirect('/about/youth')
+  get '/resources', to: redirect('/program')
+  get '/about', to: redirect('/program')
+  get '/about/ambassadors', to: redirect('/initiatives/ambassadors')
+  get '/about/clusters', to: redirect('/program/clusters')
+  get '/about/previous', to: redirect('/program/previous')
+  get '/about/team', to: redirect('/get-involved/team')
+  get '/about/tracks', to: redirect('/program/tracks')
+  get '/about/youth', to: redirect('/initiatives/youth')
   get '/panel-picker/mine', to: redirect('/dashboard')
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
