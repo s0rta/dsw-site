@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get '/contact/press', to: redirect('/press')
   get '/contact/assets', to: redirect('/assets')
   get '/faq', to: redirect('/get-involved/faq')
+  get '/contact', to: redirect('/get-involved')
 
   get '/resources', to: redirect('/program')
   get '/about', to: redirect('/program')
