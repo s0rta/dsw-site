@@ -2,25 +2,45 @@
 [![Build Status](https://travis-ci.org/denverstartupweek/dsw-site.svg?branch=master)](https://travis-ci.org/denverstartupweek/dsw-site)
 
 ### Set Up
-Clone this repository and `bundle` to install dependencies.
+
+Clone down this repository
+Run `$ gem install bundler` if you don't have the ruby bundler
+
+Run `bundle` to install dependencies.  
+
+Run `yarn install` if you don't have yarn installed.
 
 Copy `.env.example` to your own `.env` file. `.env.example` is already
 pre-populated with dummy environment variables that are sufficient for local
 development and testing.
 
-Ensure PostgreSQL is running and `rake db:setup` to run migrations locally. Run
-the server with `bundle exec rails s`.
+#### Get the Server Running
 
-To set up a test database, `rake db:test:prepare` and `bundle exec rspec` or
-`bundle exec rake` to run the tests.
+Make sure PostgresSQL is running and run `rake db:setup` to run migrations locally
 
-You will need to use an older version of Firefox to run tests since the newer
-versions of Firefox are incompatible with Selenium. The CI suite specifies
-Firefox 46, which you can obtain via Brew Cask:
-```
-brew tap goldcaddy77/homebrew-firefox
-brew cask install firefox-46
-```
+Run `bundle exec rails s` to run the server
+
+
+#### Get the Tests Running
+
+You will need to use an older verison of Firefox to run the tests because newer versions of Firefox are incompatible with Selenium. To install the older version of Firefox, run these commands:
+
+`brew tap goldcaddy77/homebrew-firefox`
+
+`brew cask install firefox-46`
+
+Once the older verison of Firefox is installed, you may have to rename it in your Applications folder from "Firefox-46" to "Firefox".
+
+Run `$ brew install redis` to install redis library
+
+`$ redis-server`
+
+Run `rake db:test:prepare` to set up test database
+
+
+To run the tests run one of these commands:
+
+`bundle exec rspec` or `bundle exec rake`
 
 ## Talk Nerdy To Me
 ![crest](https://secure.gravatar.com/avatar/aa8ea677b07f626479fd280049b0e19f?s=75)
