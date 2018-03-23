@@ -25,9 +25,6 @@ section.common.sm-centered
       = f.label :track_id, 'Which track would your session best fit into?'
       = f.select :track_id, tracks_for_select, required: 'required'
 
-      = f.label :cluster_id, 'Is your session a fit for one of our industry/topic area clusters? If so please select it below.'
-      = f.select :cluster_id, clusters_for_select, include_blank: true
-
       = f.label :title, "What is your session's title? Please limit your title to 60 characters or less."
       = f.text_field :title, required: 'required', placeholder: 'Session Title'
 
@@ -36,9 +33,6 @@ section.common.sm-centered
 
       = f.label :open_to_collaborators, 'We periodically receive inquiries from potential panelists or session organizers who are interested in collaborating with others to put on a session on a particular topic. Are you open to collaborating with others on this proposal?'
       = f.select :open_to_collaborators, [ [ 'Yes', true ], [ 'No', false ] ], selected: true, required: 'required'
-
-      = f.label :from_underrepresented_group, 'Are you a member of an underrepresented ethnic or ability group?'
-      = f.select :from_underrepresented_group, [ [ 'Yes', true ], [ 'No', false ] ], selected: false, required: 'required'
 
       = f.label :contact_email, 'Please confirm your e-mail address. Once your idea is submitted, you will receive a confirmation email. We may also reach out if we have any questions.'
       = f.text_field :contact_email, required: 'required'
