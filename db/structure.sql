@@ -3,7 +3,6 @@ SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
 SET client_min_messages = warning;
 SET row_security = off;
@@ -50,6 +49,8 @@ CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
 COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
 
 
+SET search_path = public, pg_catalog;
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -58,7 +59,7 @@ SET default_with_oids = false;
 -- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.active_admin_comments (
+CREATE TABLE active_admin_comments (
     id integer NOT NULL,
     resource_id character varying(255) NOT NULL,
     resource_type character varying(255) NOT NULL,
@@ -75,7 +76,7 @@ CREATE TABLE public.active_admin_comments (
 -- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.active_admin_comments_id_seq
+CREATE SEQUENCE active_admin_comments_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -87,14 +88,14 @@ CREATE SEQUENCE public.active_admin_comments_id_seq
 -- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_comments.id;
+ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
 
 
 --
 -- Name: annual_schedules; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.annual_schedules (
+CREATE TABLE annual_schedules (
     id bigint NOT NULL,
     year integer,
     dates jsonb,
@@ -107,7 +108,7 @@ CREATE TABLE public.annual_schedules (
 -- Name: annual_schedules_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.annual_schedules_id_seq
+CREATE SEQUENCE annual_schedules_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -119,14 +120,14 @@ CREATE SEQUENCE public.annual_schedules_id_seq
 -- Name: annual_schedules_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.annual_schedules_id_seq OWNED BY public.annual_schedules.id;
+ALTER SEQUENCE annual_schedules_id_seq OWNED BY annual_schedules.id;
 
 
 --
 -- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.ar_internal_metadata (
+CREATE TABLE ar_internal_metadata (
     key character varying NOT NULL,
     value character varying,
     created_at timestamp without time zone NOT NULL,
@@ -138,7 +139,7 @@ CREATE TABLE public.ar_internal_metadata (
 -- Name: attendee_messages; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.attendee_messages (
+CREATE TABLE attendee_messages (
     id bigint NOT NULL,
     subject character varying NOT NULL,
     body text NOT NULL,
@@ -153,7 +154,7 @@ CREATE TABLE public.attendee_messages (
 -- Name: attendee_messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.attendee_messages_id_seq
+CREATE SEQUENCE attendee_messages_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -165,19 +166,20 @@ CREATE SEQUENCE public.attendee_messages_id_seq
 -- Name: attendee_messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.attendee_messages_id_seq OWNED BY public.attendee_messages.id;
+ALTER SEQUENCE attendee_messages_id_seq OWNED BY attendee_messages.id;
 
 
 --
 -- Name: clusters; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.clusters (
+CREATE TABLE clusters (
     id integer NOT NULL,
     name character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    description text
+    description text,
+    is_active boolean DEFAULT true NOT NULL
 );
 
 
@@ -185,7 +187,7 @@ CREATE TABLE public.clusters (
 -- Name: clusters_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.clusters_id_seq
+CREATE SEQUENCE clusters_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -197,14 +199,14 @@ CREATE SEQUENCE public.clusters_id_seq
 -- Name: clusters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.clusters_id_seq OWNED BY public.clusters.id;
+ALTER SEQUENCE clusters_id_seq OWNED BY clusters.id;
 
 
 --
 -- Name: comments; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.comments (
+CREATE TABLE comments (
     id integer NOT NULL,
     user_id integer,
     submission_id integer,
@@ -218,7 +220,7 @@ CREATE TABLE public.comments (
 -- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.comments_id_seq
+CREATE SEQUENCE comments_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -230,14 +232,14 @@ CREATE SEQUENCE public.comments_id_seq
 -- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
 -- Name: companies; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.companies (
+CREATE TABLE companies (
     id bigint NOT NULL,
     name character varying NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -249,7 +251,7 @@ CREATE TABLE public.companies (
 -- Name: companies_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.companies_id_seq
+CREATE SEQUENCE companies_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -261,14 +263,14 @@ CREATE SEQUENCE public.companies_id_seq
 -- Name: companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.companies_id_seq OWNED BY public.companies.id;
+ALTER SEQUENCE companies_id_seq OWNED BY companies.id;
 
 
 --
 -- Name: general_inquiries; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.general_inquiries (
+CREATE TABLE general_inquiries (
     id integer NOT NULL,
     contact_name character varying(255),
     contact_email character varying(255),
@@ -284,7 +286,7 @@ CREATE TABLE public.general_inquiries (
 -- Name: general_inquiries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.general_inquiries_id_seq
+CREATE SEQUENCE general_inquiries_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -296,14 +298,14 @@ CREATE SEQUENCE public.general_inquiries_id_seq
 -- Name: general_inquiries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.general_inquiries_id_seq OWNED BY public.general_inquiries.id;
+ALTER SEQUENCE general_inquiries_id_seq OWNED BY general_inquiries.id;
 
 
 --
 -- Name: homepage_ctas; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.homepage_ctas (
+CREATE TABLE homepage_ctas (
     id integer NOT NULL,
     title character varying NOT NULL,
     subtitle character varying NOT NULL,
@@ -323,7 +325,7 @@ CREATE TABLE public.homepage_ctas (
 -- Name: homepage_ctas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.homepage_ctas_id_seq
+CREATE SEQUENCE homepage_ctas_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -335,14 +337,14 @@ CREATE SEQUENCE public.homepage_ctas_id_seq
 -- Name: homepage_ctas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.homepage_ctas_id_seq OWNED BY public.homepage_ctas.id;
+ALTER SEQUENCE homepage_ctas_id_seq OWNED BY homepage_ctas.id;
 
 
 --
 -- Name: newsletter_signups; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.newsletter_signups (
+CREATE TABLE newsletter_signups (
     id integer NOT NULL,
     email character varying(255),
     first_name character varying(255),
@@ -356,7 +358,7 @@ CREATE TABLE public.newsletter_signups (
 -- Name: newsletter_signups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.newsletter_signups_id_seq
+CREATE SEQUENCE newsletter_signups_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -368,14 +370,14 @@ CREATE SEQUENCE public.newsletter_signups_id_seq
 -- Name: newsletter_signups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.newsletter_signups_id_seq OWNED BY public.newsletter_signups.id;
+ALTER SEQUENCE newsletter_signups_id_seq OWNED BY newsletter_signups.id;
 
 
 --
 -- Name: newsroom_items; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.newsroom_items (
+CREATE TABLE newsroom_items (
     id bigint NOT NULL,
     title character varying NOT NULL,
     attachment character varying,
@@ -391,7 +393,7 @@ CREATE TABLE public.newsroom_items (
 -- Name: newsroom_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.newsroom_items_id_seq
+CREATE SEQUENCE newsroom_items_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -403,14 +405,14 @@ CREATE SEQUENCE public.newsroom_items_id_seq
 -- Name: newsroom_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.newsroom_items_id_seq OWNED BY public.newsroom_items.id;
+ALTER SEQUENCE newsroom_items_id_seq OWNED BY newsroom_items.id;
 
 
 --
 -- Name: pitch_contest_entries; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.pitch_contest_entries (
+CREATE TABLE pitch_contest_entries (
     id bigint NOT NULL,
     video_url character varying,
     name character varying,
@@ -425,7 +427,7 @@ CREATE TABLE public.pitch_contest_entries (
 -- Name: pitch_contest_entries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.pitch_contest_entries_id_seq
+CREATE SEQUENCE pitch_contest_entries_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -437,14 +439,14 @@ CREATE SEQUENCE public.pitch_contest_entries_id_seq
 -- Name: pitch_contest_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.pitch_contest_entries_id_seq OWNED BY public.pitch_contest_entries.id;
+ALTER SEQUENCE pitch_contest_entries_id_seq OWNED BY pitch_contest_entries.id;
 
 
 --
 -- Name: pitch_contest_votes; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.pitch_contest_votes (
+CREATE TABLE pitch_contest_votes (
     id bigint NOT NULL,
     user_id bigint,
     pitch_contest_entry_id bigint,
@@ -457,7 +459,7 @@ CREATE TABLE public.pitch_contest_votes (
 -- Name: pitch_contest_votes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.pitch_contest_votes_id_seq
+CREATE SEQUENCE pitch_contest_votes_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -469,14 +471,14 @@ CREATE SEQUENCE public.pitch_contest_votes_id_seq
 -- Name: pitch_contest_votes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.pitch_contest_votes_id_seq OWNED BY public.pitch_contest_votes.id;
+ALTER SEQUENCE pitch_contest_votes_id_seq OWNED BY pitch_contest_votes.id;
 
 
 --
 -- Name: registrations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.registrations (
+CREATE TABLE registrations (
     id integer NOT NULL,
     user_id integer,
     year integer,
@@ -500,7 +502,7 @@ CREATE TABLE public.registrations (
 -- Name: registrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.registrations_id_seq
+CREATE SEQUENCE registrations_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -512,14 +514,14 @@ CREATE SEQUENCE public.registrations_id_seq
 -- Name: registrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.registrations_id_seq OWNED BY public.registrations.id;
+ALTER SEQUENCE registrations_id_seq OWNED BY registrations.id;
 
 
 --
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.schema_migrations (
+CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
 
@@ -528,7 +530,7 @@ CREATE TABLE public.schema_migrations (
 -- Name: sent_notifications; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.sent_notifications (
+CREATE TABLE sent_notifications (
     id integer NOT NULL,
     submission_id integer,
     kind character varying NOT NULL,
@@ -542,7 +544,7 @@ CREATE TABLE public.sent_notifications (
 -- Name: sent_notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.sent_notifications_id_seq
+CREATE SEQUENCE sent_notifications_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -554,14 +556,14 @@ CREATE SEQUENCE public.sent_notifications_id_seq
 -- Name: sent_notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.sent_notifications_id_seq OWNED BY public.sent_notifications.id;
+ALTER SEQUENCE sent_notifications_id_seq OWNED BY sent_notifications.id;
 
 
 --
 -- Name: session_registrations; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.session_registrations (
+CREATE TABLE session_registrations (
     id integer NOT NULL,
     registration_id integer,
     submission_id integer,
@@ -574,7 +576,7 @@ CREATE TABLE public.session_registrations (
 -- Name: session_registrations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.session_registrations_id_seq
+CREATE SEQUENCE session_registrations_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -586,14 +588,14 @@ CREATE SEQUENCE public.session_registrations_id_seq
 -- Name: session_registrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.session_registrations_id_seq OWNED BY public.session_registrations.id;
+ALTER SEQUENCE session_registrations_id_seq OWNED BY session_registrations.id;
 
 
 --
 -- Name: sponsor_signups; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.sponsor_signups (
+CREATE TABLE sponsor_signups (
     id integer NOT NULL,
     contact_name character varying(255),
     contact_email character varying(255),
@@ -609,7 +611,7 @@ CREATE TABLE public.sponsor_signups (
 -- Name: sponsor_signups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.sponsor_signups_id_seq
+CREATE SEQUENCE sponsor_signups_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -621,14 +623,14 @@ CREATE SEQUENCE public.sponsor_signups_id_seq
 -- Name: sponsor_signups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.sponsor_signups_id_seq OWNED BY public.sponsor_signups.id;
+ALTER SEQUENCE sponsor_signups_id_seq OWNED BY sponsor_signups.id;
 
 
 --
 -- Name: sponsorships; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.sponsorships (
+CREATE TABLE sponsorships (
     id bigint NOT NULL,
     name character varying NOT NULL,
     logo character varying,
@@ -647,7 +649,7 @@ CREATE TABLE public.sponsorships (
 -- Name: sponsorships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.sponsorships_id_seq
+CREATE SEQUENCE sponsorships_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -659,14 +661,14 @@ CREATE SEQUENCE public.sponsorships_id_seq
 -- Name: sponsorships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.sponsorships_id_seq OWNED BY public.sponsorships.id;
+ALTER SEQUENCE sponsorships_id_seq OWNED BY sponsorships.id;
 
 
 --
 -- Name: submissions; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.submissions (
+CREATE TABLE submissions (
     id integer NOT NULL,
     submitter_id integer,
     track_id integer,
@@ -711,7 +713,7 @@ CREATE TABLE public.submissions (
 -- Name: submissions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.submissions_id_seq
+CREATE SEQUENCE submissions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -723,14 +725,14 @@ CREATE SEQUENCE public.submissions_id_seq
 -- Name: submissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.submissions_id_seq OWNED BY public.submissions.id;
+ALTER SEQUENCE submissions_id_seq OWNED BY submissions.id;
 
 
 --
 -- Name: tracks; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.tracks (
+CREATE TABLE tracks (
     id integer NOT NULL,
     name character varying(255),
     created_at timestamp without time zone NOT NULL,
@@ -748,7 +750,7 @@ CREATE TABLE public.tracks (
 -- Name: tracks_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.tracks_id_seq
+CREATE SEQUENCE tracks_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -760,14 +762,14 @@ CREATE SEQUENCE public.tracks_id_seq
 -- Name: tracks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.tracks_id_seq OWNED BY public.tracks.id;
+ALTER SEQUENCE tracks_id_seq OWNED BY tracks.id;
 
 
 --
 -- Name: tracks_users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.tracks_users (
+CREATE TABLE tracks_users (
     track_id integer,
     user_id integer
 );
@@ -777,7 +779,7 @@ CREATE TABLE public.tracks_users (
 -- Name: users; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.users (
+CREATE TABLE users (
     id integer NOT NULL,
     uid character varying(255),
     name character varying(255),
@@ -806,7 +808,7 @@ CREATE TABLE public.users (
 -- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.users_id_seq
+CREATE SEQUENCE users_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -818,14 +820,14 @@ CREATE SEQUENCE public.users_id_seq
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
 -- Name: venues; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.venues (
+CREATE TABLE venues (
     id integer NOT NULL,
     name character varying(255),
     description text,
@@ -847,7 +849,7 @@ CREATE TABLE public.venues (
 -- Name: venues_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.venues_id_seq
+CREATE SEQUENCE venues_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -859,14 +861,14 @@ CREATE SEQUENCE public.venues_id_seq
 -- Name: venues_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.venues_id_seq OWNED BY public.venues.id;
+ALTER SEQUENCE venues_id_seq OWNED BY venues.id;
 
 
 --
 -- Name: versions; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.versions (
+CREATE TABLE versions (
     id integer NOT NULL,
     item_type character varying(255) NOT NULL,
     item_id integer NOT NULL,
@@ -881,7 +883,7 @@ CREATE TABLE public.versions (
 -- Name: versions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.versions_id_seq
+CREATE SEQUENCE versions_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -893,14 +895,14 @@ CREATE SEQUENCE public.versions_id_seq
 -- Name: versions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.versions_id_seq OWNED BY public.versions.id;
+ALTER SEQUENCE versions_id_seq OWNED BY versions.id;
 
 
 --
 -- Name: volunteer_shifts; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.volunteer_shifts (
+CREATE TABLE volunteer_shifts (
     id integer NOT NULL,
     name character varying,
     day integer,
@@ -917,7 +919,7 @@ CREATE TABLE public.volunteer_shifts (
 -- Name: volunteer_shifts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.volunteer_shifts_id_seq
+CREATE SEQUENCE volunteer_shifts_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -929,14 +931,14 @@ CREATE SEQUENCE public.volunteer_shifts_id_seq
 -- Name: volunteer_shifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.volunteer_shifts_id_seq OWNED BY public.volunteer_shifts.id;
+ALTER SEQUENCE volunteer_shifts_id_seq OWNED BY volunteer_shifts.id;
 
 
 --
 -- Name: volunteership_shifts; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.volunteership_shifts (
+CREATE TABLE volunteership_shifts (
     id bigint NOT NULL,
     volunteership_id bigint,
     volunteer_shift_id bigint,
@@ -949,7 +951,7 @@ CREATE TABLE public.volunteership_shifts (
 -- Name: volunteership_shifts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.volunteership_shifts_id_seq
+CREATE SEQUENCE volunteership_shifts_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -961,14 +963,14 @@ CREATE SEQUENCE public.volunteership_shifts_id_seq
 -- Name: volunteership_shifts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.volunteership_shifts_id_seq OWNED BY public.volunteership_shifts.id;
+ALTER SEQUENCE volunteership_shifts_id_seq OWNED BY volunteership_shifts.id;
 
 
 --
 -- Name: volunteerships; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.volunteerships (
+CREATE TABLE volunteerships (
     id integer NOT NULL,
     mobile_phone_number character varying,
     affiliated_organization character varying,
@@ -983,7 +985,7 @@ CREATE TABLE public.volunteerships (
 -- Name: volunteerships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.volunteerships_id_seq
+CREATE SEQUENCE volunteerships_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -995,14 +997,14 @@ CREATE SEQUENCE public.volunteerships_id_seq
 -- Name: volunteerships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.volunteerships_id_seq OWNED BY public.volunteerships.id;
+ALTER SEQUENCE volunteerships_id_seq OWNED BY volunteerships.id;
 
 
 --
 -- Name: votes; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.votes (
+CREATE TABLE votes (
     id integer NOT NULL,
     user_id integer,
     submission_id integer,
@@ -1015,7 +1017,7 @@ CREATE TABLE public.votes (
 -- Name: votes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE public.votes_id_seq
+CREATE SEQUENCE votes_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1027,14 +1029,14 @@ CREATE SEQUENCE public.votes_id_seq
 -- Name: votes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE public.votes_id_seq OWNED BY public.votes.id;
+ALTER SEQUENCE votes_id_seq OWNED BY votes.id;
 
 
 --
 -- Name: zip_decoding; Type: TABLE; Schema: public; Owner: -
 --
 
-CREATE TABLE public.zip_decoding (
+CREATE TABLE zip_decoding (
     zip character varying,
     city character varying,
     state character varying,
@@ -1047,189 +1049,189 @@ CREATE TABLE public.zip_decoding (
 -- Name: active_admin_comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.active_admin_comments ALTER COLUMN id SET DEFAULT nextval('public.active_admin_comments_id_seq'::regclass);
+ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
 
 
 --
 -- Name: annual_schedules id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.annual_schedules ALTER COLUMN id SET DEFAULT nextval('public.annual_schedules_id_seq'::regclass);
+ALTER TABLE ONLY annual_schedules ALTER COLUMN id SET DEFAULT nextval('annual_schedules_id_seq'::regclass);
 
 
 --
 -- Name: attendee_messages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.attendee_messages ALTER COLUMN id SET DEFAULT nextval('public.attendee_messages_id_seq'::regclass);
+ALTER TABLE ONLY attendee_messages ALTER COLUMN id SET DEFAULT nextval('attendee_messages_id_seq'::regclass);
 
 
 --
 -- Name: clusters id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.clusters ALTER COLUMN id SET DEFAULT nextval('public.clusters_id_seq'::regclass);
+ALTER TABLE ONLY clusters ALTER COLUMN id SET DEFAULT nextval('clusters_id_seq'::regclass);
 
 
 --
 -- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
 --
 -- Name: companies id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.companies ALTER COLUMN id SET DEFAULT nextval('public.companies_id_seq'::regclass);
+ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
 
 
 --
 -- Name: general_inquiries id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.general_inquiries ALTER COLUMN id SET DEFAULT nextval('public.general_inquiries_id_seq'::regclass);
+ALTER TABLE ONLY general_inquiries ALTER COLUMN id SET DEFAULT nextval('general_inquiries_id_seq'::regclass);
 
 
 --
 -- Name: homepage_ctas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.homepage_ctas ALTER COLUMN id SET DEFAULT nextval('public.homepage_ctas_id_seq'::regclass);
+ALTER TABLE ONLY homepage_ctas ALTER COLUMN id SET DEFAULT nextval('homepage_ctas_id_seq'::regclass);
 
 
 --
 -- Name: newsletter_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.newsletter_signups ALTER COLUMN id SET DEFAULT nextval('public.newsletter_signups_id_seq'::regclass);
+ALTER TABLE ONLY newsletter_signups ALTER COLUMN id SET DEFAULT nextval('newsletter_signups_id_seq'::regclass);
 
 
 --
 -- Name: newsroom_items id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.newsroom_items ALTER COLUMN id SET DEFAULT nextval('public.newsroom_items_id_seq'::regclass);
+ALTER TABLE ONLY newsroom_items ALTER COLUMN id SET DEFAULT nextval('newsroom_items_id_seq'::regclass);
 
 
 --
 -- Name: pitch_contest_entries id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.pitch_contest_entries ALTER COLUMN id SET DEFAULT nextval('public.pitch_contest_entries_id_seq'::regclass);
+ALTER TABLE ONLY pitch_contest_entries ALTER COLUMN id SET DEFAULT nextval('pitch_contest_entries_id_seq'::regclass);
 
 
 --
 -- Name: pitch_contest_votes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.pitch_contest_votes ALTER COLUMN id SET DEFAULT nextval('public.pitch_contest_votes_id_seq'::regclass);
+ALTER TABLE ONLY pitch_contest_votes ALTER COLUMN id SET DEFAULT nextval('pitch_contest_votes_id_seq'::regclass);
 
 
 --
 -- Name: registrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.registrations ALTER COLUMN id SET DEFAULT nextval('public.registrations_id_seq'::regclass);
+ALTER TABLE ONLY registrations ALTER COLUMN id SET DEFAULT nextval('registrations_id_seq'::regclass);
 
 
 --
 -- Name: sent_notifications id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sent_notifications ALTER COLUMN id SET DEFAULT nextval('public.sent_notifications_id_seq'::regclass);
+ALTER TABLE ONLY sent_notifications ALTER COLUMN id SET DEFAULT nextval('sent_notifications_id_seq'::regclass);
 
 
 --
 -- Name: session_registrations id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.session_registrations ALTER COLUMN id SET DEFAULT nextval('public.session_registrations_id_seq'::regclass);
+ALTER TABLE ONLY session_registrations ALTER COLUMN id SET DEFAULT nextval('session_registrations_id_seq'::regclass);
 
 
 --
 -- Name: sponsor_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sponsor_signups ALTER COLUMN id SET DEFAULT nextval('public.sponsor_signups_id_seq'::regclass);
+ALTER TABLE ONLY sponsor_signups ALTER COLUMN id SET DEFAULT nextval('sponsor_signups_id_seq'::regclass);
 
 
 --
 -- Name: sponsorships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sponsorships ALTER COLUMN id SET DEFAULT nextval('public.sponsorships_id_seq'::regclass);
+ALTER TABLE ONLY sponsorships ALTER COLUMN id SET DEFAULT nextval('sponsorships_id_seq'::regclass);
 
 
 --
 -- Name: submissions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.submissions ALTER COLUMN id SET DEFAULT nextval('public.submissions_id_seq'::regclass);
+ALTER TABLE ONLY submissions ALTER COLUMN id SET DEFAULT nextval('submissions_id_seq'::regclass);
 
 
 --
 -- Name: tracks id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tracks ALTER COLUMN id SET DEFAULT nextval('public.tracks_id_seq'::regclass);
+ALTER TABLE ONLY tracks ALTER COLUMN id SET DEFAULT nextval('tracks_id_seq'::regclass);
 
 
 --
 -- Name: users id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
 --
 -- Name: venues id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.venues ALTER COLUMN id SET DEFAULT nextval('public.venues_id_seq'::regclass);
+ALTER TABLE ONLY venues ALTER COLUMN id SET DEFAULT nextval('venues_id_seq'::regclass);
 
 
 --
 -- Name: versions id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.versions ALTER COLUMN id SET DEFAULT nextval('public.versions_id_seq'::regclass);
+ALTER TABLE ONLY versions ALTER COLUMN id SET DEFAULT nextval('versions_id_seq'::regclass);
 
 
 --
 -- Name: volunteer_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteer_shifts ALTER COLUMN id SET DEFAULT nextval('public.volunteer_shifts_id_seq'::regclass);
+ALTER TABLE ONLY volunteer_shifts ALTER COLUMN id SET DEFAULT nextval('volunteer_shifts_id_seq'::regclass);
 
 
 --
 -- Name: volunteership_shifts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteership_shifts ALTER COLUMN id SET DEFAULT nextval('public.volunteership_shifts_id_seq'::regclass);
+ALTER TABLE ONLY volunteership_shifts ALTER COLUMN id SET DEFAULT nextval('volunteership_shifts_id_seq'::regclass);
 
 
 --
 -- Name: volunteerships id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteerships ALTER COLUMN id SET DEFAULT nextval('public.volunteerships_id_seq'::regclass);
+ALTER TABLE ONLY volunteerships ALTER COLUMN id SET DEFAULT nextval('volunteerships_id_seq'::regclass);
 
 
 --
 -- Name: votes id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.votes ALTER COLUMN id SET DEFAULT nextval('public.votes_id_seq'::regclass);
+ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regclass);
 
 
 --
 -- Name: active_admin_comments admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.active_admin_comments
+ALTER TABLE ONLY active_admin_comments
     ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
 
 
@@ -1237,7 +1239,7 @@ ALTER TABLE ONLY public.active_admin_comments
 -- Name: annual_schedules annual_schedules_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.annual_schedules
+ALTER TABLE ONLY annual_schedules
     ADD CONSTRAINT annual_schedules_pkey PRIMARY KEY (id);
 
 
@@ -1245,7 +1247,7 @@ ALTER TABLE ONLY public.annual_schedules
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.ar_internal_metadata
+ALTER TABLE ONLY ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
 
 
@@ -1253,7 +1255,7 @@ ALTER TABLE ONLY public.ar_internal_metadata
 -- Name: attendee_messages attendee_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.attendee_messages
+ALTER TABLE ONLY attendee_messages
     ADD CONSTRAINT attendee_messages_pkey PRIMARY KEY (id);
 
 
@@ -1261,7 +1263,7 @@ ALTER TABLE ONLY public.attendee_messages
 -- Name: clusters clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.clusters
+ALTER TABLE ONLY clusters
     ADD CONSTRAINT clusters_pkey PRIMARY KEY (id);
 
 
@@ -1269,7 +1271,7 @@ ALTER TABLE ONLY public.clusters
 -- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.comments
+ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
 
 
@@ -1277,7 +1279,7 @@ ALTER TABLE ONLY public.comments
 -- Name: companies companies_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.companies
+ALTER TABLE ONLY companies
     ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
 
 
@@ -1285,7 +1287,7 @@ ALTER TABLE ONLY public.companies
 -- Name: general_inquiries general_inquiries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.general_inquiries
+ALTER TABLE ONLY general_inquiries
     ADD CONSTRAINT general_inquiries_pkey PRIMARY KEY (id);
 
 
@@ -1293,7 +1295,7 @@ ALTER TABLE ONLY public.general_inquiries
 -- Name: homepage_ctas homepage_ctas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.homepage_ctas
+ALTER TABLE ONLY homepage_ctas
     ADD CONSTRAINT homepage_ctas_pkey PRIMARY KEY (id);
 
 
@@ -1301,7 +1303,7 @@ ALTER TABLE ONLY public.homepage_ctas
 -- Name: newsletter_signups newsletter_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.newsletter_signups
+ALTER TABLE ONLY newsletter_signups
     ADD CONSTRAINT newsletter_signups_pkey PRIMARY KEY (id);
 
 
@@ -1309,7 +1311,7 @@ ALTER TABLE ONLY public.newsletter_signups
 -- Name: newsroom_items newsroom_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.newsroom_items
+ALTER TABLE ONLY newsroom_items
     ADD CONSTRAINT newsroom_items_pkey PRIMARY KEY (id);
 
 
@@ -1317,7 +1319,7 @@ ALTER TABLE ONLY public.newsroom_items
 -- Name: pitch_contest_entries pitch_contest_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.pitch_contest_entries
+ALTER TABLE ONLY pitch_contest_entries
     ADD CONSTRAINT pitch_contest_entries_pkey PRIMARY KEY (id);
 
 
@@ -1325,7 +1327,7 @@ ALTER TABLE ONLY public.pitch_contest_entries
 -- Name: pitch_contest_votes pitch_contest_votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.pitch_contest_votes
+ALTER TABLE ONLY pitch_contest_votes
     ADD CONSTRAINT pitch_contest_votes_pkey PRIMARY KEY (id);
 
 
@@ -1333,7 +1335,7 @@ ALTER TABLE ONLY public.pitch_contest_votes
 -- Name: registrations registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.registrations
+ALTER TABLE ONLY registrations
     ADD CONSTRAINT registrations_pkey PRIMARY KEY (id);
 
 
@@ -1341,7 +1343,7 @@ ALTER TABLE ONLY public.registrations
 -- Name: sent_notifications sent_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sent_notifications
+ALTER TABLE ONLY sent_notifications
     ADD CONSTRAINT sent_notifications_pkey PRIMARY KEY (id);
 
 
@@ -1349,7 +1351,7 @@ ALTER TABLE ONLY public.sent_notifications
 -- Name: session_registrations session_registrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.session_registrations
+ALTER TABLE ONLY session_registrations
     ADD CONSTRAINT session_registrations_pkey PRIMARY KEY (id);
 
 
@@ -1357,7 +1359,7 @@ ALTER TABLE ONLY public.session_registrations
 -- Name: sponsor_signups sponsor_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sponsor_signups
+ALTER TABLE ONLY sponsor_signups
     ADD CONSTRAINT sponsor_signups_pkey PRIMARY KEY (id);
 
 
@@ -1365,7 +1367,7 @@ ALTER TABLE ONLY public.sponsor_signups
 -- Name: sponsorships sponsorships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sponsorships
+ALTER TABLE ONLY sponsorships
     ADD CONSTRAINT sponsorships_pkey PRIMARY KEY (id);
 
 
@@ -1373,7 +1375,7 @@ ALTER TABLE ONLY public.sponsorships
 -- Name: submissions submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.submissions
+ALTER TABLE ONLY submissions
     ADD CONSTRAINT submissions_pkey PRIMARY KEY (id);
 
 
@@ -1381,7 +1383,7 @@ ALTER TABLE ONLY public.submissions
 -- Name: tracks tracks_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.tracks
+ALTER TABLE ONLY tracks
     ADD CONSTRAINT tracks_pkey PRIMARY KEY (id);
 
 
@@ -1389,7 +1391,7 @@ ALTER TABLE ONLY public.tracks
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.users
+ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
@@ -1397,7 +1399,7 @@ ALTER TABLE ONLY public.users
 -- Name: venues venues_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.venues
+ALTER TABLE ONLY venues
     ADD CONSTRAINT venues_pkey PRIMARY KEY (id);
 
 
@@ -1405,7 +1407,7 @@ ALTER TABLE ONLY public.venues
 -- Name: versions versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.versions
+ALTER TABLE ONLY versions
     ADD CONSTRAINT versions_pkey PRIMARY KEY (id);
 
 
@@ -1413,7 +1415,7 @@ ALTER TABLE ONLY public.versions
 -- Name: volunteer_shifts volunteer_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteer_shifts
+ALTER TABLE ONLY volunteer_shifts
     ADD CONSTRAINT volunteer_shifts_pkey PRIMARY KEY (id);
 
 
@@ -1421,7 +1423,7 @@ ALTER TABLE ONLY public.volunteer_shifts
 -- Name: volunteership_shifts volunteership_shifts_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteership_shifts
+ALTER TABLE ONLY volunteership_shifts
     ADD CONSTRAINT volunteership_shifts_pkey PRIMARY KEY (id);
 
 
@@ -1429,7 +1431,7 @@ ALTER TABLE ONLY public.volunteership_shifts
 -- Name: volunteerships volunteerships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteerships
+ALTER TABLE ONLY volunteerships
     ADD CONSTRAINT volunteerships_pkey PRIMARY KEY (id);
 
 
@@ -1437,7 +1439,7 @@ ALTER TABLE ONLY public.volunteerships
 -- Name: votes votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.votes
+ALTER TABLE ONLY votes
     ADD CONSTRAINT votes_pkey PRIMARY KEY (id);
 
 
@@ -1445,356 +1447,356 @@ ALTER TABLE ONLY public.votes
 -- Name: fulltext_submissions_description_english; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX fulltext_submissions_description_english ON public.submissions USING gin (to_tsvector('english'::regconfig, description));
+CREATE INDEX fulltext_submissions_description_english ON submissions USING gin (to_tsvector('english'::regconfig, description));
 
 
 --
 -- Name: fulltext_submissions_title_english; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX fulltext_submissions_title_english ON public.submissions USING gin (to_tsvector('english'::regconfig, (title)::text));
+CREATE INDEX fulltext_submissions_title_english ON submissions USING gin (to_tsvector('english'::regconfig, (title)::text));
 
 
 --
 -- Name: fulltext_users_name_english; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX fulltext_users_name_english ON public.users USING gin (to_tsvector('english'::regconfig, (name)::text));
+CREATE INDEX fulltext_users_name_english ON users USING gin (to_tsvector('english'::regconfig, (name)::text));
 
 
 --
 -- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON public.active_admin_comments USING btree (author_type, author_id);
+CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON active_admin_comments USING btree (author_type, author_id);
 
 
 --
 -- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_active_admin_comments_on_namespace ON public.active_admin_comments USING btree (namespace);
+CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments USING btree (namespace);
 
 
 --
 -- Name: index_admin_notes_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_admin_notes_on_resource_type_and_resource_id ON public.active_admin_comments USING btree (resource_type, resource_id);
+CREATE INDEX index_admin_notes_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
 
 
 --
 -- Name: index_annual_schedules_on_year; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_annual_schedules_on_year ON public.annual_schedules USING btree (year);
+CREATE UNIQUE INDEX index_annual_schedules_on_year ON annual_schedules USING btree (year);
 
 
 --
 -- Name: index_attendee_messages_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_attendee_messages_on_submission_id ON public.attendee_messages USING btree (submission_id);
+CREATE INDEX index_attendee_messages_on_submission_id ON attendee_messages USING btree (submission_id);
 
 
 --
 -- Name: index_comments_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_comments_on_submission_id ON public.comments USING btree (submission_id);
+CREATE INDEX index_comments_on_submission_id ON comments USING btree (submission_id);
 
 
 --
 -- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_comments_on_user_id ON public.comments USING btree (user_id);
+CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
 -- Name: index_companies_on_lower_name_unique; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_companies_on_lower_name_unique ON public.companies USING btree (lower((name)::text) varchar_pattern_ops);
+CREATE UNIQUE INDEX index_companies_on_lower_name_unique ON companies USING btree (lower((name)::text) varchar_pattern_ops);
 
 
 --
 -- Name: index_companies_on_name; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_companies_on_name ON public.companies USING btree (name);
+CREATE UNIQUE INDEX index_companies_on_name ON companies USING btree (name);
 
 
 --
 -- Name: index_homepage_ctas_on_track_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_homepage_ctas_on_track_id ON public.homepage_ctas USING btree (track_id);
+CREATE INDEX index_homepage_ctas_on_track_id ON homepage_ctas USING btree (track_id);
 
 
 --
 -- Name: index_pitch_contest_votes_on_pitch_contest_entry_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_pitch_contest_votes_on_pitch_contest_entry_id ON public.pitch_contest_votes USING btree (pitch_contest_entry_id);
+CREATE INDEX index_pitch_contest_votes_on_pitch_contest_entry_id ON pitch_contest_votes USING btree (pitch_contest_entry_id);
 
 
 --
 -- Name: index_pitch_contest_votes_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_pitch_contest_votes_on_user_id ON public.pitch_contest_votes USING btree (user_id);
+CREATE INDEX index_pitch_contest_votes_on_user_id ON pitch_contest_votes USING btree (user_id);
 
 
 --
 -- Name: index_registrations_on_calendar_token; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_registrations_on_calendar_token ON public.registrations USING btree (calendar_token);
+CREATE UNIQUE INDEX index_registrations_on_calendar_token ON registrations USING btree (calendar_token);
 
 
 --
 -- Name: index_registrations_on_company_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_registrations_on_company_id ON public.registrations USING btree (company_id);
+CREATE INDEX index_registrations_on_company_id ON registrations USING btree (company_id);
 
 
 --
 -- Name: index_registrations_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_registrations_on_user_id ON public.registrations USING btree (user_id);
+CREATE INDEX index_registrations_on_user_id ON registrations USING btree (user_id);
 
 
 --
 -- Name: index_sent_notifications_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_sent_notifications_on_submission_id ON public.sent_notifications USING btree (submission_id);
+CREATE INDEX index_sent_notifications_on_submission_id ON sent_notifications USING btree (submission_id);
 
 
 --
 -- Name: index_session_registrations_on_registration_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_session_registrations_on_registration_id ON public.session_registrations USING btree (registration_id);
+CREATE INDEX index_session_registrations_on_registration_id ON session_registrations USING btree (registration_id);
 
 
 --
 -- Name: index_session_registrations_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_session_registrations_on_submission_id ON public.session_registrations USING btree (submission_id);
+CREATE INDEX index_session_registrations_on_submission_id ON session_registrations USING btree (submission_id);
 
 
 --
 -- Name: index_sponsorships_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_sponsorships_on_submission_id ON public.sponsorships USING btree (submission_id);
+CREATE INDEX index_sponsorships_on_submission_id ON sponsorships USING btree (submission_id);
 
 
 --
 -- Name: index_sponsorships_on_track_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_sponsorships_on_track_id ON public.sponsorships USING btree (track_id);
+CREATE INDEX index_sponsorships_on_track_id ON sponsorships USING btree (track_id);
 
 
 --
 -- Name: index_submissions_on_cluster_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_submissions_on_cluster_id ON public.submissions USING btree (cluster_id);
+CREATE INDEX index_submissions_on_cluster_id ON submissions USING btree (cluster_id);
 
 
 --
 -- Name: index_submissions_on_company_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_submissions_on_company_id ON public.submissions USING btree (company_id);
+CREATE INDEX index_submissions_on_company_id ON submissions USING btree (company_id);
 
 
 --
 -- Name: index_submissions_on_submitter_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_submissions_on_submitter_id ON public.submissions USING btree (submitter_id);
+CREATE INDEX index_submissions_on_submitter_id ON submissions USING btree (submitter_id);
 
 
 --
 -- Name: index_submissions_on_track_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_submissions_on_track_id ON public.submissions USING btree (track_id);
+CREATE INDEX index_submissions_on_track_id ON submissions USING btree (track_id);
 
 
 --
 -- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
 -- Name: index_versions_on_item_type_and_item_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_versions_on_item_type_and_item_id ON public.versions USING btree (item_type, item_id);
+CREATE INDEX index_versions_on_item_type_and_item_id ON versions USING btree (item_type, item_id);
 
 
 --
 -- Name: index_volunteer_shifts_on_venue_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_volunteer_shifts_on_venue_id ON public.volunteer_shifts USING btree (venue_id);
+CREATE INDEX index_volunteer_shifts_on_venue_id ON volunteer_shifts USING btree (venue_id);
 
 
 --
 -- Name: index_volunteership_shifts_on_volunteer_shift_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_volunteership_shifts_on_volunteer_shift_id ON public.volunteership_shifts USING btree (volunteer_shift_id);
+CREATE INDEX index_volunteership_shifts_on_volunteer_shift_id ON volunteership_shifts USING btree (volunteer_shift_id);
 
 
 --
 -- Name: index_volunteership_shifts_on_volunteership_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_volunteership_shifts_on_volunteership_id ON public.volunteership_shifts USING btree (volunteership_id);
+CREATE INDEX index_volunteership_shifts_on_volunteership_id ON volunteership_shifts USING btree (volunteership_id);
 
 
 --
 -- Name: index_volunteerships_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_volunteerships_on_user_id ON public.volunteerships USING btree (user_id);
+CREATE INDEX index_volunteerships_on_user_id ON volunteerships USING btree (user_id);
 
 
 --
 -- Name: index_votes_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_votes_on_submission_id ON public.votes USING btree (submission_id);
+CREATE INDEX index_votes_on_submission_id ON votes USING btree (submission_id);
 
 
 --
 -- Name: index_votes_on_user_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_votes_on_user_id ON public.votes USING btree (user_id);
+CREATE INDEX index_votes_on_user_id ON votes USING btree (user_id);
 
 
 --
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING btree (version);
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
 
 
 --
 -- Name: pitch_contest_votes fk_rails_051f1858c3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.pitch_contest_votes
-    ADD CONSTRAINT fk_rails_051f1858c3 FOREIGN KEY (pitch_contest_entry_id) REFERENCES public.pitch_contest_entries(id);
+ALTER TABLE ONLY pitch_contest_votes
+    ADD CONSTRAINT fk_rails_051f1858c3 FOREIGN KEY (pitch_contest_entry_id) REFERENCES pitch_contest_entries(id);
 
 
 --
 -- Name: sponsorships fk_rails_10fd4596a4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sponsorships
-    ADD CONSTRAINT fk_rails_10fd4596a4 FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
+ALTER TABLE ONLY sponsorships
+    ADD CONSTRAINT fk_rails_10fd4596a4 FOREIGN KEY (submission_id) REFERENCES submissions(id);
 
 
 --
 -- Name: volunteerships fk_rails_26e12c935b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteerships
-    ADD CONSTRAINT fk_rails_26e12c935b FOREIGN KEY (user_id) REFERENCES public.users(id);
+ALTER TABLE ONLY volunteerships
+    ADD CONSTRAINT fk_rails_26e12c935b FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
 -- Name: registrations fk_rails_2e0658f554; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.registrations
-    ADD CONSTRAINT fk_rails_2e0658f554 FOREIGN KEY (user_id) REFERENCES public.users(id);
+ALTER TABLE ONLY registrations
+    ADD CONSTRAINT fk_rails_2e0658f554 FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
 -- Name: pitch_contest_votes fk_rails_4daa05456f; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.pitch_contest_votes
-    ADD CONSTRAINT fk_rails_4daa05456f FOREIGN KEY (user_id) REFERENCES public.users(id);
+ALTER TABLE ONLY pitch_contest_votes
+    ADD CONSTRAINT fk_rails_4daa05456f FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
 -- Name: registrations fk_rails_4dafc7e520; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.registrations
-    ADD CONSTRAINT fk_rails_4dafc7e520 FOREIGN KEY (company_id) REFERENCES public.companies(id);
+ALTER TABLE ONLY registrations
+    ADD CONSTRAINT fk_rails_4dafc7e520 FOREIGN KEY (company_id) REFERENCES companies(id);
 
 
 --
 -- Name: volunteership_shifts fk_rails_4deb72ee78; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteership_shifts
-    ADD CONSTRAINT fk_rails_4deb72ee78 FOREIGN KEY (volunteership_id) REFERENCES public.volunteerships(id);
+ALTER TABLE ONLY volunteership_shifts
+    ADD CONSTRAINT fk_rails_4deb72ee78 FOREIGN KEY (volunteership_id) REFERENCES volunteerships(id);
 
 
 --
 -- Name: attendee_messages fk_rails_555266c0e1; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.attendee_messages
-    ADD CONSTRAINT fk_rails_555266c0e1 FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
+ALTER TABLE ONLY attendee_messages
+    ADD CONSTRAINT fk_rails_555266c0e1 FOREIGN KEY (submission_id) REFERENCES submissions(id);
 
 
 --
 -- Name: volunteership_shifts fk_rails_8ff1f98788; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteership_shifts
-    ADD CONSTRAINT fk_rails_8ff1f98788 FOREIGN KEY (volunteer_shift_id) REFERENCES public.volunteer_shifts(id);
+ALTER TABLE ONLY volunteership_shifts
+    ADD CONSTRAINT fk_rails_8ff1f98788 FOREIGN KEY (volunteer_shift_id) REFERENCES volunteer_shifts(id);
 
 
 --
 -- Name: volunteer_shifts fk_rails_9c4ffa0245; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.volunteer_shifts
-    ADD CONSTRAINT fk_rails_9c4ffa0245 FOREIGN KEY (venue_id) REFERENCES public.venues(id);
+ALTER TABLE ONLY volunteer_shifts
+    ADD CONSTRAINT fk_rails_9c4ffa0245 FOREIGN KEY (venue_id) REFERENCES venues(id);
 
 
 --
 -- Name: homepage_ctas fk_rails_d6aa0aad97; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.homepage_ctas
-    ADD CONSTRAINT fk_rails_d6aa0aad97 FOREIGN KEY (track_id) REFERENCES public.tracks(id);
+ALTER TABLE ONLY homepage_ctas
+    ADD CONSTRAINT fk_rails_d6aa0aad97 FOREIGN KEY (track_id) REFERENCES tracks(id);
 
 
 --
 -- Name: sent_notifications fk_rails_da20014dea; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.sent_notifications
-    ADD CONSTRAINT fk_rails_da20014dea FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
+ALTER TABLE ONLY sent_notifications
+    ADD CONSTRAINT fk_rails_da20014dea FOREIGN KEY (submission_id) REFERENCES submissions(id);
 
 
 --
 -- Name: submissions fk_rails_fdef407c4c; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY public.submissions
-    ADD CONSTRAINT fk_rails_fdef407c4c FOREIGN KEY (company_id) REFERENCES public.companies(id);
+ALTER TABLE ONLY submissions
+    ADD CONSTRAINT fk_rails_fdef407c4c FOREIGN KEY (company_id) REFERENCES companies(id);
 
 
 --
@@ -1921,6 +1923,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180220163023'),
 ('20180316161624'),
 ('20180316194849'),
-('20180321221958');
+('20180321221958'),
+('20180323161809');
 
 
