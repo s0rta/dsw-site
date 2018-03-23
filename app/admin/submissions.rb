@@ -143,8 +143,8 @@ ActiveAdmin.register Submission do
     f.inputs 'Basics' do
       f.input :year
       f.input :submitter_id, as: :ajax_select, data: { url: filter_admin_users_path, search_fields: [ :name, :email ] }
-      f.input :track_id, as: :select, collection: Track.all.map {|t| [ t.name, t.id ]}, include_blank: false
-      f.input :cluster_id, as: :select, collection: Cluster.all.map {|c| [ c.name, c.id, {disabled: !c.is_active?}]}, include_blank: true
+      f.input :track_id, as: :select, collection: Track.all.map { |t| [ t.name, t.id ] }, include_blank: false
+      f.input :cluster_id, as: :select, collection: Cluster.all.map { |c| [ c.name, c.id, { disabled: !c.is_active? } ] }, include_blank: true
       f.input :state, as: :select, collection: Submission.states.map { |s| [ s.to_s.titleize, s ] }, include_blank: false
       f.input :title
       f.input :description, hint: 'This is processed with Markdown, and can include additional formatting'
@@ -258,7 +258,7 @@ ActiveAdmin.register Submission do
           end
         end
         column 'View' do |v|
-          link_to 'View', { version: v.index}
+          link_to 'View', { version: v.index }
         end
       end
     end
