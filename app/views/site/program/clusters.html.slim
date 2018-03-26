@@ -7,7 +7,7 @@ section.common
 
 section.common
   section.section-content.clusters.sm-centered
-    - Cluster.in_display_order.each do |cluster|
+    - Cluster.active.in_display_order.each do |cluster|
       .cluster
         h1 = "#{cluster.name} Cluster"
         p = process_with_pipeline(cluster.description)
