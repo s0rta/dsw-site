@@ -54,6 +54,7 @@ class Submission < ApplicationRecord
 
   has_many :sent_notifications, dependent: :destroy
   has_many :attendee_messages, dependent: :restrict_with_error
+  has_many :feedback, dependent: :destroy
 
   has_one :sponsorship, dependent: :restrict_with_error
 
