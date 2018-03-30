@@ -8,4 +8,12 @@ module ScheduleHelper
     registered? && current_registration.submission_ids.include?(submission.id)
   end
 
+  def ratings_for_select
+    { '1' => 'Poor',
+      '2' => 'Fair',
+      '3' => 'Good',
+      '4' => 'Great',
+      '5' => 'Outstanding' }.invert
+  end
+
 end

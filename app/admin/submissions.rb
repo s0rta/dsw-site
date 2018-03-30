@@ -28,7 +28,9 @@ ActiveAdmin.register Submission do
                 :video_url,
                 :live_stream_url,
                 :company_id,
-                :coc_acknowledgement
+                :coc_acknowledgement,
+                :open_to_collaborators,
+                :from_underrepresented_group
 
   controller do
     def scoped_collection
