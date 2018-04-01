@@ -59,5 +59,12 @@ feature 'Viewing the schedule' do
       expect(current_path).to eq('/schedule/2016/monday')
       expect(page).to have_content('I am an older session')
     end
+
+    scenario 'Link from selection page to schedule page' do
+      visit '/program/selection'
+      expect(page).to have_content('Looking for examples of past sessions? Check out the 2017 Denver Startup Week schedule HERE')
+      click_on('HERE')
+      expect(current_path).to eq('/schedule/2017/monday')
+    end
   end
 end
