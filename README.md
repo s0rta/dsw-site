@@ -4,19 +4,22 @@
 ### Set Up
 
 Clone down this repository
-Run `$ gem install bundler` if you don't have the ruby bundler
 
+Run `$ gem install bundler` if you don't have the Ruby bundler installed already
 Run `bundle` to install dependencies.  
 
-Run `yarn install` if you don't have yarn installed.
+Run `$ brew install yarn` if you don't have Yarn installed already (`$ npm install yarn -g` should also work if you're not on a Mac)
+Run `bin/yarn install` to install Webpacker/JS dependencies for the frontend.
 
 Copy `.env.example` to your own `.env` file. `.env.example` is already
 pre-populated with dummy environment variables that are sufficient for local
 development and testing.
 
-#### Get the Server Running
+#### Get the Server(s) Running
 
 Make sure PostgresSQL is running and run `rake db:setup` to run migrations locally
+
+Also make sure that Redis is running (you may need to `$ brew install redis` if you don't already have it)
 
 Run `bundle exec rails s` to run the server
 
