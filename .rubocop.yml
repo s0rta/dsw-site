@@ -1,23 +1,23 @@
-ClassAndModuleChildren:
+Style/ClassAndModuleChildren:
   Include:
     - lib/**/*.rb
-Documentation:
+Style/Documentation:
   Enabled: false
-EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: false
-EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   Enabled: false
-EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundModuleBody:
   Enabled: false
-ExtraSpacing:
+Layout/ExtraSpacing:
   Enabled: false
-LineLength:
+Metrics/LineLength:
   # Default is that lines should be 80, but that's somewhat noisy. We want a softer limit.
   Description: Limit lines to 120 characters.
   Max: 120
   Exclude:
     - config/routes.rb
-Lint/EndAlignment:
+Layout/EndAlignment:
   # The value `keyword` means that `end` should be aligned with the matching
   # keyword (if, while, etc.).
   # The value `variable` means that in assignments, `end` should be aligned
@@ -34,13 +34,11 @@ Lint/UselessAccessModifier:
   Enabled: false
 Layout/SpaceBeforeFirstArg:
   Enabled: false
-SpaceInsideBrackets:
+Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
-StringLiterals:
+Style/StringLiterals:
   EnforcedStyle: single_quotes
   Enabled: true
-Style/Blocks:
-  Enabled: false
 Style/CollectionMethods:
   PreferredMethods:
     find: 'detect'
