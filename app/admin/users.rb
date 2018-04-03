@@ -9,7 +9,8 @@ ActiveAdmin.register User do
                 :is_admin,
                 :avatar,
                 :team_position,
-                :team_priority
+                :team_priority,
+                chaired_track_ids: []
 
   index do
     selectable_column
@@ -34,6 +35,7 @@ ActiveAdmin.register User do
       f.input :password
       f.input :password_confirmation
       f.input :is_admin
+      f.input :chaired_tracks, as: :check_boxes, collection: Track.in_display_order
     end
 
     f.actions
