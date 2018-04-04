@@ -26,11 +26,13 @@ class User < ApplicationRecord
   has_many :registrations, dependent: :destroy
   has_many :pitch_contest_votes, class_name: 'PitchContest::Vote', dependent: :destroy
 
+  has_and_belongs_to_many :chaired_tracks, class_name: 'Track'
+
   mount_uploader :avatar, AvatarUploader
 
   def self.on_team
-    reorder('team_priority ASC, team_position DESC, name DESC').
-      where("team_position IS NOT NULL AND team_position <> ''")
+    reorder('team_priority ASC, team_position DESC, name DESC')
+      .where("team_position IS NOT NULL AND team_position <> ''")
   end
 
   def current_registration
