@@ -2,8 +2,8 @@ module ApplicationHelper
 
   def process_with_liquid(content)
     context = {
-      'submission_close_date' => AnnualSchedule.current.cfp_close_at,
-      'voting_close_date' => AnnualSchedule.current.voting_close_at,
+      'submission_close_date' => AnnualSchedule.current.cfp_close_at.in_time_zone(ActiveSupport::TimeZone['America/Denver']).at_end_of_day,
+      'voting_close_date' => AnnualSchedule.current.voting_close_at.in_time_zone(ActiveSupport::TimeZone['America/Denver']).at_end_of_day,
       'current_date' => DateTime.now
     }
     template = Liquid::Template.parse(content)
