@@ -160,7 +160,8 @@ ActiveAdmin.register Submission do
       f.input :contact_email, hint: 'Multiple addresses are allowed; separate them with commas'
       f.input :company_id, as: :ajax_select, data: { url: filter_admin_companies_path, search_fields: [ :name ] }
       f.input :open_to_collaborators
-      f.input :from_underrepresented_group
+      f.input :coc_acknowledgement, label: 'Code of Conduct Acknowledgement',
+                                    hint: 'If submitting this session on behalf of someone else, you acknowledge that you have informed them of our Code of Conduct'
       f.input :notes, label: 'Pitch'
       f.input :target_audience_description
       f.input :slides_url
