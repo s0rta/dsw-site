@@ -17,12 +17,7 @@ participating, you agree to uphold it too. Project maintainers reserve the right
 contributors who violate the Code of Conduct at their sole discretion.
 
 ## MINASWAN
-In addition to the Code of Conduct, we respectfully remind you that we are all
-volunteers who contribute to and maintain this project in our free time. We believe strongly
-in constructive and actionable feedback, but the turnaround on something
-thoughtful is often not immediate. Please be patient! Contributions that
-demonstrate a blatant disregard for the maintainers' time or that are otherwise rude
-or disrespectful will not be accepted. 
+In addition to asking you to agree to the Code of Conduct, we respectfully remind you that we are all volunteers who contribute to and maintain this project in our free time. We believe strongly in offering constructive and actionable feedback on pull requests, but the turnaround on something thoughtful is often not immediate. Please be patient! Contributions that demonstrate a blatant disregard for the maintainers' time or that are otherwise rude or disrespectful will not be accepted.
 
 ## What do I need to know before getting started?
 Denver Startup Week is the largest free entrepreneurial event in North America.
@@ -34,10 +29,17 @@ You are encouraged to explore the [Denver Startup Week
 Website](https://www.denverstartupweek.org) and get a feel for content,
 structure, etc.
 
+We maintain a list of open issues and have done our best to tag them, especially
+the ones that might be good for first-time contributors. We suggest reviewing
+that list, especially if you're not sure what to work on.
+
+We also recommend reviewing the codebase to get a sense of overall project style
+and how we like to test.
+
 ## How do I claim an issue?
 You may claim an issue by commenting on any open, unassigned issue. We may
 respond by asking you to self-assign that issue, or we may ask you to pick a different issue. You
-are certainly welcome to simply begin work on something, but we may opt to not
+are certainly welcome to simply begin working on something, but we may opt to not
 accept a pull request in the event of any parallel effort on that work.
 
 Please do not add any new issues without first ensuring that the issue has not
