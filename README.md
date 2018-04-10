@@ -38,7 +38,12 @@ Run `rake db:test:prepare` to set up your test database
 
 Run the test suite with `bundle exec rspec`
 
-## Code of Conduct
+## Contributing
+Denver Startup Week is a community-run event and we welcome contributions in
+this same spirit. We do ask that you review the [Contribution
+Guidelines](./contributing.md) before submitting a pull request.
+
+#### Code of Conduct
 All contributors and contributions are expected to adhere to the [Denver Startup Week Code of
 Conduct](https://www.denverstartupweek.org/code-of-conduct).
 
