@@ -28,6 +28,7 @@ FactoryBot.define do
     password { "password" }
     password_confirmation { password }
     sequence(:email) { |n| "user#{n}@example.com" }
+    avatar { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'support', 'avatar_examples', 'less_than_2_mb.png'), 'image/png') }
   end
 
   factory :registration do

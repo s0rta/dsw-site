@@ -15,6 +15,9 @@ feature 'Editing my profile' do
     fill_in 'Confirm Password', with: 'password'
     click_button 'Sign Up'
     click_link 'My Profile'
+    attach_file('user_avatar', Rails.root.join('spec', 'support', 'avatar_examples', 'more_than_2_mb.jpg'))
+    page.driver.browser.switch_to.alert.accept
+    attach_file('user_avatar', Rails.root.join('spec', 'support', 'avatar_examples', 'less_than_2_mb.png'))
     fill_in 'Name', with: 'Test Registrant 2'
     fill_in 'Tagline', with: 'Founder at Pied Piper'
     fill_in 'user_current_password', with: 'password'

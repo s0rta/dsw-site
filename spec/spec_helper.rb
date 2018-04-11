@@ -32,7 +32,10 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.after :each do
+  config.after(:each) do
     Warden.test_reset!
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
   end
 end
