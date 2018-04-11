@@ -22,6 +22,7 @@ import 'components/ajax_load_more'
 import 'components/mapquest_map'
 import 'components/booking_dropdown'
 import 'components/autocompleter'
+import 'components/file_select'
 
 import 'awesomplete/awesomplete.css'
 

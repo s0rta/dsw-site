@@ -7,7 +7,7 @@ section.common
       = image_tag(resource.avatar.url(:thumb)) if resource.avatar?
 
       = f.label :avatar, 'Avatar'
-      = f.file_field :avatar, onchange: 'showFileSize();'
+      = f.file_field :avatar, data: { bindable: 'showfilesize' }
 
       = f.label :name, 'Name (First and Last)'
       = f.text_field :name, required: 'required', autofocus: 'autofocus'
