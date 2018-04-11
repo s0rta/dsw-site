@@ -39,14 +39,13 @@ if Rails.env.test?
     config.enable_processing = false
   end
 
-# make sure uploader is auto-loaded
   AvatarUploader
 
   CarrierWave::Uploader::Base.descendants.each do |klass|
     next if klass.anonymous?
     klass.class_eval do
       def cache_dir
-        '#{Rails.root}/spec/support/uploads/tmp'
+        "#{Rails.root}/spec/support/uploads/tmp"
       end
 
       def store_dir
