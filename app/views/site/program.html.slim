@@ -43,10 +43,6 @@ section.common
 section.common
   .section-content.sm-centered
     h1 Key Dates for #{AnnualSchedule.current.year}
-    h6 Kickoff Event: March 21st, 2018
-    h6 Call for Proposals: April 4th - 30th, 2018
-    h6 Voting on Sessions: May 2nd to 18th,  2018
-    h6 Events Announced and Registration Open: July 2018
-    h6 Denver Startup Week: September 24th – 28th
+    = render partial: 'layouts/shared/schedule'
 
 = render partial: 'layouts/shared/page_footer'
