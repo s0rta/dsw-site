@@ -7,6 +7,7 @@ ActiveAdmin.register Cluster do
   index do
     selectable_column
     column :name
+    column :is_active
     actions
   end
 
