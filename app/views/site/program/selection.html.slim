@@ -30,8 +30,11 @@ section.common.sm-centered
     h6 For more Tips & Tricks, read DSW BLOG ON TIPS & TRICKS / PODCAST TBD
 
     h6
-     | Looking for examples of past sessions?  Check out the 2017 Denver Startup Week schedule
-     a(href="/schedule/2017/monday")  HERE
+      | Looking for examples of past sessions?  Check out the 
+      = most_recent_past_year
+      |  Denver Startup Week schedule
+      = link_to ' here', schedules_by_year_by_day_path(year: most_recent_past_year)
+      |.
 
 section.common.sm-centered
   .section-content

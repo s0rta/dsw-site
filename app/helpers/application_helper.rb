@@ -28,6 +28,18 @@ module ApplicationHelper
     Date.today.year
   end
 
+  def previous_year
+    Date.today.year - 1
+  end
+
+  def most_recent_past_year
+    if AnnualSchedule.post_week?
+      current_year
+    else
+      previous_year
+    end
+  end
+
   def time_remaining_to_deadline(deadline_date)
     days = ((deadline_date.at_end_of_day - Time.zone.now) / 1.day)
     full_days = days.floor
