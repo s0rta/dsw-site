@@ -1,7 +1,7 @@
 # Denver Startup Week
 [![Build Status](https://travis-ci.org/denverstartupweek/dsw-site.svg?branch=master)](https://travis-ci.org/denverstartupweek/dsw-site)
 
-### Set Up
+### Dependencies
 These set up instructions assume that you already have the following installed:
 - Bundler
 - Yarn
@@ -16,17 +16,18 @@ Copy `.env.example` to your own `.env` file. `.env.example` is already
 pre-populated with dummy environment variables that are sufficient for local
 development and testing.
 
-#### Get the Server(s) Running
+#### Set Up
 
-Make sure PostgreSQL is running and run `rake db:setup` to run migrations locally.
+Ensure PostgreSQL is running and run `rake db:setup` to set up a development
+database and run migrations locally.
 
 Start the Redis server with `redis-server`.
 
 Run `bundle exec rails s` to run the Rails server.
 
-#### Get the Tests Running
+#### Running Tests
 
-You will need to use an older verison of Firefox to run the tests because newer versions of Firefox are incompatible with Selenium. To install the older version of Firefox, run these commands:
+You will need to use an older verison of Firefox to run the tests since newer versions of Firefox are incompatible with Selenium. The CI suite specifies Firefox 46, which you can install with Brew Cask:
 
 ```
 brew tap goldcaddy77/homebrew-firefox
@@ -34,9 +35,9 @@ brew tap goldcaddy77/homebrew-firefox
 brew cask install firefox-46
 ```
 
-Run `rake db:test:prepare` to set up your test database
+Run `rake db:test:prepare` to set up your test database.
 
-Run the test suite with `bundle exec rspec`
+Run the test suite with `bundle exec rspec`.
 
 ## Contributing
 Denver Startup Week is a community-run event and we welcome contributions in
