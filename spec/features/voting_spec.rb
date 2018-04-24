@@ -60,7 +60,7 @@ feature 'Voting for session submissions' do
       visit '/panel-picker'
       click_link 'View Topics'
       expect(page).to have_content('I am a session')
-      click_link "interesting stuff"
+      click_link 'interesting stuff'
       click_link "Vote for 'I am a session'"
       expect(page).to have_css('.vote-count', text: '1 vote')
 

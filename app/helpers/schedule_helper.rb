@@ -9,11 +9,15 @@ module ScheduleHelper
   end
 
   def ratings_for_select
-    { '1' => 'Poor',
-      '2' => 'Fair',
-      '3' => 'Good',
+    { '5' => 'Outstanding',
       '4' => 'Great',
-      '5' => 'Outstanding' }.invert
+      '3' => 'Good',
+      '2' => 'Fair',
+      '1' => 'Poor' }.invert
+  end
+
+  def in_or_post_week?
+    AnnualSchedule.in_week? || AnnualSchedule.post_week?
   end
 
 end

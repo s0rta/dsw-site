@@ -1,17 +1,16 @@
 class FeedbackController < ApplicationController
 
-  before_action :authenticate_user!, only: %i(create)
+  before_action :authenticate_user!, only: :create
 
   def create
     @feedback = current_user.feedback.new(feedback_params)
 
     if @feedback.save
       flash[:notice] = 'Thank you for submitting feedback!'
-      redirect_to schedule_path(@feedback.submission)
     else
       flash[:error] = 'there was a problem submitting feedback'
-      redirect_to schedule_path(@feedback.submission)
     end
+    redirect_to schedule_path(@feedback.submission)
   end
 
   private

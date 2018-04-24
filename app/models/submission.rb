@@ -140,6 +140,10 @@ class Submission < ApplicationRecord
     created? || open_for_voting? || accepted? || confirmed? || venue_confirmed?
   end
 
+  def open_for_feedback?
+    AnnualSchedule.current.in_week? || AnnualSchedule.current.post_week? || year < AnnualSchedule.current.year
+  end
+
   def self.for_schedule
     where(state: %w(confirmed venue_confirmed)).
       where('start_day IS NOT NULL AND end_day IS NOT NULL')

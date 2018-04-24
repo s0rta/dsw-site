@@ -60,7 +60,7 @@ section.common
         div.confirmed-btn-container
           = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
 
-- if @current_user && AnnualSchedule.registration_open?
+- if user_signed_in? && @session.open_for_feedback?
   = render partial: 'feedback_form'
 
 - if @related_sessions.any?
