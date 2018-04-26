@@ -10,7 +10,7 @@
 section.common.sm-centered
   .section-content.instruction
     h6
-      | Before submitting a session proposal, please take a minute to read through
+      | Before submitting a session proposal, please take a minute to read through 
       = link_to 'our FAQs', faq_submissions_path, target: '_blank', class: 'inline-copy-link'
       |  for more information about the submission and selection process.
 
@@ -22,7 +22,7 @@ section.common.sm-centered
 
   .section-content
     = form_for @submission do |f|
-      = f.label :track_id, 'Which track would your session best fit into?'
+      = f.label :track_id, 'Which track would your session best fit into? Please do not submit the same session to multiple tracks.'
       = f.select :track_id, tracks_for_select, required: 'required'
 
       = f.label :title, "What is your session's title? Please limit your title to 60 characters or less."
