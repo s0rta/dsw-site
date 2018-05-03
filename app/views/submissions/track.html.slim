@@ -16,9 +16,9 @@ section.common.sm-centered
           option(value="#{c.name.downcase}" selected=("selected" if params[:track_name] == c.name.downcase)) #{c.name} Cluster
 
 .icon-outer-container
-  .icon-flex-container(data-bindable='ajax-voter')
+  #loader-target.icon-flex-container(data-bindable='ajax-voter')
     = render partial: 'track_contents'
 
 - unless @submissions.empty?
-  section.common.sm-centered(data-bindable="ajax-load-more")
+  section.common.sm-centered(data-bindable="ajax-load-more" data-target="loader-target")
     = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms]), remote: true, method: :get, class: 'load-more', data: { type: 'json' }

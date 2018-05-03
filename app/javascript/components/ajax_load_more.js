@@ -26,7 +26,7 @@ export default class AjaxLoadMore {
   }
 
   appendMore(event, data) {
-    this.el.before(data.fragment);
+    $(document).find('#' + this.data.target).append(data.fragment)
     this.el.find('a').attr('href', data.next_url);
     if (data.fragment.length === 0) { this.el.hide(); }
   }
