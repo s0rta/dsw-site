@@ -16,14 +16,15 @@ RSpec.describe Helpscout::Article, type: :model do
 
   describe 'fetching/caching from Helpscout', redis: true do
     it 'returns no articles when nothing is cached' do
-      expect(described_class.all).to eq([])
+      expect(described_class.for_category('Website')).to eq([])
     end
 
     it 'caches and returns fetched articles', vcr: true do
       described_class.fetch!
-      expect(described_class.all.size).to eq(17)
-      expect(described_class.all.first.name).to eq('Why do we need to vote on sessions?')
-      expect(described_class.all.first.content).to eq(<<-HTML.strip)
+      result = described_class.for_category('Website')
+      expect(result.size).to eq(18)
+      expect(result.first.name).to eq('Why do we need to vote on sessions?')
+      expect(result.first.content).to eq(<<-HTML.strip)
         <p>The voting process makes Denver Startup Week a true community fueled event and encourages thousands of people to be a contributing part of building the week’s agenda. The community is encouraged to cast their votes for event and session ideas through July and organizers will announce the final events selected through the panel picker in mid-August. </p>
       HTML
     end

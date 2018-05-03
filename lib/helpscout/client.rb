@@ -6,8 +6,15 @@ module Helpscout
 
     base_uri BASE_URI
 
-    def articles
-      data = self.class.get('/categories/5aa2b5f02c7d3a75495181d5/articles', basic_auth: auth)
+    def categories
+      data = self.class.get("/collections/#{collection_id}/categories", basic_auth: auth)
+      data.dig('categories', 'items').each_with_object({}) do |category, hash|
+        hash[category['id']] = category['name']
+      end
+    end
+
+    def category_articles(category_id)
+      data = self.class.get("/categories/#{category_id}/articles", basic_auth: auth)
       data.dig('articles', 'items').map do |article|
         article['id']
       end
@@ -22,6 +29,10 @@ module Helpscout
 
     def auth
       @auth ||= { username: ENV['HELPSCOUT_DOCS_KEY'], password: 'X' }
+    end
+
+    def collection_id
+      @collection_id ||= ENV['HELPSCOUT_DOCS_COLLECTION_ID']
     end
   end
 end

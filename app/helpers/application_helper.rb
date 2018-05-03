@@ -162,7 +162,7 @@ module ApplicationHelper
     @_footer_sponsors ||= Sponsorship.for_current_year.title.alphabetical
   end
 
-  def helpscout_articles
-    @_helpscout_articles ||= Helpscout::Article.all
+  def helpscout_articles_for_category(category_name)
+    @_helpscout_articles ||= Helpscout::Article.for_category(category_name)
   end
 end

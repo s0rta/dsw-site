@@ -10,4 +10,5 @@ VCR.configure do |c|
   c.filter_sensitive_data('<AWS_ACCESS_KEY_ID>') { ENV['AWS_ACCESS_KEY_ID'] }
   c.filter_sensitive_data('<AWS_SECRET_ACCESS_KEY>') { ENV['AWS_SECRET_ACCESS_KEY'] }
   c.filter_sensitive_data('<HELPSCOUT_DOCS_AUTH_HEADER>') { Base64.strict_encode64("#{ENV['HELPSCOUT_DOCS_KEY']}:X") }
+  c.filter_sensitive_data('<HELPSCOUT_DOCS_COLLECTION_ID>') { ENV['HELPSCOUT_DOCS_COLLECTION_ID'] }
 end

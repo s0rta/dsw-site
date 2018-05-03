@@ -7,7 +7,7 @@ section.common.blue
 
 section#faq.common.sm-centered(data-bindable='toggle-faq')
   .section-content
-    - helpscout_articles.each do |article|
+    - helpscout_articles_for_category('Website').each do |article|
       button.accordion
         h6 = article.name
         = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
