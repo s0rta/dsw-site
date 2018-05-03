@@ -11,9 +11,6 @@ section.common.sm-centered
       optgroup(label="View Sessions By Track")
         - Track.submittable.in_display_order.each do |t|
           option(value="#{t.name.downcase}" selected=("selected" if params[:track_name] == t.name.downcase)) #{t.name} Track
-      optgroup(label="View Sessions By Cluster")
-        - Cluster.all.each do |c|
-          option(value="#{c.name.downcase}" selected=("selected" if params[:track_name] == c.name.downcase)) #{c.name} Cluster
 
 .icon-outer-container
   #loader-target.icon-flex-container(data-bindable='ajax-voter')
