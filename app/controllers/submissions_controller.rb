@@ -26,7 +26,11 @@ class SubmissionsController < ApplicationController
                      for_submittable_tracks.
                      for_schedule_filter(params[:track_name], current_user).
                      public.
-                     includes(:submitter, :track, :cluster).
+                     includes(:submitter,
+                              :track,
+                              :cluster,
+                              :company,
+                              sponsorship: :track).
                      order('RANDOM()').
                      page(params[:page])
       respond_to do |format|
