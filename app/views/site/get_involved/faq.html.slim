@@ -14,6 +14,6 @@ section#faq.common.sm-centered(data-bindable='toggle-faq')
         = image_tag 'redesign/grey-x.svg', class: 'faq-x'
       .panel
         h6 = article.name
-        h6 = article.content.html_safe
+        h6 = process_with_liquid(article.content).html_safe
 
     = render partial: 'layouts/shared/faq/contact'

@@ -14,30 +14,34 @@ module Helpscout
       @data['text']
     end
 
-    def self.fetch!
-      helpscout_client.categories.each do |id, name|
-        data = helpscout_client.category_articles(id).map do |id|
-          helpscout_client.article_details(id)
+    class << self
+
+      def fetch!
+        helpscout_client.categories.each do |category_id, name|
+          data = helpscout_client.category_articles(category_id).map do |article_id|
+            helpscout_client.article_details(article_id)
+          end
+
+          Redis.current.set(cache_key_for_category(name), data.to_json)
         end
-
-        Redis.current.set(cache_key_for_category(name), data.to_json)
       end
-    end
 
-    def self.for_category(name)
-      JSON.parse(Redis.current.get(cache_key_for_category(name)) || '[]').map do |article|
-        Article.new(article)
+      def for_category(name)
+        JSON.parse(Redis.current.get(cache_key_for_category(name)) || '[]').map do |article|
+          Article.new(article)
+        end
       end
-    end
 
-    def self.helpscout_client
-      @client ||= Helpscout::Client.new
-    end
+      def helpscout_client
+        @client ||= Helpscout::Client.new
+      end
 
-    private
+      private
 
-    def self.cache_key_for_category(name)
-      [ CACHE_KEY_PREFIX, name.parameterize ].join('/')
+      def cache_key_for_category(name)
+        [ CACHE_KEY_PREFIX, name.parameterize ].join('/')
+      end
+
     end
   end
 end
