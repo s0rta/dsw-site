@@ -3,23 +3,24 @@ nav
     h1 Vote
 
 section.common
-  .section-content
+  .section-content.sm-centered
     = link_to 'Back to Topics', submissions_path, class: 'back-link'
 
 section.common
-  div class=("section-content session-detail #{@submission.track.color}") data-bindable='ajax-voter'
-    = render partial: "submissions/headers/#{@submission.track.name_for_partial}"
-    .title = @submission.full_title
-    .names
-      h6 = @submission.company_or_submitter
-    .description = process_with_pipeline(@submission.description)
+  .section-content.sm-centered
+    div class=("section-content session-detail #{@submission.track.color}") data-bindable='ajax-voter'
+      = render partial: "submissions/headers/#{@submission.track.name_for_partial}"
+      .title = @submission.full_title
+      .names
+        h6 = @submission.company_or_submitter
+      .description = process_with_pipeline(@submission.description)
 
-    footer
-      div.vote-count
-        span = pluralize(@submission.votes.size, 'vote')
-      - if current_user
-        = link_to submission_votes_path(@submission), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{@submission.full_title}'" do
-          = render partial: 'icons/thumbsup'
-      - else
-        = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{@submission.full_title}'" do
-          = render partial: 'icons/thumbsup'
+      footer
+        div.vote-count
+          span = pluralize(@submission.votes.size, 'vote')
+        - if current_user
+          = link_to submission_votes_path(@submission), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{@submission.full_title}'" do
+            = render partial: 'icons/thumbsup'
+        - else
+          = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{@submission.full_title}'" do
+            = render partial: 'icons/thumbsup'
