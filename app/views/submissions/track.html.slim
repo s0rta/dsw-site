@@ -1,22 +1,24 @@
 = render partial: 'voting_header'
 
-form.filters(action="#{search_submissions_path}")
-  input(name="terms" value="#{params[:terms]}")
-  select(name="track_name" onchange="this.form.submit();")
-    - if params[:track_name].blank?
-      option(selected="selected" value="all") All
-    - else
-      option(value="all") All
-    optgroup(label="View Sessions By Track")
-      - Track.submittable.in_display_order.each do |t|
-        option(value="#{t.name.downcase}" selected=("selected" if params[:track_name] == t.name.downcase)) #{t.name} Track
-    optgroup(label="View Sessions By Cluster")
-      - Cluster.all.each do |c|
-        option(value="#{c.name.downcase}" selected=("selected" if params[:track_name] == c.name.downcase)) #{c.name} Cluster
+section.common.sm-centered
+  form.filters(action="#{search_submissions_path}")
+    input(name="terms" value="#{params[:terms]}")
+    select(name="track_name" onchange="this.form.submit();")
+      - if params[:track_name].blank?
+        option(selected="selected" value="all") All
+      - else
+        option(value="all") All
+      optgroup(label="View Sessions By Track")
+        - Track.submittable.in_display_order.each do |t|
+          option(value="#{t.name.downcase}" selected=("selected" if params[:track_name] == t.name.downcase)) #{t.name} Track
+      optgroup(label="View Sessions By Cluster")
+        - Cluster.all.each do |c|
+          option(value="#{c.name.downcase}" selected=("selected" if params[:track_name] == c.name.downcase)) #{c.name} Cluster
 
-.card-container(data-bindable='ajax-voter')
-  = render partial: 'track_contents'
+.icon-outer-container
+  .icon-flex-container(data-bindable='ajax-voter')
+    = render partial: 'track_contents'
 
-  - unless @submissions.empty?
-    section.common.sm-centered(data-bindable="ajax-load-more")
-      = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms]), remote: true, method: :get, class: 'load-more', data: { type: 'json' }
+- unless @submissions.empty?
+  section.common.sm-centered(data-bindable="ajax-load-more")
+    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms]), remote: true, method: :get, class: 'load-more', data: { type: 'json' }

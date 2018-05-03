@@ -16,7 +16,8 @@ feature 'Providing feedback on submissions' do
                              track: track,
                              contact_email: 'test@example.com',
                              state: 'open_for_voting',
-                             coc_acknowledgement: true
+                             coc_acknowledgement: true,
+                             year: AnnualSchedule.current.year
   end
 
   describe 'when voting is open' do
