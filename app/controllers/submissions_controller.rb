@@ -6,6 +6,7 @@ class SubmissionsController < ApplicationController
   before_action :authenticate_user!, only: [ :new, :create, :mine, :submissions_closed ]
   before_action :check_feedback_open, only: [ :index ]
   before_action :set_submissions, only: [:edit, :update]
+  before_action :set_random_seed, only: :track
 
   def index
     @submissions = Submission.
@@ -26,13 +27,13 @@ class SubmissionsController < ApplicationController
                      for_schedule_filter(params[:track_name], current_user).
                      public.
                      includes(:submitter, :track, :cluster).
-                     order('submissions.created_at ASC').
+                     order('RANDOM()').
                      page(params[:page])
       respond_to do |format|
         format.html
         format.js do
           render json: { fragment: render_to_string(partial: 'track_contents', formats: [ :html ]),
-                         next_url: url_for(page: Integer(params[:page] || 1) + 1) }
+                         next_url: url_for(page: Integer(params[:page] || 1) + 1, seed: @seed) }
         end
       end
     else
@@ -133,4 +134,8 @@ class SubmissionsController < ApplicationController
     @submission = current_user.submissions.find(params[:id])
   end
 
+  def set_random_seed
+    @seed = (params[:seed] || rand).to_f
+    ActiveRecord::Base.connection.execute("select setseed(#{ActiveRecord::Base.connection.quote(@seed)})")
+  end
 end

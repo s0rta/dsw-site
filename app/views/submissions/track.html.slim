@@ -18,4 +18,4 @@ section.common.sm-centered
 
 - unless @submissions.empty?
   section.common.sm-centered(data-bindable="ajax-load-more" data-target="loader-target")
-    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms]), remote: true, method: :get, class: 'load-more', data: { type: 'json' }
+    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms], seed: @seed), remote: true, method: :get, class: 'load-more', data: { type: 'json' }

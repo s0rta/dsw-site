@@ -1,10 +1,26 @@
 import Bindable from 'utensils/bindable'
 import throttle from 'lodash.throttle'
 
+// From David Walsh: https://davidwalsh.name/javascript-debounce-function
+function debounce(func, wait, immediate) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
 export default class AjaxLoadMore {
   constructor(el, data) {
     this.appendMore = this.appendMore.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
+    this.handleScroll = debounce(this.handleScroll.bind(this), 1000, true);
     this.el = el;
     this.data = data ? data : this.el.data();
     this.addListeners();
