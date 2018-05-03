@@ -5,7 +5,9 @@ ActiveAdmin.register Track do
   permit_params :name,
                 :email_alias,
                 :icon,
-                :color
+                :color,
+                :is_submittable,
+                :is_voteable
 
   index do
     selectable_column

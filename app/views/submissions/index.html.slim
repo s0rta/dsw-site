@@ -2,7 +2,7 @@
 
 .icon-outer-container
   .icon-flex-container
-    - Track.submittable.in_display_order.each do |track|
+    - Track.voteable.submittable.in_display_order.each do |track|
       .card-frame
         div class=("card-content #{track.color}")
           = link_to track_submissions_path(track_name: track.name.downcase) do

@@ -25,6 +25,10 @@ class Track < ApplicationRecord
     where(is_submittable: true)
   end
 
+  def self.voteable
+    where(is_voteable: true)
+  end
+
   def name_for_partial
     name.downcase.tr(' ', '_')
   end

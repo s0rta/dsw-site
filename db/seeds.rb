@@ -7,6 +7,7 @@ Track.reset_column_information
     icon: 'person',
     color: 'orange',
     is_submittable: true,
+    is_voteable: true,
     email_alias: 'founder@denverstartupweek.org',
     description: <<-EOF.strip_heredoc.squish,
     Whether you're just dreaming about starting a business, on your first, or a seasoned entrepreneur,
@@ -19,6 +20,7 @@ Track.reset_column_information
     icon: 'chart',
     color: 'blue',
     is_submittable: true,
+    is_voteable: true,
     email_alias: 'growth@denverstartupweek.org',
     description: <<-EOF.strip_heredoc.squish,
     No matter how good it is, no product sells itself. A team that markets, sells, and supports the product
@@ -31,6 +33,7 @@ Track.reset_column_information
     icon: 'eyeball',
     color: 'green',
     is_submittable: true,
+    is_voteable: true,
     email_alias: 'designer@denverstartupweek.org',
     description: <<-EOF.strip_heredoc.squish,
     Seeing things others do not see is an art and our design track is packed with creative outlets to expand your
@@ -44,6 +47,7 @@ Track.reset_column_information
     icon: 'phone',
     color: 'purple',
     is_submittable: true,
+    is_voteable: true,
     email_alias: 'product@denverstartupweek.org',
     description: <<-EOF.strip_heredoc.squish,
     Product management, development, and marketing, all different sides of the same coin that somehow bridges the gap
@@ -55,6 +59,7 @@ Track.reset_column_information
     icon: 'terminal',
     color: 'gold',
     is_submittable: true,
+    is_voteable: true,
     email_alias: 'developer@denverstartupweek.org',
     description: <<-EOF.strip_heredoc.squish,
     Frontend, backend, full stack, big data, APIs, architecture, methodologies, junior, senior, we have it all. Learn
@@ -66,6 +71,7 @@ Track.reset_column_information
     icon: 'wrench',
     color: 'teal',
     is_submittable: true,
+    is_voteable: true,
     email_alias: 'maker@denverstartupweek.org',
     description: <<-EOF.strip_heredoc.squish,
     Encompasses all physical products for every type of maker under the sun - from outdoor rec, distilling (or brewing!),
@@ -78,6 +84,7 @@ Track.reset_column_information
     icon: 'star',
     color: 'headline-session',
     is_submittable: true,
+    is_voteable: false,
     email_alias: 'info@denverstartupweek.org',
     description: <<-EOF.strip_heredoc.squish,
     Drawing together members of the community across the boundaries of industry, job function, and background, our Headline
@@ -88,12 +95,14 @@ Track.reset_column_information
     icon: 'basecamp',
     color: 'basecamp-session',
     is_submittable: false,
+    is_voteable: false,
     email_alias: 'info@denverstartupweek.org',
   },
   'Social Events' => {
     icon: 'martini',
     color: 'red',
     is_submittable: false,
+    is_voteable: false,
     email_alias: 'info@denverstartupweek.org',
   }
 }.each do |track_name, attrs|

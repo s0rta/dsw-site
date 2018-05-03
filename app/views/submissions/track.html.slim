@@ -9,7 +9,7 @@ section.common.sm-centered
       - else
         option(value="all") All
       optgroup(label="View Sessions By Track")
-        - Track.submittable.in_display_order.each do |t|
+        - Track.voteable.submittable.in_display_order.each do |t|
           option(value="#{t.name.downcase}" selected=("selected" if params[:track_name] == t.name.downcase)) #{t.name} Track
 
 .icon-outer-container
