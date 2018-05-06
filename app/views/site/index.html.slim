@@ -15,7 +15,7 @@ section.site-max-and-center
           div.card-elements
             h2.card-heading = process_with_liquid cta.title
             h3.card-subheading = process_with_liquid cta.subtitle
-            p.card-copy = process_with_liquid cta.body
+            p.card-copy = process_with_liquid(cta.body).html_safe
             = link_to cta.link_href, class: "card-btn" do
               = content_tag :span, cta.link_text, class: "card-btn-text"
   div.cards.cards-3up

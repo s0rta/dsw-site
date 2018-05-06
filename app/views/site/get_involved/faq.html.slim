@@ -7,13 +7,13 @@ section.common.blue
 
 section#faq.common.sm-centered(data-bindable='toggle-faq')
   .section-content
-    - helpscout_articles.each do |article|
+    - helpscout_articles_for_category('Website').each do |article|
       button.accordion
         h6 = article.name
         = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
         = image_tag 'redesign/grey-x.svg', class: 'faq-x'
       .panel
         h6 = article.name
-        h6 = article.content.html_safe
+        h6 = process_with_liquid(article.content).html_safe
 
     = render partial: 'layouts/shared/faq/contact'

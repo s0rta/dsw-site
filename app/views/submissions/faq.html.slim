@@ -7,113 +7,13 @@ section.common.blue
 
 section#faq.common.sm-centered(data-bindable='toggle-faq')
   .section-content
-    button.accordion
-      h6 How do I submit my session idea?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 How do I submit my session idea?
-      h6 The community is encouraged to submit session ideas every year for Denver Startup Week.  There is a submission period in the spring of each year where we open the panel picker for session submissions.
-      br
-      h6 We encourage you to submit up to three session ideas if you have multiple ideas, but please submit each idea only once. Duplicate submissions to multiple tracks will not increase your chances for selection, and may be removed at the organizers' discretion.
-
-    button.accordion
-      h6 Who organizes the sessions?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 Who organizes the sessions?
-      h6 Denver Startup Week is a community organized event. Sessions and events are organized by the community, voted on by the community and produced by the community. In addition, the Denver Startup Week organizing committee plans and hosts all keynote and headline events throughout the week.
-
-    button.accordion
-      h6 What kind of ideas have the best chance of being selected?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What kind of ideas have the best chance of being selected?
-      h6 All manner of sessions are welcome! In the past, individual or group presentations, panels, workshops, and social events have all worked quite well. Ideas focused on transferring knowledge to the community have the best chance of being selected, and we will give particular consideration to those that are unique, new or different. Pitches for a product or service will not be accepted.
-
-    button.accordion
-      h6 What are the programming tracks?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What are the programming tracks?
-      h6 Track listing and descriptions can be found on our <a href='/about/tracks'> About Page</a>.
-
-    button.accordion
-      h6 Why do we need to vote?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 Why do we need to vote?
-      h6 The voting process makes Denver Startup Week a true community fueled event and encourages thousands of people to be a contributing part of building the week’s agenda. The community is encouraged to cast their votes for event and session ideas through July and organizers will announce the final events selected through the panel picker in mid-August.
-
-    button.accordion
-      h6 How often can I vote?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 How often can I vote?
-      h6 You can vote for as many events as you want, albeit only once per event. Be sure to tell your friends and colleagues to vote too!
-
-    button.accordion
-      h6 What is the schedule for the week?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What is the schedule for the week?
-      h6 Events take place throughout each day, beginning Monday morning through Friday afternoon. Each slot is scheduled for 90 minutes, with 30 minute breaks between sessions for venue changeover and attendee transit. Please note that 90 minutes is just a suggestion - it is not required to fill the entire 90 minutes. Many successful sessions consist of 60 minutes of programming followed by 15 minutes of Q&A.
-      br
-      h6 The available time slots are:
-      ul
-        li
-          h6 Breakfast: 8am - 9:30am
-        li
-          h6 Morning: 10am - 11:30am
-        li
-          h6 Lunch / Early Afternoon: 12pm - 1:30 pm
-        li
-          h6 Afternoon: 2pm - 3:30pm
-        li
-          h6 Late Afternoon: 4pm - 5:30pm
-        li
-          h6 Evening: 6pm - 8pm
-
-    button.accordion
-      h6 Can I charge for my event? Do I have a budget? Can I find my own sponsors?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 Can I charge for my event? Do I have a budget? Can I find my own sponsors?
-      h6 Our goal is to be a week of free and open events for the startup community, with costs covered by our sponsors, but we do realize that some events cost money to organize and may exceed our sponsorship dollars. Please contact us if you require a budget for your event and we will work with you. In the case of sponsorship coordinated by others, we ask that you notify us in advance to avoid potential conflict with other DSW sponsorship efforts.
-
-    button.accordion
-      h6 What if I have an idea but no venue?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What if I have an idea but no venue?
-      h6 Not a problem. Denver Startup Week has multiple partnerships with local venues. Please submit your idea and if it is selected for the schedule we will work with you to arrange logistics.
-
-    = render partial: 'layouts/shared/faq/timeline'
-
-    button.accordion
-      h6 How does the public voting and commenting process work?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 How does the public voting and commenting process work?
-      h6 Once a track chair has approved a submission for posting to the panel picker, the community will be able to vote and comment on their favorite proposals. The organizing committee will use the vote totals and comments to guide final selection and scheduling decisions.
-
-    button.accordion
-      h6 What are the selection criteria for submissions?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What are the selection criteria for submissions?
-      h6 We're primarily looking for sessions that embody the goals and values of the week, provide real value to attendees, and promote the local community. We use a number of different criteria to evaluate sessions, including the appropriateness of the session to the goals of the week, the quality and thoughtfulness of the session description, the results of the public voting/commenting period, the overall balance of content for the week, the overall balance of speakers/companies represented during the week, and other factors.
-      br
-      h6 We also tend to get many session proposals covering similar topics. In those cases, we may either pick representative sessions or try to combine multiple sessions into a single panel. However, in many of these cases we do feel that it is important to open up the schedule to different speakers and topics than we’ve had in previous years in order to expand our audience and subject areas.
+    - helpscout_articles_for_category('CFP').each do |article|
+      button.accordion
+        h6 = article.name
+        = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
+        = image_tag 'redesign/grey-x.svg', class: 'faq-x'
+      .panel
+        h6 = article.name
+        h6 = process_with_liquid(article.content).html_safe
 
     = render partial: 'layouts/shared/faq/contact'

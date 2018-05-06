@@ -29,7 +29,7 @@ feature 'Content-only pages' do
     end
 
     scenario 'the FAQ page' do
-      allow(Helpscout::Article).to receive(:all).
+      allow(Helpscout::Article).to receive(:for_category).
         and_return([ Helpscout::Article.new('name' => 'What is 2 + 2?', 'text' => '4') ])
       visit '/get-involved'
       click_link 'FAQ'

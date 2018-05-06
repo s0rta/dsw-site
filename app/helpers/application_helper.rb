@@ -2,8 +2,42 @@ module ApplicationHelper
 
   def process_with_liquid(content)
     context = {
-      'submission_close_date' => AnnualSchedule.current.cfp_close_at.in_time_zone(ActiveSupport::TimeZone['America/Denver']).at_end_of_day,
-      'voting_close_date' => AnnualSchedule.current.voting_close_at.in_time_zone(ActiveSupport::TimeZone['America/Denver']).at_end_of_day,
+      'submission_open_date' =>
+        AnnualSchedule
+          .current
+          .cfp_open_at
+          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
+          .at_beginning_of_day,
+      'submission_close_date' =>
+        AnnualSchedule
+          .current
+          .cfp_close_at
+          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
+          .at_end_of_day,
+      'voting_open_date' =>
+        AnnualSchedule
+          .current
+          .voting_open_at
+          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
+          .at_beginning_of_day,
+      'voting_close_date' =>
+        AnnualSchedule
+          .current
+          .voting_close_at
+          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
+          .at_end_of_day,
+      'registration_open_date' =>
+        AnnualSchedule
+          .current
+          .registration_open_at
+          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
+          .at_beginning_of_day,
+      'week_start_date' =>
+        AnnualSchedule
+          .current
+          .week_start_at
+          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
+          .at_beginning_of_day,
       'current_date' => DateTime.now
     }
     template = Liquid::Template.parse(content)
@@ -162,7 +196,7 @@ module ApplicationHelper
     @_footer_sponsors ||= Sponsorship.for_current_year.title.alphabetical
   end
 
-  def helpscout_articles
-    @_helpscout_articles ||= Helpscout::Article.all
+  def helpscout_articles_for_category(category_name)
+    Helpscout::Article.for_category(category_name)
   end
 end

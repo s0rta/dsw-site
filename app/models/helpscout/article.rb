@@ -1,6 +1,6 @@
 module Helpscout
   class Article
-    ARTICLE_CACHE_KEY = 'helpscout-article-cache'.freeze
+    CACHE_KEY_PREFIX = 'helpscout-article-cache'.freeze
 
     def initialize(json_data)
       @data = json_data
@@ -14,22 +14,34 @@ module Helpscout
       @data['text']
     end
 
-    def self.fetch!
-      data = helpscout_client.articles.map do |id|
-        helpscout_client.article_details(id)
+    class << self
+
+      def fetch!
+        helpscout_client.categories.each do |category_id, name|
+          data = helpscout_client.category_articles(category_id).map do |article_id|
+            helpscout_client.article_details(article_id)
+          end
+
+          Redis.current.set(cache_key_for_category(name), data.to_json)
+        end
       end
 
-      Redis.current.set(ARTICLE_CACHE_KEY, data.to_json)
-    end
-
-    def self.all
-      JSON.parse(Redis.current.get(ARTICLE_CACHE_KEY) || '[]').map do |article|
-        Article.new(article)
+      def for_category(name)
+        JSON.parse(Redis.current.get(cache_key_for_category(name)) || '[]').map do |article|
+          Article.new(article)
+        end
       end
-    end
 
-    def self.helpscout_client
-      @client ||= Helpscout::Client.new
+      def helpscout_client
+        @client ||= Helpscout::Client.new
+      end
+
+      private
+
+      def cache_key_for_category(name)
+        [ CACHE_KEY_PREFIX, name.parameterize ].join('/')
+      end
+
     end
   end
 end
