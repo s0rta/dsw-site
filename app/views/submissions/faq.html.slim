@@ -1,12 +1,12 @@
 = render partial: 'dashboards/nav', locals: { item: :faq, suppress_bar: true }
 
 section.common.blue
-  .section-content
+  .section-content.sm-centered
     h1 Frequently Asked Questions
     h6 Denver Startup Week is a week of events showcasing Denver’s entrepreneur community in tech, design, business, and manufacturing.
 
-section#faq.common.sm-centered(data-bindable='toggle-faq')
-  .section-content
+section#faq.common(data-bindable='toggle-faq')
+  .section-content.sm-centered
     - helpscout_articles_for_category('CFP').each do |article|
       button.accordion
         h6 = article.name
