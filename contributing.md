@@ -54,6 +54,7 @@ you've considered the following:
   complain once you've pushed up a PR; please address these by
   squashing/amending commits.
 - [ ] You've squashed any WIP or similar commits.
+- [ ] Commit messages are descriptive and reflect what was changed. For example, `fixes styling bug on contact page` and not `address issue #10`.
 - [ ] You've included a helpful description of your work in the pull request and
   have referenced any relevant issues.
 - [ ] You've run the test suite and all tests are passing.
