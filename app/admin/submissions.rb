@@ -53,13 +53,8 @@ ActiveAdmin.register Submission do
   end
 
   # Set a default year filter
-  scope 'Current', default: true do |submissions|
-    submissions.for_current_year
-  end
-
-  scope 'Previous Year' do |submissions|
-    submissions.for_previous_years
-  end
+  scope('Current', default: true, &:for_current_year)
+  scope('Previous Year', &:for_previous_years)
 
   index do
     selectable_column
@@ -96,10 +91,10 @@ ActiveAdmin.register Submission do
       submission.venue.try(:name)
     end
     column :format
-    column(:start_day) { |s| s.human_start_day }
-    column(:start_time) { |s| s.human_start_time }
-    column(:end_day) { |s| s.human_end_day }
-    column(:end_time) { |s| s.human_end_time }
+    column(:start_day, &:human_start_day)
+    column(:start_time, &:human_start_time)
+    column(:end_day, &:human_end_day)
+    column(:end_time, &:human_end_time)
     column :submitter_name do |submission|
       submission.submitter.try(:name)
     end
@@ -145,10 +140,16 @@ ActiveAdmin.register Submission do
   form do |f|
     f.inputs 'Basics' do
       f.input :year
-      f.input :submitter_id, as: :ajax_select, data: { url: filter_admin_users_path, search_fields: [ :name, :email ] }
+      f.input :submitter_id, as: :ajax_select, data: { url: filter_admin_users_path, search_fields: %i[name email] }
       f.input :track_id, as: :select, collection: Track.all.map { |t| [ t.name, t.id ] }, include_blank: false
-      f.input :cluster_id, as: :select, collection: Cluster.all.map { |c| [ c.name, c.id, { disabled: !c.is_active? } ] }, include_blank: true
-      f.input :state, as: :select, collection: Submission.states.map { |s| [ s.to_s.titleize, s ] }, include_blank: false
+      f.input :cluster_id,
+              as: :select,
+              collection: Cluster.all.map { |c| [ c.name, c.id, { disabled: !c.is_active? } ] },
+              include_blank: true
+      f.input :state,
+              as: :select,
+              collection: Submission.states.map { |s| [ s.to_s.titleize, s ] },
+              include_blank: false
       f.input :title
       f.input :description, hint: 'This is processed with Markdown, and can include additional formatting'
     end
@@ -157,7 +158,7 @@ ActiveAdmin.register Submission do
       f.input :start_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :end_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
-      f.input :venue_id, as: :select, collection: Venue.alphabetical.map {|v| [ v.name, v.id ]}, include_blank: true
+      f.input :venue_id, as: :select, collection: Venue.alphabetical.map { |v| [ v.name, v.id ] }, include_blank: true
     end
     f.inputs 'Submitter' do
       f.input :contact_email, hint: 'Multiple addresses are allowed; separate them with commas'
@@ -180,7 +181,7 @@ ActiveAdmin.register Submission do
     f.actions
   end
 
-  sidebar :actions, only: [ :edit, :show ]  do
+  sidebar :actions, only: %i[edit show] do
     para { link_to('View in panel picker', submission_path(submission)) }
     para { link_to('View in schedule', schedule_path(submission)) }
   end
@@ -201,7 +202,7 @@ ActiveAdmin.register Submission do
     "#{submission.registrants.count} attending"
   end
 
-  action_item :export_attendee_list, only: %i(edit show) do
+  action_item :export_attendee_list, only: %i[edit show] do
     link_to 'Export attendee list', export_attendees_admin_submission_path(submission)
   end
 
@@ -240,6 +241,15 @@ ActiveAdmin.register Submission do
 
     active_admin_comments
 
+    panel 'Feedback' do
+      table_for submission.feedback.order('created_at DESC') do
+        column(:rating) do |f|
+          status_tag f.human_rating, status_for_rating(f.rating)
+        end
+        column :comments
+      end
+    end
+
     # Contact History
     panel 'E-mail Notifications' do
       table_for submission.sent_notifications.order('created_at DESC') do
@@ -262,7 +272,7 @@ ActiveAdmin.register Submission do
           end
         end
         column 'View' do |v|
-          link_to 'View', { version: v.index }
+          link_to 'View', version: v.index
         end
       end
     end
@@ -298,7 +308,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :open_for_voting, only: %i(edit show) do
+  action_item :open_for_voting, only: %i[edit show] do
     unless submission.open_for_voting?
       link_to 'Open for voting',
               open_for_voting_admin_submission_path(submission),
@@ -317,7 +327,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
-  action_item :accept, only: %i(edit show) do
+  action_item :accept, only: %i[edit show] do
     if submission.open_for_voting?
       link_to 'Accept',
               accept_admin_submission_path(submission),
@@ -336,7 +346,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
-  action_item :confirm, only: %i(edit show) do
+  action_item :confirm, only: %i[edit show] do
     if submission.accepted?
       link_to 'Confirm',
               confirm_admin_submission_path(submission),
@@ -355,7 +365,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
-  action_item :withdraw, only: %i(edit show) do
+  action_item :withdraw, only: %i[edit show] do
     link_to 'Withdraw',
             withdraw_admin_submission_path(submission),
             method: :post
@@ -372,7 +382,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
-  action_item :reject, only: %i(edit show) do
+  action_item :reject, only: %i[edit show] do
     if submission.open_for_voting?
       link_to 'Reject',
               reject_admin_submission_path(submission),
@@ -397,7 +407,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :waitlist, only: %i(edit show) do
+  action_item :waitlist, only: %i[edit show] do
     if submission.open_for_voting?
       link_to 'Waitlist',
               waitlist_admin_submission_path(submission),
@@ -416,7 +426,7 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
-  action_item :confirm_venue, only: %i(edit show) do
+  action_item :confirm_venue, only: %i[edit show] do
     if submission.confirmed?
       link_to 'Confirm Venue',
               confirm_venue_admin_submission_path(submission),
