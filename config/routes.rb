@@ -57,6 +57,8 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
 
+  resources :feedback, only: %i(new create)
+
   resource :dashboard, only: :show
 
   resources :newsletter_signups, only: :create

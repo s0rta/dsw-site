@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   has_many :submissions, foreign_key: 'submitter_id', dependent: :restrict_with_error
   has_many :votes, dependent: :destroy
+  has_many :feedback, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :pitch_contest_votes, class_name: 'PitchContest::Vote', dependent: :destroy

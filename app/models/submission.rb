@@ -54,6 +54,7 @@ class Submission < ApplicationRecord
 
   has_many :sent_notifications, dependent: :destroy
   has_many :attendee_messages, dependent: :restrict_with_error
+  has_many :feedback, dependent: :destroy
 
   has_one :sponsorship, dependent: :restrict_with_error
 
@@ -137,6 +138,10 @@ class Submission < ApplicationRecord
 
   def editable?
     created? || open_for_voting? || accepted? || confirmed? || venue_confirmed?
+  end
+
+  def open_for_feedback?
+    AnnualSchedule.current.in_week? || AnnualSchedule.current.post_week? || year < AnnualSchedule.current.year
   end
 
   def self.for_schedule

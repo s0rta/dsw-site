@@ -1,0 +1,13 @@
+section.common.feedback
+  .section-content.sm-centered
+    h1 Submit Feedback
+    = form_for @session.feedback.build do |f|
+      = f.label :rating, 'Please rate this session'
+      = f.select :rating, ratings_for_select, required: 'required'
+
+      = f.label :comments, 'Comments'
+      = f.text_field :comments
+
+      = f.hidden_field :submission_id, value: @session.id
+
+      = f.submit 'Share Feedback'
