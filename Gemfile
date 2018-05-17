@@ -2,11 +2,12 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
+gem 'bootsnap'
 gem 'mime-types', '>= 2.6.1', require: 'mime/types/columnar'
 gem 'pg'
 gem 'puma'
 gem 'puma_worker_killer'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 gem 'rake'
 
 gem 'autoprefixer-rails'
@@ -68,9 +69,7 @@ gem 'sidekiq-throttled'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'derailed_benchmarks'
   gem 'listen'
-  gem 'stackprof'
 end
 
 group :development, :test do
