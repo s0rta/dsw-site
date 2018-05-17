@@ -23,3 +23,8 @@ MK-TODO.md
 /public/packs-test
 /node_modules
 vendor/firefox
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
