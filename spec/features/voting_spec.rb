@@ -11,12 +11,15 @@ feature 'Voting for session submissions' do
   end
 
   let!(:submission) do
-    user.submissions.create! title: 'I am a session',
-                             description: 'interesting stuff',
-                             track: track,
-                             contact_email: 'test@example.com',
-                             state: 'open_for_voting',
-                             coc_acknowledgement: true
+    create(:submission,
+           submitter: user,
+           title: 'I am a session',
+           description: 'interesting stuff',
+           track: track,
+           contact_email: 'test@example.com',
+           state: 'open_for_voting',
+           coc_acknowledgement: true,
+           year: AnnualSchedule.current.year)
   end
 
   describe 'when voting is open' do
