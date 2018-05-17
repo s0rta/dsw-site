@@ -240,6 +240,15 @@ ActiveAdmin.register Submission do
 
     active_admin_comments
 
+    panel 'Feedback' do
+      table_for submission.feedback.order('created_at DESC') do
+        column(:rating) do |f|
+          status_tag f.human_rating, status_for_rating(f.rating)
+        end
+        column :comments
+      end
+    end
+
     # Contact History
     panel 'E-mail Notifications' do
       table_for submission.sent_notifications.order('created_at DESC') do

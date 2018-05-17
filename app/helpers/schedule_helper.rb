@@ -9,11 +9,7 @@ module ScheduleHelper
   end
 
   def ratings_for_select
-    { '5' => 'Outstanding',
-      '4' => 'Great',
-      '3' => 'Good',
-      '2' => 'Fair',
-      '1' => 'Poor' }.invert
+    Feedback::RATINGS.invert
   end
 
   def in_or_post_week?
