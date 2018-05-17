@@ -8,7 +8,7 @@ class FeedbackController < ApplicationController
     if @feedback.save
       flash[:notice] = 'Thank you for submitting feedback!'
     else
-      flash[:error] = 'there was a problem submitting feedback'
+      flash[:error] = 'There was a problem submitting your feedback. Please try again later'
     end
     redirect_to schedule_path(@feedback.submission)
   end
