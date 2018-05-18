@@ -7,11 +7,7 @@ nav
     - else
       h1 #{current_year_or_default} Schedule
 
-- unless flash.empty?
-  section.common.green
-    .section-content.sm-centered
-      - flash.each do |key, message|
-        h6 = message
+= render partial: 'layouts/shared/flash'
 
 - if AnnualSchedule.registration_open? && !registered?
   section.common.sm-centered

@@ -16,10 +16,10 @@ section.back-link-section
   .section-content.sm-centered
     = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'
 
+= render partial: 'layouts/shared/flash'
+
 section.common
   div(class="section-content session-detail sm-centered #{@session.track.color}")
-    - flash.each do |key, message|
-      h6 = message
     header
       - if @session.track.icon
         = render partial: "icons/#{@session.track.icon}"
@@ -60,9 +60,6 @@ section.common
         div.confirmed-btn-container
           = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
 
-- if user_signed_in? && @session.open_for_feedback?
-  = render partial: 'feedback_form'
-
 - if @related_sessions.any?
   section.common
     .section-content.sm-centered
@@ -70,6 +67,9 @@ section.common
       div
         - @related_sessions.each do |submission|
           = render partial: 'scheduled_session', locals: { submission: submission, include_day: true }
+
+- if user_signed_in? && @session.open_for_feedback?
+  = render partial: 'feedback_form'
 
 section.common
   .section-content.sm-centered
