@@ -12,11 +12,11 @@ module SearchableSubmission
           title: terms,
           description: terms,
           users: { name: terms },
-          companies: { name: terms }
+          companies_for_search: { name: terms }
         }
-        joins(:submitter).
-          joins(:company).
-          basic_search(predicate, false)
+        joins(:submitter)
+          .joins('LEFT OUTER JOIN companies companies_for_search ON companies_for_search.id = submissions.company_id')
+          .basic_search(predicate, false)
       else
         all
       end
