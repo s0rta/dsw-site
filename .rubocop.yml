@@ -18,7 +18,7 @@ Metrics/LineLength:
   Exclude:
     - config/routes.rb
 Layout/DotPosition:
-  EnforcedStyle: trailing
+  EnforcedStyle: leading
 Layout/EndAlignment:
   # The value `keyword` means that `end` should be aligned with the matching
   # keyword (if, while, etc.).
