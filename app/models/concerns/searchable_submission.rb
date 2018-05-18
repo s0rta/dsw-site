@@ -11,9 +11,11 @@ module SearchableSubmission
         predicate = {
           title: terms,
           description: terms,
-          users: { name: terms }
+          users: { name: terms },
+          companies: { name: terms }
         }
         joins(:submitter).
+          joins(:company).
           basic_search(predicate, false)
       else
         all
