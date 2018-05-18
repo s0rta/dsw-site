@@ -20,4 +20,17 @@ ActiveAdmin.register Track do
 
   filter :name
 
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :email_alias
+      f.input :icon, as: :select, collection: Track::ICONS
+      f.input :color, as: :select, collection: Track::COLORS
+      f.input :is_submittable, hint: 'Make this track an option for CFP submissions'
+      f.input :is_voteable, hint: 'Show submissions in this track during the voting process'
+    end
+
+    f.actions
+  end
+
 end
