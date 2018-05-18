@@ -2,20 +2,20 @@ class AddFulltextIndicesToSubmissions < ActiveRecord::Migration[4.2]
   disable_ddl_transaction!
 
   def up
-    execute <<-EOF unless index_exists?(:submissions, name: :fulltext_submissions_title_english)
+    execute <<-SQL unless index_exists?(:submissions, name: :fulltext_submissions_title_english)
       CREATE INDEX CONCURRENTLY fulltext_submissions_title_english
         ON submissions
         USING gin(to_tsvector('english', title));
-    EOF
-    execute <<-EOF unless index_exists?(:submissions, name: :fulltext_submissions_description_english)
+    SQL
+    execute <<-SQL unless index_exists?(:submissions, name: :fulltext_submissions_description_english)
       CREATE INDEX CONCURRENTLY fulltext_submissions_description_english
         ON submissions
         USING gin(to_tsvector('english', description));
-    EOF
+    SQL
   end
 
   def down
-    drop_index :submissions, name: :fulltext_submissions_title_english
-    drop_index :submissions, name: :fulltext_submissions_description_english
+    remove_index :submissions, name: :fulltext_submissions_title_english
+    remove_index :submissions, name: :fulltext_submissions_description_english
   end
 end

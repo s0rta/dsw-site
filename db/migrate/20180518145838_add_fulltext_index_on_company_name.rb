@@ -10,6 +10,6 @@ class AddFulltextIndexOnCompanyName < ActiveRecord::Migration[5.1]
   end
 
   def down
-    drop_index :companies, name: :fulltext_companies_name_english
+    remove_index :companies, name: :fulltext_companies_name_english
   end
 end
