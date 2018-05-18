@@ -181,18 +181,51 @@ ActiveAdmin.register Submission do
     f.actions
   end
 
-  sidebar :actions, only: %i[edit show] do
+  sidebar :links, only: %i[edit show] do
     para { link_to('View in panel picker', submission_path(submission)) }
     para { link_to('View in schedule', schedule_path(submission)) }
   end
 
-  sidebar 'Status', except: :index do
+  sidebar 'Status', only: :show do
     status_tag submission.state.to_s.titleize, status_for_submission(submission)
   end
 
-  sidebar 'Message', except: :index do
-    link_to "E-mail #{number_with_delimiter(submission.registrants.count)} attendees &rarr;".html_safe,
-            new_admin_submission_attendee_message_path(submission)
+  sidebar 'Messaging', only: :show do
+    span do
+      button_to "E-mail #{number_with_delimiter(submission.registrants.count)} attendees",
+                new_admin_submission_attendee_message_path(submission),
+                method: :get
+    end
+
+    if submission.venue &&
+        submission.venue.contact_email &&
+        submission.contact_email &&
+        submission.venue.contact_name
+      span do
+        button_to 'Send venue match email',
+                  send_venue_match_email_admin_submission_path(submission),
+                  method: :post,
+                  data: { confirm: 'Are you sure?' }
+      end
+    end
+    span do
+      button_to 'Send acceptance email',
+                send_accept_email_admin_submission_path(submission),
+                method: :post,
+                data: { confirm: 'Are you sure?' }
+    end
+    span do
+      button_to 'Send rejection email',
+                send_reject_email_admin_submission_path(submission),
+                method: :post,
+                data: { confirm: 'Are you sure?' }
+    end
+    span do
+      button_to 'Send waitlist email',
+                send_waitlist_email_admin_submission_path(submission),
+                method: :post,
+                data: { confirm: 'Are you sure?' }
+    end
   end
 
   # Attendee export
@@ -448,19 +481,6 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
-  # Notify of venue match
-  action_item :send_venue_match_email, only: :show do
-    if submission.venue &&
-       submission.venue.contact_email &&
-       submission.contact_email &&
-       submission.venue.contact_name
-      link_to 'Send venue match email',
-              send_venue_match_email_admin_submission_path(submission),
-              method: :post,
-              confirm: 'Are you sure?'
-    end
-  end
-
   member_action :send_venue_match_email, method: :post do
     submission = Submission.find(params[:id])
     submission.send_venue_match_email!
@@ -471,14 +491,6 @@ ActiveAdmin.register Submission do
   batch_action :send_venue_match_email do |submission_ids|
     Submission.find(submission_ids).each(&:send_venue_match_email!)
     redirect_to admin_submissions_path
-  end
-
-  # Notify of acceptance
-  action_item :send_accept_email, only: :show do
-    link_to 'Send accept email',
-            send_accept_email_admin_submission_path(submission),
-            method: :post,
-            confirm: 'Are you sure?'
   end
 
   member_action :send_accept_email, method: :post do
@@ -493,14 +505,6 @@ ActiveAdmin.register Submission do
     redirect_to admin_submissions_path
   end
 
-  # Notify of rejection
-  action_item :send_reject_email, only: :show do
-    link_to 'Send reject email',
-            send_reject_email_admin_submission_path(submission),
-            method: :post,
-            confirm: 'Are you sure?'
-  end
-
   member_action :send_reject_email, method: :post do
     submission = Submission.find(params[:id])
     submission.send_reject_email!
@@ -511,14 +515,6 @@ ActiveAdmin.register Submission do
   batch_action :send_reject_email, confirm: 'Are you sure?' do |submission_ids|
     Submission.find(submission_ids).each(&:send_reject_email!)
     redirect_to admin_submissions_path
-  end
-
-  # Notify of waitlisting
-  action_item :send_waitlist_email, only: :show do
-    link_to 'Send waitlist email',
-            send_waitlist_email_admin_submission_path(submission),
-            method: :post,
-            confirm: 'Are you sure?'
   end
 
   member_action :send_waitlist_email, method: :post do
