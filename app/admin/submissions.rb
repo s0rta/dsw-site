@@ -195,8 +195,6 @@ ActiveAdmin.register Submission do
             new_admin_submission_attendee_message_path(submission)
   end
 
-  sidebar :versionate, partial: 'admin/version', only: :show
-
   # Attendee export
   sidebar 'Attendees', except: :index do
     "#{submission.registrants.count} attending"
@@ -237,42 +235,53 @@ ActiveAdmin.register Submission do
       end
     end
 
-    attributes_table(*(default_attribute_table_rows - [:proposed_updates]))
-
-    active_admin_comments
-
-    panel 'Feedback' do
-      table_for submission.feedback.order('created_at DESC') do
-        column(:rating) do |f|
-          status_tag f.human_rating, status_for_rating(f.rating)
-        end
-        column :comments
+    tabs do
+      tab :details do
+        attributes_table(*(default_attribute_table_rows - [:proposed_updates]))
       end
-    end
 
-    # Contact History
-    panel 'E-mail Notifications' do
-      table_for submission.sent_notifications.order('created_at DESC') do
-        column(:kind) { |submission| submission.kind.titleize }
-        column :recipient_email
-        column 'Sent At', :created_at
+      tab :comments do
+        active_admin_comments
       end
-    end
 
-    panel 'Recent Updates' do
-      table_for submission.versions do
-        column 'Modified at' do |v|
-          v.created_at.to_s :long
-        end
-        column 'User' do |v|
-          if user = User.where(id: v.whodunnit).first
-            link_to user.name, admin_user_path(user)
-          else
-            'Unknown'
+      tab :feedback do
+        panel 'Feedback' do
+          table_for submission.feedback.order('created_at DESC') do
+            column(:rating) do |f|
+              status_tag f.human_rating, status_for_rating(f.rating)
+            end
+            column :comments
           end
         end
-        column 'View' do |v|
-          link_to 'View', version: v.index
+      end
+
+      tab :email_notifications do
+        panel 'E-mail Notifications' do
+          table_for submission.sent_notifications.order('created_at DESC') do
+            column(:kind) { |submission| submission.kind.titleize }
+            column :recipient_email
+            column 'Sent At', :created_at
+          end
+        end
+      end
+
+      tab :changelog do
+        panel 'Recent Updates' do
+          table_for submission.versions do
+            column 'Modified at' do |v|
+              v.created_at.to_s :long
+            end
+            column 'User' do |v|
+              if user = User.where(id: v.whodunnit).first
+                link_to user.name, admin_user_path(user)
+              else
+                'Unknown'
+              end
+            end
+            column 'View' do |v|
+              link_to 'View', version: v.index
+            end
+          end
         end
       end
     end
