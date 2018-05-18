@@ -1,14 +1,15 @@
 class Track < ApplicationRecord
 
-  # Add to ActiveAdmin as strong params
-  # attr_accessible :name,
-  #                 :icon,
-  #                 :email_alias
+  ICONS = %w[person chart eyeball phone terminal wrench star basecamp martini].freeze
+  COLORS = %w[green teal blue purple gold orange headline-session basecamp-session red].freeze
 
   validates :name,
             :email_alias,
             :icon,
             :color, presence: true
+
+  validates :color, inclusion: { in: COLORS }
+  validates :icon, inclusion: { in: ICONS }
 
   has_many :submissions, dependent: :destroy
   has_and_belongs_to_many :chairs, class_name: 'User'
