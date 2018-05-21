@@ -2,10 +2,10 @@ class SubmissionsController < ApplicationController
 
   respond_to  :html,
               :atom
-  before_action :check_submissions_open, only: [ :new, :create ]
-  before_action :authenticate_user!, only: [ :new, :create, :mine, :submissions_closed ]
-  before_action :check_feedback_open, only: [ :index ]
-  before_action :set_submissions, only: [:edit, :update]
+  before_action :check_cfp_open, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create mine submissions_closed]
+  before_action :check_voting_open, only: %i[index show]
+  before_action :set_submissions, only: %i[edit update]
   before_action :set_random_seed, only: :track
 
   def index
@@ -126,11 +126,11 @@ class SubmissionsController < ApplicationController
                                        :coc_acknowledgement)
   end
 
-  def check_submissions_open
+  def check_cfp_open
     redirect_to submissions_closed_submissions_path unless AnnualSchedule.cfp_open?
   end
 
-  def check_feedback_open
+  def check_voting_open
     redirect_to feedback_closed_submissions_path unless AnnualSchedule.voting_open?
   end
 
