@@ -953,7 +953,8 @@ CREATE TABLE public.users (
     provider character varying(255),
     team_position character varying,
     avatar character varying,
-    team_priority integer
+    team_priority integer,
+    is_venue_host boolean DEFAULT false
 );
 
 
@@ -993,8 +994,11 @@ CREATE TABLE public.venues (
     city character varying(255),
     state character varying(255),
     suite_or_unit character varying,
-    capacity integer DEFAULT 0,
-    extra_directions text
+    seated_capacity integer DEFAULT 0,
+    extra_directions text,
+    venue_host_id integer,
+    standing_capacity integer DEFAULT 0,
+    av_capabilities character varying
 );
 
 
@@ -2244,6 +2248,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180420151548'),
 ('20180503152209'),
 ('20180518145838'),
+('20180522000916'),
+('20180527202206'),
+('20180604045548'),
 ('20180718044128'),
 ('20180718045251'),
 ('20180718142543'),

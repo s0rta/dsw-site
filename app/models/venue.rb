@@ -6,6 +6,8 @@ class Venue < ApplicationRecord
             :city,
             :state, presence: true
 
+  belongs_to :host, class_name: 'User', optional: true
+
   has_many :submissions, dependent: :restrict_with_error
 
   DEFAULT_CAPACITY = 75
