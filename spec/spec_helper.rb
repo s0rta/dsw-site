@@ -31,4 +31,7 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  # Adds Device Controller Helper for Warden
+  config.include Devise::Test::ControllerHelpers, type: :controller
 end
