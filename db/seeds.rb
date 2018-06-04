@@ -469,7 +469,7 @@ Venue.reset_column_information
     address: "1701 Wynkoop Street",
     city: "Denver",
     state: "Colorado",
-    capacity: 1000,
+    seated_capacity: 1000,
   },
 ].each do |attrs|
   v = Venue.where(name: attrs[:name]).first_or_initialize
