@@ -9,30 +9,30 @@ class SubmissionsController < ApplicationController
   before_action :set_random_seed, only: :track
 
   def index
-    @submissions = Submission.
-                   for_current_year.
-                   for_submittable_tracks.
-                   public.
-                   includes(:submitter, :track, :cluster).
-                   order('submissions.created_at ASC').
-                   page(params[:page])
+    @submissions = Submission
+                   .for_current_year
+                   .for_submittable_tracks
+                   .public
+                   .includes(:submitter, :track, :cluster)
+                   .order('submissions.created_at ASC')
+                   .page(params[:page])
   end
 
   def track
     if params[:track_name].present?
-      @submissions = Submission.
-                     fulltext_search(params[:terms]).
-                     for_current_year.
-                     for_submittable_tracks.
-                     for_schedule_filter(params[:track_name], current_user).
-                     public.
-                     includes(:submitter,
-                              :track,
-                              :cluster,
-                              :company,
-                              sponsorship: :track).
-                     order('RANDOM()').
-                     page(params[:page])
+      @submissions = Submission
+                     .fulltext_search(params[:terms])
+                     .for_current_year
+                     .for_submittable_tracks
+                     .for_schedule_filter(params[:track_name], current_user)
+                     .public
+                     .includes(:submitter,
+                               :track,
+                               :cluster,
+                               :company,
+                               sponsorship: :track)
+                     .order('RANDOM()')
+                     .page(params[:page])
       respond_to do |format|
         format.html
         format.js do
@@ -49,14 +49,14 @@ class SubmissionsController < ApplicationController
     if params[:track_name].present?
       redirect_to track_submissions_path(track_name: params[:track_name], terms: params[:terms])
     else
-      @submissions = Submission.
-                     fulltext_search(params[:terms]).
-                     for_current_year.
-                     for_submittable_tracks.
-                     for_schedule_filter(params[:track_name], current_user).
-                     public.
-                     includes(:submitter, :track, :cluster).
-                     page(params[:page])
+      @submissions = Submission
+                     .fulltext_search(params[:terms])
+                     .for_current_year
+                     .for_submittable_tracks
+                     .for_schedule_filter(params[:track_name], current_user)
+                     .public
+                     .includes(:submitter, :track, :cluster)
+                     .page(params[:page])
       respond_to do |format|
         format.json do
           render json: { fragment: render_to_string(partial: 'track_contents', formats: [ :html ]),
@@ -82,9 +82,6 @@ class SubmissionsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     @submission.update(proposed_updates: submission_params)
     if @submission.save
@@ -97,11 +94,12 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    @submission = Submission.public.
-      where(id: params[:id].to_i).
-      order(:start_day).
-      includes(:submitter, :track, :votes, comments: :user).
-      first!
+    @submission = Submission
+                  .public
+                  .where(id: params[:id].to_i)
+                  .order(:start_day)
+                  .includes(:submitter, :track, :votes, comments: :user)
+                  .first!
   end
 
   private
