@@ -7,6 +7,7 @@ class Sponsorship < ApplicationRecord
   MEMBER_LEVEL = 'member'.freeze
   IN_KIND_LEVEL = 'in-kind'.freeze
   MEDIA_LEVEL = 'media'.freeze
+  PODCAST_LEVEL = 'podcast'.freeze
 
   AMBASSADOR_HOST_LEVEL = 'ambassador host'.freeze
   AMBASSADOR_SPONSOR_LEVEL = 'ambassador_sponsor'.freeze
@@ -17,6 +18,7 @@ class Sponsorship < ApplicationRecord
              HEADLINE_LEVEL,
              PARTNER_LEVEL,
              MEMBER_LEVEL,
+             PODCAST_LEVEL,
              MEDIA_LEVEL,
              IN_KIND_LEVEL,
              AMBASSADOR_HOST_LEVEL,
