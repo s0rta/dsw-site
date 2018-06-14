@@ -29,8 +29,8 @@ feature 'Content-only pages' do
     end
 
     scenario 'the FAQ page' do
-      allow(Helpscout::Article).to receive(:for_category).
-        and_return([ Helpscout::Article.new('name' => 'What is 2 + 2?', 'text' => '4') ])
+      allow(Helpscout::Article).to receive(:for_category)
+        .and_return([ Helpscout::Article.new('name' => 'What is 2 + 2?', 'text' => '4') ])
       visit '/get-involved'
       click_link 'FAQ'
       expect(page).to have_content('FREQUENTLY ASKED QUESTIONS')
@@ -59,5 +59,17 @@ feature 'Content-only pages' do
     expect(page).to have_content('Good news!')
     click_link 'Good news!'
     expect(current_url).to include('https://www.google.com/')
+  end
+
+  scenario 'the code of conduct page' do
+    visit '/'
+    click_link 'Code of Conduct'
+    expect(page).to have_content('CODE OF CONDUCT')
+  end
+
+  scenario 'the podcast page' do
+    visit '/'
+    click_link 'Podcast'
+    expect(page).to have_content('PODCAST')
   end
 end
