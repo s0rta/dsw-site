@@ -11,7 +11,7 @@ section.common
 section.common
   .section-content.sm-centered
     h1 Listen
-    iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/6684382/height/90/theme/custom/autoplay/no/autonext/no/thumbnail/yes/preload/no/no_addthis/no/direction/forward/render-playlist/no/custom-color/000000/" height="90" width="100%" scrolling="no" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen
+    iframe src="//html5-player.libsyn.com/embed/episode/id/6684382/height/360/width/640/theme/legacy/autonext/no/thumbnail/yes/autoplay/no/preload/no/no_addthis/no/direction/backward/" height="360" width="640" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen
 
 section.common
   .section-content.sm-centered
@@ -23,6 +23,6 @@ section.common
 
 section.common
   .section-content.sm-centered
-    h1 Support
+    h1 Thanks
     - podcast_sponsorships.each do |sponsorship|
       = render partial: 'layouts/shared/sponsorship', object: sponsorship
