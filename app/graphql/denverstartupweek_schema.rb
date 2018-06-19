@@ -1,4 +1,5 @@
-DenverstartupweekSchema = GraphQL::Schema.define do
-  mutation(Types::MutationType)
-  query(Types::QueryType)
+class DswSchema < GraphQL::Schema
+  use GraphQL::Tracing::NewRelicTracing
+  mutation Types::MutationType
+  query Types::QueryType
 end
