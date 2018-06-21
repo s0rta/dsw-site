@@ -30,4 +30,19 @@ class MailPreview < ActionMailer::Preview
     NotificationsMailer.session_thanks(session)
   end
 
+  def notify_of_submission_acceptance
+    session = Submission.first
+    NotificationsMailer.notify_of_submission_acceptance(session)
+  end
+
+  def notify_of_submission_rejection
+    session = Submission.first
+    NotificationsMailer.notify_of_submission_rejection(session)
+  end
+
+  def notify_of_submission_waitlisting
+    session = Submission.first
+    NotificationsMailer.notify_of_submission_waitlisting(session)
+  end
+
 end
