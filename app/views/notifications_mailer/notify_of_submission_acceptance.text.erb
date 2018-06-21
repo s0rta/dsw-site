@@ -1,18 +1,16 @@
 Hello!
 
-First of all, sorry for how long it's taken us to get this note out to you.
-
-But congratulations! Your session "<%= @submission.title %>" has been selected to be part of the <%= @submission.track.name %> Track program during Denver Startup Week <%= Date.today.year %>.
+Congratulations! Your session "<%= @submission.title %>" has been selected to be part of the <%= @submission.track.name %> Track program during Denver Startup Week <%= Date.today.year %>.
 
 <%- if @submission.time_assigned? %>
-  We’ve scheduled it for <%= @submission.human_start_day %> <%= @submission.start_datetime.strftime('%B %e') %> at <%= @submission.human_start_time %>.
+  We’ve scheduled it for <%= @submission.start_datetime.strftime('%A %B %e') %> at <%= @submission.human_start_time %>.
 <%- else %>
   We have not scheduled it for a timeslot yet but will be doing so shortly.
 <%- end %>
 
 We know this is a lengthy email but please read all of the following information as there are important, mandatory steps and dates which will require action from you.
 
-Please reply to this email to let us know (as soon as you are able, but no later than EOD Monday July 17th) that you’re willing and able to present this session at the time indicated above. Unfortunately, due to the size of the event, we have very limited ability to accommodate requests for time slot changes. If we don’t receive confirmation from you by July 17th, we will cede your slot to another session.
+Please reply to this email to let us know (as soon as you are able, but no later than EOD <%= (Date.today + 7.days).strftime('%A %B %e') %>) that you’re willing and able to present this session at the time indicated above. Unfortunately, due to the size of the event, we have very limited ability to accommodate requests for time slot changes. If we don’t receive confirmation from you by that time, we will cede your slot to another session.
 
 
 SESSION LOGISTICS
@@ -34,21 +32,12 @@ MANDATORY PRESENTER ORIENTATION
 
 To help ensure consistency and ease logistics for all our sessions, we ask that all session organizers attend one of our orientation sessions. The sessions cover event logistics, volunteer coordination, session promotion, branding, and more. We’re offering the session at two different times (once during the business day and once in the evening) to try to accommodate as many schedules as possible.
 
-Please register for one of these sessions via the Eventbrite links below:
-
-
-Tuesday, August 22, 2017 from 8:30 to 9:30 a.m. at The Commons on Champa (1245 Champa St.)
-
-https://www.eventbrite.com/e/denver-startup-week-presenter-training-1-tickets-36163228189
-
-
-Wednesday, September 7, 2017 from 5:30 to 6:30 p.m. at The Commons on Champa (1245 Champa St.)
-https://www.eventbrite.com/e/denver-startup-week-presenter-training-2-tickets-36163361588
+We are still finalizing locations and dates for these sessions, and will be in touch as soon as we have them dialed in.
 
 
 OTHER EVENTS
 
-We will have 300+ other events throughout the week and would love to see you take part in some of them. The full schedule will be publicized and registration will open the week of July 17th.
+We will have 300+ other events throughout the week and would love to see you take part in some of them. The full schedule will be publicized and registration will open the week of July 18th.
 
 Per the above, please reply back as soon as possible to confirm you are still willing and able to host this session. We will be in touch with you over the next couple of weeks with additional details.
 
@@ -64,7 +53,7 @@ Thanks for being a part of Denver Startup Week,
 
 <%= @submission.track.name %> Track
 
-Denver Startup Week Planning Committee
+Denver Startup Week Organizing Committee
 
 <%= @submission.track.email_alias %>
 
