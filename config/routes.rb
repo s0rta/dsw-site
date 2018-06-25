@@ -27,11 +27,13 @@ Rails.application.routes.draw do
   get '/resources', to: redirect('/program')
   get '/about', to: redirect('/program')
   get '/about/ambassadors', to: redirect('/initiatives/ambassadors')
+  get '/program/ambassadors', to: redirect('/initiatives/ambassadors')
   get '/about/clusters', to: redirect('/program/clusters')
   get '/about/previous', to: redirect('/program/previous')
   get '/about/team', to: redirect('/get-involved/team')
   get '/about/tracks', to: redirect('/program/tracks')
   get '/about/youth', to: redirect('/initiatives/youth')
+  get '/program/youth', to: redirect('/initiatives/youth')
   get '/panel-picker/mine', to: redirect('/dashboard')
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
