@@ -203,7 +203,6 @@
       background-repeat: no-repeat
       background-size: cover
 
-
 @media(min-width: 375px)
   .session-info
     padding: 15px
@@ -219,8 +218,6 @@
         font-size: 8px
       .day
         font-size: 24px
-      .day_of_week
-        font-size: 6px
 
   .day-buttons
     .btn-left, .btn-right
@@ -235,6 +232,12 @@
       &::before
         width: 10px
         height: 9px
+
+@media(max-width: 600px)
+  .schedule-container
+      .chiclet
+        .day_of_week
+          display: none
 
 @media(min-width: 600px)
   .time-slot
@@ -257,6 +260,7 @@
       .day
         font-size: 48px
       .day_of_week
+        display: block
         font-size: 12px
 
   .day-buttons
