@@ -7,7 +7,8 @@ ActiveAdmin.register Track do
                 :icon,
                 :color,
                 :is_submittable,
-                :is_voteable
+                :is_voteable,
+                :video_url
 
   index do
     selectable_column
@@ -26,6 +27,7 @@ ActiveAdmin.register Track do
       f.input :email_alias
       f.input :icon, as: :select, collection: Track::ICONS
       f.input :color, as: :select, collection: Track::COLORS
+      f.input :video_url, hint: 'Youtube URL for track video'
       f.input :is_submittable, hint: 'Make this track an option for CFP submissions'
       f.input :is_voteable, hint: 'Show submissions in this track during the voting process'
     end
