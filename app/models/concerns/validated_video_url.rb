@@ -5,8 +5,7 @@ module ValidatedVideoUrl
 
   included do
     validates :video_url,
-              format: { with: YOUTUBE_REGEX },
-              presence: true
+              format: { with: YOUTUBE_REGEX, allow_blank: true }
   end
 
   def embed_video_url(extra_params = { modestbranding: 1, showinfo: 0 })

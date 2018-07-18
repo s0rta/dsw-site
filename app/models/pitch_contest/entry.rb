@@ -7,6 +7,7 @@ class PitchContest::Entry < ApplicationRecord
 
   validates :name,
             :year,
+            :video_url,
             presence: true
 
   has_many :votes, class_name: 'PitchContest::Vote', dependent: :destroy, foreign_key: :pitch_contest_entry_id

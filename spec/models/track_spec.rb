@@ -12,7 +12,8 @@ RSpec.describe Track, type: :model do
   it { is_expected.to allow_value('orange').for(:color) }
   it { is_expected.not_to allow_value('truck').for(:color) }
 
-  it { is_expected.to validate_presence_of(:video_url) }
+  it { is_expected.to allow_value(nil).for(:video_url) }
+  it { is_expected.to allow_value('').for(:video_url) }
   it { is_expected.to allow_value('youtu.be/EK7J_ZzvF8k').for(:video_url) }
   it { is_expected.to allow_value('http://youtu.be/EK7J_ZzvF8k').for(:video_url) }
   it { is_expected.to allow_value('https://youtu.be/EK7J_ZzvF8k').for(:video_url) }
