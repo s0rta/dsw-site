@@ -15,6 +15,8 @@ class Registration < ApplicationRecord
   belongs_to :company, optional: true
   has_many :session_registrations, dependent: :destroy
   has_many :submissions, through: :session_registrations
+  has_many :registration_attendee_goals, dependent: :destroy
+  has_many :attendee_goals, through: :registration_attendee_goals
 
   validates :user,
             :age_range,

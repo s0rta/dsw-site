@@ -135,6 +135,39 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: attendee_goals; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.attendee_goals (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    description character varying NOT NULL,
+    is_active boolean DEFAULT true NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: attendee_goals_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.attendee_goals_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: attendee_goals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.attendee_goals_id_seq OWNED BY public.attendee_goals.id;
+
+
+--
 -- Name: attendee_messages; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -505,6 +538,38 @@ CREATE SEQUENCE public.pitch_contest_votes_id_seq
 --
 
 ALTER SEQUENCE public.pitch_contest_votes_id_seq OWNED BY public.pitch_contest_votes.id;
+
+
+--
+-- Name: registration_attendee_goals; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.registration_attendee_goals (
+    id bigint NOT NULL,
+    registration_id bigint NOT NULL,
+    attendee_goal_id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: registration_attendee_goals_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.registration_attendee_goals_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: registration_attendee_goals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.registration_attendee_goals_id_seq OWNED BY public.registration_attendee_goals.id;
 
 
 --
@@ -1094,6 +1159,13 @@ ALTER TABLE ONLY public.annual_schedules ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: attendee_goals id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.attendee_goals ALTER COLUMN id SET DEFAULT nextval('public.attendee_goals_id_seq'::regclass);
+
+
+--
 -- Name: attendee_messages id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1168,6 +1240,13 @@ ALTER TABLE ONLY public.pitch_contest_entries ALTER COLUMN id SET DEFAULT nextva
 --
 
 ALTER TABLE ONLY public.pitch_contest_votes ALTER COLUMN id SET DEFAULT nextval('public.pitch_contest_votes_id_seq'::regclass);
+
+
+--
+-- Name: registration_attendee_goals id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.registration_attendee_goals ALTER COLUMN id SET DEFAULT nextval('public.registration_attendee_goals_id_seq'::regclass);
 
 
 --
@@ -1293,6 +1372,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: attendee_goals attendee_goals_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.attendee_goals
+    ADD CONSTRAINT attendee_goals_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: attendee_messages attendee_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1378,6 +1465,14 @@ ALTER TABLE ONLY public.pitch_contest_entries
 
 ALTER TABLE ONLY public.pitch_contest_votes
     ADD CONSTRAINT pitch_contest_votes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: registration_attendee_goals registration_attendee_goals_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.registration_attendee_goals
+    ADD CONSTRAINT registration_attendee_goals_pkey PRIMARY KEY (id);
 
 
 --
@@ -1619,6 +1714,20 @@ CREATE INDEX index_pitch_contest_votes_on_user_id ON public.pitch_contest_votes 
 
 
 --
+-- Name: index_registration_attendee_goals_on_attendee_goal_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_registration_attendee_goals_on_attendee_goal_id ON public.registration_attendee_goals USING btree (attendee_goal_id);
+
+
+--
+-- Name: index_registration_attendee_goals_on_registration_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_registration_attendee_goals_on_registration_id ON public.registration_attendee_goals USING btree (registration_id);
+
+
+--
 -- Name: index_registrations_on_calendar_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1766,6 +1875,14 @@ CREATE UNIQUE INDEX unique_schema_migrations ON public.schema_migrations USING b
 
 
 --
+-- Name: registration_attendee_goals fk_rails_00326415bc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.registration_attendee_goals
+    ADD CONSTRAINT fk_rails_00326415bc FOREIGN KEY (registration_id) REFERENCES public.registrations(id);
+
+
+--
 -- Name: pitch_contest_votes fk_rails_051f1858c3; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1835,6 +1952,14 @@ ALTER TABLE ONLY public.volunteership_shifts
 
 ALTER TABLE ONLY public.attendee_messages
     ADD CONSTRAINT fk_rails_555266c0e1 FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
+
+
+--
+-- Name: registration_attendee_goals fk_rails_7145612043; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.registration_attendee_goals
+    ADD CONSTRAINT fk_rails_7145612043 FOREIGN KEY (attendee_goal_id) REFERENCES public.attendee_goals(id);
 
 
 --
@@ -2014,6 +2139,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180330161739'),
 ('20180420151548'),
 ('20180503152209'),
-('20180518145838');
+('20180518145838'),
+('20180718044128'),
+('20180718045251');
 
 

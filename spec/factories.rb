@@ -74,4 +74,6 @@ FactoryBot.define do
   factory :general_inquiry do
     sequence(:contact_email) { |n| "#{n}@example.com" }
   end
+
+  factory :attendee_goal
 end
