@@ -42,7 +42,8 @@ class RegistrationsController < ApplicationController
                                            :age_range,
                                            :learn_more_pledge_1p,
                                            :track_id,
-                                           :coc_acknowledgement)
+                                           :coc_acknowledgement,
+                                           :attendee_goal_ids)
   end
 
   def registration_user_params
