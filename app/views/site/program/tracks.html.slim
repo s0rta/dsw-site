@@ -13,7 +13,7 @@ section.common
       h6 = t.description
       - if t.video_url.present?
         .track-video
-          iframe id="ytplayer-#{entry.id}" type="text/html" width="100%" src="#{t.embed_video_url}" frameborder="0"
+          iframe id="ytplayer-#{t.id}" type="text/html" src="#{t.embed_video_url}" frameborder="0"
 
 
 = render partial: 'layouts/shared/page_footer'
