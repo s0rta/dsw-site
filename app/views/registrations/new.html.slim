@@ -44,7 +44,7 @@ section.common
       = f.text_field :zip, required: 'required'
 
       = f.label :attendee_goals, 'What goals are you hoping to achieve by attending (select all that apply)?'
-      = f.select :attendee_goal_ids, AttendeeGoal.active.map { |ag| [ ag.description, ag.id ] }, required: 'required', multiple: 'multiple'
+      = f.select :attendee_goal_ids, AttendeeGoal.active.map { |ag| [ ag.description, ag.id ] }, {}, { multiple: 'multiple' }
 
       = f.label :learn_more_pledge_1p, "Are you a founder/exec interested in learning about giving back to the local community through #{link_to 'Pledge 1% Colorado', 'https://pledge1colorado.org/'}?".html_safe
       = f.select :learn_more_pledge_1p, [ [ 'Yes', true ], [ 'No', false ] ]
