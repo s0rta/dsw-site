@@ -207,6 +207,13 @@ module ApplicationHelper
                               .includes(:track, submission: :track)
   end
 
+  def pitch_sponsors
+    @pitch_sponsors ||= Sponsorship
+                        .for_current_year
+                        .where(level: Sponsorship::PITCH_LEVEL)
+                        .alphabetical
+  end
+
   def helpscout_articles_for_category(category_name)
     Helpscout::Article.for_category(category_name)
   end

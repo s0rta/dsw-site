@@ -105,14 +105,9 @@ section.common.sm-centered
     = link_to 'WeWork Creator Awards', 'https://creatorawards.wework.com/', class: 'btn primary'
     = link_to 'Colorado Solutions Summit', 'https://www.coloradosolutionssummit.org/', class: 'btn primary copy-btn'
 
-section.common.sm-centered
-  .section-content
-    h1 Thanks to
-    a.xite-logo href='http://www.projectxite.org/' target='_blank'
-      = image_tag 'redesign/sponsors/xite.png', alt: 'Project X-ITE'
-
-    a.xite-logo href='http://cablecenter.org/' target='_blank'
-      = image_tag 'redesign/sponsors/cablecenter.png', alt: 'The Cable Center'
-
-    a.xite-logo href='https://www.wework.com/' target='_blank'
-      = image_tag 'redesign/sponsors/wework.jpg', alt: 'WeWork'
+- if pitch_sponsors.any?
+  section.common.sponsor.sm-centered
+    .section-content
+      h1 Thanks to
+      - pitch_sponsors.each do |sponsorship|
+        = render partial: 'layouts/shared/sponsorship', object: sponsorship
