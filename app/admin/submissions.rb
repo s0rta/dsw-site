@@ -30,7 +30,8 @@ ActiveAdmin.register Submission do
                 :company_id,
                 :coc_acknowledgement,
                 :open_to_collaborators,
-                :from_underrepresented_group
+                :from_underrepresented_group,
+                :pitch_qualifying
 
   controller do
     def scoped_collection
@@ -152,6 +153,7 @@ ActiveAdmin.register Submission do
               include_blank: false
       f.input :title
       f.input :description, hint: 'This is processed with Markdown, and can include additional formatting'
+      f.input :pitch_qualifying, hint: 'Is this a qualifying event for the pitch competition?'
     end
     f.inputs 'Time and Location' do
       f.input :start_day, as: :select, collection: Submission::DAYS.invert, include_blank: true

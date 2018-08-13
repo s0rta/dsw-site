@@ -161,6 +161,10 @@ class Submission < ApplicationRecord
     where("(slides_url IS NOT NULL AND slides_url <> '') OR (video_url IS NOT NULL AND video_url <> '')").order('year DESC')
   end
 
+  def self.pitch_qualifying
+    where(pitch_qualifying: true)
+  end
+
   # State machine
   include SimpleStates
 
