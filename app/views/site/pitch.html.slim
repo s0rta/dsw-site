@@ -15,89 +15,17 @@ section.common.sm-centered
     - else
       = link_to 'Applications are currently closed', '#', class: 'btn primary'
 
-
 section#faq.common.sm-centered(data-bindable='toggle-faq')
   .section-content
     h1 Frequently Asked Questions
-    button.accordion
-      h6 Who is eligible?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 Who is eligible?
-      h6 Any Denver-area based startup with less than $5 million in outside investment is eligible to compete.
-
-    button.accordion
-      h6 How do I apply?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 How do I apply?
-      h6 This year, all applicants must submit a 90-second video about their company with their applications. This video should convey your mission, inspiration, and team. This is your moment to shine, and to get the community excited about your company. Check out #{link_to 'this video', 'https://vimeo.com/141724956', target: '_blank' } for a great example.
-      h6 You can access the application form at #{link_to 'https://projectxite.typeform.com/to/ImeCDU' }.
-      h6 All submissions will be evaluated by objective criteria and narrowed down to 24 semi-finalists.
-      h6 Semi-finalist judging will be done in two parts:
-      h6 The DSW Community will vote on videos they want to advance to the finals. All DSW registrants are eligible to vote, but can only vote for each company once. Community judging will be weighted 20%.
-      h6 All semi-finalists will also have to do an in-person pitch to a panel of expert judges on September 27. In-person judging will be weighted 80% as well, so if you scored poorly online but great in person, you could still be a contender!
-
-    button.accordion
-      h6 What are the judging criteria?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What are the judging criteria?
-      h6 This year, we’re focusing on videos. Applicants will pitch their company in a 90-second video submission and judging will take place in 3 rounds:
-
-      ul
-        li
-          h6 Entry Round: Videos will be judged on objective criteria to narrow the pool to 24 semi-finalists
-        li
-          h6 Semi-Final Round: Community judging via DSW website, plus in-person judging during DSW
-        li
-          h6 Final Round: Six finalist companies will compete at a live pitch event at DSW Basecamp
-
-      h6 All rounds of judging will be based on a combination of objective and subjective criteria to help guide community and official judges:
-
-      ul
-        li Strength of Value Proposition / Competitive Advantage
-        li Clarity and Presentation
-        li Market Identification / Target Market
-        li Financial Model and Team
-        li Intangibles and Funding Readiness
-
-    button.accordion
-      h6 What is the timeline?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What is the timeline?
-      ul
-        li
-         h6 Aug. 8 – Applications open. Kickoff event at WeWork Union Station.
-        li
-         h6 Aug. 31 – Application submission deadline (at 11:59pm).
-        li
-          h6 Sept. 12 – Online judging opens. Semi-finalists announced in event at WeWork Union Station.
-        li
-          h6 Sept. 22 - Online judging closes.
-        li
-          h6 Sept. 27 - In-person judging.
-        li
-          h6 Sept. 28 – Pitch finals at Basecamp.
-
-    button.accordion
-      h6 What's the fine print?
-      = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-      = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-    .panel
-      h6 What's the fine print?
-      ul
-        li
-          h6 Video submissions must be a maximum of 90 seconds in length.
-        li
-          h6 Incomplete applications or those received after the deadline will not be accepted.
-        li
-          h6 Companies must have received less than $5 million in outside capital and have been in business less than 3 years (based on first revenue, incorporation, or both).
+    - helpscout_articles_for_category('Pitch').each do |article|
+      button.accordion
+        h6 = article.name
+        = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
+        = image_tag 'redesign/grey-x.svg', class: 'faq-x'
+      .panel
+        h6 = article.name
+        h6 = process_with_liquid(article.content).html_safe
 
 section.common.sm-centered
   .section-content
