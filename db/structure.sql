@@ -803,7 +803,8 @@ CREATE TABLE public.submissions (
     cached_similar_item_ids integer[] DEFAULT '{}'::integer[],
     live_stream_url character varying,
     company_id bigint,
-    coc_acknowledgement boolean DEFAULT false NOT NULL
+    coc_acknowledgement boolean DEFAULT false NOT NULL,
+    pitch_qualifying boolean DEFAULT false NOT NULL
 );
 
 
@@ -2143,6 +2144,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180518145838'),
 ('20180718044128'),
 ('20180718045251'),
-('20180718142543');
+('20180718142543'),
+('20180813001629');
 
 
