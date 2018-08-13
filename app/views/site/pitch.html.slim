@@ -4,11 +4,12 @@ nav
 
 section.common.sm-centered
   .section-content
-    h1 What is it?
-    h6 The second annual Denver Startup Week Pitch Challenge will highlight and harness our city's entrepreneurial energy. This year’s challenge takes the typical pitch competition and spins it on its head, inviting the 15,000 attendees at DSW to cast their votes to determine the final six contenders.
-    h6 With a prize packaged valued at $100,000 in cash, services, and product, this pitch competition will showcase the best ideas and the brightest startups from Denver’s innovation community!
+    h1 The path to $100,000
+    h6 The third annual Denver Startup Week Pitch Challenge will highlight and harness our city's entrepreneurial energy. This year’s challenge takes the typical pitch competition and spins it on its head, inviting the 19,000 attendees at DSW to cast their votes to determine the final six contenders.
+    h6 With a prize package valued at $100,000 in cash, services, and product, this pitch competition will showcase the best ideas and the brightest startups from Denver’s innovation community!
+    h6 For more details, check out the #{link_to "Pitch Challenge Handbook", "https://docs.google.com/document/d/1TU0sdtKKJaJRfdkbssiT5ITZltGqkx2tfIM56RvFCkE/edit"}.
     - if AnnualSchedule.pitch_application_open?
-      = link_to 'Apply Now', 'https://projectxite.typeform.com/to/ImeCDU', class: 'btn primary'
+      = link_to 'Apply Now', 'https://www.f6s.com/dswpitchcompetition2018/apply', class: 'btn primary'
     - elsif AnnualSchedule.pitch_voting_open?
       = link_to 'Vote Now', pitch_contest_entries_path, class: 'btn primary'
     - else
