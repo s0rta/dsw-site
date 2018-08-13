@@ -17,6 +17,7 @@ class Sponsorship < ApplicationRecord
   LEVELS = [ TITLE_LEVEL,
              TRACK_LEVEL,
              HEADLINE_LEVEL,
+             PITCH_LEVEL,
              PARTNER_LEVEL,
              MEMBER_LEVEL,
              PODCAST_LEVEL,
@@ -24,8 +25,7 @@ class Sponsorship < ApplicationRecord
              IN_KIND_LEVEL,
              AMBASSADOR_HOST_LEVEL,
              AMBASSADOR_SPONSOR_LEVEL,
-             AMBASSADOR_PARTNER_LEVEL,
-             PITCH_LEVEL ].freeze
+             AMBASSADOR_PARTNER_LEVEL ].freeze
 
   AMBASSADORS_PAGE_LEVELS = [ AMBASSADOR_HOST_LEVEL,
                               AMBASSADOR_SPONSOR_LEVEL,
