@@ -1,5 +1,6 @@
 class SubmissionSerializer < ActiveModel::Serializer
-  attributes :title,
+  attributes :id,
+             :title,
              :description,
              :format,
              :track_name,
@@ -7,7 +8,8 @@ class SubmissionSerializer < ActiveModel::Serializer
              :venue_address,
              :start_datetime,
              :end_datetime,
-             :registrant_count
+             :registrant_count,
+             :link
 
   def title
     object.full_title
@@ -27,5 +29,9 @@ class SubmissionSerializer < ActiveModel::Serializer
 
   def registrant_count
     object.session_registrations.count
+  end
+
+  def link
+    schedule_url(object)
   end
 end
