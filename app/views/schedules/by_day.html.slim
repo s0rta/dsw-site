@@ -27,7 +27,7 @@ section.common.sm-centered
         - Track.in_display_order.each do |t|
           option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) #{t.name}#{t.is_submittable? ? ' Track' : '' }
       optgroup(label="View Sessions by Cluster")
-        - Cluster.all.each do |c|
+        - Cluster.active.each do |c|
           option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) #{c.name} Cluster
     select(name="year" value="#{params[:year]}" onchange="window.location.href = this.form.elements[2].value;")
       optgroup(label="View Sessions by Year")
