@@ -11,6 +11,28 @@ class Registration < ApplicationRecord
     '75 years or older'
   ].freeze
 
+  PRIMARY_ROLES = [
+    'Accounting & Finance',
+    'Contract & Freelance',
+    'Customer Service/Success',
+    'Data/Analytics',
+    'Design',
+    'Developer/Engineer',
+    'Founder/Executive',
+    'Government',
+    'Health Care',
+    'Hospitality',
+    'Information Technology',
+    'Manufacturing',
+    'Non-profit',
+    'Operations',
+    'Product',
+    'Recruiting & Human Resources',
+    'Sales & Marketing',
+    'Writing & Content',
+    'Other'
+  ].freeze
+
   belongs_to :user
   belongs_to :company, optional: true
   has_many :session_registrations, dependent: :destroy

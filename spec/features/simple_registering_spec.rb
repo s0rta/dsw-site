@@ -29,7 +29,7 @@ feature 'Registering to attend (via kiosk)' do
     select '25-34 years old', from: 'registration_age_range'
     select 'Founder', from: 'registration_track_id'
     fill_in 'registration_company_name', with: 'Example.com'
-    fill_in 'registration_primary_role', with: 'Developer'
+    select 'Design', from: 'registration_primary_role'
     fill_in 'registration_zip', with: '12345'
     check 'registration_coc_acknowledgement'
     click_button 'Register'
@@ -38,7 +38,7 @@ feature 'Registering to attend (via kiosk)' do
     user = User.where(email: 'test2@example.com').first!
     expect(user.name).to eq('Test Registrant')
     expect(user.current_registration.company.name).to eq('Example.com')
-    expect(user.current_registration.primary_role).to eq('Developer')
+    expect(user.current_registration.primary_role).to eq('Design')
   end
 
   scenario 'Registering to attend with a preexisting account' do
@@ -55,7 +55,7 @@ feature 'Registering to attend (via kiosk)' do
     select '25-34 years old', from: 'registration_age_range'
     select 'Founder', from: 'registration_track_id'
     fill_in 'registration_company_name', with: 'Example.com'
-    fill_in 'registration_primary_role', with: 'Developer'
+    select 'Design', from: 'registration_primary_role'
     fill_in 'registration_zip', with: '12345'
     check 'registration_coc_acknowledgement'
     click_button 'Register'
@@ -63,6 +63,6 @@ feature 'Registering to attend (via kiosk)' do
     expect(current_path).to include('/schedule')
     expect(user.reload.name).to eq('Preexisting Registrant')
     expect(user.current_registration.company.name).to eq('Example.com')
-    expect(user.current_registration.primary_role).to eq('Developer')
+    expect(user.current_registration.primary_role).to eq('Design')
   end
 end

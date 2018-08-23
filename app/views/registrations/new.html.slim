@@ -38,7 +38,7 @@ section.common
       = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
 
       = f.label :primary_role, 'What is your job title?'
-      = f.text_field :primary_role, required: 'required'
+      = f.select :primary_role, collection: primary_roles_for_select, required: 'required'
 
       = f.label :zip, 'What is the zip code of your primary residence?'
       = f.text_field :zip, required: 'required'

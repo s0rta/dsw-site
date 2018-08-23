@@ -99,6 +99,10 @@ module ApplicationHelper
     Registration::AGE_RANGES
   end
 
+  def primary_roles_for_select
+    Registration::PRIMARY_ROLES
+  end
+
   def mentor_sessions
     [
       { title: 'Mentors & Advisors, "Roster by Specialty - to see list click "Book It"',
