@@ -23,6 +23,7 @@ describe 'Schedule API', type: :request do
     json = ActiveSupport::JSON.decode(response.body)
     expect(json.size).to eq(1)
     expect(json.first).to eq({
+      "id"=>submission.id,
       "title"=>"Hello!",
       "description"=>"Hey there!",
       "format"=>nil,
@@ -31,7 +32,8 @@ describe 'Schedule API', type: :request do
       "venue_address"=>nil,
       "start_datetime"=>"2017-09-24T00:00:00.000-06:00",
       "end_datetime"=>"2017-09-24T00:00:00.000-06:00",
-      "registrant_count"=>0 })
+      "registrant_count"=>0,
+      "link"=>"http://www.example.com/schedule/#{submission.id}-hello" })
   end
 
 end
