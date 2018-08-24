@@ -60,7 +60,7 @@ feature 'Registering to attend' do
       fill_in 'registration_company_name', with: 'Exa'
       find('.awesomplete li', text: 'Example.com').click
 
-      fill_in 'registration_primary_role', with: 'Developer'
+      select 'Design', from: 'registration_primary_role'
       fill_in 'registration_zip', with: '12345'
 
       select 'Be inspired', from: 'registration_attendee_goal_ids'
