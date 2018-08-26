@@ -21,10 +21,13 @@ class ListSubscriptionJob
   class SendGridListAddFailedError < StandardError
   end
 
+  class SendGridListCreateFailedError < StandardError
+  end
+
   def subscribe_to_sendgrid(email, extra_fields)
     recipient_id = create_or_update_recipient(email, extra_fields)
     list_ids_to_add_to(extra_fields).each do |list_id|
-      response = sg.client.contactdb.lists._(list_id).recipients._(recipient_id).post
+      response = sg.client.contactdb.lists._(list_id.to_i).recipients._(recipient_id).post
       raise SendGridListAddFailedError.new("Error adding recipient to list: #{response.body}") unless response.status_code.to_s == '201'
     end
   end
@@ -67,7 +70,7 @@ class ListSubscriptionJob
 
   def create_list(name)
     response = sg.client.contactdb.lists.post(request_body: { name: name })
-    raise SendGridContactCreateFailedError.new("Error creating list #{name}: #{response.body}") unless response.status_code.to_s == '201'
+    raise SendGridListCreateFailedError.new("Error creating list #{name}: #{response.body}") unless response.status_code.to_s == '201'
     response['id']
   end
 
