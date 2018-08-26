@@ -88,7 +88,7 @@ class Submission < ApplicationRecord
   end
 
   def contact_emails
-    contact_email.split(',').map(&:strip)
+    contact_email.split(%r{(\s|;|,)}).map(&:strip)
   end
 
   def self.public
