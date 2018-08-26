@@ -25,7 +25,7 @@ class ListSubscriptionJob
     recipient_id = create_or_update_recipient(email, extra_fields)
     list_ids_to_add_to(extra_fields).each do |list_id|
       response = sg.client.contactdb.lists._(list_id).recipients._(recipient_id).post
-      raise SendGridListAddFailedError.new('Error adding recipient to list!') unless response.status_code.to_s == '201'
+      raise SendGridListAddFailedError.new("Error adding recipient to list: #{response.body}") unless response.status_code.to_s == '201'
     end
   end
 
@@ -34,7 +34,7 @@ class ListSubscriptionJob
   def create_or_update_recipient(email, extra_fields)
     data = { email: email }.merge(extra_fields.symbolize_keys.slice(*SENDGRID_FIELDS))
     response = sg.client.contactdb.recipients.patch(request_body: [ data ])
-    raise SendGridContactCreateFailedError.new('Error updating recipient!') unless response.status_code.to_s == '201'
+    raise SendGridContactCreateFailedError.new("Error updating recipient: #{response.body}") unless response.status_code.to_s == '201'
     JSON.parse(response.body)['persisted_recipients'].first
   end
 
@@ -67,7 +67,7 @@ class ListSubscriptionJob
 
   def create_list(name)
     response = sg.client.contactdb.lists.post(request_body: { name: name })
-    raise SendGridContactCreateFailedError.new("Error creating list #{name}!") unless response.status_code.to_s == '201'
+    raise SendGridContactCreateFailedError.new("Error creating list #{name}: #{response.body}") unless response.status_code.to_s == '201'
     response['id']
   end
 
