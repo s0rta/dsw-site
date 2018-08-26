@@ -45,9 +45,9 @@ RSpec.describe Submission, type: :model do
                                track: track,
                                coc_acknowledgement: true
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with('test@example.com', submittedyears: [ year ], confirmedyears: [])
+        with('test@example.com', submitted_years: [ year ], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with(user.email, submittedyears: [ year ], confirmedyears: [])
+        with(user.email, submitted_years: [ year ], confirmed_years: [])
     end
 
     it 'subscribes multiple e-mails after creation' do
@@ -58,11 +58,11 @@ RSpec.describe Submission, type: :model do
                                coc_acknowledgement: true
 
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with('test1@example.com', submittedyears: [ year ], confirmedyears: [])
+        with('test1@example.com', submitted_years: [ year ], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with('test2@example.com', submittedyears: [ year ], confirmedyears: [])
+        with('test2@example.com', submitted_years: [ year ], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with(user.email, submittedyears: [ year ], confirmedyears: [])
+        with(user.email, submitted_years: [ year ], confirmed_years: [])
     end
 
     it 'resubscribes with new data after update' do
@@ -72,10 +72,10 @@ RSpec.describe Submission, type: :model do
                                             track: track,
                                             coc_acknowledgement: true
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with(user.email, submittedyears: [ year ], confirmedyears: [])
+        with(user.email, submitted_years: [ year ], confirmed_years: [])
       submission.update!(state: 'confirmed')
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with(user.email, submittedyears: [ year ], confirmedyears: [ year ])
+        with(user.email, submitted_years: [ year ], confirmed_years: [ year ])
     end
 
     it 'resubscribes multiple e-mails with new data after update' do
@@ -85,19 +85,19 @@ RSpec.describe Submission, type: :model do
                                             track: track,
                                             coc_acknowledgement: true
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with(user.email, submittedyears: [ year ], confirmedyears: [])
+        with(user.email, submitted_years: [ year ], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with('test1@example.com', submittedyears: [ year ], confirmedyears: [])
+        with('test1@example.com', submitted_years: [ year ], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with('test2@example.com', submittedyears: [ year ], confirmedyears: [])
+        with('test2@example.com', submitted_years: [ year ], confirmed_years: [])
 
       submission.update!(state: 'confirmed')
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with(user.email, submittedyears: [ year ], confirmedyears: [ year ])
+        with(user.email, submitted_years: [ year ], confirmed_years: [ year ])
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with('test1@example.com', submittedyears: [ year ], confirmedyears: [ year ])
+        with('test1@example.com', submitted_years: [ year ], confirmed_years: [ year ])
       expect(ListSubscriptionJob).to have_received(:perform_async).
-        with('test2@example.com', submittedyears: [ year ], confirmedyears: [ year ])
+        with('test2@example.com', submitted_years: [ year ], confirmed_years: [ year ])
     end
   end
 

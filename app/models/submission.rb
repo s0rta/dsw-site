@@ -389,8 +389,8 @@ class Submission < ApplicationRecord
                         sort.
                         map(&:to_s)
       ListSubscriptionJob.perform_async(email,
-        submittedyears: submitted_years,
-        confirmedyears: confirmed_years)
+                                        submitted_years: submitted_years,
+                                        confirmed_years: confirmed_years)
     end
   end
 
