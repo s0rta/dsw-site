@@ -378,6 +378,7 @@ class Submission < ApplicationRecord
                               email: email).
                         pluck(:year).
                         sort.
+                        uniq.
                         map(&:to_s)
       confirmed_years = Submission.
                         where(state: %w(accepted confirmed venue_confirmed)).
@@ -387,6 +388,7 @@ class Submission < ApplicationRecord
                               email: email).
                         pluck(:year).
                         sort.
+                        uniq.
                         map(&:to_s)
       ListSubscriptionJob.perform_async(email,
                                         submitted_years: submitted_years,
