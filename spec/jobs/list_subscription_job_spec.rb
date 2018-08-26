@@ -60,11 +60,13 @@ describe ListSubscriptionJob, job: true, vcr: true do
         # Lists get request
         response = instance_double('SendGrid::Response',
                                    status_code: 200,
-                                   body: [{
-                                     id: 25,
-                                     name: 'DSW Presenters 2018',
-                                     recipient_count: 1
-                                   }].to_json)
+                                   body: {
+                                     lists: [{
+                                       id: 25,
+                                       name: 'DSW Presenters 2018',
+                                       recipient_count: 1
+                                     }]
+                                   }.to_json)
         expect(lists_double).to receive(:get).and_return(response)
 
         # List subscription requests - receive_message_chain doesn't allow `twice` so here we are
@@ -99,11 +101,13 @@ describe ListSubscriptionJob, job: true, vcr: true do
         # Lists get request
         response = instance_double('SendGrid::Response',
                                    status_code: 200,
-                                   body: [{
-                                     id: 25,
-                                     name: 'DSW Submitters 2018',
-                                     recipient_count: 1
-                                   }].to_json)
+                                   body: {
+                                     lists: [{
+                                       id: 25,
+                                       name: 'DSW Submitters 2018',
+                                       recipient_count: 1
+                                     }]
+                                   }.to_json)
         expect(lists_double).to receive(:get).and_return(response)
 
         # List subscription requests - receive_message_chain doesn't allow `twice` so here we are

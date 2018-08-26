@@ -72,7 +72,7 @@ class ListSubscriptionJob
   end
 
   def all_lists
-    @all_lists ||= JSON.parse(sg.client.contactdb.lists.get().body).each_with_object({}) do |list, memo|
+    @all_lists ||= JSON.parse(sg.client.contactdb.lists.get().body)['lists'].each_with_object({}) do |list, memo|
       memo[list['name']] = list['id']
     end
   end
