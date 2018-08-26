@@ -71,7 +71,7 @@ class ListSubscriptionJob
   def create_list(name)
     response = sg.client.contactdb.lists.post(request_body: { name: name })
     raise SendGridListCreateFailedError.new("Error creating list #{name}: #{response.body}") unless response.status_code.to_s == '201'
-    response['id']
+    JSON.parse(response.body)['id']
   end
 
   def all_lists
