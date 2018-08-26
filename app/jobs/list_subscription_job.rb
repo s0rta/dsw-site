@@ -46,7 +46,7 @@ class ListSubscriptionJob
     if submitted_years = extra_fields['submitted_years']
       submitted_years.each do |year|
         list_name = "DSW Submitters #{year}"
-        list_ids << all_lists[list_name] || create_list(list_name)
+        list_ids << (all_lists[list_name] || create_list(list_name))
       end
     end
 
@@ -54,7 +54,7 @@ class ListSubscriptionJob
     if confirmed_years = extra_fields['confirmed_years']
       confirmed_years.each do |year|
         list_name = "DSW Presenters #{year}"
-        list_ids << all_lists[list_name] || create_list(list_name)
+        list_ids << (all_lists[list_name] || create_list(list_name))
       end
     end
 
