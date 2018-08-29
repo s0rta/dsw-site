@@ -1,0 +1,28 @@
+= render partial: 'layouts/shared/attendee_nav', locals: { item: :field_guide }
+
+section.common.gold
+  .section-content.sm-centered
+    h1 Your Guide to Denver Startup Week
+    h6
+      |
+        To help keep you fueled and to give you a taste of the city’s locally-owned, we’ve teamed up
+        with #{link_to 'The Passport Program', 'https://www.thepassportprogram.com/'} &mdash; a startup
+        dedicated to curating city guides for the curious imbiber. Whether you’re looking for a coffee
+        between sessions, a networking drink, or a bite to eat, keep this Field Guide handy throughout
+        your Denver Startup Week experience!
+
+section.common.sm-centered
+  .section-content
+    javascript:
+      (function() {
+        var frame, url = 'https://embed.nightout.com/events/denver-startup-week-field-guide/tickets';
+        window.addEventListener('message', function(e) {
+          if (e.data[0] == 'setHeight') frame.style.height = e.data[1] + 'px';
+        }, false);
+        document.addEventListener("DOMContentLoaded", function() {
+          frame = document.getElementById('embed-iframe-48876');
+          frame.setAttribute('src', url);
+        });
+      })();
+    iframe width="100%" height="680px" frameborder="0" border="0" name="Denver Startup Week Field Guide " id="embed-iframe-48876"
+
