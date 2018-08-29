@@ -4,6 +4,9 @@
   meta(property="og:site_name" content="Denver Startup Week")
   meta(property="og:url" content="#{schedule_url(@session)}")
   meta(property="og:description" content="#{@session.description}")
+  meta(name="date" content="#{@session.start_datetime.iso8601}")
+  script(type="application/ld+json") = session_ld_json(@session).html_safe
+
 nav
   .section-content
     - if @session.current_year?
