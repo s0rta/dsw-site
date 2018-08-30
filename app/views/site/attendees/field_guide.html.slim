@@ -17,13 +17,6 @@ section.common
     h6
       em Field Guides will be available for pickup at Basecamp (The Commons on Champa, 1245 Champa Street) September 19th through September 28th, or at the Denver Startup Week Opening Block Party.
 
-- if field_guide_sponsors.any?
-  section.common.sponsor.sm-centered
-    .section-content
-      h1 Thanks to
-      - field_guide_sponsors.each do |sponsorship|
-        = render partial: 'layouts/shared/sponsorship', object: sponsorship
-
 section.common
   .section-content.sm-centered
     javascript:
@@ -38,4 +31,11 @@ section.common
         });
       })();
     iframe width="100%" height="680px" frameborder="0" border="0" name="Denver Startup Week Field Guide " id="embed-iframe-48876"
+
+- if field_guide_sponsors.any?
+  section.common.sponsor.sm-centered
+    .section-content
+      h1 Thanks to
+      - field_guide_sponsors.each do |sponsorship|
+        = render partial: 'layouts/shared/sponsorship', object: sponsorship
 
