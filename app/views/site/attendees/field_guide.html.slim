@@ -10,6 +10,12 @@ section.common.gold
         dedicated to curating city guides for the curious imbiber. Whether you’re looking for a coffee
         between sessions, a networking drink, or a bite to eat, keep this Field Guide handy throughout
         your Denver Startup Week experience!
+- if field_guide_sponsors.any?
+  section.common.sponsor.sm-centered
+    .section-content
+      h1 Thanks to
+      - field_guide_sponsors.each do |sponsorship|
+        = render partial: 'layouts/shared/sponsorship', object: sponsorship
 
 section.common.sm-centered
   .section-content
