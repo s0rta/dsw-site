@@ -218,6 +218,13 @@ module ApplicationHelper
                         .alphabetical
   end
 
+  def field_guide_sponsors
+    @field_guide_sponsors ||= Sponsorship
+                              .for_current_year
+                              .where(level: Sponsorship::FIELD_GUIDE_LEVEL)
+                              .alphabetical
+  end
+
   def helpscout_articles_for_category(category_name)
     Helpscout::Article.for_category(category_name)
   end
