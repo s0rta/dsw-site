@@ -65,5 +65,5 @@ you've considered the following:
   changed functionality.
 
 If you would like to open a pull request that is not yet ready for review,
-please add the `WIP` label to signal that you are still working. Don't forget to
+please either indicate `WIP` in the title or the `WIP` label to signal that you are still working. Don't forget to
 remove the `WIP` label when you feel that your code is ready for review.
