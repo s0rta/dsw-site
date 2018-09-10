@@ -412,7 +412,7 @@ ALTER SEQUENCE public.homepage_ctas_id_seq OWNED BY public.homepage_ctas.id;
 
 CREATE TABLE public.mentor_sessions (
     id bigint NOT NULL,
-    year character varying NOT NULL,
+    year integer NOT NULL,
     title character varying NOT NULL,
     timeslot character varying NOT NULL,
     signup_url character varying NOT NULL,
@@ -2195,6 +2195,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180718045251'),
 ('20180718142543'),
 ('20180813001629'),
-('20180910142243');
+('20180910142243'),
+('20180910175949');
 
 
