@@ -104,58 +104,7 @@ module ApplicationHelper
   end
 
   def mentor_sessions
-    [
-      { title: 'Mentors & Advisors, "Roster by Specialty - to see list click "Book It"',
-        timeslot: 'Friday 9/29: 11am-2pm',
-        signup_url: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT-sHP3qtTXcm54cnKDd4DKcGPO9iKCGvvYqM_3kZx2JH-K3gqRBzubNaSfSaELEpgyK2U0heh1ApDz/pubhtml?gid=2083275987&single=true' },
-      { title: 'Dave Harris, "Marketing & Sales, Money, Investment, Funding, Planning & Strategy", Rockies Venture Fund',
-        timeslot: 'Friday 9/29: 11-1pm',
-        signup_url: 'http://slottd.com/events/lsz5qsabxv/slots' },
-      { title: 'David Kendall, "Founder, Legal, Organizational Culture", Bold Legal, LLC',
-        timeslot: 'Friday 9/29: 11-1pm',
-        signup_url: 'http://slottd.com/events/7e752b1i58/slots' },
-      { title: 'Nichole Montoya, "Investment, Funding, Planning & Strategy", Cheddar Up',
-        timeslot: 'Friday 9/29: 11-1pm',
-        signup_url: 'http://slottd.com/events/oscjdvy3i5/slots' },
-      { title: 'Rich Piech, "Growth, Marketing & Sales", Sales Engineered Systems',
-        timeslot: 'Friday 9/29: 11-12pm',
-        signup_url: 'http://slottd.com/events/af5ustdpta/slots' },
-      { title: 'Natty Zola, "Growth, Money, Investment", TechStars',
-        timeslot: 'Friday 9/29: 1-2pm',
-        signup_url: 'http://slottd.com/events/nenvpqamdg/slots' },
-      { title: 'Terrance Carroll, "Legal, Money, Investment, Funding", Butler Snow LLP',
-        timeslot: 'Friday 9/29: 1-2pm',
-        signup_url: 'http://slottd.com/events/vf5y9q6vk4/slots' },
-      { title: 'Rich Piech, "Growth, Marketing & Sales", Sales Engineered Systems',
-        timeslot: 'Friday 9/29: 1-2pm',
-        signup_url: 'http://slottd.com/events/lfwmplvbar/slots' }
-    ]
-  end
-
-  def group_mentor_sessions
-    [
-      { title: 'Sameer Dholakia, CEO, SendGrid',
-        timeslot: 'Tuesday 9/26: 10:00am-11:00am',
-        signup_url: 'https://www.denverstartupweek.org/schedule/3776-group-mentor-session-with-sameer-dholakia-ceo-of-sendgrid' },
-      { title: 'Justin Cucci, Composer & Chef, Edible Beats',
-        timeslot: 'Tuesday 9/26: 2:00pm-3:00pm',
-        signup_url: 'https://www.denverstartupweek.org/schedule/3775-group-mentor-session-with-justin-cucci-composer-chef-edible-beats' },
-      { title: 'Lee Mayer, Co-Founder & CEO, Havenly',
-        timeslot: 'Tuesday 9/26: 3:00pm-4:00pm',
-        signup_url: 'https://www.denverstartupweek.org/schedule/3777-group-mentor-session-with-lee-mayer-co-founder-ceo-of-havenly' },
-      { title: 'Ryan Kirkpatrick, Partner, CO Impact Fund',
-        timeslot: 'Wednesday 9/27: 10:00am-11:00am',
-        signup_url: 'https://www.denverstartupweek.org/schedule/3778-group-mentor-session-with-ryan-kirkpatrick-partner-at-colorado-impact-fund' },
-      { title: 'Nancy Phillips, Founder & Executive Chair to the Board, ViaWest',
-        timeslot: 'Thursday 9/28: 3:00pm-4:00pm',
-        signup_url: 'https://www.denverstartupweek.org/schedule/3772-group-mentor-session-with-nancy-phillips-president-ceo-of-viawest' },
-      { title: 'Linda Appel Lipsius, Co-Founder & CEO, Teatulia Organic Teas & The Mamahood',
-        timeslot: 'Friday 9/29: 1:00pm-2:00pm',
-        signup_url: 'https://www.denverstartupweek.org/schedule/3819-group-mentor-session-with-linda-appel-lipsius-co-founder-ceo-of-teatulia-organic-teas-the-mama-hood' },
-      { title: 'Nicole Glaros, Chief Innovation Officer, Techstars',
-        timeslot: 'Friday 9/29: 11:00am-12:00pm',
-        signup_url: 'https://www.denverstartupweek.org/schedule/3840-group-mentor-session-with-nicole-glaros-chief-innovation-officer-techstars' }
-    ]
+    MentorSession.for_current_year
   end
 
   def basecamp_sessions
