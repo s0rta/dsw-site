@@ -407,6 +407,40 @@ ALTER SEQUENCE public.homepage_ctas_id_seq OWNED BY public.homepage_ctas.id;
 
 
 --
+-- Name: mentor_sessions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.mentor_sessions (
+    id bigint NOT NULL,
+    year character varying NOT NULL,
+    title character varying NOT NULL,
+    timeslot character varying NOT NULL,
+    signup_url character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: mentor_sessions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.mentor_sessions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: mentor_sessions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.mentor_sessions_id_seq OWNED BY public.mentor_sessions.id;
+
+
+--
 -- Name: newsletter_signups; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1217,6 +1251,13 @@ ALTER TABLE ONLY public.homepage_ctas ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: mentor_sessions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mentor_sessions ALTER COLUMN id SET DEFAULT nextval('public.mentor_sessions_id_seq'::regclass);
+
+
+--
 -- Name: newsletter_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1435,6 +1476,14 @@ ALTER TABLE ONLY public.general_inquiries
 
 ALTER TABLE ONLY public.homepage_ctas
     ADD CONSTRAINT homepage_ctas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: mentor_sessions mentor_sessions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.mentor_sessions
+    ADD CONSTRAINT mentor_sessions_pkey PRIMARY KEY (id);
 
 
 --
@@ -2145,6 +2194,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180718044128'),
 ('20180718045251'),
 ('20180718142543'),
-('20180813001629');
+('20180813001629'),
+('20180910142243');
 
 
