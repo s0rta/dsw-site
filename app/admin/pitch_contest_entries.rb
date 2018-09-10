@@ -6,6 +6,7 @@ ActiveAdmin.register PitchContest::Entry do
 
   index do
     selectable_column
+    column :year
     column :name
     column :is_active
     column(:votes) { |e| e.votes.size }
@@ -13,6 +14,11 @@ ActiveAdmin.register PitchContest::Entry do
   end
 
   filter :name
+  filter :year
+
+  # Set a default year filter
+  scope('Current', default: true, &:for_current_year)
+  scope('Previous Years', &:for_previous_years)
 
   controller do
     def scoped_collection
