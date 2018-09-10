@@ -3,8 +3,14 @@ class NewsroomItem < ApplicationRecord
   validates :title,
             :release_date, presence: true
 
-  validates :attachment, presence: true, if: ->(ni) { ni.external_link.blank? }
-  validates :external_link, presence: true, if: ->(ni) { ni.attachment.blank? }
+  validates :attachment,
+            presence: true,
+            if: ->(ni) { ni.external_link.blank? }
+
+  validates :external_link,
+            url: true,
+            presence: true,
+            if: ->(ni) { ni.attachment.blank? }
 
   mount_uploader :attachment, PdfUploader
 

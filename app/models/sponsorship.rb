@@ -52,6 +52,8 @@ class Sponsorship < ApplicationRecord
             presence: true,
             inclusion: { in: LEVELS }
 
+  validates :link_href, url: true
+
   def self.for_sponsors_page
     where(level: SPONSORS_PAGE_LEVELS)
   end

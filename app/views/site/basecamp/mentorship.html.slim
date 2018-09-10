@@ -5,26 +5,6 @@ section.common.blue
     h1 The Commons on Champa presents Basecamp Mentorship 2017, Sponsored by Bold Legal
     h6 This year our mentor program gets even better thanks to our friends at The Commons on Champa, Denver’s year-round hub for entrepreneurship. You’ll find individual, group and online settings to get connected. The mentees are entrepreneurs running or ready to launch a business. The mentors are experienced leaders and experts who give a few hours to supporting entrepreneurs. We hope you will get or give all you can while experiencing how much we have in common.
 
-section.common
-  .section-content.sm-centered
-    h1.basecamp-headline One-on-One Advisor Sessions
-    h6 Looking for some free advice? Our mentors are here to help. Colorado’s top entrepreneurs are volunteering their time and talent to meet with Denver Startup Week attendees.
-    br
-    h6 Sign up for a 20-minute, 1:1 meeting with mentors from all walks of the startup world. All mentor office hours will be held at Basecamp, inside The Commons on Champa at 1245 Champa Street.
-    - if mentor_sessions.any?
-      form.basecamp-bookings(data-bindable="booking-dropdown")
-        select
-          option(value="#") Choose a Mentor
-          - mentor_sessions.each do |m|
-            option(value="#{m[:signup_url]}")
-              = m[:title]
-              | &nbsp; &vert; &nbsp;
-              = m[:timeslot]
-        input(type="submit" value="Book It" class="btn primary")
-    - else
-      = link_to 'Coming Soon', '#', class: 'btn primary'
-
-
 section.common.sm-centered
   .section-content
     h1.basecamp-headline Group Mentor Sessions
@@ -35,8 +15,8 @@ section.common.sm-centered
     - if mentor_sessions.any?
       form.basecamp-bookings(data-bindable="booking-dropdown")
         select
-          option(value="#") Choose a Company
-          - group_mentor_sessions.each do |m|
+          option(value="#") Choose a Mentor
+          - mentor_sessions.each do |m|
             option(value="#{m[:signup_url]}")
               = m[:title]
               | &nbsp; &vert; &nbsp;
