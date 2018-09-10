@@ -2,6 +2,7 @@ module YearScoped
   extend ActiveSupport::Concern
 
   included do
+    validates :year, presence: true, format: %r(\A\d{4}\z)
     after_initialize do
       self.year ||= Date.today.year
     end
