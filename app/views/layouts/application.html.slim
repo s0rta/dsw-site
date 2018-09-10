@@ -10,7 +10,7 @@ html
         gtag('js', new Date());
 
         gtag('config', '#{ENV['GA_TRACKING_ID']}');
-    title = [ "Denver Startup Week #{Date.today.year}", content_for(:title) ].compact.join(' | ')
+    title = [ "Denver Startup Week", content_for(:title), content_for(:subtitle) ].compact.join(' | ')
     meta http-equiv="X-UA-Compatible" content="IE=Edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
     link rel="icon" type="image/png" href="/favicon.ico"
