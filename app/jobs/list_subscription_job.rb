@@ -61,6 +61,14 @@ class ListSubscriptionJob
       end
     end
 
+    # Create/add registered lists
+    if registered_years = extra_fields['registered_years']
+      registered_years.each do |year|
+        list_name = "DSW Registrants #{year}"
+        list_ids << (all_lists[list_name] || create_list(list_name))
+      end
+    end
+
     list_ids
   end
 
