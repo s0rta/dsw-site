@@ -51,7 +51,7 @@ section.common
       .location-details
         p = @session.human_location_name
 
-- if AnnualSchedule.registration_open?
+- if AnnualSchedule.registration_open? && @session.current_year?
   section.common
     .section-content.sm-centered
       - if !registered? || !registered_for_session?(@session)
