@@ -3,7 +3,7 @@ header.basecamp
     = image_tag 'redesign/basecamp-logo.png'
 
 section.hero
-  h1.basecamp-headline Basecamp launched by chase for business
+  h1.basecamp-headline Basecamp launched by Chase for Business
   .section-content
     h3 Located in the heart of downtown in The Commons on Champa at 1245 Champa Street, Basecamp offers something for everyone. You’ll find leading panelists and speakers, opportunities to sharpen your startup idea with seasoned entrepreneurs, complimentary happy hours, and more!
 
@@ -21,7 +21,10 @@ section.site-max-and-center
       div.card-elements
         h2.card-heading Programs
         h3.card-subheading Basecamp hosts some of the best of Denver Startup Week.
-        p.card-copy Monday through Friday on the main stage, you’ll find inspiring conversations and panel discussions on a wide variety of topics with some of the leading minds from the startup community.
+        p.card-copy
+          | Monday through Friday on two different stages, you’ll find inspiring conversations and panel discussions 
+          | on a wide variety of topics with some of the leading minds from the startup community. 
+          | Also come explore Sculpture Park for off-stage activities, games, and other ways to plug in to Denver Startup Week.
         - if basecamp_sessions.any?
           = link_to 'Explore Schedule', schedules_path(filter: 'basecamp'), class: 'btn green'
         - else
@@ -32,12 +35,18 @@ section.site-max-and-center
         h2.card-heading Mentorship
         h3.card-subheading Presented by The Commons on Champa
         p.card-copy Connect with experienced mentors who can offer advice and support to launch you to the next level. Take advantage of individual, group and online mentorship opportunities throughout the week.
-        = link_to 'Get Started', page_path(page: 'basecamp/mentorship'), class: 'btn blue'
+        - if basecamp_sessions.any?
+          = link_to 'Explore Schedule', schedules_path(filter: 'basecamp'), class: 'btn green'
+        - else
+          = link_to 'Coming Soon', '#', class: 'btn green'
 
 section.common
   .section-content.sm-centered
     h1 Be Social
-    h6 There is no shortage of things to do during Denver Startup Week. Don’t miss out on happy hour events at Basecamp, including FoodForward, a Monday afternoon kick-off showcase with food companies, brewers, distillers, and more.
+    h6
+      | There is no shortage of things to do during Denver Startup Week. 
+      | Don’t miss out on happy hour events at Basecamp, including the Startup Farmers Market, 
+      | a Monday afternoon kick-off showcase with food companies, brewers, distillers, and more.
 
 section.common
   .section-content.sm-centered
@@ -49,11 +58,5 @@ section.common
     h1 Follow us
     h6 Basecamp is live on Twitter &mdash; keep up with all the Basecamp happenings during Denver Startup Week at @BasecampLiveDEN &mdash; #BasecampLiveDEN  #ChaseBasecamp  #DENstartupweek
     = link_to 'Follow @BasecampLiveDEN', 'https://twitter.com/basecampliveden', class: 'btn primary copy-btn'
-
-section.common
-  .section-content.sm-centered
-    h1 Watch online
-    h6 We are streaming our sessions from the Sculpture Park Terrace stage live on Youtube &mdash; keep up with all of the fantastic sessions and check out any you may have missed.
-    = link_to 'Watch Now', 'https://www.youtube.com/channel/UC52Ra7a50SGPpwnlcklkzuw', class: 'btn primary copy-btn'
 
 = render partial: 'layouts/shared/page_footer'
