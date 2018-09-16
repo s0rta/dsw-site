@@ -13,7 +13,7 @@ gem 'font_assets'
 gem 'sassc-rails'
 gem 'slim-rails'
 gem 'uglifier'
-gem 'webpacker', '~> 3.0'
+gem 'webpacker'
 
 gem 'httparty'
 gem 'icalendar'
