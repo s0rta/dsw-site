@@ -103,10 +103,6 @@ module ApplicationHelper
     Registration::PRIMARY_ROLES
   end
 
-  def mentor_sessions
-    MentorSession.for_current_year
-  end
-
   def basecamp_sessions
     Submission
       .for_current_year
