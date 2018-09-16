@@ -13,7 +13,7 @@ Fork this repository and run `bundle` to install Ruby dependencies.
 Run `bin/yarn install` to install Webpacker/JS dependencies.
 
 Copy `.env.example` to your own `.env` file. `.env.example` is already
-pre-populated with dummy environment variables that are sufficient for local
+pre-populated with dummy environment variables for local
 development and testing.
 
 #### Set Up
@@ -27,12 +27,11 @@ Run `bundle exec rails s` to run the Rails server.
 
 #### Running Tests
 
-You will need to use an older verison of Firefox to run the tests since newer versions of Firefox are incompatible with Selenium. The CI suite specifies Firefox 46, which you can install with Brew Cask:
+You will need Firefox and Geckodriver to run the tests, which you can install with Homebrew:
 
 ```
-brew tap goldcaddy77/homebrew-firefox
-
-brew cask install firefox-46
+brew cask install firefox
+brew install geckodriver
 ```
 
 Run `rake db:test:prepare` to set up your test database.
@@ -45,7 +44,7 @@ this same spirit. We do ask that you review the [Contribution
 Guidelines](./contributing.md) before submitting a pull request.
 
 #### Code of Conduct
-All contributors and contributions are expected to adhere to the [Denver Startup Week Code of
+All contributors and contributions must adhere to the [Denver Startup Week Code of
 Conduct](https://www.denverstartupweek.org/code-of-conduct).
 
 ## Talk Nerdy To Me

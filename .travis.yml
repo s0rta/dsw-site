@@ -8,7 +8,7 @@ cache:
 bundler_args: "--without staging,production"
 addons:
   postgresql: "9.6"
-  firefox: "46.0.1"
+  firefox: "latest-esr"
   apt:
     sources:
       - kalakris-cmake
@@ -23,6 +23,8 @@ before_script:
 - cp config/database.travis.yml config/database.yml
 - cp .env.example .env
 - bin/yarn install
+- bin/install-geckodriver-travis
+- export PATH=$PATH:$PWD/tmp/geckodriver/bin/
 script:
 - bundle exec rake db:setup webpacker:compile spec
 notifications:
