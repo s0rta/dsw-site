@@ -150,7 +150,7 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    ffi (1.9.23)
+    ffi (1.9.25)
     fog-aws (1.4.1)
       fog-core (~> 1.38)
       fog-json (~> 1.0)
