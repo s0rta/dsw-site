@@ -19,8 +19,10 @@ ActiveAdmin.register User do
     end
     column :name
     column :email
-    column :description
     column :is_admin
+    column(:registrations) do |u|
+      u.registrations.sort.map(&:year).join(', ')
+    end
     actions
   end
 
@@ -46,6 +48,10 @@ ActiveAdmin.register User do
   filter :is_admin
 
   controller do
+    def scoped_collection
+      resource_class.includes(:registrations)
+    end
+
     def update
       if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
         params[:user].delete('password')
@@ -55,4 +61,19 @@ ActiveAdmin.register User do
     end
   end
 
+  show do
+    tabs do
+      tab :login do
+        attributes_table(*(default_attribute_table_rows - %i(encrypted_password reset_password_token provider)))
+      end
+      tab :registrations do
+        table_for user.registrations.order('year asc') do
+          column :year
+          column do |r|
+            link_to 'View', admin_user_registration_path(user, r)
+          end
+        end
+      end
+    end
+  end
 end

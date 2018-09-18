@@ -45,9 +45,7 @@ module ApplicationHelper
   end
 
   def process_with_pipeline(content)
-    context = {
-      asset_root: '/images/icons'
-    }
+    context = { asset_root: '/images/icons' }
     pipeline = HTML::Pipeline.new(
       [
         HTML::Pipeline::MarkdownFilter,
@@ -57,8 +55,7 @@ module ApplicationHelper
       ],
       context
     )
-    result = pipeline.call content
-    result[:output].html_safe
+    pipeline.call(content)[:output].html_safe
   end
 
   def current_year
@@ -172,5 +169,11 @@ module ApplicationHelper
 
   def helpscout_articles_for_category(category_name)
     Helpscout::Article.for_category(category_name)
+  end
+
+  def current_ambassadors
+    User
+      .joins(:registrations)
+      .where(registrations: { is_ambassador: true, year: Date.today.year })
   end
 end
