@@ -21,6 +21,15 @@ section.common.sm-centered
 /       h6 We are looking for 8-10 amazing companies to serve as "Hosts" during Denver Startup Week. The Ambassadors will spend 2 hours of dedicated time onsite with each host company, and will also engage in special social events and programming related to Denver Startup Week.
 /       = link_to 'Apply to become a Host company', 'https://docs.google.com/forms/d/1EHoRPTWsCIDOWN7Xxa34lMAe66scg_QrO0PgC2Amfxc/viewform', class: 'btn primary'
 
+- if current_ambassadors.any?
+  .icon-outer-container
+    .icon-flex-container
+      - current_ambassadors.each do |a|
+        .icon-item
+          = image_tag a.avatar.url(:thumb), class: 'avatar'
+          h4 = a.name
+          h6 = a.description
+
 - if ambassador_host_company_sponsorships.any?
   section.common.sponsor.sm-centered
     .section-content

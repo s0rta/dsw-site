@@ -592,7 +592,8 @@ CREATE TABLE public.registrations (
     age_range character varying,
     learn_more_pledge_1p boolean DEFAULT false NOT NULL,
     company_id bigint,
-    coc_acknowledgement boolean DEFAULT false NOT NULL
+    coc_acknowledgement boolean DEFAULT false NOT NULL,
+    is_ambassador boolean DEFAULT false NOT NULL
 );
 
 
@@ -2148,6 +2149,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180813001629'),
 ('20180910142243'),
 ('20180910175949'),
-('20180916230057');
+('20180916230057'),
+('20180918152617');
 
 
