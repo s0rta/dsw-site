@@ -8,17 +8,21 @@ cache:
 bundler_args: "--without staging,production"
 addons:
   postgresql: "9.6"
-  firefox: "46.0.1"
+  chrome: "stable"
   apt:
     sources:
       - kalakris-cmake
+      - google-chrome
     packages:
       - cmake
+      - google-chrome-stable
+      - chromium-chromedriver
 before_install:
 - "export DISPLAY=:99.0"
 - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
 - nvm install --lts
 - npm install -g yarn
+- ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 before_script:
 - cp config/database.travis.yml config/database.yml
 - cp .env.example .env

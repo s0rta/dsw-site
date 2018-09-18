@@ -8,16 +8,18 @@ gem 'rake'
 gem 'pg'
 gem 'puma'
 
-gem 'slim-rails'
-gem 'sass-rails'
-gem 'uglifier'
-gem 'font_assets'
 gem 'autoprefixer-rails'
-gem 'webpacker', '~> 3.0'
+gem 'font_assets'
+gem 'sassc-rails'
+gem 'slim-rails'
+gem 'uglifier'
+gem 'webpacker'
 
-gem 'responders'
-gem 'jsonb_accessor'
 gem 'httparty'
+gem 'icalendar'
+gem 'jsonb_accessor'
+gem 'responders'
+gem 'textacular'
 
 # Simple transparent captchas
 gem 'honeypot-captcha', github: 'RandieM/honeypot-captcha', branch: 'master'
@@ -27,17 +29,12 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'gravatarify'
-
 gem 'html-pipeline', require: 'html/pipeline'
 gem 'commonmarker'
 gem 'sanitize'
 gem 'rinku'
 gem 'gemoji'
 gem 'liquid'
-
-gem 'textacular'
-
-gem 'icalendar'
 
 gem 'premailer-rails'
 gem 'sendgrid', github: 'caring/sendgrid'
@@ -82,7 +79,7 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
-  gem 'selenium-webdriver', '~> 2.53'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
   gem 'email_spec', '~> 2.1.0'
   gem 'vcr'
