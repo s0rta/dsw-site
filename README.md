@@ -27,11 +27,10 @@ Run `bundle exec rails s` to run the Rails server.
 
 #### Running Tests
 
-You will need Firefox and Geckodriver to run the tests, which you can install with Homebrew:
+You will need Chrome and Chromedriver to run the tests, which you can install with Homebrew:
 
 ```
-brew cask install firefox
-brew install geckodriver
+brew cask install google-chrome chromedriver
 ```
 
 Run `rake db:test:prepare` to set up your test database.

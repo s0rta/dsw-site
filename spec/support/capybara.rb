@@ -1,15 +1,13 @@
 require 'capybara/rails'
 require 'capybara/rspec'
 
-Capybara.default_driver = :selenium
-if ENV['FIREFOX_BIN_PATH']
-  puts "Using vendored Firefox binary from #{ENV['FIREFOX_BIN_PATH']}"
-  Capybara.register_driver :selenium do |app|
-    require 'selenium/webdriver'
-    Selenium::WebDriver::Firefox::Binary.path = ENV['FIREFOX_BIN_PATH']
-    Capybara::Selenium::Driver.new(app, browser: :firefox)
-  end
+Capybara.register_driver :chrome do |app|
+  options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
+
+Capybara.default_driver = :chrome
 
 RSpec.configure do |config|
   config.prepend_before(:each, type: :feature) do
@@ -19,4 +17,3 @@ RSpec.configure do |config|
     end
   end
 end
-
