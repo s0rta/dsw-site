@@ -1,6 +1,6 @@
 ActiveAdmin.register Ambassador do
 
-  menu parent: 'Site Content', label: 'Sponsorships'
+  menu parent: 'Site Content'
 
   permit_params :first_name,
                 :last_name,
