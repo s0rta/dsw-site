@@ -91,6 +91,42 @@ ALTER SEQUENCE public.active_admin_comments_id_seq OWNED BY public.active_admin_
 
 
 --
+-- Name: ambassadors; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ambassadors (
+    id bigint NOT NULL,
+    first_name character varying NOT NULL,
+    last_name character varying NOT NULL,
+    company character varying NOT NULL,
+    title character varying NOT NULL,
+    location character varying NOT NULL,
+    year integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: ambassadors_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.ambassadors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: ambassadors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.ambassadors_id_seq OWNED BY public.ambassadors.id;
+
+
+--
 -- Name: annual_schedules; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -592,8 +628,7 @@ CREATE TABLE public.registrations (
     age_range character varying,
     learn_more_pledge_1p boolean DEFAULT false NOT NULL,
     company_id bigint,
-    coc_acknowledgement boolean DEFAULT false NOT NULL,
-    is_ambassador boolean DEFAULT false NOT NULL
+    coc_acknowledgement boolean DEFAULT false NOT NULL
 );
 
 
@@ -1155,6 +1190,13 @@ ALTER TABLE ONLY public.active_admin_comments ALTER COLUMN id SET DEFAULT nextva
 
 
 --
+-- Name: ambassadors id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ambassadors ALTER COLUMN id SET DEFAULT nextval('public.ambassadors_id_seq'::regclass);
+
+
+--
 -- Name: annual_schedules id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1356,6 +1398,14 @@ ALTER TABLE ONLY public.votes ALTER COLUMN id SET DEFAULT nextval('public.votes_
 
 ALTER TABLE ONLY public.active_admin_comments
     ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ambassadors ambassadors_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ambassadors
+    ADD CONSTRAINT ambassadors_pkey PRIMARY KEY (id);
 
 
 --
@@ -2150,6 +2200,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180910142243'),
 ('20180910175949'),
 ('20180916230057'),
-('20180918152617');
+('20180918152617'),
+('20180919041913'),
+('20180919042513');
 
 

@@ -171,9 +171,4 @@ module ApplicationHelper
     Helpscout::Article.for_category(category_name)
   end
 
-  def current_ambassadors
-    User
-      .joins(:registrations)
-      .where(registrations: { is_ambassador: true, year: Date.today.year })
-  end
 end

@@ -26,9 +26,11 @@ section.common.sm-centered
     .icon-flex-container
       - current_ambassadors.each do |a|
         .icon-item
-          = image_tag a.avatar.url(:thumb), class: 'avatar'
-          h4 = a.name
-          h6 = a.description
+          = image_tag "ambassadors/#{a.last_name}_#{a.first_name}.png", class: 'avatar'
+          h4 #{a.first_name} #{a.last_name}
+          h6 = a.title
+          h6 = a.company
+          h6 = a.location
 
 - if ambassador_host_company_sponsorships.any?
   section.common.sponsor.sm-centered
