@@ -8,4 +8,6 @@ class Ambassador < ApplicationRecord
             :title,
             :location,
             presence: true
+
+  mount_uploader :avatar, AvatarUploader
 end

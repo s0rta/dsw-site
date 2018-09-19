@@ -103,7 +103,8 @@ CREATE TABLE public.ambassadors (
     location character varying NOT NULL,
     year integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    avatar character varying
 );
 
 
@@ -2202,6 +2203,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180916230057'),
 ('20180918152617'),
 ('20180919041913'),
-('20180919042513');
+('20180919042513'),
+('20180919050424');
 
 
