@@ -5,6 +5,7 @@ ruby '2.5.1'
 gem 'mime-types', '>= 2.6.1', require: 'mime/types/columnar'
 gem 'pg'
 gem 'puma'
+gem 'puma_worker_killer'
 gem 'rails', '~> 5.1.0'
 gem 'rake'
 
