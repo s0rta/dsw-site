@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   get '/about/youth', to: redirect('/initiatives/youth')
   get '/program/youth', to: redirect('/initiatives/youth')
   get '/panel-picker/mine', to: redirect('/dashboard')
+  get '/live', to: redirect('/basecamp')
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
