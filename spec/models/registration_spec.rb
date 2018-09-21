@@ -60,16 +60,20 @@ RSpec.describe Registration, type: :model do
     end
 
     it 'sends multiple registration years if applicable' do
-      user.registrations.create! contact_email: 'test@example.com',
-                                 year: 2015,
-                                 age_range: Registration::AGE_RANGES.first,
-                                 primary_role: 'Testing',
-                                 coc_acknowledgement: true
-      user.registrations.create! contact_email: 'test@example.com',
-                                 year: 2016,
-                                 age_range: Registration::AGE_RANGES.first,
-                                 primary_role: 'Testing',
-                                 coc_acknowledgement: true
+      create(:registration,
+             user: user,
+             contact_email: 'test@example.com',
+             year: 2015,
+             age_range: Registration::AGE_RANGES.first,
+             primary_role: 'Testing',
+             coc_acknowledgement: true)
+      create(:registration,
+             user: user,
+             contact_email: 'test@example.com',
+             year: 2016,
+             age_range: Registration::AGE_RANGES.first,
+             primary_role: 'Testing',
+             coc_acknowledgement: true)
       expect(ListSubscriptionJob).to have_received(:perform_async).with('test@example.com',
                                                                         registered_years: %w(2015 2016))
     end
