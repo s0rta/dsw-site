@@ -810,7 +810,7 @@ CREATE TABLE public.submissions (
     format character varying(255),
     location character varying(255),
     time_range character varying(255),
-    title character varying(255),
+    title text,
     description text,
     notes text,
     created_at timestamp without time zone NOT NULL,
@@ -922,7 +922,7 @@ CREATE TABLE public.users (
     uid character varying(255),
     name character varying(255),
     email character varying(255),
-    description character varying(255),
+    description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     is_admin boolean DEFAULT false NOT NULL,
@@ -1659,7 +1659,7 @@ CREATE INDEX fulltext_submissions_description_english ON public.submissions USIN
 -- Name: fulltext_submissions_title_english; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX fulltext_submissions_title_english ON public.submissions USING gin (to_tsvector('english'::regconfig, (title)::text));
+CREATE INDEX fulltext_submissions_title_english ON public.submissions USING gin (to_tsvector('english'::regconfig, title));
 
 
 --
@@ -2204,6 +2204,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180918152617'),
 ('20180919041913'),
 ('20180919042513'),
-('20180919050424');
+('20180919050424'),
+('20180923214023');
 
 
