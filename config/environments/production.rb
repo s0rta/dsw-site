@@ -103,4 +103,7 @@ Rails.application.configure do
 
   # Disable the spoofing filter
   config.action_dispatch.ip_spoofing_check = false
+
+  # Show mailer previews if we have them turned on
+  config.action_mailer.show_previews = (ENV['SHOW_MAILER_PREVIEWS'] == 'true')
 end
