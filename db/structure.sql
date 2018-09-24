@@ -841,7 +841,8 @@ CREATE TABLE public.submissions (
     live_stream_url character varying,
     company_id bigint,
     coc_acknowledgement boolean DEFAULT false NOT NULL,
-    pitch_qualifying boolean DEFAULT false NOT NULL
+    pitch_qualifying boolean DEFAULT false NOT NULL,
+    registrant_count integer DEFAULT 0 NOT NULL
 );
 
 
@@ -2205,6 +2206,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180919041913'),
 ('20180919042513'),
 ('20180919050424'),
-('20180923214023');
+('20180923214023'),
+('20180924163222');
 
 

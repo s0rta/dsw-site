@@ -272,7 +272,7 @@ class Submission < ApplicationRecord
   end
 
   def popular?
-    user_registrations.count * SHOW_RATE > (venue.try(:capacity) || Venue::DEFAULT_CAPACITY)
+    registrant_count * SHOW_RATE > (venue.try(:capacity) || Venue::DEFAULT_CAPACITY)
   end
 
   def venue_confirmed?
