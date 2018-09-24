@@ -1,11 +1,13 @@
 class DailyScheduleMailer < ApplicationMailer
 
+  ASM_GROUP_ID = 7637
+
   sendgrid_enable :subscriptiontrack
   sendgrid_category :daily_schedule
   sendgrid_subscriptiontrack_text replace: '[unsub]'
 
   def notify_of_monday_daily_schedule(registration)
-    sendgrid_asm_group_id 3437
+    sendgrid_asm_group_id ASM_GROUP_ID
     @day = 0
     @registration = registration
     @sessions = @registration.
@@ -18,7 +20,7 @@ class DailyScheduleMailer < ApplicationMailer
   end
 
   def notify_of_tuesday_daily_schedule(registration)
-    sendgrid_asm_group_id 3437
+    sendgrid_asm_group_id ASM_GROUP_ID
     @day = 1
     @registration = registration
     @sessions = @registration.
@@ -31,7 +33,7 @@ class DailyScheduleMailer < ApplicationMailer
   end
 
   def notify_of_wednesday_daily_schedule(registration)
-    sendgrid_asm_group_id 3437
+    sendgrid_asm_group_id ASM_GROUP_ID
     @day = 2
     @registration = registration
     @sessions = @registration.
@@ -44,7 +46,7 @@ class DailyScheduleMailer < ApplicationMailer
   end
 
   def notify_of_thursday_daily_schedule(registration)
-    sendgrid_asm_group_id 3437
+    sendgrid_asm_group_id ASM_GROUP_ID
     @day = 3
     @registration = registration
     @sessions = @registration.
@@ -57,7 +59,7 @@ class DailyScheduleMailer < ApplicationMailer
   end
 
   def notify_of_friday_daily_schedule(registration)
-    sendgrid_asm_group_id 3437
+    sendgrid_asm_group_id ASM_GROUP_ID
     @day = 4
     @registration = registration
     @sessions = @registration.
