@@ -1,4 +1,5 @@
-- content_for(:title, @session.full_title)
+- content_for(:title, @session.year)
+- content_for(:subtitle, @session.full_title)
 - content_for(:extra_meta_tags) do
   meta(property="og:title" content="Denver Startup Week | #{@session.full_title}")
   meta(property="og:site_name" content="Denver Startup Week")
