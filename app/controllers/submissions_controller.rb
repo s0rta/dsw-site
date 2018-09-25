@@ -31,7 +31,7 @@ class SubmissionsController < ApplicationController
                                :cluster,
                                :company,
                                sponsorship: :track)
-                     .order('RANDOM()')
+                     .order(Arel.sql('RANDOM()'))
                      .page(params[:page])
       respond_to do |format|
         format.html

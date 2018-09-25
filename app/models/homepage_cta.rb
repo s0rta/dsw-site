@@ -28,7 +28,7 @@ class HomepageCta < ApplicationRecord
   end
 
   def self.in_priority_order
-    order('CASE WHEN track_id <> null THEN 0 ELSE 1 END DESC, priority DESC')
+    order(Arel.sql('CASE WHEN track_id <> null THEN 0 ELSE 1 END DESC, priority DESC'))
   end
 
   def self.relevant_to_cycles(cycles)
