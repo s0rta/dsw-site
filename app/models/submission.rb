@@ -145,8 +145,8 @@ class Submission < ApplicationRecord
   end
 
   def self.for_schedule
-    where(state: %w[confirmed venue_confirmed]).
-      where('start_day IS NOT NULL AND end_day IS NOT NULL')
+    where(state: %w[confirmed venue_confirmed])
+      .where('start_day IS NOT NULL AND end_day IS NOT NULL')
   end
 
   def self.for_start_day(day)
@@ -158,8 +158,8 @@ class Submission < ApplicationRecord
   end
 
   def self.with_slides_or_video
-    where("(slides_url IS NOT NULL AND slides_url <> '') OR (video_url IS NOT NULL AND video_url <> '')").
-      order('year DESC')
+    where("(slides_url IS NOT NULL AND slides_url <> '') OR (video_url IS NOT NULL AND video_url <> '')")
+      .order('year DESC')
   end
 
   def self.pitch_qualifying
