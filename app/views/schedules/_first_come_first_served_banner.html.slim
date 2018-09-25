@@ -1,4 +1,4 @@
-- if local_assigns[:session] && (local_assigns[:session].start_datetime < local_time_now)
+- if local_assigns[:session] && (local_assigns[:session].end_datetime < local_time_now)
   section.common.teal
     .section-content.sm-centered
       h6 PLEASE NOTE: You are viewing an event that has already taken place.
