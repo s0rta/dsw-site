@@ -1,4 +1,8 @@
-- if AnnualSchedule.registration_open? || AnnualSchedule.in_week?
+- if local_assigns[:session] && (local_assigns[:session].start_datetime < local_time_now)
+  section.common.teal
+    .section-content.sm-centered
+      h6 PLEASE NOTE: You are viewing an event that has already taken place.
+- elsif AnnualSchedule.registration_open? || AnnualSchedule.in_week?
   section.common.teal
     .section-content.sm-centered
       h6 Please note that all sessions are seated on a first-come, first-serve basis. Be sure to arrive early to secure your spot!

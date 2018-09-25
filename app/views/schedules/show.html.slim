@@ -20,7 +20,7 @@ section.back-link-section
     = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'
 
 = render partial: 'layouts/shared/flash'
-= render partial: 'first_come_first_served_banner'
+= render partial: 'first_come_first_served_banner', locals: { session: @session }
 
 section.common
   div(class="section-content session-detail sm-centered #{@session.track.color}")
