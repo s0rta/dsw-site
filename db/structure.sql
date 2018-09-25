@@ -50,6 +50,20 @@ CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
 COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
 
 
+--
+-- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION pg_trgm; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pg_trgm IS 'text similarity measurement and index searching based on trigrams';
+
+
 SET default_tablespace = '';
 
 SET default_with_oids = false;
@@ -1671,6 +1685,41 @@ CREATE INDEX fulltext_users_name_english ON public.users USING gin (to_tsvector(
 
 
 --
+-- Name: idx_companies_name_contains; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_companies_name_contains ON public.companies USING gin (name public.gin_trgm_ops);
+
+
+--
+-- Name: idx_submissions_description_contains; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_submissions_description_contains ON public.submissions USING gin (description public.gin_trgm_ops);
+
+
+--
+-- Name: idx_submissions_title_contains; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_submissions_title_contains ON public.submissions USING gin (title public.gin_trgm_ops);
+
+
+--
+-- Name: idx_users_email_contains; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_users_email_contains ON public.users USING gin (email public.gin_trgm_ops);
+
+
+--
+-- Name: idx_users_name_contains; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_users_name_contains ON public.users USING gin (name public.gin_trgm_ops);
+
+
+--
 -- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2207,6 +2256,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180919042513'),
 ('20180919050424'),
 ('20180923214023'),
-('20180924163222');
+('20180924163222'),
+('20180925205310');
 
 
