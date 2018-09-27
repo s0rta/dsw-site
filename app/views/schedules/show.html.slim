@@ -4,7 +4,7 @@
   meta(property="og:title" content="Denver Startup Week | #{@session.full_title}")
   meta(property="og:site_name" content="Denver Startup Week")
   meta(property="og:url" content="#{schedule_url(@session)}")
-  meta(property="og:description" content="#{@session.description}")
+  meta(property="og:description" content="#{truncate(@session.description, length: 300, separator: ' ')}")
   meta(name="date" content="#{@session.start_datetime.iso8601}")
   script(type="application/ld+json") = session_ld_json(@session).html_safe
 
