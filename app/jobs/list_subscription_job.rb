@@ -6,7 +6,7 @@ class ListSubscriptionJob
   include Sidekiq::Throttled::Worker
   sidekiq_throttle(
     concurrency: { limit: 10 },
-    threshold: { limit: 3, period: 2.seconds }
+    threshold: { limit: 100, period: 1.minute }
   )
 
   def perform(email, extra_fields = {})
