@@ -13,4 +13,6 @@ ActiveAdmin.register Feedback do
     actions
   end
 
+  config.filters = false
+
 end
