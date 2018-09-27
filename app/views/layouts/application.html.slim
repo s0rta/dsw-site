@@ -2,6 +2,7 @@ doctype html
 html
   head
     - if ENV['GA_TRACKING_ID'].present?
+      link rel="dns-prefetch" href="//www.google-analytics.com"
       / <!-- Global Site Tag (gtag.js) - Google Analytics -->
       script(async src="https://www.googletagmanager.com/gtag/js?id=#{ENV['GA_TRACKING_ID']}")
       javascript:
@@ -10,6 +11,7 @@ html
         gtag('js', new Date());
 
         gtag('config', '#{ENV['GA_TRACKING_ID']}');
+    link rel="dns-prefetch" href="//js-agent.newrelic.com"
     title = [ "Denver Startup Week", content_for(:title), content_for(:subtitle) ].compact.join(' | ')
     meta http-equiv="X-UA-Compatible" content="IE=Edge"
     meta name="viewport" content="width=device-width, initial-scale=1"
