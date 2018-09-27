@@ -75,13 +75,13 @@ end
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'
-  gem 'rspec-rails', '~> 3.6.0'
+  gem 'rspec-rails'
 end
 
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'email_spec', '~> 2.1.0'
+  gem 'email_spec'
   gem 'factory_bot_rails'
   gem 'rspec-rails-time-metadata'
   gem 'selenium-webdriver'
