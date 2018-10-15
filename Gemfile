@@ -52,6 +52,7 @@ gem 'active_model_serializers', '~> 0.8.0'
 # Production support
 gem 'honeybadger'
 gem 'newrelic_rpm'
+gem 'skylight'
 gem 'rack-canonical-host'
 gem 'utf8-cleaner'
 

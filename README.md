@@ -1,5 +1,6 @@
 # Denver Startup Week
 [![Build Status](https://travis-ci.org/denverstartupweek/dsw-site.svg?branch=master)](https://travis-ci.org/denverstartupweek/dsw-site)
+[![View performance data on Skylight](https://badges.skylight.io/status/R3sADLfgeNb2.svg?token=IC1t-l4LUdqcnTNRjtcjMnQlv05QebvnFz28RCniqp8)](https://www.skylight.io/app/applications/R3sADLfgeNb2)
 
 ### Dependencies
 These set up instructions assume that you already have the following installed:
