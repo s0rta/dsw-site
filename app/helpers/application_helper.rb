@@ -6,38 +6,38 @@ module ApplicationHelper
         AnnualSchedule
           .current
           .cfp_open_at
-          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
-          .at_beginning_of_day,
+          .try(:in_time_zone, ActiveSupport::TimeZone['America/Denver'])
+          .try(:at_beginning_of_day),
       'submission_close_date' =>
         AnnualSchedule
           .current
           .cfp_close_at
-          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
-          .at_end_of_day,
+          .try(:in_time_zone, ActiveSupport::TimeZone['America/Denver'])
+          .try(:at_end_of_day),
       'voting_open_date' =>
         AnnualSchedule
           .current
           .voting_open_at
-          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
-          .at_beginning_of_day,
+          .try(:in_time_zone, ActiveSupport::TimeZone['America/Denver'])
+          .try(:at_beginning_of_day),
       'voting_close_date' =>
         AnnualSchedule
           .current
           .voting_close_at
-          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
-          .at_end_of_day,
+          .try(:in_time_zone, ActiveSupport::TimeZone['America/Denver'])
+          .try(:at_end_of_day),
       'registration_open_date' =>
         AnnualSchedule
           .current
           .registration_open_at
-          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
-          .at_beginning_of_day,
+          .try(:in_time_zone, ActiveSupport::TimeZone['America/Denver'])
+          .try(:at_beginning_of_day),
       'week_start_date' =>
         AnnualSchedule
           .current
           .week_start_at
-          .in_time_zone(ActiveSupport::TimeZone['America/Denver'])
-          .at_beginning_of_day,
+          .try(:in_time_zone, ActiveSupport::TimeZone['America/Denver'])
+          .try(:at_beginning_of_day),
       'current_date' => DateTime.now
     }
     template = Liquid::Template.parse(content)
