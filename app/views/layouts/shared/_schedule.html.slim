@@ -1,14 +1,14 @@
  ul
     li
-      h6 #{AnnualSchedule.current.cfp_open_at.to_s(:month_day)} - Panel Picker opens for submissions
+      h6 #{AnnualSchedule.current.cfp_open_at.try(:to_s, :month_day) || 'TBD'} - Panel Picker opens for submissions
     li
-      h6 #{AnnualSchedule.current.cfp_close_at.to_s(:month_day)} - Call for submissions closes
+      h6 #{AnnualSchedule.current.cfp_close_at.try(:to_s, :month_day) || 'TBD'} - Call for submissions closes
     li
-      h6 #{AnnualSchedule.current.voting_open_at.to_s(:month_day)} - Public voting/feedback on submissions begins
+      h6 #{AnnualSchedule.current.voting_open_at.try(:to_s, :month_day) || 'TBD'} - Public voting/feedback on submissions begins
     li
-      h6 #{AnnualSchedule.current.voting_close_at.to_s(:month_day)} - Public commenting and voting on submissions ends
+      h6 #{AnnualSchedule.current.voting_close_at.try(:to_s, :month_day) || 'TBD'} - Public commenting and voting on submissions ends
     li
-      h6 #{AnnualSchedule.current.registration_open_at.to_s(:month_day)} - Schedule is announced and attendee registration opens
+      h6 #{AnnualSchedule.current.registration_open_at.try(:to_s, :month_day) || 'TBD'} - Schedule is announced and attendee registration opens
     li
-      h6 #{AnnualSchedule.current.week_start_at.to_s(:month_day)} - Denver Startup Week kicks off!
+      h6 #{AnnualSchedule.current.week_start_at.try(:to_s, :month_day) || 'TBD'} - Denver Startup Week kicks off!
     li
