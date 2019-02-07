@@ -18,11 +18,11 @@ class SchedulesController < ApplicationController
                          :cluster,
                          sponsorship: :track)
     respond_to do |format|
-      format.json do
-        respond_with @sessions
-      end
       format.html do
         redirect_to schedules_by_year_by_day_path({ year: current_year_or_default, start_day:  current_day_or_default }.merge(request.query_parameters))
+      end
+      format.json do
+        respond_with @sessions
       end
     end
   end
