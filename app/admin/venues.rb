@@ -15,7 +15,7 @@ ActiveAdmin.register Venue do
                 :standing_capacity,
                 :av_capabilities,
                 :extra_directions,
-                :venue_host_id
+                :company_id
 
   index do
     selectable_column
@@ -24,8 +24,7 @@ ActiveAdmin.register Venue do
     column :contact_email
     column :seated_capacity
     column :standing_capacity
-    # column :venue_host_id
-    # column :host, sortable: 'users.name'
+    column :company_id
     actions
   end
 
@@ -50,7 +49,7 @@ ActiveAdmin.register Venue do
       f.input :contact_name
       f.input :contact_email, hint: 'Multiple addresses are allowed; separate them with commas'
       f.input :contact_phone
-      f.input :venue_host_id, as: :ajax_select, data: { url: filter_admin_users_path, search_fields: %i[name email] }
+      f.input :company_id, as: :ajax_select, data: { url: filter_admin_companies_path, search_fields: [:name], ajax_search_fields: [:company_id] }
     end
     f.actions
   end

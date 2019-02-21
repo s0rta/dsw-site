@@ -6,11 +6,15 @@ class Venue < ApplicationRecord
             :city,
             :state, presence: true
 
-  belongs_to :host, class_name: 'User', optional: true
+  belongs_to :company, optional: true
 
   has_many :submissions, dependent: :restrict_with_error
 
   DEFAULT_CAPACITY = 75
+
+  def self.for_user(user)
+    
+  end
 
   def self.alphabetical
     order(:name)

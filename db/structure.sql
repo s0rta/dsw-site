@@ -350,6 +350,36 @@ ALTER SEQUENCE public.companies_id_seq OWNED BY public.companies.id;
 
 
 --
+-- Name: companies_users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.companies_users (
+    id bigint NOT NULL,
+    company_id bigint,
+    user_id bigint
+);
+
+
+--
+-- Name: companies_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.companies_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: companies_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.companies_users_id_seq OWNED BY public.companies_users.id;
+
+
+--
 -- Name: feedback; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1259,6 +1289,13 @@ ALTER TABLE ONLY public.companies ALTER COLUMN id SET DEFAULT nextval('public.co
 
 
 --
+-- Name: companies_users id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.companies_users ALTER COLUMN id SET DEFAULT nextval('public.companies_users_id_seq'::regclass);
+
+
+--
 -- Name: feedback id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1482,6 +1519,14 @@ ALTER TABLE ONLY public.comments
 
 ALTER TABLE ONLY public.companies
     ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: companies_users companies_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.companies_users
+    ADD CONSTRAINT companies_users_pkey PRIMARY KEY (id);
 
 
 --
@@ -1784,6 +1829,20 @@ CREATE UNIQUE INDEX index_companies_on_lower_name_unique ON public.companies USI
 --
 
 CREATE UNIQUE INDEX index_companies_on_name ON public.companies USING btree (name);
+
+
+--
+-- Name: index_companies_users_on_company_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_companies_users_on_company_id ON public.companies_users USING btree (company_id);
+
+
+--
+-- Name: index_companies_users_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_companies_users_on_user_id ON public.companies_users USING btree (user_id);
 
 
 --
@@ -2264,6 +2323,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180919050424'),
 ('20180923214023'),
 ('20180924163222'),
-('20180925205310');
+('20180925205310'),
+('20190221040025');
 
 

@@ -4,6 +4,8 @@ class Company < ApplicationRecord
 
   has_many :registrations, dependent: :restrict_with_error
   has_many :submissions, dependent: :restrict_with_error
+  has_many :venues
+  has_and_belongs_to_many :users
 
   def self.combine!(*companies)
     winner, *rest = companies
@@ -15,4 +17,5 @@ class Company < ApplicationRecord
       end
     end
   end
+
 end

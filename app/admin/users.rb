@@ -21,7 +21,6 @@ ActiveAdmin.register User do
     column :name
     column :email
     column :description
-    column :is_venue_host
     column :is_admin
     column(:registrations) do |u|
       u.registrations.sort.map(&:year).join(", ")
@@ -39,7 +38,6 @@ ActiveAdmin.register User do
       f.input :team_priority, as: :number, min: 0, max: 10, hint: "Lower values show first"
       f.input :password
       f.input :password_confirmation
-      f.input :is_venue_host
       f.input :is_admin
       f.input :chaired_tracks, as: :check_boxes, collection: Track.in_display_order
     end
@@ -49,7 +47,6 @@ ActiveAdmin.register User do
 
   filter :name
   filter :email
-  filter :is_venue_host
   filter :is_admin
 
   controller do

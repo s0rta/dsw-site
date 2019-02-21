@@ -7,7 +7,7 @@ feature 'Managing My Venue' do
   end
 
   let(:venue_host_user) do
-    create(:user, email: 'test@example.com', password: 'password', is_venue_host: true)
+    create(:user, email: 'test@example.com', password: 'password')
   end
 
   before do

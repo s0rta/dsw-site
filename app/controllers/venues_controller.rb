@@ -3,8 +3,7 @@ class VenuesController < ApplicationController
 
   # GET /venues
   def index
-    @venues = Venue.all
-    p Venue
+    @venues = Venue.joins(company: :users).where(users: {id: current_user})
   end
 
   # GET /venues/1
