@@ -34,6 +34,9 @@ Lint/UnusedMethodArgument:
     - app/interactors/**/*.rb
 Lint/UselessAccessModifier:
   Enabled: false
+Layout/AlignParameters:
+  Enabled: true
+  EnforcedStyle: with_fixed_indentation
 Layout/SpaceBeforeFirstArg:
   Enabled: false
 Layout/SpaceInsideArrayLiteralBrackets:

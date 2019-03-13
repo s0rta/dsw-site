@@ -40,4 +40,4 @@ section.common.sm-centered
 section.common.sm-centered
   .section-content
     h1 READY TO SUBMIT A SESSION?
-    h6 The Call for Session Submissions will be open April 3rd - 30th! We’ll share more details soon through our newsletter and social media channels. In the meantime, get working on putting together a stellar program to engage, educate, and inspire our community of innovators.
+    h6 The Call for Session Submissions will be open #{AnnualSchedule.current.cfp_open_at.try(:to_s, :month_day) || 'TBD'} - #{AnnualSchedule.current.cfp_close_at.try(:to_s, :month_day) || 'TBD'}! We’ll share more details soon through our newsletter and social media channels. In the meantime, get working on putting together a stellar program to engage, educate, and inspire our community of innovators.

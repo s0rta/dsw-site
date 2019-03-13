@@ -21,6 +21,13 @@ section.common
 
 section.common
   .section-content.sm-centered
+    h1 Submit & Promote Content
+    h6 Denver Startup Week is by the community, for the community. That starts with you! We want you to share content that inspires, informs and intrigues both Denver entrepreneurs and the global startup community.
+    h6 We are looking for blog submissions, free events to promote, instagram takeover stars-in-the-making, can’t-miss social media posts, and more! Have something to share with the Denver Startup Week audience that aligns with our spirit of free, educational, and inclusive? Then click below to learn more and submit!
+    = link_to 'Learn more', page_path(page: 'get-involved/content'), class: 'btn-cta'
+
+section.common
+  .section-content.sm-centered
     h1 Volunteer
     h6 Volunteers make up the vast majority of the Denver Startup Week organization and serve as the backbone of the event. From the Organizing Committee to our session attendants, Denver Startup Week would not be possible without the help and support of the entire community.
     = link_to 'Learn more', 'https://www.cervistech.com/acts/console.php?console_id=0282&console_type=event&ht=1', target: '_blank', class: 'btn-cta'
@@ -49,11 +56,14 @@ section.common
     h6 The third annual Denver Startup Week Pitch Challenge will highlight and harness our city's entrepreneurial energy. This year’s challenge takes the typical pitch competition and spins it on its head, inviting the 15,000 attendees at DSW to cast their votes to determine the final six contenders.
     h6 With a prize package valued at $100,000 in cash, services, and product, this pitch competition will showcase the best ideas and the brightest startups from Denver’s innovation community!
 
-    - dt = AnnualSchedule.current.pitch_application_close_at
-    - if dt && dt < Date.today
+    - close_dt = AnnualSchedule.current.pitch_application_close_at
+    - open_dt = AnnualSchedule.current.pitch_application_close_at
+    - if close_dt && open_dt && open_dt <= Date.today && close_dt >= Date.today
       = link_to 'Learn more', '#contact-form', class: 'btn-cta'
-    - else
+    - elsif close_dt && close_dt < Date.today
       h6 Applications for this year's Pitch Challenge are now closed. We look forward to seeing you at the event!
+    - else
+      h6 More information  will be available later this summer.
 
 section.common
   .section-content.sm-centered
@@ -67,7 +77,7 @@ section.common
     h1 Mentorship
     h6 Mentorship opportunities are offered at Basecamp throughout the week. Come connect with experienced mentors who can offer advice and support to launch you to the next level. Take advantage of individual, group, and online mentorship opportunities.
 
-    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
+    = link_to 'Learn more', 'https://docs.google.com/forms/d/e/1FAIpQLScHAfkul7J8TATY2RuOOEa8_WmHJzMJH2M-u72kiYCZpn-sng/viewform', class: 'btn-cta'
 
 section.common#contact-form
   .section-content.sm-centered
