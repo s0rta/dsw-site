@@ -56,11 +56,14 @@ section.common
     h6 The third annual Denver Startup Week Pitch Challenge will highlight and harness our city's entrepreneurial energy. This year’s challenge takes the typical pitch competition and spins it on its head, inviting the 15,000 attendees at DSW to cast their votes to determine the final six contenders.
     h6 With a prize package valued at $100,000 in cash, services, and product, this pitch competition will showcase the best ideas and the brightest startups from Denver’s innovation community!
 
-    - dt = AnnualSchedule.current.pitch_application_close_at
-    - if dt && dt < Date.today
+    - close_dt = AnnualSchedule.current.pitch_application_close_at
+    - open_dt = AnnualSchedule.current.pitch_application_close_at
+    - if close_dt && open_dt && open_dt <= Date.today && close_dt >= Date.today
       = link_to 'Learn more', '#contact-form', class: 'btn-cta'
-    - else
+    - elsif close_dt && close_dt < Date.today
       h6 Applications for this year's Pitch Challenge are now closed. We look forward to seeing you at the event!
+    - else
+      h6 More information  will be available later this summer.
 
 section.common
   .section-content.sm-centered
