@@ -46,7 +46,7 @@ feature "Content-only pages" do
 
     scenario "the content page" do
       visit "/get-involved"
-      click_link "CONTENT"
+      click_link "Content"
       expect(page).to have_content("SUBMIT & PROMOTE CONTENT")
     end
   end
