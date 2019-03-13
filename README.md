@@ -26,6 +26,9 @@ Start the Redis server with `redis-server`.
 
 Run `bundle exec rails s` to run the Rails server.
 
+We use [Standard](https://github.com/testdouble/standard) and [rufo](https://github.com/ruby-formatter/rufo) to automatically format code. You may wish to do the
+same.
+
 #### Running Tests
 
 You will need Chrome and Chromedriver to run the tests, which you can install with Homebrew:
