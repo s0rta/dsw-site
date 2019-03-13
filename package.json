@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@babel/polyfill": "^7.2.5",
+    "@rails/webpacker": "^4.0.1",
     "awesomplete": "^1.1.2",
     "coffeescript": "1.12.7",
     "jquery": "~> 3.3.1",
@@ -10,6 +11,29 @@
   "devDependencies": {
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "^3.2.1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "plugin:jsx-a11y/strict",
+      "plugin:flowtype/recommended"
+    ],
+    "plugins": [
+      "flowtype",
+      "import"
+    ],
+    "env": {
+      "browser": "true"
+    },
+    "rules": {
+      "import/no-cycle": "off",
+      "object-curly-newline": "off",
+      "react/jsx-filename-extension": "off",
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
   }
 }
