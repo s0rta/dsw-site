@@ -35,7 +35,10 @@ Rails.application.routes.draw do
   get '/about/youth', to: redirect('/initiatives/youth')
   get '/program/youth', to: redirect('/initiatives/youth')
   get '/panel-picker/mine', to: redirect('/dashboard')
+
+  # Vanity redirects
   get '/live', to: redirect('https://dswlive.intelivideo.com/')
+  get '/publishme', to: redirect('/get-involved/content')
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
