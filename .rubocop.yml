@@ -41,6 +41,8 @@ Layout/SpaceBeforeFirstArg:
   Enabled: false
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
+Layout/SpaceInsideHashLiteralBrackets:
+  Enabled: false
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   Enabled: true
