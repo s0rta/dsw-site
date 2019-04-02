@@ -2,6 +2,7 @@ ActiveAdmin.register Track do
   menu parent: "Sessions", priority: 1
 
   permit_params :name,
+    :description,
     :email_alias,
     :icon,
     :color,
