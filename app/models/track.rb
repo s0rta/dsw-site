@@ -1,7 +1,7 @@
 class Track < ApplicationRecord
   include ValidatedVideoUrl
 
-  ICONS = %w[person chart eyeball phone terminal wrench star basecamp martini].freeze
+  ICONS = %w[person chart eyeball phone terminal wrench star basecamp martini people lightbulb].freeze
   COLORS = %w[green teal blue purple gold orange headline-session basecamp-session red pink mint].freeze
 
   validates :name,
