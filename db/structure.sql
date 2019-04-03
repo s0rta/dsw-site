@@ -1008,6 +1008,39 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: venue_availabilities; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.venue_availabilities (
+    id bigint NOT NULL,
+    venue_id bigint,
+    submission_id bigint,
+    year integer,
+    day integer,
+    time_block integer
+);
+
+
+--
+-- Name: venue_availabilities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.venue_availabilities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: venue_availabilities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.venue_availabilities_id_seq OWNED BY public.venue_availabilities.id;
+
+
+--
 -- Name: venues; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1408,6 +1441,13 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- Name: venue_availabilities id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.venue_availabilities ALTER COLUMN id SET DEFAULT nextval('public.venue_availabilities_id_seq'::regclass);
+
+
+--
 -- Name: venues id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1655,6 +1695,14 @@ ALTER TABLE ONLY public.tracks
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: venue_availabilities venue_availabilities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.venue_availabilities
+    ADD CONSTRAINT venue_availabilities_pkey PRIMARY KEY (id);
 
 
 --
@@ -1983,6 +2031,20 @@ CREATE INDEX index_submissions_on_track_id ON public.submissions USING btree (tr
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: index_venue_availabilities_on_submission_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_venue_availabilities_on_submission_id ON public.venue_availabilities USING btree (submission_id);
+
+
+--
+-- Name: index_venue_availabilities_on_venue_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_venue_availabilities_on_venue_id ON public.venue_availabilities USING btree (venue_id);
 
 
 --
@@ -2324,6 +2386,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180923214023'),
 ('20180924163222'),
 ('20180925205310'),
-('20190221040025');
+('20190221040025'),
+('20190221064154');
 
 

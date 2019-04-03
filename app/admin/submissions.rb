@@ -48,6 +48,7 @@ ActiveAdmin.register Submission do
       @submission = Submission.find(params[:id])
       @versions = @submission.versions
       @submission = @submission.versions[params[:version].to_i].reify if params[:version]
+      @venue_availabilities = VenueAvailability.where(year: @submission.year).joins(:venue)
       show!
     end
   end
@@ -280,6 +281,30 @@ ActiveAdmin.register Submission do
     tabs do
       tab :details do
         attributes_table(*(default_attribute_table_rows - [:proposed_updates]))
+      end
+
+      tab :venue_selector do
+        panel "Venu Selector" do
+          table_for venue_availabilities do
+            column "Venue" do |v|
+              Venue.find(v.venue_id)
+            end
+            column "Day" do |v|
+              VenueAvailability::DAYS[v.day]
+            end
+            column "Time Block" do |v|
+              VenueAvailability::TIME_BLOCK[v.time_block]
+            end
+            column "Currently Assigned Submission" do |v|
+              Submission.find_by(id: v.submission_id)
+            end
+            column "Action" do |v|
+              link_to "Assign",
+                venue_availability_path(v, submission_id: submission.id),
+                method: :put
+            end
+          end
+        end
       end
 
       tab :comments do

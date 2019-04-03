@@ -9,12 +9,10 @@ class Venue < ApplicationRecord
   belongs_to :company, optional: true
 
   has_many :submissions, dependent: :restrict_with_error
+  has_many :venue_availabilities, dependent: :restrict_with_error
+  accepts_nested_attributes_for :venue_availabilities
 
   DEFAULT_CAPACITY = 75
-
-  def self.for_user(user)
-    
-  end
 
   def self.alphabetical
     order(:name)

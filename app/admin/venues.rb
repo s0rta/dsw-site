@@ -54,4 +54,33 @@ ActiveAdmin.register Venue do
     f.actions
   end
 
+  controller do
+    def scoped_collection
+      resource_class.includes(:venue_availabilities)
+    end
+
+    def show
+      @venue_availabilities = VenueAvailability.for_current_year.joins(:venue)
+      show!
+    end
+  end
+
+  show do
+    tabs do
+      tab :details do
+        attributes_table(*(default_attribute_table_rows - [:proposed_updates]))
+      end
+
+      tab :schedule do
+        panel 'Schedule' do
+          table_for venue_availabilities.order(day: :asc, time_block: :asc) do
+            column 'Year', sortable: true, &:year
+            column 'Date Time', sortable: true, &:human_date_time
+            column 'Title', &:submission
+          end
+        end
+      end
+    end
+  end
+
 end

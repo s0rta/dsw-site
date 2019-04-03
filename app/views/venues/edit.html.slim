@@ -12,6 +12,6 @@ section.common
     - unless @venue.errors.empty?
       h6 = "Please correct the following errors: #{@venue.errors.full_messages.to_sentence}"
 
-.section-content
-  .section-content.sm-centered
-    = render partial: 'form'
+  .section-content
+    .section-content.sm-centered
+      = render partial: 'form'

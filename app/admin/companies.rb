@@ -8,12 +8,11 @@ ActiveAdmin.register Company do
   permit_params :name,
                 user_ids: []
 
-
   index do
     selectable_column
     column :name
     column :user_ids do |company|
-      User.find(company.user_ids).map{|user| user.name}
+      User.find(company.user_ids).map(&:name)
     end
     actions
   end
@@ -23,7 +22,7 @@ ActiveAdmin.register Company do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :users, :as => :select, :input_html => {:multiple => true}
+      f.input :users, as: :select, input_html: { multiple: true }
     end
     f.actions
   end
@@ -32,7 +31,7 @@ ActiveAdmin.register Company do
     attributes_table do
       row :name
       row :user_ids do |company|
-        User.find(company.user_ids).map{|user| user.name}
+        User.find(company.user_ids).map(&:name)
       end
     end
     active_admin_comments

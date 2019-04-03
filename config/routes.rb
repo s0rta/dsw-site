@@ -64,6 +64,7 @@ Rails.application.routes.draw do
 
   resources :feedback, only: %i[new create]
   resources :venues, except: [:destroy]
+  resources :venue_availabilities, except: [:destroy]
 
   resource :dashboard, only: :show
 
