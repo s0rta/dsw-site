@@ -43,7 +43,7 @@ Layout/SpaceBeforeFirstArg:
   Enabled: false
 Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: false
-Layout/SpaceInsideHashLiteralBrackets:
+Layout/SpaceInsideHashLiteralBraces:
   Enabled: false
 Style/StringLiterals:
   EnforcedStyle: double_quotes
