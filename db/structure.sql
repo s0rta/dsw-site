@@ -983,8 +983,7 @@ CREATE TABLE public.users (
     provider character varying(255),
     team_position character varying,
     avatar character varying,
-    team_priority integer,
-    is_venue_host boolean DEFAULT false
+    team_priority integer
 );
 
 
@@ -1059,7 +1058,7 @@ CREATE TABLE public.venues (
     suite_or_unit character varying,
     seated_capacity integer DEFAULT 0,
     extra_directions text,
-    venue_host_id integer,
+    company_id integer,
     standing_capacity integer DEFAULT 0,
     av_capabilities character varying
 );
@@ -2120,6 +2119,14 @@ ALTER TABLE ONLY public.pitch_contest_votes
 
 
 --
+-- Name: venues fk_rails_077040617e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.venues
+    ADD CONSTRAINT fk_rails_077040617e FOREIGN KEY (company_id) REFERENCES public.companies(id);
+
+
+--
 -- Name: sponsorships fk_rails_10fd4596a4; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2369,7 +2376,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180420151548'),
 ('20180503152209'),
 ('20180518145838'),
-('20180522000916'),
 ('20180527202206'),
 ('20180604045548'),
 ('20180718044128'),
