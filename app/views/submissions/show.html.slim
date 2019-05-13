@@ -1,3 +1,11 @@
+- content_for(:title, @submission.year)
+- content_for(:subtitle, @submission.full_title)
+- content_for(:extra_meta_tags) do
+  meta(property="og:title" content="Denver Startup Week | #{@submission.full_title}")
+  meta(property="og:site_name" content="Denver Startup Week")
+  meta(property="og:url" content="#{submission_url(@submission)}")
+  meta(property="og:description" content="#{truncate(@submission.description, length: 300, separator: ' ')}")
+
 nav
   .section-content
     h1 Vote
