@@ -69,6 +69,9 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "listen"
+
+  gem "rufo", require: false
+  gem "standardrb", require: false
 end
 
 group :development, :test do
