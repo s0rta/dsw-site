@@ -56,7 +56,7 @@ gem "utf8-cleaner"
 
 # Admin interface
 gem "activeadmin"
-gem "activeadmin-ajax_filter", ">= 0.3.7", github: "jayzes/activeadmin-ajax_filter"
+gem "activeadmin-ajax_filter"
 gem "paper_trail"
 gem "validate_url"
 
@@ -69,6 +69,9 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "listen"
+
+  gem "rufo", require: false
+  gem "standardrb", require: false
 end
 
 group :development, :test do
