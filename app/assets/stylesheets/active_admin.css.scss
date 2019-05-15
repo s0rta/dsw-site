@@ -19,3 +19,10 @@
 @import "selectize";
 @import "selectize.default";
 @import "activeadmin-ajax_filter";
+
+// Per https://github.com/activeadmin/activeadmin/blob/master/CHANGELOG.md#110-
+.status_tag {
+  &.ok, &.published, &.complete, &.completed, &.green { background: #8daa92; }
+  &.warn, &.warning, &.orange { background: #e29b20; }
+  &.error, &.errored, &.red { background: #d45f53; }
+}

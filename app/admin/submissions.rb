@@ -66,7 +66,7 @@ ActiveAdmin.register Submission do
       "#{s.human_start_day} #{s.human_time_range}".html_safe if s.time_assigned?
     end
     column("Status", sortable: :state) do |s|
-      status_tag s.state.to_s.titleize, status_for_submission(s)
+      status_tag s.state.to_s.titleize, class: status_for_submission(s)
     end
     column :submitter, sortable: "users.name"
     column(:votes, sortable: "COUNT(votes.id)") { |s| s.votes.size }
@@ -197,7 +197,7 @@ ActiveAdmin.register Submission do
   end
 
   sidebar "Status", only: :show do
-    status_tag submission.state.to_s.titleize, status_for_submission(submission)
+    status_tag submission.state.to_s.titleize, class: status_for_submission(submission)
   end
 
   sidebar "Messaging", only: :show do
@@ -290,7 +290,7 @@ ActiveAdmin.register Submission do
         panel "Feedback" do
           table_for submission.feedback.order("created_at DESC") do
             column(:rating) do |f|
-              status_tag f.human_rating, status_for_rating(f.rating)
+              status_tag f.human_rating, class: status_for_rating(f.rating)
             end
             column :comments
           end
