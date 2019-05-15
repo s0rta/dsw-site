@@ -431,6 +431,16 @@ AnnualSchedule.where(year: 2018).first_or_create!(
   week_end_at: Date.parse('2018-09-28').freeze
 )
 
+AnnualSchedule.where(year: 2019).first_or_create!(
+  cfp_open_at: Date.parse('2019-04-03').freeze,
+  cfp_close_at: Date.parse('2019-04-29').freeze,
+  voting_open_at: Date.parse('2019-05-06').freeze,
+  voting_close_at: Date.parse('2019-05-20').freeze,
+  registration_open_at: Date.parse('2019-07-17').freeze,
+  week_start_at: Date.parse('2019-09-16').freeze,
+  week_end_at: Date.parse('2019-09-20').freeze
+)
+
 AttendeeGoal.reset_column_information
 {
   inspiration: 'Find inspiration',
