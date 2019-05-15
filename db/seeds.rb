@@ -384,61 +384,61 @@ PitchContest::Entry.reset_column_information
 end
 
 AnnualSchedule.where(year: 2013).first_or_create!(
-  week_start_at: Date.parse('2013-09-16').freeze,
-  week_end_at: Date.parse('2013-09-20').freeze
+  week_start_at: Date.parse("2013-09-16").freeze,
+  week_end_at: Date.parse("2013-09-20").freeze
 )
 
 AnnualSchedule.where(year: 2014).first_or_create!(
-  week_start_at: Date.parse('2014-09-15').freeze,
-  week_end_at: Date.parse('2014-09-19').freeze
+  week_start_at: Date.parse("2014-09-15").freeze,
+  week_end_at: Date.parse("2014-09-19").freeze
 )
 
 AnnualSchedule.where(year: 2015).first_or_create!(
-  week_start_at: Date.parse('2015-09-28').freeze,
-  week_end_at: Date.parse('2015-10-02').freeze
+  week_start_at: Date.parse("2015-09-28").freeze,
+  week_end_at: Date.parse("2015-10-02").freeze
 )
 
 AnnualSchedule.where(year: 2016).first_or_create!(
-  week_start_at: Date.parse('2016-09-12').freeze,
-  week_end_at: Date.parse('2016-09-16').freeze
+  week_start_at: Date.parse("2016-09-12").freeze,
+  week_end_at: Date.parse("2016-09-16").freeze
 )
 
 AnnualSchedule.where(year: 2017).first_or_create!(
-  cfp_open_at: Date.parse('2017-03-19').freeze,
-  cfp_close_at: Date.parse('2017-04-21').freeze,
-  voting_open_at: Date.parse('2017-05-10').freeze,
-  voting_close_at: Date.parse('2017-05-29').freeze,
-  registration_open_at: Date.parse('2017-07-20').freeze,
-  week_start_at: Date.parse('2017-09-25').freeze,
-  week_end_at: Date.parse('2017-09-29').freeze,
-  pitch_application_open_at: Date.parse('2017-08-08').freeze,
-  pitch_application_close_at: Date.parse('2017-08-31').freeze,
-  pitch_voting_open_at: Date.parse('2017-09-12').freeze,
-  pitch_voting_close_at: Date.parse('2017-09-22').freeze,
-  sponsorship_open_at: Date.parse('2017-03-01').freeze,
-  sponsorship_close_at: Date.parse('2017-09-09').freeze,
-  ambassador_application_open_at: Date.parse('2017-07-01').freeze,
-  ambassador_application_close_at: Date.parse('2017-08-11').freeze
+  cfp_open_at: Date.parse("2017-03-19").freeze,
+  cfp_close_at: Date.parse("2017-04-21").freeze,
+  voting_open_at: Date.parse("2017-05-10").freeze,
+  voting_close_at: Date.parse("2017-05-29").freeze,
+  registration_open_at: Date.parse("2017-07-20").freeze,
+  week_start_at: Date.parse("2017-09-25").freeze,
+  week_end_at: Date.parse("2017-09-29").freeze,
+  pitch_application_open_at: Date.parse("2017-08-08").freeze,
+  pitch_application_close_at: Date.parse("2017-08-31").freeze,
+  pitch_voting_open_at: Date.parse("2017-09-12").freeze,
+  pitch_voting_close_at: Date.parse("2017-09-22").freeze,
+  sponsorship_open_at: Date.parse("2017-03-01").freeze,
+  sponsorship_close_at: Date.parse("2017-09-09").freeze,
+  ambassador_application_open_at: Date.parse("2017-07-01").freeze,
+  ambassador_application_close_at: Date.parse("2017-08-11").freeze
 )
 
 AnnualSchedule.where(year: 2018).first_or_create!(
-  cfp_open_at: Date.parse('2018-04-04').freeze,
-  cfp_close_at: Date.parse('2018-04-30').freeze,
-  voting_open_at: Date.parse('2018-05-02').freeze,
-  voting_close_at: Date.parse('2018-05-18').freeze,
-  registration_open_at: Date.parse('2018-07-15').freeze,
-  week_start_at: Date.parse('2018-09-24').freeze,
-  week_end_at: Date.parse('2018-09-28').freeze
+  cfp_open_at: Date.parse("2018-04-04").freeze,
+  cfp_close_at: Date.parse("2018-04-30").freeze,
+  voting_open_at: Date.parse("2018-05-02").freeze,
+  voting_close_at: Date.parse("2018-05-18").freeze,
+  registration_open_at: Date.parse("2018-07-15").freeze,
+  week_start_at: Date.parse("2018-09-24").freeze,
+  week_end_at: Date.parse("2018-09-28").freeze
 )
 
 AnnualSchedule.where(year: 2019).first_or_create!(
-  cfp_open_at: Date.parse('2019-04-03').freeze,
-  cfp_close_at: Date.parse('2019-04-29').freeze,
-  voting_open_at: Date.parse('2019-05-06').freeze,
-  voting_close_at: Date.parse('2019-05-20').freeze,
-  registration_open_at: Date.parse('2019-07-17').freeze,
-  week_start_at: Date.parse('2019-09-16').freeze,
-  week_end_at: Date.parse('2019-09-20').freeze
+  cfp_open_at: Date.parse("2019-04-03").freeze,
+  cfp_close_at: Date.parse("2019-04-29").freeze,
+  voting_open_at: Date.parse("2019-05-06").freeze,
+  voting_close_at: Date.parse("2019-05-20").freeze,
+  registration_open_at: Date.parse("2019-07-17").freeze,
+  week_start_at: Date.parse("2019-09-16").freeze,
+  week_end_at: Date.parse("2019-09-20").freeze
 )
 
 AttendeeGoal.reset_column_information
