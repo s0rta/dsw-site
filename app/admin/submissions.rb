@@ -141,7 +141,7 @@ ActiveAdmin.register Submission do
   form do |f|
     f.inputs 'Basics' do
       f.input :year
-      f.input :submitter_id, as: :ajax_select, data: { url: filter_admin_users_path, search_fields: %i[name email] }
+      f.input :submitter_id, as: :ajax_select, collection: [], data: { url: filter_admin_users_path, search_fields: %i[name email] }
       f.input :track_id, as: :select, collection: Track.all.map { |t| [ t.name, t.id ] }, include_blank: false
       f.input :cluster_id,
               as: :select,
@@ -164,7 +164,7 @@ ActiveAdmin.register Submission do
     end
     f.inputs 'Submitter' do
       f.input :contact_email, hint: 'Multiple addresses are allowed; separate them with commas'
-      f.input :company_id, as: :ajax_select, data: { url: filter_admin_companies_path, search_fields: [ :name ] }
+      f.input :company_id, as: :ajax_select, collection: [], data: { url: filter_admin_companies_path, search_fields: [ :name ] }
       f.input :open_to_collaborators
       f.input :coc_acknowledgement, label: 'Code of Conduct Acknowledgement',
                                     hint: 'If submitting this session on behalf of someone else, you acknowledge that you have informed them of our Code of Conduct'
