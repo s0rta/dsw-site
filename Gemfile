@@ -29,7 +29,7 @@ gem "devise"
 gem "fog-aws"
 gem "gemoji"
 gem "gravatarify"
-gem "honeypot-captcha", github: "RandieM/honeypot-captcha", branch: "master"
+gem "honeypot-captcha", git: "https://github.com/RandieM/honeypot-captcha", branch: "master"
 gem "html-pipeline", require: "html/pipeline"
 gem "liquid"
 gem "mini_magick"
@@ -38,7 +38,7 @@ gem "sanitize"
 
 gem "premailer-rails"
 gem "retries"
-gem "sendgrid", github: "caring/sendgrid"
+gem "sendgrid", git: "https://github.com/caring/sendgrid"
 gem "sendgrid-ruby"
 
 # State machines
