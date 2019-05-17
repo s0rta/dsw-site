@@ -1,10 +1,10 @@
 class Company < ApplicationRecord
   validates :name, presence: true,
-                   uniqueness: { case_sensitive: true }
+                   uniqueness: {case_sensitive: true}
 
   has_many :registrations, dependent: :restrict_with_error
   has_many :submissions, dependent: :restrict_with_error
-  has_many :venues
+  has_many :venues, dependent: :restrict_with_error
   has_and_belongs_to_many :users
 
   def self.combine!(*companies)
@@ -17,5 +17,4 @@ class Company < ApplicationRecord
       end
     end
   end
-
 end
