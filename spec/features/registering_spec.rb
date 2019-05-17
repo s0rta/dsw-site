@@ -84,7 +84,7 @@ feature "Registering to attend" do
       click_link "Add to My Schedule"
       visit "/schedule"
       select "View My Schedule", from: "filter"
-      ical = open(find(:link, "Add to Outlook/iCal")[:href].gsub("webcal://", "http://"))
+      ical = URI.open(find(:link, "Add to Outlook/iCal")[:href].gsub("webcal://", "http://"))
       calendars = Icalendar.parse(ical)
       expect(calendars.first.events.size).to eq(1)
       expect(calendars.first.events.first.summary).to eq("I am a session")
