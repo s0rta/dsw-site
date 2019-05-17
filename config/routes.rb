@@ -101,7 +101,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :company_search, only: %i[show]
+  resource :company_search, only: %i[show] do
+    collection do
+      get :mine
+    end
+  end
 
   get "enable-simple-reg", to: "simple_registrations#enable", as: :enable_simple_reg
   get "disable-simple-reg", to: "simple_registrations#disable", as: :disable_simple_reg

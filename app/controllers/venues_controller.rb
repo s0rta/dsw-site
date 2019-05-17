@@ -66,7 +66,7 @@ class VenuesController < ApplicationController
     should_exists = ActiveModel::Type::Boolean.new.cast(should_exists)
 
     if should_exists
-      if !@venue_availabilities || !@venue_availabilities.find { |availability| (availability.day == day) && (availability.time_block == time) }
+      if !@venue_availabilities || !@venue_availabilities.detect { |availability| (availability.day == day) && (availability.time_block == time) }
         VenueAvailability.create(
           venue_id: venue_id,
           day: day,
@@ -74,7 +74,7 @@ class VenuesController < ApplicationController
         )
       end
     else
-      existing_venue_availability = @venue_availabilities.find { |availability| (availability.day == day) && (availability.time_block == time) }
+      existing_venue_availability = @venue_availabilities.detect { |availability| (availability.day == day) && (availability.time_block == time) }
       if existing_venue_availability
         if existing_venue_availability["submission_id"]
           flash[:error] = "Could not remove availability, a session has already been assigned to it."
@@ -105,7 +105,8 @@ class VenuesController < ApplicationController
       :seated_capacity,
       :standing_capacity,
       :av_capabilities,
-      :extra_directions
+      :extra_directions,
+      :company_name
     )
   end
 end

@@ -5,8 +5,12 @@ feature "Managing My Venue" do
     create(:user, email: "test@example.com", password: "password")
   end
 
+  let(:company) { create(:company, name: "ExampleCo") }
+
   let(:venue_host_user) do
-    create(:user, email: "test@example.com", password: "password")
+    create(:user, email: "test@example.com", password: "password").tap do |u|
+      u.companies << company
+    end
   end
 
   before do
@@ -31,6 +35,11 @@ feature "Managing My Venue" do
     click_on "New Venue"
 
     fill_in "Venue Name", with: "test venue"
+
+    # Use the autocompleter to select
+    fill_in "venue_company_name", with: "Exa"
+    find(".awesomplete li", text: "ExampleCo").click
+
     fill_in "Description", with: "some description"
     fill_in "Address", with: "111"
     fill_in "City", with: "Denver"
