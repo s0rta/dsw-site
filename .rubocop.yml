@@ -1,3 +1,5 @@
+inherit_from:
+  - https://raw.githubusercontent.com/testdouble/standard/master/config/base.yml
 Style/ClassAndModuleChildren:
   Include:
     - lib/**/*.rb
