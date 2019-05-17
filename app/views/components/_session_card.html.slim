@@ -1,0 +1,7 @@
+= render 'components/card' do
+  div.SessionCard[style="background: #{feature[:color]}"]
+    div.SessionCard-type
+      = render partial: "icons/#{feature[:icon]}"
+      span.SessionCard-name #{feature[:track]}
+    h3.SessionCard-title #{feature[:title]}
+    p.SessionCard-description #{feature[:description]}
