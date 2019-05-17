@@ -66,3 +66,5 @@ Metrics/BlockLength:
     - Rakefile
     - 'lib/tasks/**/*.rake'
     - 'spec/**/*.rb'
+    - 'app/admin/**/*.rb'
+    - 'config/routes.rb'
