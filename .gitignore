@@ -28,3 +28,6 @@ vendor/firefox
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore local dev files
+.env
