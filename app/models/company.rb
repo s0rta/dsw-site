@@ -13,6 +13,7 @@ class Company < ApplicationRecord
       rest.each do |loser|
         loser.submissions.update_all(company_id: winner.id)
         loser.registrations.update_all(company_id: winner.id)
+        loser.venues.update_all(company_id: winner.id)
         loser.destroy!
       end
     end
