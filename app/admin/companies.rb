@@ -1,12 +1,12 @@
 ActiveAdmin.register Company do
   include ActiveAdmin::AjaxFilter
 
-  menu parent: 'Users', priority: 1
+  menu parent: "Users", priority: 1
 
-  config.sort_order = 'name_asc'
+  config.sort_order = "name_asc"
 
   permit_params :name,
-                user_ids: []
+    user_ids: []
 
   index do
     selectable_column
@@ -22,7 +22,7 @@ ActiveAdmin.register Company do
   form do |f|
     f.inputs do
       f.input :name
-      f.input :users, as: :select, input_html: { multiple: true }
+      f.input :users, as: :select, input_html: {multiple: true}
     end
     f.actions
   end
@@ -42,5 +42,4 @@ ActiveAdmin.register Company do
     Company.combine!(*companies)
     redirect_to admin_companies_path
   end
-
 end

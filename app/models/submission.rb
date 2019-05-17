@@ -149,7 +149,7 @@ class Submission < ApplicationRecord
   end
 
   def self.for_start_day(day)
-    if day_index = DAYS.invert[day.titleize]
+    if (day_index = DAYS.invert[day.titleize])
       where(start_day: day_index)
     else
       all

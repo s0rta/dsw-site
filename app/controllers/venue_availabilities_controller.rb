@@ -5,13 +5,11 @@ class VenueAvailabilitiesController < ApplicationController
   def update
     @venue_availability.update(submission_id: params[:submission_id])
     if @venue_availability.save
-      flash[:notice] = 'Submission has been assigned to a venue_availability'
-      redirect_back(fallback_location: root_path )
-    else 
-      flash[:error] = 'Something went wrong with assigning this submission to a venue availability. Are you sure it has not already been assigned?'
-      redirect_back(fallback_location: root_path )
+      flash[:notice] = "Submission has been assigned to a venue_availability"
+    else
+      flash[:error] = "Something went wrong with assigning this submission to a venue availability. Are you sure it has not already been assigned?"
     end
-
+    redirect_back(fallback_location: root_path)
   end
 
   def set_venue_availability

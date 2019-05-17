@@ -41,7 +41,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: "users/registrations"}
 
-  resource :registration, only: [:new, :create] do
+  resource :registration, only: %i[new create] do
     collection do
       get :closed
       get :confirm

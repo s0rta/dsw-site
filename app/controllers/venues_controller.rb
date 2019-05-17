@@ -4,11 +4,12 @@ class VenuesController < ApplicationController
 
   # GET /venues
   def index
-    @venues = Venue.joins(company: :users).where(users: { id: current_user })
+    @venues = Venue.joins(company: :users).where(users: {id: current_user})
   end
 
   # GET /venues/1
-  def show; end
+  def show
+  end
 
   # GET /venues/new
   def new
@@ -16,20 +17,21 @@ class VenuesController < ApplicationController
   end
 
   # GET /venues/1/edit
-  def edit; end
+  def edit
+  end
 
   # POST /venues
   def create
     @venue = Venue.new(venue_params)
 
     if @venue.save
-      params['venue_availability']&.each do |day, times|
+      params["venue_availability"]&.each do |day, times|
         times.each do |time, exists|
           toggle_venue_availability(day, time, exists, @venue.id)
         end
       end
 
-      respond_with @venue, notice: 'Venue was successfully created.'
+      respond_with @venue, notice: "Venue was successfully created."
     else
       render :new
     end
@@ -38,13 +40,13 @@ class VenuesController < ApplicationController
   # PATCH/PUT /venues/1
   def update
     if @venue.update(venue_params)
-      params['venue_availability']&.each do |day, times|
+      params["venue_availability"]&.each do |day, times|
         times.each do |time, exists|
           toggle_venue_availability(day, time, exists, params[:id])
         end
       end
 
-      respond_with @venue, notice: 'Venue was successfully updated.'
+      respond_with @venue, notice: "Venue was successfully updated."
     else
       render :edit
     end
@@ -53,7 +55,7 @@ class VenuesController < ApplicationController
   # DELETE /venues/1
   def destroy
     @venue.destroy
-    redirect_to venues_url, notice: 'Venue was successfully destroyed.'
+    redirect_to venues_url, notice: "Venue was successfully destroyed."
   end
 
   private
@@ -68,18 +70,17 @@ class VenuesController < ApplicationController
         VenueAvailability.create(
           venue_id: venue_id,
           day: day,
-          time_block: time
+          time_block: time,
         )
       end
     else
       existing_venue_availability = @venue_availabilities.find { |availability| (availability.day == day) && (availability.time_block == time) }
       if existing_venue_availability
-        if existing_venue_availability['submission_id']
-          flash[:error] = 'Could not remove availability, a session has already been assigned to it.'
+        if existing_venue_availability["submission_id"]
+          flash[:error] = "Could not remove availability, a session has already been assigned to it."
         else
           existing_venue_availability.delete
         end
-
       end
     end
   end
