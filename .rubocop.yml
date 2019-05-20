@@ -1,3 +1,5 @@
+inherit_from:
+  - https://raw.githubusercontent.com/testdouble/standard/master/config/base.yml
 Style/ClassAndModuleChildren:
   Include:
     - lib/**/*.rb
@@ -60,13 +62,7 @@ Style/FrozenStringLiteralComment:
 Layout/IndentHash:
   Enabled: false
 Metrics/BlockLength:
-  ExcludedMethods:
-    - context
-    - describe
-    - it
-    - shared_examples
-    - shared_examples_for
-    - namespace
-    - draw
-    - register
-    - feature
+  Exclude:
+    - Rakefile
+    - 'lib/tasks/**/*.rake'
+    - 'spec/**/*.rb'
