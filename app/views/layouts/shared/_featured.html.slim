@@ -2,4 +2,7 @@ h2.Featured-header Featured Sessions & Articles
 = render 'components/three_card_list' do
   - featured[:features].each do |feature|
     = render 'components/three_card_list_item' do
-      = render 'components/session_card', session: feature
+      - if feature[:type] == 'session'
+        = render 'components/session_card', session: feature
+      - if feature[:type] == 'article'
+        = render 'components/article_card', article: feature
