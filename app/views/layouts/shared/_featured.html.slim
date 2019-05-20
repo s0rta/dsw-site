@@ -1,5 +1,5 @@
 h2.Featured-header Featured Sessions & Articles
-ul.Featured-list
+= render 'components/three_card_list' do
   - featured[:features].each do |feature|
-    li.Featured-list-item
-      = render 'components/session_card', feature: feature
+    = render 'components/three_card_list_item' do
+      = render 'components/session_card', session: feature
