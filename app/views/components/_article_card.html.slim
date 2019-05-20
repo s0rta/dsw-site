@@ -7,7 +7,7 @@
       .ArticleCard-tracks
         - article[:tracks].each do |track|
           .ArticleCard-track
-            .ArticleCard-track-dot
+            .ArticleCard-track-dot(class="#{track}-background")
             .ArticleCard-track-name #{track}
 
 
