@@ -25,6 +25,9 @@ class SiteController < ApplicationController
       @two_up_ctas = @two_up_ctas[0..3]
     end
 
+    @featured = HashWithIndifferentAccess.new(YAML.safe_load(
+      File.read(File.expand_path("../data/featured.yml",  __dir__))))
+
     render template: page_partial
   end
 
