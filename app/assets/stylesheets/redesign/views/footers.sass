@@ -1,38 +1,39 @@
 @import ../config
 
-footer.page-footer
-  max-width: 810px
-  margin: 60px auto
-  section.common.stay-in-touch
-    max-width: 600px
-    padding: 0
-    margin: 0 auto
-  h1
-    color: $copy-color-bold
-
-footer.site-footer
-  background: $backfill-grey
+.Footer
   h6
     display: inline-block
     vertical-align: middle
     margin-bottom: 8px
-    font-size: 18px
+    font-size: 16px
     text-transform: uppercase
     white-space: nowrap
-  .social
+  h5
+    font-size: 12px;
+  .Footer-social
     display: inline-block
     vertical-align: middle
     margin-top: 20px
+    .fa-circle-thin
+      height: 27px
+      width: 27px
+      background: #4d4d4d
+      border-radius: 50%
+
     a
       margin: 0 5px
+    svg
+      height: 17px
+      color: white
 
-.footer-blocks
+.Footer-blocks
   display: flex
   flex-direction: column
   margin: 0 auto
   padding: 40px 20px
   max-width: 1400px
-.footer-block
+  
+.Footer-block
   flex: 1
   &:first-child
     margin-bottom: 30px
@@ -40,35 +41,22 @@ footer.site-footer
     text-decoration: underline
     color: #4d4d4d
 
-.guiceworks
-  margin-top: 30px
-  h5
-    font-size: 14px
-    margin-top: 1em
-  img
-    display: inline-block
-    vertical-align: middle
-
-.footer-link
+.Footer-link
   margin-top: 1em
-  font-size: 14px
+  font-weight: 500
+  font-size: 12px
 
-.footer-link a
+.Footer-link a
   text-decoration: none
   text-transform: uppercase
 
 @media(min-width: 640px)
-  footer.page-footer .section-content
-    padding: 0
-  .footer-blocks
+  .Footer-blocks
     flex-direction: row
-  .footer-block
+  .Footer-block
     &:first-child
       margin-bottom: 0
 
 @media(min-width: 800px)
-  footer.page-footer
-    margin-top: 150px
-    margin-bottom: 150px
-  .company-container
+  .Footer-company-container
     float: right

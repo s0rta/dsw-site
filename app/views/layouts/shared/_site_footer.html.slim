@@ -1,30 +1,35 @@
-footer.site-footer
-  .footer-blocks
-    .footer-block
+footer.Footer
+  .Footer-blocks
+    .Footer-block
+      .Footer-company-container
+      - if signed_in? && current_user.is_admin?
+        div.Footer-link= link_to 'Admin', admin_root_path
+      div.Footer-link= link_to 'Attendees', page_path(page: 'attendees')
+      div.Footer-link= link_to 'Podcast', page_path(page: 'podcast')
+      div.Footer-link= link_to 'Press', page_path(page: 'press')
+      div.Footer-link= link_to 'Code of Conduct', page_path(page: 'code-of-conduct')
+
+    .Footer-block
       h6 Denver Startup Week #{Date.today.year}
       h5 &copy;Copyright #{Date.today.year}. All rights reserved.
-      .social
-        a href='https://www.facebook.com/DenverStartupWeek' target='_blank'
-          i class="fab fa-2x fa-facebook-square"
+      .Footer-social
         a href='https://twitter.com/denstartupweek' target='_blank'
-          i class="fab fa-2x fa-twitter-square"
+          span class="fa-stack"
+            i class="fa fa-circle-thin fa-stack-2x"
+            i class="fab fa-2x fa-twitter fa-stack-1x"
+        a href='https://www.facebook.com/DenverStartupWeek' target='_blank'
+          span class="fa-stack"
+            i class="fa fa-circle-thin fa-stack-2x"
+            i class="fab fa-2x fa-facebook-f fa-stack-1x"
         a href='https://plus.google.com/+Denverstartupweek/videos' target='_blank'
-          i class="fab fa-2x fa-google-plus-square"
+          span class="fa-stack"
+            i class="fa fa-circle-thin fa-stack-2x"
+            i class="fab fa-2x fa-google-plus-g fa-stack-1x"
         a href='https://www.youtube.com/c/denverstartupweek' target='_blank'
-          i class="fab fa-2x fa-youtube-square"
+          span class="fa-stack"
+            i class="fa fa-circle-thin fa-stack-2x"
+            i class="fab fa-2x fa-youtube fa-stack-1x"
         a href='https://medium.com/denver-startup-week' target='_blank'
-          i class="fab fa-2x fa-medium"
-        div.guiceworks
-        /   a href='http://www.guiceworks.com/' target='_blank'
-        /     = image_tag 'redesign/guice.png'
-        /   h5 Site UX/UI Design by <a href='http://www.guiceworks.com/' target='_blank'>Guiceworks</a>.
-
-    .footer-block
-      .company-container
-      - if signed_in? && current_user.is_admin?
-        div.footer-link= link_to 'Admin', admin_root_path
-      div.footer-link= link_to 'Attendees', page_path(page: 'attendees')
-      div.footer-link= link_to 'Blog', 'https://medium.com/denver-startup-week'
-      div.footer-link= link_to 'Podcast', page_path(page: 'podcast')
-      div.footer-link= link_to 'Press', page_path(page: 'press')
-      div.footer-link= link_to 'Code of Conduct', page_path(page: 'code-of-conduct')
+          span class="fa-stack"
+           i class="fa fa-circle-thin fa-stack-2x"
+           i class="fab fa-2x fa-medium-m fa-stack-1x"
