@@ -34,7 +34,7 @@ section.site-max-and-center
 
   div.cards.cards-3up(style="margin-top: 10em")
 
-= render partial: 'layouts/shared/featured'
+= render partial: 'layouts/shared/featured', locals: { featured: @featured }
 
 = render partial: 'layouts/shared/page_footer'
 - if footer_sponsors.any?
