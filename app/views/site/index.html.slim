@@ -32,8 +32,11 @@ section.site-max-and-center
           = link_to cta.link_href, class: "card-btn" do
             = content_tag :span, cta.link_text, class: "card-btn-text"
 
+  div.cards.cards-3up(style="margin-top: 10em")
+
 = render partial: 'layouts/shared/featured', locals: { featured: @featured }
 
+= render partial: 'layouts/shared/page_footer'
 - if footer_sponsors.any?
   section.common.title-sponsors
     h3 Title Sponsors
