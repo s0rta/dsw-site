@@ -34,7 +34,6 @@
   max-width: 1400px
   
 .Footer-block
-  flex: 1
   &:first-child
     margin-bottom: 50px
   a
@@ -53,6 +52,7 @@
 @media(min-width: 640px)
   .Footer-blocks
     flex-direction: row
+    justify-content: space-between
   .Footer-block
     &:first-child
       margin-bottom: 0
@@ -60,5 +60,7 @@
       text-align: right
 
 @media(min-width: 800px)
+  .Footer-blocks
+    padding: 70px 160px
   .Footer-company-container
     float: left
