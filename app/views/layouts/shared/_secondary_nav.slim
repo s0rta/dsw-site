@@ -1,0 +1,12 @@
+nav(aria-label="Secondary")
+  ul.SecondaryNav-list
+    - @secondary_nav[:items].each do |nav|
+      li.SecondaryNav-list-item
+        h2.SecondaryNav-list-title[style="color: #{nav[:color]}"] #{nav[:title]}
+        p.SecondaryNav-list-desc
+          - nav[:descriptions].each do |desc|
+            | #{desc}
+            br
+        a(href="#{nav[:href]}" aria-label="#{nav[:title]}" style="fill: #{nav[:color]}")
+          = render partial: 'icons/arrow_right'
+        / TODO: get correct arrow icon
