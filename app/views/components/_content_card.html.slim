@@ -1,6 +1,8 @@
 div.ContentCard[style="background: #{card[:color]}"]
-  div.ContentCard-img
-    p IMAGE
-  h3.ContentCard-title #{card[:title]}
-  p.ContentCard-description #{card[:description]}
-  button Button
+  / if statement for image listed or not
+  img.ContentCard-img src="#{card[:imgURL]}"
+  div.ContentCard-text
+    h3.ContentCard-title #{card[:title]}
+    p.ContentCard-description #{card[:description]}
+    .ContentCard-button
+      = render 'components/content_button', title: "Explore the tracks"
