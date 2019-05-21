@@ -1,41 +1,41 @@
 footer.Footer
-  nav aria-label="Footer items"
-    ul.Footer-blocks
-      li.Footer-block aria-label="Page links"
+  .Footer-blocks
+    nav aria-label="Page links"
+      ul.Footer-block
         - if signed_in? && current_user.is_admin?
-          div.Footer-link= link_to 'Admin', admin_root_path
-        div.Footer-link= link_to 'Attendees', page_path(page: 'attendees')
-        div.Footer-link= link_to 'Podcast', page_path(page: 'podcast')
-        div.Footer-link= link_to 'Press', page_path(page: 'press')
-        div.Footer-link= link_to 'Code of Conduct', page_path(page: 'code-of-conduct')
+          li.Footer-link= link_to 'Admin', admin_root_path
+        li.Footer-link= link_to 'Attendees', page_path(page: 'attendees')
+        li.Footer-link= link_to 'Podcast', page_path(page: 'podcast')
+        li.Footer-link= link_to 'Press', page_path(page: 'press')
+        li.Footer-link= link_to 'Code of Conduct', page_path(page: 'code-of-conduct')
 
-      li.Footer-block 
-        div.Footer-title Denver Startup Week #{Date.today.year}
-        div.Footer-subtitle &copy;Copyright #{Date.today.year}. All rights reserved.
-        nav aria-label="Social icon links"
-          ul.Footer-social
-            li
-              a.Footer-social-link href='https://twitter.com/denstartupweek' target='_blank'
-                span class="fa-stack"
-                  i class="fa Footer-fa-circle fa-stack-2x"
-                  i class="fab Footer-social-icon fa-2x fa-twitter fa-stack-1x"
-            li
-              a.Footer-social-link href='https://www.facebook.com/DenverStartupWeek' target='_blank'
-                span class="fa-stack"
-                  i class="fa Footer-fa-circle fa-stack-2x"
-                  i class="fab Footer-social-icon fa-2x fa-facebook-f fa-stack-1x"
-            li
-              a.Footer-social-link href='https://plus.google.com/+Denverstartupweek/videos' target='_blank'
-                span class="fa-stack"
-                  i class="fa Footer-fa-circle fa-stack-2x"
-                  i class="fab Footer-social-icon fa-2x fa-google-plus-g fa-stack-1x"
-            li
-              a.Footer-social-link href='https://www.youtube.com/c/denverstartupweek' target='_blank'
-                span class="fa-stack"
-                  i class="fa Footer-fa-circle fa-stack-2x"
-                  i class="fab Footer-social-icon fa-2x fa-youtube fa-stack-1x"
-            li
-              a.Footer-social-link href='https://medium.com/denver-startup-week' target='_blank'
-                span class="fa-stack"
-                  i class="fa Footer-fa-circle fa-stack-2x"
-                  i class="fab Footer-social-icon fa-2x fa-medium-m fa-stack-1x"
+    .Footer-block 
+      div.Footer-title Denver Startup Week #{Date.today.year}
+      div.Footer-subtitle &copy;Copyright #{Date.today.year}. All rights reserved.
+      nav aria-label="Social icon links"
+        ul.Footer-social
+          li
+            a.Footer-social-link href='https://twitter.com/denstartupweek' target='_blank'
+              span class="fa-stack"
+                i class="fa Footer-fa-circle fa-stack-2x"
+                i class="fab Footer-social-icon fa-2x fa-twitter fa-stack-1x"
+          li
+            a.Footer-social-link href='https://www.facebook.com/DenverStartupWeek' target='_blank'
+              span class="fa-stack"
+                i class="fa Footer-fa-circle fa-stack-2x"
+                i class="fab Footer-social-icon fa-2x fa-facebook-f fa-stack-1x"
+          li
+            a.Footer-social-link href='https://plus.google.com/+Denverstartupweek/videos' target='_blank'
+              span class="fa-stack"
+                i class="fa Footer-fa-circle fa-stack-2x"
+                i class="fab Footer-social-icon fa-2x fa-google-plus-g fa-stack-1x"
+          li
+            a.Footer-social-link href='https://www.youtube.com/c/denverstartupweek' target='_blank'
+              span class="fa-stack"
+                i class="fa Footer-fa-circle fa-stack-2x"
+                i class="fab Footer-social-icon fa-2x fa-youtube fa-stack-1x"
+          li
+            a.Footer-social-link href='https://medium.com/denver-startup-week' target='_blank'
+              span class="fa-stack"
+                i class="fa Footer-fa-circle fa-stack-2x"
+                i class="fab Footer-social-icon fa-2x fa-medium-m fa-stack-1x"
