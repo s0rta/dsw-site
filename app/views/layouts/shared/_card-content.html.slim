@@ -1,0 +1,5 @@
+h2.Featured-header Featured Sessions & Articles
+= render 'components/three_card_list' do
+  - card[:cards].each do |card|
+    = render 'components/three_card_list_item' do
+      = render 'components/content_card', card: card
