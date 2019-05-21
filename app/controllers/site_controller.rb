@@ -28,6 +28,9 @@ class SiteController < ApplicationController
     @featured = HashWithIndifferentAccess.new(YAML.safe_load(
       File.read(File.expand_path("../data/featured.yml",  __dir__))))
 
+    @secondary_nav = HashWithIndifferentAccess.new(YAML.safe_load(
+      File.read(File.expand_path("../data/secondary_nav.yml",  __dir__))))
+
     render template: page_partial
   end
 
