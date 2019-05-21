@@ -1,3 +1,15 @@
+div.Home-layout-wrapper
+  = render partial: 'layouts/home_hero'
+  div.Home-secondary-nav
+    = render partial: 'layouts/shared/secondary_nav'
+
+= render partial: 'layouts/shared/featured', locals: { featured: @featured }
+
+= render partial: 'layouts/shared/page_footer'
+
+
+
+/ **************OLD STUFF*****************
 / section.hero
 /   - if AnnualSchedule.post_week? && AnnualSchedule.next.present?
 /     h2 #{AnnualSchedule.next.week_start_at.strftime('%B %-d')}&ndash;#{AnnualSchedule.next.week_end_at.strftime('%-d, %Y')}
@@ -34,19 +46,12 @@
 
 /   div.cards.cards-3up(style="margin-top: 10em")
 
-= render partial: 'layouts/home_hero'
 
-div.Home-secondary-nav
-  = render partial: 'layouts/shared/secondary_nav'
-
-= render partial: 'layouts/shared/featured', locals: { featured: @featured }
-
-= render partial: 'layouts/shared/page_footer'
-- if footer_sponsors.any?
-  section.common.title-sponsors
-    h3 Title Sponsors
-    .title-logo-container
-      - footer_sponsors.each do |s|
-        = link_to s.link_href, title: s.name do
-          = image_tag s.logo.url, alt: s.name
+/ - if footer_sponsors.any?
+/   section.common.title-sponsors
+/     h3 Title Sponsors
+/     .title-logo-container
+/       - footer_sponsors.each do |s|
+/         = link_to s.link_href, title: s.name do
+/           = image_tag s.logo.url, alt: s.name
 
