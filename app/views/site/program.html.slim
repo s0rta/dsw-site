@@ -1,48 +1,51 @@
 = render partial: 'layouts/shared/program_nav', locals: { item: :overview }
 
-section.common.event-info.sm-centered
-  .section-content
-    h1 #{AnnualSchedule.current.week_start_at.strftime('%B %e')} &mdash; #{AnnualSchedule.current.week_end_at.strftime('%e, %Y')}
+div.Home-secondary-nav
+  = render partial: 'layouts/shared/secondary_nav'
 
-section.section-image
+/ section.common.event-info.sm-centered
+/   .section-content
+/     h1 #{AnnualSchedule.current.week_start_at.strftime('%B %e')} &mdash; #{AnnualSchedule.current.week_end_at.strftime('%e, %Y')}
 
-section.common.green
-  .section-content.sm-centered
-    h1 The Entrepreneurial Spirit
-    h6 Denver Startup Week is a celebration of everything entrepreneurial in Denver and the largest free event of its kind in the world. In 2017, the sixth annual event brought 19,000 people together at 376 programs and events to celebrate Denver’s thriving entrepreneurial ecosystem and build the center city’s culture of innovation.
-    h6 The weeklong event is intended to unite the entrepreneurial community in Downtown Denver and beyond, and celebrate great companies, innovation, ideas, and people. Events throughout the week are organized by the community at-large and the Organizing Committee, and include sessions, presentations, panels, workshops, happy hours, social events, job fairs and more.
+/ section.section-image
 
-section.common
-  .section-content.sm-centered
-    h1 Community Driven
-    h6 The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during the week.
-    h6 Session submissions take all types of shapes and forms: moderated panels, skill-building workshops, keynote presentations, interactive roundtables, competitions, and endless other creative ideas.
-    h6 After the Call for Proposals, the public votes on the sessions they would like most to see, and the Organizing Committee ultimately selects the sessions for inclusion in the event program.
-    h6 In 2017, nearly 1,200 sessions were proposed by the community, resulting in 376 individual sessions and events.
+/ section.common.green
+/   .section-content.sm-centered
+/     h1 The Entrepreneurial Spirit
+/     h6 Denver Startup Week is a celebration of everything entrepreneurial in Denver and the largest free event of its kind in the world. In 2017, the sixth annual event brought 19,000 people together at 376 programs and events to celebrate Denver’s thriving entrepreneurial ecosystem and build the center city’s culture of innovation.
+/     h6 The weeklong event is intended to unite the entrepreneurial community in Downtown Denver and beyond, and celebrate great companies, innovation, ideas, and people. Events throughout the week are organized by the community at-large and the Organizing Committee, and include sessions, presentations, panels, workshops, happy hours, social events, job fairs and more.
 
-    = link_to 'Learn More', page_path(page: 'program/selection'), class: 'btn-cta'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Community Driven
+/     h6 The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during the week.
+/     h6 Session submissions take all types of shapes and forms: moderated panels, skill-building workshops, keynote presentations, interactive roundtables, competitions, and endless other creative ideas.
+/     h6 After the Call for Proposals, the public votes on the sessions they would like most to see, and the Organizing Committee ultimately selects the sessions for inclusion in the event program.
+/     h6 In 2017, nearly 1,200 sessions were proposed by the community, resulting in 376 individual sessions and events.
 
-section.common
-  .section-content.sm-centered
-    h1 Eight Functional Tracks
-    h6 Daily programming is organized into eight tracks that are oriented around key functional roles within a business. Through the track programming, every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge. Whether a company founder, marketer, artist, sales specialist, coder, manufacturer, or anything in between - Denver Startup Week will educate and inspire.
-    = link_to 'Explore the Tracks', page_path(page: 'program/tracks'), class: 'btn-cta'
+/     = link_to 'Learn More', page_path(page: 'program/selection'), class: 'btn-cta'
 
-section.common
-  .section-content.sm-centered
-    h1 Basecamp Launched by Chase
-    h6 Located at The Commons on Champa, Basecamp serves as the epicenter and soul of Denver Startup Week during the five days of dispersed programs, sessions, social events, and more. The activities at Basecamp represent the best of Denver Startup Week – including keynote speakers, premier session highlights, on-site mentoring with prominent startup leaders, networking events and meetups, and access to exclusive learning opportunities and resources.  
-    = link_to 'Explore Basecamp', page_path(page: 'basecamp'), class: 'btn-cta'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Eight Functional Tracks
+/     h6 Daily programming is organized into eight tracks that are oriented around key functional roles within a business. Through the track programming, every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge. Whether a company founder, marketer, artist, sales specialist, coder, manufacturer, or anything in between - Denver Startup Week will educate and inspire.
+/     = link_to 'Explore the Tracks', page_path(page: 'program/tracks'), class: 'btn-cta'
 
-section.common
-  .section-content.sm-centered
-    h1 Daily Headline Events
-    h6 Major events each day serve as programming pillars and bring the community together to connect and engage and bring the community together to connect and engage. These events include the Kick-Off Breakfast, Opening Night Party, Startup Crawl, Job Fair & Showcase, Pitch Challenge, and DSW Bash.
-    = link_to 'Explore Headline Events', page_path(page: 'program/headline_events'), class: 'btn-cta'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Basecamp Launched by Chase
+/     h6 Located at The Commons on Champa, Basecamp serves as the epicenter and soul of Denver Startup Week during the five days of dispersed programs, sessions, social events, and more. The activities at Basecamp represent the best of Denver Startup Week – including keynote speakers, premier session highlights, on-site mentoring with prominent startup leaders, networking events and meetups, and access to exclusive learning opportunities and resources.  
+/     = link_to 'Explore Basecamp', page_path(page: 'basecamp'), class: 'btn-cta'
 
-section.common
-  .section-content.sm-centered
-    h1 Key Dates for #{AnnualSchedule.current.year}
-    = render partial: 'layouts/shared/schedule'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Daily Headline Events
+/     h6 Major events each day serve as programming pillars and bring the community together to connect and engage and bring the community together to connect and engage. These events include the Kick-Off Breakfast, Opening Night Party, Startup Crawl, Job Fair & Showcase, Pitch Challenge, and DSW Bash.
+/     = link_to 'Explore Headline Events', page_path(page: 'program/headline_events'), class: 'btn-cta'
 
-= render partial: 'layouts/shared/page_footer'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Key Dates for #{AnnualSchedule.current.year}
+/     = render partial: 'layouts/shared/schedule'
+
+/ = render partial: 'layouts/shared/page_footer'
