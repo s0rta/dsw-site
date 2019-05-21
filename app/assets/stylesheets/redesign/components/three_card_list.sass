@@ -1,10 +1,28 @@
+@import ../config
+
+$gutter: 11.5px
+
+.ThreeCardList-wrapper
+  display: flex;
+  justify-content: center;
+  margin-left: -$gutter
+  margin-right: -$gutter
+
 .ThreeCardList
   display: flex
-  justify-content: center
+  margin: 0
   flex-wrap: wrap
-  max-width: 1092px
-  margin: 0 auto
+  max-width: $max-breakpoint
 
 .ThreeCardListItem
-  padding: 11.5px
+  padding: $gutter
   margin: 0
+
+
+@media(max-width: 1106px)
+  .ThreeCardList
+    max-width: 728px
+
+@media(max-width: 744px)
+  .ThreeCardList
+    justify-content: center
