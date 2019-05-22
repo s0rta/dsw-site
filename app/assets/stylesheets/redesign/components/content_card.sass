@@ -1,0 +1,46 @@
+@import ../config
+
+.ContentCard
+  margin-top: 65px
+  height: 100%
+
+.ContentCard-img
+  height: 152px;
+  width: 100%
+
+.ContentCard-title
+  max-width: 313px
+  color: $primary-font-dark
+  text-transform: uppercase
+  line-height: 32px
+  font-size: 28px
+  font-weight: 300
+  margin-top: 25px
+
+.ContentCard-description
+  color: $primary-font-medium
+  margin-top: 25px
+  line-height: 18px
+  font-size: 14px
+  font-weight: 300
+
+.ContentCard-button
+  margin-top: 45px
+  text-align: center
+
+@media(min-width: 640px)
+  .ContentCard
+    margin-top: 71px
+  .ContentCard-title
+    margin-top: 30px
+  .ContentCard-description
+    margin-top: 30px
+  .ContentCard-img
+    height: 295px;
+  .ContentCard-button
+    margin-top: 50px
+    text-align: left
+
+@media(min-width: 1300px)
+  .ContentCard-text
+    margin: 0 41px

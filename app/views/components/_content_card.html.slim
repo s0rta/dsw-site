@@ -1,0 +1,7 @@
+div.ContentCard
+  img.ContentCard-img alt="#{card[:title]}" src="#{image_url(card[:img_url])}"
+  div.ContentCard-text
+    h3.ContentCard-title #{card[:title]}
+    p.ContentCard-description #{card[:description]}
+    .ContentCard-button
+      = render 'components/content_button', title: "Explore the tracks", button_page_url: "#{card[:button_page_url]}"
