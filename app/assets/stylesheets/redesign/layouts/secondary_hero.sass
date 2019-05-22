@@ -1,0 +1,49 @@
+@import ../config
+
+.SecondaryHero
+  background: $teal-light
+  padding: 110px 5%
+
+
+.SecondaryHero-inner
+  max-width: 1252px
+  margin: 0 auto
+
+.SecondaryHero-sub-title
+  color: white
+  font-family: Montserrat-Regular
+  font-size: 24px
+  font-weight: 500
+  text-transform: uppercase
+
+.SecondaryHero-description
+  color: white
+  font-family: Montserrat-Regular
+  font-size: 14px
+  line-height: 18px
+  max-width: 602px
+  margin-top: 8px
+
+.SecondaryHero-title
+  color: white
+  font-family: Montserrat-Black
+  font-size: 120px
+  font-weight: 900
+  line-height: 90px
+  text-transform: uppercase
+  max-width: 697px
+  margin-top: 108px
+
+.SecondaryHero-extras
+  display: none;
+
+
+@media(min-width: 1024px)
+  .SecondaryHero-extras
+    display: block;
+    margin-top: 46px
+
+@media(max-width: 768px)
+  .SecondaryHero-title
+    font-size: 62px
+    line-height: 50px
