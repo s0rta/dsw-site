@@ -9,21 +9,20 @@ module YearScoped
   end
 
   class_methods do
-
     def for_year(year)
       if year
-        where(year: year)
+        where(":table.year = :year", table: table_name, year: year)
       else
         for_current_year
       end
     end
 
     def for_current_year
-      where(year: Date.today.year)
+      where(":table.year = :year", table: table_name, year: Date.today.year)
     end
 
     def for_previous_years
-      where('year < ? ', Date.today.year)
+      where(":table.year < :year", table: table_name, year: Date.today.year)
     end
   end
 
