@@ -1,7 +1,7 @@
 = render partial: 'layouts/shared/program_nav', locals: { item: :overview }
 
 div.ContentCard-list-wrapper
-  = render partial: 'layouts/shared/card-content', locals: { card: @content_card }
+  = render partial: 'layouts/shared/card_content', locals: { card: @content_card, list: "Program content cards" }
 
 div.Home-secondary-nav
   = render partial: 'layouts/shared/secondary_nav'
