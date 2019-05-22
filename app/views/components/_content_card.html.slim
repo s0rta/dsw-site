@@ -1,8 +1,7 @@
-div.ContentCard[style="background: #{card[:color]}"]
-  / if statement for image listed or not
+div.ContentCard
   img.ContentCard-img src="#{card[:imgURL]}"
   div.ContentCard-text
     h3.ContentCard-title #{card[:title]}
     p.ContentCard-description #{card[:description]}
     .ContentCard-button
-      = render 'components/content_button', title: "Explore the tracks", buttonPageURL: "tracks"
+      = render 'components/content_button', title: "Explore the tracks", buttonPageURL: "#{card[:buttonPageURL]}"
