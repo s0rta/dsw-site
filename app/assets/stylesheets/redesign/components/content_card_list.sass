@@ -1,23 +1,22 @@
-.TwoCardList
+.ContentCardList
   display: flex
   justify-content: center
   flex-wrap: wrap
   margin: 0 auto 137px auto
 
-.TwoCardListItem
+.ContentCardListItem
   max-width: 659px
   padding: 12px
-  margin-top: 71px
 
-.TwoCardList::after
+.ContentCardList::after
   width: 659px
   content: "";
   flex: auto;
 
 @media(min-width: 640px)
-  .TwoCardList
+  .ContentCardList
     margin-bottom: 250px
 
 @media(min-width: 1300px)
-  .TwoCardList::after
+  .ContentCardList::after
     max-width: 659px

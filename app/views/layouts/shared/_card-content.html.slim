@@ -1,4 +1,4 @@
-= render 'components/two_card_list' do
+= render 'components/content_card_list', attributes: { 'aria-label': 'Content cards' } do
   - card[:cards].each do |card|
-    = render 'components/two_card_list_item' do
+    = render 'components/content_card_list_item' do
       = render 'components/content_card', card: card

@@ -1,6 +1,7 @@
 @import ../config
 
 .ContentCard
+  margin-top: 65px
   height: 100%
 
 .ContentCard-img
@@ -8,28 +9,36 @@
   width: 100%
 
 .ContentCard-title
-  color: $teal-dark
+  max-width: 313px
+  color: $primary-font-dark
   text-transform: uppercase
   line-height: 32px
   font-size: 28px
   font-weight: 300
-  margin-top: 29px
+  margin-top: 30px
 
 .ContentCard-description
-  color: $copy-color
-  margin-top: 49px
+  color: $primary-font-medium
+  margin-top: 30px
   line-height: 18px
   font-size: 14px
   font-weight: 300
 
 .ContentCard-button
-  margin-top: 60px
+  margin-top: 50px
   text-align: center
 
 @media(min-width: 640px)
+  .ContentCard
+    margin-top: 71px
+  .ContentCard-title
+    margin-top: 35px
+  .ContentCard-description
+    margin-top: 35px
   .ContentCard-img
     height: 295px;
   .ContentCard-button
+    margin-top: 55px
     text-align: left
 
 @media(min-width: 1300px)
