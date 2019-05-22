@@ -1,38 +1,40 @@
-section.hero
-  - if AnnualSchedule.post_week? && AnnualSchedule.next.present?
-    h2 #{AnnualSchedule.next.week_start_at.strftime('%B %-d')}&ndash;#{AnnualSchedule.next.week_end_at.strftime('%-d, %Y')}
-  - else
-    h2 #{AnnualSchedule.current.week_start_at.strftime('%B %-d')}&ndash;#{AnnualSchedule.current.week_end_at.strftime('%-d, %Y')}
-  .section-content(style="text-align: center; max-width: 800px;")
-    h3 Denver Startup Week is about innovation for founders, developers, product managers, designers, marketers, sales teams, and makers.
+/ section.hero
+/   - if AnnualSchedule.post_week? && AnnualSchedule.next.present?
+/     h2 #{AnnualSchedule.next.week_start_at.strftime('%B %-d')}&ndash;#{AnnualSchedule.next.week_end_at.strftime('%-d, %Y')}
+/   - else
+/     h2 #{AnnualSchedule.current.week_start_at.strftime('%B %-d')}&ndash;#{AnnualSchedule.current.week_end_at.strftime('%-d, %Y')}
+/   .section-content(style="text-align: center; max-width: 800px;")
+/     h3 Denver Startup Week is about innovation for founders, developers, product managers, designers, marketers, sales teams, and makers.
 
-section.site-max-and-center
-  div.cards.cards-2up
-    - @two_up_ctas.each do |cta|
-      - cycle('teal', 'purple', 'blue', 'green', name: 'colors')
-      article(class="card card-#{current_cycle('colors')}")
-        - cache([ cta, current_cycle('colors') ]) do
-          div.card-elements
-            h2.card-heading = process_with_liquid cta.title
-            h3.card-subheading = process_with_liquid cta.subtitle
-            p.card-copy = process_with_liquid(cta.body).html_safe
-            = link_to cta.link_href, class: "card-btn" do
-              = content_tag :span, cta.link_text, class: "card-btn-text"
-  div.cards.cards-3up
-    - @three_up_ctas.each do |cta|
-      article(class="card card-#{cta.track.present? ? cta.track.color : 'grey'}")
-        div.card-elements
-          - if cta.track.present?
-            div.card-icon
-              = render partial: "icons/#{cta.track.icon}"
-              span = cta.track.name
-          h2.card-heading = process_with_liquid cta.title
-          h3.card-subheading = process_with_liquid cta.subtitle
-          p.card-copy = process_with_liquid cta.body
-          = link_to cta.link_href, class: "card-btn" do
-            = content_tag :span, cta.link_text, class: "card-btn-text"
+/ section.site-max-and-center
+/   div.cards.cards-2up
+/     - @two_up_ctas.each do |cta|
+/       - cycle('teal', 'purple', 'blue', 'green', name: 'colors')
+/       article(class="card card-#{current_cycle('colors')}")
+/         - cache([ cta, current_cycle('colors') ]) do
+/           div.card-elements
+/             h2.card-heading = process_with_liquid cta.title
+/             h3.card-subheading = process_with_liquid cta.subtitle
+/             p.card-copy = process_with_liquid(cta.body).html_safe
+/             = link_to cta.link_href, class: "card-btn" do
+/               = content_tag :span, cta.link_text, class: "card-btn-text"
+/   div.cards.cards-3up
+/     - @three_up_ctas.each do |cta|
+/       article(class="card card-#{cta.track.present? ? cta.track.color : 'grey'}")
+/         div.card-elements
+/           - if cta.track.present?
+/             div.card-icon
+/               = render partial: "icons/#{cta.track.icon}"
+/               span = cta.track.name
+/           h2.card-heading = process_with_liquid cta.title
+/           h3.card-subheading = process_with_liquid cta.subtitle
+/           p.card-copy = process_with_liquid cta.body
+/           = link_to cta.link_href, class: "card-btn" do
+/             = content_tag :span, cta.link_text, class: "card-btn-text"
 
-  div.cards.cards-3up(style="margin-top: 10em")
+/   div.cards.cards-3up(style="margin-top: 10em")
+
+= render partial: 'layouts/home_hero'
 
 div.Home-secondary-nav
   = render partial: 'layouts/shared/secondary_nav'

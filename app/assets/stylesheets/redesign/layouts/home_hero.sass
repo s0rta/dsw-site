@@ -1,0 +1,68 @@
+@import ../config
+
+$top-margin: 150px
+$wrap-margin: 44px
+
+
+.HomeHero
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  align-items: flex-start
+  color: $primary-font-dark
+  margin-bottom: 105px
+  margin-top: calc(#{$top-margin} - %{$wrap-margin})
+
+.HomeHero-title
+  font-size: 120px
+  font-weight: 900
+  line-height: 90px
+  text-transform: uppercase
+  max-width: 589px
+  font-family: 'Montserrat-Black'
+  margin-top: $wrap-margin
+  margin-right: 20px
+
+.HomeHero-content
+  margin-top: $wrap-margin
+
+.HomeHero-date
+  font-size: 24px
+  font-weight: 300
+  text-transform: uppercase
+
+.HomeHero-description
+  color: $primary-font-medium
+  font-family: 'Montserrat-Regular'
+  font-size: 14px
+  line-height: 18px
+  max-width: 451px
+  margin-top: 7px
+
+.HomeHero-link
+  display: flex
+  align-items: center
+  font-family: Montserrat-Regular;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase
+  color: $teal-light
+  margin-top: 30px
+
+.HomeHero-link-arrow
+  margin-left: 20px
+  fill: $teal-light
+
+  .icon   // targets the svg icon class
+    height: 20px
+
+
+@media(max-width: 1075px)
+  .HomeHero-description
+    max-width: 100%
+
+@media(max-width: 660px)
+  .HomeHero-title
+    font-size: 62px;
+    line-height: 50px;
+    max-width: 353px;
