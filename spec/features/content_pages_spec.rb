@@ -15,7 +15,7 @@ feature "Content-only pages" do
 
   scenario "the program page" do
     visit "/program"
-    expect(page).to have_content("THE ENTREPRENEURIAL SPIRIT")
+    expect(page).to have_content("Program")
   end
 
   scenario "the initiatives page" do

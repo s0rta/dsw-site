@@ -31,6 +31,9 @@ class SiteController < ApplicationController
     @secondary_nav = HashWithIndifferentAccess.new(YAML.safe_load(
       File.read(File.expand_path("../data/secondary_nav.yml",  __dir__))))
 
+    @content_card = HashWithIndifferentAccess.new(YAML.safe_load(
+      File.read(File.expand_path("../data/content_card.yml",  __dir__))))
+
     render template: page_partial
   end
 
