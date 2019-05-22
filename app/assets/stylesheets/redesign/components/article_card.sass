@@ -1,0 +1,52 @@
+@import ../config
+
+$track-dot-size: 13px
+
+.ArticleCard
+  position: relative
+  height: 100%
+
+.ArticleCard-image
+  height: 205px
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+.ArticleCard-content
+  padding: 13px 20px
+
+.ArticleCard-date
+  font-size: 11px
+  color: $primary-font-light
+  text-transform: uppercase
+
+.ArticleCard-title
+  font-size: 18px
+  color: $primary-font-medium
+  line-height: 21px
+  margin-top: 5px
+
+.ArticleCard-tracks
+  display: flex
+  position: absolute;
+  left: 20px
+  bottom: 20px
+
+.ArticleCard-track
+  display: flex
+  align-items: center
+  margin-left: 20px
+
+  &:first-child
+    margin-left: 0
+
+.ArticleCard-track-dot
+  height: $track-dot-size;
+  width: $track-dot-size;
+  border-radius: 50%;
+
+.ArticleCard-track-name
+  font-size: 10px
+  color: $primary-font-light
+  margin-left: 5px
+  text-transform: uppercase
