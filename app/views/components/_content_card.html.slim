@@ -1,5 +1,5 @@
 div.ContentCard
-  img.ContentCard-img alt="Content card image" src="#{image_url(card[:img_url])}"
+  img.ContentCard-img alt="#{card[:title]}" src="#{image_url(card[:img_url])}"
   div.ContentCard-text
     h3.ContentCard-title #{card[:title]}
     p.ContentCard-description #{card[:description]}
