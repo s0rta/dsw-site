@@ -1,13 +1,13 @@
 features:
   - type: 'article'
-    image: 'example/example-article-image.jpeg'
+    image: 'redesign/example-article-image.jpeg'
     date: 'apr 4, 2019'
     title: 'How Denver is winning the race to be the next Silicon Valley'
     tracks:
       - 'founder'
       - 'product'
   - type: 'article'
-    image: 'example/example-article-image.jpeg'
+    image: 'redesign/example-article-image.jpeg'
     date: 'apr 4, 2019'
     title: 'How Denver is winning the race to be the next Silicon Valley'
     tracks:
@@ -19,7 +19,7 @@ features:
     icon: 'terminal'
     track: 'developer'
   - type: 'article'
-    image: 'example/example-article-image.jpeg'
+    image: 'redesign/example-article-image.jpeg'
     date: 'apr 4, 2019'
     title: 'How Denver is winning the race to be the next Silicon Valley'
     tracks:
@@ -31,21 +31,21 @@ features:
     icon: 'eyeball'
     track: 'designer'
   - type: 'article'
-    image: 'example/example-article-image.jpeg'
+    image: 'redesign/example-article-image.jpeg'
     date: 'apr 4, 2019'
     title: 'How Denver is winning the race to be the next Silicon Valley'
     tracks:
       - 'founder'
       - 'product'
   - type: 'article'
-    image: 'example/example-article-image.jpeg'
+    image: 'redesign/example-article-image.jpeg'
     date: 'apr 4, 2019'
     title: 'How Denver is winning the race to be the next Silicon Valley'
     tracks:
       - 'founder'
       - 'product'
   - type: 'article'
-    image: 'example/example-article-image.jpeg'
+    image: 'redesign/example-article-image.jpeg'
     date: 'apr 4, 2019'
     title: 'How Denver is winning the race to be the next Silicon Valley'
     tracks:
