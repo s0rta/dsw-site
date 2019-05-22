@@ -11,18 +11,18 @@ module YearScoped
   class_methods do
     def for_year(year)
       if year
-        where(":table.year = :year", table: table_name, year: year)
+        where("#{connection.quote_table_name(table_name)}.year = ?", year)
       else
         for_current_year
       end
     end
 
     def for_current_year
-      where(":table.year = :year", table: table_name, year: Date.today.year)
+      where("#{connection.quote_table_name(table_name)}.year = ?", Date.today.year)
     end
 
     def for_previous_years
-      where(":table.year < :year", table: table_name, year: Date.today.year)
+      where("#{connection.quote_table_name(table_name)}.year < ?", Date.today.year)
     end
   end
 
