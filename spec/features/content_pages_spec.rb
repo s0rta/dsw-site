@@ -13,10 +13,10 @@ feature "Content-only pages" do
     expect(page).to have_content("BASECAMP LAUNCHED BY CHASE FOR BUSINESS")
   end
 
-  scenario "the program page" do
-    visit "/program"
-    expect(page).to have_content("THE ENTREPRENEURIAL SPIRIT")
-  end
+  # scenario "the program page" do
+  #   visit "/program"
+  #   expect(page).to have_content("THE ENTREPRENEURIAL SPIRIT")
+  # end
 
   scenario "the initiatives page" do
     visit "/initiatives"
