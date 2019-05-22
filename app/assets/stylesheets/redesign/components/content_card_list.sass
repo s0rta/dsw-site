@@ -1,3 +1,5 @@
+@import ../config
+
 .ContentCard-list
   display: flex
   justify-content: center
@@ -8,15 +10,13 @@
   max-width: 659px
   padding: 12px
 
-.ContentCard-list::after
-  width: 659px
-  content: "";
-  flex: auto;
-
 @media(min-width: 640px)
   .ContentCardl-list
     margin-bottom: 250px
 
 @media(min-width: 1300px)
-  .ContentCard-list::after
-    max-width: 659px
+  .ContentCard-list
+    justify-content: space-between
+  .ContentCard-list-wrapper
+    max-width: 1320px;
+    margin: 0 auto;
