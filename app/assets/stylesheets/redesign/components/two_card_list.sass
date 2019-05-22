@@ -7,8 +7,17 @@
 .TwoCardListItem
   max-width: 659px
   padding: 12px
-  margin-top: 71px 
+  margin-top: 71px
+
+.TwoCardList::after
+  width: 659px
+  content: "";
+  flex: auto;
 
 @media(min-width: 640px)
   .TwoCardList
     margin-bottom: 250px
+
+@media(min-width: 1300px)
+  .TwoCardList::after
+    max-width: 659px
