@@ -1,7 +1,7 @@
-div.Home-layout-wrapper
+= render layout: 'layouts/shared/layout_wrapper' do
   = render partial: 'layouts/home_hero'
-  div.Home-secondary-nav
-    = render partial: 'layouts/shared/secondary_nav'
+  div.Home-primary-callouts
+    = render partial: 'layouts/shared/primary_callouts_nav'
 
 = render partial: 'layouts/shared/featured', locals: { featured: @featured }
 

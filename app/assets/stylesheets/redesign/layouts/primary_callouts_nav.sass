@@ -1,10 +1,14 @@
 @import ../config
 
-.SecondaryNav-list
+.PrimaryCalloutsNav
+  max-width: 1252px;
+  margin: 0 auto;
+
+.PrimaryCalloutsNav-list
   display: flex
   justify-content: space-between
 
-.SecondaryNav-list-item
+.PrimaryCalloutsNav-list-item
   border-right: 1px solid $primary-border-light
   padding: 0 5%
 
@@ -15,13 +19,13 @@
     padding-right: 0
     border-right: 0
 
-.SecondaryNav-list-title
+.PrimaryCalloutsNav-list-title
   font-size: 24px
   font-weight: 300
   text-transform: uppercase
   margin-bottom: 10px
 
-.SecondaryNav-list-desc
+.PrimaryCalloutsNav-list-desc
   font-size: 14px
   font-weight: 300
   color: $primary-font-medium
@@ -30,10 +34,10 @@
   margin-bottom: 16px
 
 @media(max-width: 1024px)
-  .SecondaryNav-list
+  .PrimaryCalloutsNav-list
     flex-direction: column
 
-  .SecondaryNav-list-item
+  .PrimaryCalloutsNav-list-item
     border-right: 0
     border-bottom: 1px solid $primary-border-light
     padding: 35px 0

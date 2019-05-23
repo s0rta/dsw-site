@@ -1,9 +1,9 @@
-nav(aria-label="Secondary")
-  ul.SecondaryNav-list
+nav.PrimaryCalloutsNav(aria-label="Primary Callouts")
+  ul.PrimaryCalloutsNav-list
     - @secondary_nav[:items].each do |nav|
-      li.SecondaryNav-list-item
-        h2.SecondaryNav-list-title[style="color: #{nav[:color]}"] #{nav[:title]}
-        p.SecondaryNav-list-desc
+      li.PrimaryCalloutsNav-list-item
+        h2.PrimaryCalloutsNav-list-title[style="color: #{nav[:color]}"] #{nav[:title]}
+        p.PrimaryCalloutsNav-list-desc
           - nav[:descriptions].each do |desc|
             | #{desc}
             br
