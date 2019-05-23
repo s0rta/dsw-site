@@ -6,41 +6,41 @@ module RouteHelper
 
   def program_route
     {
-      path: 'program',
-      label: 'overview'
+      path: "program",
+      label: "overview"
     }
   end
 
   def tracks_route
     {
-      path: 'program/tracks',
-      label: 'tracks'
+      path: "program/tracks",
+      label: "tracks"
     }
   end
 
   def clusters_route
     {
-      path: 'program/clusters',
-      label: 'clusters'
+      path: "program/clusters",
+      label: "clusters"
     }
   end
 
   def basecamp_route
     {
-      path: 'basecamp',
-      label: 'basecamp'
+      path: "basecamp",
+      label: "basecamp"
     }
   end
 
   def headline_events_route
     {
-      path: 'program/headline-events',
-      label: 'headline events'
+      path: "program/headline-events",
+      label: "headline events"
     }
   end
 
   def active_link_class(route)
-    current_path?(route) ? 'is-active' : ''
+    current_path?(route) ? "is-active" : ""
   end
 
   private
