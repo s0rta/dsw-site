@@ -2,7 +2,7 @@
   = render 'components/secondary_hero_nav', routes: program_routes, nav_title: 'program'
 
 div.Program-list-wrapper
-  = render partial: 'layouts/shared/card_content', locals: { card: @content_card, list: "Program content cards" }
+  = render partial: 'layouts/shared/card_content', locals: { list: @programs[:programs], title: "Programs" }
 
 = render layout: 'layouts/shared/layout_wrapper' do
   div.Program-primary-callouts
