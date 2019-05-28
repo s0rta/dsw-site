@@ -34,6 +34,9 @@ class SiteController < ApplicationController
     @programs = HashWithIndifferentAccess.new(YAML.safe_load(
       File.read(File.expand_path("../data/programs.yml",  __dir__))))
 
+    @tracks = HashWithIndifferentAccess.new(
+      YAML.safe_load(File.read(File.expand_path("../data/tracks.yml",  __dir__))))
+
     render template: page_partial
   end
 
