@@ -1,10 +1,13 @@
-= render partial: 'layouts/shared/program_nav', locals: { item: :overview }
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Program', sub_title: 'Entrepreneurial Spirit', description: 'The weeklong event is intended to unite the entrepreneurial community in Downtown Denver and beyond, and celebrate great companies, innovation, ideas, and people. Events throughout the week are organized by the community at-large and the Organizing Committee, and include sessions, presentations, panels, workshops, happy hours, social events, job fairs and more.' } do
+  = render 'components/secondary_hero_nav', routes: program_routes, nav_title: 'program'
 
 div.ContentCard-list-wrapper
   = render partial: 'layouts/shared/card_content', locals: { card: @content_card, list: "Program content cards" }
 
 div.Home-secondary-nav
   = render partial: 'layouts/shared/secondary_nav'
+
+/ = render partial: 'layouts/shared/program_nav', locals: { item: :overview }
 
 / section.common.event-info.sm-centered
 /   .section-content
@@ -37,7 +40,7 @@ div.Home-secondary-nav
 / section.common
 /   .section-content.sm-centered
 /     h1 Basecamp Launched by Chase
-/     h6 Located at The Commons on Champa, Basecamp serves as the epicenter and soul of Denver Startup Week during the five days of dispersed programs, sessions, social events, and more. The activities at Basecamp represent the best of Denver Startup Week – including keynote speakers, premier session highlights, on-site mentoring with prominent startup leaders, networking events and meetups, and access to exclusive learning opportunities and resources.  
+/     h6 Located at The Commons on Champa, Basecamp serves as the epicenter and soul of Denver Startup Week during the five days of dispersed programs, sessions, social events, and more. The activities at Basecamp represent the best of Denver Startup Week – including keynote speakers, premier session highlights, on-site mentoring with prominent startup leaders, networking events and meetups, and access to exclusive learning opportunities and resources.
 /     = link_to 'Explore Basecamp', page_path(page: 'basecamp'), class: 'btn-cta'
 
 / section.common
