@@ -2,8 +2,8 @@ div.ContentCard
   img.ContentCard-img(class="#{card[:track]}-border-color" alt="#{card[:title]}" src="#{image_url(card[:img_url])}")
   div.ContentCard-text
     div.ContentCard-header(class="#{card[:track]}-fill")
-      - if card[:icon].present?
-        = render partial: "icons/#{card[:icon]}"
+      - if card[:track].present?
+        = render partial: "icons/tracks/#{card[:track]}"
       h3.ContentCard-title(class="#{card[:track]}-font") #{card[:title]}
     p.ContentCard-description #{card[:description]}
     .ContentCard-button
