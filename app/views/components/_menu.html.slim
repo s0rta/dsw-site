@@ -1,0 +1,7 @@
+.Menu.is-open#menu-js(data-bindable='menu')
+  nav
+    ul.Menu-list
+      - main_menu.each do |route|
+        li.Menu-item
+          = link_to route[:label], page_path(page: route[:path])
+  = render 'components/social_media_nav'
