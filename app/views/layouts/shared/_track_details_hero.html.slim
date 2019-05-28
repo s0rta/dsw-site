@@ -1,4 +1,9 @@
-.SecondaryHero
-  .SecondaryHero-inner
-    .SecondaryHero-description Designer2
-    .SecondaryHero-title Designer
+.TrackDetailsHero
+  .TrackDetailsHero-inner
+    a(href="program/tracks" aria-label="Back to tracks" style="fill: white" class="TrackDetailsHero-back-btn")
+      = render partial: 'icons/arrow_left'
+      .TrackDetailsHero-back-btn-text Back to tracks
+    .TrackDetailsHero-title-wapper
+      .TrackDetailsHero-title Designer
+      .TrackDetailsHero-track-btn
+        = render 'components/track_details_button', title: "View Designer Track Sessions", button_page_url: "tracks"
