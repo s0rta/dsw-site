@@ -1,4 +1,5 @@
 = render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "Designer", subProgram: "Tracks" }
-= render partial: 'layouts/shared/track_list', locals: { tracks: @featured }
+div CLUSTER DETAIL PAGE FOR #{@track[:name]} 
+/ = render partial: 'layouts/shared/track_list', locals: { tracks: @featured }
 div.LayoutWrapper
   = render partial: 'layouts/shared/primary_callouts_nav'

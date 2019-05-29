@@ -18,10 +18,10 @@ module RouteHelper
     }
   end
 
-  def tracks_route_track_details
+  def track_detail_route(name)
     {
-      path: "program/track_details",
-      label: "track details"
+       path: "program/tracks/#{name}",
+       label: name
     }
   end
 
