@@ -21,11 +21,11 @@ module RouteHelper
 
   def social_media_routes
     [
-      {icon: 'fa-twitter', label: 'twitter', link: 'https://twitter.com/denstartupweek'},
-      {icon: 'fa-facebook-f', label: 'facebook', link: 'https://www.facebook.com/DenverStartupWeek'},
-      {icon: 'fa-linkedin-in', label: 'linkedin', link: 'https://www.linkedin.com/company/denver-startup-week/'},
-      {icon: 'fa-youtube', label: 'youtube', link: 'https://www.youtube.com/c/denverstartupweek'},
-      {icon: 'fa-medium-m', label: 'medium', link: 'https://medium.com/denver-startup-week'},
+      { icon: "fa-twitter", label: "twitter", link: "https://twitter.com/denstartupweek" },
+      { icon: "fa-facebook-f", label: "facebook", link: "https://www.facebook.com/DenverStartupWeek" },
+      { icon: "fa-linkedin-in", label: "linkedin", link: "https://www.linkedin.com/company/denver-startup-week/" },
+      { icon: "fa-youtube", label: "youtube", link: "https://www.youtube.com/c/denverstartupweek" },
+      { icon: "fa-medium-m", label: "medium", link: "https://medium.com/denver-startup-week" }
     ]
   end
 
@@ -126,7 +126,7 @@ module RouteHelper
   end
 
   def menu_starting_nav
-    starting_nav = ''
+    starting_nav = ""
     main_menu.each do |item|
       next unless item[:nested_routes].present?
       if item[:nested_routes].any? { |r| r[:path] == request_path }
