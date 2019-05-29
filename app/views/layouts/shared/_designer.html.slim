@@ -7,3 +7,5 @@ section.Tracks
             = render 'components/session_card', session: track
           - if track[:type] == 'article' && track[:tracks].include?('designer')
             = render 'components/article_card', article: track
+  .Tracks-list-btn-wrapper
+    button.Tracks-list-btn Load more
