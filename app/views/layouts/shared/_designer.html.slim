@@ -1,13 +1,9 @@
-section.Featured
-  .Featured-triangles
-    .Featured-background-triangle--primary
-    .Featured-background-triangle--secondary
-  h2.Featured-header#Featured-header-id Featured Sessions & Articles
-  div.Featured-list
+section.Tracks
+  .Tracks-list
     = render 'components/three_card_list', attributes: { 'aria-labeledby': 'Featured-header-id' } do
-      - featured[:features].each do |feature|
+      - tracks[:features].each do |track|
         = render 'components/three_card_list_item' do
-          - if feature[:type] == 'session'
-            = render 'components/session_card', session: feature
-          - if feature[:type] == 'article'
-            = render 'components/article_card', article: feature
+          - if track[:type] == 'session' && track[:track] == 'designer'
+            = render 'components/session_card', session: track
+          - if track[:type] == 'article' && track[:tracks].include?('designer')
+            = render 'components/article_card', article: track
