@@ -18,13 +18,6 @@ module RouteHelper
     }
   end
 
-  def tracks_route_designer
-    {
-      path: "program/tracks/designer",
-      label: "designer track"
-    }
-  end
-
   def tracks_route_track_details
     {
       path: "program/track_details",
