@@ -1,8 +1,24 @@
 .Menu.is-open#menu-js(data-bindable='menu')
-  nav
-    ul.Menu-list
-      - main_menu.each do |route|
-        li.Menu-item
-          = link_to route[:label], page_path(page: route[:path])
+  div.Menu-nav-wrapper
+    nav.Menu-nav.Menu-nav--primary#primary-nav-js(aria-label="primary nav")
+      ul.Menu-list
+        - main_menu.each do |route|
+          li.Menu-item
+            = link_to route[:label], page_path(page: route[:path]), class: "Menu-item-link #{route[:nested_routes].present? ? 'has-nested' : ''}"
+            - if route[:nested_routes].present?
+              button.Menu-item-button#open-secondary-nav-js(data-menu="#{route[:label]}") #{route[:label]}
+    - main_menu.each do |route|
+      - if route[:nested_routes].present?
+        nav.Menu-nav.Menu-nav--secondary(id="#{route[:label]}-secondary-nav-js" aria-label="#{route[:label]} secondary nav")
+          div.Menu-nav-secondary-header
+            button.Menu-nav-secondary-back-button#close-secondary-nav-js(aria-label="back to primary nav" data-menu="#{route[:label]}")
+              = render partial: 'icons/arrow_left'
+            .Menu-item #{route[:label]}
+          ul.Menu-list.Menu-list--secondary
+            - route[:nested_routes].each do |route|
+              li.Menu-item.Menu-item--mobile
+                = link_to route[:label], page_path(page: route[:path]), class: "Menu-item-link"
+
   div.Menu-social-media
     = render 'components/social_media_nav'
+
