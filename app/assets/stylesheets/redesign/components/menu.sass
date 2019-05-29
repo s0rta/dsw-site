@@ -16,14 +16,13 @@ $transition-time: 150ms
   align-items: center
   justify-content: center
   visibility: hidden
-  opacity: 0;
+  opacity: 0
   transition: visibility $transition-time, opacity $transition-time linear;
+  padding: 0 5%
 
 .Menu.is-open
   opacity: 1
   visibility: visible
-
-
 
 .Menu-list
   display: flex
@@ -41,8 +40,25 @@ $transition-time: 150ms
 .Menu-item a
   color: inherit
 
+.Menu-social-media
+  width: 100%
+  text-align: center
+
 .Menu
   .SocialMediaNav-fa-circle
     background: $teal-light
   .SocialMediaNav-icon
     color: $teal-dark
+
+
+@media(max-width: 739px)
+  .Menu-list
+    align-items: flex-start
+  .Menu
+    align-items: flex-start
+
+  .Menu-social-media
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;

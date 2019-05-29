@@ -4,4 +4,5 @@
       - main_menu.each do |route|
         li.Menu-item
           = link_to route[:label], page_path(page: route[:path])
-  = render 'components/social_media_nav'
+  div.Menu-social-media
+    = render 'components/social_media_nav'
