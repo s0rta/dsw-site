@@ -1,6 +1,6 @@
 .SubProgramDetailsHero
   .SubProgramDetailsHero-inner
-    a(href="javascript:history.back()" aria-label="Back to Previous" style="fill: white" class="SubProgramDetailsHero-back-btn")
+    a(href="#{backUrl}" aria-label="Back to Previous" style="fill: white" class="SubProgramDetailsHero-back-btn")
       = render partial: 'icons/arrow_left'
       div Back to #{subProgram}
       / TODO: get correct arrow icon
@@ -8,5 +8,5 @@
       .SubProgramDetailsHero-title #{title}
       button.SubProgramDetailsHero-SubProgram-btn
         .SubProgramDetailsHero-SubProgram-btn-title
-          = link_to "View #{title} #{subProgram} Sessions", schedules_path(filter: "#{title}")
+          = link_to "View #{title} #{btnSessions} Sessions", schedules_path(filter: "#{title}")
 
