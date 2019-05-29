@@ -221,6 +221,16 @@ ALTER SEQUENCE public.articles_id_seq OWNED BY public.articles.id;
 
 
 --
+-- Name: articles_tracks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.articles_tracks (
+    article_id bigint NOT NULL,
+    track_id bigint NOT NULL
+);
+
+
+--
 -- Name: attendee_goals; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1901,6 +1911,13 @@ CREATE INDEX index_articles_on_author_id ON public.articles USING btree (author_
 
 
 --
+-- Name: index_articles_tracks_on_article_id_and_track_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_articles_tracks_on_article_id_and_track_id ON public.articles_tracks USING btree (article_id, track_id);
+
+
+--
 -- Name: index_attendee_messages_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2280,6 +2297,14 @@ ALTER TABLE ONLY public.volunteer_shifts
 
 
 --
+-- Name: articles_tracks fk_rails_a51247846b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles_tracks
+    ADD CONSTRAINT fk_rails_a51247846b FOREIGN KEY (track_id) REFERENCES public.tracks(id);
+
+
+--
 -- Name: homepage_ctas fk_rails_d6aa0aad97; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2293,6 +2318,14 @@ ALTER TABLE ONLY public.homepage_ctas
 
 ALTER TABLE ONLY public.sent_notifications
     ADD CONSTRAINT fk_rails_da20014dea FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
+
+
+--
+-- Name: articles_tracks fk_rails_dfa37c8829; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles_tracks
+    ADD CONSTRAINT fk_rails_dfa37c8829 FOREIGN KEY (article_id) REFERENCES public.articles(id);
 
 
 --
@@ -2458,6 +2491,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180924163222'),
 ('20180925205310'),
 ('20190221040025'),
-('20190221064154');
+('20190221064154'),
+('20190529192917');
 
 
