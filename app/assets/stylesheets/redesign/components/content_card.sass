@@ -4,17 +4,21 @@
   height: 100%
 
 .ContentCard-img
-  height: 152px;
+  height: 152px
   width: 100%
+  border-bottom-style: solid
+  border-bottom-width: 6px
+
+.ContentCard-header
+  margin-top: 25px
+    color: $primary-font-dark
 
 .ContentCard-title
   max-width: 313px
-  color: $primary-font-dark
   text-transform: uppercase
   line-height: 32px
   font-size: 28px
   font-weight: 300
-  margin-top: 25px
 
 .ContentCard-description
   color: $primary-font-medium
@@ -28,12 +32,12 @@
   text-align: center
 
 @media(min-width: 640px)
-  .ContentCard-title
+  .ContentCard-header
     margin-top: 30px
   .ContentCard-description
     margin-top: 30px
   .ContentCard-img
-    height: 295px;
+    height: 295px
   .ContentCard-button
     margin-top: 50px
     text-align: left

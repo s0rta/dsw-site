@@ -34,4 +34,10 @@ class Track < ApplicationRecord
   def name_for_partial
     name.downcase.tr(" ", "_")
   end
+
+  def self.template_data
+    select("name AS title, lower(name) AS track, icon, name, description")
+      .in_display_order
+      .with_icon_and_color
+  end
 end
