@@ -8,4 +8,5 @@
       .SubProgramDetailsHero-title #{title}
       button.SubProgramDetailsHero-SubProgram-btn
         .SubProgramDetailsHero-SubProgram-btn-title
-          = link_to "View #{title} #{subProgram} Sessions", page_path(page: 'program/'"#{subProgram}")
+          = link_to "View #{title} #{subProgram} Sessions", schedules_path(filter: "#{title}")
+
