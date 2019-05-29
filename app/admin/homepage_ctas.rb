@@ -1,18 +1,15 @@
-# frozen_string_literal: true
-
 ActiveAdmin.register HomepageCta do
-
-  menu parent: 'Site Content', label: 'Homepage Calls-to-Action'
+  menu parent: "Site Content", label: "Homepage Calls-to-Action"
 
   permit_params :title,
-                :subtitle,
-                :body,
-                :priority,
-                :link_text,
-                :link_href,
-                :is_active,
-                :relevant_to_cycle,
-                :track_id
+    :subtitle,
+    :body,
+    :priority,
+    :link_text,
+    :link_href,
+    :is_active,
+    :relevant_to_cycle,
+    :track_id
 
   index do
     selectable_column
@@ -39,10 +36,10 @@ ActiveAdmin.register HomepageCta do
       f.input :link_text
       f.input :link_href
       f.input :relevant_to_cycle,
-              label: 'Show during',
-              include_blank: 'All',
-              as: :select,
-              collection: AnnualSchedule::CYCLES.map { |c| [ c.to_s.titleize, c ] }
+        label: "Show during",
+        include_blank: "All",
+        as: :select,
+        collection: AnnualSchedule::CYCLES.map { |c| [c.to_s.titleize, c] }
       f.input :track_id, as: :select, collection: Track.all.order(:name)
       f.input :is_active
     end
