@@ -1,6 +1,6 @@
 section.Tracks
   .Tracks-list
-    = render 'components/three_card_list', attributes: { 'aria-labeledby': 'Featured-header-id' } do
+    = render 'components/three_card_list', attributes: { 'aria-label': 'Designer sessions and atricles' } do
       - tracks[:features].each do |track|
         = render 'components/three_card_list_item' do
           - if track[:type] == 'session' && track[:track] == 'designer'
