@@ -125,6 +125,17 @@ module RouteHelper
     current_path?(route) ? "is-active" : ""
   end
 
+  def menu_starting_nav
+    starting_nav = ''
+    main_menu.each do |item|
+      next unless item[:nested_routes].present?
+      if item[:nested_routes].any? { |r| r[:path] == request_path }
+        starting_nav = item[:label]
+      end
+    end
+    starting_nav
+  end
+
   private
 
   def request_path

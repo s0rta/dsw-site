@@ -11,12 +11,23 @@ const MENU_PRIMARY_NAV_ID = '#primary-nav-js';
 const MENU_SECONDAY_NAV_SUFFIX_ID = 'secondary-nav-js';
 
 export default class Menu {
-  constructor() {
-    this.addListeners();
+  constructor(el) {
     this.openMenu = this.openMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
+    this.openSecondaryNavClick = this.openSecondaryNavClick.bind(this);
     this.openSecondaryNav = this.openSecondaryNav.bind(this);
-    this.closeSecondaryNav = this.closeSecondaryNav.bind(this);
+    this.closeSecondaryNavClick = this.closeSecondaryNavClick.bind(this);
+
+    this.initialize(el);
+  }
+
+  initialize(el) {
+    this.addListeners();
+
+    const startingNav = el.data().starting_nav;
+    if (startingNav) {
+      this.openSecondaryNav(startingNav);
+    }
   }
 
   dispose() {
@@ -34,11 +45,11 @@ export default class Menu {
 
     $(document)
       .find(MENU_OPEN_SECONDARY_NAV_ID)
-      .on('click', this.openSecondaryNav);
+      .on('click', this.openSecondaryNavClick);
 
     $(document)
       .find(MENU_CLOSE_SECONDARY_NAV_ID)
-      .on('click', this.closeSecondaryNav);
+      .on('click', this.closeSecondaryNavClick);
   }
 
   removeListeners() {}
@@ -57,18 +68,21 @@ export default class Menu {
     $(document.body).removeClass(BODY_MENU_CLASS);
   }
 
-  openSecondaryNav(event) {
-    const secondaryNav = event.target.dataset.menu;
+  openSecondaryNavClick(event) {
+    this.openSecondaryNav(event.target.dataset.menu);
+  }
+
+  openSecondaryNav(nav) {
     $(document)
       .find(MENU_PRIMARY_NAV_ID)
       .addClass('is-closed');
 
     $(document)
-      .find(`#${secondaryNav}-${MENU_SECONDAY_NAV_SUFFIX_ID}`)
+      .find(`#${nav}-${MENU_SECONDAY_NAV_SUFFIX_ID}`)
       .addClass('is-open');
   }
 
-  closeSecondaryNav(event) {
+  closeSecondaryNavClick(event) {
     // have to use currentTarget here because of nested SVG in the button
     const secondaryNav = event.currentTarget.dataset.menu;
     $(document)
