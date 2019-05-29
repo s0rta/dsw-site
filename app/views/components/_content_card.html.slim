@@ -1,7 +1,14 @@
 div.ContentCard
-  img.ContentCard-img alt="#{card[:title]}" src="#{image_url(card[:img_url])}"
+  - if card[:img_url]
+    img.ContentCard-img(class="#{card[:track]}-border-color" alt="#{card[:title]}" src="#{card[:img_url]}")
+  - else
+    / temporary until images are part of data models
+    img.ContentCard-img(class="#{card[:track]}-border-color" alt="#{card[:title]}" src="https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg")
   div.ContentCard-text
-    h3.ContentCard-title #{card[:title]}
+    div.ContentCard-header(class="#{card[:track]}-fill")
+      - if card[:track].present?
+        = render partial: "icons/#{card[:icon]}"
+      h3.ContentCard-title(class="#{card[:track]}-font") #{card[:title]}
     p.ContentCard-description #{card[:description]}
     .ContentCard-button
       = render 'components/content_button', title: "Explore the tracks", button_page_url: "#{card[:button_page_url]}"
