@@ -75,7 +75,6 @@ Rails.application.routes.draw do
     resources :clusters, only: :show, param: :name
   end
 
-
   get '/schedule', to: 'schedules#index', as: :schedules
   get '/schedule/:year',
       to: 'schedules#index',
