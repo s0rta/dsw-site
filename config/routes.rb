@@ -71,7 +71,10 @@ Rails.application.routes.draw do
   resources :general_inquiries, only: :create
   resources :sponsor_signups, only: :create
 
-  resources :clusters, only: :show, param: :name
+  scope :program do
+    resources :clusters, only: :show, param: :name
+  end
+
 
   get '/schedule', to: 'schedules#index', as: :schedules
   get '/schedule/:year',
