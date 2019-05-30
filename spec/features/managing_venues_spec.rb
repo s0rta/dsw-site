@@ -1,6 +1,10 @@
 require "spec_helper"
 
 feature "Managing My Venue" do
+  before do
+    Flipper[:venue_admin].enable
+  end
+
   let(:user) do
     create(:user, email: "test@example.com", password: "password")
   end
