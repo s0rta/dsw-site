@@ -1,15 +1,38 @@
 - backgroundColor = ""
+- textColor = ""
 - case "#{@track[:name]}"
 - when "Designer"
-  - backgroundColor = "designer"
+  - backgroundColor = "#bbdd7a"
+  - textColor = "#616b22"
 - when "Developer"
-  - backgroundColor = "Developer"
+  - backgroundColor = "#e2ca66"
+  - textColor = "#695523"
+- when "Founder"
+  - backgroundColor = "#ec833e"
+  - textColor = "#894615"
+- when "Growth"
+  - backgroundColor = "#06b4ea"
+  - textColor = "#044968"
+- when "Maker"
+  - backgroundColor = "#05d3d8"
+  -textColor = "#035c6b"
+- when "Product"
+  - backgroundColor = "#9c9cf2"
+  - textColor = "#3c3c6d"
+- when "Basecamp"
+  - backgroundColor = "#000000"
+  - textColor = "ffffff"
+- when "Headline_events"
+  - backgroundColor = "#000000"
+  - textColor = "ffffff"
+- when "Social_events"
+  - backgroundColor = "#000000"
+  - textColor = "ffffff"
 - else
-  -"You gave me #{@track[:name]} -- I have no idea what to do with that."
+  - backgroundColor = "#05d3d8"
+  - textColor = "ffffff"
 
-= backgroundColor
-div TRACK DETAIL PAGE FOR #{@track[:name]}
-= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@track[:name].downcase}", subProgram: "Tracks", backUrl: "tracks", btnSessions: "Track", backgroundColor: "rgb(187, 221, 122)", textColor: "rgb(97, 107, 34)" }
+= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@track[:name].downcase}", subProgram: "Tracks", backUrl: "tracks", btnSessions: "Track", backgroundColor: backgroundColor, textColor: textColor }
 = render partial: 'layouts/shared/track_list', locals: { tracks: @featured, trackName: "#{@track[:name].downcase}" }
 div.LayoutWrapper
   = render partial: 'layouts/shared/primary_callouts_nav'
