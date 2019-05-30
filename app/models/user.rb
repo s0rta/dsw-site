@@ -28,6 +28,7 @@ class User < ApplicationRecord
 
   has_and_belongs_to_many :chaired_tracks, class_name: "Track"
   has_and_belongs_to_many :companies
+  has_many :venues, through: :companies
 
   mount_uploader :avatar, AvatarUploader
 

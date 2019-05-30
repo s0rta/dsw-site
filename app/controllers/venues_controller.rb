@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   before_action :set_venue, only: %i[show edit update destroy]
-  before_action :set_venue_availability, only: %i[create edit update]
+  before_action :set_venue_availabilities, only: %i[create edit update]
 
   # GET /venues
   def index
@@ -90,8 +90,12 @@ class VenuesController < ApplicationController
     @venue = Venue.find(params[:id])
   end
 
-  def set_venue_availability
-    @venue_availabilities = VenueAvailability.where(venue_id: params[:id])
+  def set_venue_availabilities
+    @venue_availabilities = if params[:id]
+      current_user.venues.find(params[:id]).venue_availabilities
+    else
+      []
+    end
   end
 
   def venue_params
