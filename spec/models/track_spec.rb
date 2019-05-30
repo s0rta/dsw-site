@@ -24,15 +24,18 @@ RSpec.describe Track, type: :model do
 
   describe "transforming Youtube URLs into embed URLs" do
     it "transforms a non-http/https URL" do
-      expect(described_class.new(video_url: "youtu.be/EK7J_ZzvF8k").embed_video_url).to eq("https://www.youtube.com/embed/EK7J_ZzvF8k?modestbranding=1&showinfo=0")
+      t = described_class.new(video_url: "youtu.be/EK7J_ZzvF8k")
+      expect(t.embed_video_url).to eq("https://www.youtube.com/embed/EK7J_ZzvF8k?modestbranding=1&showinfo=0")
     end
 
     it "transforms an http URL" do
-      expect(described_class.new(video_url: "http://youtu.be/EK7J_ZzvF8k").embed_video_url).to eq("https://www.youtube.com/embed/EK7J_ZzvF8k?modestbranding=1&showinfo=0")
+      t = described_class.new(video_url: "http://youtu.be/EK7J_ZzvF8k")
+      expect(t.embed_video_url).to eq("https://www.youtube.com/embed/EK7J_ZzvF8k?modestbranding=1&showinfo=0")
     end
 
     it "transforms an https URL" do
-      expect(described_class.new(video_url: "https://youtu.be/EK7J_ZzvF8k").embed_video_url).to eq("https://www.youtube.com/embed/EK7J_ZzvF8k?modestbranding=1&showinfo=0")
+      t = described_class.new(video_url: "https://youtu.be/EK7J_ZzvF8k")
+      expect(t.embed_video_url).to eq("https://www.youtube.com/embed/EK7J_ZzvF8k?modestbranding=1&showinfo=0")
     end
   end
 end
