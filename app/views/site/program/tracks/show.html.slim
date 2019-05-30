@@ -1,8 +1,4 @@
-- color = track_color("#{@track[:name]}")
-- background_color = color[:backgroundColor]
-- text_color = color[:textColor]
-
-= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@track[:name]}", sub_program: "Tracks", back_url: "/program/tracks", btn_sessions: "Track", background_color: background_color, text_color: text_color }
+= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@track[:name]}", sub_program: "Tracks", back_url: "/program/tracks", btn_sessions: "Track", color: "#{@track[:color]}" }
 = render partial: 'layouts/shared/track_list', locals: { sessions_and_articles: @featured, track_name: "#{@track[:name].downcase}" }
 div.LayoutWrapper
   = render partial: 'layouts/shared/primary_callouts_nav'
