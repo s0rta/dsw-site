@@ -5,62 +5,12 @@ Style/ClassAndModuleChildren:
     - lib/**/*.rb
 Style/Documentation:
   Enabled: false
-Layout/EmptyLinesAroundBlockBody:
-  Enabled: false
-Layout/EmptyLinesAroundClassBody:
-  Enabled: false
-Layout/EmptyLinesAroundModuleBody:
-  Enabled: false
-Layout/ExtraSpacing:
-  Enabled: false
 Metrics/LineLength:
   # Default is that lines should be 80, but that's somewhat noisy. We want a softer limit.
   Description: Limit lines to 120 characters.
   Max: 120
   Exclude:
     - config/routes.rb
-Layout/DotPosition:
-  EnforcedStyle: leading
-Layout/EndAlignment:
-  # The value `keyword` means that `end` should be aligned with the matching
-  # keyword (if, while, etc.).
-  # The value `variable` means that in assignments, `end` should be aligned
-  # with the start of the variable on the left hand side of `=`. In all other
-  # situations, `end` should still be aligned with the keyword.
-  EnforcedStyleAlignWith: variable
-  SupportedStyles:
-    - keyword
-    - variable
-Lint/UnusedMethodArgument:
-  Exclude:
-    - app/interactors/**/*.rb
-Lint/UselessAccessModifier:
-  Enabled: false
-Layout/AlignParameters:
-  Enabled: true
-  EnforcedStyle: with_fixed_indentation
-Layout/SpaceBeforeFirstArg:
-  Enabled: false
-Layout/SpaceInsideArrayLiteralBrackets:
-  Enabled: false
-Layout/SpaceInsideHashLiteralBraces:
-  Enabled: false
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-  Enabled: true
-Style/CollectionMethods:
-  PreferredMethods:
-    find: 'detect'
-Style/BracesAroundHashParameters:
-  EnforcedStyle: context_dependent
-  SupportedStyles:
-    - braces
-    - no_braces
-    - context_dependent
-Style/FrozenStringLiteralComment:
-  Enabled: false
-Layout/IndentHash:
-  Enabled: false
 Metrics/BlockLength:
   Exclude:
     - Rakefile
