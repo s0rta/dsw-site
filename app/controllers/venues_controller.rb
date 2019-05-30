@@ -1,4 +1,6 @@
 class VenuesController < ApplicationController
+  before_action :authenticate_user!
+
   before_action :set_venue, only: %i[show edit update destroy]
   before_action :set_venue_availabilities, only: %i[create edit update]
 
