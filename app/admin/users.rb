@@ -2,15 +2,16 @@ ActiveAdmin.register User do
   include ActiveAdmin::AjaxFilter
 
   permit_params :email,
-                :password,
-                :password_confirmation,
-                :name,
-                :description,
-                :is_admin,
-                :avatar,
-                :team_position,
-                :team_priority,
-                chaired_track_ids: []
+    :password,
+    :password_confirmation,
+    :name,
+    :description,
+    :is_venue_host,
+    :is_admin,
+    :avatar,
+    :team_position,
+    :team_priority,
+    chaired_track_ids: []
 
   index do
     selectable_column
@@ -19,9 +20,10 @@ ActiveAdmin.register User do
     end
     column :name
     column :email
+    column :description
     column :is_admin
     column(:registrations) do |u|
-      u.registrations.sort.map(&:year).join(', ')
+      u.registrations.sort.map(&:year).join(", ")
     end
     actions
   end
@@ -33,7 +35,7 @@ ActiveAdmin.register User do
       f.input :description
       f.input :email
       f.input :team_position
-      f.input :team_priority, as: :number, min: 0, max: 10, hint: 'Lower values show first'
+      f.input :team_priority, as: :number, min: 0, max: 10, hint: "Lower values show first"
       f.input :password
       f.input :password_confirmation
       f.input :is_admin
@@ -54,8 +56,8 @@ ActiveAdmin.register User do
 
     def update
       if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
-        params[:user].delete('password')
-        params[:user].delete('password_confirmation')
+        params[:user].delete("password")
+        params[:user].delete("password_confirmation")
       end
       super
     end
@@ -64,13 +66,13 @@ ActiveAdmin.register User do
   show do
     tabs do
       tab :login do
-        attributes_table(*(default_attribute_table_rows - %i(encrypted_password reset_password_token provider)))
+        attributes_table(*(default_attribute_table_rows - %i[encrypted_password reset_password_token provider]))
       end
       tab :registrations do
-        table_for user.registrations.order('year asc') do
+        table_for user.registrations.order("year asc") do
           column :year
           column do |r|
-            link_to 'View', admin_user_registration_path(user, r)
+            link_to "View", admin_user_registration_path(user, r)
           end
         end
       end
