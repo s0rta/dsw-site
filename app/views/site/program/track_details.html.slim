@@ -1,5 +1,15 @@
-/ div TRACK DETAIL PAGE FOR #{@track[:name]}
-= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "Designer", subProgram: "Tracks", backUrl: "tracks", btnSessions: "Track", backgroundColor: "rgb(187, 221, 122)", textColor: "rgb(97, 107, 34)" }
-= render partial: 'layouts/shared/track_list', locals: { tracks: @featured }
+- backgroundColor = ""
+- case "#{@track[:name]}"
+- when "Designer"
+  - backgroundColor = "designer"
+- when "Developer"
+  - backgroundColor = "Developer"
+- else
+  -"You gave me #{@track[:name]} -- I have no idea what to do with that."
+
+= backgroundColor
+div TRACK DETAIL PAGE FOR #{@track[:name]}
+= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@track[:name].downcase}", subProgram: "Tracks", backUrl: "tracks", btnSessions: "Track", backgroundColor: "rgb(187, 221, 122)", textColor: "rgb(97, 107, 34)" }
+= render partial: 'layouts/shared/track_list', locals: { tracks: @featured, trackName: "#{@track[:name].downcase}" }
 div.LayoutWrapper
   = render partial: 'layouts/shared/primary_callouts_nav'

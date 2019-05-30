@@ -1,11 +1,11 @@
 section.Tracks
   .Tracks-list
-    = render 'components/three_card_list', attributes: { 'aria-label': 'Designer sessions and atricles' } do
+    = render 'components/three_card_list', attributes: { 'aria-label': "#{trackName} sessions and atricles" } do
       - tracks[:features].each do |track|
-        - if track[:type] == 'session' && track[:track] == 'designer'
+        - if track[:type] == 'session' && track[:track] == "#{trackName}"
           = render 'components/three_card_list_item' do
             = render 'components/session_card', session: track
-        - if track[:type] == 'article' && track[:tracks].include?('designer')
+        - if track[:type] == 'article' && track[:tracks].include?("#{trackName}")
           = render 'components/three_card_list_item' do
             = render 'components/article_card', article: track
   .Tracks-list-btn-wrapper

@@ -26,6 +26,7 @@ features:
     tracks:
       - 'founder'
       - 'product'
+      - 'developer'
   - type: 'session'
     title: 'Idea Vs Opportunity by Creative Startups'
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum massa non magna ornare, et lacinia nibh semper. Curabitur eu varius justo. In cursus sodales arcu et mattis.'
