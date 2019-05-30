@@ -4,6 +4,7 @@ ActiveAdmin.register Article do
   permit_params :title,
     :body,
     :author_id,
+    :track_ids,
     :published_at
 
   index do
@@ -30,6 +31,7 @@ ActiveAdmin.register Article do
         as: :ajax_select,
         collection: [],
         data: {url: filter_admin_users_path, search_fields: %i[name email]}
+      f.input :track_ids, as: :check_boxes, collection: Track.all, label: "Related Track(s)"
       f.input :published_at
     end
 
