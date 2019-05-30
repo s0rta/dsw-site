@@ -7,7 +7,7 @@ class TracksController < ApplicationController
       File.read(File.expand_path("../data/featured.yml",  __dir__))))
     
     @track = Track.find_by(name: params[:name])
-      render template: "site/program/track_details"
+      render template: "site/program/tracks/show"
   end
 
 end
