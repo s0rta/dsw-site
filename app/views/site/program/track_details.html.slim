@@ -19,20 +19,17 @@
 - when "Product"
   - backgroundColor = "#9c9cf2"
   - textColor = "#3c3c6d"
-- when "Basecamp"
-  - backgroundColor = "#000000"
-  - textColor = "ffffff"
-- when "Headline_events"
-  - backgroundColor = "#000000"
-  - textColor = "ffffff"
-- when "Social_events"
-  - backgroundColor = "#000000"
-  - textColor = "ffffff"
+- when "People"
+  - backgroundColor = "#e577d0"
+  - textColor = "#663958"
+- when "Spotlight"
+  - backgroundColor = "#63e099"
+  - textColor = "#406c50"
 - else
   - backgroundColor = "#05d3d8"
   - textColor = "ffffff"
 
-= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@track[:name].downcase}", subProgram: "Tracks", backUrl: "tracks", btnSessions: "Track", backgroundColor: backgroundColor, textColor: textColor }
+= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@track[:name]}", subProgram: "Tracks", backUrl: "tracks", btnSessions: "Track", backgroundColor: backgroundColor, textColor: textColor }
 = render partial: 'layouts/shared/track_list', locals: { tracks: @featured, trackName: "#{@track[:name].downcase}" }
 div.LayoutWrapper
   = render partial: 'layouts/shared/primary_callouts_nav'
