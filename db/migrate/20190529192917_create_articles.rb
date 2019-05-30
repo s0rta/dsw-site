@@ -10,7 +10,7 @@ class CreateArticles < ActiveRecord::Migration[5.2]
     end
 
     create_join_table :articles, :tracks do |t|
-      t.index [:article_id, :track_id]
+      t.index %i[article_id track_id]
     end
 
     add_foreign_key :articles_tracks, :articles
