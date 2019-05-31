@@ -185,7 +185,9 @@ ActiveAdmin.register Submission do
       f.input :slides_url
       f.input :video_url
       f.input :live_stream_url
-      f.input :header_image, as: :file, hint: image_tag(f.object.header_image.url(:thumb))
+      f.input :header_image,
+        as: :file,
+        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
     end
     f.inputs "Additional Information" do
       f.input :estimated_size

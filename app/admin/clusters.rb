@@ -19,7 +19,9 @@ ActiveAdmin.register Cluster do
     f.inputs do
       f.input :name
       f.input :description
-      f.input :header_image, as: :file, hint: image_tag(f.object.header_image.url(:thumb))
+      f.input :header_image,
+        as: :file,
+        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
       f.input :is_active
     end
 
