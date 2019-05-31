@@ -2,7 +2,7 @@
   = render 'layouts/shared/programs_secondary_hero_nav'
 
 div.Program-list-wrapper
-  = render partial: 'layouts/shared/card_content', locals: { list: @programs[:programs], title: "Programs" }
+  = render partial: 'layouts/shared/card_content', locals: { list: programs_static_data[:programs], title: "Programs" }
 
 = render layout: 'layouts/shared/layout_wrapper' do
   div.Program-primary-callouts
