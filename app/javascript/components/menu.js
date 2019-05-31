@@ -8,7 +8,7 @@ const MENU_OPEN_ID = '#menu-open-button-js';
 const MENU_OPEN_SECONDARY_NAV_ID = '#open-secondary-nav-js';
 const MENU_CLOSE_SECONDARY_NAV_ID = '#close-secondary-nav-js';
 const MENU_PRIMARY_NAV_ID = '#primary-nav-js';
-const MENU_SECONDAY_NAV_SUFFIX_ID = 'secondary-nav-js';
+const MENU_SECONDARY_NAV_SUFFIX_ID = 'secondary-nav-js';
 
 export default class Menu {
   constructor(el) {
@@ -78,7 +78,7 @@ export default class Menu {
       .addClass('is-closed');
 
     $(document)
-      .find(`#${nav}-${MENU_SECONDAY_NAV_SUFFIX_ID}`)
+      .find(`#${nav}-${MENU_SECONDARY_NAV_SUFFIX_ID}`)
       .addClass('is-open');
   }
 
@@ -90,7 +90,7 @@ export default class Menu {
       .removeClass('is-closed');
 
     $(document)
-      .find(`#${secondaryNav}-${MENU_SECONDAY_NAV_SUFFIX_ID}`)
+      .find(`#${secondaryNav}-${MENU_SECONDARY_NAV_SUFFIX_ID}`)
       .removeClass('is-open');
   }
 }
