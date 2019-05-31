@@ -13,6 +13,7 @@ features:
     tracks:
       - 'founder'
       - 'product'
+      - 'designer'
   - type: 'session'
     title: 'Why Decentralization Matters'
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum massa non magna ornare, et lacinia nibh semper. Curabitur eu varius justo. In cursus sodales arcu et mattis.'
@@ -25,6 +26,7 @@ features:
     tracks:
       - 'founder'
       - 'product'
+      - 'developer'
   - type: 'session'
     title: 'Idea Vs Opportunity by Creative Startups'
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum massa non magna ornare, et lacinia nibh semper. Curabitur eu varius justo. In cursus sodales arcu et mattis.'
