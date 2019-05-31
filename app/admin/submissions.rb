@@ -1,36 +1,37 @@
 ActiveAdmin.register Submission do
   menu parent: "Sessions", priority: 1
 
-  permit_params :start_day,
-    :end_day,
-    :year,
+  permit_params :budget_needed,
+    :cluster_id,
+    :coc_acknowledgement,
+    :company_id,
+    :contact_email,
     :description,
+    :end_day,
+    :end_hour,
+    :estimated_size,
     :format,
+    :from_underrepresented_group,
+    :header_image,
+    :internal_notes,
+    :live_stream_url,
     :location,
     :notes,
-    :internal_notes,
+    :open_to_collaborators,
+    :pitch_qualifying,
+    :slides_url,
+    :start_day,
+    :start_hour,
+    :state,
+    :submitter_id,
     :target_audience_description,
     :time_range,
     :title,
     :track_id,
-    :contact_email,
-    :estimated_size,
     :venue_id,
-    :cluster_id,
-    :budget_needed,
-    :volunteers_needed,
-    :start_hour,
-    :end_hour,
-    :state,
-    :submitter_id,
-    :slides_url,
     :video_url,
-    :live_stream_url,
-    :company_id,
-    :coc_acknowledgement,
-    :open_to_collaborators,
-    :from_underrepresented_group,
-    :pitch_qualifying
+    :volunteers_needed,
+    :year
 
   controller do
     def scoped_collection
@@ -176,12 +177,15 @@ ActiveAdmin.register Submission do
         data: {url: filter_admin_companies_path, search_fields: [:name]}
       f.input :open_to_collaborators
       f.input :coc_acknowledgement, label: "Code of Conduct Acknowledgement",
-                                    hint: "If submitting this session on behalf of someone else, you acknowledge that you have informed them of our Code of Conduct"
+                                    hint: <<-HINT.strip
+                                    If submitting this session on behalf of someone else, you acknowledge that you have informed them of our Code of Conduct
+                                    HINT
       f.input :notes, label: "Pitch"
       f.input :target_audience_description
       f.input :slides_url
       f.input :video_url
       f.input :live_stream_url
+      f.input :header_image, as: :file, hint: image_tag(f.object.header_image.url(:thumb))
     end
     f.inputs "Additional Information" do
       f.input :estimated_size
@@ -339,7 +343,7 @@ ActiveAdmin.register Submission do
               v.created_at.to_s :long
             end
             column "User" do |v|
-              if user = User.where(id: v.whodunnit).first
+              if (user = User.where(id: v.whodunnit).first)
                 link_to user.name, admin_user_path(user)
               else
                 "Unknown"
