@@ -18,6 +18,13 @@ module RouteHelper
     }
   end
 
+  def track_detail_route(name)
+    {
+       path: "program/tracks/#{name}",
+       label: name
+    }
+  end
+
   def clusters_route
     {
       path: "program/clusters",

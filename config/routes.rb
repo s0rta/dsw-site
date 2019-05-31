@@ -73,6 +73,7 @@ Rails.application.routes.draw do
 
   scope :program do
     resources :clusters, only: :show, param: :name
+    resources :tracks, only: :show, param: :name
   end
 
   get '/schedule', to: 'schedules#index', as: :schedules
