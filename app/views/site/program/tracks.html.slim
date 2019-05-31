@@ -2,7 +2,7 @@
   = render 'layouts/shared/programs_secondary_hero_nav'
 
 div.Tracks-list-wrapper
-  = render 'components/content_card_list'  do
+  = render 'components/content_card_list', attributes: { 'aria-label': "Tracks list" } do
     - Track.template_data.each do |card|
       = render 'components/content_card_list_item' do
         = render 'components/content_card', card: card, title: "Tracks", page_url: "program/tracks/""#{card[:track].capitalize}"
