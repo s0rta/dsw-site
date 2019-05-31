@@ -308,7 +308,8 @@ CREATE TABLE public.clusters (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     description text,
-    is_active boolean DEFAULT true NOT NULL
+    is_active boolean DEFAULT true NOT NULL,
+    header_image character varying
 );
 
 
@@ -932,7 +933,8 @@ CREATE TABLE public.submissions (
     company_id bigint,
     coc_acknowledgement boolean DEFAULT false NOT NULL,
     pitch_qualifying boolean DEFAULT false NOT NULL,
-    registrant_count integer DEFAULT 0 NOT NULL
+    registrant_count integer DEFAULT 0 NOT NULL,
+    header_image character varying
 );
 
 
@@ -971,7 +973,8 @@ CREATE TABLE public.tracks (
     description text,
     color character varying,
     is_voteable boolean DEFAULT true NOT NULL,
-    video_url character varying
+    video_url character varying,
+    header_image character varying
 );
 
 
@@ -2494,6 +2497,9 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190221040025'),
 ('20190221064154'),
 ('20190529192917'),
-('20190531150512');
+('20190531150512'),
+('20190531155316'),
+('20190531155323'),
+('20190531155330');
 
 

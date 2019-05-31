@@ -16,6 +16,8 @@ class Track < ApplicationRecord
   has_and_belongs_to_many :chairs, class_name: "User"
   has_and_belongs_to_many :articles
 
+  mount_uploader :header_image, HeaderImageUploader
+
   def self.in_display_order
     order("display_order ASC, name ASC")
   end
