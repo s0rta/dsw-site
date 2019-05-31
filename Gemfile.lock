@@ -30,6 +30,14 @@ GIT
     sendgrid (1.3.0.pre.caring)
       json
 
+GIT
+  remote: https://github.com/nyrf/activeadmin_medium_editor
+  revision: 8c60d491b547581128b49d09e1446f1b373247da
+  ref: 8c60d49
+  specs:
+    activeadmin_medium_editor (0.2.0)
+      activeadmin (>= 1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -523,6 +531,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8.0)
   activeadmin!
   activeadmin-ajax_filter
+  activeadmin_medium_editor!
   autoprefixer-rails
   better_errors
   binding_of_caller

@@ -14,6 +14,7 @@ class Track < ApplicationRecord
 
   has_many :submissions, dependent: :destroy
   has_and_belongs_to_many :chairs, class_name: "User"
+  has_and_belongs_to_many :articles
 
   def self.in_display_order
     order("display_order ASC, name ASC")

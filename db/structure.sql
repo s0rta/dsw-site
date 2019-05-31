@@ -187,6 +187,51 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: articles; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.articles (
+    id bigint NOT NULL,
+    title text NOT NULL,
+    body text NOT NULL,
+    author_id bigint NOT NULL,
+    published_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    header_image character varying
+);
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.articles_id_seq OWNED BY public.articles.id;
+
+
+--
+-- Name: articles_tracks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.articles_tracks (
+    article_id bigint NOT NULL,
+    track_id bigint NOT NULL
+);
+
+
+--
 -- Name: attendee_goals; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1287,6 +1332,13 @@ ALTER TABLE ONLY public.annual_schedules ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: articles id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles ALTER COLUMN id SET DEFAULT nextval('public.articles_id_seq'::regclass);
+
+
+--
 -- Name: attendee_goals id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1519,6 +1571,14 @@ ALTER TABLE ONLY public.annual_schedules
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: articles articles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
 
 
 --
@@ -1842,6 +1902,20 @@ CREATE INDEX index_admin_notes_on_resource_type_and_resource_id ON public.active
 --
 
 CREATE UNIQUE INDEX index_annual_schedules_on_year ON public.annual_schedules USING btree (year);
+
+
+--
+-- Name: index_articles_on_author_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_articles_on_author_id ON public.articles USING btree (author_id);
+
+
+--
+-- Name: index_articles_tracks_on_article_id_and_track_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_articles_tracks_on_article_id_and_track_id ON public.articles_tracks USING btree (article_id, track_id);
 
 
 --
@@ -2224,6 +2298,14 @@ ALTER TABLE ONLY public.volunteer_shifts
 
 
 --
+-- Name: articles_tracks fk_rails_a51247846b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles_tracks
+    ADD CONSTRAINT fk_rails_a51247846b FOREIGN KEY (track_id) REFERENCES public.tracks(id);
+
+
+--
 -- Name: homepage_ctas fk_rails_d6aa0aad97; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2237,6 +2319,22 @@ ALTER TABLE ONLY public.homepage_ctas
 
 ALTER TABLE ONLY public.sent_notifications
     ADD CONSTRAINT fk_rails_da20014dea FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
+
+
+--
+-- Name: articles_tracks fk_rails_dfa37c8829; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles_tracks
+    ADD CONSTRAINT fk_rails_dfa37c8829 FOREIGN KEY (article_id) REFERENCES public.articles(id);
+
+
+--
+-- Name: articles fk_rails_e74ce85cbc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT fk_rails_e74ce85cbc FOREIGN KEY (author_id) REFERENCES public.users(id);
 
 
 --
@@ -2394,6 +2492,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180924163222'),
 ('20180925205310'),
 ('20190221040025'),
-('20190221064154');
+('20190221064154'),
+('20190529192917'),
+('20190531150512');
 
 
