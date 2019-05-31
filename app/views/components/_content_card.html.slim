@@ -11,4 +11,4 @@ div.ContentCard
       h3.ContentCard-title(class="#{card[:track]}-font") #{card[:title]}
     p.ContentCard-description #{card[:description]}
     .ContentCard-button
-      = render 'components/content_button', title: "Explore the #{title}", button_url: "#{page_url}/""#{card[:page_url_title]}"
+      = render 'components/content_button', title: "Explore the #{title}", button_url: "#{page_url}"
