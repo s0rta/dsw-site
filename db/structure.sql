@@ -197,7 +197,8 @@ CREATE TABLE public.articles (
     author_id bigint NOT NULL,
     published_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    header_image character varying
 );
 
 
@@ -2492,6 +2493,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180925205310'),
 ('20190221040025'),
 ('20190221064154'),
-('20190529192917');
+('20190529192917'),
+('20190531150512');
 
 

@@ -11,6 +11,9 @@ ActiveAdmin.register Article do
     selectable_column
     column :title
     column :author
+    column :header_image do |u|
+      image_tag u.header_image.url(:thumb)
+    end
     column :created_at
     column :updated_at
     column :published_at
@@ -32,6 +35,7 @@ ActiveAdmin.register Article do
         collection: [],
         data: {url: filter_admin_users_path, search_fields: %i[name email]}
       f.input :track_ids, as: :check_boxes, collection: Track.all, label: "Related Track(s)"
+      f.input :header_image, as: :file, hint: image_tag(f.object.header_image.url(:thumb))
       f.input :published_at
     end
 
