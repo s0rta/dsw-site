@@ -2,7 +2,7 @@
   = render 'layouts/shared/programs_secondary_hero_nav'
 
 div.Tracks-list-wrapper
-  = render partial: 'layouts/shared/card_content', locals: { list: Track.template_data, title: "Tracks", button_url: "programs/tracks" }
+  = render partial: 'layouts/shared/card_content', locals: { list: Track.template_data, title: "Tracks", page_url: "programs/tracks" }
 
 = render layout: 'layouts/shared/layout_wrapper' do
   div.Tracks-primary-callouts

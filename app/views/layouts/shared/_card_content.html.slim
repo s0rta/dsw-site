@@ -1,4 +1,4 @@
 = render 'components/content_card_list', attributes: { 'aria-label': title } do
   - list.each do |card|
     = render 'components/content_card_list_item' do
-      = render 'components/content_card', card: card, title: title, button_url: button_url
+      = render 'components/content_card', card: card, title: title, page_url: page_url
