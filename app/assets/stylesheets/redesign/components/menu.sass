@@ -10,7 +10,7 @@ $transition-time: 150ms
   bottom: 0
   background: $teal-dark
   color: white
-  z-index: 11
+  z-index: 0
   display: flex
   flex-direction: column
   align-items: center
@@ -20,9 +20,11 @@ $transition-time: 150ms
   transition: visibility $transition-time, opacity $transition-time linear
   padding: 0 5%
 
+
 .Menu.is-open
   opacity: 1
   visibility: visible
+  z-index: 11
 
 .Menu-list
   display: flex
