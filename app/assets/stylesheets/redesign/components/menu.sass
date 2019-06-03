@@ -1,0 +1,143 @@
+@import ../config
+
+$transition-time: 150ms
+
+.Menu
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background: $teal-dark
+  color: white
+  z-index: 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  visibility: hidden
+  opacity: 0
+  transition: visibility $transition-time, opacity $transition-time linear
+  padding: 0 5%
+
+
+.Menu.is-open
+  opacity: 1
+  visibility: visible
+  z-index: 11
+
+.Menu-list
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.Menu-item
+  color: white
+  font-family: Montserrat-Light
+  font-size: 28px
+  font-weight: 300
+  text-transform: uppercase
+  margin-bottom: 15px
+
+.Menu-item.Menu-item--mobile
+  font-size: 20px
+  color: $teal-light
+
+.Menu-item-link
+  color: inherit
+
+.Menu-item-button
+  color: inherit
+  border: 0
+  outline: 0
+  text-transform: uppercase
+  background: transparent
+  padding: 0
+  display: none
+
+.Menu-social-media
+  width: 100%
+  text-align: center
+
+.Menu
+  .SocialMediaNav-fa-circle
+    background: $teal-light
+  .SocialMediaNav-icon
+    color: $teal-dark
+
+.Menu-nav-wrapper
+  width: 100%
+  overflow: auto
+  position: relative
+  overflow: hidden
+
+.Menu-nav--primary
+  right: 0
+  visibility: visible
+
+.Menu-nav--secondary
+  display: none
+  left: 100%
+  visibility: hidden
+
+.Menu-nav--secondary.is-open
+  left: 0
+  visibility: visible
+
+
+.Menu-nav-secondary-header
+  display: flex;
+  align-items: center;
+  fill: $teal-light
+  margin-top: 16px
+
+.Menu-nav-secondary-back-button
+  border: 0
+  background: transparent
+  margin-right: 15px
+  outline: none
+  margin-bottom: 6px
+
+  .icon
+    height: 23px
+
+.Menu-list.Menu-list--secondary
+  margin-left: 60px
+
+@media(max-width: 739px)
+  .Menu-list
+    align-items: flex-start
+
+  .Menu
+    align-items: flex-start
+
+  .Menu-social-media
+    position: absolute
+    bottom: 20px
+    left: 0
+    right: 0
+
+  .Menu-item-button
+    display: block
+
+  .Menu-item-link.has-nested
+    display: none
+
+  .Menu-nav
+    position: absolute
+    top: 0
+    bottom: 0
+    width: 100%
+    transition: all $transition-time linear
+
+  .Menu-nav--secondary
+    display: block
+
+  .Menu-nav-wrapper
+    flex-grow: 1
+    margin-bottom: 100px
+    margin-top: 50px
+
+  .Menu-nav--primary.is-closed
+    right: 100%
+    visibility: hidden
