@@ -2,7 +2,10 @@
   = render 'layouts/shared/programs_secondary_hero_nav'
 
 div.Program-list-wrapper
-  = render partial: 'layouts/shared/card_content', locals: { list: programs_static_data[:programs], title: "Programs" }
+  = render 'components/content_card_list', attributes: { 'aria-label': "Programs" }  do
+    - programs_static_data[:programs].each do |card|
+      = render 'components/content_card_list_item' do
+        = render 'components/content_card', card: card, title: "Program", page_url: "program/"
 
 = render layout: 'layouts/shared/layout_wrapper' do
   div.Program-primary-callouts
