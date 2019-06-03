@@ -1,10 +1,12 @@
-header.Header
+header#site-header-js.Header
   .Header-inner
     a(href="/" aria-label="Home")
-      img(src="#{image_url('redesign/logos/dsw-grey.svg')}")
+      img.Header-image(src="#{image_url('redesign/logos/dsw-grey.svg')}")
+      img.Header-image-menu(src="#{image_url('redesign/logos/dsw-white.svg')}")
     .Header-actions
       a.Header-signup(href="/") Sign Up / Sign In
-      button.Header-menu-button(aria-label="Open Main Menu") open
+      button.Header-button-open#menu-open-button-js.Header-menu-button(aria-label="Open Main Menu") open
+      button.Header-button-close#menu-close-button-js.Header-menu-button(aria-label="Close Main Menu") close
 
 
 / - active_item = base_navigation_path
