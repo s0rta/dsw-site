@@ -72,6 +72,7 @@ Rails.application.routes.draw do
   resources :sponsor_signups, only: :create
 
   scope :program do
+    resources :clusters, only: :show, param: :name
     resources :tracks, only: :show, param: :name
   end
 
