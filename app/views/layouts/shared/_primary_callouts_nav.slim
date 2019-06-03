@@ -7,5 +7,5 @@ nav.PrimaryCalloutsNav(aria-label="Primary Callouts")
           - nav[:descriptions].each do |desc|
             | #{desc}
             br
-        a(href="#{nav[:href]}" aria-label="#{nav[:title]}" style="stroke: #{nav[:color]}")
+        a(href="#{nav[:href]}" aria-label="#{nav[:title]}" style="color: #{nav[:color]}")
           = render partial: 'icons/arrow_in_circle_right'
