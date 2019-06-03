@@ -1,16 +1,33 @@
-= render partial: 'layouts/shared/program_nav', locals: { item: :clusters }
-- content_for(:subtitle, 'Clusters')
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Clusters', sub_title: 'Topic & Industry Clusters', description: "In addition to our functionally-oriented tracks, we program a number of clusters that highlight unique and interesting sessions related to the same topic area or industry vertical. Cluster sessions are scheduled for a variety of times during the week." } do
+  = render 'layouts/shared/programs_secondary_hero_nav'
 
-section.common
-  .section-content.sm-centered
-    h1 Topic & Industry Clusters
-    h6 In addition to our functionally-oriented tracks, we program a number of clusters that highlight unique and interesting sessions related to the same topic area or industry vertical. Cluster sessions are scheduled for a variety of times during the week.
+div.Tracks-list-wrapper
+  = render 'components/content_card_list', attributes: { 'aria-label': "Clusters" }  do
+    - Cluster.template_list_data.each do |card|
+      = render 'components/content_card_list_item' do
+        = render 'components/content_card', card: card, title: "Clusters", page_url: "program/clusters/#{card[:name]}"
 
-section.common
-  section.section-content.clusters.sm-centered
-    - Cluster.active.in_display_order.each do |cluster|
-      .cluster
-        h1 = "#{cluster.name} Cluster"
-        p = process_with_pipeline(cluster.description)
-        br
-        = link_to "Explore #{cluster.name} Sessions", schedules_path(filter: cluster.name), class: 'btn-cta'
+= render layout: 'layouts/shared/layout_wrapper' do
+  div.Tracks-primary-callouts
+    = render partial: 'layouts/shared/primary_callouts_nav'
+
+
+
+
+
+/ = render partial: 'layouts/shared/program_nav', locals: { item: :clusters }
+/ - content_for(:subtitle, 'Clusters')
+
+/ section.common
+/   .section-content.sm-centered
+/     h1 Topic & Industry Clusters
+/     h6 In addition to our functionally-oriented tracks, we program a number of clusters that highlight unique and interesting sessions related to the same topic area or industry vertical. Cluster sessions are scheduled for a variety of times during the week.
+
+/ section.common
+/   section.section-content.clusters.sm-centered
+/     - Cluster.active.in_display_order.each do |cluster|
+/       .cluster
+/         h1 = "#{cluster.name} Cluster"
+/         p = process_with_pipeline(cluster.description)
+/         br
+/         = link_to "Explore #{cluster.name} Sessions", schedules_path(filter: cluster.name), class: 'btn-cta'

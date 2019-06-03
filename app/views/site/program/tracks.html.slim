@@ -2,7 +2,11 @@
   = render 'layouts/shared/programs_secondary_hero_nav'
 
 div.Tracks-list-wrapper
-  = render partial: 'layouts/shared/card_content', locals: { list: Track.template_data, title: "Tracks" }
+  = render 'components/content_card_list', attributes: { 'aria-label': "Tracks" } do
+    - Track.template_list_data.each do |card|
+      = render 'components/content_card_list_item' do
+        = render 'components/content_card', card: card, title: "Tracks", page_url: "program/tracks/#{card[:name]}"
+
 
 = render layout: 'layouts/shared/layout_wrapper' do
   div.Tracks-primary-callouts

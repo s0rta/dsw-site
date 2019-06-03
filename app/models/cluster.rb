@@ -9,4 +9,10 @@ class Cluster < ApplicationRecord
   def self.active
     where(is_active: true)
   end
+
+  def self.template_list_data
+    select("name AS title, name, description, is_active")
+      .in_display_order
+      .active
+  end
 end

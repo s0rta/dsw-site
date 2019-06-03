@@ -1,6 +1,6 @@
 nav.PrimaryCalloutsNav(aria-label="Primary Callouts")
   ul.PrimaryCalloutsNav-list
-    - @secondary_nav[:items].each do |nav|
+    - secondary_nav_static_data[:items].each do |nav|
       li.PrimaryCalloutsNav-list-item
         h2.PrimaryCalloutsNav-list-title[style="color: #{nav[:color]}"] #{nav[:title]}
         p.PrimaryCalloutsNav-list-desc
