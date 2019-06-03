@@ -9,33 +9,7 @@ footer.Footer
         li.Footer-link= link_to 'Press', page_path(page: 'press')
         li.Footer-link= link_to 'Code of Conduct', page_path(page: 'code-of-conduct')
 
-    .Footer-block 
+    .Footer-block
       div.Footer-title Denver Startup Week #{Date.today.year}
       div.Footer-subtitle &copy;Copyright #{Date.today.year}. All rights reserved.
-      nav aria-label="Social Media"
-        ul.Footer-social
-          li
-            a.Footer-social-link aria-label="Twitter" href='https://twitter.com/denstartupweek' target='_blank'
-              span class="fa-stack"
-                i class="fa Footer-fa-circle fa-stack-2x"
-                i class="fab Footer-social-icon fa-2x fa-twitter fa-stack-1x"
-          li
-            a.Footer-social-link aria-label="Facebook" href='https://www.facebook.com/DenverStartupWeek' target='_blank'
-              span class="fa-stack"
-                i class="fa Footer-fa-circle fa-stack-2x"
-                i class="fab Footer-social-icon fa-2x fa-facebook-f fa-stack-1x"
-          li
-            a.Footer-social-link aria-label="LinkedIn" href='https://www.linkedin.com/company/denver-startup-week/' target='_blank'
-              span class="fa-stack"
-                i class="fa Footer-fa-circle fa-stack-2x"
-                i class="fab Footer-social-icon fa-2x fa-linkedin-in fa-stack-1x"
-          li
-            a.Footer-social-link aria-label="Youtube" href='https://www.youtube.com/c/denverstartupweek' target='_blank'
-              span class="fa-stack"
-                i class="fa Footer-fa-circle fa-stack-2x"
-                i class="fab Footer-social-icon fa-2x fa-youtube fa-stack-1x"
-          li
-            a.Footer-social-link aria-label="Medium" href='https://medium.com/denver-startup-week' target='_blank'
-              span class="fa-stack"
-                i class="fa Footer-fa-circle fa-stack-2x"
-                i class="fab Footer-social-icon fa-2x fa-medium-m fa-stack-1x"
+      = render 'components/social_media_nav'

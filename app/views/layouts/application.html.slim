@@ -24,6 +24,8 @@ html
     = content_for(:extra_meta_tags)
 
   body(id="#{controller_name}_controller" class="#{params[:page] || 'unknown'}-action")
+
+    = render partial: 'components/menu'
     = render partial: 'layouts/shared/header'
     main
       == yield
