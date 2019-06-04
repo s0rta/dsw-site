@@ -1,7 +1,7 @@
 module RouteHelper
 
   def main_menu
-    menu = [home_route, main_program_route, sponsers_route, get_involved_route]
+    menu = [home_route, main_program_route, sponsers_route, articles_route, get_involved_route]
     if AnnualSchedule.cfp_open?
       menu.push submissions_route
     elsif AnnualSchedule.registration_open?
@@ -83,6 +83,13 @@ module RouteHelper
       path: "program",
       label: "program",
       nested_routes: program_routes
+    }
+  end
+
+  def articles_route
+    {
+      path: articles_path,
+      label: "Articles"
     }
   end
 

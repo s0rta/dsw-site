@@ -1,4 +1,4 @@
-section.ArticlesAndSessionsList-wrapper
+section.ArticlesAndSessionsList-wrapper(class="#{is_overlapped ? 'is-overlapped' : ''}")
   .ArticlesAndSessionsList
     = render 'components/three_card_list', attributes: { 'aria-label': "#{title} sessions and atricles" } do
       - list.each do |list_item|

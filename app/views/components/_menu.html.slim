@@ -4,7 +4,7 @@
       ul.Menu-list
         - main_menu.each do |route|
           li.Menu-item
-            = link_to route[:label], page_path(page: route[:path]), class: "Menu-item-link #{route[:nested_routes].present? ? 'has-nested' : ''}"
+            = link_to route[:label], route[:path], class: "Menu-item-link #{route[:nested_routes].present? ? 'has-nested' : ''}"
             - if route[:nested_routes].present?
               button.Menu-item-button#open-secondary-nav-js(data-menu="#{route[:label]}") #{route[:label]}
     - main_menu.each do |route|
@@ -17,7 +17,7 @@
           ul.Menu-list.Menu-list--secondary
             - route[:nested_routes].each do |route|
               li.Menu-item.Menu-item--mobile
-                = link_to route[:label], page_path(page: route[:path]), class: "Menu-item-link"
+                = link_to route[:label], route[:path], class: "Menu-item-link"
 
   div.Menu-social-media
     = render 'components/social_media_nav'
