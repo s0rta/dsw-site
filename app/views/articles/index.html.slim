@@ -1,4 +1,10 @@
-= render partial: 'layouts/shared/secondary_hero', locals: { title: 'Articles', sub_title: 'subheadline and overview', description: 'Lorem ipsum dolere sit amet nonummy consecuter adspecit quid nomen. Lorem ipsum dolere sit amet nonummy consecuter adspecit quid nomen. Lorem ipsum dolere sit amet nonummy consecuter adspecit quid nomen.' }
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Articles', sub_title: 'subheadline and overview', description: 'Lorem ipsum dolere sit amet nonummy consecuter adspecit quid nomen. Lorem ipsum dolere sit amet nonummy consecuter adspecit quid nomen. Lorem ipsum dolere sit amet nonummy consecuter adspecit quid nomen.' } do
+  form.Articles-Form
+    .Articles-filters
+      .Articles-filter
+        = render partial: 'components/dropdown', locals: { name: "track", options: Track.dropdown_options, default: 'Filter by Track', selected: params[:track] }
+      .Articles-filter
+        = render partial: 'components/dropdown', locals: { name: "cluster", options: Cluster.dropdown_options, default: 'Filter by Cluster', selected: params[:cluster] }
 
 .Articles-list-wrapper
   = render partial: 'layouts/shared/articles_and_sessions_list', locals: { list: featured_static_data[:features], title: "Articles", is_overlapped: false }
