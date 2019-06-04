@@ -9,6 +9,8 @@ const MENU_OPEN_SECONDARY_NAV_ID = '#open-secondary-nav-js';
 const MENU_CLOSE_SECONDARY_NAV_ID = '#close-secondary-nav-js';
 const MENU_PRIMARY_NAV_ID = '#primary-nav-js';
 const MENU_SECONDARY_NAV_SUFFIX_ID = 'secondary-nav-js';
+const SITE_HEADER_ID = '#site-header-js';
+const HEADER_MENU_CLASS = 'menu-open';
 
 export default class Menu {
   constructor(el) {
@@ -59,6 +61,10 @@ export default class Menu {
       .find(MENU_ID)
       .addClass(MENU_OPEN_CLASS);
     $(document.body).addClass(BODY_MENU_CLASS);
+
+    $(document)
+      .find(SITE_HEADER_ID)
+      .addClass(HEADER_MENU_CLASS);
   }
 
   closeMenu() {
@@ -66,6 +72,10 @@ export default class Menu {
       .find(MENU_ID)
       .removeClass(MENU_OPEN_CLASS);
     $(document.body).removeClass(BODY_MENU_CLASS);
+
+    $(document)
+      .find(SITE_HEADER_ID)
+      .removeClass(HEADER_MENU_CLASS);
   }
 
   openSecondaryNavClick(event) {

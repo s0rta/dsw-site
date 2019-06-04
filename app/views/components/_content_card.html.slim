@@ -1,9 +1,9 @@
 div.ContentCard
   - if card[:img_url]
-    .ContentCard-image(style="background-image: url(#{card[:img_url]})")
+    .ContentCard-image(class="#{card[:color]}-border" style="background-image: url(#{card[:img_url]})")
   - else
     / temporary until images are part of data models
-    .ContentCard-image(style="background-image: url(https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg)")
+    .ContentCard-image(class="#{card[:color]}-border" style="background-image: url(https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg)")
   .ContentCard-content
     div.ContentCard-header(class="#{card[:color]}-fill")
       - if card[:track].present?
@@ -11,5 +11,5 @@ div.ContentCard
       h3.ContentCard-title(class="#{card[:color]}-font") #{card[:title]}
     div.ContentCard-inner-content
       p.ContentCard-description #{card[:description]}
-      .ContentCard-button
-        = render 'components/content_button', title: "Explore the #{title}", button_url: "#{page_url}"
+      .ContentCard-action
+        = link_to "Explore the #{title}", page_path(page: "#{page_url}"), class: 'ContentCard-link'
