@@ -3,16 +3,6 @@ inherit_from:
 Style/ClassAndModuleChildren:
   Include:
     - lib/**/*.rb
-Style/Documentation:
-  Enabled: false
-Layout/EmptyLinesAroundBlockBody:
-  Enabled: false
-Layout/EmptyLinesAroundClassBody:
-  Enabled: false
-Layout/EmptyLinesAroundModuleBody:
-  Enabled: false
-Layout/ExtraSpacing:
-  Enabled: false
 Metrics/LineLength:
   # Default is that lines should be 80, but that's somewhat noisy. We want a softer limit.
   Description: Limit lines to 120 characters.
@@ -31,23 +21,11 @@ Layout/EndAlignment:
   SupportedStyles:
     - keyword
     - variable
-Lint/UnusedMethodArgument:
-  Exclude:
-    - app/interactors/**/*.rb
 Lint/UselessAccessModifier:
   Enabled: false
 Layout/AlignParameters:
   Enabled: true
   EnforcedStyle: with_fixed_indentation
-Layout/SpaceBeforeFirstArg:
-  Enabled: false
-Layout/SpaceInsideArrayLiteralBrackets:
-  Enabled: false
-Layout/SpaceInsideHashLiteralBrackets:
-  Enabled: false
-Style/StringLiterals:
-  EnforcedStyle: double_quotes
-  Enabled: true
 Style/CollectionMethods:
   PreferredMethods:
     find: 'detect'
@@ -66,3 +44,5 @@ Metrics/BlockLength:
     - Rakefile
     - 'lib/tasks/**/*.rake'
     - 'spec/**/*.rb'
+    - 'app/admin/**/*.rb'
+    - 'config/routes.rb'

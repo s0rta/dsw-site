@@ -1,0 +1,48 @@
+    = form_for @venue do |f|
+      = f.label :venue_name
+      = f.text_field :name, required: 'required', placeholder: 'Venue Name'
+
+      = f.label :company_name
+      = f.text_field :company_name, data: { bindable: 'autocompleter', source: mine_company_search_url }
+
+      = f.label :description
+      = f.text_area :description, required: 'required', rows: 8, placeholder: 'Venue Description is for organizers only.'
+
+      = f.label :address
+      = f.text_field :address, required: 'required'
+
+      = f.label :suite_or_unit
+      = f.text_field :suite_or_unit
+
+      = f.label :city
+      = f.text_field :city, required: 'required' 
+
+      = f.label :state
+      = f.text_field :state, required: 'required' 
+
+      = f.label :seated_capacity
+      = f.text_field :seated_capacity, required: 'required'
+
+      = f.label :standing_capacity
+      = f.text_field :standing_capacity, placholder: '(beyond seated capacity)'
+
+      = f.label :av_capabilities
+      = f.text_area :av_capabilities, rows: 8, placeholder: 'A/V Available (Projector & Screen, Microphone if necessary)'
+
+      = f.label :extra_directions
+      = f.text_area :extra_directions, rows: 8
+
+      h4 = "Availablility"
+      - if @venue_availabilities
+        h5 = "(disabled checkboxes indicates that a timeslot has already been assigned to a submission)"
+      table
+        - VenueAvailability::DAYS.each do |day_key, day_value|
+          tr
+            td = day_value
+            - VenueAvailability::TIME_BLOCK.each do |time_key, time_value|
+              td
+                = hidden_field_tag "venue_availability[#{day_key}][#{time_key}]", @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key and avail.submission_id} : false
+                = check_box_tag "venue_availability[#{day_key}][#{time_key}]", true, @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key} : false, class: "code-of-conduct", disabled: @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key and avail.submission_id} : false
+                = label_tag "availability[#{day_key}][#{time_key}]", time_value, class: "code-of-conduct"
+      
+      = f.submit 'Submit'

@@ -1,8 +1,10 @@
 ActiveAdmin.register Cluster do
+  menu parent: "Sessions", priority: 1
 
-  menu parent: 'Sessions', priority: 1
-
-  permit_params :name, :description, :is_active
+  permit_params :name,
+    :description,
+    :is_active,
+    :header_image
 
   index do
     selectable_column
@@ -13,4 +15,16 @@ ActiveAdmin.register Cluster do
 
   filter :name
 
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :description
+      f.input :header_image,
+        as: :file,
+        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
+      f.input :is_active
+    end
+
+    f.actions
+  end
 end

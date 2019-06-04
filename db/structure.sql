@@ -5,6 +5,7 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -186,6 +187,51 @@ CREATE TABLE public.ar_internal_metadata (
 
 
 --
+-- Name: articles; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.articles (
+    id bigint NOT NULL,
+    title text NOT NULL,
+    body text NOT NULL,
+    author_id bigint NOT NULL,
+    published_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    header_image character varying
+);
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.articles_id_seq OWNED BY public.articles.id;
+
+
+--
+-- Name: articles_tracks; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.articles_tracks (
+    article_id bigint NOT NULL,
+    track_id bigint NOT NULL
+);
+
+
+--
 -- Name: attendee_goals; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -262,7 +308,8 @@ CREATE TABLE public.clusters (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     description text,
-    is_active boolean DEFAULT true NOT NULL
+    is_active boolean DEFAULT true NOT NULL,
+    header_image character varying
 );
 
 
@@ -347,6 +394,36 @@ CREATE SEQUENCE public.companies_id_seq
 --
 
 ALTER SEQUENCE public.companies_id_seq OWNED BY public.companies.id;
+
+
+--
+-- Name: companies_users; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.companies_users (
+    id bigint NOT NULL,
+    company_id bigint,
+    user_id bigint
+);
+
+
+--
+-- Name: companies_users_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.companies_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: companies_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.companies_users_id_seq OWNED BY public.companies_users.id;
 
 
 --
@@ -856,7 +933,8 @@ CREATE TABLE public.submissions (
     company_id bigint,
     coc_acknowledgement boolean DEFAULT false NOT NULL,
     pitch_qualifying boolean DEFAULT false NOT NULL,
-    registrant_count integer DEFAULT 0 NOT NULL
+    registrant_count integer DEFAULT 0 NOT NULL,
+    header_image character varying
 );
 
 
@@ -895,7 +973,8 @@ CREATE TABLE public.tracks (
     description text,
     color character varying,
     is_voteable boolean DEFAULT true NOT NULL,
-    video_url character varying
+    video_url character varying,
+    header_image character varying
 );
 
 
@@ -977,6 +1056,39 @@ ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
 
 
 --
+-- Name: venue_availabilities; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.venue_availabilities (
+    id bigint NOT NULL,
+    venue_id bigint,
+    submission_id bigint,
+    year integer,
+    day integer,
+    time_block integer
+);
+
+
+--
+-- Name: venue_availabilities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.venue_availabilities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: venue_availabilities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.venue_availabilities_id_seq OWNED BY public.venue_availabilities.id;
+
+
+--
 -- Name: venues; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -993,8 +1105,11 @@ CREATE TABLE public.venues (
     city character varying(255),
     state character varying(255),
     suite_or_unit character varying,
-    capacity integer DEFAULT 0,
-    extra_directions text
+    seated_capacity integer DEFAULT 0,
+    extra_directions text,
+    company_id integer,
+    standing_capacity integer DEFAULT 0,
+    av_capabilities character varying
 );
 
 
@@ -1220,6 +1335,13 @@ ALTER TABLE ONLY public.annual_schedules ALTER COLUMN id SET DEFAULT nextval('pu
 
 
 --
+-- Name: articles id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles ALTER COLUMN id SET DEFAULT nextval('public.articles_id_seq'::regclass);
+
+
+--
 -- Name: attendee_goals id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1252,6 +1374,13 @@ ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.com
 --
 
 ALTER TABLE ONLY public.companies ALTER COLUMN id SET DEFAULT nextval('public.companies_id_seq'::regclass);
+
+
+--
+-- Name: companies_users id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.companies_users ALTER COLUMN id SET DEFAULT nextval('public.companies_users_id_seq'::regclass);
 
 
 --
@@ -1367,6 +1496,13 @@ ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_
 
 
 --
+-- Name: venue_availabilities id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.venue_availabilities ALTER COLUMN id SET DEFAULT nextval('public.venue_availabilities_id_seq'::regclass);
+
+
+--
 -- Name: venues id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1441,6 +1577,14 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
+-- Name: articles articles_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: attendee_goals attendee_goals_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1478,6 +1622,14 @@ ALTER TABLE ONLY public.comments
 
 ALTER TABLE ONLY public.companies
     ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: companies_users companies_users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.companies_users
+    ADD CONSTRAINT companies_users_pkey PRIMARY KEY (id);
 
 
 --
@@ -1606,6 +1758,14 @@ ALTER TABLE ONLY public.tracks
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: venue_availabilities venue_availabilities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.venue_availabilities
+    ADD CONSTRAINT venue_availabilities_pkey PRIMARY KEY (id);
 
 
 --
@@ -1748,6 +1908,20 @@ CREATE UNIQUE INDEX index_annual_schedules_on_year ON public.annual_schedules US
 
 
 --
+-- Name: index_articles_on_author_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_articles_on_author_id ON public.articles USING btree (author_id);
+
+
+--
+-- Name: index_articles_tracks_on_article_id_and_track_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_articles_tracks_on_article_id_and_track_id ON public.articles_tracks USING btree (article_id, track_id);
+
+
+--
 -- Name: index_attendee_messages_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1780,6 +1954,20 @@ CREATE UNIQUE INDEX index_companies_on_lower_name_unique ON public.companies USI
 --
 
 CREATE UNIQUE INDEX index_companies_on_name ON public.companies USING btree (name);
+
+
+--
+-- Name: index_companies_users_on_company_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_companies_users_on_company_id ON public.companies_users USING btree (company_id);
+
+
+--
+-- Name: index_companies_users_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_companies_users_on_user_id ON public.companies_users USING btree (user_id);
 
 
 --
@@ -1923,6 +2111,20 @@ CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING bt
 
 
 --
+-- Name: index_venue_availabilities_on_submission_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_venue_availabilities_on_submission_id ON public.venue_availabilities USING btree (submission_id);
+
+
+--
+-- Name: index_venue_availabilities_on_venue_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_venue_availabilities_on_venue_id ON public.venue_availabilities USING btree (venue_id);
+
+
+--
 -- Name: index_versions_on_item_type_and_item_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -1992,6 +2194,14 @@ ALTER TABLE ONLY public.registration_attendee_goals
 
 ALTER TABLE ONLY public.pitch_contest_votes
     ADD CONSTRAINT fk_rails_051f1858c3 FOREIGN KEY (pitch_contest_entry_id) REFERENCES public.pitch_contest_entries(id);
+
+
+--
+-- Name: venues fk_rails_077040617e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.venues
+    ADD CONSTRAINT fk_rails_077040617e FOREIGN KEY (company_id) REFERENCES public.companies(id);
 
 
 --
@@ -2091,6 +2301,14 @@ ALTER TABLE ONLY public.volunteer_shifts
 
 
 --
+-- Name: articles_tracks fk_rails_a51247846b; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles_tracks
+    ADD CONSTRAINT fk_rails_a51247846b FOREIGN KEY (track_id) REFERENCES public.tracks(id);
+
+
+--
 -- Name: homepage_ctas fk_rails_d6aa0aad97; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2104,6 +2322,22 @@ ALTER TABLE ONLY public.homepage_ctas
 
 ALTER TABLE ONLY public.sent_notifications
     ADD CONSTRAINT fk_rails_da20014dea FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
+
+
+--
+-- Name: articles_tracks fk_rails_dfa37c8829; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles_tracks
+    ADD CONSTRAINT fk_rails_dfa37c8829 FOREIGN KEY (article_id) REFERENCES public.articles(id);
+
+
+--
+-- Name: articles fk_rails_e74ce85cbc; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT fk_rails_e74ce85cbc FOREIGN KEY (author_id) REFERENCES public.users(id);
 
 
 --
@@ -2244,6 +2478,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180420151548'),
 ('20180503152209'),
 ('20180518145838'),
+('20180527202206'),
+('20180604045548'),
 ('20180718044128'),
 ('20180718045251'),
 ('20180718142543'),
@@ -2257,6 +2493,13 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180919050424'),
 ('20180923214023'),
 ('20180924163222'),
-('20180925205310');
+('20180925205310'),
+('20190221040025'),
+('20190221064154'),
+('20190529192917'),
+('20190531150512'),
+('20190531155316'),
+('20190531155323'),
+('20190531155330');
 
 

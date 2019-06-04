@@ -3,12 +3,12 @@
 
 Track.reset_column_information
 {
-  'Founder' => {
-    icon: 'person',
-    color: 'orange',
+  "Founder" => {
+    icon: "person",
+    color: "orange",
     is_submittable: true,
     is_voteable: true,
-    email_alias: 'founder@denverstartupweek.org',
+    email_alias: "founder@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
     Whether you're just dreaming about starting a business, on your first, or a seasoned entrepreneur,
     the founder track will provide you with the skills and knowledge you need to found a company. Initial
@@ -16,12 +16,12 @@ Track.reset_column_information
     topics that are covered. Start down the path of creating your startup!
     DESCRIPTION
   },
-  'Growth' => {
-    icon: 'chart',
-    color: 'blue',
+  "Growth" => {
+    icon: "chart",
+    color: "blue",
     is_submittable: true,
     is_voteable: true,
-    email_alias: 'growth@denverstartupweek.org',
+    email_alias: "growth@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
     No matter how good it is, no product sells itself. A team that markets, sells, and supports the product
     well is a huge advantage for any startup. Every aspect of digital marketing, inbound and outbound sales,
@@ -29,12 +29,12 @@ Track.reset_column_information
     skills, don't miss your chance to improve them!
     DESCRIPTION
   },
-  'Designer' => {
-    icon: 'eyeball',
-    color: 'green',
+  "Designer" => {
+    icon: "eyeball",
+    color: "green",
     is_submittable: true,
     is_voteable: true,
-    email_alias: 'designer@denverstartupweek.org',
+    email_alias: "designer@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
     Seeing things others do not see is an art and our design track is packed with creative outlets to expand your
     thinking and ability to design.  From fashion to architecture to breakout digital design and artwork – the
@@ -43,36 +43,36 @@ Track.reset_column_information
     leaders and leave the week with fresh inspiration!
     DESCRIPTION
   },
-  'Product' => {
-    icon: 'phone',
-    color: 'purple',
+  "Product" => {
+    icon: "phone",
+    color: "purple",
     is_submittable: true,
     is_voteable: true,
-    email_alias: 'product@denverstartupweek.org',
+    email_alias: "product@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
     Product management, development, and marketing, all different sides of the same coin that somehow bridges the gap
     between building the product and delivering it to the market. Product skills are in huge demand but there aren't
     very many places where you can go to acquire them. Come improve your product game at Denver Startup Week!
     DESCRIPTION
   },
-  'Developer' => {
-    icon: 'terminal',
-    color: 'gold',
+  "Developer" => {
+    icon: "terminal",
+    color: "gold",
     is_submittable: true,
     is_voteable: true,
-    email_alias: 'developer@denverstartupweek.org',
+    email_alias: "developer@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
     Frontend, backend, full stack, big data, APIs, architecture, methodologies, junior, senior, we have it all. Learn
     new technologies, refine your skills, or just check out something completely different. Walk away a better engineer
     than you were before!
     DESCRIPTION
   },
-  'Maker' => {
-    icon: 'wrench',
-    color: 'teal',
+  "Maker" => {
+    icon: "wrench",
+    color: "teal",
     is_submittable: true,
     is_voteable: true,
-    email_alias: 'maker@denverstartupweek.org',
+    email_alias: "maker@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
     Encompasses all physical products for every type of maker under the sun - from outdoor rec, distilling (or brewing!),
     and crafting, to connected devices, open-source hardware, 3D printing, and IOT (just to name a few) - join us to hear
@@ -80,31 +80,31 @@ Track.reset_column_information
     manufacturers and enterprises!
     DESCRIPTION
   },
-  'Headline Events' => {
-    icon: 'star',
-    color: 'headline-session',
+  "Headline Events" => {
+    icon: "star",
+    color: "headline-session",
     is_submittable: true,
     is_voteable: false,
-    email_alias: 'info@denverstartupweek.org',
+    email_alias: "info@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
     Drawing together members of the community across the boundaries of industry, job function, and background, our Headline
     Events provide entertaining and interesting content, unique perspectives, and a forum for our community to connect and share ideas.
     DESCRIPTION
   },
-  'Basecamp' => {
-    icon: 'basecamp',
-    color: 'basecamp-session',
+  "Basecamp" => {
+    icon: "basecamp",
+    color: "basecamp-session",
     is_submittable: false,
     is_voteable: false,
-    email_alias: 'info@denverstartupweek.org'
+    email_alias: "info@denverstartupweek.org",
   },
-  'Social Events' => {
-    icon: 'martini',
-    color: 'red',
+  "Social Events" => {
+    icon: "martini",
+    color: "red",
     is_submittable: false,
     is_voteable: false,
-    email_alias: 'info@denverstartupweek.org'
-  }
+    email_alias: "info@denverstartupweek.org",
+  },
 }.each do |track_name, attrs|
   t = Track.where(name: track_name).first_or_initialize
 
@@ -117,29 +117,29 @@ end
 
 Cluster.reset_column_information
 {
-  'IoT' => {
-    description: <<-DESCRIPTION.strip_heredoc.squish
+  "IoT" => {
+    description: <<-DESCRIPTION.strip_heredoc.squish,
     From smart devices to integrated homes to intelligent vehicles, the Internet of Things is rapidly transforming the
     way that we interact with the world around us. Check out the latest technologies and trends in the IoT realm, and
     take a look behind the scenes at what it takes to concept, design and build a connected product.
     DESCRIPTION
   },
-  'Diversity & Inclusion' => {
-    description: <<-DESCRIPTION.strip_heredoc.squish
+  "Diversity & Inclusion" => {
+    description: <<-DESCRIPTION.strip_heredoc.squish,
     Building an inclusive organization and culture is a critical part of any early-stage company, particularly in a
     world of increasingly global and diverse customer bases. Explore the what, how and why of building a diverse team,
     and hear firsthand the experiences of those on the front lines enabling diversity in the startup realm.
     DESCRIPTION
   },
-  'Cannabis' => {
-    description: <<-DESCRIPTION.strip_heredoc.squish
+  "Cannabis" => {
+    description: <<-DESCRIPTION.strip_heredoc.squish,
     Colorado is at the forefront not only of entrepreneurship and technology, but also in the emerging cannabis industry.
     Beyond just the leaf, explore the intersection of technology and cannabis, how these two seemingly different fields
     interoperate, and the challenges of building a company at the intersection of emerging markets and regulatory frameworks.
     DESCRIPTION
   },
-  'Healthtech' => {
-    description: <<-DESCRIPTION.strip_heredoc.squish
+  "Healthtech" => {
+    description: <<-DESCRIPTION.strip_heredoc.squish,
     As healthcare costs continue to rise, individuals and companies find themselves in an increasingly unstable economic
     situation. Enter digital health technologies, exploding on the scene with engaging, low-cost, and convenient tools
     that will have a lasting impact on large populations both here in Colorado and throughout the country.\n\nExplore the
@@ -148,20 +148,20 @@ Cluster.reset_column_information
     own health care in the near future
     DESCRIPTION
   },
-  'Social Impact' => {
-    description: <<-DESCRIPTION.strip_heredoc.squish
+  "Social Impact" => {
+    description: <<-DESCRIPTION.strip_heredoc.squish,
     Many companies are beginning to understand that the impact they have on the world around them isn't just measured in dollars
     and cents, but also the lasting effects they have on the people and communities around them. Learn about how these
     companies are both thinking and acting differently, and how you can start to build social good into your company as well.
     DESCRIPTION
   },
-  'Business Basics' => {
-    description: <<-DESCRIPTION.strip_heredoc.squish
+  "Business Basics" => {
+    description: <<-DESCRIPTION.strip_heredoc.squish,
     Having the fundamental skills required to run a successful company are key to getting your startup off the ground. From
     accounting and finance to operations to marketing to accessing capital, come learn the ins and outs of running your company
     from the people in the community who have done it most sucessfully.
     DESCRIPTION
-  }
+  },
 }.each do |cluster_name, attrs|
   c = Cluster.where(name: cluster_name).first_or_initialize
 
@@ -175,72 +175,72 @@ end
 HomepageCta.reset_column_information
 [
   {
-    title: 'Call for Submissions',
+    title: "Call for Submissions",
     subtitle: 'Session submissions are open through {{ submission_close_date | date: "%B %e" }}',
 
     body: <<-BODY.strip_heredoc.squish,
       Denver Startup Week is powered by the community.
       Submit a topic for consideration for {{ current_date | date: "%Y" }}.
     BODY
-    link_text: 'Submit a Topic',
-    link_href: '/panel-picker/mine',
-    relevant_to_cycle: 'cfp',
-    priority: 100
+    link_text: "Submit a Topic",
+    link_href: "/panel-picker/mine",
+    relevant_to_cycle: "cfp",
+    priority: 100,
   },
   {
-    title: 'Voting is Open',
+    title: "Voting is Open",
     subtitle: 'Cast your vote by {{ voting_close_date | date: "%B %e" }}',
     body: <<-BODY.strip_heredoc.squish,
       The sessions are in, now we need you to help us finalize the best for this year's event.
       Don't delay, cast your vote and spread the word.
     BODY
-    link_text: 'Vote Now',
-    link_href: '/panel-picker',
-    relevant_to_cycle: 'voting',
-    priority: 100
+    link_text: "Vote Now",
+    link_href: "/panel-picker",
+    relevant_to_cycle: "voting",
+    priority: 100,
   },
   {
-    title: 'Read our blog',
-    subtitle: 'Stay up to date with DSW',
-    body: 'Our new blog features the latest updates on DSW and the Denver entrepreneurial community.',
-    link_text: 'Visit the blog',
-    link_href: 'https://medium.com/denver-startup-week',
-    priority: 0
+    title: "Read our blog",
+    subtitle: "Stay up to date with DSW",
+    body: "Our new blog features the latest updates on DSW and the Denver entrepreneurial community.",
+    link_text: "Visit the blog",
+    link_href: "https://medium.com/denver-startup-week",
+    priority: 0,
   },
   {
-    title: 'Registration is Open',
+    title: "Registration is Open",
     subtitle: 'Register & build your personalized {{ current_date | date: "%Y" }} schedule',
     body: <<-BODY.strip_heredoc.squish,
       This year is going to be epic. We are excited to bring you the best of the best,
       and we couldn't have done this without you. Don't delay.
     BODY
-    link_text: 'Check it out',
-    link_href: '/schedule',
-    relevant_to_cycle: 'registration',
-    priority: 100
+    link_text: "Check it out",
+    link_href: "/schedule",
+    relevant_to_cycle: "registration",
+    priority: 100,
   },
   {
-    title: 'Chase Basecamp',
-    subtitle: 'Immerse yourself in the heart of it all',
+    title: "Chase Basecamp",
+    subtitle: "Immerse yourself in the heart of it all",
     body: <<-BODY.strip_heredoc.squish,
       Whether you want to find inspiration,
       hone your business idea, or just refuel,
       Basecamp powered by Chase is your home base!
     BODY
-    link_text: 'Learn More',
-    link_href: '/basecamp',
-    relevant_to_cycle: 'week',
+    link_text: "Learn More",
+    link_href: "/basecamp",
+    relevant_to_cycle: "week",
     priority: 10,
-    track: Track.find_by!(name: 'Basecamp')
+    track: Track.find_by!(name: "Basecamp"),
   },
   {
-    title: 'Get Involved',
-    subtitle: 'Be a part of something epic',
-    body: 'We are actively looking for sponsors and volunteers! Contact us now to learn more.',
-    link_text: 'Contact',
-    link_href: '/contact',
-    priority: 10
-  }
+    title: "Get Involved",
+    subtitle: "Be a part of something epic",
+    body: "We are actively looking for sponsors and volunteers! Contact us now to learn more.",
+    link_text: "Contact",
+    link_href: "/contact",
+    priority: 10,
+  },
 ].each do |attrs|
   c = HomepageCta.where(title: attrs[:title]).first_or_initialize
 
@@ -254,125 +254,125 @@ end
 PitchContest::Entry.reset_column_information
 [
   {
-    name: 'InMotion Albums',
+    name: "InMotion Albums",
     year: 2017,
-    video_url: 'https://youtu.be/CWj_SwOmycs'
+    video_url: "https://youtu.be/CWj_SwOmycs",
   },
   {
-    name: 'Boogaloo Beds',
+    name: "Boogaloo Beds",
     year: 2017,
-    video_url: 'https://youtu.be/5-0djJFDqaY'
+    video_url: "https://youtu.be/5-0djJFDqaY",
   },
   {
-    name: 'CampChamp',
+    name: "CampChamp",
     year: 2017,
-    video_url: 'https://youtu.be/aOaJhHTYZR8'
+    video_url: "https://youtu.be/aOaJhHTYZR8",
   },
   {
-    name: 'Contract Simply',
+    name: "Contract Simply",
     year: 2017,
-    video_url: 'https://youtu.be/hRTkreHA-vg'
+    video_url: "https://youtu.be/hRTkreHA-vg",
   },
   {
-    name: 'To Market',
+    name: "To Market",
     year: 2017,
-    video_url: 'https://youtu.be/1mPdvEUD3Tg'
+    video_url: "https://youtu.be/1mPdvEUD3Tg",
   },
   {
-    name: 'Pocket Change',
+    name: "Pocket Change",
     year: 2017,
-    video_url: 'https://youtu.be/NIGjg1vhPI0'
+    video_url: "https://youtu.be/NIGjg1vhPI0",
   },
   {
-    name: 'Evoke Medical',
+    name: "Evoke Medical",
     year: 2017,
-    video_url: 'https://youtu.be/C2fxvd-Nsfw'
+    video_url: "https://youtu.be/C2fxvd-Nsfw",
   },
   {
-    name: 'Fireless Cremation',
+    name: "Fireless Cremation",
     year: 2017,
-    video_url: 'https://youtu.be/hoEsybqIWgI'
+    video_url: "https://youtu.be/hoEsybqIWgI",
   },
   {
-    name: 'AIHealth',
+    name: "AIHealth",
     year: 2017,
-    video_url: 'https://youtu.be/u_qkX1Sty0U'
+    video_url: "https://youtu.be/u_qkX1Sty0U",
   },
   {
-    name: 'Grownetics',
+    name: "Grownetics",
     year: 2017,
-    video_url: 'https://youtu.be/X_d6jmy9P4I'
+    video_url: "https://youtu.be/X_d6jmy9P4I",
   },
   {
-    name: 'WalletGyde',
+    name: "WalletGyde",
     year: 2017,
-    video_url: 'https://youtu.be/sn2euYvF6mU'
+    video_url: "https://youtu.be/sn2euYvF6mU",
   },
   {
-    name: 'Lacuna Diagnostics',
+    name: "Lacuna Diagnostics",
     year: 2017,
-    video_url: 'https://youtu.be/ptkjR4Bg0Co'
+    video_url: "https://youtu.be/ptkjR4Bg0Co",
   },
   {
-    name: 'Leaf',
+    name: "Leaf",
     year: 2017,
-    video_url: 'https://youtu.be/Tpm_R8tgt9g'
+    video_url: "https://youtu.be/Tpm_R8tgt9g",
   },
   {
-    name: 'N[STALL]',
+    name: "N[STALL]",
     year: 2017,
-    video_url: 'https://youtu.be/-m0GY6MS9Es'
+    video_url: "https://youtu.be/-m0GY6MS9Es",
   },
   {
-    name: 'Nikola Power',
+    name: "Nikola Power",
     year: 2017,
-    video_url: 'https://youtu.be/RlhFbIkH3vQ'
+    video_url: "https://youtu.be/RlhFbIkH3vQ",
   },
   {
-    name: 'Paranoms',
+    name: "Paranoms",
     year: 2017,
-    video_url: 'https://youtu.be/00lwYsdJqYU'
+    video_url: "https://youtu.be/00lwYsdJqYU",
   },
   {
-    name: 'Phoncert',
+    name: "Phoncert",
     year: 2017,
-    video_url: 'https://youtu.be/lgh54xcHFiw'
+    video_url: "https://youtu.be/lgh54xcHFiw",
   },
   {
-    name: 'Phoodio',
+    name: "Phoodio",
     year: 2017,
-    video_url: 'https://youtu.be/s8BjfRqWM9U'
+    video_url: "https://youtu.be/s8BjfRqWM9U",
   },
   {
-    name: 'Recoup Fitness',
+    name: "Recoup Fitness",
     year: 2017,
-    video_url: 'https://youtu.be/uidLcG2ew7g'
+    video_url: "https://youtu.be/uidLcG2ew7g",
   },
   {
-    name: 'Salti Sweet',
+    name: "Salti Sweet",
     year: 2017,
-    video_url: 'https://youtu.be/mNgmrog1hMk'
+    video_url: "https://youtu.be/mNgmrog1hMk",
   },
   {
-    name: 'Scrubber',
+    name: "Scrubber",
     year: 2017,
-    video_url: 'https://youtu.be/AESry_0pYrU'
+    video_url: "https://youtu.be/AESry_0pYrU",
   },
   {
-    name: 'Stackup',
+    name: "Stackup",
     year: 2017,
-    video_url: 'https://youtu.be/kjOlHfQXh90'
+    video_url: "https://youtu.be/kjOlHfQXh90",
   },
   {
-    name: 'Scraps',
+    name: "Scraps",
     year: 2017,
-    video_url: 'https://youtu.be/2jIHRa_sKLw'
+    video_url: "https://youtu.be/2jIHRa_sKLw",
   },
   {
-    name: 'Clingless',
+    name: "Clingless",
     year: 2017,
-    video_url: 'https://youtu.be/XwX-EzXuanM'
-  }
+    video_url: "https://youtu.be/XwX-EzXuanM",
+  },
 ].each do |attrs|
   e = PitchContest::Entry.where(name: attrs[:name]).first_or_initialize
 
@@ -385,22 +385,22 @@ end
 
 AnnualSchedule.where(year: 2013).first_or_create!(
   week_start_at: Date.parse("2013-09-16").freeze,
-  week_end_at: Date.parse("2013-09-20").freeze
+  week_end_at: Date.parse("2013-09-20").freeze,
 )
 
 AnnualSchedule.where(year: 2014).first_or_create!(
   week_start_at: Date.parse("2014-09-15").freeze,
-  week_end_at: Date.parse("2014-09-19").freeze
+  week_end_at: Date.parse("2014-09-19").freeze,
 )
 
 AnnualSchedule.where(year: 2015).first_or_create!(
   week_start_at: Date.parse("2015-09-28").freeze,
-  week_end_at: Date.parse("2015-10-02").freeze
+  week_end_at: Date.parse("2015-10-02").freeze,
 )
 
 AnnualSchedule.where(year: 2016).first_or_create!(
   week_start_at: Date.parse("2016-09-12").freeze,
-  week_end_at: Date.parse("2016-09-16").freeze
+  week_end_at: Date.parse("2016-09-16").freeze,
 )
 
 AnnualSchedule.where(year: 2017).first_or_create!(
@@ -418,7 +418,7 @@ AnnualSchedule.where(year: 2017).first_or_create!(
   sponsorship_open_at: Date.parse("2017-03-01").freeze,
   sponsorship_close_at: Date.parse("2017-09-09").freeze,
   ambassador_application_open_at: Date.parse("2017-07-01").freeze,
-  ambassador_application_close_at: Date.parse("2017-08-11").freeze
+  ambassador_application_close_at: Date.parse("2017-08-11").freeze,
 )
 
 AnnualSchedule.where(year: 2018).first_or_create!(
@@ -428,7 +428,7 @@ AnnualSchedule.where(year: 2018).first_or_create!(
   voting_close_at: Date.parse("2018-05-18").freeze,
   registration_open_at: Date.parse("2018-07-15").freeze,
   week_start_at: Date.parse("2018-09-24").freeze,
-  week_end_at: Date.parse("2018-09-28").freeze
+  week_end_at: Date.parse("2018-09-28").freeze,
 )
 
 AnnualSchedule.where(year: 2019).first_or_create!(
@@ -438,19 +438,19 @@ AnnualSchedule.where(year: 2019).first_or_create!(
   voting_close_at: Date.parse("2019-05-20").freeze,
   registration_open_at: Date.parse("2019-07-17").freeze,
   week_start_at: Date.parse("2019-09-16").freeze,
-  week_end_at: Date.parse("2019-09-20").freeze
+  week_end_at: Date.parse("2019-09-20").freeze,
 )
 
 AttendeeGoal.reset_column_information
 {
-  inspiration: 'Find inspiration',
-  connections: 'Connect with other entrepreneurs and starup employees',
-  mentorship: 'Connect with mentors and advisors',
-  capital: 'Find capital to fund my business',
-  job: 'Find a new job for myself',
-  skills: 'Improve my skills',
-  hiring: 'Find employees for my company',
-  sales: 'Find customers for my company'
+  inspiration: "Find inspiration",
+  connections: "Connect with other entrepreneurs and starup employees",
+  mentorship: "Connect with mentors and advisors",
+  capital: "Find capital to fund my business",
+  job: "Find a new job for myself",
+  skills: "Improve my skills",
+  hiring: "Find employees for my company",
+  sales: "Find customers for my company",
 }.each do |name, description|
   t = AttendeeGoal.where(name: name.intern).first_or_initialize
 
@@ -459,4 +459,24 @@ AttendeeGoal.reset_column_information
 
   t.assign_attributes(description: description)
   t.save!
+end
+
+Venue.reset_column_information
+[
+  {
+    name: "Union Station",
+    description: "Denver Union Station is the main railway station and central transportation hub in Denver, Colorado.",
+    address: "1701 Wynkoop Street",
+    city: "Denver",
+    state: "Colorado",
+    seated_capacity: 1000,
+  },
+].each do |attrs|
+  v = Venue.where(name: attrs[:name]).first_or_initialize
+
+  # Skip if the record has been updated since it was populated
+  next if v.updated_at && v.updated_at > v.created_at
+
+  v.assign_attributes(attrs)
+  v.save!
 end

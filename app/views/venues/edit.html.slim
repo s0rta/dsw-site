@@ -1,0 +1,17 @@
+= render partial: 'dashboards/nav', locals: { item: :venue }
+
+section.common
+  .section-content.sm-centered
+    h6
+      | Bacon ipsum dolor amet bacon chicken andouille pork belly prosciutto. Tongue frankfurter ham tri-tip fatback pork chop alcatra shankle tenderloin. Buffalo pancetta tongue picanha biltong. Beef ribs landjaeger strip steak, spare ribs pork loin tail alcatra venison frankfurter. 
+      | Tenderloin ham hock prosciutto brisket venison jerky corned beef spare ribs t-bone turkey kielbasa pig capicola burgdoggen. Porchetta chicken kevin spare ribs biltong leberkas tenderloin, boudin shankle pastrami jerky turkey pork loin picanha rump. Capicola leberkas ground round hamburger meatloaf kielbasa ribeye.
+
+    - flash.each do |key, message|
+      h6 = message
+
+    - unless @venue.errors.empty?
+      h6 = "Please correct the following errors: #{@venue.errors.full_messages.to_sentence}"
+
+  .section-content
+    .section-content.sm-centered
+      = render partial: 'form'
