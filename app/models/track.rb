@@ -43,4 +43,9 @@ class Track < ApplicationRecord
       .in_display_order
       .with_icon_and_color
   end
+
+  def self.dropdown_options
+    select("name as label, name as value, id")
+      .in_display_order
+  end
 end
