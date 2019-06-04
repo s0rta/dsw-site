@@ -39,7 +39,7 @@ class Track < ApplicationRecord
   end
 
   def self.template_list_data
-    select("name AS title, lower(name) AS track, icon, name, description, color")
+    select("name AS title, lower(name) AS track, icon, name, description, color, header_image")
       .in_display_order
       .with_icon_and_color
   end

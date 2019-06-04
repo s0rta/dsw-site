@@ -1,9 +1,7 @@
+- header_image = card[:header_image] || "https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg"
+
 div.ContentCard
-  - if card[:img_url]
-    .ContentCard-image(class="#{card[:color]}-border" style="background-image: url(#{card[:img_url]})")
-  - else
-    / temporary until images are part of data models
-    .ContentCard-image(class="#{card[:color]}-border" style="background-image: url(https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg)")
+  .ContentCard-image(class="#{card[:color]}-border" style="background-image: url(#{header_image})")
   .ContentCard-content
     div.ContentCard-header(class="#{card[:color]}-fill")
       - if card[:track].present?

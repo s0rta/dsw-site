@@ -1,6 +1,7 @@
 = render 'components/card' do
   .ArticleCard
-    .ArticleCard-image(style="background-image: url(#{image_url article[:image]})")
+    - if article[:header_image]
+      .ArticleCard-image(style="background-image: url(#{image_url article[:header_image]})")
     .ArticleCard-content
       .ArticleCard-date #{article[:date]}
       h2.ArticleCard-title #{article[:title]}

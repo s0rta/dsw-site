@@ -13,7 +13,7 @@ class Cluster < ApplicationRecord
   end
 
   def self.template_list_data
-    select("name AS title, name, description, is_active")
+    select("name AS title, name, description, is_active, header_image")
       .in_display_order
       .active
   end
