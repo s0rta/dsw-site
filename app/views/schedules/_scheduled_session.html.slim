@@ -6,7 +6,7 @@ a.scheduled-session(href="#{schedule_path(submission)}")
       .icon
   .session-info
     .time-slot
-      .time #{local_assigns[:include_day] ? submission.human_short_start_day : ''} #{submission.human_time_range}
+      .session-time #{local_assigns[:include_day] ? submission.human_short_start_day : ''} #{submission.human_time_range}
       - if submission.tags
         .cluster-name = submission.tags
     .title-venue

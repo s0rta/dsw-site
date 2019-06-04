@@ -10,15 +10,16 @@
 
 nav
   .section-content
-    - if @session.current_year?
-      h1 Session Detail
-    - else
+    - unless @session.current_year?
       h1 #{@session.year} Schedule
 
 
 section.back-link-section
   .section-content.sm-centered
-    = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'
+    = link_to schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link' do
+      .back-icon
+        = render partial: 'icons/arrow_in_circle_left'
+      = 'Back to schedule'
 
 = render partial: 'layouts/shared/flash'
 = render partial: 'first_come_first_served_banner', locals: { session: @session }
@@ -28,14 +29,12 @@ section.common
     header
       - if @session.track.icon
         = render partial: "icons/#{@session.track.icon}"
-      span.track-title = @session.track.name
-    .title = @session.full_title
-    - if @session.tags
-      .names
-        h6 = @session.tags
-    .date #{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}
-    .time #{@session.human_time_range}
-    .attendee_count = "#{@session.registrant_count} attending"
+      p.track-title = @session.track.name
+    .stats-container
+      .date #{@session.human_start_day}, #{@session.start_datetime.strftime('%-b %-d')}
+      .time #{@session.human_time_range}
+      .attendee_count = "#{@session.registrant_count} attending"
+    h1.title = @session.full_title
     .description = process_with_pipeline(@session.description)
 
     - if @session.live_stream_url.present?
@@ -44,38 +43,32 @@ section.common
         span Watch it
         .stream-details
           iframe(src="#{@session.live_stream_url}" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="100%" height="100%")
+          
     - if @session.venue_confirmed?
-      a.location-pin href='#'
-        = render partial: 'icons/map_pin'
-        span Map It
       .location-details
         p = @session.venue.name
         p = @session.venue.short_address
-      .location-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
     - else
       .location-details
         p = @session.human_location_name
 
-- if AnnualSchedule.registration_open? && @session.current_year?
-  section.common
-    .section-content.sm-centered
-      - if !registered? || !registered_for_session?(@session)
-        = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
-      - else
-        div.confirmed-btn-container
-          = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
+    - if @session.venue_confirmed?
+      = link_to 'Directions', @session.venue.address_for_google_maps, method: :get, class: 'btn primary'
+    
+    - if AnnualSchedule.registration_open? && @session.current_year?
+      = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
+      
+    - if @session.venue_confirmed?
+      .location-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
 
-- if @related_sessions.any?
-  section.common
-    .section-content.sm-centered
-      h1 You may also be interested in
-      div
+    - if @related_sessions.any?
+      h2.title You may also be interested in
+      .related-sessions
         - @related_sessions.each do |submission|
           = render partial: 'scheduled_session', locals: { submission: submission, include_day: true }
 
 - if user_signed_in? && @session.open_for_feedback?
   = render partial: 'feedback_form'
 
-section.common
-  .section-content.sm-centered
-    = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'
+= render layout: 'layouts/shared/layout_wrapper' do
+  = render partial: 'layouts/shared/primary_callouts_nav'

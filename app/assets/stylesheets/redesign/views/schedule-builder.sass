@@ -78,15 +78,18 @@
   text-decoration: none
   color: inherit
   display: flex
-  margin-bottom: 5px
+  margin-bottom: 25px
+  border-top: 1px solid $gray-border-light
   .icon-container
+    flex-shrink: 0
     display: flex
     flex-direction: column
     align-items: center
     justify-content: center
-    padding: 0 8px
+    width: 56px
+    height: 56px
     .icon
-      width: 23px
+      width: 24px
     &.green
       background: $green-light
       .icon
@@ -133,7 +136,8 @@
         fill: $headline-color-dark
 
 .location-map
-  margin-top: 20px
+  margin-top: 40px
+  margin-bottom: 80px;
   width: 100%
   border: 0
   min-height: 300px
@@ -141,10 +145,11 @@
 
 .session-info
   width: 100%
-  padding: 10px 5px
-  background: $backfill-grey
-  font-family: 'Montserrat-Light'
-  font-size: 12px
+  padding: 10px 25px
+  font-family: 'Montserrat-Regular'
+  font-size: 14px
+  display: flex
+  flex-direction: row
   &.confirmed
     background: darken($backfill-grey, 15%)
 .session-title
@@ -155,18 +160,16 @@
   font-family: 'Montserrat-Regular'
   line-height: 1
 .time-slot
-  margin-bottom: 8px
-  &:after
-    content: ""
-    display: table
-    clear: both
-  .time
-    float: left
-  .cluster-name
-    float: right
+  margin-right: 50px
+  .session-time
+    margin-bottom: 5px
     text-transform: uppercase
-    font-family: 'Montserrat-Regular'
-    font-size: 10px
+  .cluster-name
+    font-family: 'Montserrat-Light'
+    font-size: 14px
+.title-venue
+  .session-location
+    font-family: 'Montserrat-Light'
 
 .day-buttons
   width: 80%
@@ -212,14 +215,6 @@
       background-size: cover
 
 @media(min-width: 375px)
-  .session-info
-    padding: 15px
-    font-size: 14px
-  .session-title
-    max-height: 42px
-  .time-slot
-    .cluster-name
-      font-size: 12px
   .schedule-container
     .chiclet
       .month
@@ -248,19 +243,6 @@
           display: none
 
 @media(min-width: 600px)
-  .time-slot
-    display: inline-block
-    vertical-align: top
-    width: 30%
-    .time,
-    .cluster-name
-      float: none
-    .time
-      margin-bottom: 10px
-  .title-venue
-    display: inline-block
-    width: 70%
-
   .schedule-container
     .chiclet
       .month
