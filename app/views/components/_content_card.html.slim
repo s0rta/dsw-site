@@ -4,11 +4,12 @@ div.ContentCard
   - else
     / temporary until images are part of data models
     .ContentCard-image(style="background-image: url(https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg)")
-  div.ContentCard-text
+  .ContentCard-content
     div.ContentCard-header(class="#{card[:color]}-fill")
       - if card[:track].present?
         = render partial: "icons/#{card[:icon]}"
       h3.ContentCard-title(class="#{card[:color]}-font") #{card[:title]}
-    p.ContentCard-description #{card[:description]}
-    .ContentCard-button
-      = render 'components/content_button', title: "Explore the #{title}", button_url: "#{page_url}"
+    div.ContentCard-inner-content
+      p.ContentCard-description #{card[:description]}
+      .ContentCard-button
+        = render 'components/content_button', title: "Explore the #{title}", button_url: "#{page_url}"
