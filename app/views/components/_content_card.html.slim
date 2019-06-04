@@ -10,5 +10,5 @@ div.ContentCard
         = render partial: "icons/#{card[:icon]}"
       h3.ContentCard-title(class="#{card[:color]}-font") #{card[:title]}
     p.ContentCard-description #{card[:description]}
-    .ContentCard-button
-      = render 'components/content_button', title: "Explore the #{title}", button_url: "#{page_url}"
+    .ContentCard-action
+      = link_to "Explore the #{title}", page_path(page: "#{page_url}"), class: 'ContentCard-link'
