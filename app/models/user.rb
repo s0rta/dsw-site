@@ -50,6 +50,6 @@ class User < ApplicationRecord
   end
 
   def initials
-    name.split(" ").map { |n| n[0,1] }.join
+    name.split(" ").map { |n| n[0, 1] }.join
   end
 end
