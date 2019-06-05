@@ -14,11 +14,10 @@ $wrap-margin: 44px
 
 .HomeHero-title
   font-size: 120px
-  font-weight: 900
   line-height: 90px
   text-transform: uppercase
   max-width: 589px
-  font-family: 'Montserrat-Black'
+  @include font-family-mixin(Montserrat-Black, 900)
   margin-top: $wrap-margin
   margin-right: 20px
 
@@ -32,7 +31,7 @@ $wrap-margin: 44px
 
 .HomeHero-description
   color: $primary-font-medium
-  font-family: 'Montserrat-Regular'
+  @include font-family-mixin(Montserrat-Regular, normal)
   font-size: 14px
   line-height: 18px
   max-width: 451px
@@ -41,9 +40,8 @@ $wrap-margin: 44px
 .HomeHero-link
   display: flex
   align-items: center
-  font-family: Montserrat-Regular;
+  @include font-family-mixin(Montserrat-Regular, 500)
   font-size: 12px;
-  font-weight: 500;
   text-transform: uppercase
   color: $teal-light
   margin-top: 30px

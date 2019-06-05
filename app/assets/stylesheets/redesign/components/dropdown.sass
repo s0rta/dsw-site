@@ -2,9 +2,8 @@
 
 .Dropdown
   color: white
-  font-family: Montserrat-Medium
+  @include font-family-mixin(Montserrat-Medium, 500)
   font-size: 14px
-  font-weight: 500
   background: $teal-light image-url('redesign/arrow-select.svg') no-repeat
   background-position: 95% 50%
   text-transform: uppercase

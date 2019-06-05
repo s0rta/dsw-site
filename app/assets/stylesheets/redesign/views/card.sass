@@ -31,9 +31,8 @@
   align-items: center
   margin-bottom: 30px
   text-indent: 10px
-  font-family: 'Montserrat-Regular'
+  @include font-family-mixin(Montserrat-Regular, 600)
   font-size: 11
-  font-weight: 600
   text-transform: uppercase
 
 .card-icon svg *
@@ -41,9 +40,8 @@
 
 .card-heading
   margin-bottom: 30px
-  font-family: 'Montserrat-Light'
+  @include font-family-mixin(Montserrat-Light, 200)
   font-size: 32px
-  font-weight: 200
   text-transform: uppercase
 
 .card-subheading

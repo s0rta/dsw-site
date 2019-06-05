@@ -11,14 +11,13 @@
 
 .SecondaryHero-sub-title
   color: white
-  font-family: Montserrat-Medium
+  @include font-family-mixin(Montserrat-Medium, 500)
   font-size: 24px
-  font-weight: 500
   text-transform: uppercase
 
 .SecondaryHero-description
   color: white
-  font-family: Montserrat-Regular
+  @include font-family-mixin(Montserrat-Regular, normal)
   font-size: 14px
   line-height: 18px
   max-width: 602px
@@ -26,9 +25,8 @@
 
 .SecondaryHero-title
   color: white
-  font-family: Montserrat-Black
+  @include font-family-mixin(Montserrat-Black, 900)
   font-size: 120px
-  font-weight: 900
   line-height: 90px
   text-transform: uppercase
   max-width: 697px
