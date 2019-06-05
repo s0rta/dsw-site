@@ -52,11 +52,11 @@ section.common
       .location-details
         p = @session.human_location_name
 
-    - if @session.venue_confirmed?
-      = link_to 'Directions', @session.venue.address_for_google_maps, method: :get, class: 'btn primary'
-    
-    - if AnnualSchedule.registration_open? && @session.current_year?
-      = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
+    .action-container
+      - if @session.venue_confirmed?
+        = link_to 'Directions', @session.venue.address_for_google_maps, method: :get, class: 'directions-button'
+      - if AnnualSchedule.registration_open? && @session.current_year?
+        = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'schedule-button'
       
     - if @session.venue_confirmed?
       .location-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
