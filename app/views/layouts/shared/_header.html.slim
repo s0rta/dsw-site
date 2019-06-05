@@ -4,7 +4,11 @@ header#site-header-js.Header
       img.Header-image(src="#{image_url('redesign/logos/dsw-grey.svg')}")
       img.Header-image-menu(src="#{image_url('redesign/logos/dsw-white.svg')}")
     .Header-actions
-      a.Header-signup(href="/") Sign Up / Sign In
+      - if signed_in?
+        a href="#{dashboard_path}"
+          = render partial: 'components/name_with_avatar', locals: { name: current_user.name, initials: 'SP', align: 'left' }
+      - else
+        a.Header-signup(href="/users/sign_in") Sign Up / Sign In
       button.Header-button.Header-button-open#menu-open-button-js.Header-menu-button(aria-label="Open Main Menu")
         = render partial: 'icons/hamburger'
       button.Header-button.Header-button-close#menu-close-button-js.Header-menu-button(aria-label="Close Main Menu")
