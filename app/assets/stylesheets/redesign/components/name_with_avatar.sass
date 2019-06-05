@@ -1,0 +1,29 @@
+@import ../config
+
+.NameWithAvatar
+  display: flex
+  align-items: center
+  color: $teal-light
+
+.NameWithAvatar-name
+  @include font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  margin-right: 16px
+
+.NameWithAvatar-avatar
+  display: flex
+  justify-content: center
+  align-items: center
+  @include font-family-mixin(Montserrat-Regular)
+  font-size: 18px
+  height: 46px
+  width: 46px
+  border: 1px solid $teal-light
+  border-radius: 50%
+  text-transform: uppercase
+
+.NameWithAvatar.is-right
+  .NameWithAvatar-name
+    order: 2
+    margin-right: 0
+    margin-left: 16px

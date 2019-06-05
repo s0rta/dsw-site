@@ -48,4 +48,8 @@ class User < ApplicationRecord
   def flipper_id
     to_global_id.to_s
   end
+
+  def initials
+    name.split(" ").map { |n| n[0, 1] }.join
+  end
 end
