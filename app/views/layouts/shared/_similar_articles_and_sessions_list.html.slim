@@ -1,0 +1,11 @@
+.SimilarArticlesAndSessionsList
+  h2.SimilarArticlesAndSessionsList-title You may also be interested in
+  .SimilarArticlesAndSessionsList-list
+    = render 'components/three_card_list', attributes: { 'aria-label': "similar sessions and atricles" } do
+      - list.each do |list_item|
+        - if list_item[:type] == 'session'
+          = render 'components/three_card_list_item' do
+            = render 'components/session_card', session: list_item
+        - if list_item[:type] == 'article'
+          = render 'components/three_card_list_item' do
+            = render 'components/article_card', article: list_item
