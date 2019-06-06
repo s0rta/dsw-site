@@ -1,0 +1,17 @@
+.Article
+  .Article-inner
+    - if @article[:header_image].present?
+      img.Article-image(src="#{@article[:header_image]}" title="#{@article[:title]}" alt="Hero Image")
+    .Article-tracks
+      - @article.tracks.each do |track|
+        =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
+
+    .Article-date #{@article.published_at.strftime("%A, %b%e, %Y")}
+    h1.Article-title #{@article.title}
+    section.Article-body #{@article.body.html_safe}
+
+    .Article-similar
+      h2.Article-title You may also be interested in
+
+= render layout: 'layouts/shared/layout_wrapper' do
+  = render partial: 'layouts/shared/primary_callouts_nav'
