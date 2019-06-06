@@ -23,7 +23,7 @@ section.SessionDetail-back-section
 = render partial: 'first_come_first_served_banner', locals: { session: @session }
 
 section.SessionDetail
-  header(class="SessionDetail-track #{@session.track.color}")
+  header(class="SessionDetail-track #{@session.track.color}-font #{@session.track.color}-fill")
     - if @session.track.icon
       = render partial: "icons/#{@session.track.icon}"
     p = @session.track.name

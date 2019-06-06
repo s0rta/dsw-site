@@ -1,5 +1,5 @@
 a.ScheduledSession(href="#{schedule_path(submission)}")
-  div(class="ScheduledSession-icon-container #{submission.track.color}")
+  div(class="ScheduledSession-icon-container #{submission.track.color}-background #{submission.track.color}-fill-on-#{submission.track.color}-background")
     - if submission.track.icon
       = render partial: "icons/#{submission.track.icon}"
     - else
