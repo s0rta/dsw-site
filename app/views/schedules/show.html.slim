@@ -61,7 +61,7 @@ section.common
     - if @related_sessions.any?
       h2.title You may also be interested in
       .related-sessions
-        - @related_sessions.each do |submission|
+        - @related_sessions.limit(3).each do |submission|
           = render partial: 'scheduled_session', locals: { submission: submission, include_day: true }
 
 - if user_signed_in? && @session.open_for_feedback?
