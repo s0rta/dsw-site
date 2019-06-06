@@ -7,8 +7,5 @@
       h2.ArticleCard-title #{article[:title]}
       .ArticleCard-tracks
         - article[:tracks].each do |track|
-          .ArticleCard-track
-            .ArticleCard-track-dot(class="#{track}-background")
-            .ArticleCard-track-name #{track}
-
+          =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
 
