@@ -1,7 +1,7 @@
 module RouteHelper
 
   def main_menu
-    menu = [home_route, main_program_route, sponsers_route, get_involved_route]
+    menu = [home_route, main_program_route, sponsors_route, articles_route, get_involved_route]
     if AnnualSchedule.cfp_open?
       menu.push submissions_route
     elsif AnnualSchedule.registration_open?
@@ -31,21 +31,21 @@ module RouteHelper
 
   def home_route
     {
-      path: "",
+      path: "/",
       label: "home"
     }
   end
 
-  def sponsers_route
+  def sponsors_route
     {
-      path: "sponsers",
-      label: "sponsers"
+      path: "/sponsors",
+      label: "sponsors"
     }
   end
 
   def get_involved_route
     {
-      path: "get-involved",
+      path: "/get-involved",
       label: "get involved"
     }
   end
@@ -80,50 +80,57 @@ module RouteHelper
 
   def main_program_route
     {
-      path: "program",
+      path: "/program",
       label: "program",
       nested_routes: program_routes
     }
   end
 
+  def articles_route
+    {
+      path: articles_path,
+      label: "Articles"
+    }
+  end
+
   def program_route
     {
-      path: "program",
+      path: "/program",
       label: "overview"
     }
   end
 
   def tracks_route
     {
-      path: "program/tracks",
+      path: "/program/tracks",
       label: "tracks"
     }
   end
 
   def track_detail_route(name)
     {
-       path: "program/tracks/#{name}",
+       path: "/program/tracks/#{name}",
        label: name
     }
   end
 
   def clusters_route
     {
-      path: "program/clusters",
+      path: "/program/clusters",
       label: "clusters"
     }
   end
 
   def basecamp_route
     {
-      path: "basecamp",
+      path: "/basecamp",
       label: "basecamp"
     }
   end
 
   def headline_events_route
     {
-      path: "program/headline-events",
+      path: "/program/headline-events",
       label: "headline events"
     }
   end
@@ -136,7 +143,7 @@ module RouteHelper
     starting_nav = ""
     main_menu.each do |item|
       next unless item[:nested_routes].present?
-      if item[:nested_routes].any? { |r| r[:path] == request_path }
+      if item[:nested_routes].any? { |r| r[:path] == request.path }
         starting_nav = item[:label]
       end
     end
@@ -145,12 +152,8 @@ module RouteHelper
 
   private
 
-  def request_path
-    request.path[1...request.path.length]
-  end
-
   def current_path?(route)
-    request_path == route[:path]
+    request.path == route[:path]
   end
 
 end

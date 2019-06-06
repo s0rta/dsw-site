@@ -73,6 +73,8 @@ Rails.application.routes.draw do
   resources :general_inquiries, only: :create
   resources :sponsor_signups, only: :create
 
+  resources :articles, only: :index
+
   scope :program do
     resources :clusters, only: :show, param: :name
     resources :tracks, only: :show, param: :name
