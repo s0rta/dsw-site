@@ -63,9 +63,10 @@ section.SessionDetail
           - @related_sessions.each do |submission|
             = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
     .SessionDetail-column--right
-      - @session.registrants.each do |user|
-        .SessionDetail-attendee
-          = render partial: 'components/name_with_avatar', locals: { name: user.name, initials: user.initials, align: 'right', color: 'gray' }
+      - if @current_user.present?
+        - @session.registrants.reorder('"session_registrations"."created_at" DESC').each do |user|
+          .SessionDetail-attendee
+            = render partial: 'components/name_with_avatar', locals: { name: user.name, initials: user.initials, align: 'right', color: 'gray' }
 
 - if user_signed_in? && @session.open_for_feedback?
   = render partial: 'feedback_form'
