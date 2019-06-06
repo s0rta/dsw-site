@@ -20,7 +20,7 @@
 .ScheduledSession-details-container
   width: 100%
   padding: 10px 25px
-  font-family: 'Montserrat-Regular'
+  +font-family-mixin(Montserrat-Regular)
   font-size: 14px
   display: flex
   flex-direction: row
@@ -30,17 +30,17 @@
     margin-bottom: 5px
     text-transform: uppercase
   .ScheduledSession-cluster-name
-    font-family: 'Montserrat-Light'
+    +font-family-mixin(Montserrat-Light)
     font-size: 14px
 .ScheduledSession-title
   color: $copy-color-bold
   margin-bottom: 5px
   max-height: 36px
   overflow: hidden
-  font-family: 'Montserrat-Regular'
+  +font-family-mixin(Montserrat-Regular)
   line-height: 1
 .ScheduledSession-location
-  font-family: 'Montserrat-Light'
+  +font-family-mixin(Montserrat-Light)
 
 @media(max-width: 600px)
   .ScheduledSession-details-container
