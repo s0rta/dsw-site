@@ -1,8 +1,9 @@
 @import ../config
 
-
+.SessionDetail-prev-year-header
+  padding: 0 5%
 .SessionDetail-back-section
-  padding: 0 0 40px 0
+  padding: 0 5% 40px
 .SessionDetail-back-link
   display: flex
   flex-direction: row
@@ -15,112 +16,111 @@
   margin-right: 12px
 
 .SessionDetail
+  padding: 40px 5% 50px
   font-family: 'Montserrat-Light'
   color: $copy-color-bold
-  .SessionDetail-track
-    margin-bottom: 26px
+.SessionDetail-track
+  margin-bottom: 26px
+  text-transform: uppercase
+  font-size: 28px
+  .icon
+    margin-right: 15px
+  &.teal
+    color: $teal-light
+    fill: $teal-light
+  &.purple
+    color: $purple-light
+    fill: $purple-light
+  &.orange
+    color: $orange-light
+    fill: $orange-light
+  &.gold
+    color: $gold-light
+    fill: $gold-light
+  &.blue
+    color: $blue-light
+    fill: $blue-light
+  &.green
+    color: $green-light
+    fill: $green-light
+  &.red
+    color: $red-light
+    fill: $red-light
+  &.pink
+    color: $pink-light
+    fill: $pink-light
+  &.mint
+    color: $mint-light
+    fill: $mint-light
+  &.headline-session
+    color: $headline-color-light
+    fill: $headline-color-light
+  &.basecamp-session
+    color: $basecamp-color-light
+    fill: $basecamp-color-light
+.SessionDetail-title
+  margin-bottom: 20px
+  font-size: 28px
+  color: $primary-font-dark
+  text-transform: uppercase;
+.SessionDetail-stats-container
+  display: flex
+  flex-direction: row
+.SessionDetail-date, .SessionDetail-time, .SessionDetail-attendee-count
+  text-transform: uppercase
+  font-family: "Montserrat-Regular"
+  font-size: 14px
+  margin-bottom: 12px
+  margin-right: 37px
+.SessionDetail-description
+  color: $primary-font-medium
+  font-size: 14px
+  margin-top: 20px
+  margin-bottom: 40px
+  p
+    margin: 1em 0px
+.SessionDetail-stream
+  display: block
+  margin-top: 30px
+  svg
+    width: 20px
+    height: 25px
+    fill: $teal-light
+    vertical-align: middle
+    margin-right: 8px
+  .SessionDetail-stream-label
+    color: $teal-light
     text-transform: uppercase
-    font-size: 28px
-    .icon
-      margin-right: 15px
-    &.teal
-      color: $teal-light
-      fill: $teal-light
-    &.purple
-      color: $purple-light
-      fill: $purple-light
-    &.orange
-      color: $orange-light
-      fill: $orange-light
-    &.gold
-      color: $gold-light
-      fill: $gold-light
-    &.blue
-      color: $blue-light
-      fill: $blue-light
-    &.green
-      color: $green-light
-      fill: $green-light
-    &.red
-      color: $red-light
-      fill: $red-light
-    &.pink
-      color: $pink-light
-      fill: $pink-light
-    &.mint
-      color: $mint-light
-      fill: $mint-light
-    &.headline-session
-      color: $headline-color-light
-      fill: $headline-color-light
-    &.basecamp-session
-      color: $basecamp-color-light
-      fill: $basecamp-color-light
-  .SessionDetail-title
-    margin-bottom: 20px
-    font-size: 28px
-    color: $primary-font-dark
-    text-transform: uppercase;
-  .SessionDetail-stats-container
-    display: flex
-    flex-direction: row
-  .SessionDetail-date, .SessionDetail-time, .SessionDetail-attendee-count
-    text-transform: uppercase
-    font-family: "Montserrat-Regular"
-    font-size: 14px
-    margin-bottom: 12px
-    margin-right: 37px
-  .SessionDetail-description
-    color: $primary-font-medium
-    font-size: 14px
-    margin-top: 20px
-    margin-bottom: 40px
-    p
-      margin: 1em 0px
-  .SessionDetail-stream
-    display: block
-    margin-top: 30px
-    svg
-      width: 20px
-      height: 25px
-      fill: $teal-light
-      vertical-align: middle
-      margin-right: 8px
-    .SessionDetail-stream-label
-      color: $teal-light
-      text-transform: uppercase
-      font-size: 15px
-    .SessionDetail-stream-details
-      margin: 20px auto
-      width: 320px
-      height: 180px
-  .SessionDetail-location
-    display: block
-    margin-top: 30px
-    color: $primary-font-dark
-    font-size: 14px
-  .SessionDetail-map
-    margin-top: 40px
-    margin-bottom: 80px
-    width: 100%
-    border: 0
-    min-height: 300px
-    pointer-events: none
-  .SessionDetail-schedule-button
-    +white-button(187px, 46px)
-    margin-top: 30px
-  .SessionDetail-related-sessions
-    margin-top: 50px
-    margin-bottom: 90px
+    font-size: 15px
+  .SessionDetail-stream-details
+    margin: 20px auto
+    width: 320px
+    height: 180px
+.SessionDetail-location
+  display: block
+  margin-top: 30px
+  color: $primary-font-dark
+  font-size: 14px
+.SessionDetail-map
+  margin-top: 40px
+  margin-bottom: 80px
+  width: 100%
+  border: 0
+  min-height: 300px
+  pointer-events: none
+.SessionDetail-schedule-button
+  +white-button(187px, 46px)
+  margin-top: 30px
+.SessionDetail-related-sessions
+  margin-top: 50px
+  margin-bottom: 90px
 
 @media(min-width: 400px)
-  .SessionDetail
-    .SessionDetail-stream
-      .SessionDetail-stream-details
-        width: 640px
-        height: 360px
+  .SessionDetail-stream
+    .SessionDetail-stream-details
+      width: 640px
+      height: 360px
 
 @media(max-width: 600px)
-  .SessionDetail
-    .SessionDetail-stats-container
-      flex-direction: column
+  .SessionDetail-stats-container
+    flex-direction: column
