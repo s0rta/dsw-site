@@ -48,17 +48,7 @@
   justify-content: space-between
 
 .ContentCard-link
-  display: flex
-  justify-content: center
-  align-items: center
-  border-radius: 26.5px
-  border: 1.5px solid $teal-light
-  height: 56px
-  width: 315px
-  text-transform: uppercase
-  color: $teal-light
-  font-size: 12px
-  @include font-family-mixin(Montserrat-Medium)
+  +white-button(315px, 56px)
 
 @media(min-width: 640px)
   .ContentCard-header
