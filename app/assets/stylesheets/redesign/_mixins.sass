@@ -1,0 +1,17 @@
+=font-family-mixin($family)
+  font-family: $family, sans-serif
+
+=white-button($width, $height)
+  +font-family-mixin(Montserrat-Medium)
+  text-transform: uppercase
+  font-size: 12px
+  font-weight: 500
+  color: $teal-light
+  background-color: #fff
+  border: 1.5px solid $primary-border-teal-light
+  border-radius: $height
+  width: $width
+  height: $height
+  display: flex
+  justify-content: center
+  align-items: center

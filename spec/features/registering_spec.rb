@@ -44,7 +44,7 @@ feature "Registering to attend" do
     scenario "Registering to attend from the schedule page" do
       visit "/schedule"
       click_link "I am a session"
-      click_link "Add to My Schedule"
+      click_link "Add to Schedule"
       click_link "Create an account"
       fill_in "Name", with: "Test Registrant"
       fill_in "E-mail Address", with: "test2@example.com"
@@ -76,12 +76,7 @@ feature "Registering to attend" do
       select("Founder Track", from: "filter")
 
       click_link "I am a session"
-      click_link "Add to My Schedule"
-      expect(page).not_to have_link("Add to My Schedule")
-      click_link "Remove from My Schedule"
-      expect(page).to have_link("Add to My Schedule")
-
-      click_link "Add to My Schedule"
+      click_link "Add to Schedule"
       visit "/schedule"
       select "View My Schedule", from: "filter"
       ical = URI.open(find(:link, "Add to Outlook/iCal")[:href].gsub("webcal://", "http://"))

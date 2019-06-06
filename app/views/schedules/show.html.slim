@@ -8,74 +8,61 @@
   meta(name="date" content="#{@session.start_datetime.iso8601}")
   script(type="application/ld+json") = session_ld_json(@session).html_safe
 
-nav
-  .section-content
-    - if @session.current_year?
-      h1 Session Detail
-    - else
-      h1 #{@session.year} Schedule
+- unless @session.current_year?
+  .SessionDetail-prev-year-header
+    h1.SessionDetail-title #{@session.year} Schedule
 
 
-section.back-link-section
-  .section-content.sm-centered
-    = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'
+section.SessionDetail-back-section
+  = link_to schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'SessionDetail-back-link' do
+    .SessionDetail-back-icon
+      = render partial: 'icons/arrow_in_circle_left'
+    = 'Back to schedule'
 
 = render partial: 'layouts/shared/flash'
 = render partial: 'first_come_first_served_banner', locals: { session: @session }
 
-section.common
-  div(class="section-content session-detail sm-centered #{@session.track.color}")
-    header
-      - if @session.track.icon
-        = render partial: "icons/#{@session.track.icon}"
-      span.track-title = @session.track.name
-    .title = @session.full_title
-    - if @session.tags
-      .names
-        h6 = @session.tags
-    .date #{@session.human_start_day} #{@session.start_datetime.strftime('%-m/%-d')}
-    .time #{@session.human_time_range}
-    .attendee_count = "#{@session.registrant_count} attending"
-    .description = process_with_pipeline(@session.description)
+section.SessionDetail
+  header(class="SessionDetail-track #{@session.track.color}-font #{@session.track.color}-fill")
+    - if @session.track.icon
+      = render partial: "icons/#{@session.track.icon}"
+    p = @session.track.name
+  .SessionDetail-stats-container
+    .SessionDetail-date #{@session.human_start_day}, #{@session.start_datetime.strftime('%-b %-d')}
+    .SessionDetail-time #{@session.human_time_range}
+    .SessionDetail-attendee-count = "#{@session.registrant_count} attending"
+  h1.SessionDetail-title = @session.full_title
+  .SessionDetail-description = process_with_pipeline(@session.description)
 
-    - if @session.live_stream_url.present?
-      a.stream-pin href='#'
-        = render partial: 'icons/eyeball'
-        span Watch it
-        .stream-details
-          iframe(src="#{@session.live_stream_url}" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="100%" height="100%")
-    - if @session.venue_confirmed?
-      a.location-pin href='#'
-        = render partial: 'icons/map_pin'
-        span Map It
-      .location-details
-        p = @session.venue.name
-        p = @session.venue.short_address
-      .location-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
-    - else
-      .location-details
-        p = @session.human_location_name
+  - if @session.live_stream_url.present?
+    a.SessionDetail-stream href='#'
+      = render partial: 'icons/eyeball'
+      span.SessionDetail-stream-label Watch it
+      .SessionDetail-stream-details
+        iframe(src="#{@session.live_stream_url}" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="100%" height="100%")
+        
+  - if @session.venue_confirmed?
+    .SessionDetail-location
+      p = @session.venue.name
+      p = @session.venue.short_address
+  - else
+    .SessionDetail-location
+      p = @session.human_location_name
 
-- if AnnualSchedule.registration_open? && @session.current_year?
-  section.common
-    .section-content.sm-centered
-      - if !registered? || !registered_for_session?(@session)
-        = link_to 'Add to My Schedule', add_to_schedule_path(@session), method: :post, class: 'btn primary'
-      - else
-        div.confirmed-btn-container
-          = link_to 'Remove from My Schedule', remove_from_schedule_path(@session), method: :delete, class: 'btn primary confirmed-btn'
+  - if AnnualSchedule.registration_open? && @session.current_year?
+    = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'SessionDetail-schedule-button'
+    
+  - if @session.venue_confirmed?
+    .SessionDetail-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
 
-- if @related_sessions.any?
-  section.common
-    .section-content.sm-centered
-      h1 You may also be interested in
-      div
-        - @related_sessions.each do |submission|
-          = render partial: 'scheduled_session', locals: { submission: submission, include_day: true }
+  - if @related_sessions.any?
+    h2.SessionDetail-title You may also be interested in
+    .SessionDetail-related-sessions
+      - @related_sessions.each do |submission|
+        = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
 
 - if user_signed_in? && @session.open_for_feedback?
   = render partial: 'feedback_form'
 
-section.common
-  .section-content.sm-centered
-    = link_to 'Back to Schedule', schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link'
+= render layout: 'layouts/shared/layout_wrapper' do
+  = render partial: 'layouts/shared/primary_callouts_nav'

@@ -44,7 +44,7 @@ feature 'Giving feedback on a session' do
       submission
 
       visit '/schedule/monday'
-      click_on(class: 'scheduled-session')
+      click_on(class: "ScheduledSession")
 
       select 'Good', from: 'Please rate this session'
       fill_in 'Comments', with: 'here are my comments'
@@ -60,7 +60,7 @@ feature 'Giving feedback on a session' do
       submission
 
       visit '/schedule/monday'
-      click_on(class: 'scheduled-session')
+      click_on(class: "ScheduledSession")
 
       expect(page).to_not have_content 'Please rate this session'
       # add something here to ensure 1 feedback/session
@@ -85,7 +85,7 @@ feature 'Giving feedback on a session' do
       login_as user, scope: :user
 
       visit "/schedule/#{submission.year}/monday"
-      click_on(class: 'scheduled-session')
+      click_on(class: "ScheduledSession")
 
       expect(page).to have_content 'Please rate this session'
     end
@@ -107,7 +107,7 @@ feature 'Giving feedback on a session' do
       submission
 
       visit '/schedule'
-      click_on(class: 'scheduled-session')
+      click_on(class: "ScheduledSession")
 
       expect(page).not_to have_content 'Please rate this session'
     end

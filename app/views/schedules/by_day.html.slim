@@ -50,7 +50,7 @@ section.common
       - @sessions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
         .time-block
           .time-tag = grouping.first.human_start_time
-          = render partial: 'scheduled_session', collection: grouping, as: :submission
+          = render partial: 'components/scheduled_session', collection: grouping, as: :submission
 
     .day-buttons
       - if @day_index == 6
