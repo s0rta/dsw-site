@@ -3,12 +3,15 @@
 .NameWithAvatar
   display: flex
   align-items: center
-  color: $teal-light
 
 .NameWithAvatar-name
   @include font-family-mixin(Montserrat-Light)
   font-size: 14px
   margin-right: 16px
+  max-width: 300px
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
 
 .NameWithAvatar-avatar
   display: flex
@@ -18,7 +21,8 @@
   font-size: 18px
   height: 46px
   width: 46px
-  border: 1px solid $teal-light
+  border-width: 1px
+  border-style: solid
   border-radius: 50%
   text-transform: uppercase
 

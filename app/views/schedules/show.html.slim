@@ -64,7 +64,8 @@ section.SessionDetail
             = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
     .SessionDetail-column--right
       - @session.registrants.each do |user|
-        p = user.name
+        .SessionDetail-attendee
+          = render partial: 'components/name_with_avatar', locals: { name: user.name, initials: user.initials, align: 'right', color: 'gray' }
 
 - if user_signed_in? && @session.open_for_feedback?
   = render partial: 'feedback_form'
