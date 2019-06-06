@@ -1,0 +1,14 @@
+a.ScheduledSession(href="#{schedule_path(submission)}")
+  div(class="ScheduledSession-icon-container #{submission.track.color}")
+    - if submission.track.icon
+      = render partial: "icons/#{submission.track.icon}"
+    - else
+      .icon
+  .ScheduledSession-details-container
+    .ScheduledSession-time-container
+      .ScheduledSession--time #{local_assigns[:include_day] ? submission.human_short_start_day : ''} #{submission.human_time_range}
+      - if submission.tags
+        .ScheduledSession-cluster-name = submission.tags
+    div
+      .ScheduledSession-title = submission.full_title
+      .ScheduledSession-location = submission.human_location_name

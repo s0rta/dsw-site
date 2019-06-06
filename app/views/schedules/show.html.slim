@@ -14,10 +14,10 @@ nav
       h1 #{@session.year} Schedule
 
 
-section.back-link-section
+section.SessionDetail-back-section
   .section-content.sm-centered
-    = link_to schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'back-link' do
-      .back-icon
+    = link_to schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'SessionDetail-back-link' do
+      .SessionDetail-back-icon
         = render partial: 'icons/arrow_in_circle_left'
       = 'Back to schedule'
 
@@ -25,44 +25,44 @@ section.back-link-section
 = render partial: 'first_come_first_served_banner', locals: { session: @session }
 
 section.common
-  div(class="section-content session-detail sm-centered #{@session.track.color}")
-    header
+  div.section-content.sm-centered.SessionDetail
+    header(class="SessionDetail-track #{@session.track.color}")
       - if @session.track.icon
         = render partial: "icons/#{@session.track.icon}"
-      p.track-title = @session.track.name
-    .stats-container
-      .date #{@session.human_start_day}, #{@session.start_datetime.strftime('%-b %-d')}
-      .time #{@session.human_time_range}
-      .attendee_count = "#{@session.registrant_count} attending"
-    h1.title = @session.full_title
-    .description = process_with_pipeline(@session.description)
+      p = @session.track.name
+    .SessionDetail-stats-container
+      .SessionDetail-date #{@session.human_start_day}, #{@session.start_datetime.strftime('%-b %-d')}
+      .SessionDetail-time #{@session.human_time_range}
+      .SessionDetail-attendee-count = "#{@session.registrant_count} attending"
+    h1.SessionDetail-title = @session.full_title
+    .SessionDetail-description = process_with_pipeline(@session.description)
 
     - if @session.live_stream_url.present?
-      a.stream-pin href='#'
+      a.SessionDetail-stream href='#'
         = render partial: 'icons/eyeball'
-        span Watch it
-        .stream-details
+        span.SessionDetail-stream-label Watch it
+        .SessionDetail-stream-details
           iframe(src="#{@session.live_stream_url}" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="100%" height="100%")
           
     - if @session.venue_confirmed?
-      .location-details
+      .SessionDetail-location
         p = @session.venue.name
         p = @session.venue.short_address
     - else
-      .location-details
+      .SessionDetail-location
         p = @session.human_location_name
 
     - if AnnualSchedule.registration_open? && @session.current_year?
-      = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'schedule-button'
+      = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'SessionDetail-schedule-button'
       
     - if @session.venue_confirmed?
-      .location-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
+      .SessionDetail-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
 
     - if @related_sessions.any?
-      h2.title You may also be interested in
-      .related-sessions
+      h2.SessionDetail-title You may also be interested in
+      .SessionDetail-related-sessions
         - @related_sessions.limit(3).each do |submission|
-          = render partial: 'scheduled_session', locals: { submission: submission, include_day: true }
+          = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
 
 - if user_signed_in? && @session.open_for_feedback?
   = render partial: 'feedback_form'

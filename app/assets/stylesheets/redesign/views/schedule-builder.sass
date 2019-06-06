@@ -74,103 +74,6 @@
   font-family: 'Montserrat-Regular'
   margin-bottom: 10px
 
-.scheduled-session
-  text-decoration: none
-  color: inherit
-  display: flex
-  margin-bottom: 25px
-  border-top: 1px solid $gray-border-light
-  .icon-container
-    flex-shrink: 0
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    width: 56px
-    height: 56px
-    .icon
-      width: 24px
-    &.green
-      background: $green-light
-      .icon
-        fill: $green-dark
-    &.blue
-      background: $blue-light
-      .icon
-        fill: $blue-dark
-    &.purple
-      background: $purple-light
-      .icon
-        fill: $purple-dark
-    &.orange
-      background: $orange-light
-      .icon
-        fill: $orange-dark
-    &.teal
-      background: $teal-light
-      .icon
-        fill: $teal-dark
-    &.gold
-      background: $gold-light
-      .icon
-        fill: $gold-dark
-    &.red
-      background: $red-light
-      .icon
-        fill: $red-dark
-    &.pink
-      background: $pink-light
-      .icon
-        fill: $pink-dark
-    &.mint
-      background: $mint-light
-      .icon
-        fill: $mint-dark
-    &.basecamp-session
-      background: $basecamp-color-light
-      .icon
-        fill: $basecamp-color-dark
-    &.headline-session
-      background: $headline-color-light
-      .icon
-        fill: $headline-color-dark
-
-.location-map
-  margin-top: 40px
-  margin-bottom: 80px;
-  width: 100%
-  border: 0
-  min-height: 300px
-  pointer-events: none
-
-.session-info
-  width: 100%
-  padding: 10px 25px
-  font-family: 'Montserrat-Regular'
-  font-size: 14px
-  display: flex
-  flex-direction: row
-  &.confirmed
-    background: darken($backfill-grey, 15%)
-.session-title
-  color: $copy-color-bold
-  margin-bottom: 5px
-  max-height: 36px
-  overflow: hidden
-  font-family: 'Montserrat-Regular'
-  line-height: 1
-.time-slot
-  margin-right: 50px
-  .session-time
-    margin-bottom: 5px
-    text-transform: uppercase
-  .cluster-name
-    font-family: 'Montserrat-Light'
-    font-size: 14px
-.title-venue
-  .session-location
-    font-family: 'Montserrat-Light'
-
 .day-buttons
   width: 80%
   margin-top: 20px
@@ -237,11 +140,6 @@
         height: 9px
 
 @media(max-width: 600px)
-  .session-info
-    flex-direction: column
-  .time-slot
-    margin-right: 0
-    margin-bottom: 10px
   .schedule-container
       .chiclet
         .day_of_week
