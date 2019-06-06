@@ -1,7 +1,13 @@
+- header_image = @article[:header_image].present? ? @article[:header_image] : 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+
 .Article
   .Article-inner
-    - if @article[:header_image].present?
-      img.Article-image(src="#{@article[:header_image]}" title="#{@article[:title]}" alt="Hero Image")
+    .Article-back
+      a(href="#{articles_path}" aria-label="Back to Articles" class="Article-back-link")
+        = render partial: 'icons/arrow_in_circle_right'
+        span.Article-back-text back to articles
+    - if header_image.present?
+      img.Article-image(src="#{header_image}" title="#{@article[:title]}" alt="Hero Image")
     .Article-tracks
       - @article.tracks.each do |track|
         =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
@@ -13,5 +19,6 @@
     .Article-similar
       h2.Article-title You may also be interested in
 
-= render layout: 'layouts/shared/layout_wrapper' do
-  = render partial: 'layouts/shared/primary_callouts_nav'
+.Article-primary-callouts
+  = render layout: 'layouts/shared/layout_wrapper' do
+    = render partial: 'layouts/shared/primary_callouts_nav'
