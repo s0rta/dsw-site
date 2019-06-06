@@ -4,7 +4,7 @@
   .Article-inner
     .Article-back
       a(href="#{articles_path}" aria-label="Back to Articles" class="Article-back-link")
-        = render partial: 'icons/arrow_in_circle_right'
+        = render partial: 'icons/arrow_in_circle_left'
         span.Article-back-text back to articles
     - if header_image.present?
       img.Article-image(src="#{header_image}" title="#{@article[:title]}" alt="Hero Image")
