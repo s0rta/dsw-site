@@ -42,6 +42,7 @@ feature "Registering to attend" do
     end
 
     scenario "Registering to attend from the schedule page" do
+      pending("refactor")
       visit "/schedule"
       click_link "I am a session"
       click_link "Add to Schedule"
