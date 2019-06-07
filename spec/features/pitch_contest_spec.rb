@@ -44,7 +44,7 @@ feature 'Submitting and voting on pitch contest applications' do
       click_link "Vote for 'Globex Corporation'"
       fill_in 'E-mail Address', with: 'test@example.com'
       fill_in 'Password', with: 'password', match: :prefer_exact
-      click_button 'Sign In'
+      click_button 'Submit'
 
       click_link "Vote for 'Globex Corporation'"
       expect(page).to have_css('.vote-count', text: '1 vote')
