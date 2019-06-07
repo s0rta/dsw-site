@@ -14,19 +14,24 @@ const HEADER_MENU_CLASS = 'menu-open';
 
 export default class Menu {
   constructor(el) {
+    this.el = el;
     this.openMenu = this.openMenu.bind(this);
     this.closeMenu = this.closeMenu.bind(this);
     this.openSecondaryNavClick = this.openSecondaryNavClick.bind(this);
     this.openSecondaryNav = this.openSecondaryNav.bind(this);
     this.closeSecondaryNavClick = this.closeSecondaryNavClick.bind(this);
+    this.setStartingNav = this.setStartingNav.bind(this);
 
-    this.initialize(el);
+    this.initialize();
   }
 
-  initialize(el) {
+  initialize() {
     this.addListeners();
+    this.setStartingNav();
+  }
 
-    const startingNav = el.data().starting_nav;
+  setStartingNav() {
+    const startingNav = this.el.data().starting_nav;
     if (startingNav) {
       this.openSecondaryNav(startingNav);
     }
@@ -76,6 +81,8 @@ export default class Menu {
     $(document)
       .find(SITE_HEADER_ID)
       .removeClass(HEADER_MENU_CLASS);
+
+    this.setStartingNav();
   }
 
   openSecondaryNavClick(event) {
