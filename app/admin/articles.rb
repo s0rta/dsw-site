@@ -27,7 +27,30 @@ ActiveAdmin.register Article do
       f.input :title
       f.input :body, as: :medium_editor, input_html: {
         data: {
-          options: '{"spellcheck":false,"toolbar":{"buttons":["bold","italic","underline","anchor","orderedlist","unorderedlist","strikethrough","subscript","superscript","pre","h1","h2","h3","h4","h5","h6","html"]}}',
+          options: {
+            "spellcheck": false,
+            "toolbar": {
+              "buttons": [
+                "bold",
+                "italic",
+                "underline",
+                "anchor",
+                "orderedlist",
+                "unorderedlist",
+                "strikethrough",
+                "subscript",
+                "superscript",
+                "pre",
+                "h1",
+                "h2",
+                "h3",
+                "h4",
+                "h5",
+                "h6",
+                "html",
+              ],
+            },
+          }.to_json,
         },
       }
       f.input :author_id,
