@@ -19,6 +19,18 @@
   padding: 40px 5% 50px
   +font-family-mixin(Montserrat-Light)
   color: $copy-color-bold
+.SessionDetail-columns
+  display: flex
+  flex-direction: row
+.SessionDetail-column--left
+  flex-shrink: 1
+  flex-grow: 1
+.SessionDetail-column--right
+  flex-shrink: 0
+  flex-grow: 0
+  margin-left: 130px
+  max-height: 800px
+  overflow: auto
 .SessionDetail-track
   margin-bottom: 26px
   text-transform: uppercase
@@ -75,10 +87,13 @@
   pointer-events: none
 .SessionDetail-schedule-button
   +white-button(187px, 46px)
+  width: 187px
   margin-top: 30px
 .SessionDetail-related-sessions
   margin-top: 50px
   margin-bottom: 90px
+.SessionDetail-attendee
+  padding: 6px 50px 6px 10px
 
 @media(min-width: 400px)
   .SessionDetail-stream
@@ -89,3 +104,7 @@
 @media(max-width: 600px)
   .SessionDetail-stats-container
     flex-direction: column
+
+@media(max-width: 1000px)
+  .SessionDetail-column--right
+    display: none
