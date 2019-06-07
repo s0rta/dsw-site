@@ -1,12 +1,9 @@
 .SubProgramDetailsHero(class="#{color}-background")
   .SubProgramDetailsHero-inner
     a(href="#{back_url}" aria-label="Back to Previous" style="fill: white" class="SubProgramDetailsHero-back-btn")
-      = render partial: 'icons/arrow_left'
-      div Back to #{sub_program}
-      / TODO: get correct arrow icon
+      = render partial: 'icons/arrow_in_circle_left'
+      .SubProgramDetailsHero-back-text Back to #{sub_program}
     .SubProgramDetailsHero-title-wapper
       .SubProgramDetailsHero-title(class="#{color}-font-on-#{color}") #{title}
-      button.SubProgramDetailsHero-SubProgram-btn(class="#{color}-border-on-#{color}-background")
-        .SubProgramDetailsHero-SubProgram-btn-title
-          = link_to "View #{title} #{btn_sessions} Sessions", schedules_path(filter: "#{title}"), {:class=>"#{color}-font-on-#{color}"}
+      = link_to "View #{title} #{btn_sessions} Sessions", schedules_path(filter: "#{title}"), class:"#{color}-font-on-#{color} #{color}-border-on-#{color}-background SubProgramDetailsHero-SubProgram-btn"
 

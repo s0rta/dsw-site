@@ -1,0 +1,66 @@
+@import ../config
+
+.Article
+  max-width: 1252px
+  margin: 0 auto
+  padding: 0 5%
+  box-sizing: content-box
+
+.Article-inner
+  max-width: 1092px
+
+.Article-back
+  display: flex
+
+.Article-back-link
+  display: flex
+  align-items: center
+  color: $teal-light
+  margin-top: 20px
+  margin-bottom: 37px
+  text-transform: uppercase
+
+.Article-back-text
+  margin-left: 20px
+
+.Article-image
+  width: 100%
+  max-height: 493px
+
+.Article-tracks
+  display: flex
+  margin-top: 22px
+  margin-bottom: 40px
+
+.Article-date
+  @include font-family-mixin(Montserrat-Medium)
+  color: $primary-font-medium
+  font-size: 16px
+  text-transform: uppercase
+  margin-bottom: 16px
+
+.Article-title
+  @include font-family-mixin(Montserrat-Light)
+  color: $primary-font-dark
+  font-size: 28px
+  line-height: 32px
+  text-transform: uppercase
+  margin-bottom: 20px
+
+// need to target tags directly here bc injected html
+
+.Article-body
+  @include font-family-mixin(Montserrat-Light)
+  margin-bottom: 80px
+  color: $primary-font-medium
+  font-size: 14px
+
+.Article-body p
+  @include font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 14px
+  line-height: 18px
+  margin-bottom: 18px
+
+.Article-primary-callouts
+  margin-top: 130px

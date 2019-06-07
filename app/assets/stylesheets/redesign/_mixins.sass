@@ -1,17 +1,24 @@
 =font-family-mixin($family)
   font-family: $family, sans-serif
 
-=white-button($width, $height)
+=oval-button($width, $height)
+  display: flex
+  justify-content: center
+  align-items: center
   +font-family-mixin(Montserrat-Medium)
   text-transform: uppercase
   font-size: 12px
   font-weight: 500
+  background-color: transparent
+  border-width: 1.5px
+  border-style: solid
+  border-radius: $height
+  min-width: $width
+  height: $height
+  padding: 0 10px
+
+=white-button($width, $height)
+  +oval-button($width, $height)
   color: $teal-light
   background-color: #fff
-  border: 1.5px solid $primary-border-teal-light
-  border-radius: $height
-  width: $width
-  height: $height
-  display: flex
-  justify-content: center
-  align-items: center
+  border-color: $primary-border-teal-light
