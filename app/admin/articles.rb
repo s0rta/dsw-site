@@ -35,7 +35,9 @@ ActiveAdmin.register Article do
         collection: [],
         data: {url: filter_admin_users_path, search_fields: %i[name email]}
       f.input :track_ids, as: :check_boxes, collection: Track.all, label: "Related Track(s)"
-      f.input :header_image, as: :file, hint: image_tag(f.object.header_image.url(:thumb))
+      f.input :header_image,
+        as: :file,
+        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
       f.input :published_at
     end
 
