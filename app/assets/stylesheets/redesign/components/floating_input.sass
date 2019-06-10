@@ -65,3 +65,21 @@
       font-size: 10px
       transform: translate3d(0, -120%, 0)
       opacity: 1
+
+=placeholder-mixin
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px
+  color: $primary-font-light
+  opacity: .8
+  margin-bottom: 10px
+  display: block
+
+.FloatingInput input
+  &::-webkit-input-placeholder
+    +placeholder-mixin
+  &::-moz-placeholder
+    +placeholder-mixin
+  &:-ms-input-placeholder
+    +placeholder-mixin
+  &:-moz-placeholder
+    +placeholder-mixin
