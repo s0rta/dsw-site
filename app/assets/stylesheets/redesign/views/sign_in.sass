@@ -1,0 +1,49 @@
+@import ../config
+
+.SignIn-form
+  max-width: 900px
+  margin-top: 60px
+
+.SignIn-inputs
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  margin-left: -15px
+
+.SignIn-input
+  flex: 1
+  padding: 0 15px
+  margin-top: 10px
+  min-width: 300px
+
+.SignIn-submit
+  +white-button(166px, 46px)
+
+.SignIn-actions
+  margin-top: 60px
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.SignIn-link-wrapper
+  color: $primary-font-medium
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+
+.SignIn-link
+  color: $teal-light
+  margin-left: 4px
+
+.SignIn-error-messages
+  color: $red-light
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px
+
+@media(max-width: 480px)
+  .SignIn-actions
+    flex-direction: column
+    align-items: flex-start
+
+  .SignIn-link-wrapper
+    order: 2
+    margin-top: 20px

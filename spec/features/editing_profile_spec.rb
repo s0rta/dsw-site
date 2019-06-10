@@ -7,6 +7,7 @@ feature 'Editing my profile' do
   end
 
   scenario 'Creating an editing an account from the dashboard' do
+    pending("refactor")
     visit '/dashboard'
     click_link 'Create an account'
     fill_in 'Name', with: 'Test Registrant'

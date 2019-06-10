@@ -1,0 +1,32 @@
+@import ../config
+
+.FloatingInput
+  position: relative
+  margin: 20px 0
+
+.FloatingInput label
+  +font-family-mixin(Montserrat-Medium)
+  position: absolute
+  top: 0
+  left: 0
+  color: $primary-font-light
+  transition: all 200ms
+  opacity: 0.8
+  font-size: 14px
+
+.FloatingInput input
+  +font-family-mixin(Montserrat-Light)
+  border: 0
+  border-bottom: 1px solid $gray-border-light
+  font-size: 14px
+  color: $primary-font-medium
+  outline: 0
+  padding-bottom: 4px
+  width: 100%
+
+.FloatingInput
+    input:focus ~ label,
+    input:valid ~ label
+      font-size: 10px
+      transform: translate3d(0, -120%, 0)
+      opacity: 1
