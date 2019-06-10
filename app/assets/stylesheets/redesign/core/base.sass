@@ -1,5 +1,25 @@
 @import ../config
 
+select
+  -webkit-appearance: none
+  -moz-appearance: none
+  border-radius: 0
+
+input, textarea, select
+  width: 100%
+  border: none
+  background: transparent
+  &:focus
+    outline: none !important
+
+.Body-menu-open
+  position: fixed
+  overflow: hidden
+  width: 100%
+
+
+
+
 *
   box-sizing: border-box
 
@@ -94,8 +114,4 @@ a.disabled
   max-width: 1360px
   margin: 0 auto
 
-.Body-menu-open
-  position: fixed
-  overflow: hidden
-  width: 100%
 
