@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
 
   def new
     redirect_to closed_registration_path unless AnnualSchedule.registration_open?
+    @fullscreen_takeover = true
     registration_attributes = { contact_email: current_user.try(:email) }.merge(registration_params)
     @registration = Registration.new(registration_attributes)
   end
