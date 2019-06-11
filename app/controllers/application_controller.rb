@@ -85,7 +85,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    if session[:previous_url]
+    puts params
+    if params[:register_to_attend] == "true"
+      '/register'
+    elsif session[:previous_url]
       session[:previous_url]
     elsif user.registered?
       main_app.schedules_path
