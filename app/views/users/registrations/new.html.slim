@@ -1,5 +1,9 @@
-= render 'layouts/shared/fullscreen_takeover_header', title: 'sign up', background: 'dark'
+- title = came_from_registration? ? 'register to attend' : 'sign up'
+
+= render 'layouts/shared/fullscreen_takeover_header', title: title, background: 'dark'
 = render layout: 'layouts/shared/layout_wrapper' do
+  - if came_from_registration?
+    .SignUp-register-text In order to Register to Attend you need to have an account. Sign up below.
   .SignUp-form
     = form_for(resource, as: resource_name, url: user_registration_path, honeypot: true) do |f|
       .SignUp-inputs
@@ -25,6 +29,10 @@
           div #{message}
         - unless resource.errors.empty?
           div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+
+      - if registration_open? && !came_from_registration?
+        = render partial: 'components/register_to_attend_radio'
+
       .SignUp-actions
         div.SignUp-link-wrapper
           | Already have an account?
