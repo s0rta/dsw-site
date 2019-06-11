@@ -2,16 +2,22 @@ module RouteHelper
 
   def main_menu
     menu = [home_route, main_program_route, sponsors_route, articles_route, get_involved_route]
-    if AnnualSchedule.cfp_open?
-      menu.push submissions_route
-    elsif AnnualSchedule.registration_open?
-      menu.push register_route
-    elsif AnnualSchedule.post_week?
-      menu.push schedule_route
+    if AnnualSchedule.registration_open?
+      unless registered?
+        menu.push register_route
+      end
     end
-    if AnnualSchedule.voting_open?
-      menu.push voting_route
-    end
+
+    # if AnnualSchedule.cfp_open?
+    #   menu.push submissions_route
+    # elsif AnnualSchedule.registration_open?
+    #   menu.push register_route
+    # elsif AnnualSchedule.post_week?
+    #   menu.push schedule_route
+    # end
+    # if AnnualSchedule.voting_open?
+    #   menu.push voting_route
+    # end
     menu
   end
 
@@ -73,7 +79,7 @@ module RouteHelper
 
   def register_route
     {
-      path: schedules_path,
+      path: "/register",
       label: "Register To Attend"
     }
   end
@@ -148,6 +154,10 @@ module RouteHelper
       end
     end
     starting_nav
+  end
+
+  def came_from_registration?
+    session[:previous_url] == "/register"
   end
 
   private
