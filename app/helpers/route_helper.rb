@@ -2,7 +2,7 @@ module RouteHelper
 
   def main_menu
     menu = [home_route, main_program_route, sponsors_route, articles_route, get_involved_route]
-    if AnnualSchedule.registration_open?
+    if registration_open?
       unless registered?
         menu.push register_route
       end
