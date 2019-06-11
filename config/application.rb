@@ -39,5 +39,9 @@ module Denverstartupweek
 
     # Use a SQL schema format to allow fulltext indices to be dumped
     config.active_record.schema_format = :sql
+
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
   end
 end
