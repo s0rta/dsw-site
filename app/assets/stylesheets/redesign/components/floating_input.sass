@@ -1,20 +1,24 @@
 @import ../config
 
 .FloatingInput
+  display: flex
+  align-items: flex-end
   position: relative
-  margin: 20px 0
+  height: 40px
+  margin: 14px 0
 
 .FloatingInput label
   +font-family-mixin(Montserrat-Medium)
   position: absolute
-  top: 0
+  top: 12px
   left: 0
   color: $primary-font-light
   transition: all 200ms
   opacity: 0.8
   font-size: 14px
 
-.FloatingInput input
+.FloatingInput input,
+.FloatingInput .awesomplete input
   +font-family-mixin(Montserrat-Light)
   border: 0
   border-bottom: 1px solid $gray-border-light
@@ -26,7 +30,56 @@
 
 .FloatingInput
     input:focus ~ label,
-    input:valid ~ label
+    input:valid ~ label,
+    select:focus ~ label,
+    select:valid ~ label,
+    &.is-float label
       font-size: 10px
       transform: translate3d(0, -120%, 0)
       opacity: 1
+
+
+.FloatingInput select
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  padding: 10px
+  padding-right: 40px
+  padding-left: 0
+  min-width: 200px
+  color: $primary-font-medium
+  background: white image-url('redesign/arrow-select-grey.svg') no-repeat
+  background-position: 100% 50%
+  border-bottom: 1px solid $gray-border-light
+
+.FloatingInput
+  select ~ label
+    top: 10px
+
+.FloatingInput .awesomplete
+  display: block
+  width: 100%
+
+.FloatingInput
+  .awesomplete > input:focus
+    & ~ label
+      font-size: 10px
+      transform: translate3d(0, -120%, 0)
+      opacity: 1
+
+=placeholder-mixin
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px
+  color: $primary-font-light
+  opacity: .8
+  margin-bottom: 10px
+  display: block
+
+.FloatingInput input
+  &::-webkit-input-placeholder
+    +placeholder-mixin
+  &::-moz-placeholder
+    +placeholder-mixin
+  &:-ms-input-placeholder
+    +placeholder-mixin
+  &:-moz-placeholder
+    +placeholder-mixin

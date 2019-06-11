@@ -1,0 +1,82 @@
+@import ../config
+
+.Register-form
+  max-width: 900px
+  margin-top: 60px
+
+.Register-inputs
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  margin-left: -15px
+
+.Register-input
+  flex: 1
+  padding: 0 15px
+  margin-top: 10px
+  min-width: 300px
+
+.Register-radio
+  font-size: 12px
+  +font-family-mixin(Montserrat-Medium)
+  color: $primary-font-light
+  display: block;
+  margin-bottom: 18px;
+
+.Register-radio-input
+  width: inherit
+  margin-right: 20px
+
+.Register-custom-label
+  color: $primary-font-medium
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  margin-bottom: 18px
+  a
+    color: $teal-light
+
+.Register-native-field
+  margin: 20px 0
+
+.Register-multi-select
+  color: $primary-font-medium
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px
+  height: 160px
+  overflow: auto
+
+  option
+    padding-left: 15px
+
+.Register-coc
+  margin-top: 20px
+
+.Register-coc-inner
+  display: flex
+  align-items: center
+
+.Register-coc-checkbox
+  width: 18px
+
+.Register-coc-text
+  color: $primary-font-medium
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  margin-left: 14px;
+  a
+    color: $teal-light
+
+.Register-submit
+  +white-button(166px, 46px)
+  width: 166px
+
+.Register-actions
+  margin-top: 60px
+  display: flex
+  align-items: center
+  justify-content: flex-end
+
+.Register-error-messages
+  color: $red-light
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px

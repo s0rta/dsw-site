@@ -1,55 +1,116 @@
 - content_for :extra_body_tags do
   = stylesheet_pack_tag 'application'
-nav
-  .section-content
-    h1 Register to Attend
 
-section.common.green
-  .section-content.sm-centered
-    h1 Register for Denver Startup Week #{Date.today.year}
-    h6 Denver Startup Week is an event by and for the entrepreneurial community. It's open to anyone and everyone, and registration is totally free!
-
-    - flash.each do |key, message|
-      h6 = message
-    - unless @registration.errors.empty?
-      h6 = "Please correct the following errors: #{@registration.errors.full_messages.to_sentence}"
-
-
-section.common
-  .section-content.sm-centered
+= render 'layouts/shared/fullscreen_takeover_header', title: 'register to attend', background: 'dark'
+= render layout: 'layouts/shared/layout_wrapper' do
+  .Register-form
     = form_for(@registration, method: :post, url: registration_path, honeypot: true) do |f|
-      - if simple_registration?
-        = f.label :name, 'What is your name?'
-        = f.text_field :name, value: ''
+      .Register-inputs
+        .Register-input
+          = render layout: 'components/floating_input' do
+            = f.select :gender, ['he/him/his', 'she/her/hers', 'they/them/theirs', 'Decline to say' ], { :include_blank => '' }, :required => true
+            = f.label :gender, 'What are your pronouns?'
+        .Register-input
+          = render layout: 'components/floating_input' do
+            = f.select :age_range, age_ranges_for_select, { :include_blank => '' }, :required => true
+            = f.label :age_range, 'How old are you?'
+      .Register-inputs
+        .Register-input
+          = render layout: 'components/floating_input' do
+            = f.select :track_id, tracks_for_select, { :include_blank => '' }, :required => true
+            = f.label :track_id, 'Which track are you most interested in?'
+        .Register-input
+          = render layout: 'components/floating_input', locals: { always_float: true } do
+            = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
+            = f.label :company_name, 'What company do you work for?'
+      .Register-inputs
+        .Register-input
+          = render layout: 'components/floating_input' do
+            = f.select :primary_role, primary_roles_for_select, { :include_blank => '' }, :required => true
+            = f.label :primary_role, 'What is your job title?'
+        .Register-input
+          = render layout: 'components/floating_input' do
+            = f.text_field :zip, required: 'required'
+            = f.label :zip, 'What is the zip code of your primary residence?'
+      .Register-native-field
+        .Register-custom-label What goals are you hoping to achieve by attending? (select all that apply)
+        = f.select :attendee_goal_ids, AttendeeGoal.active.map { |ag| [ ag.description, ag.id ] }, {}, { multiple: 'multiple',  class: "Register-multi-select" }
+      .Register-native-field
+        .Register-custom-label Are you a founder/exec interested in learning about giving back to the local community through #{link_to 'Pledge 1% Colorado', 'https://pledge1colorado.org/'}?
+        = f.label :learn_more_pledge_1p, value: "true", class: 'Register-radio' do
+          = f.radio_button :learn_more_pledge_1p, true, class: 'Register-radio-input'
+          | YES
+        = f.label :learn_more_pledge_1p, value: "false", class: 'Register-radio' do
+          = f.radio_button :learn_more_pledge_1p, "false", class: 'Register-radio-input'
+          | NO
+      .Register-native-field
+        .Register-coc
+          .Register-coc-inner
+            = f.check_box :coc_acknowledgement, class: 'code-of-conduct', required: 'required', class: 'Register-coc-checkbox'
+            .Register-coc-text
+              = render partial: 'layouts/shared/coc_acknowledgement'
 
-        = f.label :email, 'What is your e-mail address?'
-        = f.text_field :email, value: ''
+      .Register-error-messages
+        - flash.each do |key, message|
+          div #{message}
+        - unless @registration.errors.empty?
+          div Please correct the following errors: #{@registration.errors.full_messages.to_sentence}
 
-      = f.label :gender, 'What are your pronouns?'
-      = f.select :gender, collection: [ 'he/him/his', 'she/her/hers', 'they/them/theirs', 'Decline to say' ], required: 'required'
+      .Register-actions
+        = f.submit 'Submit', class: 'Register-submit'
 
-      = f.label :age_range, 'How old are you?'
-      = f.select :age_range, collection: age_ranges_for_select, required: 'required'
+/ - content_for :extra_body_tags do
+/   = stylesheet_pack_tag 'application'
+/ nav
+/   .section-content
+/     h1 Register to Attend
 
-      = f.label :track_id, 'Which track are you most interested in?'
-      = f.select :track_id, tracks_for_select, required: 'required'
+/ section.common.green
+/   .section-content.sm-centered
+/     h1 Register for Denver Startup Week #{Date.today.year}
+/     h6 Denver Startup Week is an event by and for the entrepreneurial community. It's open to anyone and everyone, and registration is totally free!
 
-      = f.label :company_name, 'What company do you work for?'
-      = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
+/     - flash.each do |key, message|
+/       h6 = message
+/     - unless @registration.errors.empty?
+/       h6 = "Please correct the following errors: #{@registration.errors.full_messages.to_sentence}"
 
-      = f.label :primary_role, 'What is your job title?'
-      = f.select :primary_role, collection: primary_roles_for_select, required: 'required'
 
-      = f.label :zip, 'What is the zip code of your primary residence?'
-      = f.text_field :zip, required: 'required'
+/ section.common
+/   .section-content.sm-centered
+/     = form_for(@registration, method: :post, url: registration_path, honeypot: true) do |f|
+/       - if simple_registration?
+/         = f.label :name, 'What is your name?'
+/         = f.text_field :name, value: ''
 
-      = f.label :attendee_goals, 'What goals are you hoping to achieve by attending (select all that apply)?'
-      = f.select :attendee_goal_ids, AttendeeGoal.active.map { |ag| [ ag.description, ag.id ] }, {}, { multiple: 'multiple' }
+/         = f.label :email, 'What is your e-mail address?'
+/         = f.text_field :email, value: ''
 
-      = f.label :learn_more_pledge_1p, "Are you a founder/exec interested in learning about giving back to the local community through #{link_to 'Pledge 1% Colorado', 'https://pledge1colorado.org/'}?".html_safe
-      = f.select :learn_more_pledge_1p, [ [ 'Yes', true ], [ 'No', false ] ]
+/       = f.label :gender, 'What are your pronouns?'
+/       = f.select :gender, collection: [ 'he/him/his', 'she/her/hers', 'they/them/theirs', 'Decline to say' ], required: 'required'
 
-      = f.check_box :coc_acknowledgement, class: 'code-of-conduct', required: 'required'
-      = render partial: 'layouts/shared/coc_acknowledgement'
+/       = f.label :age_range, 'How old are you?'
+/       = f.select :age_range, collection: age_ranges_for_select, required: 'required'
 
-      = f.submit 'Register'
+/       = f.label :track_id, 'Which track are you most interested in?'
+/       = f.select :track_id, tracks_for_select, required: 'required'
+
+/       = f.label :company_name, 'What company do you work for?'
+/       = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
+
+/       = f.label :primary_role, 'What is your job title?'
+/       = f.select :primary_role, collection: primary_roles_for_select, required: 'required'
+
+/       = f.label :zip, 'What is the zip code of your primary residence?'
+/       = f.text_field :zip, required: 'required'
+
+/       = f.label :attendee_goals, 'What goals are you hoping to achieve by attending (select all that apply)?'
+/       = f.select :attendee_goal_ids, AttendeeGoal.active.map { |ag| [ ag.description, ag.id ] }, {}, { multiple: 'multiple' }
+
+/       = f.label :learn_more_pledge_1p, "Are you a founder/exec interested in learning about giving back to the local community through #{link_to 'Pledge 1% Colorado', 'https://pledge1colorado.org/'}?".html_safe
+/       = f.select :learn_more_pledge_1p, [ [ 'Yes', true ], [ 'No', false ] ]
+
+/       = f.check_box :coc_acknowledgement, class: 'code-of-conduct', required: 'required'
+/       = render partial: 'layouts/shared/coc_acknowledgement'
+
+/       = f.submit 'Register'
