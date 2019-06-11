@@ -3,7 +3,6 @@ class Article < ApplicationRecord
     presence: true
 
   validates :body,
-    length: {maximum: 150},
     presence: true
 
   has_and_belongs_to_many :tracks
