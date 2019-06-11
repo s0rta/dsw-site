@@ -12,7 +12,7 @@ ActiveAdmin.register Article do
     column :title
     column :author
     column :header_image do |u|
-      image_tag u.header_image.url(:thumb)
+      image_tag u.header_image.url(:thumb) if u.header_image.present?
     end
     column :created_at
     column :updated_at
