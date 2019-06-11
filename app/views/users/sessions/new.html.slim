@@ -1,5 +1,10 @@
-= render 'layouts/shared/fullscreen_takeover_header', title: 'sign in', background: 'light'
+- title = came_from_registration? ? 'register to attend' : 'sign in'
+
+= render 'layouts/shared/fullscreen_takeover_header', title: title, background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
+  - if came_from_registration?
+    .SignIn-register-text In order to Register to Attend you need to be signed in.
+
   .SignIn-form
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .SignIn-inputs
@@ -16,6 +21,10 @@
           div #{message}
         - unless resource.errors.empty?
           div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+
+      - if registration_open? && !came_from_registration?
+        = render partial: 'components/register_to_attend_radio'
+
       .SignIn-actions
         div.SignIn-link-wrapper
           | Don't have an account?
