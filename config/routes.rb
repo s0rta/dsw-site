@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get "/publishme", to: redirect("/get-involved/content")
 
   devise_for :users, controllers: { registrations: "users/registrations",
-    sessions: "users/sessions", passwords: "users/passwords" }
+                                    sessions: "users/sessions", passwords: "users/passwords" }
 
   resource :registration, only: %i[new create] do
     collection do
