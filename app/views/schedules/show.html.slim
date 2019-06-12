@@ -8,68 +8,68 @@
   meta(name="date" content="#{@session.start_datetime.iso8601}")
   script(type="application/ld+json") = session_ld_json(@session).html_safe
 
-- unless @session.current_year?
-  .SessionDetail-prev-year-header
-    h1.SessionDetail-title #{@session.year} Schedule
-
-
-section.SessionDetail-back-section
-  = link_to schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'SessionDetail-back-link' do
-    .SessionDetail-back-icon
-      = render partial: 'icons/arrow_in_circle_left'
-    = 'Back to schedule'
-
-= render partial: 'layouts/shared/flash'
-= render partial: 'first_come_first_served_banner', locals: { session: @session }
-
-section.SessionDetail
-  header(class="SessionDetail-track #{@session.track.color}-font #{@session.track.color}-fill")
-    - if @session.track.icon
-      = render partial: "icons/#{@session.track.icon}"
-    p = @session.track.name
-  .SessionDetail-stats-container
-    .SessionDetail-date #{@session.human_start_day}, #{@session.start_datetime.strftime('%-b %-d')}
-    .SessionDetail-time #{@session.human_time_range}
-    .SessionDetail-attendee-count = "#{@session.registrant_count} attending"
-  .SessionDetail-columns
-    .SessionDetail-column--left
-      h1.SessionDetail-title = @session.full_title
-      .SessionDetail-description = process_with_pipeline(@session.description)
-
-      - if @session.live_stream_url.present?
-        a.SessionDetail-stream href='#'
-          = render partial: 'icons/eyeball'
-          span.SessionDetail-stream-label Watch it
-          .SessionDetail-stream-details
-            iframe(src="#{@session.live_stream_url}" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="100%" height="100%")
-            
-      - if @session.venue_confirmed?
-        .SessionDetail-location
-          p = @session.venue.name
-          p = @session.venue.short_address
-      - else
-        .SessionDetail-location
-          p = @session.human_location_name
-
-      - if AnnualSchedule.registration_open? && @session.current_year?
-        = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'SessionDetail-schedule-button'
-        
-      - if @session.venue_confirmed?
-        .SessionDetail-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
-
-      - if @related_sessions.any?
-        h2.SessionDetail-title You may also be interested in
-        .SessionDetail-related-sessions
-          - @related_sessions.each do |submission|
-            = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
-    .SessionDetail-column--right
-      - if @current_user.present?
-        - @session.registrants.reorder('"session_registrations"."created_at" DESC').each do |user|
-          .SessionDetail-attendee
-            = render partial: 'components/name_with_avatar', locals: { name: user.name, initials: user.initials, align: 'right', color: 'gray' }
-
-- if user_signed_in? && @session.open_for_feedback?
-  = render partial: 'feedback_form'
-
 = render layout: 'layouts/shared/layout_wrapper' do
+  - unless @session.current_year?
+    .SessionDetail-prev-year-header
+      h1.SessionDetail-title #{@session.year} Schedule
+
+
+  section.SessionDetail-back-section
+    = link_to schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'SessionDetail-back-link' do
+      .SessionDetail-back-icon
+        = render partial: 'icons/arrow_in_circle_left'
+      = 'Back to schedule'
+
+  / = render partial: 'layouts/shared/flash'
+  / = render partial: 'first_come_first_served_banner', locals: { session: @session }
+
+  section.SessionDetail
+    header(class="SessionDetail-track #{@session.track.color}-font #{@session.track.color}-fill")
+      - if @session.track.icon
+        = render partial: "icons/#{@session.track.icon}"
+      p = @session.track.name
+    .SessionDetail-stats-container
+      .SessionDetail-date #{@session.human_start_day}, #{@session.start_datetime.strftime('%-b %-d')}
+      .SessionDetail-time #{@session.human_time_range}
+      .SessionDetail-attendee-count = "#{@session.registrant_count} attending"
+    .SessionDetail-columns
+      .SessionDetail-column--left
+        h1.SessionDetail-title = @session.full_title
+        .SessionDetail-description = process_with_pipeline(@session.description)
+
+        - if @session.live_stream_url.present?
+          a.SessionDetail-stream href='#'
+            = render partial: 'icons/eyeball'
+            span.SessionDetail-stream-label Watch it
+            .SessionDetail-stream-details
+              iframe(src="#{@session.live_stream_url}" frameborder="0" scrolling="no" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="100%" height="100%")
+
+        - if @session.venue_confirmed?
+          .SessionDetail-location
+            p = @session.venue.name
+            p = @session.venue.short_address
+        - else
+          .SessionDetail-location
+            p = @session.human_location_name
+
+        - if AnnualSchedule.registration_open? && @session.current_year?
+          = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'SessionDetail-schedule-button'
+
+        - if @session.venue_confirmed?
+          .SessionDetail-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
+
+        - if @related_sessions.any?
+          h2.SessionDetail-title You may also be interested in
+          .SessionDetail-related-sessions
+            - @related_sessions.each do |submission|
+              = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
+      .SessionDetail-column--right
+        - if @current_user.present?
+          - @session.registrants.reorder('"session_registrations"."created_at" DESC').each do |user|
+            .SessionDetail-attendee
+              = render partial: 'components/name_with_avatar', locals: { name: user.name, initials: user.initials, align: 'right', color: 'gray' }
+
+  - if user_signed_in? && @session.open_for_feedback?
+    = render partial: 'feedback_form'
+
   = render partial: 'layouts/shared/primary_callouts_nav'

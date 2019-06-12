@@ -56,14 +56,7 @@ class SchedulesController < ApplicationController
                         sponsorship: :track).
                first!
 
-    @related_sessions = @session.
-                        cached_similar_items.
-                        for_schedule.
-                        limit(3).
-                        includes(:venue,
-                                 :track,
-                                 :cluster,
-                                 sponsorship: :track)
+    @related_sessions = Submission.all
   end
 
   def feed
