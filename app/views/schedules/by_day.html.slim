@@ -23,6 +23,26 @@
             option(value="#{schedules_by_year_by_day_path(y, current_day_or_default)}" selected=("selected" if params[:year] == y.to_s)) = y
 
 = render layout: 'layouts/shared/layout_wrapper' do
+  section.common
+  .section-content.schedule-container.sm-centered
+    nav
+      .chiclets-row
+        - Submission::DAYS.each do |index, day|
+          = link_to schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[index].downcase, request.query_parameters), class: "chiclet #{@day_index == index ? 'active' : ''}" do
+            .month = formatted_start_date_for_index(index, current_year_or_default, '%b')
+            .day = formatted_start_date_for_index(index, current_year_or_default, '%-d')
+            .day_of_week = formatted_start_date_for_index(index, current_year_or_default, '%A')
+
+  section.Schedule-lists
+    - cache [ @sessions.maximum(:updated_at), @sessions.map(&:id) ] do
+      - @sessions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
+        h3.Schedule-list-time = grouping.first.human_start_time
+        ul.Schedule-list
+          li.Schedule-list-item
+            = render partial: 'components/scheduled_session', collection: grouping, as: :submission
+
+
+
   = render partial: 'layouts/shared/primary_callouts_nav'
 
 / - content_for(:title, "#{formatted_start_date_for_index(@day_index, current_year_or_default, '%A %B %-d, %Y')} Schedule")
