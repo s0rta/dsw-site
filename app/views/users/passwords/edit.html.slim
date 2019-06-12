@@ -12,8 +12,8 @@
       .PasswordReset-inputs
         .PasswordReset-input
           = render layout: 'components/floating_input' do
-            = f.label :password_confirmation, 'Confirm Your New Password'
             = f.password_field :password_confirmation, required: 'required', autofocus: 'autofocus'
+            = f.label :password_confirmation, 'Confirm Your New Password'
       .PasswordReset-error-messages
         - flash.each do |key, message|
           div #{message}
