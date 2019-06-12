@@ -23,15 +23,16 @@
             option(value="#{schedules_by_year_by_day_path(y, current_day_or_default)}" selected=("selected" if params[:year] == y.to_s)) = y
 
 = render layout: 'layouts/shared/layout_wrapper' do
-  section.common
-  .section-content.schedule-container.sm-centered
-    nav
-      .chiclets-row
-        - Submission::DAYS.each do |index, day|
-          = link_to schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[index].downcase, request.query_parameters), class: "chiclet #{@day_index == index ? 'active' : ''}" do
-            .month = formatted_start_date_for_index(index, current_year_or_default, '%b')
-            .day = formatted_start_date_for_index(index, current_year_or_default, '%-d')
-            .day_of_week = formatted_start_date_for_index(index, current_year_or_default, '%A')
+  nav.Schedule-nav(aria-label="Schedule Days")
+    ul.Schedule-nav-list
+      - Submission::DAYS.each do |index, day|
+        li.Schedule-nav-list-item
+          = link_to schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[index].downcase, request.query_parameters), class: "Schedule-nav-link #{@day_index == index ? 'is-active' : ''}" do
+            .Schedule-nav-month = formatted_start_date_for_index(index, current_year_or_default, '%b')
+            .Schedule-nav-day = formatted_start_date_for_index(index, current_year_or_default, '%-d')
+            .Schedule-nav-weekday = formatted_start_date_for_index(index, current_year_or_default, '%A')
+            - if @day_index == index
+              img.Schedule-nav-arrow src="#{image_url('redesign/arrow-select-grey.svg')}"
 
   section.Schedule-lists
     - cache [ @sessions.maximum(:updated_at), @sessions.map(&:id) ] do

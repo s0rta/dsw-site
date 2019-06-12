@@ -14,8 +14,42 @@
   &:first-child
     margin-right: 43px
 
+.Schedule-nav
+  margin-top: 50px
+
+.Schedule-nav-list
+  margin: 0
+  display: flex
+  justify-content: space-between
+
+.Schedule-nav-list-item
+  text-transform: uppercase
+  border-left: 1px solid $primary-border-light
+  padding: 0 20px
+
+.Schedule-nav-link
+  color: $teal-light
+
+  &.is-active
+    color: $primary-font-medium
+
+.Schedule-nav-month
+  @include font-family-mixin(Montserrat-Medium)
+  font-size: 12px
+
+.Schedule-nav-day
+  @include font-family-mixin(Montserrat-Light)
+  font-size: 56px
+
+.Schedule-nav-weekday
+  @include font-family-mixin(Montserrat-Light)
+  font-size: 24px
+
+.Schedule-nav-arrow
+  margin-top: 18px
+
 .Schedule-lists
-  margin-top: 40px
+  margin-top: 70px
   margin-bottom: 180px
 
 .Schedule-list
@@ -29,3 +63,19 @@
   @include font-family-mixin(Montserrat-Light)
   font-size: 24px
   text-transform: uppercase
+
+@media(max-width: 1024px)
+  .Schedule-nav-month
+    font-size: 10px
+
+  .Schedule-nav-day
+    font-size: 28px
+
+  .Schedule-nav-weekday
+    font-size: 12px
+
+@media(max-width: 530px)
+  .Schedule-nav-list-item
+    text-align: center
+  .Schedule-nav-weekday
+    display: none
