@@ -1,4 +1,5 @@
 - title = came_from_registration? ? 'register to attend' : 'sign in'
+- button_text = came_from_registration? ? 'next' : 'submit'
 
 = render 'layouts/shared/fullscreen_takeover_header', title: title, background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
@@ -29,7 +30,7 @@
         div.SignIn-link-wrapper
           | Don't have an account?
           = link_to 'Sign Up', new_user_registration_path, class:'SignIn-link'
-        = f.submit 'Submit', class: 'SignIn-submit'
+        = f.submit button_text, class: 'SignIn-submit'
       div.SignIn-link-wrapper
           | Forgot your password?
           = link_to 'Reset Password', new_password_path(resource_name), class:'SignIn-link'
