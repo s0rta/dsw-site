@@ -1,15 +1,41 @@
-= render partial: 'layouts/shared/auth_nav'
 
-section.common
-  .section-content.sm-centered
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Reset Password', background: 'dark'
+= render layout: 'layouts/shared/layout_wrapper' do
+  .PasswordReset-form
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
-
       = f.hidden_field :reset_password_token
+      .PasswordReset-inputs
+        .PasswordReset-input
+          = render layout: 'components/floating_input' do
+            = f.password_field :password, required: 'required', autofocus: 'autofocus'
+            = f.label :password, 'New Password'
+      .PasswordReset-inputs
+        .PasswordReset-input
+          = render layout: 'components/floating_input' do
+            = f.label :password_confirmation, 'Confirm Your New Password'
+            = f.password_field :password_confirmation, required: 'required', autofocus: 'autofocus'
+      .PasswordReset-error-messages
+        - flash.each do |key, message|
+          div #{message}
+        - unless resource.errors.empty?
+          div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+      .PasswordReset-actions
+        = f.submit 'Change Password', class: 'PasswordReset-submit'
 
-      = f.label :password, 'New Password'
-      = f.password_field :password, required: 'required', autofocus: 'autofocus'
 
-      = f.label :password_confirmation, 'Confirm Your New Password'
-      = f.password_field :password_confirmation, required: 'required', autofocus: 'autofocus'
 
-      = f.submit 'Change Password'
+/ = render partial: 'layouts/shared/auth_nav'
+
+/ section.common
+/   .section-content.sm-centered
+/     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+
+/       = f.hidden_field :reset_password_token
+
+/       = f.label :password, 'New Password'
+/       = f.password_field :password, required: 'required', autofocus: 'autofocus'
+
+/       = f.label :password_confirmation, 'Confirm Your New Password'
+/       = f.password_field :password_confirmation, required: 'required', autofocus: 'autofocus'
+
+/       = f.submit 'Change Password'
