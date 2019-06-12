@@ -174,5 +174,4 @@ module ApplicationHelper
   def registration_open?
     AnnualSchedule.registration_open?
   end
-
 end

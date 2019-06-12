@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(user)
     puts params
     if params[:register_to_attend] == "true"
-      '/register'
+      "/register"
     elsif session[:previous_url]
       session[:previous_url]
     elsif user.registered?
