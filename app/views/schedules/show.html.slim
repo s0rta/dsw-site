@@ -53,7 +53,11 @@
             p = @session.human_location_name
 
         - if AnnualSchedule.registration_open? && @session.current_year?
-          = link_to registered_for_session?(@session) ? 'Added to Schedule' : 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'SessionDetail-schedule-button'
+          - if !registered? || !registered_for_session?(@session)
+            = link_to 'Add to Schedule', add_to_schedule_path(@session), method: :post, class: 'SessionDetail-schedule-button'
+          - else
+            = link_to 'Remove from Schedule', remove_from_schedule_path(@session), method: :delete, class: 'SessionDetail-schedule-button SessionDetail-schedule-button--remove'
+
 
         - if @session.venue_confirmed?
           .SessionDetail-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
