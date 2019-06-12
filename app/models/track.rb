@@ -45,7 +45,7 @@ class Track < ApplicationRecord
   end
 
   def self.dropdown_options
-    select("name as label, name as value, id")
+    select("name as label, name as value, is_submittable, id")
       .in_display_order
   end
 end
