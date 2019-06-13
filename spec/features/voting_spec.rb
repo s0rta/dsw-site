@@ -49,7 +49,7 @@ feature 'Voting for session submissions' do
       click_link "Vote for 'I am a session'"
       fill_in 'E-mail Address', with: 'test@example.com'
       fill_in 'Password', with: 'password', match: :prefer_exact
-      click_button 'Submit'
+      click_button 'Next'
       click_link "Vote for 'I am a session'"
       expect(page).to have_css('.vote-count', text: '1 vote')
 
