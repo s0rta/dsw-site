@@ -38,9 +38,10 @@
     - cache [ @sessions.maximum(:updated_at), @sessions.map(&:id) ] do
       - @sessions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
         h3.Schedule-list-time = grouping.first.human_start_time
-        ul.Schedule-list
-          li.Schedule-list-item
-            = render partial: 'components/scheduled_session', collection: grouping, as: :submission
+        ul.Schedule-list(aria-label="#{grouping.first.human_start_time} Sessions")
+          - grouping.each do |group|
+              li.Schedule-list-item
+                = render partial: 'components/scheduled_session', locals: { submission: group }
 
 
 
