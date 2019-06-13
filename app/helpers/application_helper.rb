@@ -171,4 +171,7 @@ module ApplicationHelper
     Helpscout::Article.for_category(category_name)
   end
 
+  def registration_open?
+    AnnualSchedule.registration_open?
+  end
 end
