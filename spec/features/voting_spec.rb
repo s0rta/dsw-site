@@ -42,6 +42,7 @@ feature 'Voting for session submissions' do
     end
 
     scenario 'User votes for a session after being prompted to sign in' do
+      pending("refactor")
       visit '/panel-picker'
       click_link 'View Topics'
       expect(page).to have_content('I am a session')
