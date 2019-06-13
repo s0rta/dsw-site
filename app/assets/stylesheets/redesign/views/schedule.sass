@@ -1,0 +1,81 @@
+@import ../config
+
+.Schedule-form
+  margin-bottom: -72px
+
+.Schedule-search
+  margin-bottom: 40px
+
+.Schedule-filters
+  display: flex
+  margin-left: -10px
+
+.Schedule-filter
+  &:first-child
+    margin-right: 43px
+
+.Schedule-nav
+  margin-top: 50px
+
+.Schedule-nav-list
+  margin: 0
+  display: flex
+  justify-content: space-between
+
+.Schedule-nav-list-item
+  text-transform: uppercase
+  border-left: 1px solid $primary-border-light
+  padding: 0 20px
+
+.Schedule-nav-link
+  color: $teal-light
+
+  &.is-active
+    color: $primary-font-medium
+
+.Schedule-nav-month
+  @include font-family-mixin(Montserrat-Medium)
+  font-size: 12px
+
+.Schedule-nav-day
+  @include font-family-mixin(Montserrat-Light)
+  font-size: 56px
+
+.Schedule-nav-weekday
+  @include font-family-mixin(Montserrat-Light)
+  font-size: 24px
+
+.Schedule-nav-arrow
+  margin-top: 18px
+
+.Schedule-lists
+  margin-top: 70px
+  margin-bottom: 180px
+
+.Schedule-list
+  margin: 20px 0 50px
+
+.Schedule-list-item
+  margin: 0
+
+.Schedule-list-time
+  color: $primary-font-medium
+  @include font-family-mixin(Montserrat-Light)
+  font-size: 24px
+  text-transform: uppercase
+
+@media(max-width: 1024px)
+  .Schedule-nav-month
+    font-size: 10px
+
+  .Schedule-nav-day
+    font-size: 28px
+
+  .Schedule-nav-weekday
+    font-size: 12px
+
+@media(max-width: 530px)
+  .Schedule-nav-list-item
+    text-align: center
+  .Schedule-nav-weekday
+    display: none

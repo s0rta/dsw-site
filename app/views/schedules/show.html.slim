@@ -64,9 +64,10 @@
 
         - if @related_sessions.any?
           h2.SessionDetail-title You may also be interested in
-          .SessionDetail-related-sessions
+          ul.SessionDetail-related-sessions
             - @related_sessions.each do |submission|
-              = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
+              li.SessionDetail-related-session
+                = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
       .SessionDetail-column--right
         - if @current_user.present?
           - @session.registrants.reorder('"session_registrations"."created_at" DESC').each do |user|

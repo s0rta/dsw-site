@@ -1,4 +1,2 @@
-select.Dropdown(name="#{name}" value="value" onchange="this.form.submit();")
-  option(value="all" selected=("selected" if selected == 'all')) #{default}
-  - options.each do |opt|
-    option(value="#{opt[:value]}" selected=("selected" if selected == opt[:value] )) #{opt[:label]}
+select.Dropdown(*local_assigns)
+  = yield
