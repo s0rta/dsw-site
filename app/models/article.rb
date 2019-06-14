@@ -1,9 +1,9 @@
 class Article < ApplicationRecord
   validates :title,
+    length: {maximum: 150},
     presence: true
 
   validates :body,
-    length: {maximum: 150},
     presence: true
 
   has_and_belongs_to_many :tracks
