@@ -1,8 +1,10 @@
 module RouteHelper
 
   def main_menu
-    menu = [home_route, main_program_route, sponsors_route, articles_route, get_involved_route]
+    menu = [home_route, main_program_route, sponsors_route, get_involved_route, articles_route]
+
     if registration_open?
+      menu.push schedule_route
       unless registered?
         menu.push register_route
       end
