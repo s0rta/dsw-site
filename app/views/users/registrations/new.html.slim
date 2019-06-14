@@ -14,7 +14,7 @@
             = f.label :name, 'First and Last Name'
         .SignUp-input
           = render layout: 'components/floating_input' do
-            = f.text_field :email, required: 'required'
+            = f.text_field :email, required: 'required', type: 'email'
             = f.label :email, 'E-mail Address'
       .SignUp-inputs
         .SignUp-input
