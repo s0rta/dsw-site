@@ -57,7 +57,7 @@ class RegistrationsController < ApplicationController
   end
 
   def check_existing_registration
-    redirect_to session[:after_registration_path] || schedule_path if registered?
+    redirect_to session[:after_registration_path] || schedules_path if registered?
   end
 
   def save_after_registration_path
