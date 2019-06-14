@@ -51,7 +51,10 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_registered!
-    redirect_to main_app.new_registration_path unless current_registration
+    unless current_registration
+      session[:after_registration_path] = session[:previous_url]
+      redirect_to main_app.new_registration_path
+    end
   end
 
   def current_registration
@@ -85,7 +88,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    puts params
     if params[:register_to_attend] == "true"
       new_registration_path
     elsif session[:previous_url]
