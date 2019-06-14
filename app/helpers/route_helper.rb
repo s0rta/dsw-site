@@ -1,8 +1,10 @@
 module RouteHelper
 
   def main_menu
-    menu = [home_route, main_program_route, sponsors_route, articles_route, get_involved_route]
+    menu = [home_route, main_program_route, sponsors_route, get_involved_route, articles_route]
+
     if registration_open?
+      menu.push schedule_route
       unless registered?
         menu.push register_route
       end
@@ -79,7 +81,7 @@ module RouteHelper
 
   def register_route
     {
-      path: "/register",
+      path: new_registration_path,
       label: "Register To Attend"
     }
   end
@@ -157,7 +159,8 @@ module RouteHelper
   end
 
   def came_from_registration?
-    session[:previous_url] == "/register"
+    session[:previous_url] == new_registration_path ||
+      session[:previous_url] == register_path
   end
 
   private

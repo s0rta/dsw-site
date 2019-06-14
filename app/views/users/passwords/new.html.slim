@@ -6,7 +6,7 @@
       .PasswordReset-inputs
         .PasswordReset-input
           = render layout: 'components/floating_input' do
-            = f.text_field :email, required: 'required', autofocus: 'autofocus'
+            = f.text_field :email, required: 'required', autofocus: 'autofocus', type: 'email'
             = f.label :email, 'E-mail Address'
       .PasswordReset-error-messages
         - flash.each do |key, message|

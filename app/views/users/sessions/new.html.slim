@@ -11,7 +11,7 @@
       .SignIn-inputs
         .SignIn-input
           = render layout: 'components/floating_input' do
-            = f.text_field :email, required: 'required', autofocus: 'autofocus'
+            = f.text_field :email, required: 'required', autofocus: 'autofocus', type: 'email'
             = f.label :email, 'E-mail Address'
         .SignIn-input
           = render layout: 'components/floating_input' do
