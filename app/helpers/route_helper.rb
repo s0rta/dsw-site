@@ -1,7 +1,7 @@
 module RouteHelper
 
   def main_menu
-    menu = [home_route, main_program_route, sponsors_route, get_involved_route, articles_route]
+    menu = [home_route, main_program_route, about_route, sponsors_route, get_involved_route, articles_route]
 
     if registration_open?
       menu.push schedule_route
@@ -41,6 +41,13 @@ module RouteHelper
     {
       path: "/",
       label: "home"
+    }
+  end
+
+  def about_route
+    {
+      path: "/about",
+      label: "about"
     }
   end
 
