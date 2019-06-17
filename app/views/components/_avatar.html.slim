@@ -1,2 +1,6 @@
-.Avatar(class="is-#{size} is-#{color}")
-  span #{user.initials}
+.Avatar(class="is-#{size} is-#{color} #{user.avatar.present? ? 'is-image' : ''}")
+  - if user.avatar.present?
+    img src="#{user.avatar.url(:thumb)}"
+  - else
+    span #{user.initials}
+
