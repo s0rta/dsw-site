@@ -1,7 +1,7 @@
 = render layout: 'layouts/shared/secondary_hero', locals: { title: 'About', sub_title: 'By the community, for the community', description: 'Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more.' } do
   = render 'layouts/shared/about_secondary_hero_nav'
 
-h1 Team page
+= render 'layouts/shared/team_list', list: featured_static_data[:features][0...5]
 
 
 = render layout: 'layouts/shared/layout_wrapper' do
