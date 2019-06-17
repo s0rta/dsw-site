@@ -1,7 +1,10 @@
+- color = session.track[:color]
+- icon = session.track[:icon]
+
 = render 'components/card' do
-  div.SessionCard(class="#{session[:color]}-background #{session[:color]}-font-on-#{session[:color]} #{session[:color]}-fill-on-#{session[:color]}-background")
+  div.SessionCard(class="#{color}-background #{color}-font-on-#{color} #{color}-fill-on-#{color}-background")
     div.SessionCard-type
-      = render partial: "icons/#{session[:icon]}"
-      span.SessionCard-name #{session[:track]}
+      = render partial: "icons/#{icon}"
+      span.SessionCard-name #{session.track[:name]}
     h3.SessionCard-title #{session[:title]}
-    p.SessionCard-description #{session[:description]}
+    p.SessionCard-description #{session[:description].truncate(200)}
