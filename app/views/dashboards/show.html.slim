@@ -3,14 +3,12 @@
 
   section.Dashboard-profile
     .Dashboard-profile-wrapper
-      .Dashboard-avatar SP
+      = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user }
       .Dashboard-profile-info
         .Dashboard-profile-name #{current_user.name}
         .Dashboard-profile-secondary #{current_user.email}
         .Dashboard-profile-secondary https://www.linkedin.com/in/seth-paye-57500b3a/
     = link_to 'Update Profile', edit_user_registration_path, class: 'Dashboard-header-action'
-
-
 
   section.Dashboard-section
     .Dashboard-header-wrapper
