@@ -8,6 +8,8 @@
         - @articles.each do |article|
           li.Dashboard-card-list-item
             = render partial: 'components/article_card', locals: { article: article }
+    - if @articles.blank?
+      .Dashboard-empty-message You have not submitted any articles yet.
 
   section.Dashboard-section
     h1.Dashboard-header My Sessions
@@ -16,6 +18,8 @@
         - @submissions.each do |submission|
           li.Dashboard-card-list-item
             = render partial: 'components/session_card', locals: { session: submission }
+    - if @submissions.blank?
+      .Dashboard-empty-message You have not yet submitted any proposals for this year.
 
   section.Dashboard-section
     h1.Dashboard-header My Schedule
@@ -24,6 +28,8 @@
         - @my_schedule.each do |submission|
           li.Dashboard-schedule-item
             = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
+    - if @my_schedule.blank?
+      .Dashboard-empty-message You have not registered for any sessions this year.
 
   - if @previous_submissions.any?
     section.Dashboard-section
