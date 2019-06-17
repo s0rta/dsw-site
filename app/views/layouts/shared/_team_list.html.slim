@@ -2,9 +2,5 @@
   .TeamList-list
     = render 'components/three_card_list', attributes: { 'aria-label': "Team members" } do
       - list.each do |list_item|
-        - if list_item[:type] == 'session'
-          = render 'components/three_card_list_item' do
-            = render 'components/session_card', session: list_item
-        - if list_item[:type] == 'article'
-          = render 'components/three_card_list_item' do
-            = render 'components/article_card', article: list_item
+        = render 'components/three_card_list_item' do
+          = render 'components/team_member_card', team_member: list_item
