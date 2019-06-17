@@ -2,10 +2,10 @@
   = render 'layouts/shared/about_secondary_hero_nav'
 
 div.Program-list-wrapper
-  = render 'components/content_card_list', attributes: { 'aria-label': "Programs" }  do
-    - programs_static_data[:programs].each do |card|
+  = render 'components/content_card_list', attributes: { 'aria-label': "About page" }  do
+    - about_static_data[:items].each do |card|
       = render 'components/content_card_list_item' do
-        = render 'components/content_card', card: card, title: "Program", page_url: "program/"
+        = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "about/#{card[:button_page_url]}"
 
 = render layout: 'layouts/shared/layout_wrapper' do
   div.Program-primary-callouts

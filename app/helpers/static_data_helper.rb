@@ -18,4 +18,10 @@ module StaticDataHelper
       YAML.safe_load(File.read(File.expand_path("../data/programs.yml",  __dir__)))
     ).deep_transform_keys(&:to_sym)
   end
+
+  def about_static_data
+    HashWithIndifferentAccess.new(
+      YAML.safe_load(File.read(File.expand_path("../data/about.yml",  __dir__)))
+    ).deep_transform_keys(&:to_sym)
+  end
 end
