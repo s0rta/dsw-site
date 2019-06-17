@@ -1,7 +1,7 @@
 module RouteHelper
 
   def main_menu
-    menu = [home_route, main_program_route, about_route, sponsors_route, get_involved_route, articles_route]
+    menu = [home_route, main_program_route, main_about_route, sponsors_route, get_involved_route, articles_route]
 
     if registration_open?
       menu.push schedule_route
@@ -27,6 +27,10 @@ module RouteHelper
     [program_route, tracks_route, clusters_route, basecamp_route, headline_events_route]
   end
 
+  def about_routes
+    [about_route, team_route, faq_route, assets_route]
+  end
+
   def social_media_routes
     [
       { icon: "fa-twitter", label: "twitter", link: "https://twitter.com/denstartupweek" },
@@ -44,10 +48,46 @@ module RouteHelper
     }
   end
 
+  def main_about_route
+    {
+      path: "/about",
+      label: "about",
+      nested_routes: about_routes
+    }
+  end
+
   def about_route
     {
       path: "/about",
-      label: "about"
+      label: "overview"
+    }
+  end
+
+  def overview_route
+    {
+      path: "/about/overview",
+      label: "overview"
+    }
+  end
+
+  def team_route
+    {
+      path: "/about/team",
+      label: "team"
+    }
+  end
+
+  def faq_route
+    {
+      path: "/about/faq",
+      label: "faq"
+    }
+  end
+
+  def assets_route
+    {
+      path: "/about/assets",
+      label: "assets"
     }
   end
 

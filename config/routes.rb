@@ -25,12 +25,10 @@ Rails.application.routes.draw do
   get "/contact", to: redirect("/get-involved")
 
   get "/resources", to: redirect("/program")
-  # get "/about", to: redirect("/program")
   get "/about/ambassadors", to: redirect("/initiatives/ambassadors")
   get "/program/ambassadors", to: redirect("/initiatives/ambassadors")
   get "/about/clusters", to: redirect("/program/clusters")
   get "/about/previous", to: redirect("/program/previous")
-  get "/about/team", to: redirect("/get-involved/team")
   get "/about/tracks", to: redirect("/program/tracks")
   get "/about/youth", to: redirect("/initiatives/youth")
   get "/program/youth", to: redirect("/initiatives/youth")
