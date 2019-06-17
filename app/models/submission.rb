@@ -132,7 +132,7 @@ class Submission < ApplicationRecord
 
   def self.my_schedule(user)
     joins(:user_registrations)
-      .where(registrations: {user_id: user.id})
+      .where(registrations: { user_id: user.id })
   end
 
   def public?
