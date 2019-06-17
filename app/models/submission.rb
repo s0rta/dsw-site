@@ -121,14 +121,18 @@ class Submission < ApplicationRecord
     if filter == "all"
       all
     elsif filter == "mine" && user
-      joins(:user_registrations)
-        .where(registrations: {user_id: user.id})
+      my_schedule(user)
     elsif filter.present?
       references(:tracks, :clusters)
         .where("LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)", name: filter)
     else
       all
     end
+  end
+
+  def self.my_schedule(user)
+    joins(:user_registrations)
+      .where(registrations: {user_id: user.id})
   end
 
   def public?

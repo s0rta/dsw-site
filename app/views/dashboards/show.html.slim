@@ -1,40 +1,81 @@
-= render partial: 'nav', locals: { item: :mine }
 
-- if AnnualSchedule.registration_open?
-  - if registered?
-    section.common
-      .section-content.sm-centered
-        h1 Your Registration
-        = link_to 'View Your Schedule', schedules_path(filter: 'mine'), class: 'btn primary'
-  - else
-    section.common
-      .section-content.sm-centered
-        h1 Registration
-        = link_to 'Register to attend', new_registration_path, class: 'btn primary'
+= render layout: 'layouts/shared/layout_wrapper' do
 
-section.common
-  .section-content.sm-centered
-    h1 Your Submissions
+  section.Dashboard-section
+    h1.Dashboard-header My Articles
+    - if @articles.any?
+      ul.Dashboard-card-list
+        - @articles.each do |article|
+          li.Dashboard-card-list-item
+            = render partial: 'components/article_card', locals: { article: article }
+
+  section.Dashboard-section
+    h1.Dashboard-header My Sessions
     - if @submissions.any?
-      - @submissions.each do |submission|
-        .talk-submission
-          h6 #{submission.full_title} (#{submission.track.name})
-          - if submission.editable?
-            = link_to edit_submission_path(submission), title: 'Propose Updates' do
-              = render partial: 'icons/pencil'
-    - else
-      h6 You have not yet submitted any proposals for this year.
+      ul.Dashboard-card-list
+        - @submissions.each do |submission|
+          li.Dashboard-card-list-item
+            = render partial: 'components/session_card', locals: { session: submission }
 
-- if AnnualSchedule.cfp_open?
-  section.common
-    .section-content.sm-centered
-      = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'
+  section.Dashboard-section
+    h1.Dashboard-header My Schedule
+    -if @my_schedule.any?
+      ul.Dashboard-schedule
+        - @my_schedule.each do |submission|
+          li.Dashboard-schedule-item
+            = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
 
-- if @previous_submissions.any?
-  section.common
-    .section-content.sm-centered
-      h1 Previous Years' Submissions
-      - @previous_submissions.each do |submission|
-        .talk-submission
-          h6
-            | #{truncate(submission.full_title, length: 70)} (#{submission.year}, #{submission.track.name})
+  - if @previous_submissions.any?
+    section.Dashboard-section
+      h1.Dashboard-header My Previous Year's Sessions
+      ul.Dashboard-card-list
+        - @previous_submissions.each do |submission|
+          li.Dashboard-card-list-item
+            = render partial: 'components/session_card', locals: { session: submission }
+
+
+  .Dashboard-primary-callouts
+    = render partial: 'layouts/shared/primary_callouts_nav'
+
+
+
+/ = render partial: 'nav', locals: { item: :mine }
+
+/ - if AnnualSchedule.registration_open?
+/   - if registered?
+/     section.common
+/       .section-content.sm-centered
+/         h1 Your Registration
+/         = link_to 'View Your Schedule', schedules_path(filter: 'mine'), class: 'btn primary'
+/   - else
+/     section.common
+/       .section-content.sm-centered
+/         h1 Registration
+/         = link_to 'Register to attend', new_registration_path, class: 'btn primary'
+
+/ section.common
+/   .section-content.sm-centered
+/     h1 Your Submissions
+/     - if @submissions.any?
+/       - @submissions.each do |submission|
+/         .talk-submission
+/           h6 #{submission.full_title} (#{submission.track.name})
+/           - if submission.editable?
+/             = link_to edit_submission_path(submission), title: 'Propose Updates' do
+/               = render partial: 'icons/pencil'
+/     - else
+/       h6 You have not yet submitted any proposals for this year.
+
+/ - if AnnualSchedule.cfp_open?
+/   section.common
+/     .section-content.sm-centered
+/       = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'
+
+/ - if @previous_submissions.any?
+/   section.common
+/     .section-content.sm-centered
+/       h1 Previous Years' Submissions
+/       - @previous_submissions.each do |submission|
+/         .talk-submission
+/           h6
+/             | #{truncate(submission.full_title, length: 70)} (#{submission.year}, #{submission.track.name})
