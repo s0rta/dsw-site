@@ -3,6 +3,16 @@
 .Dashboard-section
   margin-top: 80px
 
+.Dashboard-header-wrapper
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: space-between
+
+.Dashboard-header-action
+  +white-button(187px, 46px)
+  margin-bottom: 40px
+
 .Dashboard-header
   @include font-family-mixin(Montserrat-Light)
   color: $primary-font-medium

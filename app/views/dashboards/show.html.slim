@@ -2,7 +2,9 @@
 = render layout: 'layouts/shared/layout_wrapper' do
 
   section.Dashboard-section
-    h1.Dashboard-header My Articles
+    .Dashboard-header-wrapper
+      h1.Dashboard-header My Articles
+      = link_to 'Submit An Article', new_submission_path, class: 'Dashboard-header-action'
     - if @articles.any?
       ul.Dashboard-card-list
         - @articles.each do |article|
@@ -12,7 +14,10 @@
       .Dashboard-empty-message You have not submitted any articles yet.
 
   section.Dashboard-section
-    h1.Dashboard-header My Sessions
+    .Dashboard-header-wrapper
+      h1.Dashboard-header My Sessions
+      - if AnnualSchedule.cfp_open?
+        = link_to 'Submit A Proposal', new_submission_path, class: 'Dashboard-header-action'
     - if @submissions.any?
       ul.Dashboard-card-list
         - @submissions.each do |submission|
@@ -21,19 +26,23 @@
     - if @submissions.blank?
       .Dashboard-empty-message You have not yet submitted any proposals for this year.
 
-  section.Dashboard-section
-    h1.Dashboard-header My Schedule
-    -if @my_schedule.any?
-      ul.Dashboard-schedule
-        - @my_schedule.each do |submission|
-          li.Dashboard-schedule-item
-            = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
-    - if @my_schedule.blank?
-      .Dashboard-empty-message You have not registered for any sessions this year.
+  - if AnnualSchedule.registration_open?
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header My Schedule
+        = link_to 'View Schedule', schedules_path, class: 'Dashboard-header-action'
+      -if @my_schedule.any?
+        ul.Dashboard-schedule
+          - @my_schedule.each do |submission|
+            li.Dashboard-schedule-item
+              = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
+      - if @my_schedule.blank?
+        .Dashboard-empty-message You have not registered for any sessions this year.
 
   - if @previous_submissions.any?
     section.Dashboard-section
-      h1.Dashboard-header My Previous Year's Sessions
+      .Dashboard-header-wrapper
+        h1.Dashboard-header My Previous Year's Sessions
       ul.Dashboard-card-list
         - @previous_submissions.each do |submission|
           li.Dashboard-card-list-item
