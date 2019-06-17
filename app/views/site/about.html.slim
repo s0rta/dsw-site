@@ -1,0 +1,12 @@
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Program', sub_title: 'Entrepreneurial Spirit', description: 'The weeklong event is intended to unite the entrepreneurial community in Downtown Denver and beyond, and celebrate great companies, innovation, ideas, and people. Events throughout the week are organized by the community at-large and the Organizing Committee, and include sessions, presentations, panels, workshops, happy hours, social events, job fairs and more.' } do
+  = render 'layouts/shared/programs_secondary_hero_nav'
+
+div.Program-list-wrapper
+  = render 'components/content_card_list', attributes: { 'aria-label': "Programs" }  do
+    - programs_static_data[:programs].each do |card|
+      = render 'components/content_card_list_item' do
+        = render 'components/content_card', card: card, title: "Program", page_url: "program/"
+
+= render layout: 'layouts/shared/layout_wrapper' do
+  div.Program-primary-callouts
+    = render partial: 'layouts/shared/primary_callouts_nav'
