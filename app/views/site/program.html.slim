@@ -7,9 +7,6 @@ div.Program-list-wrapper
       = render 'components/content_card_list_item' do
         = render 'components/content_card', card: card, title: "Program", page_url: "program/"
 
-= render layout: 'layouts/shared/layout_wrapper' do
-  div.Program-primary-callouts
-    = render partial: 'layouts/shared/primary_callouts_nav'
 
 / = render partial: 'layouts/shared/program_nav', locals: { item: :overview }
 

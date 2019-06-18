@@ -16,6 +16,3 @@
 
 .Articles-list-wrapper
   = render partial: 'layouts/shared/articles_and_sessions_list', locals: { list: featured_static_data[:features], title: "Articles", is_overlapped: false }
-
-= render layout: 'layouts/shared/layout_wrapper' do
-  = render partial: 'layouts/shared/primary_callouts_nav'
