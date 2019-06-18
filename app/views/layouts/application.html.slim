@@ -24,13 +24,12 @@ html
     = content_for(:extra_meta_tags)
 
   body(id="#{controller_name}_controller" class="#{params[:page] || 'unknown'}-action")
-
-    - unless @fullscreen_takeover
+    - unless content_for(:fullscreen_takover)
       = render partial: 'components/menu'
       = render partial: 'layouts/shared/header'
-    main(class=("is-fullscreen" if @fullscreen_takeover))
+    main(class=("is-fullscreen" if content_for(:fullscreen_takover)))
       == yield
-    = render partial: 'layouts/shared/footer' unless @fullscreen_takeover
+    = render partial: 'layouts/shared/footer' unless content_for(:fullscreen_takover)
     = javascript_pack_tag 'application'
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js")

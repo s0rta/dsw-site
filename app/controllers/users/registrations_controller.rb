@@ -1,13 +1,4 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  def new
-    @fullscreen_takeover = true
-    super
-  end
-
-  def create
-    @fullscreen_takeover = true
-    super
-  end
 
   protected
 
