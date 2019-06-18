@@ -1,7 +1,6 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
-
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
   before_action :set_honeybager_context
@@ -17,10 +16,10 @@ class ApplicationController < ActionController::Base
   helper_method :simple_registration?
 
   layout(lambda do |c|
-    if c.respond_to?(:current_page) && c.template_exists?(c.current_page.template, 'layouts')
+    if c.respond_to?(:current_page) && c.template_exists?(c.current_page.template, "layouts")
       c.current_page.template
     else
-      'application'
+      "application"
     end
   end)
 
@@ -47,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_admin!
-    redirect_to main_app.new_user_session_path unless current_user && current_user.is_admin?
+    redirect_to main_app.new_user_session_path unless current_user&.is_admin?
   end
 
   def ensure_registered!
@@ -55,7 +54,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_registration
-    current_user && current_user.current_registration
+    current_user&.current_registration
   end
 
   def simple_registration?
@@ -64,23 +63,23 @@ class ApplicationController < ActionController::Base
   end
 
   def base_navigation_path
-    request.fullpath.split('/')[1] || 'home'
+    request.fullpath.split("/")[1] || "home"
   end
 
   def user_for_paper_trail
     if user_signed_in?
       current_user.id
     else
-      'Unknown user'
+      "Unknown user"
     end
   end
 
   def set_honeybager_context
     if user_signed_in?
-      Honeybadger.context({
+      Honeybadger.context(
         user_id: current_user.id,
-        user_email: current_user.email
-      })
+        user_email: current_user.email,
+      )
     end
   end
 
