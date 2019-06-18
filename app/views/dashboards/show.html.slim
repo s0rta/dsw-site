@@ -1,19 +1,22 @@
 
 = render layout: 'layouts/shared/layout_wrapper' do
 
-  section.Dashboard-profile
-    .Dashboard-profile-wrapper
-      = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user }
-      .Dashboard-profile-info
-        .Dashboard-profile-name #{current_user.name}
-        .Dashboard-profile-secondary #{current_user.email}
-        .Dashboard-profile-secondary https://www.linkedin.com/in/seth-paye-57500b3a/
-    = link_to 'Update Profile', edit_user_registration_path, class: 'Dashboard-header-action'
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header Profile
+      = link_to 'Edit Profile', edit_user_registration_path, class: 'Dashboard-header-action'
+    .Dashboard-profile
+      .Dashboard-profile-wrapper
+        = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user }
+        .Dashboard-profile-info
+          .Dashboard-profile-name #{current_user.name}
+          .Dashboard-profile-secondary #{current_user.email}
+          .Dashboard-profile-secondary https://www.linkedin.com/in/seth-paye-57500b3a/
 
   section.Dashboard-section
     .Dashboard-header-wrapper
       h1.Dashboard-header My Articles
-      = link_to 'Submit An Article', new_submission_path, class: 'Dashboard-header-action'
+      = link_to 'Submit Article', new_submission_path, class: 'Dashboard-header-action'
     - if @articles.any?
       ul.Dashboard-card-list
         - @articles.each do |article|
@@ -26,7 +29,7 @@
     .Dashboard-header-wrapper
       h1.Dashboard-header My Sessions
       - if AnnualSchedule.cfp_open?
-        = link_to 'Submit A Proposal', new_submission_path, class: 'Dashboard-header-action'
+        = link_to 'Submit Session', new_submission_path, class: 'Dashboard-header-action'
     - if @submissions.any?
       ul.Dashboard-card-list
         - @submissions.each do |submission|
@@ -56,11 +59,6 @@
         - @previous_submissions.each do |submission|
           li.Dashboard-card-list-item
             = render partial: 'components/session_card', locals: { session: submission }
-
-
-  .Dashboard-primary-callouts
-    = render partial: 'layouts/shared/primary_callouts_nav'
-
 
 
 / = render partial: 'nav', locals: { item: :mine }

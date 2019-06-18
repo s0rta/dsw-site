@@ -8,7 +8,6 @@
   margin-bottom: 20px
 
 .Dashboard-profile
-  margin-top: 40px
   display: flex
   justify-content: space-between
   flex-wrap: wrap
@@ -18,21 +17,20 @@
   margin-top: 22px
 
 .Dashboard-header-wrapper
-  display: flex
-  flex-wrap: wrap
-  align-items: center
-  justify-content: space-between
+  margin-bottom: 30px
 
 .Dashboard-header-action
-  +white-button(187px, 46px)
-  margin-bottom: 40px
+  color: $teal-light
+  text-transform: uppercase
+  font-size: 12px
+  margin-top: 12px
+  display: block
 
 .Dashboard-header
   @include font-family-mixin(Montserrat-Light)
   color: $primary-font-medium
   font-size: 28px
   text-transform: uppercase
-  margin-bottom: 40px
 
 .Dashboard-profile-name
   @include font-family-mixin(Montserrat-Light)
@@ -44,9 +42,6 @@
   color: $primary-font-light
   font-size: 14px
   margin-top: 5px
-
-.Dashboard-primary-callouts
-  margin-top: 150px
 
 .Dashboard-card-list
   display: flex
