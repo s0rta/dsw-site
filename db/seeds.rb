@@ -1,6 +1,43 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
+User.reset_column_information
+[
+  {
+    name: "Erik Mitisek",
+    team_position: "Imagine Analytics Organizing Chair"
+    image_url: "http://placeimg.com/640/360/any",
+  },
+  {
+    name: "Erik Mitisek",
+    team_position: "Imagine Analytics Organizing Chair"
+    image_url: "http://placeimg.com/640/360/any",
+  },
+  {
+    name: "Erik Mitisek",
+    team_position: "Imagine Analytics Organizing Chair"
+    image_url: "http://placeimg.com/640/360/any",
+  },
+  {
+    name: "Erik Mitisek",
+    team_position: "Imagine Analytics Organizing Chair"
+    image_url: "http://placeimg.com/640/360/any",
+  },
+  {
+    name: "Erik Mitisek",
+    team_position: "Imagine Analytics Organizing Chair"
+    image_url: "http://placeimg.com/640/360/any",
+  },
+].each do |attrs|
+  u = User.where(name: attrs[:name]).first_or_initialize
+
+  # Skip if the record has been updated since it was populated
+  next if e.updated_at && e.updated_at > e.created_at
+
+  u.assign_attributes(attrs)
+  u.save!
+end
+
 Track.reset_column_information
 {
   "Founder" => {

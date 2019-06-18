@@ -1,5 +1,5 @@
 = render 'components/card' do
   .TeamMemberCard
-    .TeamMemberCard-image(style="background-image: url(#{user.avatar.url[:thumb]})")
+    .TeamMemberCard-image(style="background-image: url(#{user[:image_url]})")
     .TeamMemberCard-name #{user[:name]}
     .TeamMemberCard-role #{user[:team_position]}
