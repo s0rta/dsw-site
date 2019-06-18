@@ -26,6 +26,8 @@ feature "Managing My Venue" do
   end
 
   scenario "a user who is a venue host should be able to create new venues" do
+    pending("refactor")
+
     Flipper[:venue_admin].enable
     login_as venue_host_user, scope: :user
 
