@@ -110,20 +110,20 @@ module RouteHelper
     }
   end
 
-  def present_route 
+  def present_route
     {
       path: "/get-involved/present",
       label: "present"
     }
   end
 
-  def content_route 
+  def content_route
     {
       path: "/get-involved/content",
       label: "content"
     }
   end
-   
+
   def schedule_route
     {
       path: schedules_path,
