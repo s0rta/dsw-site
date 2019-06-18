@@ -1,103 +1,112 @@
-= render partial: 'layouts/shared/get_involved_nav', locals: { item: :get_involved }
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Get Involved', sub_title: 'By the community, for the community', description: 'Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more.' } do
+  = render 'layouts/shared/about_secondary_hero_nav'
 
-section.common.teal
-  .section-content.sm-centered
-    h1 By the community, for the community
-    h6 Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more.
-    h6 Want to get involved or support Denver Startup Week?  Here’s how to do it:
+div.About-list-wrapper
+  = render 'components/content_card_list', attributes: { 'aria-label': "About page" }  do
+    - about_static_data[:items].each do |card|
+      = render 'components/content_card_list_item' do
+        = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "about/#{card[:button_page_url]}"
 
-section.common
-  .section-content.sm-centered
-    h1 Present
-    h6 The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during Denver Startup Week.
+/ = render partial: 'layouts/shared/get_involved_nav', locals: { item: :get_involved }
 
-    - unless AnnualSchedule.cfp_open?
-      - if AnnualSchedule.post_week?
-        h6 Our call for presentations is currently closed. We anticipate reopening our CFP in the spring.
-      - else
-        h6 Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!
+/ section.common.teal
+/   .section-content.sm-centered
+/     h1 By the community, for the community
+/     h6 Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more.
+/     h6 Want to get involved or support Denver Startup Week?  Here’s how to do it:
 
-    = link_to 'Learn more', page_path(page: 'program/selection'), class: 'btn-cta'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Present
+/     h6 The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during Denver Startup Week.
 
-section.common
-  .section-content.sm-centered
-    h1 Submit & Promote Content
-    h6 Denver Startup Week is by the community, for the community. That starts with you! We want you to share content that inspires, informs, and intrigues both Denver entrepreneurs and the global startup community.
-    h6 We are looking for blog submissions, free events to promote, instagram takeover stars-in-the-making, can’t-miss social media posts, and more! Have something to share with the Denver Startup Week audience that aligns with our spirit of free, educational, and inclusive? Then click below to learn more and submit!
-    = link_to 'Learn more', page_path(page: 'get-involved/content'), class: 'btn-cta'
+/     - unless AnnualSchedule.cfp_open?
+/       - if AnnualSchedule.post_week?
+/         h6 Our call for presentations is currently closed. We anticipate reopening our CFP in the spring.
+/       - else
+/         h6 Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!
 
-section.common
-  .section-content.sm-centered
-    h1 Volunteer
-    h6 Volunteers make up the vast majority of the Denver Startup Week organization and serve as the backbone of the event. From the Organizing Committee to our session attendants, Denver Startup Week would not be possible without the help and support of the entire community.
-    = link_to 'Learn more', 'https://www.cervistech.com/acts/console.php?console_id=0282&console_type=event&ht=1', target: '_blank', class: 'btn-cta'
+/     = link_to 'Learn more', page_path(page: 'program/selection'), class: 'btn-cta'
 
-section.common
-  .section-content.sm-centered
-    h1 Sponsor
-    h6 Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.
-    = link_to 'Learn more', page_path(page: 'sponsors'), class: 'btn-cta'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Submit & Promote Content
+/     h6 Denver Startup Week is by the community, for the community. That starts with you! We want you to share content that inspires, informs, and intrigues both Denver entrepreneurs and the global startup community.
+/     h6 We are looking for blog submissions, free events to promote, instagram takeover stars-in-the-making, can’t-miss social media posts, and more! Have something to share with the Denver Startup Week audience that aligns with our spirit of free, educational, and inclusive? Then click below to learn more and submit!
+/     = link_to 'Learn more', page_path(page: 'get-involved/content'), class: 'btn-cta'
 
-section.common
-  .section-content.sm-centered
-    h1 Host
-    h6 The events, sessions and other activities during Denver Startup Week are hosted in an array of venues around Downtown Denver.  A variety of venues are needed to accommodate the diverse selection of programs.
-    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Volunteer
+/     h6 Volunteers make up the vast majority of the Denver Startup Week organization and serve as the backbone of the event. From the Organizing Committee to our session attendants, Denver Startup Week would not be possible without the help and support of the entire community.
+/     = link_to 'Learn more', 'https://www.cervistech.com/acts/console.php?console_id=0282&console_type=event&ht=1', target: '_blank', class: 'btn-cta'
 
-section.common
-  .section-content.sm-centered
-    h1 Job Fair & Showcase
-    h6 The Denver Startup Week Job Fair and Showcase is open to all companies with a priority given to Colorado-based startups and growth-stage companies, qualified non-profits, and training institutions. 
-    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Sponsor
+/     h6 Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.
+/     = link_to 'Learn more', page_path(page: 'sponsors'), class: 'btn-cta'
 
-section.common
-  .section-content.sm-centered
-    h1 Pitch Challenge
-    h6 The third annual Denver Startup Week Pitch Challenge will highlight and harness our city's entrepreneurial energy. This year’s challenge takes the typical pitch competition and spins it on its head, inviting the 15,000 attendees at DSW to cast their votes to determine the final six contenders.
-    h6 With a prize package valued at $100,000 in cash, services, and product, this pitch competition will showcase the best ideas and the brightest startups from Denver’s innovation community!
+/ section.common
+/   .section-content.sm-centered
+/     h1 Host
+/     h6 The events, sessions and other activities during Denver Startup Week are hosted in an array of venues around Downtown Denver.  A variety of venues are needed to accommodate the diverse selection of programs.
+/     = link_to 'Learn more', '#contact-form', class: 'btn-cta'
 
-    - close_dt = AnnualSchedule.current.pitch_application_close_at
-    - open_dt = AnnualSchedule.current.pitch_application_close_at
-    - if close_dt && open_dt && open_dt <= Date.today && close_dt >= Date.today
-      = link_to 'Learn more', '#contact-form', class: 'btn-cta'
-    - elsif close_dt && close_dt < Date.today
-      h6 Applications for this year's Pitch Challenge are now closed. We look forward to seeing you at the event!
-    - else
-      h6 More information  will be available later this summer.
+/ section.common
+/   .section-content.sm-centered
+/     h1 Job Fair & Showcase
+/     h6 The Denver Startup Week Job Fair and Showcase is open to all companies with a priority given to Colorado-based startups and growth-stage companies, qualified non-profits, and training institutions. 
+/     = link_to 'Learn more', '#contact-form', class: 'btn-cta'
 
-section.common
-  .section-content.sm-centered
-    h1 Startup Crawl
-    h6 The annual Startup Crawl features many of the hottest startup pads in Denver. Participants embark on a route throughout Downtown Denver, stopping at quintessential Denver startup offices to eat, drink, and celebrate our homegrown entrepreneurial culture. The crawl gives participants a chance to go behind the scenes and experience the company culture first hand.
+/ section.common
+/   .section-content.sm-centered
+/     h1 Pitch Challenge
+/     h6 The third annual Denver Startup Week Pitch Challenge will highlight and harness our city's entrepreneurial energy. This year’s challenge takes the typical pitch competition and spins it on its head, inviting the 15,000 attendees at DSW to cast their votes to determine the final six contenders.
+/     h6 With a prize package valued at $100,000 in cash, services, and product, this pitch competition will showcase the best ideas and the brightest startups from Denver’s innovation community!
 
-    = link_to 'Learn more', '#contact-form', class: 'btn-cta'
+/     - close_dt = AnnualSchedule.current.pitch_application_close_at
+/     - open_dt = AnnualSchedule.current.pitch_application_close_at
+/     - if close_dt && open_dt && open_dt <= Date.today && close_dt >= Date.today
+/       = link_to 'Learn more', '#contact-form', class: 'btn-cta'
+/     - elsif close_dt && close_dt < Date.today
+/       h6 Applications for this year's Pitch Challenge are now closed. We look forward to seeing you at the event!
+/     - else
+/       h6 More information  will be available later this summer.
 
-section.common
-  .section-content.sm-centered
-    h1 Mentorship
-    h6 Mentorship opportunities are offered at Basecamp throughout the week. Come connect with experienced mentors who can offer advice and support to launch you to the next level. Take advantage of individual, group, and online mentorship opportunities.
+/ section.common
+/   .section-content.sm-centered
+/     h1 Startup Crawl
+/     h6 The annual Startup Crawl features many of the hottest startup pads in Denver. Participants embark on a route throughout Downtown Denver, stopping at quintessential Denver startup offices to eat, drink, and celebrate our homegrown entrepreneurial culture. The crawl gives participants a chance to go behind the scenes and experience the company culture first hand.
 
-    = link_to 'Learn more', 'https://docs.google.com/forms/d/e/1FAIpQLScHAfkul7J8TATY2RuOOEa8_WmHJzMJH2M-u72kiYCZpn-sng/viewform', class: 'btn-cta'
+/     = link_to 'Learn more', '#contact-form', class: 'btn-cta'
 
-section.common#contact-form
-  .section-content.sm-centered
-    h1 Get Involved
-    h6 Please fill out as much information as you can. We'll be in touch shortly!
-    = form_for GeneralInquiry.new, html: { class: 'contact-us', data: { bindable: 'general-inquiry' } }, honeypot: true do |f|
-      = f.label :contact_name, 'Name'
-      = f.text_field :contact_name, required: 'required'
+/ section.common
+/   .section-content.sm-centered
+/     h1 Mentorship
+/     h6 Mentorship opportunities are offered at Basecamp throughout the week. Come connect with experienced mentors who can offer advice and support to launch you to the next level. Take advantage of individual, group, and online mentorship opportunities.
 
-      = f.label :company, 'Company or Organization (optional)'
-      = f.text_field :company
+/     = link_to 'Learn more', 'https://docs.google.com/forms/d/e/1FAIpQLScHAfkul7J8TATY2RuOOEa8_WmHJzMJH2M-u72kiYCZpn-sng/viewform', class: 'btn-cta'
 
-      = f.label :contact_email, 'E-mail Address'
-      = f.text_field :contact_email, required: 'required'
+/ section.common#contact-form
+/   .section-content.sm-centered
+/     h1 Get Involved
+/     h6 Please fill out as much information as you can. We'll be in touch shortly!
+/     = form_for GeneralInquiry.new, html: { class: 'contact-us', data: { bindable: 'general-inquiry' } }, honeypot: true do |f|
+/       = f.label :contact_name, 'Name'
+/       = f.text_field :contact_name, required: 'required'
 
-      = f.label :interest, 'What are you interested in?'
-      = f.select :interest, GeneralInquiry::INTERESTS.invert, required: 'required', include_blank: "I'm not sure"
+/       = f.label :company, 'Company or Organization (optional)'
+/       = f.text_field :company
 
-      = f.label :notes, 'Any additional notes?'
-      = f.text_field :notes, required: 'required'
+/       = f.label :contact_email, 'E-mail Address'
+/       = f.text_field :contact_email, required: 'required'
 
-      = f.submit 'Submit'
+/       = f.label :interest, 'What are you interested in?'
+/       = f.select :interest, GeneralInquiry::INTERESTS.invert, required: 'required', include_blank: "I'm not sure"
+
+/       = f.label :notes, 'Any additional notes?'
+/       = f.text_field :notes, required: 'required'
+
+/       = f.submit 'Submit'
 
