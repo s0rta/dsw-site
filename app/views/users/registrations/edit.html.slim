@@ -1,30 +1,77 @@
-= render partial: 'dashboards/nav', locals: { item: :profile }
+- content_for(:fullscreen_takeover, true)
 
-section.common
-  .section-content.sm-centered
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Update Profile', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+  .Profile-form
     = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
-
-      = f.label :name, 'Name'
-      = f.text_field :name, required: 'required', autofocus: 'autofocus'
-
-      = f.label :description, 'Tagline'
-      = f.text_field :description, required: 'required'
-
-      = f.label :email, 'E-mail Address'
-      = f.text_field :email, required: 'required'
+      .Profile-inputs
+        .Profile-input
+          = render layout: 'components/floating_input' do
+            = f.text_field :name, required: 'required', autofocus: 'autofocus'
+            = f.label :name, 'Name'
+        .Profile-input
+          = render layout: 'components/floating_input' do
+            = f.text_field :description, required: 'required'
+            = f.label :description, 'Tagline'
+      .Profile-inputs
+        .Profile-input
+          = render layout: 'components/floating_input' do
+            = f.text_field :email, required: 'required'
+            = f.label :email, 'E-mail Address'
 
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        p
-          |
-            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        p.Profile-unconfirmed Currently waiting confirmation for: #{resource.unconfirmed_email}
 
-      = f.label :password, "New Password (leave blank if you don't want to change it)"
-      = f.password_field :password, autocomplete: 'off'
+      .Profile-inputs
+        .Profile-input
+          = render layout: 'components/floating_input' do
+            = f.password_field :password, autocomplete: 'off'
+            = f.label :password, "New Password (leave blank if you don't want to change it)"
+        .Profile-input
+          = render layout: 'components/floating_input' do
+            = f.password_field :password_confirmation, autocomplete: 'off'
+            = f.label :password_confirmation, 'Confirm New Password'
+      .Profile-inputs
+        .Profile-input
+          = render layout: 'components/floating_input' do
+            = f.password_field :current_password, autocomplete: 'off'
+            = f.label :password, 'Current Password (we need your current password to confirm your changes)'
+      .Profile-error-messages
+        - flash.each do |key, message|
+          div #{message}
+        - unless resource.errors.empty?
+          div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+      .Profile-actions
+        = f.submit 'Submit', class: 'Profile-submit'
 
-      = f.label :password_confirmation, 'Confirm New Password'
-      = f.password_field :password_confirmation, autocomplete: 'off'
 
-      = f.label :password, 'Current Password (we need your current password to confirm your changes)'
-      = f.password_field :current_password, autocomplete: 'off'
+/ = render partial: 'dashboards/nav', locals: { item: :profile }
 
-      = f.submit 'Update'
+/ section.common
+/   .section-content.sm-centered
+/     = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
+
+/       = f.label :name, 'Name'
+/       = f.text_field :name, required: 'required', autofocus: 'autofocus'
+
+/       = f.label :description, 'Tagline'
+/       = f.text_field :description, required: 'required'
+
+/       = f.label :email, 'E-mail Address'
+/       = f.text_field :email, required: 'required'
+
+/       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+/         p
+/           |
+/             Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+/       = f.label :password, "New Password (leave blank if you don't want to change it)"
+/       = f.password_field :password, autocomplete: 'off'
+
+/       = f.label :password_confirmation, 'Confirm New Password'
+/       = f.password_field :password_confirmation, autocomplete: 'off'
+
+/       = f.label :password, 'Current Password (we need your current password to confirm your changes)'
+/       = f.password_field :current_password, autocomplete: 'off'
+
+/       = f.submit 'Update'
