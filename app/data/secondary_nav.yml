@@ -3,17 +3,17 @@ items:
     descriptions:
       - 'Be a part of something epic'
       - 'Check out our Get Involved page to see how you can get involved ahead of Denver Startup Week 2019!'
-    color: 'rgb(156, 156, 242)'
+    color: 'purple'
     href: '/get-involved'
   - title: 'VOTE NOW'
     descriptions:
       - 'Cast your vote by May 20'
       - "The sessions are in, now we need you to help us choose the best for this year's event. Cast your votes and spread the word!"
-    color: 'rgb(5, 211, 216)'
+    color: 'teal'
     href: '/panel-picker'
   - title: 'LATEST NEWS'
     descriptions:
       - 'Stay up to date with DSW'
       - 'Our new blog features the latest updates on DSW and the Denver entrepreneurial community.'
-    color: 'rgb(187, 221, 122)'
+    color: 'green'
     href: 'https://medium.com/denver-startup-week'

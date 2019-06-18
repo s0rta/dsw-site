@@ -8,6 +8,10 @@ div.ContentCard
         = render partial: "icons/#{card[:icon]}"
       h3.ContentCard-title(class="#{card[:color]}-font") #{card[:title]}
     div.ContentCard-inner-content
-      p.ContentCard-description #{card[:description]}
+      - if card[:description].kind_of?(Array)
+        - card[:description].each do |desc|
+          p.ContentCard-description #{desc}
+      - else
+        p.ContentCard-description #{card[:description]}
       .ContentCard-action
         = link_to "Explore the #{title}", page_path(page: "#{page_url}"), class: 'ContentCard-link'

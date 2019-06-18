@@ -2,10 +2,10 @@ nav.PrimaryCalloutsNav(aria-label="Primary Callouts")
   ul.PrimaryCalloutsNav-list
     - secondary_nav_static_data[:items].each do |nav|
       li.PrimaryCalloutsNav-list-item
-        h2.PrimaryCalloutsNav-list-title[style="color: #{nav[:color]}"] #{nav[:title]}
+        h2.PrimaryCalloutsNav-list-title(class="#{nav[:color]}-font") #{nav[:title]}
         p.PrimaryCalloutsNav-list-desc
           - nav[:descriptions].each do |desc|
             | #{desc}
             br
-        a(href="#{nav[:href]}" aria-label="#{nav[:title]}" style="color: #{nav[:color]}")
+        a(href="#{nav[:href]}" aria-label="#{nav[:title]}" class="#{nav[:color]}-font")
           = render partial: 'icons/arrow_in_circle_right'
