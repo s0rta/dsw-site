@@ -14,4 +14,7 @@ div.ContentCard
       - else
         p.ContentCard-description #{card[:description]}
       .ContentCard-action
-        = link_to "Explore the #{title}", page_path(page: "#{page_url}"), class: 'ContentCard-link'
+        - if card[:button_title].present?
+          = link_to "#{button_title}", page_path(page: "#{page_url}"), class: 'ContentCard-link'
+        - else
+          = link_to "Explore the #{title}", page_path(page: "#{page_url}"), class: 'ContentCard-link'
