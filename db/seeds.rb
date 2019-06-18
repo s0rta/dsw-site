@@ -32,7 +32,7 @@ User.reset_column_information
   u = User.where(name: attrs[:name]).first_or_initialize
 
   # Skip if the record has been updated since it was populated
-  next if e.updated_at && e.updated_at > e.created_at
+  next if u.updated_at && u.updated_at > u.created_at
 
   u.assign_attributes(attrs)
   u.save!
