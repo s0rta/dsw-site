@@ -7,7 +7,7 @@ header#site-header-js.Header
       .Header-profile-actions
         - if signed_in?
           a href="#{dashboard_path}"
-            = render partial: 'components/name_with_avatar', locals: { user: current_user, align: 'left', color: 'teal' }
+            = render partial: 'components/name_with_avatar', locals: { user: current_user, align: 'left', color: 'teal-light' }
         - else
           = link_to "Sign Up / Sign In", new_user_registration_path, class: 'Header-signup'
       button.Header-button.Header-button-open#menu-open-button-js.Header-menu-button(aria-label="Open Main Menu")
