@@ -1,17 +1,29 @@
 
 = render layout: 'layouts/shared/layout_wrapper' do
 
-  section.Dashboard-section
-    .Dashboard-header-wrapper
-      h1.Dashboard-header Profile
-      = link_to 'Edit Profile', edit_user_registration_path, class: 'Dashboard-header-action'
-    .Dashboard-profile
-      .Dashboard-profile-wrapper
-        = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user }
-        .Dashboard-profile-info
-          .Dashboard-profile-name #{current_user.name}
-          .Dashboard-profile-secondary #{current_user.email}
-          .Dashboard-profile-secondary https://www.linkedin.com/in/seth-paye-57500b3a/
+  section.Dashboard-section-wrapper
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header Profile
+        = link_to 'Edit Profile', edit_user_registration_path, class: 'Dashboard-header-action'
+      .Dashboard-profile
+        .Dashboard-profile-wrapper
+          = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user }
+          .Dashboard-profile-info
+            .Dashboard-profile-name #{current_user.name}
+            .Dashboard-profile-secondary #{current_user.email}
+            .Dashboard-profile-secondary https://www.linkedin.com/in/seth-paye-57500b3a/
+
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header Connect
+      p.Dashboard-connect-text Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit.
+      .Dashboard-connect-action
+        span class="Dashboard-icon-wrapper fa-stack"
+          i class="fa Dashboard-fa-circle fa-stack-2x"
+          i class="fab Dashboard-icon fa-2x fa-linkedin-in fa-stack-1x"
+        = render layout: 'components/toggle' do
+          input type="checkbox"
 
   section.Dashboard-section
     .Dashboard-header-wrapper

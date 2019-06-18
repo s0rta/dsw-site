@@ -1,5 +1,10 @@
 @import ../config
 
+.Dashboard-section-wrapper
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+
 .Dashboard-section
   margin-top: 80px
 
@@ -23,7 +28,7 @@
   color: $teal-light
   text-transform: uppercase
   font-size: 12px
-  margin-top: 12px
+  margin-top: 14px
   display: block
 
 .Dashboard-header
@@ -62,6 +67,25 @@
   @include font-family-mixin(Montserrat-Light)
   font-size: 18px
   text-align: center
+
+.Dashboard-connect-text
+  max-width: 550px
+
+.Dashboard-connect-action
+  display: flex
+  align-items: center
+  margin-top: 30px
+
+.Dashboard-icon-wrapper
+  margin-right: 25px
+  color: white
+
+.Dashboard-icon
+  height: 18px !important
+
+.Dashboard-fa-circle
+  background: #979797
+  border-radius: 50%
 
 // .dash-profile-bar
 //   h3
