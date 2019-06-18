@@ -9,6 +9,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def update
+    @fullscreen_takeover = true
+    super
+  end
+
+  def edit
+    @fullscreen_takeover = true
+    super
+  end
+
   protected
 
   def after_sign_up_path_for(resource)
