@@ -1,4 +1,9 @@
 = render layout: 'layouts/shared/secondary_hero', locals: { title: 'About', sub_title: 'By the community, for the community', description: 'Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more.' } do
   = render 'layouts/shared/about_secondary_hero_nav'
 
-= render 'layouts/shared/team_list', list: team_members_static_data[:members]
+.TeamList
+  .TeamList-list
+    = render 'components/three_card_list', attributes: { 'aria-label': "Team members" } do
+      - User.on_team.each do |user|
+        = render 'components/three_card_list_item' do
+          = render 'components/team_member_card', user: user

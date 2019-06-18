@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # Redirects for old paths
+  get "/get-involved/team", to: redirect("/about/team")
   get "/contact/press", to: redirect("/press")
   get "/contact/assets", to: redirect("/assets")
   get "/faq", to: redirect("/get-involved/faq")

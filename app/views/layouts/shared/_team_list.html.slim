@@ -1,6 +1,0 @@
-.TeamList
-  .TeamList-list
-    = render 'components/three_card_list', attributes: { 'aria-label': "Team members" } do
-      - list.each do |list_item|
-        = render 'components/three_card_list_item' do
-          = render 'components/team_member_card', team_member: list_item
