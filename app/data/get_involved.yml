@@ -1,0 +1,12 @@
+items:
+  - title: 'Present'
+    description: 
+      - 'The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during Denver Startup Week.' 
+      - 'Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!'
+    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    button_page_url: 'present'
+  - title: 'Content'
+    description: 
+      - 'Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.'
+    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    button_page_url: 'content'
