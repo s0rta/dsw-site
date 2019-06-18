@@ -4,7 +4,7 @@ require "spec_helper"
 describe AvatarUploader do
   include CarrierWave::Test::Matchers
 
-  let(:user) { double("user") }
+  let(:user) { build_stubbed(:user) }
   let(:uploader) { AvatarUploader.new(user, :avatar) }
 
   before do
