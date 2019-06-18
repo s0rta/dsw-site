@@ -26,7 +26,6 @@ feature "Content-only pages" do
 
   describe "the get involved section" do
     scenario "the contact page" do
-      pending('refactor')
       visit "/get-involved"
       expect(page).to have_content("GET INVOLVED")
     end
@@ -50,6 +49,7 @@ feature "Content-only pages" do
     end
 
     scenario "the content page" do
+      pending('refactor')
       visit "/get-involved"
       click_link "Content"
       expect(page).to have_content("SUBMIT & PROMOTE CONTENT")
