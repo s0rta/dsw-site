@@ -4,6 +4,11 @@ section.common
   .section-content.sm-centered
     = form_for(resource, as: resource_name, url: user_registration_path, honeypot: true) do |f|
 
+      = image_tag(resource.avatar.url(:thumb)) if resource.avatar?
+
+      = f.label :avatar, 'Avatar'
+      = f.file_field :avatar, data: { bindable: 'showfilesize' }
+
       = f.label :name, 'Name (First and Last)'
       = f.text_field :name, required: 'required', autofocus: 'autofocus'
 
