@@ -10,11 +10,10 @@
           | Edit Profile
       .Dashboard-profile
         .Dashboard-profile-wrapper
-          = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user }
+          = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user, image_only: true }
           .Dashboard-profile-info
             .Dashboard-profile-name #{current_user.name}
             .Dashboard-profile-secondary #{current_user.email}
-            .Dashboard-profile-secondary https://www.linkedin.com/in/seth-paye-57500b3a/
 
     section.Dashboard-section
       .Dashboard-header-wrapper
@@ -29,7 +28,7 @@
 
   section.Dashboard-section
     .Dashboard-header-wrapper
-      h1.Dashboard-header My Articles
+      h1.Dashboard-header My Content
       a.Dashboard-header-action href="#{new_submission_path}"
           = image_tag "redesign/submit-article.svg", class: 'Dashboard-header-action-image'
           | Submit Article
@@ -39,7 +38,7 @@
           li.Dashboard-card-list-item
             = render partial: 'components/article_card', locals: { article: article }
     - if @articles.blank?
-      .Dashboard-empty-message You have not submitted any articles yet.
+      .Dashboard-empty-message You have not submitted any content for this year.
 
   section.Dashboard-section
     .Dashboard-header-wrapper
