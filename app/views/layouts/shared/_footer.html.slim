@@ -1,4 +1,8 @@
 footer.Footer
+  - unless content_for(:hide_footer_callouts)
+    .Footer-primary-callouts
+      = render layout: 'layouts/shared/layout_wrapper' do
+        = render partial: 'layouts/shared/primary_callouts_nav'
   .Footer-blocks
     nav aria-label="Footer"
       ul.Footer-block

@@ -7,11 +7,6 @@ div.Tracks-list-wrapper
       = render 'components/content_card_list_item' do
         = render 'components/content_card', card: card, title: "Clusters", page_url: "program/clusters/#{card[:name]}"
 
-= render layout: 'layouts/shared/layout_wrapper' do
-  div.Tracks-primary-callouts
-    = render partial: 'layouts/shared/primary_callouts_nav'
-
-
 
 
 
