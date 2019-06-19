@@ -17,7 +17,7 @@
       .ArticlesNew-header Related Track(s)
 
       .ArticlesNew-tracks
-        = f.collection_check_boxes :track_ids, Track.all, :id, :name do |b|
+        = f.collection_check_boxes :track_ids, Track.all, :id, :name, include_hidden: false do |b|
           = b.label(class:"ArticlesNew-track-label") do
             = b.check_box(class:"ArticlesNew-track-input")
             = b.text

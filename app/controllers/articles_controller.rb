@@ -28,6 +28,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    @article = Article.find(params[:id])
     @article.update(article_params)
     if @article.save
       flash[:notice] = "Thanks! Your article update has been received!"
@@ -41,8 +42,8 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(
       :title,
       :body,
-      :track_ids,
-      :header_image
+      :header_image,
+      track_ids: []
     )
   end
 end
