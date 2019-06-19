@@ -1,40 +1,122 @@
-= render partial: 'nav', locals: { item: :mine }
 
-- if AnnualSchedule.registration_open?
-  - if registered?
-    section.common
-      .section-content.sm-centered
-        h1 Your Registration
-        = link_to 'View Your Schedule', schedules_path(filter: 'mine'), class: 'btn primary'
-  - else
-    section.common
-      .section-content.sm-centered
-        h1 Registration
-        = link_to 'Register to attend', new_registration_path, class: 'btn primary'
+= render layout: 'layouts/shared/layout_wrapper' do
 
-section.common
-  .section-content.sm-centered
-    h1 Your Submissions
+  section.Dashboard-section-wrapper
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header Profile
+        a.Dashboard-header-action href="#{edit_user_registration_path}"
+          = image_tag "redesign/profile.svg", class: 'Dashboard-header-action-image'
+          | Edit Profile
+      .Dashboard-profile
+        .Dashboard-profile-wrapper
+          = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user, image_only: true }
+          .Dashboard-profile-info
+            .Dashboard-profile-name #{current_user.name}
+            .Dashboard-profile-secondary #{current_user.email}
+
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header Connect
+      p.Dashboard-connect-text Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit.
+      .Dashboard-connect-action
+        span class="Dashboard-icon-wrapper fa-stack"
+          i class="fa Dashboard-fa-circle fa-stack-2x"
+          i class="fab Dashboard-icon fa-2x fa-linkedin-in fa-stack-1x"
+        = render layout: 'components/toggle' do
+          input type="checkbox"
+
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header My Content
+      a.Dashboard-header-action href="#{new_submission_path}"
+          = image_tag "redesign/submit-article.svg", class: 'Dashboard-header-action-image'
+          | Submit Article
+    - if @articles.any?
+      ul.Dashboard-card-list
+        - @articles.each do |article|
+          li.Dashboard-card-list-item
+            = render partial: 'components/article_card', locals: { article: article }
+    - if @articles.blank?
+      .Dashboard-empty-message You have not submitted any content for this year.
+
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header My Sessions
+      - if AnnualSchedule.cfp_open?
+        a.Dashboard-header-action href="#{new_submission_path}"
+          = image_tag "redesign/submit-session.svg", class: 'Dashboard-header-action-image'
+          | Submit Session
     - if @submissions.any?
-      - @submissions.each do |submission|
-        .talk-submission
-          h6 #{submission.full_title} (#{submission.track.name})
-          - if submission.editable?
-            = link_to edit_submission_path(submission), title: 'Propose Updates' do
-              = render partial: 'icons/pencil'
-    - else
-      h6 You have not yet submitted any proposals for this year.
+      ul.Dashboard-card-list
+        - @submissions.each do |submission|
+          li.Dashboard-card-list-item
+            = render partial: 'components/session_card', locals: { session: submission }
+    - if @submissions.blank?
+      .Dashboard-empty-message You have not yet submitted any proposals for this year.
 
-- if AnnualSchedule.cfp_open?
-  section.common
-    .section-content.sm-centered
-      = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'
+  - if AnnualSchedule.registration_open?
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header My Schedule
+        a.Dashboard-header-action href="#{schedules_path}"
+          = image_tag "redesign/schedule.svg", class: 'Dashboard-header-action-image'
+          | View Schedule
+      -if @my_schedule.any?
+        ul.Dashboard-schedule
+          - @my_schedule.each do |submission|
+            li.Dashboard-schedule-item
+              = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
+      - if @my_schedule.blank?
+        .Dashboard-empty-message You have not registered for any sessions this year.
 
-- if @previous_submissions.any?
-  section.common
-    .section-content.sm-centered
-      h1 Previous Years' Submissions
-      - @previous_submissions.each do |submission|
-        .talk-submission
-          h6
-            | #{truncate(submission.full_title, length: 70)} (#{submission.year}, #{submission.track.name})
+  - if @previous_submissions.any?
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header My Previous Year's Sessions
+      ul.Dashboard-card-list
+        - @previous_submissions.each do |submission|
+          li.Dashboard-card-list-item
+            = render partial: 'components/session_card', locals: { session: submission }
+
+
+/ = render partial: 'nav', locals: { item: :mine }
+
+/ - if AnnualSchedule.registration_open?
+/   - if registered?
+/     section.common
+/       .section-content.sm-centered
+/         h1 Your Registration
+/         = link_to 'View Your Schedule', schedules_path(filter: 'mine'), class: 'btn primary'
+/   - else
+/     section.common
+/       .section-content.sm-centered
+/         h1 Registration
+/         = link_to 'Register to attend', new_registration_path, class: 'btn primary'
+
+/ section.common
+/   .section-content.sm-centered
+/     h1 Your Submissions
+/     - if @submissions.any?
+/       - @submissions.each do |submission|
+/         .talk-submission
+/           h6 #{submission.full_title} (#{submission.track.name})
+/           - if submission.editable?
+/             = link_to edit_submission_path(submission), title: 'Propose Updates' do
+/               = render partial: 'icons/pencil'
+/     - else
+/       h6 You have not yet submitted any proposals for this year.
+
+/ - if AnnualSchedule.cfp_open?
+/   section.common
+/     .section-content.sm-centered
+/       = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'
+
+/ - if @previous_submissions.any?
+/   section.common
+/     .section-content.sm-centered
+/       h1 Previous Years' Submissions
+/       - @previous_submissions.each do |submission|
+/         .talk-submission
+/           h6
+/             | #{truncate(submission.full_title, length: 70)} (#{submission.year}, #{submission.track.name})

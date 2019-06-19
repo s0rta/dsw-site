@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :registrations, dependent: :destroy
   has_many :pitch_contest_votes, class_name: "PitchContest::Vote", dependent: :destroy
+  has_many :articles, foreign_key: "author_id"
 
   has_and_belongs_to_many :chaired_tracks, class_name: "Track"
   has_and_belongs_to_many :companies
