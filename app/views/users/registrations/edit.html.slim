@@ -1,32 +1,34 @@
 - content_for(:fullscreen_takeover, true)
+- avatar_content = image_tag(resource.avatar.url(:thumb))
 
-= render 'layouts/shared/fullscreen_takeover_header', title: 'Update Profile', background: 'light'
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Edit Profile', background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
   .Profile-form
+    .Profile-form-title Profile
+
     = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
+
+      = render 'components/profile_avatar_upload', locals = { f: f }
+
       .Profile-inputs
         .Profile-input
           = render layout: 'components/floating_input' do
             = f.text_field :name, required: 'required', autofocus: 'autofocus'
-            = f.label :name, 'Name'
-        .Profile-input
-          = render layout: 'components/floating_input' do
-            = f.text_field :description, required: 'required'
-            = f.label :description, 'Tagline'
-      .Profile-inputs
+            = f.label :name, 'First and Last Name'
         .Profile-input
           = render layout: 'components/floating_input' do
             = f.text_field :email, required: 'required'
             = f.label :email, 'E-mail Address'
 
+      / .Profile-inputs
+      /   .Profile-input
+      /     = render layout: 'components/floating_input' do
+      /       = f.text_field :description, required: 'required'
+      /       = f.label :description, 'Tagline'
+
+
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p.Profile-unconfirmed Currently waiting confirmation for: #{resource.unconfirmed_email}
-
-      / = image_tag(resource.avatar.url(:thumb)) if resource.avatar?
-
-      / = f.label :avatar, 'Avatar'
-      / = f.file_field :avatar, data: { bindable: 'showfilesize' }
-
 
       .Profile-inputs
         .Profile-input
@@ -48,7 +50,7 @@
         - unless resource.errors.empty?
           div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
       .Profile-actions
-        = f.submit 'Submit', class: 'Profile-submit'
+        = f.submit 'Update', class: 'Profile-submit'
 
 
 / = render partial: 'dashboards/nav', locals: { item: :profile }

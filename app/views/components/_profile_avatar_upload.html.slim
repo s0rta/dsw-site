@@ -1,0 +1,6 @@
+- avatar_content = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: resource, image_only: true }
+
+.ProfileAvatarUpload
+  = f.label :avatar, avatar_content , class: 'ProfileAvatarUpload-label'
+  = f.file_field :avatar, data: { bindable: 'showfilesize' }, class: 'ProfileAvatarUpload-input'
+  .ProfileAvatarUpload-name#file-select-name-js
