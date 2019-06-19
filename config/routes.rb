@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # Redirects for old paths
+  get "/get-involved/team", to: redirect("/about/team")
   get "/contact/press", to: redirect("/press")
   get "/contact/assets", to: redirect("/assets")
-  get "/faq", to: redirect("/get-involved/faq")
+  get "/faq", to: redirect("/about/faq")
   get "/contact", to: redirect("/get-involved")
 
   get "/resources", to: redirect("/program")
@@ -33,6 +34,8 @@ Rails.application.routes.draw do
   get "/about/youth", to: redirect("/initiatives/youth")
   get "/program/youth", to: redirect("/initiatives/youth")
   get "/panel-picker/mine", to: redirect("/dashboard")
+  get "/voting/mine", to: redirect("/dashboard")
+  get "/panel-picker", to: redirect("/voting")
 
   # Vanity redirects
   get "/live", to: redirect("https://dswlive.intelivideo.com/")
@@ -48,7 +51,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :submissions, except: [:destroy], path: "panel-picker", path_names: {new: "submit"} do
+  resources :submissions, except: [:destroy], path: "voting", path_names: {new: "submit"} do
     collection do
       get :thanks
       get :by_day

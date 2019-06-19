@@ -23,6 +23,7 @@ import 'components/mapquest_map';
 import 'components/booking_dropdown';
 import 'components/autocompleter';
 import 'components/menu';
+import 'components/file_select';
 
 import 'awesomplete/awesomplete.css';
 

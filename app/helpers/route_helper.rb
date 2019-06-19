@@ -1,7 +1,7 @@
 module RouteHelper
 
   def main_menu
-    menu = [home_route, main_program_route, main_about_route, sponsors_route, get_involved_route, articles_route]
+    menu = [home_route, main_program_route, main_about_route, sponsors_route, main_get_involved_route, articles_route]
 
     if registration_open?
       menu.push schedule_route
@@ -29,6 +29,10 @@ module RouteHelper
 
   def about_routes
     [about_route, team_route, faq_route, assets_route]
+  end
+
+  def get_involved_routes
+    [get_involved_route, present_route, content_route]
   end
 
   def social_media_routes
@@ -63,13 +67,6 @@ module RouteHelper
     }
   end
 
-  def overview_route
-    {
-      path: "/about/overview",
-      label: "overview"
-    }
-  end
-
   def team_route
     {
       path: "/about/team",
@@ -98,10 +95,32 @@ module RouteHelper
     }
   end
 
+  def main_get_involved_route
+    {
+      path: "/get-involved",
+      label: "get involved",
+      nested_routes: get_involved_routes
+    }
+  end
+
   def get_involved_route
     {
       path: "/get-involved",
-      label: "get involved"
+      label: "overview"
+    }
+  end
+
+  def present_route
+    {
+      path: "/get-involved/present",
+      label: "present"
+    }
+  end
+
+  def content_route
+    {
+      path: "/get-involved/content",
+      label: "content"
     }
   end
 

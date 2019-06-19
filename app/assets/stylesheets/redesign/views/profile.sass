@@ -1,0 +1,43 @@
+@import ../config
+
+.Profile-form
+  max-width: 900px
+  margin-top: 60px
+
+.Profile-form-title
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 28px
+  text-transform: uppercase
+  margin-bottom: 40px
+
+.Profile-inputs
+  display: flex
+  justify-content: space-between
+  flex-wrap: wrap
+  margin-left: -15px
+
+.Profile-input
+  flex: 1
+  padding: 0 15px
+  margin-top: 10px
+  min-width: 300px
+
+.Profile-submit
+  +white-button(220px, 46px)
+  width: 220px
+
+.Profile-actions
+  margin-top: 60px
+  display: flex
+  align-items: center
+  justify-content: flex-end
+
+.Profile-error-messages
+  color: $red-light
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px
+
+.Profile-unconfirmed
+  +font-family-mixin(Montserrat-Medium)
+  color: $primary-font-medium
