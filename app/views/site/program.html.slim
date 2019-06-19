@@ -5,7 +5,7 @@ div.Program-list-wrapper
   = render 'components/content_card_list', attributes: { 'aria-label': "Programs" }  do
     - programs_static_data[:programs].each do |card|
       = render 'components/content_card_list_item' do
-        = render 'components/content_card', card: card, button_title: "#{card[:button_title]}", title: "Program", page_url: "program/"
+        = render 'components/content_card', card: card, title: "Program", page_url: "program/"
 
 
 / = render partial: 'layouts/shared/program_nav', locals: { item: :overview }
