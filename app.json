@@ -1,6 +1,6 @@
 {
   "name": "dsw-site",
-  "description": "Denver Startup Week Website, Panel Picker, Scheduler, and Admin Tools",
+  "description": "Denver Startup Week Website, Scheduler, and Admin Tools",
   "repository": "https://github.com/denverstartupweek/dsw-site",
   "scripts": { },
   "env": { },

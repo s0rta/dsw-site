@@ -27,7 +27,7 @@ header.masthead.section__wrap(data-bindable='toggle-nav')
             = link_to 'Sign In/Sign Up', dashboard_path, class: active_item == 'users' ? 'active' : ''
         - if AnnualSchedule.voting_open?
           div.primary
-            = link_to 'Panel Picker', submissions_path, class: active_item == 'users' ? 'active' : ''
+            = link_to 'Session Selection', submissions_path, class: active_item == 'users' ? 'active' : ''
         div
           = link_to 'Program', page_path(page: 'program'), class: %w(program basecamp).include?(active_item) ? 'active' : ''
         div
