@@ -1,43 +1,43 @@
 @import ../config
 
-.ArticlesNew-form
+.ArticlesForm
   max-width: 900px
   margin-top: 60px
 
-.ArticlesNew-inputs
+.ArticlesForm-inputs
   display: flex
   justify-content: space-between
   flex-wrap: wrap
   margin-left: -15px
 
-.ArticlesNew-input
+.ArticlesForm-input
   flex: 1
   padding: 0 15px
   margin-top: 10px
   min-width: 300px
 
-.ArticlesNew-submit
+.ArticlesForm-submit
   +white-button(220px, 46px)
   width: 220px
 
-.ArticlesNew-actions
+.ArticlesForm-actions
   margin-top: 60px
   display: flex
   align-items: center
   justify-content: flex-end
 
-.ArticlesNew-error-messages
+.ArticlesForm-error-messages
   color: $red-light
   +font-family-mixin(Montserrat-Medium)
   font-size: 14px
   margin-top: 25px
 
-.ArticlesNew-label
+.ArticlesForm-label
   +font-family-mixin(Montserrat-Medium)
   color: $primary-font-light
   font-size: 14px
 
-.ArticlesNew-textarea
+.ArticlesForm-textarea
   +font-family-mixin(Montserrat-Light)
   border: 0
   border-bottom: 1px solid $gray-border-light
@@ -48,19 +48,19 @@
   margin-top: 5px
   padding-bottom: 5px
 
-.ArticlesNew-header
+.ArticlesForm-header
   +font-family-mixin(Montserrat-Light)
   color: $primary-font-dark
   text-transform: uppercase
   font-size: 28px
   margin: 68px 0 40px
 
-.ArticlesNew-tracks
+.ArticlesForm-tracks
   display: flex
   flex-wrap: wrap
   margin-bottom: 68px
 
-.ArticlesNew-track-label
+.ArticlesForm-track-label
   +font-family-mixin(Montserrat-Medium)
   display: flex
   color: $primary-font-light
@@ -68,23 +68,23 @@
   min-width: 50%
   margin-bottom: 24px
 
-.ArticlesNew-track-input
+.ArticlesForm-track-input
   width: 14px
   margin-right: 24px
 
-.ArticlesNew-required-text
+.ArticlesForm-required-text
   +font-family-mixin(Montserrat-Light)
   color: $primary-font-medium
   font-size: 14px
   margin-top: 40px
 
-.ArticlesNew-instructions
+.ArticlesForm-instructions
   +font-family-mixin(Montserrat-Light)
   color: $primary-font-medium
   font-size: 14px
   margin-bottom: 40px
 
-.ArticlesNew-hint
+.ArticlesForm-hint
   +font-family-mixin(Montserrat-Light)
   color: $primary-font-medium
   font-style: italic
@@ -92,7 +92,7 @@
   margin-top: 15px
   max-width: 500px
 
-.ArticlesNew-upload-input
+.ArticlesForm-upload-input
   width: 0.1px
   height: 0.1px
   opacity: 0
@@ -100,17 +100,17 @@
   position: absolute
   z-index: -1
 
-.ArticlesNew-upload
+.ArticlesForm-upload
   margin-bottom: 60px
 
-.ArticlesNew-upload-label
+.ArticlesForm-upload-label
   +font-family-mixin(Montserrat-Medium)
   font-size: 12px
   cursor: pointer
   color: $teal-light
   text-transform: uppercase
 
-.ArticlesNew-upload-name
+.ArticlesForm-upload-name
   margin-top: 6px
   +font-family-mixin(Montserrat-Light)
   color: $primary-font-medium
@@ -119,6 +119,6 @@
 
 
 @media(max-width: 550px)
-  .ArticlesNew-tracks
+  .ArticlesForm-tracks
     flex-direction: column
 

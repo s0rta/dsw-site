@@ -4,45 +4,45 @@
 = render 'layouts/shared/fullscreen_takeover_header', title: content_for(:article_page_title), background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
 
-  .ArticlesNew-form
-    .ArticlesNew-instructions Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid.
+  .ArticlesForm
+    .ArticlesForm-instructions Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid.
 
     = form_for @article do |f|
-      .ArticlesNew-inputs
-        .ArticlesNew-input
+      .ArticlesForm-inputs
+        .ArticlesForm-input
           = render layout: 'components/floating_input' do
             = f.text_field :title, required: 'required', autofocus: 'autofocus'
             = f.label :title, 'Article Title*'
 
-      .ArticlesNew-header Related Track(s)
+      .ArticlesForm-header Related Track(s)
 
-      .ArticlesNew-tracks
+      .ArticlesForm-tracks
         = f.collection_check_boxes :track_ids, Track.all, :id, :name, include_hidden: false do |b|
-          = b.label(class:"ArticlesNew-track-label") do
-            = b.check_box(class:"ArticlesNew-track-input")
+          = b.label(class:"ArticlesForm-track-label") do
+            = b.check_box(class:"ArticlesForm-track-input")
             = b.text
 
-      .ArticlesNew-upload
-        = f.label :header_image, upload_label, class: 'ArticlesNew-upload-label'
-        = f.file_field :header_image, data: { bindable: 'showfilesize' }, class: 'ArticlesNew-upload-input'
-        .ArticlesNew-upload-name#file-select-name-js
-        .ArticlesNew-hint Image should be in a horizontal format with no important content near edges. Images will scale and crop according to users browser size.
+      .ArticlesForm-upload
+        = f.label :header_image, upload_label, class: 'ArticlesForm-upload-label'
+        = f.file_field :header_image, data: { bindable: 'showfilesize' }, class: 'ArticlesForm-upload-input'
+        .ArticlesForm-upload-name#file-select-name-js
+        .ArticlesForm-hint Image should be in a horizontal format with no important content near edges. Images will scale and crop according to users browser size.
 
 
-      .ArticlesNew-inputs
-        .ArticlesNew-input
-          = f.label :body, 'Article Body*', class: 'ArticlesNew-label'
-          = f.text_area :body, class: 'ArticlesNew-textarea', id: 'article_body_editable'
+      .ArticlesForm-inputs
+        .ArticlesForm-input
+          = f.label :body, 'Article Body*', class: 'ArticlesForm-label'
+          = f.text_area :body, class: 'ArticlesForm-textarea', id: 'article_body_editable'
 
-      .ArticlesNew-required-text
+      .ArticlesForm-required-text
         | *Required
 
-      .ArticlesNew-error-messages
+      .ArticlesForm-error-messages
         - unless @article.errors.empty?
           div Please correct the following errors: #{@article.errors.full_messages.to_sentence}
 
-      .ArticlesNew-actions
-        = f.submit 'Submit', class: 'ArticlesNew-submit'
+      .ArticlesForm-actions
+        = f.submit 'Submit', class: 'ArticlesForm-submit'
 
 
       javascript:
