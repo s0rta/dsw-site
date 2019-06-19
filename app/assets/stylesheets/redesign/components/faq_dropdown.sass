@@ -1,5 +1,45 @@
 @import ../config
 
-.FaqDropdown-title
+.FaqDropdown
   +font-family-mixin(Montserrat-Light)
+
+.FaqDropdown-accordion
+  cursor: pointer
+  text-align: left
   font-size: 16px
+  padding: 2px 0px
+  display: flex
+  align-items: center
+  width: 100%
+  margin-bottom: 10px
+  // background: none
+  // border: none
+  
+  .FaqDropdown-icons
+    font-size: 28px
+    color: $teal-light
+    margin-right: 15px
+  
+  .FaqDropdown-plus
+    display: inline-block  
+  
+  .FaqDropdown-minus
+    display: none
+  
+  &.active
+    margin-bottom: 10px
+    
+    .FaqDropdown-plus
+      display: none
+    
+    .FaqDropdown-minus
+      display: inline-block
+
+.FaqDropdown-panel
+  display: none
+  font-size: 14px
+  
+  &.show
+    display: block
+    margin-left: 24px
+    margin-bottom: 22px
