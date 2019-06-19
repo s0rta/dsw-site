@@ -22,6 +22,12 @@
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p.Profile-unconfirmed Currently waiting confirmation for: #{resource.unconfirmed_email}
 
+      / = image_tag(resource.avatar.url(:thumb)) if resource.avatar?
+
+      / = f.label :avatar, 'Avatar'
+      / = f.file_field :avatar, data: { bindable: 'showfilesize' }
+
+
       .Profile-inputs
         .Profile-input
           = render layout: 'components/floating_input' do

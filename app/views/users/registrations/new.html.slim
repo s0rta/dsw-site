@@ -35,6 +35,13 @@
       - if registration_open? && !came_from_registration?
         = render partial: 'components/register_to_attend_radio'
 
+
+      / = image_tag(resource.avatar.url(:thumb)) if resource.avatar?
+
+      / = f.label :avatar, 'Avatar'
+      / = f.file_field :avatar, data: { bindable: 'showfilesize' }
+
+
       .SignUp-actions
         div.SignUp-link-wrapper
           | Already have an account?

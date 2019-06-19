@@ -31,7 +31,7 @@ same.
 
 #### Running Tests
 
-You will need Chrome and Chromedriver to run the tests, which you can install with Homebrew:
+You will need ImageMagick, Chrome and Chromedriver to run the tests, which you can install with Homebrew:
 
 ```
 brew cask install google-chrome chromedriver
