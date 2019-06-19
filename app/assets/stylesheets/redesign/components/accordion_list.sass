@@ -1,9 +1,9 @@
 @import ../config
 
-.FaqDropdown
+.AccordionListItem
   +font-family-mixin(Montserrat-Light)
 
-.FaqDropdown-accordion
+.AccordionListItem-accordion
   cursor: pointer
   text-align: left
   font-size: 16px
@@ -12,30 +12,30 @@
   align-items: center
   width: 100%
   margin-bottom: 10px
-  // background: none
-  // border: none
+  background: none
+  border: none
   
-  .FaqDropdown-icons
+  .AccordionListItem-icons
     font-size: 28px
     color: $teal-light
     margin-right: 15px
   
-  .FaqDropdown-plus
+  .AccordionListItem-plus
     display: inline-block  
   
-  .FaqDropdown-minus
+  .AccordionListItem-minus
     display: none
   
   &.active
     margin-bottom: 10px
     
-    .FaqDropdown-plus
+    .AccordionListItem-plus
       display: none
     
-    .FaqDropdown-minus
+    .AccordionListItem-minus
       display: inline-block
 
-.FaqDropdown-panel
+.AccordionListItem-panel
   display: none
   font-size: 14px
   
