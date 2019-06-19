@@ -5,4 +5,4 @@ div.About-list-wrapper
   = render 'components/content_card_list', attributes: { 'aria-label': "About page" }  do
     - about_static_data[:items].each do |card|
       = render 'components/content_card_list_item' do
-        = render 'components/content_card', card: card, button_title: "#{card[:button_title]}", title: "#{card[:title]}", page_url: "about/#{card[:button_page_url]}"
+        = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "about/#{card[:button_page_url]}"
