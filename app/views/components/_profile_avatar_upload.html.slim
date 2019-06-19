@@ -1,4 +1,4 @@
-- avatar_content = image_tag(resource.avatar.url(:thumb))
+- avatar_content = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: resource, image_only: true }
 
 .ProfileAvatarUpload
   = f.label :avatar, avatar_content , class: 'ProfileAvatarUpload-label'
