@@ -75,7 +75,7 @@ Rails.application.routes.draw do
   resources :general_inquiries, only: :create
   resources :sponsor_signups, only: :create
 
-  resources :articles, only: %i[index show]
+  resources :articles,  except: [:destroy]
 
   scope :program do
     resources :clusters, only: :show, param: :name

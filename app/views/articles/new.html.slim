@@ -1,0 +1,68 @@
+- content_for(:fullscreen_takeover, true)
+- upload_label = 'Add Header Image +'
+
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Submit Article', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+
+  .ArticlesNew-form
+    .ArticleNew-instructions Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid.
+
+    = form_for @article do |f|
+      .ArticlesNew-inputs
+        .ArticlesNew-input
+          = render layout: 'components/floating_input' do
+            = f.text_field :title, required: 'required', autofocus: 'autofocus'
+            = f.label :title, 'Article Title*'
+
+      .ArticlesNew-header Related Track(s)
+
+      .ArticleNew-tracks
+        = f.collection_check_boxes :track_ids, Track.all, :id, :name do |b|
+          = b.label(class:"ArticleNew-track-label") do
+            = b.check_box(class:"ArticleNew-track-input")
+            = b.text
+
+      .ArticleNew-upload
+        = f.label :header_image, upload_label, class: 'ArticleNew-upload-label'
+        = f.file_field :header_image, data: { bindable: 'showfilesize' }, class: 'ArticleNew-upload-input'
+        .ArticleNew-upload-name#file-select-name-js
+        .ArticleNew-hint Image should be in a horizontal format with no important content near edges. Images will scale and crop according to users browser size.
+
+
+      .ArticlesNew-inputs
+        .ArticlesNew-input
+          = f.label :body, 'Article Body*', class: 'ArticlesNew-label'
+          = f.text_area :body, required: 'required', autofocus: 'autofocus', class: 'ArticlesNew-textarea', id: 'article_body_editable'
+
+      .ArticlewNew-required-text
+        | *Required
+
+      .ArticlesNew-actions
+        = f.submit 'Submit', class: 'ArticlesNew-submit'
+
+
+      javascript:
+        var editor = new MediumEditor('#article_body_editable', {
+          "spellcheck": false,
+          "toolbar": {
+            "buttons": [
+              "bold",
+              "italic",
+              "underline",
+              "anchor",
+              "orderedlist",
+              "unorderedlist",
+              "strikethrough",
+              "subscript",
+              "superscript",
+              "pre",
+              "h1",
+              "h2",
+              "h3",
+              "h4",
+              "h5",
+              "h6",
+              "html",
+            ],
+          },
+        });
