@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create update]
+  before_action :authenticate_user!, only: %i[new create update edit]
 
   def index
     @articles = Article.all
@@ -25,6 +25,11 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    if @article.author_id != current_user.id
+      redirect_to dashboard_path
+    else
+      respond_with @article
+    end
   end
 
   def update
