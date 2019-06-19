@@ -3,9 +3,11 @@
     - if article[:header_image]
       .ArticleCard-image(style="background-image: url(#{image_url article[:header_image]})")
     .ArticleCard-content
-      .ArticleCard-date #{article[:date]}
+      .ArticleCard-date #{article[:published_at].strftime("%b%e, %Y")}
       h2.ArticleCard-title #{article[:title]}
+      - if article[:header_image].nil?
+        .ArticleCard-body-preview #{article[:body].truncate(175).html_safe}
       .ArticleCard-tracks
-        - article[:tracks].each do |track|
+        - article.tracks.each do |track|
           =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
 

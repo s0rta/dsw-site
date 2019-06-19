@@ -72,7 +72,7 @@
         - if @current_user.present?
           - @session.registrants.reorder('"session_registrations"."created_at" DESC').each do |user|
             .SessionDetail-attendee
-              = render partial: 'components/name_with_avatar', locals: { name: user.name, initials: user.initials, align: 'right', color: 'gray' }
+              = render partial: 'components/name_with_avatar', locals: { user: user, align: 'right', color: 'gray' }
 
   - if user_signed_in? && @session.open_for_feedback?
     = render partial: 'feedback_form'

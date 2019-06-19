@@ -1,0 +1,41 @@
+@import ../config
+
+.Avatar
+  display: flex
+  justify-content: center
+  align-items: center
+  @include font-family-mixin(Montserrat-Light)
+  border-width: 1px
+  border-style: solid
+  border-radius: 50%
+  text-transform: uppercase
+
+  &.is-large
+    font-size: 24px
+    height: 80px
+    width: 80px
+
+  &.is-small
+    font-size: 18px
+    height: 46px
+    width: 46px
+
+  &.is-grey
+    color: $primary-font-medium
+    border-color: $primary-font-medium
+
+  &.is-teal
+    color: $teal-light
+    border-color: $teal-light
+
+  &.is-image
+    border: 0
+
+  &.is-image-only
+    border: 0
+    background: #ececec
+
+.Avatar-image
+  height: 100%
+  width: 100%
+  border-radius: 50%

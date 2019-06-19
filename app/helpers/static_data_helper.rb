@@ -1,10 +1,6 @@
 module StaticDataHelper
   def featured_static_data
-    data = HashWithIndifferentAccess.new(
-      YAML.safe_load(File.read(File.expand_path("../data/featured.yml",  __dir__)))
-    ).deep_transform_keys(&:to_sym)
-    puts data[:features].first[:tracks].first[:name]
-    data
+    { features: [] }
   end
 
   def secondary_nav_static_data
