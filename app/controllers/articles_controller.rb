@@ -10,10 +10,17 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new(author_id: current_user.id)
+    @article = Article.new
   end
 
   def create
+    @article = current_user.articles.new(article_params)
+    if @article.save
+      flash[:notice] = "Thanks! Your article has been received!"
+      redirect_to dashboard_path
+    else
+      respond_with @article
+    end
   end
 
   def update
@@ -23,7 +30,8 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(
       :title,
       :body,
-      :track_ids
+      :track_ids,
+      :header_image
     )
   end
 end
