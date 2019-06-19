@@ -183,7 +183,7 @@ HomepageCta.reset_column_information
       Submit a topic for consideration for {{ current_date | date: "%Y" }}.
     BODY
     link_text: "Submit a Topic",
-    link_href: "/panel-picker/mine",
+    link_href: "/voting/mine",
     relevant_to_cycle: "cfp",
     priority: 100,
   },
@@ -195,7 +195,7 @@ HomepageCta.reset_column_information
       Don't delay, cast your vote and spread the word.
     BODY
     link_text: "Vote Now",
-    link_href: "/panel-picker",
+    link_href: "/voting",
     relevant_to_cycle: "voting",
     priority: 100,
   },

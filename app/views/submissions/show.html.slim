@@ -1,7 +1,7 @@
-- content_for(:title, "#{@submission.year} Panel Picker")
+- content_for(:title, "#{@submission.year} Session Selection")
 - content_for(:subtitle, @submission.full_title)
 - content_for(:extra_meta_tags) do
-  meta(property="og:title" content="Denver Startup Week | #{@submission.year} Panel Picker | #{@submission.full_title}")
+  meta(property="og:title" content="Denver Startup Week | #{@submission.year} Session Selection | #{@submission.full_title}")
   meta(property="og:site_name" content="Denver Startup Week")
   meta(property="og:url" content="#{submission_url(@submission)}")
   meta(property="og:description" content="#{truncate(@submission.description, length: 300, separator: ' ')}")

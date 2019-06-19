@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get "/about/youth", to: redirect("/initiatives/youth")
   get "/program/youth", to: redirect("/initiatives/youth")
   get "/panel-picker/mine", to: redirect("/dashboard")
+  get "/voting/mine", to: redirect("/dashboard")
+  get "/panel-picker", to: redirect("/voting")
 
   # Vanity redirects
   get "/live", to: redirect("https://dswlive.intelivideo.com/")
@@ -49,7 +51,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :submissions, except: [:destroy], path: "panel-picker", path_names: {new: "submit"} do
+  resources :submissions, except: [:destroy], path: "voting", path_names: {new: "submit"} do
     collection do
       get :thanks
       get :by_day
