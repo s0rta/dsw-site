@@ -7,6 +7,9 @@
             = link_to route[:label], route[:path], class: "Menu-item-link #{route[:nested_routes].present? ? 'has-nested' : ''}"
             - if route[:nested_routes].present?
               button.Menu-item-button.open-secondary-nav-js(data-menu="#{route[:label]}") #{route[:label]}
+        - if user_signed_in?
+          li.Menu-item
+            = link_to 'Logout', destroy_user_session_path, method: :delete, class: "Menu-item-link"
     - main_menu.each do |route|
       - if route[:nested_routes].present?
         nav.Menu-nav.Menu-nav--secondary(id="#{route[:label]}-secondary-nav-js" aria-label="#{route[:label]} secondary nav")
