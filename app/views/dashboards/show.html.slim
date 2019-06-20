@@ -28,12 +28,12 @@
 
   section.Dashboard-section
     .Dashboard-header-wrapper
-      h1.Dashboard-header My Content
+      h1.Dashboard-header#my-content My Content
       a.Dashboard-header-action href="#{new_article_path}"
           = image_tag "redesign/submit-article.svg", class: 'Dashboard-header-action-image'
           | Submit Article
     - if @articles.any?
-      ul.Dashboard-card-list
+      ul.Dashboard-card-list(aria-labelledby="my-content")
         - @articles.each do |article|
           li.Dashboard-card-list-item
             = render partial: 'components/article_card', locals: { article: article }
@@ -42,13 +42,13 @@
 
   section.Dashboard-section
     .Dashboard-header-wrapper
-      h1.Dashboard-header My Sessions
+      h1.Dashboard-header#my-sessions My Sessions
       - if AnnualSchedule.cfp_open?
         a.Dashboard-header-action href="#{new_submission_path}"
           = image_tag "redesign/submit-session.svg", class: 'Dashboard-header-action-image'
           | Submit Session
     - if @submissions.any?
-      ul.Dashboard-card-list
+      ul.Dashboard-card-list(aria-labelledby="my-sessions")
         - @submissions.each do |submission|
           li.Dashboard-card-list-item
             = render partial: 'components/session_card', locals: { session: submission }
@@ -58,12 +58,12 @@
   - if AnnualSchedule.registration_open?
     section.Dashboard-section
       .Dashboard-header-wrapper
-        h1.Dashboard-header My Schedule
+        h1.Dashboard-header#my-schedule My Schedule
         a.Dashboard-header-action href="#{schedules_path}"
           = image_tag "redesign/schedule.svg", class: 'Dashboard-header-action-image'
           | View Schedule
       -if @my_schedule.any?
-        ul.Dashboard-schedule
+        ul.Dashboard-card-list(aria-labelledby="my-schedule")
           - @my_schedule.each do |submission|
             li.Dashboard-schedule-item
               = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
@@ -73,8 +73,8 @@
   - if @previous_submissions.any?
     section.Dashboard-section
       .Dashboard-header-wrapper
-        h1.Dashboard-header My Previous Year's Sessions
-      ul.Dashboard-card-list
+        h1.Dashboard-header#my-previous-sessions My Previous Year's Sessions
+      ul.Dashboard-card-list(aria-labelledby="my-previous-sessions")
         - @previous_submissions.each do |submission|
           li.Dashboard-card-list-item
             = render partial: 'components/session_card', locals: { session: submission }

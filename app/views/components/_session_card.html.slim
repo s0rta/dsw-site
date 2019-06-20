@@ -3,6 +3,7 @@
 
 = render 'components/card' do
   div.SessionCard(class="#{color}-background #{color}-font-on-#{color} #{color}-fill-on-#{color}-background")
+    a.SessionCard-link(href="#{schedule_path(session.to_param)}")
     div.SessionCard-type
       = render partial: "icons/#{icon}"
       span.SessionCard-name #{session.track[:name]}
