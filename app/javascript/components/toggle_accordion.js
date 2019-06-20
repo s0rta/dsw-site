@@ -12,15 +12,11 @@ export default class ToggleAccordion {
   }
 
   addListeners() {
-    return this.$el
-      .find(".AccordionListItem-accordion")
-      .on("click", this.handleClick);
+    return this.$el.on("click", this.handleClick);
   }
 
   removeListeners() {
-    this.$el
-      .find(".AccordionListItem-accordion")
-      .off("click", this.handleClick);
+    this.$el.off("click", this.handleClick);
   }
 
   handleClick(e) {
