@@ -218,7 +218,7 @@ module RouteHelper
     main_menu.each do |item|
       next unless item[:nested_routes].present?
       if item[:nested_routes].any? { |r| r[:path] == request.path }
-        starting_nav = item[:label]
+        starting_nav = item[:label].parameterize
       end
     end
     starting_nav

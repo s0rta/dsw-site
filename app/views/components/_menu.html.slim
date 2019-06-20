@@ -6,12 +6,15 @@
           li.Menu-item
             = link_to route[:label], route[:path], class: "Menu-item-link #{route[:nested_routes].present? ? 'has-nested' : ''}"
             - if route[:nested_routes].present?
-              button.Menu-item-button.open-secondary-nav-js(data-menu="#{route[:label]}") #{route[:label]}
+              button.Menu-item-button.open-secondary-nav-js(data-menu="#{route[:label].parameterize}") #{route[:label]}
+        - if user_signed_in?
+          li.Menu-item
+            = link_to 'Logout', destroy_user_session_path, method: :delete, class: "Menu-item-link"
     - main_menu.each do |route|
       - if route[:nested_routes].present?
-        nav.Menu-nav.Menu-nav--secondary(id="#{route[:label]}-secondary-nav-js" aria-label="#{route[:label]} secondary nav")
+        nav.Menu-nav.Menu-nav--secondary(id="#{route[:label].parameterize}-secondary-nav-js" aria-label="#{route[:label]} secondary nav")
           div.Menu-nav-secondary-header
-            button.Menu-nav-secondary-back-button.close-secondary-nav-js(aria-label="back to primary nav" data-menu="#{route[:label]}")
+            button.Menu-nav-secondary-back-button.close-secondary-nav-js(aria-label="back to primary nav" data-menu="#{route[:label].parameterize}")
               = render partial: 'icons/arrow_left'
             .Menu-item #{route[:label]}
           ul.Menu-list.Menu-list--secondary
