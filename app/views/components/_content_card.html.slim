@@ -14,7 +14,9 @@ div.ContentCard
       - else
         p.ContentCard-description #{card[:description]}
       .ContentCard-action
-        - if card[:button_title].present?
+        - if card[:button_title].present? && card[:button_page_url].include?("https://") || card[:button_page_url].include?("mailto:") 
+          = link_to "#{card[:button_title]}", "#{page_url}", :target => "_blank", class: 'ContentCard-link' 
+        - elsif card[:button_title].present?
           = link_to "#{card[:button_title]}", page_path(page: "#{page_url}"), class: 'ContentCard-link'
         - else
           = link_to "Explore the #{title}", page_path(page: "#{page_url}"), class: 'ContentCard-link'
