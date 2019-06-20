@@ -1,6 +1,6 @@
 .Avatar(class="is-#{size} is-#{color} #{user.avatar.present? ? 'is-image' : ''} #{local_assigns[:image_only] ? 'is-image-only' : ''}")
   - if user.avatar.present?
-    img src="#{user.avatar.url(:thumb)}"
+    img.Avatar-image src="#{user.avatar.url(:thumb)}"
   - elsif local_assigns[:image_only]
     = image_tag "redesign/photo-placeholder.svg"
   - else
