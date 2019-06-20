@@ -22,6 +22,9 @@ html
     meta(name="twitter:card" content="summary")
     meta(name="og:image" content="#{image_url('redesign/dsw-logo.png')}")
     = content_for(:extra_meta_tags)
+    script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"
+    link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8"
+    link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/themes/default.css"
 
   body(id="#{controller_name}_controller" class="#{params[:page] || 'unknown'}-action")
     - unless content_for(:fullscreen_takeover)
