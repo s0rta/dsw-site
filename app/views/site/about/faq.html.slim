@@ -4,6 +4,4 @@
 .Faq-container
   = render 'components/accordion_list', attributes: { 'aria-label': "Faq questions" }  do
     - helpscout_articles_for_category('Website').each do |article|
-      = render 'components/accordion_list_item', title: "#{article[:name]}", panel: "#{article[:content]}"
-
-  = render partial: 'layouts/shared/faq/finance'
+      = render 'components/accordion_list_item', title: process_with_liquid(article.name).html_safe, panel: process_with_liquid(article.content).html_safe
