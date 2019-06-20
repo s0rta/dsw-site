@@ -15,6 +15,7 @@ import 'jquery-ujs';
 
 import 'components/newsletter_signup';
 import 'components/general_inquiry';
+import "components/toggle_accordion";
 import 'components/toggle_faq';
 import 'components/toggle_nav';
 import 'components/ajax_voter';

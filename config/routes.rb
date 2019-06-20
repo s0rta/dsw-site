@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   # Redirects for old paths
   get "/get-involved/team", to: redirect("/about/team")
+  get "/get-involved/faq", to: redirect("/about/faq")
   get "/contact/press", to: redirect("/press")
   get "/contact/assets", to: redirect("/assets")
   get "/faq", to: redirect("/about/faq")
