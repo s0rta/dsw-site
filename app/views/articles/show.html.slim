@@ -1,18 +1,18 @@
-- header_image = @article[:header_image].present? ? @article[:header_image] : 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
-
 .Article
   .Article-inner
     .Article-back
       a(href="#{articles_path}" aria-label="Back to Articles" class="Article-back-link")
         = render partial: 'icons/arrow_in_circle_left'
         span.Article-back-text back to articles
-    - if header_image.present?
-      img.Article-image(src="#{header_image}" title="#{@article[:title]}" alt="Hero Image")
+    - if @article.header_image.present?
+      img.Article-image(src="#{@article.header_image.url(:article_page)}" title="#{@article[:title]}" alt="Hero Image")
     .Article-tracks
       - @article.tracks.each do |track|
         =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
-
-    .Article-date #{@article.published_at.strftime("%A, %b%e, %Y")}
+    - if @article.published_at.present?
+      .Article-date #{@article.published_at.strftime("%A, %b%e, %Y")}
+    - else
+      .Article-date Not Published Yet
     h1.Article-title #{@article.title}
     section.Article-body #{@article.body.html_safe}
 
