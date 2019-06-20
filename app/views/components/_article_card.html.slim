@@ -1,5 +1,6 @@
 = render 'components/card' do
   .ArticleCard
+    a.ArticleCard-link(href="#{article_path(article.to_param)}")
     - if article.header_image.present?
       .ArticleCard-image(style="background-image: url(#{image_url article.header_image.url(:article_card)})")
     .ArticleCard-content

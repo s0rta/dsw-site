@@ -10,4 +10,8 @@ class Article < ApplicationRecord
   belongs_to :author, class_name: "User"
 
   mount_uploader :header_image, HeaderImageUploader
+
+  def to_param
+    "#{id}-#{title.try(:parameterize)}"
+  end
 end
