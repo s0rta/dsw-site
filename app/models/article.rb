@@ -6,7 +6,7 @@ class Article < ApplicationRecord
   validates :body,
     presence: true
 
-  has_and_belongs_to_many :tracks
+  has_and_belongs_to_many :tracks, validate: false
   belongs_to :author, class_name: "User"
 
   mount_uploader :header_image, HeaderImageUploader
