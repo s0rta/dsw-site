@@ -8,11 +8,12 @@
           option(value="all" selected=("selected" if params[:track] == 'all')) Filter by Track
           - Track.dropdown_options.each do |opt|
             option(value="#{opt[:value]}" selected=("selected" if params[:track] == opt[:value] )) #{opt[:label]}
-      .Articles-filter
-        = render layout: 'components/dropdown', locals: { name: "cluster", onchange: "this.form.submit();", value: params[:cluster] } do
-          option(value="all" selected=("selected" if params[:cluster] == 'all')) Filter by Cluster
-          - Cluster.dropdown_options.each do |opt|
-            option(value="#{opt[:value]}" selected=("selected" if params[:cluster] == opt[:value] )) #{opt[:label]}
+      - unless Cluster.active.empty?
+        .Articles-filter
+          = render layout: 'components/dropdown', locals: { name: "cluster", onchange: "this.form.submit();", value: params[:cluster] } do
+            option(value="all" selected=("selected" if params[:cluster] == 'all')) Filter by Cluster
+            - Cluster.dropdown_options.each do |opt|
+              option(value="#{opt[:value]}" selected=("selected" if params[:cluster] == opt[:value] )) #{opt[:label]}
 
 .Articles-list-wrapper
   = render partial: 'layouts/shared/articles_and_sessions_list', locals: { list: featured_static_data[:features], title: "Articles", is_overlapped: false }
