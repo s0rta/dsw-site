@@ -13,6 +13,12 @@ div.ContentCard
           p.ContentCard-description #{desc}
       - else
         p.ContentCard-description #{card[:description]}
+      - if card[:event_items].present?
+        ul.ContentCard-event-items-list aria-label="#{card[:title]} event items needed"
+          - card[:event_items].each do |step|
+            li.ContentCard-event-items-item #{step}
+      - if card[:disclaimer].present?
+        p.ContentCard-disclaimer #{card[:disclaimer]}
       .ContentCard-action
         - if card[:button_title].present? && card[:button_page_url].include?("https://") || card[:button_page_url].include?("mailto:") 
           = link_to "#{card[:button_title]}", "#{page_url}", :target => "_blank", class: 'ContentCard-link' 

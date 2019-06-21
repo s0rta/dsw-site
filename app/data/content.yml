@@ -6,7 +6,13 @@ items:
     button_page_url: ''
   - title: 'Social Media Promotion'
     description: 
-      - 'Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid.'
+      - 'Have an event that fits the Denver Startup Week spirit by being free, educational, and inclusive? We can publish the details in our email newsletter to spread the word to the DSW community.'
+      - 'Here is what we will need from you:'
+    event_items: 
+      - 'Event Title, Date, Time, and Location'
+      - 'Event Description (less than 100 words, written in the third person)'
+      - 'Event Link'
+    disclaimer: 'Please note: In most cases, we will only promote free events.'
     button_title: 'Retweet Me'
     button_page_url: 'https://docs.google.com/forms/d/e/1FAIpQLSeJIA4hloOniZD-ZOjZW41D4WJUGxViQqfOdM_dKyw1iH8mmQ/viewform'
   - title: 'Event Promotion'
