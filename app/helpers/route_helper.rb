@@ -3,23 +3,10 @@ module RouteHelper
   def main_menu
     menu = [home_route, main_program_route, main_about_route, sponsors_route, main_get_involved_route, articles_route]
 
-    if registration_open?
-      menu.push schedule_route
-      unless registered?
-        menu.push register_route
-      end
-    end
+    menu.push schedule_route if registration_open? || AnnualSchedule.post_week?
+    menu.push register_route if registration_open? && !registered?
+    menu.push voting_route if AnnualSchedule.voting_open?
 
-    # if AnnualSchedule.cfp_open?
-    #   menu.push submissions_route
-    # elsif AnnualSchedule.registration_open?
-    #   menu.push register_route
-    # elsif AnnualSchedule.post_week?
-    #   menu.push schedule_route
-    # end
-    # if AnnualSchedule.voting_open?
-    #   menu.push voting_route
-    # end
     menu
   end
 
@@ -141,7 +128,7 @@ module RouteHelper
   def voting_route
     {
       path: submissions_path,
-      label: "Panel Picker"
+      label: "Vote"
     }
   end
 
