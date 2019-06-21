@@ -4,6 +4,8 @@
 div.ContentPage-list-wrapper
   = render 'components/content_card_list', attributes: { 'aria-label': "Content page" }  do
     - content_static_data[:items].each do |card|
+      - if card[:button_page_url] == "users/sign_up" && signed_in?
+        - card[:button_page_url] = "articles/new"
       = render 'components/content_card_list_item' do
         = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "#{card[:button_page_url]}"
 

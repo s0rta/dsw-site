@@ -3,7 +3,7 @@ items:
     description: 
       - 'Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid.'
     button_title: 'Submit Article'
-    button_page_url: ''
+    button_page_url: 'users/sign_up'
   - title: 'Social Media Promotion'
     description: 
       - 'Hosting an event, celebrating a milestone, or posting an insightful video? Use #DENStartupWeek or mention us at @DENStartupWeek on any social media channel to contribute content to the online conversation. Or, send us the link to the post/tweet and we can do our best to share it!'
@@ -22,14 +22,14 @@ items:
     button_page_url: 'https://docs.google.com/forms/d/e/1FAIpQLScxgRj-lbkZRYD6iWBesI8ZIhFxLmdqjgDMBfzy26ovdy7t9Q/viewform'
   - title: 'Instagram Takeover'
     description: 
-      - 'DSW’s <a href="https://www.instagram.com/denstartupweek">Instagram account</a> highlights the people, places, and energy of Denver’s entrepreneurial community. As we look to highlight the best of our city, we want you to show us a day-in-your-hustle!'
-      - 'Come take over our Instagram account for a day, show us your <a href="https://www.instagram.com/denstartupweek">#MileHighHustle</a>, and highlight the amazing work that you do for the Denver Startup Week community.'
+      - 'DSW’s <a href="https://www.instagram.com/denstartupweek" target="_blank">Instagram account</a> highlights the people, places, and energy of Denver’s entrepreneurial community. As we look to highlight the best of our city, we want you to show us a day-in-your-hustle!'
+      - 'Come take over our Instagram account for a day, show us your <a href="https://www.instagram.com/denstartupweek" target="_blank">#MileHighHustle</a>, and highlight the amazing work that you do for the Denver Startup Week community.'
       - 'Here is what we will need from you:'
     event_items: 
       - 'Your Name, Company, and Location'
       - 'Short description of who you are, what you do, and why you are a compelling person to take over the DSW Instagram (less than 250 words)'
       - 'Link to your social media profiles: Instagram, LinkedIn, Twitter, etc. (as is applicable)'
-    button_title: 'Apply Now'
+    button_title: 'Apply for an Insta Takeover'
     button_page_url: 'mailto:info@denverstartupweek.org?subject=Instagram Takeover'
   - title: 'Special Announcements'
     description: 

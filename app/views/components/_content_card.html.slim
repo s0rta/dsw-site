@@ -10,9 +10,9 @@ div.ContentCard
     div.ContentCard-inner-content
       - if card[:description].kind_of?(Array)
         - card[:description].each do |desc|
-          p.ContentCard-description #{desc}
+          p.ContentCard-description = process_with_liquid(desc).html_safe
       - else
-        p.ContentCard-description #{card[:description]}
+        p.ContentCard-description = process_with_liquid(card[:description]).html_safe
       - if card[:event_items].present?
         ul.ContentCard-event-items-list aria-label="#{card[:title]} event items needed"
           - card[:event_items].each do |item|
