@@ -4,9 +4,14 @@
 .Assets
   ul.Assets-list
     li.Assets-list-item 
-      a href='/media_assets/DenverStartupWeek.eps'
+      a.Assets-list-item-link href='/media_assets/DenverStartupWeek.eps'
         = render partial: 'icons/download'
         p Denver Startup Week Logo (EPS)
+    
+    li.Assets-list-item
+      a.Assets-list-item-link href='/media_assets/DenverStartupWeek_Reversed.eps'
+        = render partial: 'icons/download'
+        p Denver Startup Week Logo Reversed (EPS)
 
 / .section-content.sm-centered
 /   .list-flex-container
