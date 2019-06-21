@@ -1,7 +1,7 @@
 - header_image = card[:header_image] || "https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg"
 
 div.ContentCard
-  .ContentCard-image(class="#{card[:color]}-border" style="background-image: url(#{image_url header_image})")
+  .ContentCard-image(class="#{card[:color]}-border #{card[:track].present? ? 'is-track' : ''}" style="background-image: url(#{image_url header_image})")
   .ContentCard-content
     div.ContentCard-header(class="#{card[:color]}-fill")
       - if card[:track].present?
