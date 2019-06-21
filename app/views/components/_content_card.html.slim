@@ -15,8 +15,8 @@ div.ContentCard
         p.ContentCard-description #{card[:description]}
       - if card[:event_items].present?
         ul.ContentCard-event-items-list aria-label="#{card[:title]} event items needed"
-          - card[:event_items].each do |step|
-            li.ContentCard-event-items-item #{step}
+          - card[:event_items].each do |item|
+            li.ContentCard-event-items-item #{item}
       - if card[:disclaimer].present?
         p.ContentCard-disclaimer #{card[:disclaimer]}
       .ContentCard-action
