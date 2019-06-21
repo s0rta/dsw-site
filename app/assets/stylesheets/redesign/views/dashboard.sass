@@ -44,12 +44,12 @@
   @include font-family-mixin(Montserrat-Light)
   color: $primary-font-medium
   font-size: 28px
+  margin-bottom: 5px
 
 .Dashboard-profile-secondary
   @include font-family-mixin(Montserrat-Regular)
   color: $primary-font-light
   font-size: 14px
-  margin-top: 5px
 
 .Dashboard-card-list
   display: flex
@@ -69,6 +69,7 @@
 .Dashboard-empty-message
   @include font-family-mixin(Montserrat-Light)
   font-size: 14px
+  color: $primary-font-medium
 
 .Dashboard-connect-text
   max-width: 550px
@@ -88,6 +89,19 @@
 .Dashboard-fa-circle
   background: #979797
   border-radius: 50%
+
+
+.Dashboard-profile-connect
+  @include font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  color: $primary-font-medium
+  margin-top: 20px
+  max-width: 450px
+
+.Dashboard-profile-connect-link
+  +white-button(166px, 46px)
+  margin-top: 20px
+  width: 166px
 
 // .dash-profile-bar
 //   h3
