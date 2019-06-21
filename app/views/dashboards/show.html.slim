@@ -53,12 +53,17 @@
     section.Dashboard-section
       .Dashboard-header-wrapper
         h1.Dashboard-header#my-schedule My Schedule
-        - unless @my_schedule.blank?
-          = link_to 'Add to Outlook / iCal', my_schedule_export, class: 'Dashboard-header-action'
-          = link_to 'Add to Google Calendar', "http://www.google.com/calendar/render?cid=#{my_schedule_export}", class: 'Dashboard-header-action'
-        a.Dashboard-header-action href="#{schedules_path}"
-          = image_tag "redesign/schedule.svg", class: 'Dashboard-header-action-image'
-          | View Schedule
+        .Dashboard-header-action-wrapper
+          a.Dashboard-header-action href="#{schedules_path}"
+            = image_tag "redesign/schedule.svg", class: 'Dashboard-header-action-image'
+            | View Schedule
+          - unless @my_schedule.blank?
+            a.Dashboard-header-action href="http://www.google.com/calendar/render?cid=#{my_schedule_export}"
+              = image_tag "redesign/calendar-export.svg", class: 'Dashboard-header-action-image'
+              | Add to Google Calendar
+            a.Dashboard-header-action href="#{my_schedule_export}"
+              = image_tag "redesign/calendar-export.svg", class: 'Dashboard-header-action-image'
+              | Add to Outlook / iCal
       -if @my_schedule.any?
         ul.Dashboard-card-list(aria-labelledby="my-schedule")
           - @my_schedule.each do |submission|
