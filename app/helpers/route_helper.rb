@@ -184,7 +184,7 @@ module RouteHelper
 
   def basecamp_route
     {
-      path: "/program/tracks/basecamp",
+      path: "/program/tracks/Basecamp",
       label: "basecamp"
     }
   end
