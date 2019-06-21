@@ -4,8 +4,9 @@
 div.Program-list-wrapper
   = render 'components/content_card_list', attributes: { 'aria-label': "Programs" }  do
     - programs_static_data[:programs].each do |card|
-      = render 'components/content_card_list_item' do
-        = render 'components/content_card', card: card, title: "Program", page_url: card[:button_page_url]
+     - unless card[:button_page_url] == 'program/clusters' && Cluster.active.empty?
+        = render 'components/content_card_list_item' do
+          = render 'components/content_card', card: card, title: "Program", page_url: card[:button_page_url]
 
 
 / = render partial: 'layouts/shared/program_nav', locals: { item: :overview }
