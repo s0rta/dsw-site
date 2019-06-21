@@ -11,7 +11,7 @@ module RouteHelper
   end
 
   def program_routes
-    [program_route, tracks_route, clusters_route, basecamp_route, headline_events_route]
+    [program_route, tracks_route, clusters_route, basecamp_route]
   end
 
   def about_routes
@@ -184,15 +184,8 @@ module RouteHelper
 
   def basecamp_route
     {
-      path: "/basecamp",
+      path: "/program/tracks/basecamp",
       label: "basecamp"
-    }
-  end
-
-  def headline_events_route
-    {
-      path: "/program/headline-events",
-      label: "headline events"
     }
   end
 
