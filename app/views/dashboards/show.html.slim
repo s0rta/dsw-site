@@ -1,30 +1,18 @@
 
 = render layout: 'layouts/shared/layout_wrapper' do
 
-  section.Dashboard-section-wrapper
-    section.Dashboard-section
-      .Dashboard-header-wrapper
-        h1.Dashboard-header Profile
-        a.Dashboard-header-action href="#{edit_user_registration_path}"
-          = image_tag "redesign/profile.svg", class: 'Dashboard-header-action-image'
-          | Edit Profile
-      .Dashboard-profile
-        .Dashboard-profile-wrapper
-          = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user, image_only: true }
-          .Dashboard-profile-info
-            .Dashboard-profile-name #{current_user.name}
-            .Dashboard-profile-secondary #{current_user.email}
-
-    section.Dashboard-section
-      .Dashboard-header-wrapper
-        h1.Dashboard-header Connect
-      p.Dashboard-connect-text Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit.
-      .Dashboard-connect-action
-        span class="Dashboard-icon-wrapper fa-stack"
-          i class="fa Dashboard-fa-circle fa-stack-2x"
-          i class="fab Dashboard-icon fa-2x fa-linkedin-in fa-stack-1x"
-        = render layout: 'components/toggle' do
-          input type="checkbox"
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header Profile
+      a.Dashboard-header-action href="#{edit_user_registration_path}"
+        = image_tag "redesign/profile.svg", class: 'Dashboard-header-action-image'
+        | Edit Profile
+    .Dashboard-profile
+      .Dashboard-profile-wrapper
+        = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user, image_only: true }
+        .Dashboard-profile-info
+          .Dashboard-profile-name #{current_user.name}
+          .Dashboard-profile-secondary #{current_user.email}
 
   section.Dashboard-section
     .Dashboard-header-wrapper
