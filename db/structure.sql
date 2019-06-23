@@ -1032,7 +1032,8 @@ CREATE TABLE public.users (
     provider character varying(255),
     team_position character varying,
     avatar character varying,
-    team_priority integer
+    team_priority integer,
+    linkedin_url character varying
 );
 
 
@@ -2500,6 +2501,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190531150512'),
 ('20190531155316'),
 ('20190531155323'),
-('20190531155330');
+('20190531155330'),
+('20190623185327');
 
 
