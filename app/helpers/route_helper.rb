@@ -102,7 +102,7 @@ module RouteHelper
 
   def volunteer_route
     {
-      path: "https://www.cervistech.com/acts/console.php",
+      path: "https://www.cervistech.com/acts/console.php?console_id=0282&console_type=event&ht=1",
       label: "volunteer"
     }
   end
