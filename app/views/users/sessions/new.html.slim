@@ -7,14 +7,14 @@
   - if came_from_registration?
     .SignIn-register-text In order to Register to Attend you need to be signed in.
 
-  .SignIn-form
+  = render layout: 'components/form_wrapper' do
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      .SignIn-inputs
-        .SignIn-input
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.text_field :email, required: 'required', autofocus: 'autofocus', type: 'email'
             = f.label :email, 'E-mail Address'
-        .SignIn-input
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.password_field :password, required: 'required'
             = f.label :password, 'Password'

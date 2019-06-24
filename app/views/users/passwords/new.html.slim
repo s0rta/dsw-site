@@ -2,10 +2,10 @@
 
 = render 'layouts/shared/fullscreen_takeover_header', title: 'Reset Password', background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
-  .PasswordReset-form
+  = render layout: 'components/form_wrapper' do
      = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-      .PasswordReset-inputs
-        .PasswordReset-input
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.text_field :email, required: 'required', autofocus: 'autofocus', type: 'email'
             = f.label :email, 'E-mail Address'

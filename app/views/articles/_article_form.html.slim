@@ -4,12 +4,13 @@
 = render 'layouts/shared/fullscreen_takeover_header', title: content_for(:article_page_title), background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
 
-  .ArticlesForm
+  = render layout: 'components/form_wrapper' do
+
     .ArticlesForm-instructions Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid.
 
     = form_for @article do |f|
-      .ArticlesForm-inputs
-        .ArticlesForm-input
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.text_field :title, required: 'required', autofocus: 'autofocus'
             = f.label :title, 'Article Title*'
@@ -29,8 +30,8 @@
         .ArticlesForm-hint Image should be in a horizontal format with no important content near edges. Images will scale and crop according to users browser size.
 
 
-      .ArticlesForm-inputs
-        .ArticlesForm-input
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
           = f.label :body, 'Article Body*', class: 'ArticlesForm-label'
           = f.text_area :body, class: 'ArticlesForm-textarea', id: 'article_body_editable'
 
