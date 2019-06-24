@@ -6,43 +6,40 @@
 = render layout: 'layouts/shared/layout_wrapper' do
   - if came_from_registration?
     .SignUp-register-text In order to Register to Attend you need to have an account. Sign up below.
-  .SignUp-form
+  = render layout: 'components/form_wrapper' do
     = form_for(resource, as: resource_name, url: user_registration_path, honeypot: true) do |f|
 
       = render 'components/profile_avatar_upload', locals = { f: f }
 
-      .SignUp-inputs
-        .SignUp-input
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.text_field :name, required: 'required', autofocus: 'autofocus'
             = f.label :name, 'First and Last Name'
-        .SignUp-input
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.text_field :email, required: 'required', type: 'email'
             = f.label :email, 'E-mail Address'
 
       .SignUp-single-line
         .SignUp-linkedin-desc Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website.
-        .SignUp-inputs
-          .SignUp-input
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
             = render layout: 'components/floating_input' do
               = f.text_field :linkedin_url, autocomplete: 'off'
               = f.label :linkedin_url, "LinkedIn Profile URL"
 
-      .SignUp-inputs
-        .SignUp-input
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.password_field :password, required: 'required'
             = f.label :password, 'Password'
-        .SignUp-input
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.password_field :password_confirmation, required: 'required'
             = f.label :password_confirmation, 'Confirm Password'
-      .SignUp-error-messages
-        - flash.each do |key, message|
-          div #{message}
-        - unless resource.errors.empty?
-          div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+
+      = render partial: 'components/form_errors', locals: { error_resource: resource }
 
       - if registration_open? && !came_from_registration?
         = render partial: 'components/register_to_attend_radio'
