@@ -5,11 +5,7 @@
   ul.Assets-list aria-label="assets list"
     - assets_static_data[:assets].each do |asset|
       li.Assets-list-item
-        - if asset[:new_page]
-          a.Assets-list-item-link aria-label="#{asset[:title]}" href="#{asset[:url]}" target="_blank"
-            = render partial: 'icons/download_assets'
-            p #{asset[:title]}
-        - else
-          a.Assets-list-item-link href="#{asset[:url]}"
-            = render partial: 'icons/download_assets'
-            p #{asset[:title]}
+        a.Assets-list-item-link aria-label="#{asset[:title]}" href="#{asset[:url]}" target="#{asset[:target]}"
+          = render partial: 'icons/download_assets'
+          p #{asset[:title]}
+
