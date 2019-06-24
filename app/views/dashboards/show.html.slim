@@ -1,4 +1,5 @@
-- my_schedule_export = schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')
+- if registered?
+  - my_schedule_export = schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')
 
 = render layout: 'layouts/shared/layout_wrapper' do
 
