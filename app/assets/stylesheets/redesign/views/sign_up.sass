@@ -46,7 +46,16 @@
   +font-family-mixin(Montserrat-Medium)
   font-size: 14px
 
-@media(max-width: 480px)
+.SignUp-single-line
+  width: 50%
+
+.SignUp-linkedin-desc
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 14px
+  margin-top: 20px
+
+@media(max-width: 550px)
   .SignUp-actions
     flex-direction: column
     align-items: flex-start
@@ -54,3 +63,6 @@
   .SignUp-link-wrapper
     order: 2
     margin-top: 20px
+
+  .SignUp-single-line
+    width: 100%

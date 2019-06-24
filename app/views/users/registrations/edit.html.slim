@@ -39,11 +39,23 @@
           = render layout: 'components/floating_input' do
             = f.password_field :password_confirmation, autocomplete: 'off'
             = f.label :password_confirmation, 'Confirm New Password'
-      .Profile-inputs
-        .Profile-input
-          = render layout: 'components/floating_input' do
-            = f.password_field :current_password, autocomplete: 'off'
-            = f.label :password, 'Current Password (we need your current password to confirm your changes)'
+
+      .Profile-single-line
+        - unless resource.linkedin_url.present?
+          .Profile-linkedin-desc Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website.
+        .Profile-inputs
+          .Profile-input
+            = render layout: 'components/floating_input' do
+              = f.text_field :linkedin_url, autocomplete: 'off'
+              = f.label :linkedin_url, "LinkedIn Profile URL"
+
+      .Profile-single-line
+        .Profile-inputs
+          .Profile-input
+            = render layout: 'components/floating_input' do
+              = f.password_field :current_password, autocomplete: 'off'
+              = f.label :password, 'Current Password (we need your current password to confirm your changes)'
+
       .Profile-error-messages
         - flash.each do |key, message|
           div #{message}
