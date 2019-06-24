@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get "/get-involved/team", to: redirect("/about/team")
   get "/get-involved/faq", to: redirect("/about/faq")
   get "/contact/press", to: redirect("/press")
-  get "/contact/assets", to: redirect("/assets")
+  get "/contact/assets", to: redirect("about/assets")
   get "/faq", to: redirect("/about/faq")
   get "/contact", to: redirect("/get-involved")
 
