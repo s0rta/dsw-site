@@ -15,11 +15,9 @@
           = render layout: 'components/floating_input' do
             = f.password_field :password_confirmation, required: 'required', autofocus: 'autofocus'
             = f.label :password_confirmation, 'Confirm Your New Password'
-      .PasswordReset-error-messages
-        - flash.each do |key, message|
-          div #{message}
-        - unless resource.errors.empty?
-          div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+
+      = render partial: 'components/form_errors', locals: { error_resource: resource }
+
       .PasswordReset-actions
         = f.submit 'Change Password', class: 'PasswordReset-submit'
 

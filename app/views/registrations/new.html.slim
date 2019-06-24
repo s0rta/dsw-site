@@ -51,11 +51,7 @@
             .Register-coc-text
               = render partial: 'layouts/shared/coc_acknowledgement'
 
-      .Register-error-messages
-        - flash.each do |key, message|
-          div #{message}
-        - unless @registration.errors.empty?
-          div Please correct the following errors: #{@registration.errors.full_messages.to_sentence}
+      = render partial: 'components/form_errors', locals: { error_resource: @registration }
 
       .Register-actions
         = f.submit 'Submit', class: 'Register-submit'

@@ -57,11 +57,8 @@
               = f.password_field :current_password, autocomplete: 'off'
               = f.label :password, 'Current Password (we need your current password to confirm your changes)'
 
-      .Profile-error-messages
-        - flash.each do |key, message|
-          div #{message}
-        - unless resource.errors.empty?
-          div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+      = render partial: 'components/form_errors', locals: { error_resource: resource }
+
       .Profile-actions
         = f.submit 'Update', class: 'Profile-submit'
 

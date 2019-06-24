@@ -39,11 +39,7 @@
             = f.password_field :password_confirmation, required: 'required'
             = f.label :password_confirmation, 'Confirm Password'
 
-      .SignUp-error-messages
-        - flash.each do |key, message|
-          div #{message}
-        - unless resource.errors.empty?
-          div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+      = render partial: 'components/form_errors', locals: { error_resource: resource }
 
       - if registration_open? && !came_from_registration?
         = render partial: 'components/register_to_attend_radio'

@@ -38,9 +38,7 @@
       .ArticlesForm-required-text
         | *Required
 
-      .ArticlesForm-error-messages
-        - unless @article.errors.empty?
-          div Please correct the following errors: #{@article.errors.full_messages.to_sentence}
+      = render partial: 'components/form_errors', locals: { error_resource: @article }
 
       .ArticlesForm-actions
         = f.submit 'Submit', class: 'ArticlesForm-submit'

@@ -9,11 +9,9 @@
           = render layout: 'components/floating_input' do
             = f.text_field :email, required: 'required', autofocus: 'autofocus', type: 'email'
             = f.label :email, 'E-mail Address'
-      .PasswordReset-error-messages
-        - flash.each do |key, message|
-          div #{message}
-        - unless resource.errors.empty?
-          div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+
+      = render partial: 'components/form_errors', locals: { error_resource: resource }
+
       .PasswordReset-actions
         = f.submit 'Send Reset Instructions', class: 'PasswordReset-submit'
 
