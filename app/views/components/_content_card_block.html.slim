@@ -1,18 +1,13 @@
-- header_image = card[:header_image] || "https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg"
-
 div.ContentCardBlock
-  .ContentCardBlock-image(class="#{card[:color]}-border #{card[:track].present? ? 'is-track' : ''}" style="background-image: url(#{image_url header_image})")
   .ContentCardBlock-content
-    div.ContentCardBlock-header(class="#{card[:color]}-fill")
-      - if card[:track].present?
-        = render partial: "icons/#{card[:icon]}"
-      h3.ContentCardBlock-title(class="#{card[:color]}-font") #{card[:title]}
+    div.ContentCardBlock-header
+      h3.ContentCardBlock-title #{card[:title]}
     div.ContentCardBlock-inner-content
       - if card[:description].kind_of?(Array)
         - card[:description].each do |desc|
-          p.ContentCardBlock-description = process_with_liquid(desc).html_safe
+          p.ContentCardBlock-description = (desc).html_safe
       - else
-        p.ContentCardBlock-description = process_with_liquid(card[:description]).html_safe
+        p.ContentCardBlock-description = card[:description].html_safe
       - if card[:event_items].present?
         ul.ContentCardBlock-event-items-list aria-label="#{card[:title]} event items needed"
           - card[:event_items].each do |item|
