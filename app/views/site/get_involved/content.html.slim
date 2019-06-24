@@ -2,10 +2,10 @@
   = render 'layouts/shared/get_involved_secondary_hero_nav'
 
 div.ContentPage-list-wrapper
-  = render 'components/content_card_block_list', attributes: { 'aria-label': "Content page" }  do
+  = render 'components/content_block_list', attributes: { 'aria-label': "Content page" }  do
     - content_static_data[:items].each do |card|
-      = render 'components/content_card_block_list_item' do
-        = render 'components/content_card_block', card: card, title: "#{card[:title]}", page_url: "#{card[:button_page_url]}"
+      = render 'components/content_block_list_item' do
+        = render 'components/content_block', card: card, title: "#{card[:title]}", page_url: "#{card[:button_page_url]}"
 
 
 / = render partial: 'layouts/shared/get_involved_nav', locals: { item: :content }

@@ -1,74 +1,74 @@
 @import ../config
 
-.ContentCardBlock
+.ContentBlock
   display: flex
   flex-direction: column
   height: 100%
 
-.ContentCardBlock-header
+.ContentBlock-header
   margin-top: 25px
   color: $primary-font-dark
 
-.ContentCardBlock-title
+.ContentBlock-title
   max-width: 335px
   text-transform: uppercase
   line-height: 32px
   font-size: 28px
   font-weight: 300
 
-.ContentCardBlock-description
+.ContentBlock-description
   color: $primary-font-medium
   margin-top: 25px
   line-height: 18px
   font-size: 14px
   font-weight: 300
 
-.ContentCardBlock-action
+.ContentBlock-action
   margin-top: 45px
   text-align: center
 
-.ContentCardBlock-content
+.ContentBlock-content
   flex: 1
   display: flex
   flex-direction: column
 
-.ContentCardBlock-inner-content
+.ContentBlock-inner-content
   display: flex
   flex: 1
   flex-direction: column
   justify-content: space-between
 
-.ContentCardBlock-disclaimer
+.ContentBlock-disclaimer
   font-style: italic
 
-.ContentCardBlock-event-items-list
+.ContentBlock-event-items-list
   +font-family-mixin(Montserrat-Light)
   font-size: 14px
   margin: 10px 0
   
 
-.ContentCardBlock-event-items-item
+.ContentBlock-event-items-item
   list-style: disc
   margin-left: 1em
 
-.ContentCardBlock-link
+.ContentBlock-link
   +white-button(315px, 56px)
 
 @media(min-width: 640px)
-  .ContentCardBlock-header
+  .ContentBlock-header
     margin-top: 30px
-  .ContentCardBlock-description
+  .ContentBlock-description
     margin-top: 21px
-  .ContentCardBlock-action
+  .ContentBlock-action
     margin-top: 50px
     text-align: left
-  .ContentCardBlock-link
+  .ContentBlock-link
     height: 46px
     min-width: 187px
     width: fit-content
-  .ContentCardBlock-title
+  .ContentBlock-title
     max-width: none
 
 @media(min-width: 1300px)
-  .ContentCardBlock-content
+  .ContentBlock-content
     margin: 0 41px
