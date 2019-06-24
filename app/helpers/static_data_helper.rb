@@ -26,4 +26,10 @@ module StaticDataHelper
       YAML.safe_load(File.read(File.expand_path("../data/get_involved.yml",  __dir__)))
     ).deep_transform_keys(&:to_sym)
   end
+
+  def assets_static_data
+    HashWithIndifferentAccess.new(
+      YAML.safe_load(File.read(File.expand_path("../data/assets.yml",  __dir__)))
+    ).deep_transform_keys(&:to_sym)
+  end
 end

@@ -2,67 +2,14 @@
   = render 'layouts/shared/about_secondary_hero_nav'
 
 .Assets
-  ul.Assets-list
-    li.Assets-list-item 
-      a.Assets-list-item-link href='/media_assets/DenverStartupWeek.eps'
-        = render partial: 'icons/download_assets'
-        p Denver Startup Week Logo (EPS)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/DenverStartupWeek_Reversed.eps'
-        = render partial: 'icons/download_assets'
-        p Denver Startup Week Logo Reversed (EPS)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/DENStartupWeek.eps'
-        = render partial: 'icons/download_assets'
-        p DEN Startup Week Logo (EPS)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/DENStartupWeek_Reversed.eps'
-        = render partial: 'icons/download_assets'
-        p DEN Startup Week Logo Reversed (EPS)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/ChaseBasecamp2017.pdf'
-        = render partial: 'icons/download_assets'
-        p Chase Basecamp Logo (EPS)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/GEOMETRIC_MOUNTAINS.eps'
-        = render partial: 'icons/download_assets'
-        p Geometric Mountains (EPS)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/DSW16_STYLE_GUIDE.pdf' target='_blank'
-        = render partial: 'icons/download_assets'
-        p Style Guide (EPS)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='https://docs.google.com/presentation/d/16qDbZo8UjZlBIqJWzcbvNdqRbNIzFjRVGzLzd4Kj77Q/edit' target='_blank'
-        = render partial: 'icons/download_assets'
-        p Speaker Orientation Slides (Google Slides)
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/DSW18_TEMPLATE 4_3.key' target='_blank'
-        = render partial: 'icons/download_assets'
-        p Slide Template 4:3 (Keynote)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/DSW18_TEMPLATE 16_9.key' target='_blank'
-        = render partial: 'icons/download_assets'
-        p Slide Template 16:9 (Keynote)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/DSW18_TEMPLATE 4_3.pptx' target='_blank'
-        = render partial: 'icons/download_assets'
-        p Slide Template 4:3 (PowerPoint)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='/media_assets/DSW18_TEMPLATE 16_9.pptx' target='_blank'
-        = render partial: 'icons/download_assets'
-        p Slide Template 16:9 (Powerpoint)
-
-    li.Assets-list-item
-      a.Assets-list-item-link href='https://www.fontsquirrel.com/fonts/montserrat' target='_blank'
-        = render partial: 'icons/download_assets'
-        p Montserrat Font
+  ul.Assets-list aria-label="assets list"
+    - assets_static_data[:assets].each do |asset|
+      li.Assets-list-item
+        - if asset[:new_page]
+          a.Assets-list-item-link aria-label="#{asset[:title]}" href="#{asset[:url]}" target="_blank"
+            = render partial: 'icons/download_assets'
+            p #{asset[:title]}
+        - else
+          a.Assets-list-item-link href="#{asset[:url]}"
+            = render partial: 'icons/download_assets'
+            p #{asset[:title]}
