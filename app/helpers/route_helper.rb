@@ -22,7 +22,7 @@ module RouteHelper
   end
 
   def get_involved_routes
-    [get_involved_route, present_route, content_route]
+    [get_involved_route, present_route, volunteer_route, content_route]
   end
 
   def social_media_routes
@@ -97,6 +97,13 @@ module RouteHelper
     {
       path: "/get-involved",
       label: "overview"
+    }
+  end
+
+  def volunteer_route
+    {
+      path: "https://www.cervistech.com/acts/console.php",
+      label: "volunteer"
     }
   end
 
