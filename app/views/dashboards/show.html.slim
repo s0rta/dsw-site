@@ -14,11 +14,12 @@
         .Dashboard-profile-info
           .Dashboard-profile-name #{current_user.name}
           .Dashboard-profile-secondary #{current_user.email}
-          / .Dashboard-profile-secondary #{current_user.linkedin_profile}
+          - if current_user.linkedin_url.present?
+            .Dashboard-profile-secondary #{current_user.linkedin_url}
 
-    / - unless current_user.linkedin_profile.present?
-    /   .Dashboard-profile-connect Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website
-    /   a.Dashboard-profile-connect-link href="#{edit_user_registration_path}" Connect
+    - unless current_user.linkedin_url.present?
+      .Dashboard-profile-connect Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website
+      a.Dashboard-profile-connect-link href="#{edit_user_registration_path}" Connect
 
   section.Dashboard-section
     .Dashboard-header-wrapper
