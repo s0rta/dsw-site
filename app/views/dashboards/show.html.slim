@@ -1,30 +1,25 @@
+- my_schedule_export = schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')
 
 = render layout: 'layouts/shared/layout_wrapper' do
 
-  section.Dashboard-section-wrapper
-    section.Dashboard-section
-      .Dashboard-header-wrapper
-        h1.Dashboard-header Profile
-        a.Dashboard-header-action href="#{edit_user_registration_path}"
-          = image_tag "redesign/profile.svg", class: 'Dashboard-header-action-image'
-          | Edit Profile
-      .Dashboard-profile
-        .Dashboard-profile-wrapper
-          = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user, image_only: true }
-          .Dashboard-profile-info
-            .Dashboard-profile-name #{current_user.name}
-            .Dashboard-profile-secondary #{current_user.email}
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header Profile
+      a.Dashboard-header-action href="#{edit_user_registration_path}"
+        = image_tag "redesign/profile.svg", class: 'Dashboard-header-action-image'
+        | Edit Profile
+    .Dashboard-profile
+      .Dashboard-profile-wrapper
+        = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user, image_only: true }
+        .Dashboard-profile-info
+          .Dashboard-profile-name #{current_user.name}
+          .Dashboard-profile-secondary #{current_user.email}
+          - if current_user.linkedin_url.present?
+            .Dashboard-profile-secondary #{current_user.linkedin_url}
 
-    section.Dashboard-section
-      .Dashboard-header-wrapper
-        h1.Dashboard-header Connect
-      p.Dashboard-connect-text Lorem ipsum dolere sit amet nonummy consecuter adscpecit. Lorem ipsum dolere sit amet nonummy consecuter adscpecit.
-      .Dashboard-connect-action
-        span class="Dashboard-icon-wrapper fa-stack"
-          i class="fa Dashboard-fa-circle fa-stack-2x"
-          i class="fab Dashboard-icon fa-2x fa-linkedin-in fa-stack-1x"
-        = render layout: 'components/toggle' do
-          input type="checkbox"
+    - unless current_user.linkedin_url.present?
+      .Dashboard-profile-connect Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website
+      a.Dashboard-profile-connect-link href="#{edit_user_registration_path}" Connect
 
   section.Dashboard-section
     .Dashboard-header-wrapper
@@ -59,11 +54,19 @@
     section.Dashboard-section
       .Dashboard-header-wrapper
         h1.Dashboard-header#my-schedule My Schedule
-        a.Dashboard-header-action href="#{schedules_path}"
-          = image_tag "redesign/schedule.svg", class: 'Dashboard-header-action-image'
-          | View Schedule
+        .Dashboard-header-action-wrapper
+          a.Dashboard-header-action href="#{schedules_path}"
+            = image_tag "redesign/schedule.svg", class: 'Dashboard-header-action-image'
+            | View Schedule
+          - unless @my_schedule.blank?
+            a.Dashboard-header-action href="http://www.google.com/calendar/render?cid=#{my_schedule_export}"
+              = image_tag "redesign/calendar-export.svg", class: 'Dashboard-header-action-image'
+              | Add to Google Calendar
+            a.Dashboard-header-action href="#{my_schedule_export}"
+              = image_tag "redesign/calendar-export.svg", class: 'Dashboard-header-action-image'
+              | Add to Outlook / iCal
       -if @my_schedule.any?
-        ul.Dashboard-card-list(aria-labelledby="my-schedule")
+        ul.Dashboard-schedule(aria-labelledby="my-schedule")
           - @my_schedule.each do |submission|
             li.Dashboard-schedule-item
               = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }

@@ -1,0 +1,5 @@
+.FormErrors
+  - flash.each do |key, message|
+    div #{message}
+  - unless error_resource.errors.empty?
+    div Please correct the following errors: #{error_resource.errors.full_messages.to_sentence}

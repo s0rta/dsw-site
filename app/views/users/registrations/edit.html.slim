@@ -3,25 +3,26 @@
 
 = render 'layouts/shared/fullscreen_takeover_header', title: 'Edit Profile', background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
-  .Profile-form
+  = render layout: 'components/form_wrapper' do
+
     .Profile-form-title Profile
 
     = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
 
       = render 'components/profile_avatar_upload', locals = { f: f }
 
-      .Profile-inputs
-        .Profile-input
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.text_field :name, required: 'required', autofocus: 'autofocus'
             = f.label :name, 'First and Last Name'
-        .Profile-input
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.text_field :email, required: 'required'
             = f.label :email, 'E-mail Address'
 
-      / .Profile-inputs
-      /   .Profile-input
+      / = render layout: 'components/form_input_row' do
+      /   = render layout: 'components/form_input_wrapper' do
       /     = render layout: 'components/floating_input' do
       /       = f.text_field :description, required: 'required'
       /       = f.label :description, 'Tagline'
@@ -30,25 +31,34 @@
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p.Profile-unconfirmed Currently waiting confirmation for: #{resource.unconfirmed_email}
 
-      .Profile-inputs
-        .Profile-input
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.password_field :password, autocomplete: 'off'
             = f.label :password, "New Password (leave blank if you don't want to change it)"
-        .Profile-input
+        = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.password_field :password_confirmation, autocomplete: 'off'
             = f.label :password_confirmation, 'Confirm New Password'
-      .Profile-inputs
-        .Profile-input
-          = render layout: 'components/floating_input' do
-            = f.password_field :current_password, autocomplete: 'off'
-            = f.label :password, 'Current Password (we need your current password to confirm your changes)'
-      .Profile-error-messages
-        - flash.each do |key, message|
-          div #{message}
-        - unless resource.errors.empty?
-          div Please correct the following errors: #{resource.errors.full_messages.to_sentence}
+
+      .Profile-single-line
+        - unless resource.linkedin_url.present?
+          .Profile-linkedin-desc Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website.
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/floating_input' do
+              = f.text_field :linkedin_url, autocomplete: 'off'
+              = f.label :linkedin_url, "LinkedIn Profile URL"
+
+      .Profile-single-line
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/floating_input' do
+              = f.password_field :current_password, autocomplete: 'off'
+              = f.label :password, 'Current Password (we need your current password to confirm your changes)'
+
+      = render partial: 'components/form_errors', locals: { error_resource: resource }
+
       .Profile-actions
         = f.submit 'Update', class: 'Profile-submit'
 
