@@ -43,6 +43,9 @@
               li.Schedule-list-item
                 = render partial: 'components/scheduled_session', locals: { submission: group }
 
+      - if @sessions.empty?
+        .Schedule-empty-message We couldn't find any sessions! Please try a different filter or search criteria.
+
 
 / - content_for(:title, "#{formatted_start_date_for_index(@day_index, current_year_or_default, '%A %B %-d, %Y')} Schedule")
 
