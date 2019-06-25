@@ -1,10 +1,5 @@
 @import ../config
 
-.ContentBlock
-  display: flex
-  flex-direction: column
-  height: 100%
-
 .ContentBlock-header
   margin-top: 25px
   color: $primary-font-dark
@@ -26,17 +21,6 @@
 .ContentBlock-action
   margin-top: 45px
   text-align: center
-
-.ContentBlock-content
-  flex: 1
-  display: flex
-  flex-direction: column
-
-.ContentBlock-inner-content
-  display: flex
-  flex: 1
-  flex-direction: column
-  justify-content: space-between
 
 .ContentBlock-disclaimer
   font-style: italic
@@ -72,3 +56,9 @@
 @media(min-width: 1300px)
   .ContentBlock-content
     margin: 0 41px
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+  /* IE10+ CSS styles go here */
+  @media(min-width: 640px)
+    .ContentBlock-action
+      display: flex
