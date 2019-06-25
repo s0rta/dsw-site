@@ -16,7 +16,7 @@
           .Dashboard-profile-name #{current_user.name}
           .Dashboard-profile-secondary #{current_user.email}
           - if current_user.linkedin_url.present?
-            .Dashboard-profile-secondary #{current_user.linkedin_url}
+            a.Dashboard-profile-secondary(href="#{current_user.linkedin_url}" target="_blank") #{current_user.linkedin_url}
 
     - unless current_user.linkedin_url.present?
       .Dashboard-profile-connect Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website
