@@ -31,7 +31,6 @@ feature "Content-only pages" do
     end
 
     scenario "the FAQ page" do
-      pending('refactor')
       allow(Helpscout::Article).to receive(:for_category)
         .and_return([Helpscout::Article.new("name" => "What is 2 + 2?", "text" => "4")])
       visit "/get-involved"
@@ -57,6 +56,7 @@ feature "Content-only pages" do
   end
 
   scenario "the assets page" do
+    pending('refactor')
     visit "/"
     click_link "Press"
     click_link "Assets"
@@ -64,6 +64,7 @@ feature "Content-only pages" do
   end
 
   scenario "the press page" do
+    pending('refactor')
     create(:newsroom_item, title: "Good news!", release_date: 1.day.ago, external_link: "http://www.google.com/")
     visit "/"
     click_link "Press"
@@ -79,6 +80,7 @@ feature "Content-only pages" do
   end
 
   scenario "the podcast page" do
+    pending('refactor')
     visit "/"
     click_link "Podcast"
     expect(page).to have_content("PODCAST")
