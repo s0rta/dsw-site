@@ -1,4 +1,6 @@
 ActiveAdmin.register Submission do
+  include ActiveAdmin::AjaxFilter
+
   menu parent: "Sessions", priority: 1
 
   permit_params :budget_needed,

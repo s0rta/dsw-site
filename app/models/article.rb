@@ -7,7 +7,12 @@ class Article < ApplicationRecord
     presence: true
 
   has_and_belongs_to_many :tracks, validate: false
-  belongs_to :author, class_name: "User"
+  has_many :authorships, dependent: :destroy
+  has_many :authors, class_name: "User", through: :authorships
+  has_one :publishing, as: :subject
+
+  belongs_to :submission, required: false
+  belongs_to :company, required: false
 
   mount_uploader :header_image, HeaderImageUploader
 

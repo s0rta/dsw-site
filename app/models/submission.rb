@@ -56,6 +56,7 @@ class Submission < ApplicationRecord
   has_many :feedback, dependent: :destroy
 
   has_one :sponsorship, dependent: :restrict_with_error
+  has_one :publishing, as: :subject
 
   validates :title, presence: true
   validates :description, presence: true
@@ -132,7 +133,7 @@ class Submission < ApplicationRecord
 
   def self.my_schedule(user)
     joins(:user_registrations)
-      .where(registrations: { user_id: user.id })
+      .where(registrations: {user_id: user.id})
   end
 
   def public?

@@ -24,7 +24,7 @@ ActiveAdmin.register Article do
 
   form do |f|
     f.inputs do
-      f.input :title
+      f.input :title, as: :string
       f.input :body, as: :medium_editor, input_html: {
         data: {
           options: {
@@ -53,10 +53,18 @@ ActiveAdmin.register Article do
           }.to_json,
         },
       }
-      f.input :author_id,
+      # f.input :author_id,
+      #   as: :ajax_select,
+      #   collection: [],
+      #   data: {url: filter_admin_users_path, search_fields: %i[name email]}
+      f.input :company_id,
         as: :ajax_select,
         collection: [],
-        data: {url: filter_admin_users_path, search_fields: %i[name email]}
+        data: {url: filter_admin_companies_path, search_fields: %i[name]}
+      f.input :submission_id,
+        as: :ajax_select,
+        collection: [],
+        data: {url: filter_admin_submissions_path, search_fields: %i[title description year]}
       f.input :track_ids, as: :check_boxes, collection: Track.all, label: "Related Track(s)"
       f.input :header_image,
         as: :file,
