@@ -4,16 +4,20 @@ footer.Footer
       = render layout: 'layouts/shared/layout_wrapper' do
         = render partial: 'layouts/shared/primary_callouts_nav'
   .Footer-blocks
-    nav aria-label="Footer"
-      ul.Footer-block
+    .Footer-block
+      .Footer-title Denver Startup Week #{Date.today.year}
+      .Footer-subtitle &copy;Copyright #{Date.today.year}. All rights reserved.
+      = render 'components/social_media_nav'
+      ul.Footer-page-links-list aria-label="Footer page links"
         - if signed_in? && current_user.is_admin?
           li.Footer-link= link_to 'Admin', admin_root_path
-        li.Footer-link= link_to 'Attendees', page_path(page: 'attendees')
-        li.Footer-link= link_to 'Podcast', page_path(page: 'podcast')
-        li.Footer-link= link_to 'Press', page_path(page: 'press')
+        li.Footer-link= link_to 'FAQ', page_path(page: 'about/faq')
+        li.Footer-link= link_to 'Assets', page_path(page: 'about/assets')
         li.Footer-link= link_to 'Code of Conduct', page_path(page: 'code-of-conduct')
 
     .Footer-block
-      div.Footer-title Denver Startup Week #{Date.today.year}
-      div.Footer-subtitle &copy;Copyright #{Date.today.year}. All rights reserved.
-      = render 'components/social_media_nav'
+      .Footer-updates 
+        p.Footer-updates-title Stay in Touch
+        = form_for NewsletterSignup.new, class: "footer-updates-form", html: { data: { bindable: "newsletter-signup" } } do |f|
+          = f.text_field :email, placeholder: "Email Address", class: "Footer-updates-email"
+          = f.submit 'Get Updates', class: "Footer-updates-submit"
