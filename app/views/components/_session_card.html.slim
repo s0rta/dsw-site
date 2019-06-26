@@ -12,6 +12,11 @@
     - if local_assigns[:votable].present?
       .SessionCard-vote
         .SessionCard-vote-author - #{session.company_or_submitter}
-        .SessionCard-vote-wrapper
-          = render partial: 'icons/thumbsup'
-          span.SessionCard-vote-count #{pluralize(session.votes.size, 'vote')}
+        .SessionCard-vote-wrapper(data-bindable='ajax-voter')
+          - if current_user
+            = link_to submission_votes_path(session), remote: true, method: :post, class: "#{color}-font-on-#{color} register-vote-js", title: "Vote for '#{session.title}'" do
+              = render partial: 'icons/thumbsup'
+          - else
+            = link_to new_user_session_path, class: "#{color}-font-on-#{color}", title: "Vote for '#{session.title}'" do
+              = render partial: 'icons/thumbsup'
+          span.SessionCard-vote-count.vote-count-js #{pluralize(session.votes.size, 'vote')}
