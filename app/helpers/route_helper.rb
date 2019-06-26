@@ -35,6 +35,17 @@ module RouteHelper
     ]
   end
 
+  def footer_nav_routes
+    [faq_route, assets_route, code_of_conduct_route]
+  end
+
+  def code_of_conduct_route
+    {
+      path: "/code-of-conduct",
+      label: "Code of Conduct"
+    }
+  end
+
   def home_route
     {
       path: "/",

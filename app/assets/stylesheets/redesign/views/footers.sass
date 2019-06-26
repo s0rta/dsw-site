@@ -1,6 +1,8 @@
 @import ../config
 
 .Footer
+  .SocialMediaNav
+    margin: -0.5em
   .Footer-title
     display: inline-block
     vertical-align: middle
@@ -23,30 +25,13 @@
 .Footer-block
   &:first-child
     margin-bottom: 50px
-  a
-    text-decoration: underline
-    color: #4d4d4d
-  nav
-    margin: -0.5em
-
-.Footer-page-links-list
-  margin-top: 45px
-
-.Footer-link
-  margin-top: 1em
-  font-weight: 500
-  font-size: 12px
-
-.Footer-link a
-  text-decoration: none
-  text-transform: uppercase
 
 .Footer
   .SocialMediaNav-fa-circle
     background: #4d4d4d
   .SocialMediaNav-icon
     color: #fff
-
+ 
 .Footer-primary-callouts
   margin-top: 80px
 
@@ -71,9 +56,10 @@
   float: right
 
 @media(max-width: 640px)
+  .Footer-blocks
+    flex-direction: column-reverse
   .Footer-updates-submit
-    width: 100%
-
+      margin-bottom: 86px
   
 @media(min-width: 640px)
   .Footer-blocks

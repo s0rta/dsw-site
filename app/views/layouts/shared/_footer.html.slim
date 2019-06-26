@@ -8,12 +8,7 @@ footer.Footer
       .Footer-title Denver Startup Week #{Date.today.year}
       .Footer-subtitle &copy;Copyright #{Date.today.year}. All rights reserved.
       = render 'components/social_media_nav'
-      ul.Footer-page-links-list aria-label="Footer page links"
-        - if signed_in? && current_user.is_admin?
-          li.Footer-link= link_to 'Admin', admin_root_path
-        li.Footer-link= link_to 'FAQ', page_path(page: 'about/faq')
-        li.Footer-link= link_to 'Assets', page_path(page: 'about/assets')
-        li.Footer-link= link_to 'Code of Conduct', page_path(page: 'code-of-conduct')
+      = render 'layouts/shared/footer_nav', routes: footer_nav_routes, nav_title: "Footer"
 
     .Footer-block
       .Footer-updates 
