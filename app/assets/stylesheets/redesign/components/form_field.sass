@@ -1,0 +1,59 @@
+@import ../config
+
+.FormField
+  position: relative
+  min-height: 40px
+  margin: 14px 0
+
+.FormField label
+  +font-family-mixin(Montserrat-Medium)
+  color: $primary-font-light
+  font-size: 14px
+
+.FormField input,
+.FormField textarea,
+.FormField .awesomplete input
+  +font-family-mixin(Montserrat-Light)
+  border: 0
+  border-bottom: 1px solid $gray-border-light
+  font-size: 14px
+  color: $primary-font-medium
+  outline: 0
+  padding-bottom: 4px
+  width: 100%
+  margin-top: 10px
+
+.FormField select
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  padding: 10px
+  padding-right: 40px
+  padding-left: 0
+  min-width: 200px
+  color: $primary-font-medium
+  background: white image-url('redesign/arrow-select-grey.svg') no-repeat
+  background-position: 100% 50%
+  border-bottom: 1px solid $gray-border-light
+
+.FormField .awesomplete
+  display: block
+  width: 100%
+
+=placeholder-mixin
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px
+  color: $primary-font-light
+  opacity: .8
+  margin-bottom: 10px
+  display: block
+
+.FormField input,
+.FormField textarea
+  &::-webkit-input-placeholder
+    +placeholder-mixin
+  &::-moz-placeholder
+    +placeholder-mixin
+  &:-ms-input-placeholder
+    +placeholder-mixin
+  &:-moz-placeholder
+    +placeholder-mixin
