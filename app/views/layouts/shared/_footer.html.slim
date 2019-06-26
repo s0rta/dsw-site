@@ -14,11 +14,7 @@ footer.Footer
       .Footer-updates 
         p.Footer-updates-title Stay in Touch
         = form_for NewsletterSignup.new, class: "footer-updates-form", html: { data: { bindable: "newsletter-signup" } } do |f|
-          = f.text_field :email, placeholder: "Email Address", class: "Footer-updates-email"
+          = render layout: 'components/floating_input' do
+            = f.text_field :email, required: 'required', type: 'email', autofocus: 'autofocus'
+            = f.label :email, "Email Address"
           = f.submit 'Get Updates', class: "Footer-updates-submit"
-
-
-          / = render layout: 'components/floating_input' do
-          /   = f.text_field :email, placeholder: "Email Address", class: "Footer-updates-email"
-          /   = f.label :title, 'Email Address'
-          /   = f.submit 'Get Updates', class: "Footer-updates-submit"
