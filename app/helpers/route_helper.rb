@@ -29,7 +29,7 @@ module RouteHelper
   end
 
   def get_involved_routes
-    [get_involved_route, present_route, volunteer_route, content_route]
+    [get_involved_route, present_route, sponsor_route, volunteer_route, content_route]
   end
 
   def social_media_routes
@@ -95,6 +95,13 @@ module RouteHelper
     {
       path: "/about/assets",
       label: "assets"
+    }
+  end
+
+  def sponsor_route
+    {
+      path: "/get-involved/sponsor",
+      label: "sponsor"
     }
   end
 
