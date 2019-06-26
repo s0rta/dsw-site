@@ -45,11 +45,7 @@
           = f.radio_button :learn_more_pledge_1p, "false", class: 'Register-radio-input'
           | NO
       .Register-native-field
-        .Register-coc
-          .Register-coc-inner
-            = f.check_box :coc_acknowledgement, class: 'code-of-conduct', required: 'required', class: 'Register-coc-checkbox'
-            .Register-coc-text
-              = render partial: 'layouts/shared/coc_acknowledgement'
+        = render partial: 'layouts/shared/coc_acknowledgement', locals: { f: f }
 
       = render partial: 'components/form_errors', locals: { error_resource: @registration }
 
