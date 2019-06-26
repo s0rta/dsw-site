@@ -2,7 +2,7 @@
 - content_for :extra_body_tags do
   = stylesheet_pack_tag 'application'
 
-= render 'layouts/shared/fullscreen_takeover_header', title: 'Present', background: 'light'
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Submit Session', background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
 
   = render layout: 'components/form_wrapper' do
@@ -15,14 +15,12 @@
       | for more information about the submission and selection process.
 
     = form_for @submission do |f|
-      .Submissions-input-instructions
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
             = f.label :track_id, 'Which track would your session best fit into? Please do not submit the same session to multiple tracks.'
             = f.select :track_id, tracks_for_select, { :include_blank => '' }
 
-      .Submissions-input-instructions
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
