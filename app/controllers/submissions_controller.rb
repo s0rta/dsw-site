@@ -36,7 +36,9 @@ class SubmissionsController < ApplicationController
       @submissions = Submission
         .fulltext_search(params[:terms])
         .for_current_year
+        .for_submittable_tracks
         .for_schedule_filter(params[:track_name], current_user)
+        .public
         .includes(:submitter,
           :track,
           :cluster,
