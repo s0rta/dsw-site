@@ -8,4 +8,10 @@
       = render partial: "icons/#{icon}"
       span.SessionCard-name #{session.track[:name]}
     h3.SessionCard-title #{session[:title]}
-    p.SessionCard-description #{session[:description].truncate(200)}
+    p.SessionCard-description #{session[:description].truncate(150)}
+    - if local_assigns[:votable].present?
+      .SessionCard-vote
+        .SessionCard-vote-author - #{session.company_or_submitter}
+        .SessionCard-vote-wrapper
+          = render partial: 'icons/thumbsup'
+          span.SessionCard-vote-count #{pluralize(session.votes.size, 'vote')}

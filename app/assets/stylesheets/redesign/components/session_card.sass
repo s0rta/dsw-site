@@ -1,5 +1,9 @@
+@import ../config
+
 .SessionCard
   position: relative
+  display: flex
+  flex-direction: column
   padding: 36px 30px
   height: 100%
 
@@ -34,3 +38,25 @@
   font-size: 14px
   font-weight: 300
   margin-top: 16px
+
+.SessionCard-vote
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  margin-top: 20px
+
+.SessionCard-vote-author
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+
+.SessionCard-vote-wrapper
+  margin-top: 30px
+  display: flex
+  align-items: center
+
+.SessionCard-vote-count
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px
+  margin-left: 15px
+  text-transform: uppercase
