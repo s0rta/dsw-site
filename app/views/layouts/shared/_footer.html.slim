@@ -13,7 +13,7 @@ footer.Footer
     .Footer-block
       .Footer-updates 
         p.Footer-updates-title Stay in Touch
-        = form_for NewsletterSignup.new, class: "footer-updates-form", html: { data: { bindable: "newsletter-signup" } } do |f|
+        = form_for NewsletterSignup.new, html: { data: { bindable: "newsletter-signup" } } do |f|
           = render layout: 'components/floating_input' do
             = f.text_field :email, required: 'required', type: 'email', autofocus: 'autofocus'
             = f.label :email, "Email Address"
