@@ -1,8 +1,16 @@
-nav
-  .section-content
-    h1 Register to Attend
+- content_for(:fullscreen_takeover, true)
 
-section.common.blue
-  .section-content.sm-centered
-    .dash-profile-bar
-      h3 Thanks for your interest in attending Denver Startup Week. Registration for #{current_year} is currently closed.
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Registration Closed', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+
+  h3 Thanks for your interest in attending Denver Startup Week. Registration for #{current_year} is currently closed.
+
+
+/ nav
+/   .section-content
+/     h1 Register to Attend
+
+/ section.common.blue
+/   .section-content.sm-centered
+/     .dash-profile-bar
+/       h3 Thanks for your interest in attending Denver Startup Week. Registration for #{current_year} is currently closed.
