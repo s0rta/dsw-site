@@ -1,7 +1,5 @@
 nav.FooterNav(aria-label="#{nav_title} nav")
   ul.FooterNav-page-links-list
-    - if signed_in? && current_user.is_admin?
-      li.FooterNav-item= link_to 'Admin', admin_root_path
     - routes.each do |route|
       li(class="FooterNav-item")
         = link_to route[:label], route[:path]

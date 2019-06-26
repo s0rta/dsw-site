@@ -1,5 +1,12 @@
 module RouteHelper
 
+  def admin_root_path
+    {
+      path: "/admin",
+      label: "Admin"
+    }
+  end
+
   def main_menu
     menu = [home_route, main_program_route, main_about_route, sponsors_route, main_get_involved_route, articles_route]
 
@@ -36,7 +43,9 @@ module RouteHelper
   end
 
   def footer_nav_routes
-    [faq_route, assets_route, code_of_conduct_route]
+    routes = [faq_route, assets_route, code_of_conduct_route]
+    routes.unshift admin_root_path if signed_in? && current_user.is_admin?
+    routes
   end
 
   def code_of_conduct_route
