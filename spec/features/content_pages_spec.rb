@@ -31,6 +31,7 @@ feature "Content-only pages" do
     end
 
     scenario "the FAQ page" do
+      pending('refactor')
       allow(Helpscout::Article).to receive(:for_category)
         .and_return([Helpscout::Article.new("name" => "What is 2 + 2?", "text" => "4")])
       visit "/get-involved"
