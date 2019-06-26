@@ -1,6 +1,8 @@
 @import ../config
 
 .Footer
+  .SocialMediaNav
+    margin: -0.5em
   .Footer-title
     display: inline-block
     vertical-align: middle
@@ -11,6 +13,7 @@
   .Footer-subtitle
     font-size: 12px
     font-weight: 300
+    margin-bottom: 25px
 
 .Footer-blocks
   display: flex
@@ -22,28 +25,39 @@
 .Footer-block
   &:first-child
     margin-bottom: 50px
-  a
-    text-decoration: underline
-    color: #4d4d4d
-
-.Footer-link
-  margin-top: 1em
-  font-weight: 500
-  font-size: 12px
-
-.Footer-link a
-  text-decoration: none
-  text-transform: uppercase
 
 .Footer
   .SocialMediaNav-fa-circle
     background: #4d4d4d
   .SocialMediaNav-icon
     color: #fff
-
+ 
 .Footer-primary-callouts
   margin-top: 80px
 
+.Footer-updates-title
+  text-align: left
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-dark
+  font-size: 28px
+  font-weight: 300
+  text-transform: uppercase
+  margin-bottom: 31px
+  
+
+
+.Footer-updates-submit
+  +white-button(166px, 46px)
+  margin-top: 22px
+  float: right
+  width: auto
+
+@media(max-width: 640px)
+  .Footer-blocks
+    flex-direction: column-reverse
+  .Footer-updates-submit
+      margin-bottom: 86px
+  
 @media(min-width: 640px)
   .Footer-blocks
     flex-direction: row
@@ -53,6 +67,8 @@
       margin-bottom: 0
     &:nth-child(2)
       text-align: right
+  .Footer-updates
+    min-width: 350px
 
 @media(min-width: 800px)
   .Footer-blocks

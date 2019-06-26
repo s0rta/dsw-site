@@ -1,5 +1,12 @@
 module RouteHelper
 
+  def admin_root_path
+    {
+      path: "/admin",
+      label: "Admin"
+    }
+  end
+
   def main_menu
     menu = [home_route, main_program_route, main_about_route, sponsors_route, main_get_involved_route, articles_route]
 
@@ -33,6 +40,19 @@ module RouteHelper
       { icon: "fa-youtube", label: "youtube", link: "https://www.youtube.com/c/denverstartupweek" },
       { icon: "fa-medium-m", label: "medium", link: "https://medium.com/denver-startup-week" }
     ]
+  end
+
+  def footer_nav_routes
+    routes = [faq_route, assets_route, code_of_conduct_route]
+    routes.unshift admin_root_path if signed_in? && current_user.is_admin?
+    routes
+  end
+
+  def code_of_conduct_route
+    {
+      path: "/code-of-conduct",
+      label: "Code of Conduct"
+    }
   end
 
   def home_route
