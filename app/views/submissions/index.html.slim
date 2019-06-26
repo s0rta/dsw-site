@@ -4,10 +4,10 @@
       = render partial: 'components/search', locals: { placeholder: ''}
     .Voting-filters
       .Voting-filter
-        = render layout: 'components/dropdown', locals: { name: "track", onchange: "this.form.submit();", value: params[:track] } do
-          option(value="all" selected=("selected" if params[:track] == 'all')) View All Tracks
+        = render layout: 'components/dropdown', locals: { name: "track_name", onchange: "this.form.submit();", value: params[:track_name] } do
+          option(value="all" selected=("selected" if params[:track_name] == 'all')) View All Tracks
           - Track.dropdown_options.each do |opt|
-            option(value="#{opt[:value]}" selected=("selected" if params[:track] == opt[:value] )) #{opt[:label]}
+            option(value="#{opt[:value]}" selected=("selected" if params[:track_name] == opt[:value] )) #{opt[:label]}
 
 
 .Voting-list-wrapper
@@ -16,7 +16,7 @@
 
 - unless @submissions.empty?
   div.Voting-load-more(data-bindable="ajax-load-more" data-target="loader-target")
-    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms], track: params[:track], seed: @seed), remote: true, method: :get, id: 'load-more', class: 'Voting-load-more-button', data: { type: 'json' }
+    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms], track_name: params[:track_name], seed: @seed), remote: true, method: :get, id: 'load-more', class: 'Voting-load-more-button', data: { type: 'json' }
 
 
 / = render partial: 'voting_header'
