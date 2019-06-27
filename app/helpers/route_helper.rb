@@ -29,7 +29,9 @@ module RouteHelper
   end
 
   def get_involved_routes
-    [get_involved_route, present_route, volunteer_route, content_route]
+    routes = [get_involved_route, volunteer_route, content_route]
+    routes.insert(1, present_route) if AnnualSchedule.cfp_open?
+    routes
   end
 
   def social_media_routes
