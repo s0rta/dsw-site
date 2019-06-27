@@ -1,0 +1,9 @@
+- flash.each_with_index do |(key, message), index|
+  .FlashMessage
+    .FlashMessage-body(class="is-#{key}")
+      .FlashMessage-rail(class="is-#{key}")
+        = render "icons/#{key}"
+      .FlashMessage-body-text #{message}
+      button.FlashMessage-close(data-bindable='flash_message')
+        = render "icons/close_no_circle"
+

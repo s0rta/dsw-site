@@ -33,6 +33,7 @@ html
     main(class=("is-fullscreen" if content_for(:fullscreen_takeover)))
       == yield
     = render partial: 'layouts/shared/footer' unless content_for(:fullscreen_takeover)
+    = render 'components/flash_messages'
     = javascript_pack_tag 'application'
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js")
