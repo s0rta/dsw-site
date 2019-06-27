@@ -15,10 +15,10 @@ class SubmissionsController < ApplicationController
                    .for_schedule_filter(params[:track_name], current_user)
                    .public
                    .includes(:submitter,
-                    :track,
-                    :cluster,
-                    :company,
-                    sponsorship: :track)
+                             :track,
+                             :cluster,
+                             :company,
+                             sponsorship: :track)
                    .order(Arel.sql("RANDOM()"))
                    .page(params[:page])
 
