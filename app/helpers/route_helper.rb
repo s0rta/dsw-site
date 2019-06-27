@@ -129,7 +129,7 @@ module RouteHelper
 
   def present_route
     {
-      path: "/get-involved/present",
+      path: new_submission_path,
       label: "present"
     }
   end
