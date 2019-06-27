@@ -38,4 +38,10 @@ module StaticDataHelper
       YAML.safe_load(File.read(File.expand_path("../data/content.yml",  __dir__)))
     ).deep_transform_keys(&:to_sym)
   end
+
+  def sponsor_static_data
+    HashWithIndifferentAccess.new(
+      YAML.safe_load(File.read(File.expand_path("../data/sponsor.yml",  __dir__)))
+    ).deep_transform_keys(&:to_sym)
+  end
 end
