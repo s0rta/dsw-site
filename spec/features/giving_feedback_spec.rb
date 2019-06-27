@@ -40,6 +40,7 @@ feature 'Giving feedback on a session' do
 
     scenario 'a user provides feedback for a session when already signed in and registered' do
       pending('refactor')
+
       login_as user, scope: :user
 
       submission
