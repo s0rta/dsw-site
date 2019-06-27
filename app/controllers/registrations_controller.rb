@@ -43,7 +43,7 @@ class RegistrationsController < ApplicationController
                                            :learn_more_pledge_1p,
                                            :track_id,
                                            :coc_acknowledgement,
-                                           :attendee_goal_ids)
+                                           attendee_goal_ids: [])
   end
 
   def registration_user_params
