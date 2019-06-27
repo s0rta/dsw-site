@@ -1,21 +1,26 @@
 @import ../config
 
-/* This should be refactored to something more semantic eventually */
-.code-of-conduct-action
-  section.common
-    .section-content
-      ul, li
-        font-family: 'Montserrat-Light', sans-serif
-        font-weight: 200
-        font-size: 14px
-        color: $copy-color
-        margin-left: 25px
-        margin-top: 0
-        padding: 0
-        list-style-type: circle
+.CodeOfConduct
+  h6
+    margin-bottom: 30px
 
-      li
-        margin-bottom: 8px
+  ul, li
+    +font-family-mixin(Montserrat-Light)
+    font-size: 14px
+    margin-left: 25px
+    margin-top: 0
+    padding: 0
+    list-style-type: circle
 
-      h3
-        margin-bottom: 5px
+  li
+    margin-bottom: 8px
+
+  h3
+    margin-bottom: 5px
+
+.CodeOfConduct-title
+  text-transform: uppercase
+  margin-bottom: 30px
+
+.CodOfConduct-harassments-list
+  margin-bottom: 30px
