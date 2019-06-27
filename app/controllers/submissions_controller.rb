@@ -9,24 +9,24 @@ class SubmissionsController < ApplicationController
 
   def index
     @submissions = Submission
-    .fulltext_search(params[:terms])
-    .for_current_year
-    .for_submittable_tracks
-    .for_schedule_filter(params[:track_name], current_user)
-    .public
-    .includes(:submitter,
-      :track,
-      :cluster,
-      :company,
-      sponsorship: :track)
-    .order(Arel.sql("RANDOM()"))
-    .page(params[:page])
+                   .fulltext_search(params[:terms])
+                   .for_current_year
+                   .for_submittable_tracks
+                   .for_schedule_filter(params[:track_name], current_user)
+                   .public
+                   .includes(:submitter,
+                    :track,
+                    :cluster,
+                    :company,
+                    sponsorship: :track)
+                   .order(Arel.sql("RANDOM()"))
+                   .page(params[:page])
 
     respond_to do |format|
       format.html
       format.js do
-        render json: { fragment: render_to_string(partial: "submissions_list_items", formats: [:html]),
-                      next_url: url_for(page: Integer(params[:page] || 1) + 1, seed: @seed) }
+        render json: { fragment: render_to_string(partial: 'submissions_list_items', formats: [:html]),
+                       next_url: url_for(page: Integer(params[:page] || 1) + 1, seed: @seed) }
       end
     end
   end

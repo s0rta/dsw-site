@@ -27,7 +27,7 @@ feature "Voting for session submissions" do
     end
 
     scenario "User votes for a session when already signed in" do
-      pending("refactor")
+      pending('refactor')
       login_as user, scope: :user
       visit "/voting"
       click_link "View Topics"
@@ -42,7 +42,7 @@ feature "Voting for session submissions" do
     end
 
     scenario "User votes for a session after being prompted to sign in" do
-      pending("refactor")
+      pending('refactor')
       visit "/voting"
       click_link "View Topics"
       expect(page).to have_content("I am a session")
@@ -60,7 +60,7 @@ feature "Voting for session submissions" do
     end
 
     scenario "User votes for a session from the session detail page" do
-      pending("refactor")
+      pending('refactor')
       login_as user, scope: :user
       visit "/voting"
       click_link "View Topics"
