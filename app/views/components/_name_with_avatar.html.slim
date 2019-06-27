@@ -1,10 +1,5 @@
 .NameWithAvatar(class="is-#{align} #{color}-font")
   .NameWithAvatar-name #{user.name}
-  - if user.linkedin_url.present?
-    a.NameWithAvatar-linkedin aria-label="#{user.name} linkedIn profile page" href="#{user.linkedin_url}" target='_blank'
-      span class="fa-stack"
-        i class="fa SocialMediaNav-fa-circle fa-stack-2x"
-        i class="fab SocialMediaNav-icon fa-2x fa-linkedin-in fa-stack-1x"
   = render partial: 'components/avatar', locals: { size: 'small', color: color,  user: user }
 
 
