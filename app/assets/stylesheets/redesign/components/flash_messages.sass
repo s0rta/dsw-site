@@ -1,0 +1,93 @@
+@import ../config
+
+.FlashMessage-wrapper
+  position: fixed
+  top: 50px
+  right: 50px
+  z-index: 20
+
+.FlashMessage
+  display: flex
+  z-index: 20
+  max-width: 300px
+  animation-name: slidein
+  animation-duration: 1s
+  animation-iteration-count: 1
+  animation-timing-function: cubic-bezier(1, 1.1, 0, 1)
+  margin-bottom: 15px
+
+  &.is-closed
+    display: none
+
+.FlashMessage-rail
+  position: absolute
+  left: 0
+  top: 0
+  bottom: 0
+  width: 60px
+  height: 100%
+  display: flex
+  align-items: center
+  justify-content: center
+
+  &.is-success
+    background: $green-light
+    color: $green-dark
+
+  &.is-notice
+    background: $gold-light
+    color: $gold-dark
+
+  &.is-error
+    background: $red-light
+    color: $red-dark
+
+.FlashMessage-body
+  display: flex
+  position: relative
+  padding: 20px 0
+  padding-left: 60px
+  padding-right: 14px
+  align-items: flex-start
+
+  &.is-success
+    background: $green-very-light
+    color: $green-dark
+
+  &.is-notice
+    background: $gold-very-light
+    color: $gold-dark
+
+  &.is-error
+    background: $red-very-light
+    color: $red-dark
+
+.FlashMessage-body-text
+  margin-left: 14px
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  line-height: 18px
+  color: inherit
+
+.FlashMessage-close
+  color: inherit
+  border: 0
+  outline: 0
+  margin: 0
+  padding: 0
+  margin-left: 40px
+  background: inherit
+  height: 18px
+  width: 18px
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+
+  svg
+    pointer-events: none
+
+
+@keyframes slidein
+  0%   { transform: translate( 150%, 0) }
+  100% { transform: translate( 0%, 0) }

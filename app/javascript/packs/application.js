@@ -15,7 +15,7 @@ import 'jquery-ujs';
 
 import 'components/newsletter_signup';
 import 'components/general_inquiry';
-import "components/toggle_accordion";
+import 'components/toggle_accordion';
 import 'components/toggle_faq';
 import 'components/toggle_nav';
 import 'components/ajax_voter';
@@ -25,6 +25,7 @@ import 'components/booking_dropdown';
 import 'components/autocompleter';
 import 'components/menu';
 import 'components/file_select';
+import 'components/flash_message';
 
 import 'awesomplete/awesomplete.css';
 
