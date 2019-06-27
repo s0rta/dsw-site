@@ -29,7 +29,9 @@ module RouteHelper
   end
 
   def get_involved_routes
-    [get_involved_route, present_route, sponsor_route, volunteer_route, content_route]
+    routes = [get_involved_route, sponsor_route, volunteer_route, content_route]
+    routes.insert(1, present_route) if AnnualSchedule.cfp_open?
+    routes
   end
 
   def social_media_routes
@@ -136,7 +138,7 @@ module RouteHelper
 
   def present_route
     {
-      path: "/get-involved/present",
+      path: new_submission_path,
       label: "present"
     }
   end
