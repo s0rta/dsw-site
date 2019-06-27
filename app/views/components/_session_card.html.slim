@@ -1,9 +1,10 @@
 - color = session.track[:color]
 - icon = session.track[:icon]
+- session_link = local_assigns[:votable].present? ? submission_path(session.to_param) : schedule_path(session.to_param)
 
 = render 'components/card' do
   div.SessionCard(class="#{color}-background #{color}-font-on-#{color} #{color}-fill-on-#{color}-background")
-    a.SessionCard-link(href="#{schedule_path(session.to_param)}")
+    a.SessionCard-link(href="#{session_link}")
     div.SessionCard-type
       = render partial: "icons/#{icon}"
       span.SessionCard-name #{session.track[:name]}
