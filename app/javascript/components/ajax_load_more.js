@@ -1,11 +1,12 @@
-import Bindable from 'utensils/bindable'
-import throttle from 'lodash.throttle'
+import Bindable from 'utensils/bindable';
+import throttle from 'lodash.throttle';
 
 // From David Walsh: https://davidwalsh.name/javascript-debounce-function
 function debounce(func, wait, immediate) {
   var timeout;
   return function() {
-    var context = this, args = arguments;
+    var context = this,
+      args = arguments;
     var later = function() {
       timeout = null;
       if (!immediate) func.apply(context, args);
@@ -15,7 +16,7 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-};
+}
 
 export default class AjaxLoadMore {
   constructor(el, data) {
@@ -31,27 +32,39 @@ export default class AjaxLoadMore {
   }
 
   addListeners() {
-    this.el.on('ajax:success', 'a.load-more', this.appendMore);
-    this.throttledScroll = throttle(this.handleScroll, 250, { trailingEdge: false });
+    this.el.on('ajax:success', 'a#load-more', this.appendMore);
+    this.throttledScroll = throttle(this.handleScroll, 250, {
+      trailingEdge: false
+    });
     $(window).on('scroll', this.throttledScroll);
   }
 
   removeListeners() {
-    this.el.off('ajax:success', 'a.load-more', this.appendMore);
+    this.el.off('ajax:success', 'a#load-more', this.appendMore);
     $(window).off('scroll', this.throttledScroll);
   }
 
   appendMore(event, data) {
-    $(document).find('#' + this.data.target).append(data.fragment)
+    $(document)
+      .find('#' + this.data.target)
+      .append(data.fragment);
     this.el.find('a').attr('href', data.next_url);
-    if (data.fragment.length === 0) { this.el.hide(); }
+    if (data.fragment.length === 0) {
+      this.el.hide();
+    }
   }
 
   handleScroll(event) {
-    if ($(window).scrollTop() > ($(document).height() - $(window).height() - 120)) {
-      return $.ajax({url: this.el.find('a').attr('href'), dataType: 'json'}).then(json => this.appendMore(event,json));
+    if (
+      $(window).scrollTop() >
+      $(document).height() - $(window).height() - 120
+    ) {
+      return $.ajax({
+        url: this.el.find('a').attr('href'),
+        dataType: 'json'
+      }).then(json => this.appendMore(event, json));
     }
   }
 }
 
-Bindable.register('ajax-load-more', AjaxLoadMore)
+Bindable.register('ajax-load-more', AjaxLoadMore);
