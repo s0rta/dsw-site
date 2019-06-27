@@ -29,11 +29,11 @@ feature 'Submitting and voting on pitch contest applications' do
       expect(page).to have_content('Globex Corporation')
 
       click_link "Vote for 'Globex Corporation'"
-      expect(page).to have_css('.vote-count', text: '1 vote')
+      expect(page).to have_css('.vote-count-js', text: '1 vote')
 
       # Clicking twice should have no effect
       click_link "Vote for 'Globex Corporation'"
-      expect(page).to have_css('.vote-count', text: '1 vote')
+      expect(page).to have_css('.vote-count-js', text: '1 vote')
     end
 
     scenario 'User votes for a session after being prompted to sign in' do
