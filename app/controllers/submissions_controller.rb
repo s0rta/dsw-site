@@ -5,16 +5,30 @@ class SubmissionsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create mine submissions_closed]
   before_action :check_voting_open, only: %i[index show]
   before_action :set_submissions, only: %i[edit update]
-  before_action :set_random_seed, only: :track
+  before_action :set_random_seed, only: %i[index track]
 
   def index
     @submissions = Submission
-      .for_current_year
-      .for_submittable_tracks
-      .public
-      .includes(:submitter, :track, :cluster)
-      .order("submissions.created_at ASC")
-      .page(params[:page])
+                   .fulltext_search(params[:terms])
+                   .for_current_year
+                   .for_submittable_tracks
+                   .for_schedule_filter(params[:track_name], current_user)
+                   .public
+                   .includes(:submitter,
+                             :track,
+                             :cluster,
+                             :company,
+                             sponsorship: :track)
+                   .order(Arel.sql("RANDOM()"))
+                   .page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js do
+        render json: { fragment: render_to_string(partial: 'submissions_list_items', formats: [:html]),
+                       next_url: url_for(page: Integer(params[:page] || 1) + 1, seed: @seed) }
+      end
+    end
   end
 
   def track

@@ -29,7 +29,7 @@ module RouteHelper
   end
 
   def get_involved_routes
-    routes = [get_involved_route, volunteer_route, content_route]
+    routes = [get_involved_route, sponsor_route, volunteer_route, content_route]
     routes.insert(1, present_route) if AnnualSchedule.cfp_open?
     routes
   end
@@ -97,6 +97,13 @@ module RouteHelper
     {
       path: "/about/assets",
       label: "assets"
+    }
+  end
+
+  def sponsor_route
+    {
+      path: "/get-involved/sponsor",
+      label: "sponsor"
     }
   end
 
