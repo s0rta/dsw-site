@@ -8,7 +8,7 @@ class CreateAuthorships < ActiveRecord::Migration[5.2]
     end
 
     Article.find_each do |a|
-      a.update_attribute(:author_ids, [a.author.id])
+      a.update_attribute(:author_ids, [a.author_id])
     end
 
     remove_column :articles, :author_id
