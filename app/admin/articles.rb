@@ -5,7 +5,7 @@ ActiveAdmin.register Article do
 
   permit_params :title,
     :body,
-    :author_id,
+    :submitter_id,
     :track_ids,
     publishing_attributes: [:id, :_destroy, :effective_at],
     authorships_attributes: [:id, :_destroy, :user_id, :is_displayed]
@@ -20,7 +20,7 @@ ActiveAdmin.register Article do
   index do
     selectable_column
     column :title
-    column :author
+    column :submitter
     column :header_image do |u|
       image_tag u.header_image.url(:thumb) if u.header_image.present?
     end
@@ -69,10 +69,10 @@ ActiveAdmin.register Article do
           }.to_json,
         },
       }
-      # f.input :author_id,
-      #   as: :ajax_select,
-      #   collection: [],
-      #   data: {url: filter_admin_users_path, search_fields: %i[name email]}
+      f.input :submitter_id,
+        as: :ajax_select,
+        collection: [],
+        data: {url: filter_admin_users_path, search_fields: %i[name email]}
       f.input :company_id,
         as: :ajax_select,
         collection: [],

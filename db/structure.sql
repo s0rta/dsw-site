@@ -198,7 +198,8 @@ CREATE TABLE public.articles (
     updated_at timestamp without time zone NOT NULL,
     header_image character varying,
     company_id bigint,
-    submission_id bigint
+    submission_id bigint,
+    submitter_id bigint
 );
 
 
@@ -2019,6 +2020,13 @@ CREATE INDEX index_articles_on_submission_id ON public.articles USING btree (sub
 
 
 --
+-- Name: index_articles_on_submitter_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_articles_on_submitter_id ON public.articles USING btree (submitter_id);
+
+
+--
 -- Name: index_articles_tracks_on_article_id_and_track_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2457,6 +2465,14 @@ ALTER TABLE ONLY public.articles_tracks
 
 
 --
+-- Name: articles fk_rails_af9e6e0455; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT fk_rails_af9e6e0455 FOREIGN KEY (submitter_id) REFERENCES public.users(id);
+
+
+--
 -- Name: authorships fk_rails_c386d1f71d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2661,6 +2677,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190624043458'),
 ('20190624043624'),
 ('20190624043648'),
-('20190624140827');
+('20190624140827'),
+('20190628183323');
 
 

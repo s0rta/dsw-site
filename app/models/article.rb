@@ -11,6 +11,7 @@ class Article < ApplicationRecord
   has_many :authors, class_name: "User", through: :authorships, source: :user
   has_one :publishing, as: :subject
 
+  belongs_to :submitter, class_name: "User"
   belongs_to :submission, required: false
   belongs_to :company, required: false
 
