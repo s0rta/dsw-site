@@ -16,6 +16,8 @@ class Article < ApplicationRecord
 
   mount_uploader :header_image, HeaderImageUploader
 
+  accepts_nested_attributes_for :publishing
+
   def to_param
     "#{id}-#{title.try(:parameterize)}"
   end

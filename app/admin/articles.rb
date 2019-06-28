@@ -5,7 +5,14 @@ ActiveAdmin.register Article do
     :body,
     :author_id,
     :track_ids,
-    :published_at
+    publishing_attributes: [:effective_at]
+
+
+  controller do
+    def scoped_collection
+      resource_class.includes(:publishing)
+    end
+  end
 
   index do
     selectable_column
@@ -16,7 +23,9 @@ ActiveAdmin.register Article do
     end
     column :created_at
     column :updated_at
-    column :published_at
+    column 'Publishing' do |article|
+      article&.publishing.effective_at
+    end
     actions
   end
 
@@ -69,7 +78,10 @@ ActiveAdmin.register Article do
       f.input :header_image,
         as: :file,
         hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
-      f.input :published_at
+    end
+
+    f.has_many :publishing do |pub|
+      pub.input :effective_at
     end
 
     f.actions

@@ -58,6 +58,8 @@ class Submission < ApplicationRecord
   has_one :sponsorship, dependent: :restrict_with_error
   has_one :publishing, as: :subject
 
+  accepts_nested_attributes_for :publishing
+
   validates :title, presence: true
   validates :description, presence: true
   validates :contact_email, presence: true
