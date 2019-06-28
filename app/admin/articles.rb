@@ -1,11 +1,14 @@
 ActiveAdmin.register Article do
+  include ActiveAdmin::AjaxFilter
+
   menu parent: "Site Content"
 
   permit_params :title,
     :body,
     :author_id,
     :track_ids,
-    publishing_attributes: [:effective_at]
+    publishing_attributes: [:id, :_destroy, :effective_at],
+    authorships_attributes: [:id, :_destroy, :user_id, :is_displayed]
 
 
   controller do
@@ -26,6 +29,10 @@ ActiveAdmin.register Article do
     column 'Publishing' do |article|
       article&.publishing.effective_at
     end
+    column 'Authors' do |article|
+      article&.authors
+    end
+
     actions
   end
 
@@ -80,8 +87,16 @@ ActiveAdmin.register Article do
         hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
     end
 
-    f.has_many :publishing do |pub|
+    f.has_many :publishing, allow_destroy: true do |pub|
       pub.input :effective_at
+    end
+
+    f.has_many :authorships, allow_destroy: true do |authorship|
+      authorship.input :user_id,
+        as: :ajax_select,
+        collection: [],
+        data: {url: filter_admin_users_path, search_fields: %i[name email]}
+      authorship.input :is_displayed
     end
 
     f.actions

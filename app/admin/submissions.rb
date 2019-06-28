@@ -34,7 +34,7 @@ ActiveAdmin.register Submission do
     :video_url,
     :volunteers_needed,
     :year,
-    publishing_attributes: [:effective_at]
+    publishing_attributes: [:id, :_destroy, :effective_at]
 
   controller do
     def scoped_collection
