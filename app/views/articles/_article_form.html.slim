@@ -1,5 +1,4 @@
 - content_for(:fullscreen_takeover, true)
-- content_for(:title, 'Submit Article')
 - upload_label = @article.header_image.present? ? 'Change Header Image +' : 'Add Header Image +'
 
 = render 'layouts/shared/fullscreen_takeover_header', title: content_for(:article_page_title), background: 'light'
