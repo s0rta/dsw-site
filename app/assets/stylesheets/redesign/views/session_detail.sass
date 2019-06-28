@@ -96,8 +96,14 @@
   margin-bottom: 90px
 .SessionDetail-attendee
   padding: 6px 50px 6px 10px
+  display: flex
+  align-items: center
+  justify-content: space-between
 .SessionDetail-related-session
   margin-bottom: 25px
+.SessionDetail-attendee
+  .UserLinkedin
+    margin-left: 75px
 
 @media(min-width: 400px)
   .SessionDetail-stream
@@ -108,6 +114,13 @@
 @media(max-width: 600px)
   .SessionDetail-stats-container
     flex-direction: column
+  .SessionDetail-attendee
+    padding: 6px 10px 6px 10px
+    .UserLinkedin
+      margin-left: 0px
+    .NameWithAvatar-name
+      max-width: 220px
+  
 
 @media(max-width: 1000px)
   .SessionDetail-columns
