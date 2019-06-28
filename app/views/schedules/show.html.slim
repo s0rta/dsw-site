@@ -73,6 +73,8 @@
           - @session.registrants.where(id: @current_user.id).each do |user|
             .SessionDetail-attendee
               = render partial: 'components/name_with_avatar', locals: { user: user, align: 'right', color: 'gray' }
+              - if user[:linkedin_url].present?
+                = render partial: 'components/user_linkedin', locals: { user: user }
           - @session.registrants.where.not(id: @current_user.id).reorder('"session_registrations"."created_at" DESC').each do |user|
             .SessionDetail-attendee
               = render partial: 'components/name_with_avatar', locals: { user: user, align: 'right', color: 'gray' }
