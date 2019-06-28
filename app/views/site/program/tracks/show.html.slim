@@ -1,2 +1,4 @@
+- content_for(:title, 'Programs')
+- content_for(:subtitle, "#{@track[:name]}")
 = render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@track[:name]}", sub_program: "Tracks", back_url: "/program/tracks", btn_sessions: "Track", color: "#{@track[:color]}" }
 = render partial: 'layouts/shared/articles_and_sessions_list', locals: { list: featured_static_data[:features], title: "#{@track[:name].downcase}", is_overlapped: true }
