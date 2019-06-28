@@ -8,7 +8,7 @@ class Article < ApplicationRecord
 
   has_and_belongs_to_many :tracks, validate: false
   has_many :authorships, dependent: :destroy
-  has_many :authors, class_name: "User", through: :authorships
+  has_many :authors, class_name: "User", through: :authorships, source: :user
   has_one :publishing, as: :subject
 
   belongs_to :submission, required: false
