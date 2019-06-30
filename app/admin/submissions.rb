@@ -1,4 +1,6 @@
 ActiveAdmin.register Submission do
+  include ActiveAdmin::AjaxFilter
+
   menu parent: "Sessions", priority: 1
 
   permit_params :budget_needed,
@@ -31,7 +33,8 @@ ActiveAdmin.register Submission do
     :venue_id,
     :video_url,
     :volunteers_needed,
-    :year
+    :year,
+    publishing_attributes: [:id, :_destroy, :effective_at]
 
   controller do
     def scoped_collection
@@ -42,6 +45,7 @@ ActiveAdmin.register Submission do
         :venue,
         :cluster,
         :company,
+        :publishing,
         sponsorship: :track)
     end
 
@@ -74,6 +78,9 @@ ActiveAdmin.register Submission do
     column(:votes, sortable: "COUNT(votes.id)") { |s| s.votes.size }
     column(:attendees, sortable: "COUNT(user_registrations.id)") { |s| s.user_registrations.size }
     column(:pending_updates, sortable: false) { |s| s.proposed_updates.present? ? "Yes" : "No" }
+    column 'Publishing' do |submission|
+      submission&.publishing&.effective_at
+    end
     actions
   end
 
@@ -195,6 +202,11 @@ ActiveAdmin.register Submission do
       f.input :volunteers_needed
       f.input :internal_notes
     end
+
+    f.has_many :publishing do |pub|
+      pub.input :effective_at
+    end
+
     f.actions
   end
 

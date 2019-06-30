@@ -194,11 +194,12 @@ CREATE TABLE public.articles (
     id bigint NOT NULL,
     title text NOT NULL,
     body text NOT NULL,
-    author_id bigint NOT NULL,
-    published_at timestamp without time zone,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    header_image character varying
+    header_image character varying,
+    company_id bigint,
+    submission_id bigint,
+    submitter_id bigint
 );
 
 
@@ -296,6 +297,39 @@ CREATE SEQUENCE public.attendee_messages_id_seq
 --
 
 ALTER SEQUENCE public.attendee_messages_id_seq OWNED BY public.attendee_messages.id;
+
+
+--
+-- Name: authorships; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.authorships (
+    id bigint NOT NULL,
+    article_id bigint,
+    user_id bigint,
+    is_displayed boolean DEFAULT true NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.authorships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: authorships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.authorships_id_seq OWNED BY public.authorships.id;
 
 
 --
@@ -666,6 +700,39 @@ CREATE SEQUENCE public.pitch_contest_votes_id_seq
 --
 
 ALTER SEQUENCE public.pitch_contest_votes_id_seq OWNED BY public.pitch_contest_votes.id;
+
+
+--
+-- Name: publishings; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.publishings (
+    id bigint NOT NULL,
+    subject_type character varying NOT NULL,
+    subject_id bigint NOT NULL,
+    effective_at timestamp without time zone,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: publishings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.publishings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: publishings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.publishings_id_seq OWNED BY public.publishings.id;
 
 
 --
@@ -1356,6 +1423,13 @@ ALTER TABLE ONLY public.attendee_messages ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
+-- Name: authorships id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.authorships ALTER COLUMN id SET DEFAULT nextval('public.authorships_id_seq'::regclass);
+
+
+--
 -- Name: clusters id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1430,6 +1504,13 @@ ALTER TABLE ONLY public.pitch_contest_entries ALTER COLUMN id SET DEFAULT nextva
 --
 
 ALTER TABLE ONLY public.pitch_contest_votes ALTER COLUMN id SET DEFAULT nextval('public.pitch_contest_votes_id_seq'::regclass);
+
+
+--
+-- Name: publishings id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.publishings ALTER COLUMN id SET DEFAULT nextval('public.publishings_id_seq'::regclass);
 
 
 --
@@ -1601,6 +1682,14 @@ ALTER TABLE ONLY public.attendee_messages
 
 
 --
+-- Name: authorships authorships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.authorships
+    ADD CONSTRAINT authorships_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: clusters clusters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1686,6 +1775,14 @@ ALTER TABLE ONLY public.pitch_contest_entries
 
 ALTER TABLE ONLY public.pitch_contest_votes
     ADD CONSTRAINT pitch_contest_votes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: publishings publishings_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.publishings
+    ADD CONSTRAINT publishings_pkey PRIMARY KEY (id);
 
 
 --
@@ -1908,10 +2005,24 @@ CREATE UNIQUE INDEX index_annual_schedules_on_year ON public.annual_schedules US
 
 
 --
--- Name: index_articles_on_author_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_articles_on_company_id; Type: INDEX; Schema: public; Owner: -
 --
 
-CREATE INDEX index_articles_on_author_id ON public.articles USING btree (author_id);
+CREATE INDEX index_articles_on_company_id ON public.articles USING btree (company_id);
+
+
+--
+-- Name: index_articles_on_submission_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_articles_on_submission_id ON public.articles USING btree (submission_id);
+
+
+--
+-- Name: index_articles_on_submitter_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_articles_on_submitter_id ON public.articles USING btree (submitter_id);
 
 
 --
@@ -1926,6 +2037,20 @@ CREATE INDEX index_articles_tracks_on_article_id_and_track_id ON public.articles
 --
 
 CREATE INDEX index_attendee_messages_on_submission_id ON public.attendee_messages USING btree (submission_id);
+
+
+--
+-- Name: index_authorships_on_article_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_authorships_on_article_id ON public.authorships USING btree (article_id);
+
+
+--
+-- Name: index_authorships_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_authorships_on_user_id ON public.authorships USING btree (user_id);
 
 
 --
@@ -2003,6 +2128,20 @@ CREATE INDEX index_pitch_contest_votes_on_pitch_contest_entry_id ON public.pitch
 --
 
 CREATE INDEX index_pitch_contest_votes_on_user_id ON public.pitch_contest_votes USING btree (user_id);
+
+
+--
+-- Name: index_publishings_on_effective_at; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_publishings_on_effective_at ON public.publishings USING btree (effective_at);
+
+
+--
+-- Name: index_publishings_on_subject_type_and_subject_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_publishings_on_subject_type_and_subject_id ON public.publishings USING btree (subject_type, subject_id);
 
 
 --
@@ -2237,6 +2376,14 @@ ALTER TABLE ONLY public.feedback
 
 
 --
+-- Name: authorships fk_rails_414ad6261a; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.authorships
+    ADD CONSTRAINT fk_rails_414ad6261a FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: pitch_contest_votes fk_rails_4daa05456f; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2293,6 +2440,14 @@ ALTER TABLE ONLY public.volunteership_shifts
 
 
 --
+-- Name: articles fk_rails_9ae110b456; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT fk_rails_9ae110b456 FOREIGN KEY (company_id) REFERENCES public.companies(id);
+
+
+--
 -- Name: volunteer_shifts fk_rails_9c4ffa0245; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2306,6 +2461,22 @@ ALTER TABLE ONLY public.volunteer_shifts
 
 ALTER TABLE ONLY public.articles_tracks
     ADD CONSTRAINT fk_rails_a51247846b FOREIGN KEY (track_id) REFERENCES public.tracks(id);
+
+
+--
+-- Name: articles fk_rails_af9e6e0455; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.articles
+    ADD CONSTRAINT fk_rails_af9e6e0455 FOREIGN KEY (submitter_id) REFERENCES public.users(id);
+
+
+--
+-- Name: authorships fk_rails_c386d1f71d; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.authorships
+    ADD CONSTRAINT fk_rails_c386d1f71d FOREIGN KEY (article_id) REFERENCES public.articles(id);
 
 
 --
@@ -2333,11 +2504,11 @@ ALTER TABLE ONLY public.articles_tracks
 
 
 --
--- Name: articles fk_rails_e74ce85cbc; Type: FK CONSTRAINT; Schema: public; Owner: -
+-- Name: articles fk_rails_f23b81b642; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.articles
-    ADD CONSTRAINT fk_rails_e74ce85cbc FOREIGN KEY (author_id) REFERENCES public.users(id);
+    ADD CONSTRAINT fk_rails_f23b81b642 FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
 
 
 --
@@ -2500,6 +2671,11 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190531150512'),
 ('20190531155316'),
 ('20190531155323'),
-('20190531155330');
+('20190531155330'),
+('20190624043458'),
+('20190624043624'),
+('20190624043648'),
+('20190624140827'),
+('20190628183323');
 
 
