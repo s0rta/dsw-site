@@ -7,9 +7,18 @@ class Article < ApplicationRecord
     presence: true
 
   has_and_belongs_to_many :tracks, validate: false
-  belongs_to :author, class_name: "User"
+  has_many :authorships, dependent: :destroy
+  has_many :authors, class_name: "User", through: :authorships, source: :user
+  has_one :publishing, as: :subject
+
+  belongs_to :submitter, class_name: "User"
+  belongs_to :submission, required: false
+  belongs_to :company, required: false
 
   mount_uploader :header_image, HeaderImageUploader
+
+  accepts_nested_attributes_for :publishing, allow_destroy: true
+  accepts_nested_attributes_for :authorships, allow_destroy: true
 
   def to_param
     "#{id}-#{title.try(:parameterize)}"

@@ -1,5 +1,6 @@
 inherit_from:
   - https://raw.githubusercontent.com/testdouble/standard/master/config/base.yml
+  - https://raw.githubusercontent.com/testdouble/standard/master/config/ruby-2.2.yml
 Style/ClassAndModuleChildren:
   Include:
     - lib/**/*.rb
@@ -9,18 +10,6 @@ Metrics/LineLength:
   Max: 120
   Exclude:
     - config/routes.rb
-Layout/DotPosition:
-  EnforcedStyle: leading
-Layout/EndAlignment:
-  # The value `keyword` means that `end` should be aligned with the matching
-  # keyword (if, while, etc.).
-  # The value `variable` means that in assignments, `end` should be aligned
-  # with the start of the variable on the left hand side of `=`. In all other
-  # situations, `end` should still be aligned with the keyword.
-  EnforcedStyleAlignWith: variable
-  SupportedStyles:
-    - keyword
-    - variable
 Lint/UselessAccessModifier:
   Enabled: false
 Layout/AlignParameters:
@@ -29,12 +18,6 @@ Layout/AlignParameters:
 Style/CollectionMethods:
   PreferredMethods:
     find: 'detect'
-Style/BracesAroundHashParameters:
-  EnforcedStyle: context_dependent
-  SupportedStyles:
-    - braces
-    - no_braces
-    - context_dependent
 Style/FrozenStringLiteralComment:
   Enabled: false
 Layout/IndentHash:

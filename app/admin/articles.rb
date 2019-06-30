@@ -1,22 +1,38 @@
 ActiveAdmin.register Article do
+  include ActiveAdmin::AjaxFilter
+
   menu parent: "Site Content"
 
   permit_params :title,
     :body,
-    :author_id,
+    :submitter_id,
     :track_ids,
-    :published_at
+    publishing_attributes: [:id, :_destroy, :effective_at],
+    authorships_attributes: [:id, :_destroy, :user_id, :is_displayed]
+
+
+  controller do
+    def scoped_collection
+      resource_class.includes(:publishing)
+    end
+  end
 
   index do
     selectable_column
     column :title
-    column :author
+    column :submitter
     column :header_image do |u|
       image_tag u.header_image.url(:thumb) if u.header_image.present?
     end
     column :created_at
     column :updated_at
-    column :published_at
+    column 'Publishing' do |article|
+      article&.publishing.effective_at
+    end
+    column 'Authors' do |article|
+      article&.authors
+    end
+
     actions
   end
 
@@ -24,7 +40,7 @@ ActiveAdmin.register Article do
 
   form do |f|
     f.inputs do
-      f.input :title
+      f.input :title, as: :string
       f.input :body, as: :medium_editor, input_html: {
         data: {
           options: {
@@ -53,15 +69,34 @@ ActiveAdmin.register Article do
           }.to_json,
         },
       }
-      f.input :author_id,
+      f.input :submitter_id,
         as: :ajax_select,
         collection: [],
         data: {url: filter_admin_users_path, search_fields: %i[name email]}
+      f.input :company_id,
+        as: :ajax_select,
+        collection: [],
+        data: {url: filter_admin_companies_path, search_fields: %i[name]}
+      f.input :submission_id,
+        as: :ajax_select,
+        collection: [],
+        data: {url: filter_admin_submissions_path, search_fields: %i[title description year]}
       f.input :track_ids, as: :check_boxes, collection: Track.all, label: "Related Track(s)"
       f.input :header_image,
         as: :file,
         hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
-      f.input :published_at
+    end
+
+    f.has_many :publishing, allow_destroy: true do |pub|
+      pub.input :effective_at
+    end
+
+    f.has_many :authorships, allow_destroy: true do |authorship|
+      authorship.input :user_id,
+        as: :ajax_select,
+        collection: [],
+        data: {url: filter_admin_users_path, search_fields: %i[name email]}
+      authorship.input :is_displayed
     end
 
     f.actions
