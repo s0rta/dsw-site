@@ -6,6 +6,6 @@ section.SessionFeedback
       = f.label :rating, 'Please rate this session'
     = render layout: 'components/floating_input' do
       = f.text_field :comments
-      = f.hidden_field :submission_id, value: @session.id
       = f.label :comments, 'Comments'
+    = f.hidden_field :submission_id, value: @session.id
     = f.submit 'Share Feedback', class: "SessionFeedback-submit"
