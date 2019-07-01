@@ -8,8 +8,8 @@ div.Sponsors-list-wrapper
     - Sponsorship::SPONSORS_PAGE_LEVELS.each do |level|
       - sponsorships_by_level[level].tap do |sponsorships|
         - if sponsorships.present? && sponsorships.any?
+          section.Sponsors-section-title = level.titleize
           - sponsorships.each do |sponsorship|
-            section.Sponsors-section-title = level.titlize
             - if sponsorship[:level] == "title"
               = render partial: 'layouts/shared/sponsorship', object: sponsorship
             / - if sponsorship[:level] == "track"
