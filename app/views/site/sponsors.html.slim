@@ -7,22 +7,27 @@ div.Sponsors-list-wrapper
       - sponsorships_by_level[level].tap do |sponsorships|
         - if sponsorships.present? && sponsorships.any?
           - if level == "title"
-            section.Sponsors-section-title Title Sponsors
+            h1.Sponsors-section-title Title Sponsors
             - sponsorships.each do |sponsorship|
               = render partial: 'layouts/shared/sponsorship', object: sponsorship
-          - if level == "track"
-            section.Sponsors-section-title Track Sponsors
-            - sponsorships.each do |sponsorship|
-              = render partial: 'layouts/shared/sponsorship', object: sponsorship
-          - if level == "headline"
-            section.Sponsors-section-title Headline Sponsors
-            - sponsorships.each do |sponsorship|
-              = render partial: 'layouts/shared/sponsorship', object: sponsorship
-          - if level == "partner"
-            section.Sponsors-section-title Partner Sponsors
-            - sponsorships.each do |sponsorship|
-              = render partial: 'layouts/shared/sponsorship', object: sponsorship
-          - if level == "member"
-            section.Sponsors-section-title Member Sponsors
-            - sponsorships.each do |sponsorship|
-              = render partial: 'layouts/shared/sponsorship', object: sponsorship
+
+  = render 'components/content_card_list', attributes: { 'aria-label': "About page" }  do
+    - about_static_data[:items].each do |card|
+      = render 'components/content_card_list_item' do
+        = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "about/#{card[:button_page_url]}"
+          / - if level == "track"
+          /   h1.Sponsors-section-title Track Sponsors
+          /   - sponsorships.each do |sponsorship|
+          /     = render partial: 'layouts/shared/sponsorship', object: sponsorship
+          / - if level == "headline"
+          /   h1.Sponsors-section-title Headline Sponsors
+          /   - sponsorships.each do |sponsorship|
+          /     = render partial: 'layouts/shared/sponsorship', object: sponsorship
+          / - if level == "partner"
+          /   h1.Sponsors-section-title Partner Sponsors
+          /   - sponsorships.each do |sponsorship|
+          /     = render partial: 'layouts/shared/sponsorship', object: sponsorship
+          / - if level == "member"
+          /   h1.Sponsors-section-title Member Sponsors
+          /   - sponsorships.each do |sponsorship|
+          /     = render partial: 'layouts/shared/sponsorship', object: sponsorship
