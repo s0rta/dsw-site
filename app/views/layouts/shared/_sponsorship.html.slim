@@ -1,6 +1,6 @@
 .sponsor-container
-  / a.sponsor-logo href="#{sponsorship.link_href}" target='_blank' title="#{sponsorship.name}"
-  /   = image_tag sponsorship.logo.url, alt: sponsorship.name
+  a.sponsor-logo href="#{sponsorship.link_href}" target='_blank' title="#{sponsorship.name}"
+    / = image_tag sponsorship.logo.url, alt: sponsorship.name
   .sponsor-copy
     - if sponsorship.track.present?
       div(class="sponsor-track #{sponsorship.track.color}")
