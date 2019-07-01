@@ -24,7 +24,7 @@ class SiteController < ApplicationController
       @three_up_ctas.unshift(*@two_up_ctas[4..-1])
       @two_up_ctas = @two_up_ctas[0..3]
     end
-    flash[:notice] = "Thanks! Your article has been received!"
+    flash[:notice] = "Thanks for registering! You will recieve a confirmation e-email shortly"
     render template: page_partial
   end
 
