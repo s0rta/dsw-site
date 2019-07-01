@@ -2,12 +2,6 @@
 = render layout: 'layouts/shared/secondary_hero', locals: { title: 'Sponsors', sub_title: "Our #{Date.current.year} Sponsors", description: 'Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.' } do
   = render 'layouts/shared/about_secondary_hero_nav'
 
-/ - if AnnualSchedule.sponsorship_open?
-/   section.common.gold.sm-centered
-/     .section-content
-/       h6 Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.
-
-
 - if sponsorships_by_level.any?
   section.common.sponsor.sm-centered
     - Sponsorship::SPONSORS_PAGE_LEVELS.each do |level|
