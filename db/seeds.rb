@@ -1,12 +1,12 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 sponsor = Sponsorship.new
-sponsor.id= 4,
-sponsor.name= "Skookum2",
+sponsor.id= 1,
+sponsor.name= "Skookum",
 sponsor.link_href= "https://skookum.com/",
 sponsor.description= "For more than a decade, Skookum has been helping businesses solve their most pressing and complex digital challenges. Our diverse team of strategists, designers, and developers offer clients the best partnership and results they’ve ever experienced.",
 sponsor.year= 2019,
-sponsor.level= "title",
+sponsor.level= "member",
 sponsor.track_id= nil,
 sponsor.logo= "",
 sponsor.save
