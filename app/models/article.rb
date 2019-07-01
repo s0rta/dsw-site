@@ -38,6 +38,7 @@ class Article < ApplicationRecord
   end
 
   def self.for_cluster(name)
+    return all # until clusters reference is added to articles
     return all if name == 'all' || name.blank?
     joins(:clusters).where('LOWER(clusters.name) = LOWER(?)', name)
   end
