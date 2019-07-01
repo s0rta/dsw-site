@@ -1,26 +1,15 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-Sponsorship.reset_column_information
-{
-  {
-    id: 1,
-    name: "Skookum",
-    logo: "",
-    link_href: "https://skookum.com/",
-    description: "For more than a decade, Skookum has been helping businesses solve their most pressing and complex digital challenges. Our diverse team of strategists, designers, and developers offer clients the best partnership and results they’ve ever experienced.",
-    year: 2019,
-    level: "title",
-    track_id: nil,
-  },
-}.each do |attrs|
-  s = Sponsorship.where(name: name).first_or_initialize
-
-  # Skip if the record has been updated since it was populated
-  next if s.updated_at && s.updated_at > s.created_at
-
-  s.assign_attributes(attrs)
-  s.save!
-end
+sponsor = Sponsorship.new
+sponsor.id= 4,
+sponsor.name= "Skookum2",
+sponsor.link_href= "https://skookum.com/",
+sponsor.description= "For more than a decade, Skookum has been helping businesses solve their most pressing and complex digital challenges. Our diverse team of strategists, designers, and developers offer clients the best partnership and results they’ve ever experienced.",
+sponsor.year= 2019,
+sponsor.level= "title",
+sponsor.track_id= nil,
+sponsor.logo= "",
+sponsor.save
 
 Track.reset_column_information
 {

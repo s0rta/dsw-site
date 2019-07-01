@@ -1,8 +1,0 @@
-div.SponsorsBlock
-  .SponsorsBlock-content
-    div.SponsorsBlock-header
-      h3.SponsorsBlock-title = sponsorship[:name]
-    div.SponsorsBlock-inner-content
-      p.SponsorsBlock-description = sponsorship[:description]
-      .SponsorsBlock-action
-        = link_to "Learn More", "#{sponsorship[:link_href]}", :target => "_blank", class: 'SponsorsBlock-link'

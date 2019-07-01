@@ -1,0 +1,51 @@
+@import ../config
+
+.SponsorsCardTitle
+  display: flex;
+  flex-direction: column;
+  height: 100%
+
+.SponsorsCardTitle-image
+  height: 142px
+  max-width: 272px
+  width: 100%
+  margin: 0 auto
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+.SponsorsCardTitle-image
+  border-bottom-width: 6px
+
+.SponsorsCardTitle-description
+  text-align: center
+  color: $primary-font-medium
+  margin-top: 25px
+  line-height: 18px
+  font-size: 14px
+  font-weight: 300
+
+.SponsorsCardTitle-action
+  margin-top: 45px
+  text-align: center
+
+.SponsorsCardTitle-content
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+.SponsorsCardTitle-inner-content
+  display: flex
+  flex: 1
+  flex-direction: column
+  justify-content: space-between
+
+.SponsorsCardTitle-link
+  text-transform: uppercase
+  +font-family-mixin(Montserrat-Medium)
+  cursor: pointer
+  color: $teal-light
+
+@media(min-width: 640px)
+  .SponsorsCardTitle-description
+    margin-top: 26px

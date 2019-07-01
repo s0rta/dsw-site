@@ -8,10 +8,10 @@ div.Sponsors-list-wrapper
         - if sponsorships.present? && sponsorships.any?
           - if level == "title"
             h1.Sponsors-section-title Title Sponsors
-            - sponsorships.each do |sponsorship|
-              = render 'components/sponsors_title_card_list', attributes: { 'aria-label': "Title Sponsors" }  do
-                = render 'components/sponsors_title_card_list_item' do
-                  = render 'components/sponsors_title_card', sponsorship: sponsorship
+            = render 'components/sponsors_card_title_list', attributes: { 'aria-label': "Title Sponsors" }  do
+              - sponsorships.each do |sponsorship|
+                = render 'components/sponsors_card_title_list_item' do
+                  = render 'components/sponsors_card_title', sponsorship: sponsorship
 
  
           / - if level == "track"
