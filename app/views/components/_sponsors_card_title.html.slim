@@ -1,9 +1,0 @@
-- header_image = sponsorship[:logo] || "https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg"
-
-div.SponsorsCardTitle
-  .SponsorsCardTitle-image(style="background-image: url(#{image_url header_image})")
-  .SponsorsCardTitle-content
-    div.SponsorsCardTitle-inner-content
-      p.SponsorsCardTitle-description #{sponsorship[:description]}
-      .SponsorsCardTitle-action
-        = link_to "Visit Website", "#{sponsorship[:link_href]}", :target => "_blank", class: 'SponsorsCardTitle-link'
