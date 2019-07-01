@@ -1,13 +1,23 @@
 - content_for(:title, 'Sponsors')
-= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Sponsors', sub_title: "Our #{Date.current.year} Sponsors", description: 'Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.' } do
-  = render 'layouts/shared/about_secondary_hero_nav'
+= render partial: 'layouts/shared/secondary_hero', locals: { title: 'Sponsors', sub_title: "Our #{Date.current.year} Sponsors", description: 'Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.' }
 
-- if sponsorships_by_level.any?
-  section.common.sponsor.sm-centered
-    - Sponsorship::SPONSORS_PAGE_LEVELS.each do |level|
-      - sponsorships_by_level[level].tap do |sponsorships|
-        - if sponsorships.present? && sponsorships.any?
-            .section-content
-              h1 = level.titleize
-              - sponsorships.each do |sponsorship|
-                = render partial: 'layouts/shared/sponsorship', object: sponsorship
+div.Sponsors-list-wrapper
+  section.Sponsors-section-title Title Sponsors
+
+  - if sponsorships_by_level.any?
+    section.common.sponsor.sm-centered
+      - Sponsorship::SPONSORS_PAGE_LEVELS.each do |level|
+        - sponsorships_by_level[level].tap do |sponsorships|
+          - if sponsorships.present? && sponsorships.any?
+              .section-content
+                h1 = level.titleize
+                - sponsorships.each do |sponsorship|
+                  = render partial: 'layouts/shared/sponsorship', object: sponsorship
+
+  section.Sponsors-section-title Track Sponsors
+
+  section.Sponsors-section-title Headline Sponsors
+
+  section.Sponsors-section-title Partner Sponsors
+
+  section.Sponsors-section-title Member Sponsors
