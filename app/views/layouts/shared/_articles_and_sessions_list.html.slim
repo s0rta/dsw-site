@@ -2,11 +2,11 @@ section.ArticlesAndSessionsList-wrapper(class="#{is_overlapped ? 'is-overlapped'
   .ArticlesAndSessionsList
     = render 'components/three_card_list', attributes: { 'aria-label': "#{title} sessions and atricles" } do
       - list.each do |list_item|
-        - if list_item[:type] == 'session'
+        - if list_item[:subject_type] == 'Session'
           = render 'components/three_card_list_item' do
-            = render 'components/session_card', session: list_item
-        - if list_item[:type] == 'article'
+            = render 'components/session_card', session: list_item.subject
+        - if list_item[:subject_type] == 'Article'
           = render 'components/three_card_list_item' do
-            = render 'components/article_card', article: list_item
+            = render 'components/article_card', article: list_item.subject
   .ArticlesAndSessionsList-btn-wrapper
     button.ArticlesAndSessionsList-btn Load more

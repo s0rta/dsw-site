@@ -17,4 +17,4 @@
               option(value="#{opt[:value]}" selected=("selected" if params[:cluster] == opt[:value] )) #{opt[:label]}
 
 .Articles-list-wrapper
-  = render partial: 'layouts/shared/articles_and_sessions_list', locals: { list: featured_static_data[:features], title: "Articles", is_overlapped: false }
+  = render partial: 'layouts/shared/articles_and_sessions_list', locals: { list: @publishings, title: "Articles", is_overlapped: false }
