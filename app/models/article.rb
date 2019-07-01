@@ -26,19 +26,20 @@ class Article < ApplicationRecord
 
   def self.for_publishings_filter(filters)
     return all if filters.blank?
+
     for_track(filters[:track])
-    .for_cluster(filters[:cluster])
-    .fulltext_search(filters[:terms])
+      .for_cluster(filters[:cluster])
+      .fulltext_search(filters[:terms])
   end
 
   def self.for_track(name)
     return all if name == 'all' || name.blank?
-    joins(:tracks).where("LOWER(tracks.name) = LOWER(?)", name)
+    joins(:tracks).where('LOWER(tracks.name) = LOWER(?)', name)
   end
 
   def self.for_cluster(name)
     return all if name == 'all' || name.blank?
-    joins(:clusters).where("LOWER(clusters.name) = LOWER(?)", name)
+    joins(:clusters).where('LOWER(clusters.name) = LOWER(?)', name)
   end
 
   def self.searchable_language
