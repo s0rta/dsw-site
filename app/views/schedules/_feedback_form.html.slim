@@ -1,13 +1,11 @@
-section.common.feedback
-  .section-content.sm-centered
-    h1 Share Feedback
-    = form_for @session.feedback.build do |f|
+section.SessionFeedback
+  h1 Share Feedback
+  = form_for @session.feedback.build do |f|
+    = render layout: 'components/floating_input' do
+      = f.select :rating, ratings_for_select, { :include_blank => '' }, required: 'required'
       = f.label :rating, 'Please rate this session'
-      = f.select :rating, ratings_for_select, required: 'required'
-
-      = f.label :comments, 'Comments'
+    = render layout: 'components/floating_input' do
       = f.text_field :comments
-
-      = f.hidden_field :submission_id, value: @session.id
-
-      = f.submit 'Share Feedback'
+      = f.label :comments, 'Comments'
+    = f.hidden_field :submission_id, value: @session.id
+    = f.submit 'Share Feedback', class: "SessionFeedback-submit"
