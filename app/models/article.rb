@@ -23,4 +23,35 @@ class Article < ApplicationRecord
   def to_param
     "#{id}-#{title.try(:parameterize)}"
   end
+
+  def self.for_publishings_filter(filters)
+    return all if filters.blank?
+    for_track(filters[:track])
+    .for_cluster(filters[:cluster])
+    .fulltext_search(filters[:terms])
+  end
+
+  def self.for_track(name)
+    return all if name == 'all' || name.blank?
+    joins(:tracks).where("LOWER(tracks.name) = LOWER(?)", name)
+  end
+
+  def self.for_cluster(name)
+    return all if name == 'all' || name.blank?
+    joins(:clusters).where("LOWER(clusters.name) = LOWER(?)", name)
+  end
+
+  def self.searchable_language
+    'english'
+  end
+
+  def self.fulltext_search(terms)
+    return all if terms.blank?
+    predicate = {
+      title: terms,
+      body: terms,
+      users: { name: terms }
+    }
+    joins(:authors).basic_search(predicate, false)
+  end
 end
