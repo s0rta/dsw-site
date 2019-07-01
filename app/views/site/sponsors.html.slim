@@ -9,12 +9,11 @@ div.Sponsors-list-wrapper
           - if level == "title"
             h1.Sponsors-section-title Title Sponsors
             - sponsorships.each do |sponsorship|
-              = render partial: 'layouts/shared/sponsorship', object: sponsorship
+              = render 'components/sponsors_title_card_list', attributes: { 'aria-label': "Title Sponsors" }  do
+                = render 'components/sponsors_title_card_list_item' do
+                  = render 'components/sponsors_title_card', sponsorship: sponsorship
 
-  = render 'components/content_card_list', attributes: { 'aria-label': "About page" }  do
-    - about_static_data[:items].each do |card|
-      = render 'components/content_card_list_item' do
-        = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "about/#{card[:button_page_url]}"
+ 
           / - if level == "track"
           /   h1.Sponsors-section-title Track Sponsors
           /   - sponsorships.each do |sponsorship|
