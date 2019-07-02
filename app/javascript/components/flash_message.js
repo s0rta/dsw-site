@@ -1,5 +1,8 @@
 import Bindable from 'utensils/bindable';
 
+const ANIMATION_DURATION = 1000;
+const OPEN_DURATION = 5000;
+
 export default class FlashMessage {
   constructor(el) {
     this.el = el;
@@ -19,6 +22,9 @@ export default class FlashMessage {
 
   addListeners() {
     this.el.on('click', this.closeFlashMessage);
+    setTimeout(() => {
+      this.closeFlashMessage();
+    }, OPEN_DURATION);
   }
 
   removeListeners() {
@@ -26,6 +32,13 @@ export default class FlashMessage {
   }
 
   closeFlashMessage() {
+    this.el.parents('.FlashMessage').addClass('is-closing');
+    setTimeout(() => {
+      this.hideFlashMessage();
+    }, ANIMATION_DURATION);
+  }
+
+  hideFlashMessage() {
     this.el.parents('.FlashMessage').addClass('is-closed');
   }
 }

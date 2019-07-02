@@ -1,5 +1,9 @@
 -content_for(:fullscreen_takeover, true)
+<<<<<<< HEAD
 - on_close = (request.referer =~ /(code-of-conduct)/i).nil? ? request.referer : dashboard_path
+=======
+- content_for(:subtitle, 'Code of Conduct')
+>>>>>>> 7cd79f540595439d026f17b1e3860ae47cf6f26c
 
 = render 'layouts/shared/fullscreen_takeover_header', title: 'Code of Conduct', background: 'light', on_close: on_close
 = render layout: 'layouts/shared/layout_wrapper' do
