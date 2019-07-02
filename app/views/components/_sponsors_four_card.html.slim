@@ -4,7 +4,7 @@
   .SponsorsFourCard-image(style="background-image: url(#{image_url header_image})")
   .SponsorsFourCard-content
     - if sponsorship.track.present?
-      div(class="SponsorsFourCard-track #{sponsorship.track.color}")
+      div(class="SponsorsFourCard-track #{sponsorship.track.color}-font #{sponsorship.track.color}-fill")
         = render partial: "icons/#{sponsorship.track.icon}"
         span = sponsorship.track.name
     .SponsorsFourCard-inner-content
