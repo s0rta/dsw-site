@@ -103,21 +103,20 @@ class Submission < ApplicationRecord
   end
 
   def self.for_track(name)
-    if name.present?
-      joins(:track)
-        .where("LOWER(tracks.name) = LOWER(?)", name)
-    else
-      all
-    end
+    return all if name == 'all' || name.blank?
+    joins(:track).where('LOWER(tracks.name) = LOWER(?)', name)
   end
 
   def self.for_cluster(name)
-    if name.present?
-      joins(:cluster)
-        .where("LOWER(clusters.name) = LOWER(?)", name)
-    else
-      all
-    end
+    return all if name == 'all' || name.blank?
+    joins(:cluster).where('LOWER(clusters.name) = LOWER(?)', name)
+  end
+
+  def self.for_publishings_filter(filters)
+    return all if filters.blank?
+    for_track(filters[:track])
+      .for_cluster(filters[:cluster])
+      .fulltext_search(filters[:terms])
   end
 
   def self.for_schedule_filter(filter, user)
