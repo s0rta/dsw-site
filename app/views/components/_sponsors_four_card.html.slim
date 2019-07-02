@@ -1,9 +1,12 @@
 - header_image = sponsorship[:logo] || "https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg"
 
-div.SponsorsFourCard
+.SponsorsFourCard
   .SponsorsFourCard-image(style="background-image: url(#{image_url header_image})")
   .SponsorsFourCard-content
-    div.SponsorsFourCard-inner-content
+    .ContentCard-header
+      - if sponsorship[:track_id].present?
+        = render partial: "icons/#{sponsorship[:track_id]}"
+    .SponsorsFourCard-inner-content
       p.SponsorsFourCard-description #{sponsorship[:description]}
       .SponsorsFourCard-action
         a(href="#{sponsorship[:link_href]}" aria-label="Visit Website" target="_blank" class="SponsorsFourCard-link")
