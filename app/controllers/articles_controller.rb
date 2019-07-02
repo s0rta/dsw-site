@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update edit]
 
   def index
-    @publishings = Publishing.filtered_results(params).page(params[:page]).per(1)
+    @publishings = Publishing.filtered_results(params).page(params[:page]).per(24)
 
     respond_to do |format|
       format.html
