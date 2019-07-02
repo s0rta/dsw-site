@@ -7,32 +7,21 @@ div.Sponsors-list-wrapper
       - sponsorships_by_level[level].tap do |sponsorships|
         - if sponsorships.present? && sponsorships.any?
           - if level == "title"
-            h1.Sponsors-section-title Title Sponsors
-            = render 'components/sponsors_three_card_list', attributes: { 'aria-label': "Title Sponsors" }  do
+            h1.Sponsors-section-title #{level} Sponsors
+            = render 'components/sponsors_three_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
               - sponsorships.each do |sponsorship|
                 = render 'components/sponsors_three_card_list_item' do
                   = render 'components/sponsors_three_card', sponsorship: sponsorship
-          - if level == "track"
-            h1.Sponsors-section-title Track Sponsors
-            = render 'components/sponsors_four_card_list', attributes: { 'aria-label': "Tracks Sponsors" }  do
+          - if level == "track" || level == "headline"
+            h1.Sponsors-section-title #{level} Sponsors
+            = render 'components/sponsors_four_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
               - sponsorships.each do |sponsorship|
                 = render 'components/sponsors_four_card_list_item' do
                   = render 'components/sponsors_four_card', sponsorship: sponsorship
-          - if level == "headline"
-            h1.Sponsors-section-title Headline Sponsors
-            = render 'components/sponsors_four_card_list', attributes: { 'aria-label': "Headline Sponsors" }  do
-              - sponsorships.each do |sponsorship|
-                = render 'components/sponsors_four_card_list_item' do
-                  = render 'components/sponsors_four_card', sponsorship: sponsorship
-          - if level == "partner"
-            h1.Sponsors-section-title Partner Sponsors
-            = render 'components/sponsors_six_card_list', attributes: { 'aria-label': "Partner Sponsors" }  do
+          - if level == "partner" || level == "member"
+            h1.Sponsors-section-title #{level} Sponsors
+            = render 'components/sponsors_six_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
               - sponsorships.each do |sponsorship|
                 = render 'components/sponsors_six_card_list_item' do
                   = render 'components/sponsors_six_card', sponsorship: sponsorship
-          - if level == "member"
-            h1.Sponsors-section-title Member Sponsors
-            = render 'components/sponsors_six_card_list', attributes: { 'aria-label': "Member Sponsors" }  do
-              - sponsorships.each do |sponsorship|
-                = render 'components/sponsors_six_card_list_item' do
-                  = render 'components/sponsors_six_card', sponsorship: sponsorship
+
