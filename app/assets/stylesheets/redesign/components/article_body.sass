@@ -1,0 +1,44 @@
+@import ../config
+
+// need to target tags directly here bc injected html
+
+.ArticleBody
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 14px
+
+  h2
+    font-size: 24px
+    +font-family-mixin(Montserrat-Regular)
+    color: $primary-font-medium
+    margin: 0
+
+  ul
+    padding-left: 0px
+    li
+      list-style: inside
+
+  ol
+    padding-left: 16px
+    li
+      list-style: decimal
+
+  b
+    +font-family-mixin(Montserrat-Bold)
+
+  blockquote
+    +font-family-mixin(Montserrat-Regular)
+    margin: 0
+    padding-left: 20px
+    margin-left: -20px
+    font-size: 22px
+    line-height: 1.58
+    border-left: 3px solid $primary-font-dark
+    font-style: normal
+
+  a
+    color: $teal-light
+
+  pre
+    margin: 0
+    white-space: pre-wrap
