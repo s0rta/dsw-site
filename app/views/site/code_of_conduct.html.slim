@@ -1,6 +1,7 @@
 -content_for(:fullscreen_takeover, true)
+- on_close = (request.referer =~ /(code-of-conduct)/i).nil? ? request.referer : dashboard_path
 
-= render 'layouts/shared/fullscreen_takeover_header', title: 'Code of Conduct', background: 'light'
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Code of Conduct', background: 'light', on_close: on_close
 = render layout: 'layouts/shared/layout_wrapper' do
   = render layout: 'components/form_wrapper' do
 
