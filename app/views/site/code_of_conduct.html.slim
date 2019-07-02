@@ -1,7 +1,8 @@
 -content_for(:fullscreen_takeover, true)
 - content_for(:subtitle, 'Code of Conduct')
+- on_close = request.referer || '/'
 
-= render 'layouts/shared/fullscreen_takeover_header', title: 'Code of Conduct', background: 'light'
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Code of Conduct', background: 'light', on_close: on_close
 = render layout: 'layouts/shared/layout_wrapper' do
   = render layout: 'components/form_wrapper' do
 
