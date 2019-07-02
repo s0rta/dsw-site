@@ -4,8 +4,10 @@
   .SponsorsFourCard-image(style="background-image: url(#{image_url header_image})")
   .SponsorsFourCard-content
     .ContentCard-header
-      - if sponsorship[:track_id].present?
-        = render partial: "icons/#{sponsorship[:track_id]}"
+     - if sponsorship.track.present?
+      div(class="sponsor-track #{sponsorship.track.color}")
+        = render partial: "icons/#{sponsorship.track.icon}"
+        span = sponsorship.track.name
     .SponsorsFourCard-inner-content
       p.SponsorsFourCard-description #{sponsorship[:description]}
       .SponsorsFourCard-action
