@@ -2,7 +2,15 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: %i[new create update edit]
 
   def index
-    @publishings = Publishing.filtered_results(params)
+    @publishings = Publishing.filtered_results(params).page(params[:page]).per(1)
+
+    respond_to do |format|
+      format.html
+      format.js do
+        render json: { fragment: render_to_string(partial: 'layouts/shared/publishings_list_items', locals: { list: @publishings }, formats: [:html]),
+                       next_url: url_for(page: Integer(params[:page] || 1) + 1), last_page: @publishings.last_page? }
+      end
+    end
   end
 
   def show
