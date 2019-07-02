@@ -53,6 +53,53 @@
 .SponsorsFourCard-link-title
   margin-right: 20px
 
+.SponsorsFourCard-track
+  +font-family-mixin(Montserrat-Medium)
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-top: 20px
+  & span
+    margin-left: 5px
+
+.SponsorsFourCard-track.Developer
+  .icon, span, a
+    fill: $developer-track
+    color: $developer-track
+.SponsorsFourCard-track.Designer
+  .icon, span, a
+    color: $designer-track
+    fill: $designer-track
+.SponsorsFourCard-track.Product
+  .icon, span, a
+    fill: $product-track
+    color: $product-track
+.SponsorsFourCard-track.People
+  .icon, span, a
+    fill: $people-track
+    color: $people-track
+.SponsorsFourCard-track.Founder
+  .icon, span, a
+    fill: $founder-track
+    color: $founder-track
+.SponsorsFourCard-track.Maker
+  .icon, span, a
+    fill: $maker-track
+    color: $maker-track
+.SponsorsFourCard-track.Growth
+  .icon, span, a
+    fill: $growth-track
+    color: $growth-track
+.SponsorsFourCard-track.Spotlight
+  .icon, span, a
+    fill: $spotlight-track
+    color: $spotlight-track
+
+  // Headline Events
+  // Social Events
+  // Basebamp
+  // Keeping People?
+
 @media(min-width: 640px)
   .SponsorsFourCard-description
     margin-top: 26px
