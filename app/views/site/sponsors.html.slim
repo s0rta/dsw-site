@@ -6,20 +6,18 @@ div.Sponsors-list-wrapper
     - Sponsorship::SPONSORS_PAGE_LEVELS.each do |level|
       - sponsorships_by_level[level].tap do |sponsorships|
         - if sponsorships.present? && sponsorships.any?
+          h1.Sponsors-section-title #{level} Sponsors
           - if level == "title"
-            h1.Sponsors-section-title #{level} Sponsors
             = render 'components/sponsors_three_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
               - sponsorships.each do |sponsorship|
                 = render 'components/sponsors_three_card_list_item' do
                   = render 'components/sponsors_three_card', sponsorship: sponsorship
           - if level == "track" || level == "headline"
-            h1.Sponsors-section-title #{level} Sponsors
             = render 'components/sponsors_four_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
               - sponsorships.each do |sponsorship|
                 = render 'components/sponsors_four_card_list_item' do
                   = render 'components/sponsors_four_card', sponsorship: sponsorship
           - if level == "partner" || level == "member"
-            h1.Sponsors-section-title #{level} Sponsors
             = render 'components/sponsors_six_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
               - sponsorships.each do |sponsorship|
                 = render 'components/sponsors_six_card_list_item' do
