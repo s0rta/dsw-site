@@ -41,10 +41,11 @@
         .ArticlesForm-upload-name#file-select-name-js
         .ArticlesForm-hint Image should be in a horizontal format with no important content near edges. Images will scale and crop according to users browser size.
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = f.label :body, 'Article Body*', class: 'ArticlesForm-label'
-          = f.text_area :body, class: 'ArticlesForm-textarea', id: 'article_body_editable'
+      = render layout: 'components/article_body' do
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = f.label :body, 'Article Body*', class: 'ArticlesForm-label'
+            = f.text_area :body, class: 'ArticlesForm-textarea', id: 'article_body_editable'
 
       .ArticlesForm-required-text
         | *Required
@@ -63,6 +64,8 @@
               "bold",
               "italic",
               "underline",
+              "h2",
+              "quote",
               "anchor",
               "orderedlist",
               "unorderedlist",
@@ -70,13 +73,7 @@
               "subscript",
               "superscript",
               "pre",
-              "h1",
-              "h2",
-              "h3",
-              "h4",
-              "h5",
-              "h6",
-              "html",
-            ],
+              "html"
+            ]
           },
         });

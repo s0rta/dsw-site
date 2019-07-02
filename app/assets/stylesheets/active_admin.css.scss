@@ -8,23 +8,47 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
-@import "active_admin/mixins";
-@import "active_admin/base";
+@import 'active_admin/mixins';
+@import 'active_admin/base';
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
 //   .status_tag { background: #6090DB; }
 
-@import "selectize";
-@import "selectize.default";
-@import "activeadmin-ajax_filter";
-@import "activeadmin/medium_editor_input";
-@import "activeadmin/medium_editor/themes/default.css"; // or another theme
+@import 'selectize';
+@import 'selectize.default';
+@import 'activeadmin-ajax_filter';
+@import 'activeadmin/medium_editor_input';
+@import 'activeadmin/medium_editor/themes/default.css'; // or another theme
+
+@import './redesign/_config.sass';
+@import './redesign/components/article_body';
 
 // Per https://github.com/activeadmin/activeadmin/blob/master/CHANGELOG.md#110-
 .status_tag {
-  &.ok, &.published, &.complete, &.completed, &.green { background: #8daa92; }
-  &.warn, &.warning, &.orange { background: #e29b20; }
-  &.error, &.errored, &.red { background: #d45f53; }
+  &.ok,
+  &.published,
+  &.complete,
+  &.completed,
+  &.green {
+    background: #8daa92;
+  }
+  &.warn,
+  &.warning,
+  &.orange {
+    background: #e29b20;
+  }
+  &.error,
+  &.errored,
+  &.red {
+    background: #d45f53;
+  }
+}
+
+.ArticleBody {
+  blockquote {
+    margin-left: -20px !important;
+    padding-left: -20px !important;
+  }
 }
