@@ -113,10 +113,8 @@ class Submission < ApplicationRecord
   end
 
   def self.for_publishings_filter(filters)
-    return where(year: Date.today.year) if filters.blank?
-
-    where(year: Date.today.year)
-      .for_track(filters[:track])
+    return all if filters.blank?
+    for_track(filters[:track])
       .for_cluster(filters[:cluster])
       .fulltext_search(filters[:terms])
   end

@@ -3,10 +3,7 @@ class Publishing < ApplicationRecord
 
   def self.filtered_results(filters)
     articles = Article.for_publishings_filter(filters)
-    sessions = []
-    if AnnualSchedule.registration_open? || AnnualSchedule.post_week?
-      sessions = Submission.for_publishings_filter(filters)
-    end
+    sessions = Submission.for_publishings_filter(filters)
     ids = articles.pluck(:id) + sessions.pluck(:id)
 
     where(subject_id: ids)
