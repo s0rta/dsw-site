@@ -24,14 +24,15 @@ div.Sponsors-list-wrapper
               - sponsorships.each do |sponsorship|
                 = render 'components/sponsors_four_card_list_item' do
                   = render 'components/sponsors_four_card', sponsorship: sponsorship
-
- 
-
-          / - if level == "partner"
-          /   h1.Sponsors-section-title Partner Sponsors
-          /   - sponsorships.each do |sponsorship|
-          /     = render partial: 'layouts/shared/sponsorship', object: sponsorship
-          / - if level == "member"
-          /   h1.Sponsors-section-title Member Sponsors
-          /   - sponsorships.each do |sponsorship|
-          /     = render partial: 'layouts/shared/sponsorship', object: sponsorship
+          - if level == "partner"
+            h1.Sponsors-section-title Partner Sponsors
+            = render 'components/sponsors_six_card_list', attributes: { 'aria-label': "Partner Sponsors" }  do
+              - sponsorships.each do |sponsorship|
+                = render 'components/sponsors_six_card_list_item' do
+                  = render 'components/sponsors_six_card', sponsorship: sponsorship
+          - if level == "member"
+            h1.Sponsors-section-title Member Sponsors
+            = render 'components/sponsors_six_card_list', attributes: { 'aria-label': "Member Sponsors" }  do
+              - sponsorships.each do |sponsorship|
+                = render 'components/sponsors_six_card_list_item' do
+                  = render 'components/sponsors_six_card', sponsorship: sponsorship
