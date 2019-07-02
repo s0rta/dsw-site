@@ -12,12 +12,15 @@ div.Sponsors-list-wrapper
               - sponsorships.each do |sponsorship|
                 = render 'components/sponsors_three_card_list_item' do
                   = render 'components/sponsors_three_card', sponsorship: sponsorship
+          - if level == "track"
+            h1.Sponsors-section-title Track Sponsors
+            = render 'components/sponsors_four_card_list', attributes: { 'aria-label': "Title Sponsors" }  do
+              - sponsorships.each do |sponsorship|
+                = render 'components/sponsors_four_card_list_item' do
+                  = render 'components/sponsors_four_card', sponsorship: sponsorship
 
  
-          / - if level == "track"
-          /   h1.Sponsors-section-title Track Sponsors
-          /   - sponsorships.each do |sponsorship|
-          /     = render partial: 'layouts/shared/sponsorship', object: sponsorship
+
           / - if level == "headline"
           /   h1.Sponsors-section-title Headline Sponsors
           /   - sponsorships.each do |sponsorship|
