@@ -20,7 +20,7 @@
         = f.fields_for :authors do |ff|
           = render layout: 'components/form_input_wrapper' do
             = render layout: 'components/floating_input', locals: { always_float: true } do
-              = ff.text_field :id, data: { bindable: 'autocompleter', source: user_search_url, valuefield: 'article_author_ids' }
+              = ff.text_field :id, data: { bindable: 'autocompleter', source: user_search_url, valuefield: 'article_author_ids', startinglabel: @article.authors.first&.name, startingvalue: @article.authors.first&.id }
               = ff.label :id, 'Author*'
         end
         = f.hidden_field :author_ids

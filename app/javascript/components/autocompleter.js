@@ -11,11 +11,23 @@ export default class Autocompleter {
       autoFirst: true
     });
 
+    if (this.data.startinglabel) {
+      this.awesomplete.input.value = this.data.startinglabel;
+    }
+
     if (this.data.valuefield) {
       this.awesomplete.replace = this.replaceOverride;
+      this.setDefaultValueField();
     }
 
     this.addListeners();
+  }
+
+  setDefaultValueField() {
+    if (this.data.startingvalue) {
+      const valueInput = document.getElementById(this.data.valuefield);
+      valueInput.value = this.data.startingvalue;
+    }
   }
 
   replaceOverride(suggestion) {
