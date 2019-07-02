@@ -49,7 +49,8 @@ export default class AjaxLoadMore {
       .find('#' + this.data.target)
       .append(data.fragment);
     this.el.find('a').attr('href', data.next_url);
-    if (data.fragment.length === 0) {
+
+    if (data.fragment.length === 0 || data.last_page) {
       this.el.hide();
     }
   }
