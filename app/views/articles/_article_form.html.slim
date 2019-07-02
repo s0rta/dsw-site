@@ -1,4 +1,6 @@
 - content_for(:fullscreen_takeover, true)
+- content_for :extra_body_tags do
+  = stylesheet_pack_tag 'application'
 - upload_label = @article.header_image.present? ? 'Change Header Image +' : 'Add Header Image +'
 
 = render 'layouts/shared/fullscreen_takeover_header', title: content_for(:article_page_title), background: 'light'
@@ -14,6 +16,15 @@
           = render layout: 'components/floating_input' do
             = f.text_field :title, required: 'required', autofocus: 'autofocus'
             = f.label :title, 'Article Title*'
+
+        = f.fields_for :authors do |ff|
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/floating_input', locals: { always_float: true } do
+              = ff.text_field :id, data: { bindable: 'autocompleter', source: user_search_url, valuefield: 'article_author_ids' }
+              = ff.label :id, 'Author*'
+        end
+        = f.hidden_field :author_ids
+
 
       .ArticlesForm-header Related Track(s)
 

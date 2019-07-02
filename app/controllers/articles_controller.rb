@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = current_user.articles.new(article_params)
+    @article = current_user.articles.new(article_params.merge(author_ids: [article_params[:author_ids]]))
     if @article.save
       flash[:notice] = "Thanks! Your article has been received!"
       redirect_to dashboard_path
@@ -58,6 +58,7 @@ class ArticlesController < ApplicationController
       :title,
       :body,
       :header_image,
+      :author_ids,
       track_ids: []
     )
   end
