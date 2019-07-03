@@ -1,14 +1,13 @@
 -content_for(:fullscreen_takeover, true)
 - content_for(:subtitle, 'Code of Conduct')
-- on_close = request.referer || '/'
 
-= render 'layouts/shared/fullscreen_takeover_header', title: 'Code of Conduct', background: 'light', on_close: on_close
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Code of Conduct', background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
   = render layout: 'components/form_wrapper' do
 
     .CodeOfConduct
       h1.CodeOfConduct-title aria-label="Page title" Code of Conduct
- 
+
       h6 Denver Startup Week is dedicated to providing a harassment-free conference experience for everyone, regardless of gender, gender identity/expression, sexual orientation, disability, physical appearance, body size, race, age, religion, national origin, political affiliation, veteran status, or branch of military service.
 
       h6 We do not tolerate harassment of conference participants in any form. Sexual language and imagery is not appropriate for any Denver Startup Week event, including talks and individual sessions, headline events, and social events. Participants violating these rules may be sanctioned and/or expelled from the conference at the discretion of the conference organizers; they may also be barred from participation in future Denver Startup Week events.
@@ -48,9 +47,9 @@
         h6 Harassment and other code of conduct violations reduce the value of Denver Startup Week for everyone. We want everyone to derive as much value as possible from Denver Startup Week and associated events.
 
         h6
-          | You can make an electronic report either to 
+          | You can make an electronic report either to
           = mail_to 'info@denverstartupweek.org', 'info@denverstartupweek.org', subject: 'Code of Conduct Violation'
-          |  or anonymously via our 
+          |  or anonymously via our
           = link_to 'online form', 'https://goo.gl/forms/QyFBAs7QxX1L2Krj2', target: '_blank'
           |. For obvious reasons, we cannot follow up directly with individuals who submit an anonymous report, but we will fully investigate all anonymous reports we receive and take whatever action we deem necessary to prevent a recurrence.
 

@@ -1,4 +1,4 @@
-- close_action = local_assigns[:on_close].present? ? local_assigns[:on_close] : session[:previous_url] || '/'
+- close_action = local_assigns[:on_close].present? ? local_assigns[:on_close] : session[:close_fst_url] || '/'
 
 header.FullscreenTakeoverHeader(class="is-#{background}")
   = render layout: 'layouts/shared/layout_wrapper' do

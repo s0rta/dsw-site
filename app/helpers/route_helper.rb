@@ -244,8 +244,8 @@ module RouteHelper
   end
 
   def came_from_registration?
-    session[:previous_url] == new_registration_path ||
-      session[:previous_url] == register_path
+    session[:after_auth_url] == new_registration_path ||
+      session[:after_auth_url] == register_path
   end
 
   private
