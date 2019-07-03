@@ -4,7 +4,7 @@ description:
   "The community plays a critical role in creating Denver Startup Week’s programming. Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more. Throughout the event’s sessions, headline events, and Basecamp programming, the Denver Startup Week program is made to educate, celebrate, and inspire."
 programs:
   - title: 'EIGHT FUNCTIONAL TRACKS'
-    description: 'The sessions and events throughout the annual event are organized into eight tracks that are oriented around key functional roles within a business. Through the track programming, every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge. Whether a company founder, marketer, artist, sales specialist, coder, manufacturer, or anything in between - Denver Startup Week will educate and inspire.'
+    description: 'The sessions and events throughout the annual event are organized into eight tracks that are oriented around key functional roles within a business. Through the track programming, every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge. Whether a company founder, marketer, artist, sales specialist, coder, manufacturer, or anything in between - Denver Startup Week has something for you.'
     header_image: 'redesign/program/tracks.jpg'
     button_title: 'Explore the tracks'
     button_page_url: 'program/tracks'
@@ -14,7 +14,7 @@ programs:
     button_title: 'Explore the clusters'
     button_page_url: 'program/clusters'
   - title: 'BASECAMP LAUNCHED BY CHASE'
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque dictum massa non magna ornare, et lacinia nibh semper. Curabitur eu varius justo. In cursus sodales arcu et mattis.'
+    description: 'Basecamp Powered by Chase Ink serves as the epicenter and soul of Denver Startup Week. The activities at Basecamp represent the very best of Denver Startup Week – keynote speakers, can’t miss parties and celebrations, on-site mentoring with prominent startup leaders, networking and meetups, and access to exclusive learning opportunities and resources. '
     header_image: 'redesign/program/basecamp.jpg'
     button_title: 'Explore basecamp'
     button_page_url: 'program/tracks/Basecamp'
