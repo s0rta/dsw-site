@@ -16,6 +16,7 @@
     - else
       .Article-date Not Published Yet
     h1.Article-title #{@article.title}
-    section.Article-body #{@article.body.html_safe}
+    = render layout: 'components/article_body' do
+      section.Article-body #{@article.body.html_safe}
 
     = render 'layouts/shared/similar_articles_and_sessions_list', list: featured_static_data[:features][0...3]
