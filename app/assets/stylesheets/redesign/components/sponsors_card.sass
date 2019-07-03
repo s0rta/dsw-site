@@ -1,0 +1,86 @@
+@import ../config
+
+.SponsorsCard
+  display: flex
+  flex-direction: column
+  height: 100%
+  position: relative
+
+.SponsorsCard-image
+  width: 100%
+  margin: 0 auto
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+  &.title
+    height: 142px
+    max-width: 272px
+  &.track 
+    height: 110px
+    max-width: 211px
+  &.headline 
+    height: 110px
+    max-width: 211px
+  &.partner 
+    height: 81px
+    max-width: 155px
+  &.member 
+    height: 81px
+    max-width: 155px
+
+.SponsorsCard-image-link
+  position: absolute
+  top: 0
+  right: 0
+  width: 100%
+  height: 100%
+  z-index: 1
+
+.SponsorsCard-description
+  text-align: center
+  color: $primary-font-medium
+  margin-top: 25px
+  line-height: 18px
+  font-size: 14px
+  font-weight: 300
+
+.SponsorsCard-action
+  margin-top: 12px
+  text-align: center
+
+.SponsorsFourCard-content
+  flex: 1
+  display: flex
+  flex-direction: column
+
+.SponsorsCard-inner-content
+  display: flex
+  flex: 1
+  flex-direction: column
+  justify-content: space-between
+
+.SponsorsCard-link
+  display: flex
+  justify-content: center
+  align-items: center
+  text-transform: uppercase
+  +font-family-mixin(Montserrat-Medium)
+  cursor: pointer
+  color: $teal-light
+  fill: $teal-light
+
+.SponsorsCard-link-title
+  margin-right: 20px
+
+.SponsorsCard-track
+  +font-family-mixin(Montserrat-Medium)
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-top: 20px
+  & span
+    margin-left: 5px
+
+@media(min-width: 640px)
+  .SponsorsCard-description
+    margin-top: 26px

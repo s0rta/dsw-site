@@ -1,0 +1,30 @@
+@import ../config
+
+.SponsorsCard-list
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  margin: 0 auto
+  max-width: 1320px
+  margin: 0 auto
+
+.SponsorsCard-list-item
+  min-height: 100%
+  padding: 12px
+  padding-top: 0
+  margin-bottom: 77px
+  &.title
+    width: 322px
+  &.track
+    width: 260px
+  &.headline
+    width: 260px
+  &.partner
+    width: 180px
+  &.member
+    width: 180px
+
+@media(min-width: 1332px)
+  .SponsorsCard-list
+    justify-content: space-around
+
