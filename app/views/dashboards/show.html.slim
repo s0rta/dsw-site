@@ -48,7 +48,7 @@
       ul.Dashboard-card-list(aria-labelledby="my-sessions")
         - @submissions.each do |submission|
           li.Dashboard-card-list-item
-            = render partial: 'components/session_card', locals: { session: submission }
+            = render partial: 'components/session_card', locals: { session: submission, editable?: submission.editable?, hide_link: true }
     - if @submissions.blank?
       .Dashboard-empty-message You have not yet submitted any proposals for this year.
 
@@ -82,7 +82,7 @@
       ul.Dashboard-card-list(aria-labelledby="my-previous-sessions")
         - @previous_submissions.each do |submission|
           li.Dashboard-card-list-item
-            = render partial: 'components/session_card', locals: { session: submission }
+            = render partial: 'components/session_card', locals: { session: submission,  hide_link: true }
 
 
 / = render partial: 'nav', locals: { item: :mine }
