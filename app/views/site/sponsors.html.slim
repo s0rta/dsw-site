@@ -7,19 +7,8 @@ div.Sponsors-list-wrapper
       - sponsorships_by_level[level].tap do |sponsorships|
         - if sponsorships.present? && sponsorships.any?
           h1.Sponsors-section-title #{level} Sponsors
-          - if level == "title"
-            = render 'components/sponsors_three_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
-              - sponsorships.each do |sponsorship|
-                = render 'components/sponsors_three_card_list_item' do
-                  = render 'components/sponsors_three_card', sponsorship: sponsorship
-          - if level == "track" || level == "headline"
-            = render 'components/sponsors_four_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
-              - sponsorships.each do |sponsorship|
-                = render 'components/sponsors_four_card_list_item' do
-                  = render 'components/sponsors_four_card', sponsorship: sponsorship
-          - if level == "partner" || level == "member"
-            = render 'components/sponsors_six_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
-              - sponsorships.each do |sponsorship|
-                = render 'components/sponsors_six_card_list_item' do
-                  = render 'components/sponsors_six_card', sponsorship: sponsorship
+          = render 'components/sponsors_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
+            - sponsorships.each do |sponsorship|
+              = render 'components/sponsors_card_list_item', level: level do
+                = render 'components/sponsors_card', sponsorship: sponsorship, level: level
 
