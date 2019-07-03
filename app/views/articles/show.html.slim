@@ -16,6 +16,10 @@
     - else
       .Article-date Not Published Yet
     h1.Article-title #{@article.title}
+    .Article-authors
+      - @article.authors.each do |author|
+        .Article-author
+          = render partial: 'components/name_with_avatar', locals: { user: author, align: 'right', color: 'grey' }
     = render layout: 'components/article_body' do
       section.Article-body #{@article.body.html_safe}
 
