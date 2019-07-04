@@ -70,6 +70,15 @@ feature "Registering to attend" do
       click_button "Register"
       expect(page).to have_content("Thanks for registering!")
 
+      reg = Registration.last
+      expect(reg.primary_role).to eq("Design")
+      expect(reg.age_range).to eq("25-34 years old")
+      expect(reg.track.name).to eq("Founder")
+      expect(reg.gender).to eq("he/him/his")
+      expect(reg.company.name).to eq("Example.com")
+      expect(reg.attendee_goals.map(&:name)).to include("Improve my skills")
+      expect(reg.attendee_goals.map(&:name)).to include("Be inspired")
+
       # Confirmation e-mail
       email = ActionMailer::Base.deliveries.detect { |e| e.to.include?("test2@example.com") }
       expect(email.subject).to eq("You are registered for Denver Startup Week #{Date.today.year}")
