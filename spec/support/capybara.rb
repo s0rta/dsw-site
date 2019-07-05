@@ -2,8 +2,12 @@ require "capybara/rails"
 require "capybara/rspec"
 
 Capybara.register_driver :chrome do |app|
-  options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
-
+  args = %w[no-sandbox disable-gpu]
+  unless ENV["NO_HEADLESS"]
+    warn "Running Chrome in headless mode"
+    args.push "headless"
+  end
+  options = Selenium::WebDriver::Chrome::Options.new(args: args)
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
     chromeOptions: {"w3c" => false},
   )
