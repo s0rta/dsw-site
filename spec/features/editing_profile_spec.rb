@@ -22,8 +22,10 @@ feature "Editing my profile" do
       make_visible: true)
     fill_in "First and Last Name", with: "Test Registrant 2"
     fill_in "user_current_password", with: "password"
+    choose "user_show_attendance_publicly_false"
     click_button "Update"
     expect(page).to have_css(".Dashboard-profile-name", text: "Test Registrant 2")
     expect(page).to have_css('.Avatar-image[src$="less_than_2_mb.png"]')
+    expect(User.find_by(email: "test2@example.com").show_attendance_publicly?).to be_falsy
   end
 end

@@ -103,13 +103,13 @@ class Submission < ApplicationRecord
   end
 
   def self.for_track(name)
-    return all if name == 'all' || name.blank?
-    joins(:track).where('LOWER(tracks.name) = LOWER(?)', name)
+    return all if name == "all" || name.blank?
+    joins(:track).where("LOWER(tracks.name) = LOWER(?)", name)
   end
 
   def self.for_cluster(name)
-    return all if name == 'all' || name.blank?
-    joins(:cluster).where('LOWER(clusters.name) = LOWER(?)', name)
+    return all if name == "all" || name.blank?
+    joins(:cluster).where("LOWER(clusters.name) = LOWER(?)", name)
   end
 
   def self.for_publishings_filter(filters)
@@ -300,6 +300,15 @@ class Submission < ApplicationRecord
 
   def company_name=(value)
     self.company = Company.where("LOWER(name) = LOWER(?)", value).first_or_initialize(name: value)
+  end
+
+  def public_registrants(current_user)
+    registrants
+      .where(show_attendance_publicly: true)
+      .reorder([<<-SQL, current_user.id])
+        (CASE WHEN users.id = ? THEN 1 ELSE 2 END) ASC,
+        "session_registrations"."created_at" DESC
+      SQL
   end
 
   # Actions
