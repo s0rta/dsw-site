@@ -7,10 +7,10 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       format.html
       format.js do
-        render json: { fragment: render_to_string(partial: 'layouts/shared/publishings_list_items',
-                                                  locals: { list: @publishings }, formats: [:html]),
-                       next_url: url_for(page: Integer(params[:page] || 1) + 1),
-                       last_page: @publishings.last_page? }
+        render json: {fragment: render_to_string(partial: "layouts/shared/publishings_list_items",
+                                                 locals: {list: @publishings}, formats: [:html]),
+                      next_url: url_for(page: Integer(params[:page] || 1) + 1),
+                      last_page: @publishings.last_page?,}
       end
     end
   end
@@ -59,7 +59,7 @@ class ArticlesController < ApplicationController
       :body,
       :header_image,
       :author_ids,
-      track_ids: []
+      track_ids: [],
     )
   end
 end

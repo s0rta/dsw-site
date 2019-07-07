@@ -2,10 +2,11 @@ class Publishing < ApplicationRecord
   belongs_to :subject, polymorphic: true
 
   def self.filtered_results(filters)
-    articles = Article.for_publishings_filter(filters)
-    sessions = Submission.for_publishings_filter(filters)
-    # searching gem seems to break pluck method, so explicitly turning results into an array
-    ids = articles.to_a.pluck(:id) + sessions.to_a.pluck(:id)
-    where(subject_id: ids).order(effective_at: :desc).includes(:subject)
+    article_ids = Article.for_publishings_filter(filters).select(:id)
+    session_ids = Submission.for_publishings_filter(filters).select(:id)
+    where(subject_type: "Article", id: article_ids)
+      .or(where(subject_type: "Submission", id: session_ids))
+      .reorder("publishings.effective_at" => :desc)
+      .includes(:subject)
   end
 end
