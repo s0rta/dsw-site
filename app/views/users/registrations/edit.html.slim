@@ -52,13 +52,7 @@
               = f.label :linkedin_url, "LinkedIn Profile URL"
 
       .Profile-single-line
-        .Profile-custom-label Do you want your profile image and LinkedIn URL to appear in the lists of attendees for sessions that you add to your schedule?
-        = f.label :show_attendance_publicly, value: "true", class: 'Profile-radio' do
-          = f.radio_button :show_attendance_publicly, true, class: 'Profile-radio-input'
-          | YES
-        = f.label :show_attendance_publicly, value: "false", class: 'Profile-radio' do
-          = f.radio_button :show_attendance_publicly, false, class: 'Profile-radio-input'
-          | NO
+        = render partial: 'components/public_profile_radio', locals: { f: f }
 
       .Profile-single-line
         = render layout: 'components/form_input_row' do
