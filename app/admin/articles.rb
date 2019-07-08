@@ -6,9 +6,11 @@ ActiveAdmin.register Article do
   permit_params :title,
     :body,
     :submitter_id,
-    :track_ids,
+    :company_id,
+    :submission_id,
     publishing_attributes: [:id, :_destroy, :effective_at],
-    authorships_attributes: [:id, :_destroy, :user_id, :is_displayed]
+    authorships_attributes: [:id, :_destroy, :user_id, :is_displayed],
+    track_ids: []
 
 
   controller do
