@@ -6,11 +6,13 @@ feature "Editing my profile" do
   end
 
   scenario "Editing an account from the edit profile page" do
-    visit "/users/edit"
+    visit "/dashboard"
     fill_in "First and Last Name", with: "Test Registrant"
     fill_in "E-mail Address", with: "test2@example.com"
     fill_in "Password", with: "password"
     fill_in "Confirm Password", with: "password"
+    click_button "Submit"
+    click_link "Edit Profile"
     attach_file("user_avatar",
       Rails.root.join("spec", "support", "avatar_examples", "more_than_2_mb.jpg"),
       make_visible: true)
