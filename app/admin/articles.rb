@@ -29,7 +29,7 @@ ActiveAdmin.register Article do
     column :created_at
     column :updated_at
     column 'Publishing' do |article|
-      article&.publishing.effective_at
+      article&.publishing&.effective_at
     end
     column 'Authors' do |article|
       article&.authors
