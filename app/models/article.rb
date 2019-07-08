@@ -33,18 +33,18 @@ class Article < ApplicationRecord
   end
 
   def self.for_track(name)
-    return all if name == 'all' || name.blank?
-    joins(:tracks).where('LOWER(tracks.name) = LOWER(?)', name)
+    return all if name == "all" || name.blank?
+    joins(:tracks).where("LOWER(tracks.name) = LOWER(?)", name)
   end
 
   def self.for_cluster(name)
-    return all # until clusters reference is added to articles
+    all # until clusters reference is added to articles
     # return all if name == 'all' || name.blank?
     # joins(:clusters).where('LOWER(clusters.name) = LOWER(?)', name)
   end
 
   def self.searchable_language
-    'english'
+    "english"
   end
 
   def self.fulltext_search(terms)
@@ -52,8 +52,22 @@ class Article < ApplicationRecord
     predicate = {
       title: terms,
       body: terms,
-      users: { name: terms }
+      users: {name: terms},
     }
     joins(:authors).basic_search(predicate, false)
+  end
+
+  def self.published
+    joins(:publishing).where("effective_at <= ?", Time.zone.now)
+  end
+
+  def related
+    base_query = self.class.left_outer_joins(:tracks, :authors)
+    query = base_query.where(submitter_id: submitter_id)
+    query = query.or(base_query.where(company_id: company_id)) if company.present?
+    query = query.or(base_query.where(tracks: {id: track_ids})) if track_ids.any?
+    query = query.or(base_query.where(users: {id: author_ids})) if author_ids.any?
+
+    query.published.where.not(id: id)
   end
 end
