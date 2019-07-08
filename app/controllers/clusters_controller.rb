@@ -1,7 +1,7 @@
 class ClustersController < ApplicationController
   def show
     @cluster = Cluster.find_by(name: params[:name])
-    @publishings = Publishing.filtered_results(cluster: params[:name]).page(params[:page]).per(24)
+    @publishings = Publishing.filtered_results(cluster: params[:name]).page(params[:page]).per(12)
 
     respond_to do |format|
       format.html do

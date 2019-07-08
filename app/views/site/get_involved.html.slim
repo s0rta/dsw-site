@@ -5,9 +5,8 @@
 div.GetInvolved-list-wrapper
   = render 'components/content_card_list', attributes: { 'aria-label': "Get involved page" }  do
     - get_involved_static_data[:items].each do |card|
-      - unless card[:button_page_url] == 'voting/submit' && !AnnualSchedule.cfp_open?
-        = render 'components/content_card_list_item' do
-          = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "#{card[:button_page_url]}"
+      = render 'components/content_card_list_item' do
+        = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "#{card[:button_page_url]}"
 
 / = render partial: 'layouts/shared/get_involved_nav', locals: { item: :get_involved }
 

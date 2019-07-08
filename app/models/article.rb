@@ -33,18 +33,18 @@ class Article < ApplicationRecord
   end
 
   def self.for_track(name)
-    return all if name == 'all' || name.blank?
-    joins(:tracks).where('LOWER(tracks.name) = LOWER(?)', name)
+    return all if name == "all" || name.blank?
+    joins(:tracks).where("LOWER(tracks.name) = LOWER(?)", name)
   end
 
   def self.for_cluster(name)
-    return all # until clusters reference is added to articles
+    all # until clusters reference is added to articles
     # return all if name == 'all' || name.blank?
     # joins(:clusters).where('LOWER(clusters.name) = LOWER(?)', name)
   end
 
   def self.searchable_language
-    'english'
+    "english"
   end
 
   def self.fulltext_search(terms)
@@ -52,7 +52,7 @@ class Article < ApplicationRecord
     predicate = {
       title: terms,
       body: terms,
-      users: { name: terms }
+      users: {name: terms},
     }
     joins(:authors).basic_search(predicate, false)
   end
