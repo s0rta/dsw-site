@@ -1,0 +1,9 @@
+.PublicProfileRadio-label Do you want your profile image and LinkedIn URL to appear in the lists of attendees for sessions that you add to your schedule?
+= render layout: 'components/form_field' do
+  = f.label :show_attendance_publicly, value: "true" do
+    = f.radio_button :show_attendance_publicly, true
+    | YES
+= render layout: 'components/form_field' do
+  = f.label :show_attendance_publicly, value: "false" do
+    = f.radio_button :show_attendance_publicly, false
+    | NO
