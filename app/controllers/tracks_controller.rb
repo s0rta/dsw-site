@@ -1,7 +1,7 @@
 class TracksController < ApplicationController
   def show
     @track = Track.find_by(name: params[:name])
-    @publishings = Publishing.filtered_results(track: params[:name]).page(params[:page]).per(24)
+    @publishings = Publishing.filtered_results(track: params[:name]).page(params[:page]).per(12)
 
     respond_to do |format|
       format.html do
