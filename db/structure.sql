@@ -1915,6 +1915,20 @@ ALTER TABLE ONLY public.votes
 
 
 --
+-- Name: fulltext_articles_body_english; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fulltext_articles_body_english ON public.articles USING gin (to_tsvector('english'::regconfig, body));
+
+
+--
+-- Name: fulltext_articles_title_english; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fulltext_articles_title_english ON public.articles USING gin (to_tsvector('english'::regconfig, title));
+
+
+--
 -- Name: fulltext_companies_name_english; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2678,6 +2692,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190624043624'),
 ('20190624043648'),
 ('20190624140827'),
-('20190628183323');
+('20190628183323'),
+('20190707215408');
 
 
