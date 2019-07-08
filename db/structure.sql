@@ -1100,7 +1100,8 @@ CREATE TABLE public.users (
     team_position character varying,
     avatar character varying,
     team_priority integer,
-    linkedin_url character varying
+    linkedin_url character varying,
+    show_attendance_publicly boolean DEFAULT true NOT NULL
 );
 
 
@@ -2693,6 +2694,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190624043648'),
 ('20190624140827'),
 ('20190628183323'),
+('20190705233058'),
 ('20190707215408');
 
 

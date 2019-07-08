@@ -45,12 +45,14 @@
               = b.text
       .Register-native-field
         .Register-custom-label Are you a founder/exec interested in learning about giving back to the local community through #{link_to 'Pledge 1% Colorado', 'https://pledge1colorado.org/'}?
-        = f.label :learn_more_pledge_1p, value: "true", class: 'Register-radio' do
-          = f.radio_button :learn_more_pledge_1p, true, class: 'Register-radio-input'
-          | YES
-        = f.label :learn_more_pledge_1p, value: "false", class: 'Register-radio' do
-          = f.radio_button :learn_more_pledge_1p, "false", class: 'Register-radio-input'
-          | NO
+        = render layout: 'components/form_field' do
+          = f.label :learn_more_pledge_1p, value: "true" do
+            = f.radio_button :learn_more_pledge_1p, true
+            | YES
+        = render layout: 'components/form_field' do
+          = f.label :learn_more_pledge_1p, value: "false" do
+            = f.radio_button :learn_more_pledge_1p, "false"
+            | NO
       .Register-native-field
         = render partial: 'layouts/shared/coc_acknowledgement', locals: { f: f }
 
