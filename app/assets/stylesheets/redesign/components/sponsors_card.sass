@@ -43,6 +43,11 @@
   line-height: 18px
   font-size: 14px
   font-weight: 300
+  display: -webkit-box
+  -webkit-line-clamp: 7
+  -webkit-box-orient: vertical
+  overflow: hidden
+  text-overflow: ellipsis
 
 .SponsorsCard-action
   margin-top: 12px
@@ -80,6 +85,10 @@
   margin-top: 20px
   & span
     margin-left: 5px
+
+.SponsorsCard-track + .SponsorsCard-inner-content
+  p
+    -webkit-line-clamp: 6
 
 @media(min-width: 640px)
   .SponsorsCard-description
