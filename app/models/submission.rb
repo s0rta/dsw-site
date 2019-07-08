@@ -1,5 +1,5 @@
 class Submission < ApplicationRecord
-  PUBLIC_STATES = %w[open_for_voting accepted confirmed venue_confimed].freeze
+  PUBLIC_STATES = %w[open_for_voting accepted confirmed venue_confirmed].freeze
 
   SHOW_RATE = 0.3
 
