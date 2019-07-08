@@ -7,7 +7,7 @@
     - unless local_assigns[:hide_link].present?
       a.SessionCard-link(href="#{session_link}")
     - if local_assigns[:editable?].present?
-      = link_to edit_submission_path(session), title: 'Propose Updates', class: 'SessionCard-edit' do
+      = link_to edit_submission_path(session), title: 'Propose Updates', class: "SessionCard-edit #{color}-fill-on-#{color}-background" do
         = render partial: 'icons/pencil'
     div.SessionCard-type
       = render partial: "icons/#{icon}"
