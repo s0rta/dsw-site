@@ -1,11 +1,9 @@
 nav.PrimaryCalloutsNav(aria-label="Primary Callouts")
   ul.PrimaryCalloutsNav-list
-    - secondary_nav_static_data[:items].each do |nav|
+    - primary_callout_ctas.each do |cta|
+      - cycle('purple', 'green', 'teal', name: 'colors')
       li.PrimaryCalloutsNav-list-item
-        h2.PrimaryCalloutsNav-list-title(class="#{nav[:color]}-font") #{nav[:title]}
-        p.PrimaryCalloutsNav-list-desc
-          - nav[:descriptions].each do |desc|
-            | #{desc}
-            br
-        a(href="#{nav[:href]}" aria-label="#{nav[:title]}" class="#{nav[:color]}-font")
+        h2.PrimaryCalloutsNav-list-title(class="#{current_cycle('colors')}-font") #{process_with_liquid(cta.title)}
+        p.PrimaryCalloutsNav-list-desc #{process_with_liquid(cta.body)}
+        a(href="#{cta.link_href}" aria-label="#{process_with_liquid(cta.title)}" class="#{current_cycle('colors')}-font")
           = render partial: 'icons/arrow_in_circle_right'
