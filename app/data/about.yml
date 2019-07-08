@@ -2,18 +2,18 @@ items:
   - title: 'Team'
     description: 
       - 'Denver Startup Week is produced by a dedicated volunteer coalition comprised of civic leaders, entrepreneurs, and community organizers. Staff from the Downtown Denver Partnership provide additional structure and support.'
-    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    header_image: 'redesign/about/about_team.jpg'
     button_title: 'Explore the team'
     button_page_url: 'team'
   - title: 'Faq'
     description: 
       - 'Do you have a question about Denver Startup Week? You might not be the first. Check out our answers to Frequently Asked Questions'
-    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    header_image: 'redesign/about/about_faq.jpg'
     button_title: 'Explore the faq'
     button_page_url: 'faq'
   - title: 'Assets'
     description: 
       - 'Official Denver Startup Week graphical assets and style guide are available for download. If you have more specific needs, please contact us.'
-    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    header_image: 'redesign/about/about_assets.jpg'
     button_title: 'Explore the assets'
     button_page_url: 'assets'
