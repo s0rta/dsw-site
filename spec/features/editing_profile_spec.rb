@@ -5,9 +5,8 @@ feature "Editing my profile" do
     allow(ListSubscriptionJob).to receive(:perform_async)
   end
 
-  scenario "Editing an account from the dashboard" do
-    visit "/dashboard"
-    click_link "Edit Profile"
+  scenario "Editing an account from the edit profile page" do
+    visit "/users/edit"
     fill_in "First and Last Name", with: "Test Registrant"
     fill_in "E-mail Address", with: "test2@example.com"
     fill_in "Password", with: "password"
