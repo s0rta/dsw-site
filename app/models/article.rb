@@ -1,4 +1,6 @@
 class Article < ApplicationRecord
+  include ValidatedVideoUrl
+
   validates :title,
     length: {maximum: 150},
     presence: true

@@ -81,6 +81,7 @@ ActiveAdmin.register Article do
       f.input :header_image,
         as: :file,
         hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
+      f.input :video_url, as: :string
     end
 
     f.has_many :publishing, allow_destroy: true do |pub|
