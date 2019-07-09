@@ -56,3 +56,54 @@
     padding-left: 0;
   }
 }
+
+
+.ArticleBody {
+  font-family: Montserrat-Light, sans-serif;
+  color: rgb(95, 95, 95);
+  font-size: 14px;
+
+  h2 {
+    font-size: 24px;
+    font-family: Montserrat-Regular, sans-serif;
+    color: rgb(95, 95, 95);
+    margin: 0;
+  }
+
+  ul {
+    padding-left: 0px;
+
+    li {
+      list-style: inside;
+    }
+  }
+
+  ol {
+    padding-left: 16px;
+  }
+    li {
+      list-style: decimal;
+    }
+
+  b {
+    font-family: Montserrat-Bold, sans-serif;
+  }
+
+  blockquote {
+    font-family: Montserrat-Regular, sans-serif;
+    margin: 0;
+    margin-left: -10px !important;
+    padding-left: 10px !important;
+    font-size: 22px;
+    line-height: 1.58;
+    border-left: 3px solid rgb(3, 92, 107);
+    font-style: normal;
+  }
+  a {
+    color: #05D3D8;
+  }
+  pre {
+    margin: 0;
+    white-space: pre-wrap;
+  }
+}
