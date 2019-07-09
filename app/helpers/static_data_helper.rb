@@ -1,8 +1,4 @@
 module StaticDataHelper
-  def featured_static_data
-    { features: [] }
-  end
-
   def programs_static_data
     HashWithIndifferentAccess.new(
       YAML.safe_load(File.read(File.expand_path("../data/programs.yml",  __dir__)))
