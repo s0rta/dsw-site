@@ -62,7 +62,7 @@ class Article < ApplicationRecord
   end
 
   def related
-    base_query = self.class.left_outer_joins(:tracks, :authors)
+    base_query = self.class.includes(:tracks, :authors)
     query = base_query.where(submitter_id: submitter_id)
     query = query.or(base_query.where(company_id: company_id)) if company.present?
     query = query.or(base_query.where(tracks: {id: track_ids})) if track_ids.any?
