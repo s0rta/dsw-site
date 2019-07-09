@@ -1,4 +1,4 @@
-- header_image = sponsorship.logo.url || ""
+- header_image = sponsorship.logo.url || "redesign/about/about_team.jpg"
 
 .SponsorsCard
   div.(class="SponsorsCard-image #{level}" style="background-image: url(#{image_url header_image})")
@@ -9,10 +9,13 @@
           = render partial: "icons/#{sponsorship.track.icon}"
           span = sponsorship.track.name
       .SponsorsCard-inner-content
-        p.SponsorsCard-description #{sponsorship[:description]}
+        - if level == "headline"
+          p.SponsorsCard-description #{sponsorship[:description].truncate(353)}
+        - else
+          p.SponsorsCard-description #{sponsorship[:description].truncate(403)}
         .SponsorsCard-action
           a(href="#{sponsorship[:link_href]}" aria-label="Visit Website" target="_blank" class="SponsorsCard-link")
             span.SponsorsCard-link-title Visit Website
             = render partial: 'icons/arrow_right'
-  - if level == "partner" || level == "member" || level == "field-guide" 
+  - else
     a(href="#{sponsorship[:link_href]}" aria-label="Visit Website" target="_blank" class="SponsorsCard-image-link")
