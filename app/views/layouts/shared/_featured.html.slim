@@ -5,7 +5,7 @@ section.Featured
   h2.Featured-header#Featured-header-id Featured Sessions & Articles
   div.Featured-list
     = render 'components/three_card_list', attributes: { 'aria-labeledby': 'Featured-header-id' } do
-      - featured[:features].each do |feature|
+      - featured.each do |feature|
         = render 'components/three_card_list_item' do
           - if feature[:type] == 'session'
             = render 'components/session_card', session: feature
