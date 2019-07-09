@@ -3,12 +3,25 @@ items:
     description:
       - 'The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during Denver Startup Week.'
       - 'Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!'
-    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    header_image: 'redesign/get_involved/get_involved_present.jpg'
     button_title: 'Learn more'
     button_page_url: 'voting/submit'
   - title: 'Content'
     description:
       - 'Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.'
-    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    header_image: 'redesign/get_involved/get_involved_content.jpg'
     button_title: 'Learn more'
     button_page_url: 'get-involved/content'
+  - title: 'Volunteer'
+    description:
+      - 'Copy'
+    header_image: 'redesign/get_involved/get_involved_volunteer.jpg'
+    button_title: 'Learn more'
+    button_page_url: 'https://www.cervistech.com/acts/console.php?console_id=0282&console_type=event&ht=1'
+    target: "_blank"
+  - title: 'Sponsor'
+    description:
+      - 'Copy'
+    header_image: 'redesign/get_involved/get_involved_sponsor.jpg'
+    button_title: 'Learn more'
+    button_page_url: 'get-involved/sponsor'
