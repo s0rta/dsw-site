@@ -38,8 +38,7 @@ module RouteHelper
       { icon: "fa-twitter", label: "twitter", link: "https://twitter.com/denstartupweek" },
       { icon: "fa-facebook-f", label: "facebook", link: "https://www.facebook.com/DenverStartupWeek" },
       { icon: "fa-linkedin-in", label: "linkedin", link: "https://www.linkedin.com/company/denver-startup-week/" },
-      { icon: "fa-youtube", label: "youtube", link: "https://www.youtube.com/c/denverstartupweek" },
-      { icon: "fa-medium-m", label: "medium", link: "https://medium.com/denver-startup-week" }
+      { icon: "fa-youtube", label: "youtube", link: "https://www.youtube.com/c/denverstartupweek" }
     ]
   end
 
