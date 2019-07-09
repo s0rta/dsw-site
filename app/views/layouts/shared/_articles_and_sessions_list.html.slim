@@ -2,6 +2,6 @@ section.ArticlesAndSessionsList-wrapper(class="#{is_overlapped ? 'is-overlapped'
   .ArticlesAndSessionsList
     = render 'components/three_card_list', attributes: { 'aria-label': "#{title} sessions and atricles", id: 'loader-target' } do
       = render 'layouts/shared/publishings_list_items', list: list
-  - unless list.last_page?
+  - unless list.last_page? || list.total_pages == 0
     .ArticlesAndSessionsList-btn-wrapper(data-bindable="ajax-load-more" data-target="loader-target")
       = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms], track: params[:track], cluster: params[:cluster]), remote: true, method: :get, id: 'load-more', class: 'ArticlesAndSessionsList-load-more-button', data: { type: 'json' }
