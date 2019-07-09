@@ -199,7 +199,8 @@ CREATE TABLE public.articles (
     header_image character varying,
     company_id bigint,
     submission_id bigint,
-    submitter_id bigint
+    submitter_id bigint,
+    video_url character varying
 );
 
 
@@ -1099,7 +1100,9 @@ CREATE TABLE public.users (
     provider character varying(255),
     team_position character varying,
     avatar character varying,
-    team_priority integer
+    team_priority integer,
+    linkedin_url character varying,
+    show_attendance_publicly boolean DEFAULT true NOT NULL
 );
 
 
@@ -1914,6 +1917,20 @@ ALTER TABLE ONLY public.votes
 
 
 --
+-- Name: fulltext_articles_body_english; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fulltext_articles_body_english ON public.articles USING gin (to_tsvector('english'::regconfig, body));
+
+
+--
+-- Name: fulltext_articles_title_english; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fulltext_articles_title_english ON public.articles USING gin (to_tsvector('english'::regconfig, title));
+
+
+--
 -- Name: fulltext_companies_name_english; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2672,10 +2689,14 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190531155316'),
 ('20190531155323'),
 ('20190531155330'),
+('20190623185327'),
 ('20190624043458'),
 ('20190624043624'),
 ('20190624043648'),
 ('20190624140827'),
-('20190628183323');
+('20190628183323'),
+('20190705233058'),
+('20190707215408'),
+('20190709191401');
 
 
