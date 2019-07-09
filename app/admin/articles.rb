@@ -58,8 +58,6 @@ ActiveAdmin.register Article do
                 "orderedlist",
                 "unorderedlist",
                 "strikethrough",
-                "subscript",
-                "superscript",
                 "pre",
                 "html",
               ],
