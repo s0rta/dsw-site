@@ -43,7 +43,7 @@ ActiveAdmin.register Article do
   form do |f|
     f.inputs do
       f.input :title, as: :string
-      f.input :body, as: :medium_editor, input_html: {
+      f.input :body, as: :medium_editor,  wrapper_html: { class: 'ArticleBody'}, input_html: {
         data: {
           options: {
             "spellcheck": false,
