@@ -68,6 +68,6 @@ class Article < ApplicationRecord
     query = query.or(base_query.where(tracks: {id: track_ids})) if track_ids.any?
     query = query.or(base_query.where(users: {id: author_ids})) if author_ids.any?
 
-    query.published.where.not(id: id)
+    query.published.where.not(id: id).distinct
   end
 end
