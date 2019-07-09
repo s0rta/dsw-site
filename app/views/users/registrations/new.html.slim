@@ -1,6 +1,6 @@
 - content_for(:fullscreen_takeover, true)
-- title = came_from_registration? ? 'register to attend' : 'sign up'
-- button_text = came_from_registration? ? 'next' : 'submit'
+- title = came_from_registration? ? 'Register to Attend' : 'Sign Up'
+- button_text = came_from_registration? ? 'Next' : 'Submit'
 - content_for(:title, 'Sign Up')
 
 = render 'layouts/shared/fullscreen_takeover_header', title: title, background: 'dark'
@@ -29,6 +29,9 @@
             = render layout: 'components/floating_input' do
               = f.text_field :linkedin_url, autocomplete: 'off'
               = f.label :linkedin_url, "LinkedIn Profile URL"
+
+      .SignUp-single-line
+        = render partial: 'components/public_profile_radio', locals: { f: f }
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do

@@ -52,6 +52,9 @@
               = f.label :linkedin_url, "LinkedIn Profile URL"
 
       .Profile-single-line
+        = render partial: 'components/public_profile_radio', locals: { f: f }
+
+      .Profile-single-line
         = render layout: 'components/form_input_row' do
           = render layout: 'components/form_input_wrapper' do
             = render layout: 'components/floating_input' do

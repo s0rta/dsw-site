@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(
+    params.require(:article).except(:authors).permit(
       :title,
       :body,
       :header_image,

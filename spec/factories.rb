@@ -79,4 +79,12 @@ FactoryBot.define do
   end
 
   factory :attendee_goal
+
+  factory :article do
+    title { "This is a good article" }
+    body { "Please read me!" }
+    association :submitter, factory: :user
+  end
+
+  factory :publishing
 end
