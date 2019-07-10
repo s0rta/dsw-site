@@ -12,6 +12,6 @@
       - unless article.header_image.present?
         .ArticleCard-body-preview #{article[:body].truncate(175).html_safe}
       .ArticleCard-tracks
-        - article.tracks.each do |track|
+        - article.tracks.limit(3).each do |track|
           =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
 
