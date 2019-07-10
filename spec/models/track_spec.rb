@@ -5,9 +5,9 @@ RSpec.describe Track, type: :model do
   it { is_expected.to validate_presence_of(:email_alias) }
   it { is_expected.to validate_presence_of(:icon) }
   it { is_expected.to validate_presence_of(:color) }
-  it { is_expected.to have_many(:submissions).dependent(:destroy) }
+  it { is_expected.to have_many(:submissions).dependent(:restrict_with_error) }
   it { is_expected.to have_and_belong_to_many(:chairs) }
-  it { is_expected.to have_and_belong_to_many(:articles) }
+  it { is_expected.to have_and_belong_to_many(:articles).dependent(:restrict_with_error) }
 
   it { is_expected.to allow_value("eyeball").for(:icon) }
   it { is_expected.not_to allow_value("truck").for(:icon) }

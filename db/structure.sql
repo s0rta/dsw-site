@@ -199,7 +199,8 @@ CREATE TABLE public.articles (
     header_image character varying,
     company_id bigint,
     submission_id bigint,
-    submitter_id bigint
+    submitter_id bigint,
+    video_url character varying
 );
 
 
@@ -2695,6 +2696,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190624140827'),
 ('20190628183323'),
 ('20190705233058'),
-('20190707215408');
+('20190707215408'),
+('20190709191401');
 
 

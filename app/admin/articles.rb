@@ -12,7 +12,6 @@ ActiveAdmin.register Article do
     authorships_attributes: [:id, :_destroy, :user_id, :is_displayed],
     track_ids: []
 
-
   controller do
     def scoped_collection
       resource_class.includes(:publishing)
@@ -28,10 +27,10 @@ ActiveAdmin.register Article do
     end
     column :created_at
     column :updated_at
-    column 'Publishing' do |article|
+    column "Publishing" do |article|
       article&.publishing&.effective_at
     end
-    column 'Authors' do |article|
+    column "Authors" do |article|
       article&.authors
     end
 
@@ -43,7 +42,7 @@ ActiveAdmin.register Article do
   form do |f|
     f.inputs do
       f.input :title, as: :string
-      f.input :body, as: :medium_editor, wrapper_html: { class: 'ArticleBody' }, input_html: {
+      f.input :body, as: :medium_editor, wrapper_html: {class: "ArticleBody"}, input_html: {
         data: {
           options: {
             "spellcheck": false,
@@ -80,7 +79,9 @@ ActiveAdmin.register Article do
       f.input :track_ids, as: :check_boxes, collection: Track.all, label: "Related Track(s)"
       f.input :header_image,
         as: :file,
-        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
+        hint: f.object.header_image.present? ? image_tag(f.object.header_image.url(:thumb)) : nil
+      f.input :video_url, as: :string
+
     end
 
     f.has_many :publishing, allow_destroy: true do |pub|

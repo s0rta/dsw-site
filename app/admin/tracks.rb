@@ -32,7 +32,7 @@ ActiveAdmin.register Track do
       f.input :video_url, hint: "Youtube URL for track video"
       f.input :header_image,
         as: :file,
-        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
+        hint: f.object.header_image.present? ? image_tag(f.object.header_image.url(:thumb)) : nil
       f.input :is_submittable, hint: "Make this track an option for CFP submissions"
       f.input :is_voteable, hint: "Show submissions in this track during the voting process"
     end
