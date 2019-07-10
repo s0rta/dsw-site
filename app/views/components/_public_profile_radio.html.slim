@@ -2,6 +2,8 @@
 = render layout: 'components/form_field' do
   = f.radio_button :show_attendance_publicly, true
   = f.label :show_attendance_publicly, value: "true"
+    span YES
 = render layout: 'components/form_field' do
   = f.radio_button :show_attendance_publicly, false
   = f.label :show_attendance_publicly, value: "false"
+    span NO
