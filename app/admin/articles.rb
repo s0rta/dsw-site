@@ -8,6 +8,7 @@ ActiveAdmin.register Article do
     :submitter_id,
     :company_id,
     :submission_id,
+    :video_url,
     publishing_attributes: [:id, :_destroy, :effective_at],
     authorships_attributes: [:id, :_destroy, :user_id, :is_displayed],
     track_ids: []
