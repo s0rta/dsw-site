@@ -1,6 +1,13 @@
 - content_for(:title, 'Articles')
 - content_for(:subtitle, "#{@article[:title]}")
 - related_articles = @article.related.limit(3)
+- content_for(:extra_meta_tags) do
+  meta(property="og:title" content="Denver Startup Week | #{@article.title}")
+  meta(property="og:image" content="#{@article.header_image.url(:article_card)}")
+  meta(property="og:site_name" content="Denver Startup Week")
+  meta(property="og:url" content="#{article_path(@article)}")
+  meta(property="og:description" content="#{truncate(@article.body.html_safe, length: 300, separator: ' ')}")
+  meta(name="date" content="#{@article.publishing.effective_at.strftime("%A, %b%e, %Y")}")
 
 .Article
   .Article-inner
