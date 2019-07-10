@@ -3,12 +3,25 @@ items:
     description:
       - 'The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during Denver Startup Week.'
       - 'Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!'
-    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    header_image: 'redesign/get_involved/get_involved_present.jpg'
     button_title: 'Learn more'
     button_page_url: 'voting/submit'
   - title: 'Content'
     description:
       - 'Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.'
-    header_image: 'https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg'
+    header_image: 'redesign/get_involved/get_involved_content.jpg'
     button_title: 'Learn more'
     button_page_url: 'get-involved/content'
+  - title: 'Volunteer'
+    description:
+      - 'Volunteers make up the vast majority of the Denver Startup Week organization and serve as the backbone of the event. From the Organizing Committee to our session attendants, Denver Startup Week would not be possible without the help and support of the entire community.'
+    header_image: 'redesign/get_involved/get_involved_volunteer.jpg'
+    button_title: 'Learn more'
+    button_page_url: 'https://www.cervistech.com/acts/console.php?console_id=0282&console_type=event&ht=1'
+    target: "_blank"
+  - title: 'Sponsor'
+    description:
+      - 'Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more. Denver Startup Week will always remain free because accessibility is critical to cultivate a thriving community. The generous support of our partners and sponsors enable this world-class event and Denver’s entrepreneurial ecosystem – making it available to all.'
+    header_image: 'redesign/get_involved/get_involved_sponsor.jpg'
+    button_title: 'Learn more'
+    button_page_url: 'get-involved/sponsor'

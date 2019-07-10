@@ -1,7 +1,7 @@
 items:
   - title: 'Article Submissions'
     description: 
-      - 'Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter  nomen es quid. Lorem ipsum dolere sit amet nonummy adspecit nomen es quid. Lorem ipsum dolere sit  nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid. Lorem ipsum dolere sit amet nonummy consecuter adspecit nomen es quid.'
+      - 'We invite you - yes, you! - to submit articles to the Denver Startup Week website. We look to you for unique insights, inspiring stories, thought leadership, founder profiles, can’t-miss news, and much more.'
     button_title: 'Submit Article'
     button_page_url: 'articles/new'
   - title: 'Social Media Promotion'
