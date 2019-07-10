@@ -30,7 +30,7 @@
 
       .ArticlesForm-tracks
         = render layout: 'components/form_checkbox_collection' do
-          = f.collection_check_boxes :track_ids, Track.all, :id, :name, include_hidden: false do |b|
+          = f.collection_check_boxes :track_ids, Track.submittable, :id, :name, include_hidden: false do |b|
             = b.label do
               = b.check_box
               = b.text
