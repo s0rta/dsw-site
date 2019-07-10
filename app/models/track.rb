@@ -12,9 +12,9 @@ class Track < ApplicationRecord
   validates :color, inclusion: {in: COLORS}
   validates :icon, inclusion: {in: ICONS}
 
-  has_many :submissions, dependent: :destroy
+  has_many :submissions, dependent: :restrict_with_error
   has_and_belongs_to_many :chairs, class_name: "User"
-  has_and_belongs_to_many :articles
+  has_and_belongs_to_many :articles, dependent: :restrict_with_error
 
   mount_uploader :header_image, HeaderImageUploader
 
