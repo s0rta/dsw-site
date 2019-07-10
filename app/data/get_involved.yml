@@ -21,7 +21,7 @@ items:
     target: "_blank"
   - title: 'Sponsor'
     description:
-      - 'Copy'
+      - 'Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more. Denver Startup Week will always remain free because accessibility is critical to cultivate a thriving community. The generous support of our partners and sponsors enable this world-class event and Denver’s entrepreneurial ecosystem – making it available to all.'
     header_image: 'redesign/get_involved/get_involved_sponsor.jpg'
     button_title: 'Learn more'
     button_page_url: 'get-involved/sponsor'
