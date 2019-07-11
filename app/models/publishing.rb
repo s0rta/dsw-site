@@ -11,6 +11,6 @@ class Publishing < ApplicationRecord
   end
 
   def self.for_homepage
-    where(featured_on_homepage: true)
+    where(featured_on_homepage: true).includes(:subject).limit(12)
   end
 end
