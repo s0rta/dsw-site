@@ -81,7 +81,7 @@ ActiveAdmin.register Submission do
     column "Published" do |submission|
       submission.published? ? submission&.publishing&.effective_at : "No"
     end
-    column "Homepage" do |article|
+    column "Homepage" do |submission|
       submission&.publishing&.featured_on_homepage? ? "Yes" : "No"
     end
     actions
