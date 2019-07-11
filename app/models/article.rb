@@ -25,4 +25,16 @@ class Article < ApplicationRecord
   def to_param
     "#{id}-#{title.try(:parameterize)}"
   end
+
+  def published?
+    publishing.present?
+  end
+
+  def publish!
+    create_publishing(effective_at: Time.zone.now)
+  end
+
+  def unpublish!
+    publishing.destroy!
+  end
 end
