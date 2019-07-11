@@ -39,37 +39,3 @@
 
       .Submissions-actions
         = f.submit 'Submit', class: 'ArticlesForm-submit'
-
-
-/ = render partial: 'dashboards/nav', locals: { item: :submit }
-
-/ section.common.sm-centered
-/   .section-content.instruction
-/     h6
-/       | We encourage you to update the title, description, and/or submitter notes for your session proposal as you see fit.
-/       | Before updating your session proposal, please take a minute to read through
-/       = link_to 'our FAQs', faq_submissions_path, target: '_blank', class: 'inline-copy-link'
-/       |  for more information about the submission and selection process.
-/       br
-/       br
-/       | Proposed updates will be sent to the organizing team for approval. We appreciate your patience while we review your changes.
-/       br
-/       | The description field is processed with Markdown for public display, if you wish to apply additional formatting.
-
-/     - flash.each do |key, message|
-/       h6 = message
-
-/     - unless @submission.errors.empty?
-/       h6 = "Please correct the following errors: #{@submission.errors.full_messages.to_sentence}"
-
-/ .section-content
-/   = form_for @submission do |f|
-/     = f.label :title
-/     = f.text_field :title, required: 'required', placeholder: 'Session Title'
-
-/     = f.label :description
-/     = f.text_area :description, required: 'required', rows: 8, placeholder: 'Session Description (public facing)'
-
-/     = f.label :notes
-/     = f.text_area :notes, required: 'required', rows: 8, placeholder: 'Session Pitch (for reviewers only)'
-/     = f.submit 'Submit'
