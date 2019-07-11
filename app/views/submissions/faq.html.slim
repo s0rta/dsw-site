@@ -9,24 +9,3 @@
         = render 'components/accordion_list_item', title: process_with_liquid(article.name).html_safe, panel: process_with_liquid(article.content).html_safe
       = render partial: 'layouts/shared/faq/faq_contact'
 
-
-
-/ = render partial: 'dashboards/nav', locals: { item: :faq, suppress_bar: true }
-
-/ section.common.blue
-/   .section-content.sm-centered
-/     h1 Frequently Asked Questions
-/     h6 Denver Startup Week is a week of events showcasing Denver’s entrepreneur community in tech, design, business, and manufacturing.
-
-/ section#faq.common(data-bindable='toggle-faq')
-/   .section-content.sm-centered
-/     - helpscout_articles_for_category('CFP').each do |article|
-/       button.accordion
-/         h6 = article.name
-/         = image_tag 'redesign/grey-plus.svg', class: 'faq-plus'
-/         = image_tag 'redesign/grey-x.svg', class: 'faq-x'
-/       .panel
-/         h6 = article.name
-/         h6 = process_with_liquid(article.content).html_safe
-
-/     = render partial: 'layouts/shared/faq/contact'
