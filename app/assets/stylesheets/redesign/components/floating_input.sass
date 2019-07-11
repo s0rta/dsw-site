@@ -17,15 +17,7 @@
   pointer-events: none
 
 .FloatingInput
-    input:focus ~ label,
-    input:valid ~ label,
-    select:focus ~ label,
-    select:valid ~ label,
-    &.is-float label
+    label.is-float
       font-size: 10px
       transform: translate3d(0, -120%, 0)
       opacity: 1
-
-.FloatingInput
-  select ~ label
-    top: 10px

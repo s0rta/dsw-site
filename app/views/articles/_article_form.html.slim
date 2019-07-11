@@ -8,7 +8,7 @@
 
   = render layout: 'components/form_wrapper' do
 
-    .ArticlesForm-instructions 
+    .ArticlesForm-instructions
       p We invite you - yes, you! - to submit articles to the Denver Startup Week website. We look to you for unique insights, inspiring stories, thought leadership, founder profiles, can’t-miss news, and much more.
       p Before you submit, here are a few of our guidelines. Please no company sales/promotion — your expertise is the best promotion!
       ul aria-label="Article guidelines"
@@ -31,7 +31,7 @@
 
         = f.fields_for :authors do |ff|
           = render layout: 'components/form_input_wrapper' do
-            = render layout: 'components/floating_input', locals: { always_float: true } do
+            = render layout: 'components/floating_input' do
               = ff.text_field :id, data: { bindable: 'autocompleter', source: user_search_url, valuefield: 'article_author_ids', startinglabel: @article.authors.first&.name, startingvalue: @article.authors.first&.id }
               = ff.label :id, 'Author*'
         end
