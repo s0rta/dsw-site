@@ -3,3 +3,6 @@
     .TeamMemberCard-image(style="background-image: url(#{user.avatar.url(:thumb)})")
     .TeamMemberCard-name #{user[:name]}
     .TeamMemberCard-role #{user[:team_position]}
+    - if user[:linkedin_url].present?
+      .TeamMeberCard-linkedin
+        = render partial: 'components/user_linkedin', locals: { user: user }
