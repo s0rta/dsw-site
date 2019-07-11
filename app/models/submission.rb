@@ -32,6 +32,7 @@ class Submission < ApplicationRecord
 
   include SearchableSubmission
   include YearScoped
+  include Publishable
 
   has_paper_trail
 
@@ -56,7 +57,6 @@ class Submission < ApplicationRecord
   has_many :feedback, dependent: :destroy
 
   has_one :sponsorship, dependent: :restrict_with_error
-  has_one :publishing, as: :subject
 
   accepts_nested_attributes_for :publishing, allow_destroy: true
 
