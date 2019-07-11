@@ -23,6 +23,7 @@ if ENV["AWS_ACCESS_KEY_ID"] &&
     config.fog_directory = ENV["CARRIERWAVE_UPLOADS_S3_BUCKET"]
     config.fog_attributes = {cache_control: "public, max-age=#{1.year.to_i}"}
     config.asset_host = ENV["CARRIERWAVE_UPLOADS_CDN_HOST"]
+    config.fog_public = true
   end
 else
   Rails.logger.info "Using Carrierwave with local file storage"
