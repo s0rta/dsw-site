@@ -24,7 +24,7 @@
             = f.select :track_id, tracks_for_select, { :include_blank => '' }, :required => true
             = f.label :track_id, 'Which track are you most interested in?'
         = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/floating_input', locals: { always_float: true } do
+          = render layout: 'components/floating_input' do
             = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
             = f.label :company_name, 'What company do you work for?'
       = render layout: 'components/form_input_row' do
