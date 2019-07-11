@@ -34,7 +34,7 @@ ActiveAdmin.register Submission do
     :video_url,
     :volunteers_needed,
     :year,
-    publishing_attributes: [:id, :_destroy, :effective_at]
+    publishing_attributes: [:id, :effective_at, :featured_on_homepage]
 
   controller do
     def scoped_collection
@@ -78,8 +78,11 @@ ActiveAdmin.register Submission do
     column(:votes, sortable: "COUNT(votes.id)") { |s| s.votes.size }
     column(:attendees, sortable: "COUNT(user_registrations.id)") { |s| s.user_registrations.size }
     column(:pending_updates, sortable: false) { |s| s.proposed_updates.present? ? "Yes" : "No" }
-    column 'Publishing' do |submission|
-      submission&.publishing&.effective_at
+    column "Published" do |submission|
+      submission.published? ? submission&.publishing&.effective_at : "No"
+    end
+    column "Homepage" do |article|
+      submission&.publishing&.featured_on_homepage? ? "Yes" : "No"
     end
     actions
   end
@@ -203,8 +206,9 @@ ActiveAdmin.register Submission do
       f.input :internal_notes
     end
 
-    f.has_many :publishing do |pub|
+    f.has_many :publishing, allow_destroy: false, add_new: false do |pub|
       pub.input :effective_at
+      pub.input :featured_on_homepage
     end
 
     f.actions
@@ -579,6 +583,30 @@ ActiveAdmin.register Submission do
   batch_action :send_waitlist_email, confirm: "Are you sure?" do |submission_ids|
     Submission.find(submission_ids).each(&:send_waitlist_email!)
     redirect_to admin_submissions_path
+  end
+
+  action_item :publish, only: %i[show] do
+    unless resource.published?
+      link_to "Publish", publish_admin_submission_path(resource), method: :post
+    end
+  end
+
+  member_action :publish, method: :post do
+    submission = Submission.find(params[:id])
+    submission.publish!
+    redirect_to admin_submission_path(submission)
+  end
+
+  action_item :unpublish, only: %i[show] do
+    if resource.published?
+      link_to "Unpublish", unpublish_admin_submission_path(resource), method: :post
+    end
+  end
+
+  member_action :unpublish, method: :post do
+    submission = Submission.find(params[:id])
+    submission.unpublish!
+    redirect_to admin_submission_path(submission)
   end
 
   # Hooks

@@ -9,4 +9,8 @@ class Publishing < ApplicationRecord
       .reorder("publishings.effective_at" => :desc)
       .includes(:subject)
   end
+
+  def self.for_homepage
+    where(featured_on_homepage: true)
+  end
 end

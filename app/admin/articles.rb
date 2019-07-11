@@ -9,7 +9,7 @@ ActiveAdmin.register Article do
     :company_id,
     :submission_id,
     :video_url,
-    publishing_attributes: [:id, :_destroy, :effective_at],
+    publishing_attributes: [:id, :effective_at, :featured_on_homepage],
     authorships_attributes: [:id, :_destroy, :user_id, :is_displayed],
     track_ids: []
 
@@ -28,8 +28,11 @@ ActiveAdmin.register Article do
     end
     column :created_at
     column :updated_at
-    column "Publishing" do |article|
-      article&.publishing&.effective_at
+    column "Published" do |article|
+      article.published? ? article&.publishing&.effective_at : "No"
+    end
+    column "Homepage" do |article|
+      article&.publishing&.featured_on_homepage? ? "Yes" : "No"
     end
     column "Authors" do |article|
       article&.authors
@@ -82,11 +85,11 @@ ActiveAdmin.register Article do
         as: :file,
         hint: f.object.header_image.present? ? image_tag(f.object.header_image.url(:thumb)) : nil
       f.input :video_url, as: :string
-
     end
 
-    f.has_many :publishing, allow_destroy: true do |pub|
+    f.has_many :publishing, allow_destroy: false, add_new: false do |pub|
       pub.input :effective_at
+      pub.input :featured_on_homepage
     end
 
     f.has_many :authorships, allow_destroy: true do |authorship|
@@ -98,5 +101,29 @@ ActiveAdmin.register Article do
     end
 
     f.actions
+  end
+
+  action_item :publish, only: %i[show] do
+    unless resource.published?
+      link_to "Publish", publish_admin_article_path(resource), method: :post
+    end
+  end
+
+  member_action :publish, method: :post do
+    article = Article.find(params[:id])
+    article.publish!
+    redirect_to admin_article_path(article)
+  end
+
+  action_item :unpublish, only: %i[show] do
+    if resource.published?
+      link_to "Unpublish", unpublish_admin_article_path(resource), method: :post
+    end
+  end
+
+  member_action :unpublish, method: :post do
+    article = Article.find(params[:id])
+    article.unpublish!
+    redirect_to admin_article_path(article)
   end
 end
