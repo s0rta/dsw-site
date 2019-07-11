@@ -26,6 +26,7 @@ import 'components/autocompleter';
 import 'components/menu';
 import 'components/file_select';
 import 'components/flash_message';
+import 'components/text_area_autosize';
 
 import 'awesomplete/awesomplete.css';
 

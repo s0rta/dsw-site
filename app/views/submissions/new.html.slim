@@ -50,19 +50,19 @@
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
             = f.label :description, 'Provide a concise description for the session (limited to 600 characters or less). The description field is where you write a short paragraph to quickly tell us what you\'re going to talk about. This will be published in the program along with the title, so it’s the public face of your session. It should be compelling and to the point. Tell a story. Why should attendees come to your session and what will they get out of it?'
-            = f.text_area :description, rows: 8, placeholder: 'Session Description (public facing)'
+            = f.text_area :description, data: { bindable: 'text_area_autosize' }, placeholder: 'Session Description (public facing)'
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
             = f.label :notes, 'Pitch us on your session: show the reviewers why you should be organizing this session at Denver Startup Week. Here is the place to focus on how your session will help the program, or fill a specific need. Explain your qualifications (and/or those of your panelists) and why you\'re passionate about this topic. This content will only be visible to the review committee.'
-            = f.text_area :notes, rows: 8, placeholder: 'Session pitch (for reviewers only)'
+            = f.text_area :notes, data: { bindable: 'text_area_autosize' }, placeholder: 'Session pitch (for reviewers only)'
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
             = f.label :target_audience_description, 'Tell us about the ideal audience for your session. Is the content oriented towards beginners or experts? Specific to an industry or broadly applicable? Well-suited for a large room or limited to just a few attendees?  This content will only be visible to the review committee.'
-            = f.text_area :target_audience_description, rows: 8, placeholder: 'Target audience (for reviewers only)'
+            = f.text_area :target_audience_description, data: { bindable: 'text_area_autosize' }, placeholder: 'Target audience (for reviewers only)'
 
       = render partial: 'layouts/shared/coc_acknowledgement', locals: { f: f }
 
