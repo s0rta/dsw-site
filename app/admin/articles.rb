@@ -9,6 +9,7 @@ ActiveAdmin.register Article do
     :company_id,
     :submission_id,
     :video_url,
+    :header_image,
     publishing_attributes: [:id, :effective_at, :featured_on_homepage],
     authorships_attributes: [:id, :_destroy, :user_id, :is_displayed],
     track_ids: []
