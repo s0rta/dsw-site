@@ -1,7 +1,9 @@
 module Publishable
   extend ActiveSupport::Concern
 
-  has_one :publishing, as: :subject
+  included do
+    has_one :publishing, as: :subject
+  end
 
   def published?
     publishing.present?
