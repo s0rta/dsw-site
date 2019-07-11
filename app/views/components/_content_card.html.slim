@@ -1,5 +1,5 @@
 - header_image = card[:header_image] || "https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg"
-- button_title = card[:button_title].present? ? card[:button_title] : "Explore the #{title}"
+- button_title = card[:button_title].present? ? card[:button_title] : "Explore #{title}"
 
 div.ContentCard
   .ContentCard-image(class="#{card[:color]}-border #{card[:track].present? ? 'is-track' : ''}" style="background-image: url(#{image_url header_image})")
@@ -13,7 +13,7 @@ div.ContentCard
         - card[:description].each do |desc|
           p.ContentCard-description #{desc.html_safe}
       - else
-        p.ContentCard-description #{card[:description].html_safe}
+        p.ContentCard-description #{card[:description]&.html_safe}
       .ContentCard-action
         - if card[:target].present?
           = link_to button_title, "#{page_url}", :target => "#{card[:target]}", class: 'ContentCard-link'
