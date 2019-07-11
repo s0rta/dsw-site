@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get "/panel-picker/mine", to: redirect("/dashboard")
   get "/voting/mine", to: redirect("/dashboard")
   get "/panel-picker", to: redirect("/voting")
+  get "/panel-picker/search", to: redirect("/voting")
+  get "/panel-picker/track", to: redirect("/voting")
 
   # Vanity redirects
   get "/live", to: redirect("https://dswlive.intelivideo.com/")
@@ -60,8 +62,6 @@ Rails.application.routes.draw do
       get :submissions_closed
       get :feedback_closed
       get :faq
-      get :search
-      get "track/:track_name", action: :track, as: :track
     end
     resources :votes, only: :create
     resources :comments, only: :create

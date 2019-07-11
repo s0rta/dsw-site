@@ -65,35 +65,3 @@
 
       .Profile-actions
         = f.submit 'Update', class: 'Profile-submit'
-
-
-/ = render partial: 'dashboards/nav', locals: { item: :profile }
-
-/ section.common
-/   .section-content.sm-centered
-/     = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
-
-/       = f.label :name, 'Name'
-/       = f.text_field :name, required: 'required', autofocus: 'autofocus'
-
-/       = f.label :description, 'Tagline'
-/       = f.text_field :description, required: 'required'
-
-/       = f.label :email, 'E-mail Address'
-/       = f.text_field :email, required: 'required'
-
-/       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-/         p
-/           |
-/             Currently waiting confirmation for: #{resource.unconfirmed_email}
-
-/       = f.label :password, "New Password (leave blank if you don't want to change it)"
-/       = f.password_field :password, autocomplete: 'off'
-
-/       = f.label :password_confirmation, 'Confirm New Password'
-/       = f.password_field :password_confirmation, autocomplete: 'off'
-
-/       = f.label :password, 'Current Password (we need your current password to confirm your changes)'
-/       = f.password_field :current_password, autocomplete: 'off'
-
-/       = f.submit 'Update'

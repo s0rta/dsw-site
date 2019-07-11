@@ -8,26 +8,3 @@ div.Tracks-list-wrapper
     - Track.template_list_data.each do |card|
       = render 'components/content_card_list_item' do
         = render 'components/content_card', card: card, title: card[:title], page_url: "program/tracks/#{card[:name]}"
-
-
-
-/ = render partial: 'layouts/shared/program_nav', locals: { item: :tracks }
-/ - content_for(:subtitle, 'Tracks')
-
-/ section.common
-/   .section-content.sm-centered
-/     h1 Eight Functional Tracks
-/     h6 Our daily programming consists of six tracks, oriented towards critical functional roles within a startup team. Attend sessions to learn from top experts in each field, and gain actionable insights that you can use to accelerate both your career and your company's success. Track programming runs all day every day throughout the week.
-
-/ - Track.submittable.in_display_order.with_icon_and_color.each do |t|
-/   section(class="track #{t.color}")
-/     .section-content.sm-centered
-/       = render partial: "icons/#{t.icon}"
-/       h1 = t.name
-/       h6 = t.description
-/       - if t.video_url.present?
-/         .track-video
-/           iframe id="ytplayer-#{t.id}" type="text/html" src="#{t.embed_video_url}" frameborder="0"
-
-
-/ = render partial: 'layouts/shared/page_footer'

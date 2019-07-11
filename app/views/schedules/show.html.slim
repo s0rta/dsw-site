@@ -20,9 +20,6 @@
         = render partial: 'icons/arrow_in_circle_left'
       = 'Back to schedule'
 
-  / = render partial: 'layouts/shared/flash'
-  / = render partial: 'first_come_first_served_banner', locals: { session: @session }
-
   section.SessionDetail
     header(class="SessionDetail-track #{@session.track.color}-font #{@session.track.color}-fill")
       - if @session.track.icon
