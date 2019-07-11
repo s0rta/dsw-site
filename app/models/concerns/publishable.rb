@@ -2,7 +2,7 @@ module Publishable
   extend ActiveSupport::Concern
 
   included do
-    has_one :publishing, as: :subject
+    has_one :publishing, as: :subject, dependent: :destroy
   end
 
   def published?
