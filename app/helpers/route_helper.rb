@@ -28,11 +28,6 @@ module RouteHelper
     [about_route, team_route, faq_route, assets_route]
   end
 
-  def get_involved_routes
-    routes = [get_involved_route, present_route, sponsor_route, volunteer_route, content_route]
-    routes
-  end
-
   def social_media_routes
     [
       { icon: "fa-twitter", label: "twitter", link: "https://twitter.com/denstartupweek" },
@@ -116,7 +111,6 @@ module RouteHelper
     {
       path: "/get-involved",
       label: "get involved",
-      nested_routes: get_involved_routes
     }
   end
 

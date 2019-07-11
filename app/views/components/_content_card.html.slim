@@ -11,9 +11,9 @@ div.ContentCard
     div.ContentCard-inner-content
       - if card[:description].kind_of?(Array)
         - card[:description].each do |desc|
-          p.ContentCard-description #{desc}
+          p.ContentCard-description #{desc.html_safe}
       - else
-        p.ContentCard-description #{card[:description]}
+        p.ContentCard-description #{card[:description].html_safe}
       .ContentCard-action
         - if card[:target].present?
           = link_to button_title, "#{page_url}", :target => "#{card[:target]}", class: 'ContentCard-link'
