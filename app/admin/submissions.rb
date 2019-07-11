@@ -34,7 +34,7 @@ ActiveAdmin.register Submission do
     :video_url,
     :volunteers_needed,
     :year,
-    publishing_attributes: [:id, :_destroy, :effective_at]
+    publishing_attributes: [:id, :_destroy, :effective_at, :featured_on_homepage]
 
   controller do
     def scoped_collection
@@ -78,8 +78,11 @@ ActiveAdmin.register Submission do
     column(:votes, sortable: "COUNT(votes.id)") { |s| s.votes.size }
     column(:attendees, sortable: "COUNT(user_registrations.id)") { |s| s.user_registrations.size }
     column(:pending_updates, sortable: false) { |s| s.proposed_updates.present? ? "Yes" : "No" }
-    column 'Publishing' do |submission|
+    column "Publishing" do |submission|
       submission&.publishing&.effective_at
+    end
+    column "Homepage" do |article|
+      submission&.publishing&.featured_on_homepage? ? "Yes" : "No"
     end
     actions
   end
@@ -205,6 +208,7 @@ ActiveAdmin.register Submission do
 
     f.has_many :publishing do |pub|
       pub.input :effective_at
+      pub.input :featured_on_homepage
     end
 
     f.actions
