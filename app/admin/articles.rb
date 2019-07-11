@@ -9,7 +9,7 @@ ActiveAdmin.register Article do
     :company_id,
     :submission_id,
     :video_url,
-    publishing_attributes: [:id, :_destroy, :effective_at],
+    publishing_attributes: [:id, :_destroy, :effective_at, :featured_on_homepage],
     authorships_attributes: [:id, :_destroy, :user_id, :is_displayed],
     track_ids: []
 
@@ -30,6 +30,9 @@ ActiveAdmin.register Article do
     column :updated_at
     column "Publishing" do |article|
       article&.publishing&.effective_at
+    end
+    column "Homepage" do |article|
+      article&.publishing&.featured_on_homepage? ? "Yes" : "No"
     end
     column "Authors" do |article|
       article&.authors
@@ -82,11 +85,11 @@ ActiveAdmin.register Article do
         as: :file,
         hint: f.object.header_image.present? ? image_tag(f.object.header_image.url(:thumb)) : nil
       f.input :video_url, as: :string
-
     end
 
     f.has_many :publishing, allow_destroy: true do |pub|
       pub.input :effective_at
+      pub.input :featured_on_homepage
     end
 
     f.has_many :authorships, allow_destroy: true do |authorship|
