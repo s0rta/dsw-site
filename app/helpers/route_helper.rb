@@ -38,9 +38,16 @@ module RouteHelper
   end
 
   def footer_nav_routes
-    routes = [faq_route, assets_route, code_of_conduct_route]
+    routes = [faq_route, assets_route, code_of_conduct_route, contact_us_route]
     routes.unshift admin_root_path if signed_in? && current_user.is_admin?
     routes
+  end
+
+  def contact_us_route
+    {
+      path: new_general_inquiry_path,
+      label: "Contact Us"
+    }
   end
 
   def code_of_conduct_route
