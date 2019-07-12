@@ -20,7 +20,6 @@ module RouteHelper
   def program_routes
     routes = [program_route, tracks_route]
     routes.push clusters_route unless Cluster.active.empty?
-    routes.push basecamp_route
     routes
   end
 
