@@ -6,7 +6,7 @@
   meta(property="og:image" content="#{@article.header_image.url(:article_card)}")
   meta(property="og:site_name" content="Denver Startup Week")
   meta(property="og:url" content="#{article_path(@article)}")
-  meta(property="og:description" content="#{truncate(@article.body.html_safe, length: 300, separator: ' ')}")
+  meta(property="og:description" content="#{truncate_html(@article.body, 300).html_safe}")
   meta(name="date" content="#{@article.publishing.effective_at.strftime("%A, %b%e, %Y")}")
 
 .Article
