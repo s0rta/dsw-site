@@ -239,6 +239,11 @@ module RouteHelper
       session[:after_auth_url] == register_path
   end
 
+  def came_from_program_tracks?
+    return false if request.referer.nil?
+    request.referer.include?("program/tracks")
+  end
+
   private
 
   def current_path?(route)
