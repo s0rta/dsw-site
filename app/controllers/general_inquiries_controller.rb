@@ -1,14 +1,15 @@
 class GeneralInquiriesController < ApplicationController
 
-  respond_to :json
+  def new
+    @general_inquiry = GeneralInquiry.new
+  end
 
   def create
     @general_inquiry = GeneralInquiry.new(general_inquiry_params)
     if @general_inquiry.save
-      render json: nil, status: :ok
-    else
-      render json: @general_inquiry.errors, status: :unprocessable_entity
+      flash[:notice] = "Thanks! We will be in touch shortly"
     end
+    redirect_to root_path
   end
 
   private

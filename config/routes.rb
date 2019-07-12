@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/contact/assets", to: redirect("about/assets")
   get "/assets", to: redirect("about/assets")
   get "/faq", to: redirect("/about/faq")
-  get "/contact", to: redirect("/get-involved")
+  get "/contact", to: redirect("/general_inqueries/new")
 
   get "/resources", to: redirect("/program")
   get "/about/ambassadors", to: redirect("/initiatives/ambassadors")
@@ -74,7 +74,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: :show
 
   resources :newsletter_signups, only: :create
-  resources :general_inquiries, only: :create
+  resources :general_inquiries, only: [:create, :new]
   resources :sponsor_signups, only: :create
 
   resources :articles,  except: [:destroy]

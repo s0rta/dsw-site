@@ -6,26 +6,3 @@ div.GetInvolved-list-wrapper
     - get_involved_static_data[:items].each do |card|
       = render 'components/content_card_list_item' do
         = render 'components/content_card', card: card, title: "#{card[:title]}", page_url: "#{card[:button_page_url]}"
-
-/ section.common#contact-form
-/   .section-content.sm-centered
-/     h1 Get Involved
-/     h6 Please fill out as much information as you can. We'll be in touch shortly!
-/     = form_for GeneralInquiry.new, html: { class: 'contact-us', data: { bindable: 'general-inquiry' } }, honeypot: true do |f|
-/       = f.label :contact_name, 'Name'
-/       = f.text_field :contact_name, required: 'required'
-
-/       = f.label :company, 'Company or Organization (optional)'
-/       = f.text_field :company
-
-/       = f.label :contact_email, 'E-mail Address'
-/       = f.text_field :contact_email, required: 'required'
-
-/       = f.label :interest, 'What are you interested in?'
-/       = f.select :interest, GeneralInquiry::INTERESTS.invert, required: 'required', include_blank: "I'm not sure"
-
-/       = f.label :notes, 'Any additional notes?'
-/       = f.text_field :notes, required: 'required'
-
-/       = f.submit 'Submit'
-
