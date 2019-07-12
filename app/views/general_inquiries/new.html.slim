@@ -35,5 +35,7 @@
             = f.text_field :notes, required: 'required'
             = f.label :notes, 'Any additional notes?'
 
+      = render partial: 'components/form_errors', locals: { error_resource: @general_inquiry }
+
       .ContactUs-actions
         = f.submit 'Submit', class: 'ContactUs-submit'
