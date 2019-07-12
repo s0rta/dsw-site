@@ -35,6 +35,7 @@ gem "liquid"
 gem "mini_magick"
 gem "rinku"
 gem "sanitize"
+gem "truncato"
 
 gem "premailer-rails"
 gem "retries"
