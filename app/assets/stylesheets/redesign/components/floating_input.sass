@@ -15,9 +15,15 @@
   transition: all 200ms
   opacity: 0.8
   pointer-events: none
+  width: 100%
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
 
 .FloatingInput
+    input:focus ~ label,
     label.is-float
       font-size: 10px
       transform: translate3d(0, -120%, 0)
       opacity: 1
+
