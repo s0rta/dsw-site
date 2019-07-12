@@ -1,8 +1,10 @@
-- header_image = card[:header_image] || "https://cdn-images-1.medium.com/max/800/1*amnvhplMQHkIrq_iYD8GUA.jpeg"
+/ support header_images from static data hashes and from resource methods
+- header_image = defined?(card.header_image) ? card.header_image.url(:content_card) : card[:header_image]
 - button_title = card[:button_title].present? ? card[:button_title] : "Explore #{title}"
 
 div.ContentCard
-  .ContentCard-image(class="#{card[:color]}-border #{card[:track].present? ? 'is-track' : ''}" style="background-image: url(#{image_url header_image})")
+  - if header_image
+    .ContentCard-image(class="#{card[:color]}-border #{card[:track].present? ? 'is-track' : ''}" style="background-image: url(#{image_url header_image})")
   .ContentCard-content
     div.ContentCard-header(class="#{card[:color]}-fill")
       - if card[:track].present?
