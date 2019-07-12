@@ -19,6 +19,7 @@ items:
     header_image: 'redesign/get_involved/get_involved_sponsor.jpg'
     button_title: 'Download Prospectus'
     button_page_url: '/DSW%20Sponsorship%202019.pdf'
+    target: '_blank'
   - title: 'Article Submissions'
     description:
       - 'We invite you - yes, you! - to submit articles to the Denver Startup Week website. We look to you for unique insights, inspiring stories, thought leadership, founder profiles, can’t-miss news, and much more.'
