@@ -20,7 +20,6 @@ module RouteHelper
   def program_routes
     routes = [program_route, tracks_route]
     routes.push clusters_route unless Cluster.active.empty?
-    routes.push basecamp_route
     routes
   end
 
@@ -245,6 +244,11 @@ module RouteHelper
   def came_from_registration?
     session[:after_auth_url] == new_registration_path ||
       session[:after_auth_url] == register_path
+  end
+
+  def came_from_program_tracks?
+    return false if request.referer.nil?
+    request.referer.include?("program/tracks")
   end
 
   private

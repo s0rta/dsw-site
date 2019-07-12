@@ -40,6 +40,7 @@ class Track < ApplicationRecord
 
   def self.template_list_data
     select("name AS title, lower(name) AS track, icon, name, description, color, header_image")
+      .submittable
       .in_display_order
       .with_icon_and_color
   end
