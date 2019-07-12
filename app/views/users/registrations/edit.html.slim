@@ -59,7 +59,7 @@
           = render layout: 'components/form_input_wrapper' do
             = render layout: 'components/floating_input' do
               = f.password_field :current_password, autocomplete: 'off'
-              = f.label :password, 'Current Password (we need your current password to confirm your changes)'
+              = f.label :password, 'Current Password (needed to confirm your changes)'
 
       = render partial: 'components/form_errors', locals: { error_resource: resource }
 
