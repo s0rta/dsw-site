@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.new(article_params.merge(author_ids: [article_params[:author_ids]]))
     if @article.save
       flash[:notice] = "Thanks! Your article has been received!"
+      NotificationsMailer.notify_of_new_article(@article).deliver_now
       redirect_to dashboard_path
     else
       respond_with @article

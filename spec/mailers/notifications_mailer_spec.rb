@@ -12,4 +12,18 @@ RSpec.describe NotificationsMailer, type: :mailer do
       expect(mail).to have_subject("Thank you, DSW session organizers!")
     end
   end
+
+  describe "the new article notification e-mail" do
+    before do
+      ENV["NEW_ARTICLE_EMAIL_RECIPIENTS"] = "test1@example.com,test2@example.com"
+    end
+    let(:article) { create(:article) }
+    let(:mail) { described_class.notify_of_new_article(article) }
+
+    it "renders properly" do
+      expect(mail).to deliver_from("Denver Startup Week <info@email.denverstartupweek.org>")
+      expect(mail).to deliver_to("test1@example.com", "test2@example.com")
+      expect(mail).to have_subject("A new article has been submitted for DSW")
+    end
+  end
 end
