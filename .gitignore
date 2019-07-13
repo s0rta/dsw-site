@@ -28,3 +28,4 @@ vendor/firefox
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+.rubocop-*
