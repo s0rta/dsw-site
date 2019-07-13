@@ -14,16 +14,17 @@ feature "Creating a submission" do
     end
 
     scenario "User submits a new idea" do
-      pending("refactor")
-      visit "/voting/mine" # Can't click on the homepage for some reason
-      click_on "Create an account"
+      visit "/"
+      click_on "Sign Up / Sign In"
       fill_in "Name", with: "New Guy"
       fill_in "E-mail Address", with: "test@example.com"
       fill_in "Password", with: "password", match: :prefer_exact
       fill_in "Confirm Password", with: "password", match: :prefer_exact
 
-      click_on "Sign Up"
-      click_on "Submit a New Proposal"
+      click_on "Submit"
+      visit "/dashboard" # More straightforward than waiting for the flash to disappear
+
+      click_on "Submit New Proposal"
       select "Bizness", from: "submission_track_id"
       fill_in "submission_title", with: "Some talk"
       fill_in "submission_description", with: "I am going to give a talk."
@@ -40,7 +41,9 @@ feature "Creating a submission" do
       expect(page).to have_content("Thanks!")
 
       # See it in the list
-      expect(page).to have_content("Some talk (Bizness)")
+      expect(page).to have_css(".SessionCard", text: "SOME TALK")
+      expect(page).to have_css(".SessionCard", text: "BIZNESS")
+      expect(page).to have_css(".SessionCard", text: "I am going to give a talk.")
 
       # Confirmation to track chair
       email = ActionMailer::Base.deliveries.detect { |e| e.to.include?("chair@example.com") }
@@ -52,29 +55,29 @@ feature "Creating a submission" do
     end
 
     scenario "User tries to submit a new idea but fails to create an account" do
-      pending("refactor")
       create(:user, name: "Here First", email: "test@example.com", password: "password")
-      visit "/voting/mine"
-      click_on "Create an account"
+      visit "/"
+      click_on "Sign Up / Sign In"
       fill_in "Name", with: "New Guy"
       fill_in "E-mail Address", with: "test@example.com"
       fill_in "Password", with: "password", match: :prefer_exact
       fill_in "Confirm Password", with: "password", match: :prefer_exact
-      click_on "Sign Up"
+      click_on "Submit"
       expect(page).to have_content("Email has already been taken")
     end
 
     scenario "User edits an existing submission" do
-      pending("refactor")
-      visit "/voting/mine" # Can't click on the homepage for some reason
-      click_on "Create an account"
+      visit "/"
+      click_on "Sign Up / Sign In"
       fill_in "Name", with: "New Guy"
       fill_in "E-mail Address", with: "test@example.com"
       fill_in "Password", with: "password", match: :prefer_exact
       fill_in "Confirm Password", with: "password", match: :prefer_exact
 
-      click_on "Sign Up"
-      click_on "Submit a New Proposal"
+      click_on "Submit"
+      visit "/dashboard" # More straightforward than waiting for the flash to disappear
+
+      click_on "Submit New Proposal"
       select "Bizness", from: "submission_track_id"
       fill_in "submission_title", with: "Some talk"
       fill_in "submission_description", with: "I am going to give a talk."
@@ -90,15 +93,15 @@ feature "Creating a submission" do
       fill_in "submission_notes", with: "I have even more things to say now."
       click_button "Submit"
 
-      expect(page).to have_content "Some talk"
-      expect(page).to have_content "Your changes have been submitted"
+      expect(page).to have_css(".SessionCard", text: "SOME TALK")
+      expect(page).to have_content "Thanks! Your changes have been submitted and are pending review."
 
       submission = Submission.last
       submission.promote_updates!
       visit page.current_path
 
-      expect(page).to have_content "Updated talk"
-      expect(page).to_not have_content "Some talk"
+      expect(page).to have_css(".SessionCard", text: "UPDATED TALK")
+      expect(page).not_to have_css(".SessionCard", text: "SOME TALK")
       expect(last_email_sent).to deliver_to("test@example.com", "test2@example.com")
       expect(last_email_sent).to have_subject "Your proposed session updates have been accepted"
       expect(submission.sent_notifications.last.kind).to eq(SentNotification::UPDATES_ACCEPTED_KIND)
@@ -111,18 +114,18 @@ feature "Creating a submission" do
     end
 
     scenario "User tries to submit a new idea" do
-      pending("refactor")
-      visit "/voting/mine"
-
-      click_on "Create an account"
+      visit "/"
+      click_on "Sign Up / Sign In"
       fill_in "Name", with: "New Guy"
       fill_in "E-mail Address", with: "test@example.com"
       fill_in "Password", with: "password", match: :prefer_exact
       fill_in "Confirm Password", with: "password", match: :prefer_exact
 
-      click_on "Sign Up"
+      click_on "Submit"
 
-      expect(page).to have_no_link("Submit a New Proposal")
+      visit "/dashboard"
+
+      expect(page).to have_no_link("Submit New Proposal")
 
       visit "/voting/submit"
 
