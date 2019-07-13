@@ -43,7 +43,7 @@
       - if AnnualSchedule.cfp_open?
         a.Dashboard-header-action href="#{new_submission_path}"
           = image_tag "redesign/submit-session.svg", class: 'Dashboard-header-action-image'
-          | Submit Session
+          | Submit New Proposal
     - if @submissions.any?
       ul.Dashboard-card-list(aria-labelledby="my-sessions")
         - @submissions.each do |submission|
