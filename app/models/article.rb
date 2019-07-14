@@ -56,7 +56,7 @@ class Article < ApplicationRecord
       body: terms,
       users: {name: terms},
     }
-    joins(:authors).basic_search(predicate, false)
+    left_outer_joins(:authors).basic_search(predicate, false)
   end
 
   def self.published
