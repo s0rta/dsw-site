@@ -26,7 +26,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.new(article_params.merge(author_ids: [article_params[:author_ids]]))
     if @article.save
-      flash[:notice] = "Thanks! Your article has been received!"
+      flash[:notice] = "Thanks! Your article has been received."
       NotificationsMailer.notify_of_new_article(@article).deliver_now
       redirect_to dashboard_path
     else
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.update(article_params)
     if @article.save
-      flash[:notice] = "Thanks! Your article update has been received!"
+      flash[:notice] = "Thanks! Your article update has been received."
       redirect_to dashboard_path
     else
       respond_with @article
