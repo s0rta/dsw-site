@@ -86,5 +86,7 @@ FactoryBot.define do
     association :submitter, factory: :user
   end
 
-  factory :publishing
+  factory :publishing do
+    effective_at { Time.zone.now }
+  end
 end
