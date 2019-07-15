@@ -7,7 +7,8 @@
   meta(property="og:site_name" content="Denver Startup Week")
   meta(property="og:url" content="#{article_path(@article)}")
   meta(property="og:description" content="#{truncate_html(@article.body, 300).html_safe}")
-  meta(name="date" content="#{@article.publishing.effective_at.strftime("%A, %b%e, %Y")}")
+  - if @article.publishing.present?
+    meta(name="date" content="#{@article.publishing.effective_at.strftime("%A, %b%e, %Y")}")
 
 .Article
   .Article-inner
