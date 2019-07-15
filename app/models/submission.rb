@@ -121,10 +121,6 @@ class Submission < ApplicationRecord
       .fulltext_search(filters[:terms])
   end
 
-  def self.published
-    joins(:publishing).where("effective_at <= ?", Time.zone.now)
-  end
-
   def self.for_schedule_filter(filter, user)
     if filter == "all"
       all
