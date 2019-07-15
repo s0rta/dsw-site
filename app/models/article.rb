@@ -33,7 +33,6 @@ class Article < ApplicationRecord
       .for_track(filters[:track])
       .for_cluster(filters[:cluster])
       .fulltext_search(filters[:terms])
-      .published
   end
 
   def self.for_track(name)
