@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
     return unless request.get?
     return if devise_controller?
     return if request.xhr?
+    session[:came_from_registration] = false
     session[:previous_url] = request.fullpath
   end
 

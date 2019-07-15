@@ -25,6 +25,9 @@
       - if registration_open? && !came_from_registration?
         = render partial: 'components/register_to_attend_radio'
 
+      - if registration_open? && came_from_registration?
+        input(type="hidden" value="true" name="register_to_attend")
+
       .SignIn-actions
         div.SignIn-link-wrapper
           | Don't have an account?
