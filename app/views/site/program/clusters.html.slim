@@ -7,4 +7,4 @@ div.Tracks-list-wrapper
   = render 'components/content_card_list', attributes: { 'aria-label': "Clusters" }  do
     - Cluster.template_list_data.each do |card|
       = render 'components/content_card_list_item' do
-        = render 'components/content_card', card: card, title: card[:title], page_url: "program/clusters/#{card[:name]}"
+        = render 'components/content_card', card: card, title: card[:title], page_url: "program/clusters/#{card[:name].downcase}"

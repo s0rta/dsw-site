@@ -1,6 +1,6 @@
 class ClustersController < ApplicationController
   def show
-    @cluster = Cluster.find_by(name: params[:name])
+    @cluster = Cluster.where('lower(name) = ?', params[:name].downcase).first
     @publishings = Publishing.filtered_results(cluster: params[:name]).page(params[:page]).per(12)
 
     respond_to do |format|
