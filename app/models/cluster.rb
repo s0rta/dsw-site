@@ -13,9 +13,14 @@ class Cluster < ApplicationRecord
   end
 
   def self.template_list_data
-    select("name AS title, name, description, is_active, header_image")
-      .in_display_order
+      in_display_order
       .active
+      .map do |c|
+      c.attributes.symbolize_keys.slice(:name, :description, :is_active, :header_image).merge(
+        title: c.name,
+        header_image_url: c.header_image.url(:content_card)
+      )
+      end
   end
 
   def self.dropdown_options
