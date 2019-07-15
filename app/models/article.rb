@@ -27,9 +27,10 @@ class Article < ApplicationRecord
   end
 
   def self.for_publishings_filter(filters)
-    return all if filters.blank?
+    return published if filters.blank?
 
-    for_track(filters[:track])
+    published
+      .for_track(filters[:track])
       .for_cluster(filters[:cluster])
       .fulltext_search(filters[:terms])
   end
@@ -57,10 +58,6 @@ class Article < ApplicationRecord
       users: {name: terms},
     }
     left_outer_joins(:authors).basic_search(predicate, false)
-  end
-
-  def self.published
-    joins(:publishing).where("effective_at <= ?", Time.zone.now)
   end
 
   def related
