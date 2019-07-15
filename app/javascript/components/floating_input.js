@@ -5,7 +5,7 @@ export default class FloatingInput {
     this.el = el;
 
     this.addFloat = this.addFloat.bind(this);
-    this.removeFloat = this.removeFloat.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
 
     this.label = el.children('label');
     this.initialize();
@@ -23,7 +23,7 @@ export default class FloatingInput {
 
   addListeners() {
     this.formField.on('focus', this.addFloat);
-    this.formField.on('blur', this.removeFloat);
+    this.formField.on('blur', this.handleBlur);
   }
 
   removeListeners() {
@@ -54,9 +54,11 @@ export default class FloatingInput {
     this.label.addClass('is-float');
   }
 
-  removeFloat() {
+  handleBlur() {
     if (!this.formField.val()) {
       this.label.removeClass('is-float');
+    } else {
+      this.addFloat();
     }
   }
 }
