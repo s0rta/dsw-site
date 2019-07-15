@@ -711,7 +711,7 @@ CREATE TABLE public.publishings (
     id bigint NOT NULL,
     subject_type character varying NOT NULL,
     subject_id bigint NOT NULL,
-    effective_at timestamp without time zone,
+    effective_at timestamp without time zone NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     featured_on_homepage boolean DEFAULT false NOT NULL,
@@ -2701,6 +2701,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190707215408'),
 ('20190709191401'),
 ('20190711041549'),
-('20190714202606');
+('20190714202606'),
+('20190715223850');
 
 

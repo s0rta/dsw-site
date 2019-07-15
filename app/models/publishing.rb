@@ -1,4 +1,5 @@
 class Publishing < ApplicationRecord
+  validates :effective_at, presence: true
   belongs_to :subject, polymorphic: true
 
   def self.filtered_results(filters)
