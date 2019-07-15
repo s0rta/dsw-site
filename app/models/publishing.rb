@@ -13,4 +13,11 @@ class Publishing < ApplicationRecord
   def self.for_homepage
     where(featured_on_homepage: true).includes(:subject).limit(12)
   end
+
+  def self.for_track(track_name)
+    filtered_results(track: track_name).reorder(<<-SQL)
+      (CASE WHEN publishings.pinned_to_track THEN 1 ELSE 0 END) DESC,
+      effective_at DESC
+    SQL
+  end
 end
