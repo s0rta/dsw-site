@@ -113,10 +113,16 @@ class Submission < ApplicationRecord
   end
 
   def self.for_publishings_filter(filters)
-    return all if filters.blank?
-    for_track(filters[:track])
+    return published if filters.blank?
+
+    published
+      .for_track(filters[:track])
       .for_cluster(filters[:cluster])
       .fulltext_search(filters[:terms])
+  end
+
+  def self.published
+    joins(:publishing).where("effective_at <= ?", Time.zone.now)
   end
 
   def self.for_schedule_filter(filter, user)
