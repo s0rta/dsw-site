@@ -1,6 +1,7 @@
 class RegistrationsController < ApplicationController
 
   skip_before_action :store_location, only: %i[new closed]
+  before_action :set_came_from_registration, only: %i[new]
   before_action :check_registration_open, except: [ :closed ]
   before_action :authenticate_user!, unless: :simple_registration?, except: [ :closed ]
   before_action :check_existing_registration, unless: :simple_registration?, except: [ :closed ]
@@ -64,5 +65,9 @@ class RegistrationsController < ApplicationController
     if params[:after_registration_path].present?
       session[:after_registration_path] = params[:after_registration_path]
     end
+  end
+
+  def set_came_from_registration
+    session[:came_from_registration] = true
   end
 end
