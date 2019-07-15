@@ -72,4 +72,8 @@ class Article < ApplicationRecord
 
     query.published.where.not(id: id).distinct
   end
+
+  def editable?
+    false
+  end
 end
