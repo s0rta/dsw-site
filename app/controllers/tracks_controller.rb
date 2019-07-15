@@ -1,6 +1,6 @@
 class TracksController < ApplicationController
   def show
-    @track = Track.find_by(name: params[:name])
+    @track = Track.where('lower(name) = ?', params[:name].downcase).first
     @publishings = Publishing.for_track(params[:name]).page(params[:page]).per(12)
 
     respond_to do |format|
