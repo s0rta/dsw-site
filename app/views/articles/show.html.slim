@@ -5,10 +5,11 @@
   meta(property="og:title" content="Denver Startup Week | #{@article.title}")
   meta(property="og:image" content="#{@article.header_image.url(:article_card)}")
   meta(property="og:site_name" content="Denver Startup Week")
-  meta(property="og:url" content="#{article_path(@article)}")
+  meta(property="og:url" content="#{article_url(@article)}")
   meta(property="og:description" content="#{truncate_html(@article.body, 300).html_safe}")
+  meta(property="og:type" content="article")
   - if @article.publishing.present?
-    meta(name="date" content="#{@article.publishing.effective_at.strftime("%A, %b%e, %Y")}")
+    meta(property="article:published_time" content="#{@article.publishing.effective_at.iso8601}")
 
 .Article
   .Article-inner
@@ -22,7 +23,7 @@
       - @article.tracks.each do |track|
         =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
     - if @article.publishing.present?
-      .Article-date #{@article.publishing.effective_at.strftime("%A, %b%e, %Y")}
+      .Article-date #{@article.publishing.effective_at.strftime("%A, %b %e, %Y")}
     - else
       .Article-date Not Published Yet
     h1.Article-title #{@article.title}
