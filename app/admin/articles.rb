@@ -10,8 +10,18 @@ ActiveAdmin.register Article do
     :submission_id,
     :video_url,
     :header_image,
-    publishing_attributes: [:id, :effective_at, :featured_on_homepage],
-    authorships_attributes: [:id, :_destroy, :user_id, :is_displayed],
+    publishing_attributes: [
+      :id,
+      :effective_at,
+      :featured_on_homepage,
+      :pinned_to_track,
+    ],
+    authorships_attributes: [
+      :id,
+      :_destroy,
+      :user_id,
+      :is_displayed,
+    ],
     track_ids: []
 
   controller do
@@ -34,6 +44,9 @@ ActiveAdmin.register Article do
     end
     column "Homepage" do |article|
       article&.publishing&.featured_on_homepage? ? "Yes" : "No"
+    end
+    column "Pinned to Track" do |article|
+      article&.publishing&.pinned_to_track? ? "Yes" : "No"
     end
     column "Authors" do |article|
       article&.authors
@@ -91,6 +104,7 @@ ActiveAdmin.register Article do
     f.has_many :publishing, allow_destroy: false, add_new: false do |pub|
       pub.input :effective_at
       pub.input :featured_on_homepage
+      pub.input :pinned_to_track
     end
 
     f.has_many :authorships, allow_destroy: true do |authorship|
