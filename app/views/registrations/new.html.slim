@@ -3,9 +3,7 @@
 - content_for :extra_body_tags do
   = stylesheet_pack_tag 'application'
 
-- on_close = (request.referer =~ /(sign_in|sign_up)/i).nil? ? request.referer : dashboard_path
-
-= render 'layouts/shared/fullscreen_takeover_header', title: 'register to attend', background: 'dark', on_close: on_close
+= render 'layouts/shared/fullscreen_takeover_header', title: 'register to attend', background: 'dark'
 = render layout: 'layouts/shared/layout_wrapper' do
   = render layout: 'components/form_wrapper' do
     = form_for(@registration, method: :post, url: registration_path, honeypot: true) do |f|

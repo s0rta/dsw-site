@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  skip_before_action :store_location, only: %i[new edit]
   before_action :authenticate_user!, only: %i[new create update edit]
 
   def index
