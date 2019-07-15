@@ -33,7 +33,7 @@
       ul.Dashboard-card-list(aria-labelledby="my-content")
         - @articles.each do |article|
           li.Dashboard-card-list-item
-            = render partial: 'components/article_card', locals: { article: article }
+            = render partial: 'components/article_card', locals: { article: article, editable?: article.editable? }
     - if @articles.blank?
       .Dashboard-empty-message You have not submitted any content for this year.
 
