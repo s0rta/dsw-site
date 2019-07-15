@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   respond_to :html,
     :atom
+  skip_before_action :store_location, only: %i[new edit feedback_closed submissions_closed]
   before_action :check_cfp_open, only: %i[new create]
   before_action :authenticate_user!, only: %i[new create mine submissions_closed]
   before_action :check_voting_open, only: %i[index show]

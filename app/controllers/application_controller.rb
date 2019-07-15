@@ -33,8 +33,7 @@ class ApplicationController < ActionController::Base
     return unless request.get?
     return if devise_controller?
     return if request.xhr?
-    session[:close_fst_url] = session[:after_auth_url]
-    session[:after_auth_url] = request.fullpath
+    session[:previous_url] = request.fullpath
   end
 
   def configure_permitted_parameters
@@ -52,7 +51,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_registered!
     unless current_registration
-      session[:after_registration_path] = session[:after_auth_url]
+      session[:after_registration_path] = session[:previous_url]
       redirect_to main_app.new_registration_path
     end
   end
@@ -90,8 +89,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(user)
     if params[:register_to_attend] == "true"
       new_registration_path
-    elsif session[:after_auth_url]
-      session[:after_auth_url]
+    elsif session[:previous_url]
+      session[:previous_url]
     elsif user.registered?
       main_app.schedules_path
     elsif AnnualSchedule.registration_open?

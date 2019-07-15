@@ -1,5 +1,6 @@
 class RegistrationsController < ApplicationController
 
+  skip_before_action :store_location, only: %i[new closed]
   before_action :check_registration_open, except: [ :closed ]
   before_action :authenticate_user!, unless: :simple_registration?, except: [ :closed ]
   before_action :check_existing_registration, unless: :simple_registration?, except: [ :closed ]

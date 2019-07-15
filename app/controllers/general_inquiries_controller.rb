@@ -1,4 +1,6 @@
 class GeneralInquiriesController < ApplicationController
+  skip_before_action :store_location, only: %i[new]
+
   def new
     @general_inquiry = GeneralInquiry.new
   end
