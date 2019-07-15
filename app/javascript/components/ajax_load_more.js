@@ -1,5 +1,5 @@
 import Bindable from 'utensils/bindable';
-import throttle from 'lodash.throttle';
+import throttle from 'lodash/throttle';
 
 // From David Walsh: https://davidwalsh.name/javascript-debounce-function
 function debounce(func, wait, immediate) {
