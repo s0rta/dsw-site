@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
-    "@rails/webpacker": "^4.0.1",
+    "@rails/webpacker": "^4.0.7",
     "awesomplete": "^1.1.2",
     "coffeescript": "1.12.7",
     "jquery": "~> 3.3.1",
@@ -10,8 +10,7 @@
   },
   "devDependencies": {
     "eslint": "^4.9.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "webpack-dev-server": "^3.2.1"
+    "eslint-config-airbnb": "^16.1.0"
   },
   "eslintConfig": {
     "extends": [
