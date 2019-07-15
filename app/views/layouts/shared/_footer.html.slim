@@ -18,3 +18,13 @@ footer.Footer
             = f.text_field :email, required: 'required'
             = f.label :email, "Email Address"
           = f.submit 'Get Updates', class: "Footer-updates-submit"
+
+  .Footer-sponsors
+    .Footer-sponsors-block
+      p UX/UI/Design System:
+      a(href="https://www.guice.works/" aria-label="Guiceworks Website" target="_blank")
+        img src="#{image_url('redesign/sponsors/guiceworks.svg')}"
+    .Footer-sponsors-block
+      p Engineering:
+      a(href="https://skookum.com/" aria-label="Skookum Website" target="_blank")
+        img src="#{image_url('redesign/sponsors/skookum.svg')}"
