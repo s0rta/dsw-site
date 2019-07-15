@@ -39,10 +39,16 @@ class Track < ApplicationRecord
   end
 
   def self.template_list_data
-    select("name AS title, lower(name) AS track, icon, name, description, color, header_image")
-      .submittable
+    submittable
       .in_display_order
       .with_icon_and_color
+      .map do |t|
+      t.attributes.symbolize_keys.slice(:icon, :name, :description, :color).merge(
+        title: t.name,
+        track: t.name.downcase,
+        header_image_url: t.header_image.url(:content_card)
+      )
+    end
   end
 
   def self.dropdown_options
