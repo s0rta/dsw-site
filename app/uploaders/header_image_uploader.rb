@@ -26,7 +26,7 @@ class HeaderImageUploader < CarrierWave::Uploader::Base
   end
 
   version :article_page do
-    process resize_to_limit: [1070 * 2, nil]
+    process resize_to_fill: [1092 * 2, 464 * 2]
   end
 
   version :content_card do
