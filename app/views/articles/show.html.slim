@@ -23,7 +23,7 @@
       - @article.tracks.each do |track|
         =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
     - if @article.publishing.present?
-      .Article-date #{@article.publishing.effective_at.strftime("%A, %b%e, %Y")}
+      .Article-date #{@article.publishing.effective_at.strftime("%A, %b %e, %Y")}
     - else
       .Article-date Not Published Yet
     h1.Article-title #{@article.title}
