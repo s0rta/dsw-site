@@ -60,7 +60,8 @@
 // CUSTOM RADIO BUTTON
 .FormField
   [type="radio"]
-    display: none
+    opacity: 0
+    position: absolute
 
   [type="radio"] + label,
     position: relative
@@ -101,3 +102,6 @@
     opacity: 1
     -webkit-transform: scale(1)
     transform: scale(1)
+  
+  [type="radio"]:focus + label::after
+    box-shadow: 0 0 0 2pt Highlight
