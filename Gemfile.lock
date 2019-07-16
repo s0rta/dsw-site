@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/hyp3rventures/carrierwave_backgrounder.git
+  revision: ada0784c190be7b7fecb9576956c3d5b4ba1a839
+  specs:
+    carrierwave_backgrounder (0.4.2)
+      carrierwave (>= 0.8, < 2.0)
+      mime-types (~> 3.1)
+
+GIT
   remote: https://github.com/RandieM/honeypot-captcha
   revision: 10c0ad1874ca75a99be93efec3bd0129894c7fea
   branch: master
@@ -541,6 +549,7 @@ DEPENDENCIES
   bootsnap
   capybara
   carrierwave
+  carrierwave_backgrounder!
   commonmarker
   dalli
   database_cleaner
