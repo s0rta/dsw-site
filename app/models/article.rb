@@ -18,6 +18,7 @@ class Article < ApplicationRecord
   belongs_to :company, required: false
 
   mount_uploader :header_image, HeaderImageUploader
+  process_in_background :header_image
 
   accepts_nested_attributes_for :publishing, allow_destroy: true
   accepts_nested_attributes_for :authorships, allow_destroy: true

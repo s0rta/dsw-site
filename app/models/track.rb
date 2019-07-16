@@ -17,6 +17,7 @@ class Track < ApplicationRecord
   has_and_belongs_to_many :articles, dependent: :restrict_with_error
 
   mount_uploader :header_image, HeaderImageUploader
+  process_in_background :header_image
 
   def self.in_display_order
     order("display_order ASC, name ASC")
