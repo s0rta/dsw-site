@@ -14,9 +14,9 @@
 .Article
   .Article-inner
     .Article-back
-      a(href="#{articles_path}" aria-label="Back to Articles" class="Article-back-link")
+      a(href="#{request.referer || articles_path}" aria-label="Back to Articles" class="Article-back-link")
         = render partial: 'icons/arrow_in_circle_left'
-        span.Article-back-text back to articles
+        span.Article-back-text back to #{back_to_label}
     - if @article.header_image.present?
       div.Article-image(style="background-image: url(#{image_url @article.header_image.url(:article_page)})")
     .Article-tracks
