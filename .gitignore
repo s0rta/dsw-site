@@ -29,5 +29,7 @@ vendor/firefox
 yarn-debug.log*
 .yarn-integrity
 
+.rubocop-*
+
 # Ignore local dev files
 .env
