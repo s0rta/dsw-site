@@ -33,6 +33,7 @@ class User < ApplicationRecord
   has_many :venues, through: :companies
 
   mount_uploader :avatar, AvatarUploader
+  process_in_background :avatar
 
   def self.on_team
     reorder("team_priority ASC, team_position DESC, name DESC")
