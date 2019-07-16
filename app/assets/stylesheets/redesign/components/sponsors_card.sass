@@ -79,3 +79,15 @@
 @media(min-width: 640px)
   .SponsorsCard-description
     margin-top: 26px
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+  /* IE10+ CSS styles go here */
+  .SponsorsCard-content
+    flex-direction: row
+    flex-basis: auto
+  .SponsorsCard-list-item
+    &.track
+      .SponsorsCard-content
+        flex-direction: column
+      .SponsorsCard-inner-content
+        flex-basis: auto
