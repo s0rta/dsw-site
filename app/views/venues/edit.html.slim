@@ -1,19 +1,56 @@
-= render partial: 'dashboards/nav', locals: { item: :venue }
+- content_for(:fullscreen_takeover, true)
 
-section.common
-  .section-content.sm-centered
-    h6 Denver Startup Week relies on the generosity of venue hosts throughout our center city to provide space for sessions and events. Thank you for welcoming the Denver Startup Week (DSW) community into your space!
-    h6 As a venue host, you will generously provide space for Denver Startup Week session organizers to put on their event during the week. Most Denver Startup Week sessions are in need a venue for their event, and by providing a space for those sessions to take place, you are playing a critical role to support this entirely free community event.
-    h6 For a full overview of expectations and the venue hosting process, please review our Venue Host Handbook here: #{link_to "https://bit.ly/31Gamu3" }
-    h6 Please complete the form below to provide information about your venue and availability to host.
-    h6 Also, please fill out separate forms for each space that will be available for sessions during Denver Startup Week (i.e. if you have two event spaces in your venue, please fill out separate forms for each).
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Update Venue', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
 
-    - flash.each do |key, message|
-      h6 = message
+  = render layout: 'components/form_wrapper' do
 
-    - unless @venue.errors.empty?
-      h6 = "Please correct the following errors: #{@venue.errors.full_messages.to_sentence}"
+    .Venues-instructions
+      | Denver Startup Week relies on the generosity of venue hosts throughout our center city to provide space for sessions and events. Thank you for welcoming the Denver Startup Week community into your space!
+      | As a venue host, you will generously provide space for Denver Startup Week session organizers to put on their event during the week. Most Denver Startup Week sessions are in need a venue for their event, and by providing a space for those sessions to take place, you are playing a critical role to support this entirely free community event.
+      | For a full overview of expectations and the venue hosting process, please review our Venue Host Handbook here: #{link_to "https://bit.ly/31Gamu3" }
+      | Please complete the form below to provide information about your venue and availability to host.
+      | Also, please fill out separate forms for each space that will be available for sessions during Denver Startup Week (i.e. if you have two event spaces in your venue, please fill out separate forms for each).
 
-  .section-content
-    .section-content.sm-centered
-      = render partial: 'form'
+    = form_for @venue do |f|
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/form_field' do
+            = f.label :name, "Name"
+            = f.text_field :name
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/form_field' do
+            = f.label :description, 'Provide a concise description for the venue. THis will be displayed to venue and session organizers, but not to the general public.'
+            = f.text_area :description, data: { bindable: 'text_area_autosize' }, placeholder: 'Description'
+
+      / = render layout: 'components/form_input_row' do
+      /   = render layout: 'components/form_input_wrapper' do
+      /     = render layout: 'components/form_field' do
+      /       = f.label :notes, 'Pitch us on your session: show the reviewers why you should be organizing this session at Denver Startup Week. Here is the place to focus on how your session will help the program, or fill a specific need. Explain your qualifications (and/or those of your panelists) and why you\'re passionate about this topic. This content will only be visible to the review committee.'
+      /       = f.text_area :notes, data: { bindable: 'text_area_autosize' }, placeholder: 'Session pitch (for reviewers only)'
+
+      = render partial: 'components/form_errors', locals: { error_resource: @venue }
+
+      .Submissions-actions
+        = f.submit 'Submit', class: 'ArticlesForm-submit'
+
+
+/ section.common
+/   .section-content.sm-centered
+/     h6 Denver Startup Week relies on the generosity of venue hosts throughout our center city to provide space for sessions and events. Thank you for welcoming the Denver Startup Week (DSW) community into your space!
+/     h6 As a venue host, you will generously provide space for Denver Startup Week session organizers to put on their event during the week. Most Denver Startup Week sessions are in need a venue for their event, and by providing a space for those sessions to take place, you are playing a critical role to support this entirely free community event.
+/     h6 For a full overview of expectations and the venue hosting process, please review our Venue Host Handbook here: #{link_to "https://bit.ly/31Gamu3" }
+/     h6 Please complete the form below to provide information about your venue and availability to host.
+/     h6 Also, please fill out separate forms for each space that will be available for sessions during Denver Startup Week (i.e. if you have two event spaces in your venue, please fill out separate forms for each).
+
+/     - flash.each do |key, message|
+/       h6 = message
+
+/     - unless @venue.errors.empty?
+/       h6 = "Please correct the following errors: #{@venue.errors.full_messages.to_sentence}"
+
+/   .section-content
+/     .section-content.sm-centered
+/       = render partial: 'form'

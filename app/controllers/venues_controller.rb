@@ -4,11 +4,6 @@ class VenuesController < ApplicationController
   before_action :set_venue, only: %i[show edit update destroy]
   before_action :set_venue_availabilities, only: %i[create edit update]
 
-  # GET /venues
-  def index
-    @venues = Venue.joins(company: :users).where(users: {id: current_user})
-  end
-
   # GET /venues/1
   def show
   end
