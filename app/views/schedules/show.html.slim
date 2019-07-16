@@ -15,10 +15,10 @@
 
 
   section.SessionDetail-back-section
-    = link_to schedules_by_year_by_day_path(year: @session.year, start_day:  @session.human_start_day.downcase), class: 'SessionDetail-back-link' do
+    = link_to request.referer || schedules_path, class: 'SessionDetail-back-link' do
       .SessionDetail-back-icon
         = render partial: 'icons/arrow_in_circle_left'
-      = 'Back to schedule'
+      = "Back to #{back_to_label('schedule')}"
 
   section.SessionDetail
     header(class="SessionDetail-track #{@session.track.color}-font #{@session.track.color}-fill")
