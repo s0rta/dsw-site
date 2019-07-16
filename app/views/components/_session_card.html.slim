@@ -1,0 +1,27 @@
+- color = session.track[:color]
+- icon = session.track[:icon]
+- session_link = local_assigns[:votable].present? ? submission_path(session.to_param) : schedule_path(session.to_param)
+
+= render 'components/card' do
+  div.SessionCard(class="#{color}-background #{color}-font-on-#{color} #{color}-fill-on-#{color}-background")
+    - unless local_assigns[:hide_link].present?
+      a.SessionCard-link(href="#{session_link}")
+    - if local_assigns[:editable?].present?
+      = link_to edit_submission_path(session), title: 'Propose Updates', class: "SessionCard-edit #{color}-fill-on-#{color}-background" do
+        = render partial: 'icons/pencil'
+    div.SessionCard-type
+      = render partial: "icons/#{icon}"
+      span.SessionCard-name #{session.track[:name]}
+    h3.SessionCard-title #{session[:title]}
+    p.SessionCard-description #{session[:description].truncate(150)}
+    - if local_assigns[:votable].present?
+      .SessionCard-vote
+        .SessionCard-vote-author - #{session.company_or_submitter}
+        .SessionCard-vote-wrapper(data-bindable='ajax-voter')
+          - if current_user
+            = link_to submission_votes_path(session), remote: true, method: :post, class: "#{color}-font-on-#{color} register-vote-js", title: "Vote for '#{session.title}'" do
+              = render partial: 'icons/thumbsup'
+          - else
+            = link_to new_user_session_path, class: "#{color}-font-on-#{color}", title: "Vote for '#{session.title}'" do
+              = render partial: 'icons/thumbsup'
+          span.SessionCard-vote-count.vote-count-js #{pluralize(session.votes.size, 'vote')}

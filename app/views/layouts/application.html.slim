@@ -22,12 +22,18 @@ html
     meta(name="twitter:card" content="summary")
     meta(name="og:image" content="#{image_url('redesign/dsw-logo.png')}")
     = content_for(:extra_meta_tags)
+    script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"
+    link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8"
+    link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/themes/default.css"
 
   body(id="#{controller_name}_controller" class="#{params[:page] || 'unknown'}-action")
-    = render partial: 'layouts/shared/header'
-    main
+    - unless content_for(:fullscreen_takeover)
+      = render partial: 'components/menu'
+      = render partial: 'layouts/shared/header'
+    main(class=("is-fullscreen" if content_for(:fullscreen_takeover)))
       == yield
-    = render partial: 'layouts/shared/site_footer'
+    = render partial: 'layouts/shared/footer' unless content_for(:fullscreen_takeover)
+    = render 'components/flash_messages'
     = javascript_pack_tag 'application'
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js")

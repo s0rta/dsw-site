@@ -1,0 +1,54 @@
+@import ../config
+
+.Featured
+  padding-top: 62px
+  padding-bottom: 112px
+  position: relative
+
+.Featured-triangles
+  position: absolute
+  z-index: 0
+  width: 100%
+  height: 100%
+  max-height: 1500px;
+  bottom: 0;
+
+.Featured-background-triangle--primary
+  background-image: linear-gradient(to top left, $teal-light 0%, $teal-light 50%, transparent 50%)
+  position: absolute
+  z-index: 1
+  width: 100%
+  height: 100%
+  top: 0
+  left: 0
+
+.Featured-background-triangle--secondary
+  background-image: linear-gradient(to top right, $teal-very-light 0%, $teal-very-light 50%, transparent 50%)
+  position: absolute;
+  z-index: 0
+  width: 100%;
+  height: 87%;
+  bottom: 0;
+  right: 50%;
+
+.Featured-header
+  color: $primary-font-dark
+  font-size: 36px
+  font-weight: 300
+  text-transform: uppercase
+  text-align: center
+  margin-bottom: 46px
+
+.Featured-list
+  position: relative
+  z-index: 3
+
+
+@media(max-width: 660px)
+  .Featured
+    padding-top: 25px
+
+  .Featured-header
+    font-size: 24px
+    margin: 0 auto
+    margin-bottom: 26px

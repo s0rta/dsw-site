@@ -1,35 +1,67 @@
-= render partial: 'dashboards/nav', locals: { item: :profile }
+- content_for(:fullscreen_takeover, true)
+- avatar_content = image_tag(resource.avatar.url(:thumb))
+- content_for(:title, 'Edit Profile')
 
-section.common
-  .section-content.sm-centered
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Edit Profile', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+  = render layout: 'components/form_wrapper' do
+
+    .Profile-form-title Profile
+
     = form_for(resource, as: resource_name, url: user_registration_path, html: { method: :put }) do |f|
 
-      = image_tag(resource.avatar.url(:thumb)) if resource.avatar?
+      = render 'components/profile_avatar_upload', locals = { f: f }
 
-      = f.label :avatar, 'Avatar'
-      = f.file_field :avatar, data: { bindable: 'showfilesize' }
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :name, required: 'required', autofocus: 'autofocus'
+            = f.label :name, 'First and Last Name'
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :email, required: 'required'
+            = f.label :email, 'E-mail Address'
 
-      = f.label :name, 'Name'
-      = f.text_field :name, required: 'required', autofocus: 'autofocus'
+      / = render layout: 'components/form_input_row' do
+      /   = render layout: 'components/form_input_wrapper' do
+      /     = render layout: 'components/floating_input' do
+      /       = f.text_field :description, required: 'required'
+      /       = f.label :description, 'Tagline'
 
-      = f.label :description, 'Tagline'
-      = f.text_field :description, required: 'required'
-
-      = f.label :email, 'E-mail Address'
-      = f.text_field :email, required: 'required'
 
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        p
-          |
-            Currently waiting confirmation for: #{resource.unconfirmed_email}
+        p.Profile-unconfirmed Currently waiting confirmation for: #{resource.unconfirmed_email}
 
-      = f.label :password, "New Password (leave blank if you don't want to change it)"
-      = f.password_field :password, autocomplete: 'off'
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.password_field :password, autocomplete: 'off'
+            = f.label :password, "New Password (leave blank if you don't want to change it)"
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.password_field :password_confirmation, autocomplete: 'off'
+            = f.label :password_confirmation, 'Confirm New Password'
 
-      = f.label :password_confirmation, 'Confirm New Password'
-      = f.password_field :password_confirmation, autocomplete: 'off'
+      .Profile-single-line
+        - unless resource.linkedin_url.present?
+          .Profile-linkedin-desc Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website.
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/floating_input' do
+              = f.text_field :linkedin_url, autocomplete: 'off'
+              = f.label :linkedin_url, "LinkedIn Profile URL"
 
-      = f.label :password, 'Current Password (we need your current password to confirm your changes)'
-      = f.password_field :current_password, autocomplete: 'off'
+      .Profile-single-line
+        = render partial: 'components/public_profile_radio', locals: { f: f }
 
-      = f.submit 'Update'
+      .Profile-single-line
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/floating_input' do
+              = f.password_field :current_password, autocomplete: 'off'
+              = f.label :password, 'Current Password (needed to confirm your changes)'
+
+      = render partial: 'components/form_errors', locals: { error_resource: resource }
+
+      .Profile-actions
+        = f.submit 'Update', class: 'Profile-submit'

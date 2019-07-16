@@ -1,0 +1,107 @@
+@import ../config
+
+.FormField
+  position: relative
+  margin: 14px 0
+
+.FormField label
+  +font-family-mixin(Montserrat-Medium)
+  color: $primary-font-light
+  font-size: 14px
+
+.FormField input,
+.FormField textarea,
+.FormField .awesomplete input
+  +font-family-mixin(Montserrat-Light)
+  border: 0
+  border-bottom: 1px solid $gray-border-light
+  font-size: 14px
+  color: $primary-font-medium
+  outline: 0
+  padding-bottom: 4px
+  width: 100%
+  margin-top: 10px
+
+.FormField select
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  padding: 4px
+  padding-right: 40px
+  padding-left: 0
+  min-width: 200px
+  color: $primary-font-medium
+  background: white image-url('redesign/arrow-select-grey.svg') no-repeat
+  background-position: 100% 50%
+  border-bottom: 1px solid $gray-border-light
+
+.FormField .awesomplete
+  display: block
+  width: 100%
+
+=placeholder-mixin
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 14px
+  color: $primary-font-light
+  opacity: .8
+  margin-bottom: 10px
+  display: block
+
+.FormField input,
+.FormField textarea
+  &::-webkit-input-placeholder
+    +placeholder-mixin
+  &::-moz-placeholder
+    +placeholder-mixin
+  &:-ms-input-placeholder
+    +placeholder-mixin
+  &:-moz-placeholder
+    +placeholder-mixin
+
+// CUSTOM RADIO BUTTON
+.FormField
+  [type="radio"]
+    opacity: 0
+    position: absolute
+
+  [type="radio"] + label,
+    position: relative
+    padding-left: 32px
+    cursor: pointer
+    display: inline-block
+    margin-bottom: 10px
+
+  [type="radio"] + label:before,
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    width: 18px
+    height: 18px
+    border: 1px solid $gray-border-light
+    border-radius: 100%
+    background: white
+
+  [type="radio"] + label:after
+    content: ''
+    width: 14px
+    height: 14px
+    background: $teal-light
+    position: absolute
+    top: 3px
+    left: 3px
+    border-radius: 100%
+    -webkit-transition: all 0.2s ease
+    transition: all 0.2s ease
+
+  [type="radio"]:not(:checked) + label:after
+    opacity: 0
+    -webkit-transform: scale(0)
+    transform: scale(0)
+
+  [type="radio"]:checked + label:after
+    opacity: 1
+    -webkit-transform: scale(1)
+    transform: scale(1)
+  
+  [type="radio"]:focus + label::after
+    box-shadow: 0 0 0 2pt Highlight

@@ -1,0 +1,41 @@
+- content_for(:fullscreen_takeover, true)
+- content_for(:title, 'Contact Us')
+
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Contact Us', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+  = render layout: 'components/form_wrapper' do
+
+    = form_for @general_inquiry, honeypot: true do |f|
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :contact_name, required: 'required', autofocus: 'autofocus'
+            = f.label :contact_name, 'Name'
+
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :company
+            = f.label :company, 'Company or Organization (optional)'
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :contact_email, required: 'required'
+            = f.label :contact_email, 'E-mail Address'
+
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.select :interest, GeneralInquiry::INTERESTS.invert, include_blank: ""
+            = f.label :interest, 'What are you interested in?'
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :notes, required: 'required'
+            = f.label :notes, 'Any additional notes?'
+
+      = render partial: 'components/form_errors', locals: { error_resource: @general_inquiry }
+
+      .ContactUs-actions
+        = f.submit 'Submit', class: 'ContactUs-submit'

@@ -1,0 +1,20 @@
+= render 'components/card' do
+  .ArticleCard
+    a.ArticleCard-link(href="#{article_path(article.to_param)}")
+    - if local_assigns[:editable?].present?
+      = link_to edit_article_path(article), title: 'Propose Updates', class: "ArticleCard-edit" do
+        = render partial: 'icons/pencil'
+    - if article.header_image.present?
+      .ArticleCard-image(style="background-image: url(#{image_url article.header_image.url(:article_card)})")
+    .ArticleCard-content
+      - if article.publishing.present?
+        .ArticleCard-date #{article.publishing.effective_at.strftime("%b %e, %Y")}
+      - else
+        .ArticleCard-date Not Yet Published
+      h2.ArticleCard-title #{article.title}
+      - unless article.header_image.present?
+        .ArticleCard-body-preview #{truncate_html(article.body, 175).html_safe}
+      .ArticleCard-tracks
+        - article.tracks.limit(3).each do |track|
+          =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
+

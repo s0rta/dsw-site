@@ -1,0 +1,43 @@
+@import ../config
+
+.AccordionListItem
+  +font-family-mixin(Montserrat-Light)
+
+.AccordionListItem-accordion
+  cursor: pointer
+  text-align: left
+  font-size: 16px
+  display: flex
+  align-items: center
+  width: 100%
+  background: none
+  border: none
+  
+  .AccordionListItem-icons
+    font-size: 28px
+    color: $teal-light
+    margin-right: 15px
+  
+  .AccordionListItem-plus
+    display: inline-block  
+  
+  .AccordionListItem-minus
+    display: none
+  
+  &.active
+    margin-bottom: 10px
+    
+    .AccordionListItem-plus
+      display: none
+    
+    .AccordionListItem-minus
+      display: inline-block
+
+.AccordionListItem-panel
+  display: none
+  font-size: 14px
+  
+  &.show
+    display: block
+    margin-left: 32px
+    margin-bottom: 22px

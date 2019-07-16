@@ -1,0 +1,31 @@
+@import ../config
+
+$default-track-dot-size: 13px
+$large-track-dot-size: 18px
+
+.TrackIndicator
+  display: flex
+  align-items: center
+  margin-right: 20px
+  margin-bottom: 10px
+
+  &:last-child
+    margin-right: 0
+
+.TrackIndicator-dot
+  height: $default-track-dot-size
+  width: $default-track-dot-size
+  border-radius: 50%
+
+.TrackIndicator-name
+  font-size: 10px
+  color: $primary-font-light
+  margin-left: 5px
+  text-transform: uppercase
+
+.TrackIndicator.is-large
+  .TrackIndicator-dot
+    height: $large-track-dot-size
+    width: $large-track-dot-size
+  .TrackIndicator-name
+    font-size: 14px

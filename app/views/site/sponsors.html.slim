@@ -1,21 +1,14 @@
 - content_for(:title, 'Sponsors')
-nav
-  .section-content
-    h1 Our #{Date.current.year} Sponsors
+= render partial: 'layouts/shared/secondary_hero', locals: { title: 'Sponsors', sub_title: "Our #{Date.current.year} Sponsors", description: 'Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.' }
 
-- if AnnualSchedule.sponsorship_open?
-  section.common.gold.sm-centered
-    .section-content
-      h6 Denver Startup Week is wholly financed through sponsorships that leverage the resources and capacities of the entire community – ultimately ensuring that Denver Startup Week exists for the community, by the community.
-      br
-      a.btn.copy-btn.gold href='/DSW%20Sponsorship%202019.pdf' target='_blank' Download Sponsorship Prospectus
-
-- if sponsorships_by_level.any?
-  section.common.sponsor.sm-centered
+div.Sponsors-list-wrapper
+  - if sponsorships_by_level.any?
     - Sponsorship::SPONSORS_PAGE_LEVELS.each do |level|
       - sponsorships_by_level[level].tap do |sponsorships|
         - if sponsorships.present? && sponsorships.any?
-            .section-content
-              h1 = level.titleize
-              - sponsorships.each do |sponsorship|
-                = render partial: 'layouts/shared/sponsorship', object: sponsorship
+          h1.Sponsors-section-title #{level} Sponsors
+          = render 'components/sponsors_card_list', attributes: { 'aria-label': "#{level} Sponsors" }  do
+            - sponsorships.each do |sponsorship|
+              = render 'components/sponsors_card_list_item', level: level do
+                = render 'components/sponsors_card', sponsorship: sponsorship, level: level
+

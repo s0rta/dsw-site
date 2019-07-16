@@ -1,0 +1,94 @@
+@import ../config
+
+.ArticlesForm-submit
+  +white-button(220px, 46px)
+  width: 220px
+
+.ArticlesForm-actions
+  margin-top: 60px
+  display: flex
+  align-items: center
+  justify-content: flex-end
+
+.ArticlesForm-label
+  +font-family-mixin(Montserrat-Medium)
+  color: $primary-font-light
+  font-size: 14px
+
+.ArticlesForm-textarea
+  +font-family-mixin(Montserrat-Light)
+  border: 0
+  border-bottom: 1px solid $gray-border-light
+  font-size: 14px
+  color: $primary-font-medium
+  outline: 0
+  width: 100%
+  margin-top: 5px
+  padding-bottom: 5px
+
+.ArticlesForm-header
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-dark
+  text-transform: uppercase
+  font-size: 28px
+  margin: 68px 0 40px
+
+.ArticlesForm-tracks
+  margin-bottom: 68px
+
+.ArticlesForm-required-text
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 14px
+  margin-top: 40px
+
+.ArticlesForm-instructions
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 14px
+  margin-bottom: 40px
+  p
+    margin-bottom: 1em
+  ul, li
+    margin-left: 25px
+    margin-top: 1em
+    list-style-type: disc
+
+.ArticlesForm-hint
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-style: italic
+  font-size: 12px
+  margin-top: 15px
+  max-width: 500px
+
+.ArticlesForm-upload-input
+  width: 0.1px
+  height: 0.1px
+  opacity: 0
+  overflow: hidden
+  position: absolute
+  z-index: -1
+
+.ArticlesForm-upload
+  margin-bottom: 60px
+
+.ArticlesForm-upload-label
+  +font-family-mixin(Montserrat-Medium)
+  font-size: 12px
+  cursor: pointer
+  color: $teal-light
+  text-transform: uppercase
+
+.ArticlesForm-upload-name
+  margin-top: 6px
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  display: inline-block
+  margin-left: 20px
+
+
+@media(max-width: 550px)
+  .ArticlesForm-tracks
+    flex-direction: column
+

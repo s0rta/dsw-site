@@ -87,8 +87,7 @@ Track.reset_column_information
     is_voteable: false,
     email_alias: "info@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
-    Drawing together members of the community across the boundaries of industry, job function, and background, our Headline
-    Events provide entertaining and interesting content, unique perspectives, and a forum for our community to connect and share ideas.
+    From our pitch competitions to the Startup Crawl to the Physical Products Showcase, there are unique opportunities each year for companies of all sizes to get involved in Denver Startup Week’s Headline Events. 
     DESCRIPTION
   },
   "Basecamp" => {
@@ -97,6 +96,9 @@ Track.reset_column_information
     is_submittable: false,
     is_voteable: false,
     email_alias: "info@denverstartupweek.org",
+    description: <<-DESCRIPTION.strip_heredoc.squish,
+    Basecamp Powered by Chase Ink serves as the epicenter and soul of Denver Startup Week. The activities at Basecamp represent the very best of Denver Startup Week – keynote speakers, can’t miss parties and celebrations, on-site mentoring with prominent startup leaders, networking and meetups, and access to exclusive learning opportunities and resources.
+    DESCRIPTION
   },
   "Social Events" => {
     icon: "martini",

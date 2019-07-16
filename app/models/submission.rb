@@ -1,5 +1,5 @@
 class Submission < ApplicationRecord
-  PUBLIC_STATES = %w[open_for_voting accepted confirmed venue_confimed].freeze
+  PUBLIC_STATES = %w[open_for_voting accepted confirmed venue_confirmed].freeze
 
   SHOW_RATE = 0.3
 
@@ -103,29 +103,29 @@ class Submission < ApplicationRecord
   end
 
   def self.for_track(name)
-    if name.present?
-      joins(:track)
-        .where("LOWER(tracks.name) = LOWER(?)", name)
-    else
-      all
-    end
+    return all if name == "all" || name.blank?
+    joins(:track).where("LOWER(tracks.name) = LOWER(?)", name)
   end
 
   def self.for_cluster(name)
-    if name.present?
-      joins(:cluster)
-        .where("LOWER(clusters.name) = LOWER(?)", name)
-    else
-      all
-    end
+    return all if name == "all" || name.blank?
+    joins(:cluster).where("LOWER(clusters.name) = LOWER(?)", name)
+  end
+
+  def self.for_publishings_filter(filters)
+    return published if filters.blank?
+
+    published
+      .for_track(filters[:track])
+      .for_cluster(filters[:cluster])
+      .fulltext_search(filters[:terms])
   end
 
   def self.for_schedule_filter(filter, user)
     if filter == "all"
       all
     elsif filter == "mine" && user
-      joins(:user_registrations)
-        .where(registrations: {user_id: user.id})
+      my_schedule(user)
     elsif filter.present?
       references(:tracks, :clusters)
         .where("LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)", name: filter)
@@ -302,6 +302,15 @@ class Submission < ApplicationRecord
 
   def company_name=(value)
     self.company = Company.where("LOWER(name) = LOWER(?)", value).first_or_initialize(name: value)
+  end
+
+  def public_registrants(current_user)
+    registrants
+      .where(show_attendance_publicly: true)
+      .reorder([<<-SQL, current_user.id])
+        (CASE WHEN users.id = ? THEN 1 ELSE 2 END) ASC,
+        "session_registrations"."created_at" DESC
+      SQL
   end
 
   # Actions

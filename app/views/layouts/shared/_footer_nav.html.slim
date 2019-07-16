@@ -1,0 +1,5 @@
+nav.FooterNav(aria-label="#{nav_title} nav")
+  ul.FooterNav-page-links-list
+    - routes.each do |route|
+      li(class="FooterNav-item")
+        = link_to route[:label], route[:path]

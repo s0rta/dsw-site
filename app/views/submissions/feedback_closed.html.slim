@@ -1,4 +1,7 @@
-section.common.blue
-  .section-content
-    .dash-profile-bar
-      h3 Feedback for #{current_year} is currently closed
+- content_for(:fullscreen_takeover, true)
+
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Feedback Closed', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+
+  h3 Feedback for #{current_year} is currently closed
+

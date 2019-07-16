@@ -1,0 +1,8 @@
+- close_action = request.fullpath == session[:previous_url] ? (request.referer || '/') : (session[:previous_url] || '/')
+header.FullscreenTakeoverHeader(class="is-#{background}")
+  = render layout: 'layouts/shared/layout_wrapper' do
+    .FullscreenTakeoverHeader-inner
+      h1.FullscreenTakeoverHeader-title #{title}
+      a.FullscreenTakeoverHeader-link(href="#{close_action}", aria-label="back to home page")
+        = render partial: 'icons/close'
+

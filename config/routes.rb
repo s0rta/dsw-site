@@ -19,30 +19,34 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   # Redirects for old paths
+  get "/get-involved/team", to: redirect("/about/team")
+  get "/get-involved/faq", to: redirect("/about/faq")
   get "/contact/press", to: redirect("/press")
-  get "/contact/assets", to: redirect("/assets")
-  get "/faq", to: redirect("/get-involved/faq")
-  get "/contact", to: redirect("/get-involved")
+  get "/contact/assets", to: redirect("about/assets")
+  get "/assets", to: redirect("about/assets")
+  get "/faq", to: redirect("/about/faq")
+  get "/contact", to: redirect("/general_inqueries/new")
 
   get "/resources", to: redirect("/program")
-  get "/about", to: redirect("/program")
   get "/about/ambassadors", to: redirect("/initiatives/ambassadors")
   get "/program/ambassadors", to: redirect("/initiatives/ambassadors")
   get "/about/clusters", to: redirect("/program/clusters")
   get "/about/previous", to: redirect("/program/previous")
-  get "/about/team", to: redirect("/get-involved/team")
   get "/about/tracks", to: redirect("/program/tracks")
   get "/about/youth", to: redirect("/initiatives/youth")
   get "/program/youth", to: redirect("/initiatives/youth")
   get "/panel-picker/mine", to: redirect("/dashboard")
   get "/voting/mine", to: redirect("/dashboard")
   get "/panel-picker", to: redirect("/voting")
+  get "/panel-picker/search", to: redirect("/voting")
+  get "/panel-picker/track", to: redirect("/voting")
 
   # Vanity redirects
   get "/live", to: redirect("https://dswlive.intelivideo.com/")
   get "/publishme", to: redirect("/get-involved/content")
 
-  devise_for :users, controllers: {registrations: "users/registrations"}
+  devise_for :users, controllers: { registrations: "users/registrations",
+                                    sessions: "users/sessions", passwords: "users/passwords" }
 
   resource :registration, only: %i[new create] do
     collection do
@@ -58,8 +62,6 @@ Rails.application.routes.draw do
       get :submissions_closed
       get :feedback_closed
       get :faq
-      get :search
-      get "track/:track_name", action: :track, as: :track
     end
     resources :votes, only: :create
     resources :comments, only: :create
@@ -72,8 +74,15 @@ Rails.application.routes.draw do
   resource :dashboard, only: :show
 
   resources :newsletter_signups, only: :create
-  resources :general_inquiries, only: :create
+  resources :general_inquiries, only: [:create, :new]
   resources :sponsor_signups, only: :create
+
+  resources :articles,  except: [:destroy]
+
+  scope :program do
+    resources :clusters, only: :show, param: :name
+    resources :tracks, only: :show, param: :name
+  end
 
   get "/schedule", to: "schedules#index", as: :schedules
   get "/schedule/:year",
@@ -109,6 +118,8 @@ Rails.application.routes.draw do
       get :mine
     end
   end
+
+  resource :user_search, only: %i[show]
 
   get "enable-simple-reg", to: "simple_registrations#enable", as: :enable_simple_reg
   get "disable-simple-reg", to: "simple_registrations#disable", as: :disable_simple_reg

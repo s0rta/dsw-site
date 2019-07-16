@@ -1,0 +1,29 @@
+@import ../config
+
+.FloatingInput
+  display: flex
+  align-items: flex-end
+  position: relative
+  height: 40px
+  margin: 14px 0
+  width: 100%
+
+.FloatingInput label
+  position: absolute
+  top: 12px
+  left: 0
+  transition: all 200ms
+  opacity: 0.8
+  pointer-events: none
+  width: 100%
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+.FloatingInput
+  input:focus ~ label,
+  label.is-float
+    font-size: 10px
+    transform: translate3d(0, -120%, 0)
+    opacity: 1
+

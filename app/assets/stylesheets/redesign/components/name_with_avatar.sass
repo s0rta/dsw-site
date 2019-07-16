@@ -1,0 +1,20 @@
+@import ../config
+
+.NameWithAvatar
+  display: flex
+  align-items: center
+
+.NameWithAvatar-name
+  @include font-family-mixin(Montserrat-Light)
+  font-size: 14px
+  margin-right: 16px
+  max-width: 300px
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+.NameWithAvatar.is-right
+  .NameWithAvatar-name
+    order: 2
+    margin-right: 0
+    margin-left: 16px

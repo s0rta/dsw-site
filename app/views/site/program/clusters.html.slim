@@ -1,16 +1,10 @@
-= render partial: 'layouts/shared/program_nav', locals: { item: :clusters }
+- content_for(:title, 'Program')
 - content_for(:subtitle, 'Clusters')
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Clusters', sub_title: 'Industry Deep Dives', description: "Denver Startup Week’s Clusters deep dive into the most exciting, relevant, and budding industries of the day. Cutting across our programming Tracks, the Clusters provide a different perspective on specific topics and themes throughout the week." } do
+  = render 'layouts/shared/programs_secondary_hero_nav'
 
-section.common
-  .section-content.sm-centered
-    h1 Topic & Industry Clusters
-    h6 In addition to our functionally-oriented tracks, we program a number of clusters that highlight unique and interesting sessions related to the same topic area or industry vertical. Cluster sessions are scheduled for a variety of times during the week.
-
-section.common
-  section.section-content.clusters.sm-centered
-    - Cluster.active.in_display_order.each do |cluster|
-      .cluster
-        h1 = "#{cluster.name} Cluster"
-        p = process_with_pipeline(cluster.description)
-        br
-        = link_to "Explore #{cluster.name} Sessions", schedules_path(filter: cluster.name), class: 'btn-cta'
+div.Tracks-list-wrapper
+  = render 'components/content_card_list', attributes: { 'aria-label': "Clusters" }  do
+    - Cluster.template_list_data.each do |card|
+      = render 'components/content_card_list_item' do
+        = render 'components/content_card', card: card, title: card[:title], page_url: "program/clusters/#{card[:name].downcase}"

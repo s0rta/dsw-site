@@ -1,0 +1,50 @@
+@import ../config
+
+.PrimaryCalloutsNav
+  max-width: 1252px;
+  margin: 0 auto;
+
+.PrimaryCalloutsNav-list
+  display: flex
+  justify-content: space-between
+
+.PrimaryCalloutsNav-list-item
+  display: flex
+  flex-direction: column
+  border-right: 1px solid $primary-border-light
+  padding: 0 5%
+
+  &:first-child
+    padding-left: 0
+
+  &:last-child
+    padding-right: 0
+    border-right: 0
+
+.PrimaryCalloutsNav-list-title
+  font-size: 24px
+  font-weight: 300
+  text-transform: uppercase
+  margin-bottom: 10px
+
+.PrimaryCalloutsNav-list-desc
+  flex: 1
+  flex-basis: auto
+  font-size: 14px
+  font-weight: 300
+  color: $primary-font-medium
+  max-width: 322px
+  line-height: 18px
+  margin-bottom: 20px
+
+@media(max-width: 1024px)
+  .PrimaryCalloutsNav-list
+    flex-direction: column
+
+  .PrimaryCalloutsNav-list-item
+    border-right: 0
+    border-bottom: 1px solid $primary-border-light
+    padding: 35px 0
+
+    &:last-child
+      border-bottom: 0

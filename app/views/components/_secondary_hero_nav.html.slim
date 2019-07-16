@@ -1,0 +1,5 @@
+nav.SecondaryHeroNav(aria-label="#{nav_title} secondary nav")
+  ul.SecondaryHeroNav-list
+    - routes.each do |route|
+      li(class="SecondaryHeroNav-item #{active_link_class(route)}")
+        = link_to route[:label], route[:path]

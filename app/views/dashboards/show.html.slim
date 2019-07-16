@@ -1,40 +1,85 @@
-= render partial: 'nav', locals: { item: :mine }
+- content_for(:title, 'Dashboard')
+- if registered?
+  - my_schedule_export = schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')
 
-- if AnnualSchedule.registration_open?
-  - if registered?
-    section.common
-      .section-content.sm-centered
-        h1 Your Registration
-        = link_to 'View Your Schedule', schedules_path(filter: 'mine'), class: 'btn primary'
-  - else
-    section.common
-      .section-content.sm-centered
-        h1 Registration
-        = link_to 'Register to attend', new_registration_path, class: 'btn primary'
+= render layout: 'layouts/shared/layout_wrapper' do
 
-section.common
-  .section-content.sm-centered
-    h1 Your Submissions
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header Profile
+      a.Dashboard-header-action href="#{edit_user_registration_path}"
+        = image_tag "redesign/profile.svg", class: 'Dashboard-header-action-image'
+        | Edit Profile
+    .Dashboard-profile
+      .Dashboard-profile-wrapper
+        = render partial: 'components/avatar', locals: { size: 'large', color: 'grey',  user: current_user, image_only: true }
+        .Dashboard-profile-info
+          .Dashboard-profile-name #{current_user.name}
+          .Dashboard-profile-secondary #{current_user.email}
+          - if current_user.linkedin_url.present?
+            a.Dashboard-profile-secondary(href="#{current_user.linkedin_url}" target="_blank") #{current_user.linkedin_url}
+
+    - unless current_user.linkedin_url.present?
+      .Dashboard-profile-connect Add a LinkedIn URL to your profile to allow others to connect with you from the DenverStartup Week website
+      a.Dashboard-profile-connect-link href="#{edit_user_registration_path}" Connect
+
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header#my-content My Content
+      a.Dashboard-header-action href="#{new_article_path}"
+          = image_tag "redesign/submit-article.svg", class: 'Dashboard-header-action-image'
+          | Submit Article
+    - if @articles.any?
+      ul.Dashboard-card-list(aria-labelledby="my-content")
+        - @articles.each do |article|
+          li.Dashboard-card-list-item
+            = render partial: 'components/article_card', locals: { article: article, editable?: article.editable? }
+    - if @articles.blank?
+      .Dashboard-empty-message You have not submitted any content for this year.
+
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header#my-sessions My Sessions
+      - if AnnualSchedule.cfp_open?
+        a.Dashboard-header-action href="#{new_submission_path}"
+          = image_tag "redesign/submit-session.svg", class: 'Dashboard-header-action-image'
+          | Submit New Proposal
     - if @submissions.any?
-      - @submissions.each do |submission|
-        .talk-submission
-          h6 #{submission.full_title} (#{submission.track.name})
-          - if submission.editable?
-            = link_to edit_submission_path(submission), title: 'Propose Updates' do
-              = render partial: 'icons/pencil'
-    - else
-      h6 You have not yet submitted any proposals for this year.
+      ul.Dashboard-card-list(aria-labelledby="my-sessions")
+        - @submissions.each do |submission|
+          li.Dashboard-card-list-item
+            = render partial: 'components/session_card', locals: { session: submission, editable?: submission.editable?, hide_link: true }
+    - if @submissions.blank?
+      .Dashboard-empty-message You have not yet submitted any proposals for this year.
 
-- if AnnualSchedule.cfp_open?
-  section.common
-    .section-content.sm-centered
-      = link_to 'Submit a New Proposal', new_submission_path, class: 'btn primary'
+  - if AnnualSchedule.registration_open?
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header#my-schedule My Schedule
+        .Dashboard-header-action-wrapper
+          a.Dashboard-header-action href="#{schedules_path}"
+            = image_tag "redesign/schedule.svg", class: 'Dashboard-header-action-image'
+            | View Schedule
+          - unless @my_schedule.blank?
+            a.Dashboard-header-action href="http://www.google.com/calendar/render?cid=#{my_schedule_export}"
+              = image_tag "redesign/calendar-export.svg", class: 'Dashboard-header-action-image'
+              | Add to Google Calendar
+            a.Dashboard-header-action href="#{my_schedule_export}"
+              = image_tag "redesign/calendar-export.svg", class: 'Dashboard-header-action-image'
+              | Add to Outlook / iCal
+      -if @my_schedule.any?
+        ul.Dashboard-schedule(aria-labelledby="my-schedule")
+          - @my_schedule.each do |submission|
+            li.Dashboard-schedule-item
+              = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
+      - if @my_schedule.blank?
+        .Dashboard-empty-message You have not registered for any sessions this year.
 
-- if @previous_submissions.any?
-  section.common
-    .section-content.sm-centered
-      h1 Previous Years' Submissions
-      - @previous_submissions.each do |submission|
-        .talk-submission
-          h6
-            | #{truncate(submission.full_title, length: 70)} (#{submission.year}, #{submission.track.name})
+  - if @previous_submissions.any?
+    section.Dashboard-section
+      .Dashboard-header-wrapper
+        h1.Dashboard-header#my-previous-sessions My Previous Year's Sessions
+      ul.Dashboard-card-list(aria-labelledby="my-previous-sessions")
+        - @previous_submissions.each do |submission|
+          li.Dashboard-card-list-item
+            = render partial: 'components/session_card', locals: { session: submission,  hide_link: true }

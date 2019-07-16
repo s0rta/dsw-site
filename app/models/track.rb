@@ -38,4 +38,22 @@ class Track < ApplicationRecord
   def name_for_partial
     name.downcase.tr(" ", "_")
   end
+
+  def self.template_list_data
+    submittable
+      .in_display_order
+      .with_icon_and_color
+      .map do |t|
+      t.attributes.symbolize_keys.slice(:icon, :name, :description, :color).merge(
+        title: t.name,
+        track: t.name.downcase,
+        header_image_url: t.header_image.url(:content_card)
+      )
+    end
+  end
+
+  def self.dropdown_options
+    select("name as label, name as value, is_submittable, id")
+      .in_display_order
+  end
 end

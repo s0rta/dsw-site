@@ -1,0 +1,23 @@
+div.ContentBlock
+  .ContentBlock-content
+    div.ContentBlock-header
+      h3.ContentBlock-title #{card[:title]}
+    div.ContentBlock-inner-content
+      - if card[:description].kind_of?(Array)
+        - card[:description].each do |desc|
+          p.ContentBlock-description = (desc).html_safe
+      - else
+        p.ContentBlock-description = card[:description].html_safe
+      - if card[:event_items].present?
+        ul.ContentBlock-event-items-list aria-label="#{card[:title]} event items needed"
+          - card[:event_items].each do |item|
+            li.ContentBlock-event-items-item #{item}
+      - if card[:disclaimer].present?
+        p.ContentBlock-disclaimer #{card[:disclaimer]}
+      .ContentBlock-action
+        - if card[:target].present?
+          = link_to "#{card[:button_title]}", "#{page_url}", :target => "#{card[:target]}", class: 'ContentBlock-link' 
+        - elsif card[:button_title].present?
+          = link_to "#{card[:button_title]}", page_path(page: "#{page_url}"), class: 'ContentBlock-link'
+        - else
+          = link_to "Explore the #{title}", page_path(page: "#{page_url}"), class: 'ContentBlock-link'

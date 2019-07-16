@@ -6,29 +6,30 @@
   meta(property="og:url" content="#{submission_url(@submission)}")
   meta(property="og:description" content="#{truncate(@submission.description, length: 300, separator: ' ')}")
 
-nav
-  .section-content
-    h1 Vote
 
-section.common
-  .section-content.sm-centered
-    = link_to 'Back to Topics', submissions_path, class: 'back-link'
+= render layout: 'layouts/shared/layout_wrapper' do
+  section.SubmissionDetail-back-section
+      = link_to (request.referer || submissions_path), class: 'SubmissionDetail-back-link' do
+        .SubmissionDetail-back-icon
+          = render partial: 'icons/arrow_in_circle_left'
+        = 'Back to Sessions'
 
-section.common
-  .section-content.sm-centered
-    div class=("section-content session-detail #{@submission.track.color}") data-bindable='ajax-voter'
-      = render partial: "submissions/headers/#{@submission.track.name_for_partial}"
-      .title = @submission.full_title
-      .names
-        h6 = @submission.company_or_submitter
-      .description = process_with_pipeline(@submission.description)
+  section.SubmissionDetail
+    header(class="SubmissionDetail-track #{@submission.track.color}-font #{@submission.track.color}-fill")
+      - if @submission.track.icon
+        = render partial: "icons/#{@submission.track.icon}"
+      p = @submission.track.name
+    h1.SubmissionDetail-title = @submission.full_title
+    .SubmissionDetail-description = process_with_pipeline(@submission.description)
+    .SubmissionDetail-submitter - #{@submission.company_or_submitter}
 
-      footer
-        div.vote-count
-          span = pluralize(@submission.votes.size, 'vote')
-        - if current_user
-          = link_to submission_votes_path(@submission), remote: true, method: :post, class: 'register-vote', title: "Vote for '#{@submission.full_title}'" do
-            = render partial: 'icons/thumbsup'
-        - else
-          = link_to new_user_session_path, class: 'register-vote', title: "Vote for '#{@submission.full_title}'" do
-            = render partial: 'icons/thumbsup'
+    .SubmissionDetail-vote-wrapper(data-bindable='ajax-voter')
+      - if current_user
+        = link_to submission_votes_path(@submission), remote: true, method: :post, class: "SubmissionDetail-action register-vote-js", title: "Vote for '#{@submission.title}'" do
+          = render partial: 'icons/thumbsup_no_circle'
+          .SubmissionDetail-vote-text Vote for this session
+      - else
+        = link_to new_user_session_path, class: "SubmissionDetail-action", title: "Vote for '#{@submission.title}'" do
+          = render partial: 'icons/thumbsup_no_circle'
+          .SubmissionDetail-vote-text Vote for this session
+      .SubmissionDetail-vote-count.vote-count-js #{pluralize(@submission.votes.size, 'vote')}

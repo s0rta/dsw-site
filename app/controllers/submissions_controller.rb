@@ -1,67 +1,33 @@
 class SubmissionsController < ApplicationController
   respond_to :html,
     :atom
+  skip_before_action :store_location, only: %i[new edit feedback_closed submissions_closed]
   before_action :check_cfp_open, only: %i[new create]
   before_action :authenticate_user!, only: %i[new create mine submissions_closed]
   before_action :check_voting_open, only: %i[index show]
   before_action :set_submissions, only: %i[edit update]
-  before_action :set_random_seed, only: :track
+  before_action :set_random_seed, only: %i[index track]
 
   def index
     @submissions = Submission
-      .for_current_year
-      .for_submittable_tracks
-      .public
-      .includes(:submitter, :track, :cluster)
-      .order("submissions.created_at ASC")
-      .page(params[:page])
-  end
+                   .fulltext_search(params[:terms])
+                   .for_current_year
+                   .for_submittable_tracks
+                   .for_schedule_filter(params[:track_name], current_user)
+                   .public
+                   .includes(:submitter,
+                             :track,
+                             :cluster,
+                             :company,
+                             sponsorship: :track)
+                   .order(Arel.sql("RANDOM()"))
+                   .page(params[:page])
 
-  def track
-    if params[:track_name].present?
-      @submissions = Submission
-        .fulltext_search(params[:terms])
-        .for_current_year
-        .for_submittable_tracks
-        .for_schedule_filter(params[:track_name], current_user)
-        .public
-        .includes(:submitter,
-          :track,
-          :cluster,
-          :company,
-          sponsorship: :track)
-        .order(Arel.sql("RANDOM()"))
-        .page(params[:page])
-      respond_to do |format|
-        format.html
-        format.js do
-          render json: {fragment: render_to_string(partial: "track_contents", formats: [:html]),
-                        next_url: url_for(page: Integer(params[:page] || 1) + 1, seed: @seed),}
-        end
-      end
-    else
-      redirect_to submissions_path(terms: params[:terms])
-    end
-  end
-
-  def search
-    if params[:track_name].present?
-      redirect_to track_submissions_path(track_name: params[:track_name], terms: params[:terms])
-    else
-      @submissions = Submission
-        .fulltext_search(params[:terms])
-        .for_current_year
-        .for_submittable_tracks
-        .for_schedule_filter(params[:track_name], current_user)
-        .public
-        .includes(:submitter, :track, :cluster)
-        .page(params[:page])
-      respond_to do |format|
-        format.json do
-          render json: {fragment: render_to_string(partial: "track_contents", formats: [:html]),
-                        next_url: url_for(page: Integer(params[:page] || 1) + 1),}
-        end
-        format.html { render action: :track }
+    respond_to do |format|
+      format.html
+      format.js do
+        render json: { fragment: render_to_string(partial: 'submissions_list_items', formats: [:html]),
+                       next_url: url_for(page: Integer(params[:page] || 1) + 1, seed: @seed) }
       end
     end
   end

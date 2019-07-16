@@ -1,74 +1,47 @@
 - content_for(:title, "#{formatted_start_date_for_index(@day_index, current_year_or_default, '%A %B %-d, %Y')} Schedule")
+- title = (current_year_or_default.to_i == Date.today.year) ? "Schedule" : "#{current_year_or_default} Schedule"
 
-nav
-  .section-content
-    - if current_year_or_default == Date.today.year
-      h1 Schedule
-    - else
-      h1 #{current_year_or_default} Schedule
+= render layout: 'layouts/shared/secondary_hero', locals: { title: title, sub_title: 'SOMETHING FOR EVERYONE', description: 'Dive into the Denver Startup Week schedule for sessions, keynotes, workshops, celebrations, and much more. With over 300 free events, there is something for everyone to learn, grow, and be inspired. Don’t forget to register, RSVP for individual sessions, and remember that seating is first come, first served.' } do
+  form.Schedule-form
+    .Schedule-search
+      = render partial: 'components/search', locals: { placeholder: ''}
+    .Schedule-filters
+      .Schedule-filter
+        = render layout: 'components/dropdown', locals: { name: "filter",  onchange: "this.form.submit();", value: params[:filter] } do
+          option(value="all" selected=("selected" if params[:filter] == 'all')) View All Sessions
+          option(value="mine" selected=("selected" if params[:filter] == 'mine')) View My Schedule
+          optgroup(label="View Sessions by Track")
+            - Track.dropdown_options.each do |opt|
+              option(value="#{opt.value}" selected=("selected" if params[:filter] == opt.value)) #{opt.label}#{opt.is_submittable? ? ' Track' : '' }
+          optgroup(label="View Sessions by Cluster")
+            - Cluster.dropdown_options.each do |opt|
+              option(value="#{opt.value}" selected=("selected" if params[:filter] == opt.value)) #{opt.label} Cluster
+      .Schedule-filter
+        = render layout: 'components/dropdown', locals: { name: "year", onchange: "window.location.href = this.form.elements[2].value;", value: params[:year] } do
+          optgroup(label="View Sessions by Year")
+          = Submission.distinct.order('year DESC').pluck(:year).each do |y|
+            option(value="#{schedules_by_year_by_day_path(y, current_day_or_default)}" selected=("selected" if params[:year] == y.to_s)) = y
 
-= render partial: 'layouts/shared/flash'
+= render layout: 'layouts/shared/layout_wrapper' do
+  nav.Schedule-nav(aria-label="Schedule Days")
+    ul.Schedule-nav-list
+      - Submission::DAYS.each do |index, day|
+        li.Schedule-nav-list-item
+          = link_to schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[index].downcase, request.query_parameters), class: "Schedule-nav-link #{@day_index == index ? 'is-active' : ''}" do
+            .Schedule-nav-month = formatted_start_date_for_index(index, current_year_or_default, '%b')
+            .Schedule-nav-day = formatted_start_date_for_index(index, current_year_or_default, '%-d')
+            .Schedule-nav-weekday = formatted_start_date_for_index(index, current_year_or_default, '%A')
+            - if @day_index == index
+              img.Schedule-nav-arrow src="#{image_url('redesign/arrow-select-grey.svg')}"
 
-- if AnnualSchedule.registration_open? && !registered?
-  section.common.sm-centered
-    .section-content
-      h1 Register and build your schedule
-      h6 Get registered to attend sessions during Denver Startup Week and build your own custom schedule of events. Everything during the week is totally free - we just ask that you register to help us plan appropriately!
-      br
-      = link_to 'Register Now', new_registration_path, class: 'btn primary'
-- else 
-  = render partial: 'first_come_first_served_banner'
-
-section.common.sm-centered
-  form.filters
-    input(name="terms" value="#{params[:terms]}" placeholder="Search Schedule")
-    select(name="filter" value="#{params[:filter]}" onchange="this.form.submit();")
-      option(value="all" selected=("selected" if params[:filter] == 'all')) View All Sessions
-      option(value="mine" selected=("selected" if params[:filter] == 'mine')) View My Schedule
-      optgroup(label="View Sessions by Track")
-        - Track.in_display_order.each do |t|
-          option(value="#{t.name}" selected=("selected" if params[:filter] == t.name)) #{t.name}#{t.is_submittable? ? ' Track' : '' }
-      optgroup(label="View Sessions by Cluster")
-        - Cluster.active.each do |c|
-          option(value="#{c.name}" selected=("selected" if params[:filter] == c.name)) #{c.name} Cluster
-    select(name="year" value="#{params[:year]}" onchange="window.location.href = this.form.elements[2].value;")
-      optgroup(label="View Sessions by Year")
-        = Submission.distinct.order('year DESC').pluck(:year).each do |y|
-          option(value="#{schedules_by_year_by_day_path(y, current_day_or_default)}" selected=("selected" if params[:year] == y.to_s)) = y
-
-section.common
-  .section-content.schedule-container.sm-centered
-    nav
-      .chiclets-row
-        - Submission::DAYS.each do |index, day|
-          = link_to schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[index].downcase, request.query_parameters), class: "chiclet #{@day_index == index ? 'active' : ''}" do
-            .month = formatted_start_date_for_index(index, current_year_or_default, '%b')
-            .day = formatted_start_date_for_index(index, current_year_or_default, '%-d')
-            .day_of_week = formatted_start_date_for_index(index, current_year_or_default, '%A')
-
+  section.Schedule-lists
     - cache [ @sessions.maximum(:updated_at), @sessions.map(&:id) ] do
       - @sessions.group_by { |s| s.start_hour.floor }.each do |start_hour, grouping|
-        .time-block
-          .time-tag = grouping.first.human_start_time
-          = render partial: 'scheduled_session', collection: grouping, as: :submission
+        h3.Schedule-list-time = grouping.first.human_start_time
+        ul.Schedule-list(aria-label="#{grouping.first.human_start_time} Sessions")
+          - grouping.each do |group|
+              li.Schedule-list-item
+                = render partial: 'components/scheduled_session', locals: { submission: group }
 
-    .day-buttons
-      - if @day_index == 6
-        = link_to Submission::DAYS[@day_index - 1], schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left'
-      - elsif @day_index == 2
-        = link_to Submission::DAYS[@day_index + 1], schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right'
-      - else
-        = link_to Submission::DAYS[@day_index - 1], schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[@day_index - 1].downcase, request.query_parameters), class: 'btn btn-left btn-half'
-        = link_to Submission::DAYS[@day_index + 1], schedules_by_year_by_day_path(current_year_or_default, Submission::DAYS[@day_index + 1].downcase, request.query_parameters), class: 'btn btn-right btn-half'
-
-- if registered? && params[:filter] == 'mine'
-  section.common
-    .section-content.sm-centered
-      h1 Export my schedule
-      h6 Use Google Calendar, iCal, or Outlook? Use the buttons below to subscribe to your schedule and make it easy to look up all of the details on-the-go.
-      = link_to 'Add to Outlook/iCal', schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal'), class: 'btn primary copy-btn'
-      = link_to 'Add to Google Calendar', "http://www.google.com/calendar/render?cid=#{schedule_feed_url(current_registration.calendar_token, format: 'ics', protocol: 'webcal')}", class: 'btn primary copy-btn'
-
-section.common
-  .section-content
-
+      - if @sessions.empty?
+        .Schedule-empty-message We couldn't find any sessions! Please try a different filter or search criteria.

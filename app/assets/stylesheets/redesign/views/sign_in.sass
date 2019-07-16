@@ -1,0 +1,35 @@
+@import ../config
+
+.SignIn-register-text
+  color: $primary-font-medium
+  +font-family-mixin(Montserrat-Regular)
+  font-size: 14px
+  margin-top: 60px
+
+.SignIn-submit
+  +white-button(166px, 46px)
+  width: 166px
+
+.SignIn-actions
+  margin-top: 60px
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.SignIn-link-wrapper
+  color: $primary-font-medium
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+
+.SignIn-link
+  color: $teal-light
+  margin-left: 4px
+
+@media(max-width: 480px)
+  .SignIn-actions
+    flex-direction: column
+    align-items: flex-start
+
+  .SignIn-link-wrapper
+    order: 2
+    margin-top: 20px

@@ -5,6 +5,12 @@ module Publishable
     has_one :publishing, as: :subject, dependent: :destroy
   end
 
+  class_methods do
+    def published
+      joins(:publishing).where("effective_at <= ?", Time.zone.now)
+    end
+  end
+
   def published?
     publishing.present?
   end

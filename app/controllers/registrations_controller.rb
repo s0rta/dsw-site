@@ -1,5 +1,7 @@
 class RegistrationsController < ApplicationController
 
+  skip_before_action :store_location, only: %i[new closed]
+  before_action :set_came_from_registration, only: %i[new]
   before_action :check_registration_open, except: [ :closed ]
   before_action :authenticate_user!, unless: :simple_registration?, except: [ :closed ]
   before_action :check_existing_registration, unless: :simple_registration?, except: [ :closed ]
@@ -43,7 +45,7 @@ class RegistrationsController < ApplicationController
                                            :learn_more_pledge_1p,
                                            :track_id,
                                            :coc_acknowledgement,
-                                           :attendee_goal_ids)
+                                           attendee_goal_ids: [])
   end
 
   def registration_user_params
@@ -56,12 +58,16 @@ class RegistrationsController < ApplicationController
   end
 
   def check_existing_registration
-    redirect_to schedules_path if registered?
+    redirect_to session[:after_registration_path] || schedules_path if registered?
   end
 
   def save_after_registration_path
     if params[:after_registration_path].present?
       session[:after_registration_path] = params[:after_registration_path]
     end
+  end
+
+  def set_came_from_registration
+    session[:came_from_registration] = true
   end
 end

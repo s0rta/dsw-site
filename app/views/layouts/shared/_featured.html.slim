@@ -1,0 +1,8 @@
+section.Featured
+  .Featured-triangles
+    .Featured-background-triangle--primary
+    .Featured-background-triangle--secondary
+  h2.Featured-header#Featured-header-id Featured Sessions & Articles
+  div.Featured-list
+    = render 'components/three_card_list', attributes: { 'aria-labeledby': 'Featured-header-id' } do
+      = render 'layouts/shared/publishings_list_items', list: Publishing.for_homepage

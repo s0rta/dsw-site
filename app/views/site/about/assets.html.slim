@@ -1,0 +1,13 @@
+- content_for(:title, 'About')
+- content_for(:subtitle, 'Assets')
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Assets', sub_title: 'BRAND STANDARDS', description: 'Official Denver Startup Week graphical assets and styleguide are available for download. If you have more specific needs, please contact us.' } do
+  = render 'layouts/shared/about_secondary_hero_nav'
+
+.Assets
+  ul.Assets-list aria-label="assets list"
+    - assets_static_data[:assets].each do |asset|
+      li.Assets-list-item
+        a.Assets-list-item-link aria-label="#{asset[:title]}" href="#{asset[:url]}" target="#{asset[:target]}"
+          = render partial: 'icons/download_assets'
+          p #{asset[:title]}
+

@@ -1,5 +1,18 @@
 @import ../config
 
+.Card
+  height: 100%
+  min-height: 387px
+  width: 341px
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+  background: white
+  display: flex
+  flex-direction: column
+
+@media(max-width: 350px)
+  .Card
+    width: auto
+
 .card
   display: inline-block
   width: 100%
@@ -25,9 +38,8 @@
   align-items: center
   margin-bottom: 30px
   text-indent: 10px
-  font-family: 'Montserrat-Regular'
+  @include font-family-mixin(Montserrat-Regular)
   font-size: 11
-  font-weight: 600
   text-transform: uppercase
 
 .card-icon svg *
@@ -35,9 +47,8 @@
 
 .card-heading
   margin-bottom: 30px
-  font-family: 'Montserrat-Light'
+  @include font-family-mixin(Montserrat-Light)
   font-size: 32px
-  font-weight: 200
   text-transform: uppercase
 
 .card-subheading

@@ -1,0 +1,76 @@
+@import ../config
+
+.Article
+  max-width: 1252px
+  margin: 0 auto
+  padding: 0 5%
+  box-sizing: content-box
+
+.Article-inner
+  max-width: 1092px
+
+.Article-back
+  display: flex
+
+.Article-back-link
+  display: flex
+  align-items: center
+  color: $teal-light
+  margin-top: 20px
+  margin-bottom: 37px
+  text-transform: uppercase
+
+.Article-back-text
+  margin-left: 20px
+
+.Article-image
+  width: 100%
+  height: 493px
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+
+.Article-tracks
+  display: flex
+  flex-wrap: wrap
+  margin-top: 22px
+  margin-bottom: 40px
+
+.Article-date
+  @include font-family-mixin(Montserrat-Medium)
+  color: $primary-font-medium
+  font-size: 16px
+  text-transform: uppercase
+  margin-bottom: 16px
+
+.Article-title
+  @include font-family-mixin(Montserrat-Light)
+  color: $primary-font-dark
+  font-size: 28px
+  line-height: 32px
+  text-transform: uppercase
+  margin-bottom: 20px
+
+.Article-body
+  margin-top: 34px
+  margin-bottom: 80px
+
+.Article-author
+  margin-bottom: 13px
+
+  &:last-child
+    margin-bottom: 0
+
+.Article-video
+  margin-top: 34px
+  overflow: hidden
+  padding-bottom: 56.25%
+  position: relative
+  height: 0
+
+.Article-video-iframe
+  left: 0
+  top: 0
+  height: 100%
+  width: 100%
+  position: absolute

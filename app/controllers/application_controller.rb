@@ -33,12 +33,13 @@ class ApplicationController < ActionController::Base
     return unless request.get?
     return if devise_controller?
     return if request.xhr?
+    session[:came_from_registration] = false
     session[:previous_url] = request.fullpath
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email remember_me name password password_confirmation avatar])
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[name description avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email remember_me name password password_confirmation avatar linkedin_url show_attendance_publicly])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name description avatar linkedin_url show_attendance_publicly])
   end
 
   def registered?
@@ -50,7 +51,10 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_registered!
-    redirect_to main_app.new_registration_path unless current_registration
+    unless current_registration
+      session[:after_registration_path] = session[:previous_url]
+      redirect_to main_app.new_registration_path
+    end
   end
 
   def current_registration
@@ -84,7 +88,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(user)
-    if session[:previous_url]
+    if params[:register_to_attend] == "true"
+      new_registration_path
+    elsif session[:previous_url]
       session[:previous_url]
     elsif user.registered?
       main_app.schedules_path

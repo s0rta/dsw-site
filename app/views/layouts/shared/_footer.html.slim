@@ -1,0 +1,30 @@
+= render layout: 'layouts/shared/layout_wrapper' do
+  footer.Footer
+    - unless content_for(:hide_footer_callouts)
+      .Footer-primary-callouts
+        = render partial: 'layouts/shared/primary_callouts_nav'
+    .Footer-blocks
+      .Footer-block
+        .Footer-title Denver Startup Week #{Date.today.year}
+        .Footer-subtitle &copy;Copyright #{Date.today.year}. All rights reserved.
+        = render 'components/social_media_nav'
+        = render 'layouts/shared/footer_nav', routes: footer_nav_routes, nav_title: "Footer"
+
+      .Footer-block
+        .Footer-updates 
+          p.Footer-updates-title Stay in Touch
+          = form_for NewsletterSignup.new, html: { data: { bindable: "newsletter-signup" } } do |f|
+            = render layout: 'components/floating_input' do
+              = f.text_field :email, required: 'required'
+              = f.label :email, "Email Address"
+            = f.submit 'Get Updates', class: "Footer-updates-submit"
+
+    .Footer-sponsors
+      .Footer-sponsors-block
+        p UX/UI/Design System:
+        a(href="https://www.guice.works/" aria-label="Guiceworks Website" target="_blank")
+          img src="#{image_url('redesign/sponsors/guiceworks.svg')}"
+      .Footer-sponsors-block
+        p Engineering:
+        a(href="https://skookum.com/" aria-label="Skookum Website" target="_blank")
+          img src="#{image_url('redesign/sponsors/skookum.svg')}"

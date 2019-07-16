@@ -1,12 +1,38 @@
-= render partial: 'layouts/shared/auth_nav'
+- content_for(:fullscreen_takeover, true)
+- title = came_from_registration? ? 'register to attend' : 'sign in'
+- button_text = came_from_registration? ? 'next' : 'submit'
+- content_for(:title, 'Sign In')
 
-section.common
-  .section-content.sm-centered
+= render 'layouts/shared/fullscreen_takeover_header', title: title, background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+  - if came_from_registration?
+    .SignIn-register-text In order to Register to Attend you need to be signed in.
+
+  = render layout: 'components/form_wrapper' do
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      = f.label :email, 'E-mail Address'
-      = f.text_field :email, required: 'required', autofocus: 'autofocus'
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :email, required: 'required', autofocus: 'autofocus', type: 'email'
+            = f.label :email, 'E-mail Address'
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.password_field :password, required: 'required'
+            = f.label :password, 'Password'
 
-      = f.label :password, 'Password'
-      = f.password_field :password, required: 'required'
+      = render partial: 'components/form_errors', locals: { error_resource: resource }
 
-      = f.submit 'Sign In'
+      - if registration_open? && !came_from_registration?
+        = render partial: 'components/register_to_attend_radio'
+
+      - if registration_open? && came_from_registration?
+        input(type="hidden" value="true" name="register_to_attend")
+
+      .SignIn-actions
+        div.SignIn-link-wrapper
+          | Don't have an account?
+          = link_to 'Sign Up', new_user_registration_path, class:'SignIn-link'
+        = f.submit button_text, class: 'SignIn-submit'
+      div.SignIn-link-wrapper
+          | Forgot your password?
+          = link_to 'Reset Password', new_password_path(resource_name), class:'SignIn-link'

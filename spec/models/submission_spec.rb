@@ -174,4 +174,46 @@ RSpec.describe Submission, type: :model do
       expect(last_sent_notification.recipient_email).to eq("test1@example.com, test2@example.com, user@example.com")
     end
   end
+
+  describe "listing public registrants" do
+    let(:current_user) { create(:user) }
+    let(:other_user) { create(:user) }
+    let(:other_other_user) { create(:user) }
+    let(:current_registration) { create(:registration, user: current_user) }
+    let(:other_registration) { create(:registration, user: other_user) }
+    let(:other_other_registration) { create(:registration, user: other_other_user) }
+    let(:submission) { create(:submission) }
+
+    it "returns nothing when there are no registrants" do
+      expect(submission.public_registrants(current_user)).to be_empty
+    end
+
+    it "returns the current user first when there are multiple registrants" do
+      submission.user_registrations << other_registration
+      submission.user_registrations << current_registration
+      expect(submission.public_registrants(current_user)).to eq([current_user, other_user])
+    end
+
+    it "returns other users in order of their session registration" do
+      travel_to 1.hour.ago do
+        submission.user_registrations << other_registration
+      end
+      submission.user_registrations << other_other_registration
+      expect(submission.public_registrants(current_user)).to eq([other_other_user, other_user])
+    end
+
+    it "does not return the current user when they have opted out" do
+      submission.user_registrations << other_registration
+      submission.user_registrations << current_registration
+      current_user.update!(show_attendance_publicly: false)
+      expect(submission.public_registrants(current_user)).to eq([other_user])
+    end
+
+    it "does not return other users when they have opted out" do
+      submission.user_registrations << other_registration
+      submission.user_registrations << current_registration
+      other_user.update!(show_attendance_publicly: false)
+      expect(submission.public_registrants(current_user)).to eq([current_user])
+    end
+  end
 end

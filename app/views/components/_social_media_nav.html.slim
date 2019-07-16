@@ -1,0 +1,8 @@
+nav.SocialMediaNav aria-label="Social Media"
+  ul
+    - social_media_routes.each do |route|
+      li.SocialMediaNav-list-item
+        a.SocialMediaNav-link aria-label="#{route[:label]}" href="#{route[:link]}" target='_blank'
+          span class="fa-stack"
+            i class="fa SocialMediaNav-fa-circle fa-stack-2x"
+            i class="fab SocialMediaNav-icon fa-2x #{route[:icon]} fa-stack-1x"

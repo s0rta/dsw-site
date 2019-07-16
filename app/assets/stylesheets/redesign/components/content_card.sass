@@ -1,0 +1,77 @@
+@import ../config
+
+.ContentCard
+  display: flex;
+  flex-direction: column;
+  height: 100%
+
+.ContentCard-image
+  height: 152px
+  width: 100%
+  border-bottom-style: solid
+  border-bottom-width: 0
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+.ContentCard-image.is-track
+  border-bottom-width: 6px
+
+.ContentCard-header
+  margin-top: 25px
+  color: $primary-font-dark
+
+.ContentCard-title
+  max-width: 335px
+  text-transform: uppercase
+  line-height: 32px
+  font-size: 28px
+  font-weight: 300
+
+.ContentCard-description
+  color: $primary-font-medium
+  margin-top: 25px
+  line-height: 18px
+  font-size: 14px
+  font-weight: 300
+
+  a
+    color: $teal-light
+
+.ContentCard-action
+  margin-top: 45px
+  text-align: center
+
+.ContentCard-content
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+.ContentCard-inner-content
+  display: flex
+  flex: 1
+  flex-direction: column
+  justify-content: space-between
+
+.ContentCard-link
+  +white-button(315px, 56px)
+  width: 315px
+
+@media(max-width: 350px)
+  .ContentCard-link
+    +white-button(0px, 56px)
+
+@media(min-width: 640px)
+  .ContentCard-header
+    margin-top: 30px
+  .ContentCard-description
+    margin-top: 30px
+  .ContentCard-image
+    height: 295px
+  .ContentCard-action
+    margin-top: 50px
+    text-align: left
+
+@media(min-width: 1300px)
+  .ContentCard-content
+    margin: 0 41px

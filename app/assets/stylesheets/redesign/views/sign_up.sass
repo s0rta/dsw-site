@@ -1,0 +1,47 @@
+@import ../config
+
+.SignUp-register-text
+  color: $primary-font-medium
+  +font-family-mixin(Montserrat-Regular)
+  font-size: 14px
+  margin-top: 60px
+
+.SignUp-submit
+  +white-button(166px, 46px)
+  width: 166px
+
+.SignUp-actions
+  margin-top: 60px
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.SignUp-link-wrapper
+  color: $primary-font-medium
+  +font-family-mixin(Montserrat-Light)
+  font-size: 14px
+
+.SignUp-link
+  color: $teal-light
+  margin-left: 4px
+
+.SignUp-single-line
+  width: 50%
+
+.SignUp-linkedin-desc
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 14px
+  margin-top: 20px
+
+@media(max-width: 550px)
+  .SignUp-actions
+    flex-direction: column
+    align-items: flex-start
+
+  .SignUp-link-wrapper
+    order: 2
+    margin-top: 20px
+
+  .SignUp-single-line
+    width: 100%

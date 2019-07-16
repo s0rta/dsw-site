@@ -1,0 +1,21 @@
+- header_image = sponsorship.logo.url || ""
+
+.SponsorsCard
+  div.(class="SponsorsCard-image #{level}" style="background-image: url(#{image_url header_image})")
+  - if level == "title" || level == "track" || level == "headline"
+    .SponsorsCard-content
+      - if level == "track"
+        div(class="SponsorsCard-track #{sponsorship.track.color}-font #{sponsorship.track.color}-fill")
+          = render partial: "icons/#{sponsorship.track.icon}"
+          span = sponsorship.track.name
+      .SponsorsCard-inner-content
+        - if level == "headline"
+          p.SponsorsCard-description #{sponsorship[:description].truncate(353)}
+        - else
+          p.SponsorsCard-description #{sponsorship[:description].truncate(403)}
+        .SponsorsCard-action
+          a(href="#{sponsorship[:link_href]}" aria-label="Visit Website" target="_blank" class="SponsorsCard-link")
+            span.SponsorsCard-link-title Visit Website
+            = render partial: 'icons/arrow_right'
+  - else
+    a(href="#{sponsorship[:link_href]}" aria-label="Visit Website" target="_blank" class="SponsorsCard-image-link")

@@ -1,0 +1,92 @@
+- content_for(:fullscreen_takeover, true)
+- content_for :extra_body_tags do
+  = stylesheet_pack_tag 'application'
+- upload_label = @article.header_image.present? ? 'Change Header Image +' : 'Add Header Image +'
+
+= render 'layouts/shared/fullscreen_takeover_header', title: content_for(:article_page_title), background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+
+  = render layout: 'components/form_wrapper' do
+
+    .ArticlesForm-instructions
+      p We invite you - yes, you! - to submit articles to the Denver Startup Week website. We look to you for unique insights, inspiring stories, thought leadership, founder profiles, can’t-miss news, and much more.
+      p Before you submit, here are a few of our guidelines. Please no company sales/promotion — your expertise is the best promotion!
+      ul aria-label="Article guidelines"
+        li Remember the cardinal rule: don’t self-promote; teach us something!
+        li Make it entertaining! Remember, we like spicy but not crude.
+        li Please include an image. Your featured image will be the first image in your article so make sure it is the one you want to use as a preview.
+        li Write a compelling title that describes the content of the article as these will get more clicks and do better in search
+        li Please ensure there are no copyright or plagiarism conflicts as we will not be verifying this and will not assume any responsibility should there be an issue. By submitting your article, you are agreeing to these terms.
+        li You can submit an article on behalf of someone else. In order to add their name as the author, that person must have a Denver Startup Week account and have granted permission to use their name. If they do not already have an account, please direct them to create one before you submit the article.
+      p After you submit your article, it will be reviewed by the Denver Startup Week team before it is published. All articles are expected to follow the  #{link_to "Denver Startup Week Code of Conduct", page_path(page: "code-of-conduct")} and Denver Startup Week reserves the right to not publish submissions for any reason.
+      p Thank you for sharing your wisdom, knowledge, and creativity with the Denver Startup Week community!
+
+
+    = form_for @article do |f|
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :title, required: 'required', autofocus: 'autofocus'
+            = f.label :title, 'Article Title*'
+
+        = f.fields_for :authors do |ff|
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/floating_input' do
+              = ff.text_field :id, data: { bindable: 'autocompleter', source: user_search_url, valuefield: 'article_author_ids', startinglabel: @article.authors.first&.name, startingvalue: @article.authors.first&.id }
+              = ff.label :id, 'Author*'
+        end
+        = f.hidden_field :author_ids
+
+
+      .ArticlesForm-header Related Track(s)
+
+      .ArticlesForm-tracks
+        = render layout: 'components/form_checkbox_collection' do
+          = f.collection_check_boxes :track_ids, Track.submittable, :id, :name, include_hidden: false do |b|
+            = b.label do
+              = b.check_box
+              = b.text
+
+      .ArticlesForm-upload
+        = f.label :header_image, upload_label, class: 'ArticlesForm-upload-label'
+        = f.file_field :header_image, data: { bindable: 'showfilesize' }, class: 'ArticlesForm-upload-input'
+        .ArticlesForm-upload-name#file-select-name-js
+        .ArticlesForm-hint Image should be in a horizontal format with no important content near edges. Images will scale and crop according to users browser size.
+
+      = render layout: 'components/article_body' do
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = f.label :body, 'Article Body*', class: 'ArticlesForm-label'
+            = f.text_area :body, class: 'ArticlesForm-textarea', id: 'article_body_editable'
+      .ArticlesForm-hint Highlight the text to add formatting
+
+      .ArticlesForm-required-text
+        | *Required
+
+      = render partial: 'components/form_errors', locals: { error_resource: @article }
+
+      .ArticlesForm-actions
+        = f.submit 'Submit', class: 'ArticlesForm-submit'
+
+
+      javascript:
+        var editor = new MediumEditor('#article_body_editable', {
+          "spellcheck": false,
+          "toolbar": {
+            "buttons": [
+              "bold",
+              "italic",
+              "underline",
+              "h2",
+              "quote",
+              "anchor",
+              "orderedlist",
+              "unorderedlist",
+              "strikethrough",
+              "subscript",
+              "superscript",
+              "pre",
+              "html"
+            ]
+          },
+        });

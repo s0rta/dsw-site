@@ -1,0 +1,53 @@
+@import ../config
+
+.ScheduledSession
+  text-decoration: none
+  color: inherit
+  display: flex
+  margin-bottom: 15px
+  border-top: 1px solid $gray-border-light
+
+.ScheduledSession-icon-container
+  flex-shrink: 0
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  width: 56px
+  height: 56px
+  .icon
+    width: 24px
+.ScheduledSession-details-container
+  width: 100%
+  padding: 10px 25px
+  +font-family-mixin(Montserrat-Regular)
+  font-size: 14px
+  display: flex
+  flex-direction: row
+.ScheduledSession-time-container
+  margin-right: 50px
+  width: 180px
+  .ScheduledSession--time
+    margin-bottom: 5px
+    text-transform: uppercase
+  .ScheduledSession-cluster-name
+    +font-family-mixin(Montserrat-Light)
+    font-size: 14px
+.ScheduledSession-title
+  color: $copy-color-bold
+  margin-bottom: 5px
+  max-height: 40px
+  overflow: hidden
+  +font-family-mixin(Montserrat-Regular)
+  line-height: 1
+.ScheduledSession-location
+  +font-family-mixin(Montserrat-Light)
+
+@media(max-width: 600px)
+  .ScheduledSession-details-container
+    flex-direction: column
+  .ScheduledSession-time-container
+    margin-right: 0
+    margin-bottom: 10px
+  .ScheduledSession-title
+    max-height: inherit

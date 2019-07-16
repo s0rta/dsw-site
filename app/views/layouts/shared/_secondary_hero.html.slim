@@ -1,0 +1,12 @@
+.SecondaryHero
+  .SecondaryHero-inner
+    .SecondaryHero-sub-title #{sub_title}
+    - if description.kind_of?(Array)
+      - description.each do |desc|
+        .SecondaryHero-description #{desc}
+    - else
+      .SecondaryHero-description #{description}
+    .SecondaryHero-title #{title}
+
+    .SecondaryHero-extras
+      = yield

@@ -1,17 +1,49 @@
 @import ../config
 
+select
+  -webkit-appearance: none
+  -moz-appearance: none
+  border-radius: 0
+  &::-ms-expand
+    display: none
+
+input, textarea, select
+  width: 100%
+  border: none
+  background: transparent
+  &:focus
+    outline: none !important
+
+.Body-menu-open
+  position: fixed
+  overflow: hidden
+  width: 100%
+
+// mapquest z-index override that is originally z-index 1000
+.leaflet-bottom,
+.leaflet-top
+  z-index: 8 !important
+
+
+
 *
   box-sizing: border-box
 
 html, body
   height: 100%
+  @include font-family-mixin(Montserrat-Regular)
+
 
 main
   position: relative
   // max-width: $max-breakpoint
   min-height: 100%
   margin: 0 auto
-  padding-top: 170px
+  padding-top: 111px
+
+main.is-fullscreen
+  padding-top: 0
+  padding-bottom: 40px
 
 h1, h2, h3, h4, h5, h6, p
   margin: 0
@@ -89,6 +121,4 @@ a.disabled
   max-width: 1360px
   margin: 0 auto
 
-@media(min-width: 740px)
-  main
-    padding-top: 30px
+

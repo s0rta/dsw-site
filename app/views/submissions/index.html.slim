@@ -1,13 +1,20 @@
-= render partial: 'voting_header'
+- content_for(:title, 'Vote')
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Vote', sub_title: 'Your vote counts', description: "We take your votes seriously. You may vote on as many sessions as you would like, but only one vote per session is counted. Our track chairs use your votes to guide their decision making, so be sure to spread the word and enlist all your contacts to participate in curating the very best for Denver Startup Week #{Date.today.year}." } do
+  form.Voting-form
+    .Voting-search
+      = render partial: 'components/search', locals: { placeholder: ''}
+    .Voting-filters
+      .Voting-filter
+        = render layout: 'components/dropdown', locals: { name: "track_name", onchange: "this.form.submit();", value: params[:track_name] } do
+          option(value="all" selected=("selected" if params[:track_name] == 'all')) View All Tracks
+          - Track.dropdown_options.each do |opt|
+            option(value="#{opt[:value]}" selected=("selected" if params[:track_name] == opt[:value] )) #{opt[:label]}
 
-.icon-outer-container
-  .icon-flex-container
-    - Track.voteable.submittable.in_display_order.each do |track|
-      .card-frame
-        div class=("card-content #{track.color}")
-          = link_to track_submissions_path(track_name: track.name.downcase) do
-            = render partial: "submissions/headers/#{track.name_for_partial}"
-            .title = "#{track.submissions.public.for_current_year.count} Topics"
-            .description = track.description
-            footer
-              span View Topics
+
+.Voting-list-wrapper
+  = render 'components/three_card_list', attributes: { 'aria-label': "Votable Sessions", id: 'loader-target' } do
+    = render 'submissions_list_items'
+
+- unless @submissions.empty?
+  div.Voting-load-more(data-bindable="ajax-load-more" data-target="loader-target")
+    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms], track_name: params[:track_name], seed: @seed), remote: true, method: :get, id: 'load-more', class: 'Voting-load-more-button', data: { type: 'json' }

@@ -1,16 +1,17 @@
 ActiveAdmin.register User do
   include ActiveAdmin::AjaxFilter
 
-  permit_params :email,
+  permit_params :avatar,
+    :description,
+    :is_admin,
+    :is_venue_host,
+    :linkedin_url,
+    :name,
     :password,
     :password_confirmation,
-    :name,
-    :description,
-    :is_venue_host,
-    :is_admin,
-    :avatar,
     :team_position,
     :team_priority,
+    :email,
     chaired_track_ids: []
 
   index do
@@ -34,6 +35,7 @@ ActiveAdmin.register User do
       f.input :name
       f.input :description
       f.input :email
+      f.input :linkedin_url
       f.input :team_position
       f.input :team_priority, as: :number, min: 0, max: 10, hint: "Lower values show first"
       f.input :password

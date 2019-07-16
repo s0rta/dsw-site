@@ -1,0 +1,36 @@
+@import ../config
+
+.Profile-form-title
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 28px
+  text-transform: uppercase
+  margin-bottom: 40px
+
+.Profile-submit
+  +white-button(220px, 46px)
+  width: 220px
+
+.Profile-actions
+  margin-top: 60px
+  display: flex
+  align-items: center
+  justify-content: flex-end
+
+.Profile-unconfirmed
+  +font-family-mixin(Montserrat-Medium)
+  color: $primary-font-medium
+
+.Profile-single-line
+  width: 50%
+
+.Profile-linkedin-desc
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 14px
+  margin-top: 20px
+
+
+@media(max-width: 550px)
+  .Profile-single-line
+    width: 100%
