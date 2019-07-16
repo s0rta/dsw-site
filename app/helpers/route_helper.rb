@@ -250,8 +250,9 @@ module RouteHelper
     request.referer.include?("program/tracks")
   end
 
-  def back_to_label
-    return 'articles' unless request.referer
+  def back_to_label(default)
+    return default unless request.referer
+    return default if request.referer.include?(default)
     matched_path = request.referer.match(/([^\/]+$)/)
     return 'home' if matched_path.nil?
     URI.decode(matched_path[1].split('?').first)
