@@ -1,15 +1,15 @@
-/ = render partial: 'dashboards/nav', locals: { item: :venue }
+= render partial: 'dashboards/nav', locals: { item: :venue }
 
-/ section.common
-/   .section-content.sm-centered
-/     h1 Your Venues
+section.common
+  .section-content.sm-centered
+    h1 Your Venues
 
-/     - @venues.each do |venue|
-/       .talk-submission
-/         h6 = venue.name
-/         = link_to edit_venue_path(venue) do
-/           = render partial: 'icons/pencil'
+    - @venues.each do |venue|
+      .talk-submission
+        h6 = venue.name
+        = link_to edit_venue_path(venue) do
+          = render partial: 'icons/pencil'
 
-/ section.common
-/   .section-content.sm-centered
-/     = link_to 'New Venue', new_venue_path, class: 'btn primary'
+section.common
+  .section-content.sm-centered
+    = link_to 'New Venue', new_venue_path, class: 'btn primary'
