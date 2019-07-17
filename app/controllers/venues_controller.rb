@@ -43,7 +43,8 @@ class VenuesController < ApplicationController
         end
       end
 
-      respond_with @venue, notice: "Venue was successfully updated."
+      flash[:notice] = "Venue was successfully updated."
+      redirect_to dashboard_path
     else
       render :edit
     end
