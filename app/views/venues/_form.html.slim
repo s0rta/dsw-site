@@ -1,83 +1,96 @@
-    = form_for @venue do |f|
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :venue_name
-            = f.text_field :name, required: 'required', placeholder: 'Venue Name'
+- content_for(:fullscreen_takeover, true)
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Update Venue', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+  = render layout: 'components/form_wrapper' do
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :company_name
-            = f.text_field :company_name, data: { bindable: 'autocompleter', source: mine_company_search_url }
+    .VenueEdit-instructions
+      | Denver Startup Week relies on the generosity of venue hosts throughout our center city to provide space for sessions and events. Thank you for welcoming the Denver Startup Week community into your space!
+      | As a venue host, you will generously provide space for Denver Startup Week session organizers to put on their event during the week. Most Denver Startup Week sessions are in need a venue for their event, and by providing a space for those sessions to take place, you are playing a critical role to support this entirely free community event.
+      | For a full overview of expectations and the venue hosting process, please review our Venue Host Handbook here: #{link_to "https://bit.ly/31Gamu3" } 
+      | Please complete the form below to provide information about your venue and availability to host. 
+      | Also, please fill out separate forms for each space that will be available for sessions during Denver Startup Week (i.e. if you have two event spaces in your venue, please fill out separate forms for each).
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :description
-            = f.text_area :description, required: 'required', data: { bindable: 'text_area_autosize' }, placeholder: 'Venue Description is for organizers only.'
+    .VenueEdit-form
+      = form_for @venue do |f|
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :venue_name
+              = f.text_field :name, required: 'required', placeholder: 'Venue Name'
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :address
-            = f.text_field :address, required: 'required'
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :company_name
+              = f.text_field :company_name, data: { bindable: 'autocompleter', source: mine_company_search_url }
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :suite_or_unit
-            = f.text_field :suite_or_unit
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :description
+              = f.text_area :description, required: 'required', data: { bindable: 'text_area_autosize' }, placeholder: 'Venue Description is for organizers only.'
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :city
-            = f.text_field :city, required: 'required' 
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :address
+              = f.text_field :address, required: 'required'
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :state
-            = f.text_field :state, required: 'required' 
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :suite_or_unit
+              = f.text_field :suite_or_unit
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :seated_capacity
-            = f.text_field :seated_capacity, required: 'required'
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :city
+              = f.text_field :city, required: 'required' 
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :standing_capacity
-            = f.text_field :standing_capacity, placholder: '(beyond seated capacity)'
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :state
+              = f.text_field :state, required: 'required' 
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :av_capabilities
-            = f.text_area :av_capabilities, data: { bindable: 'text_area_autosize' }, placeholder: 'A/V Available (Projector & Screen, Microphone if necessary)'
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :seated_capacity
+              = f.text_field :seated_capacity, required: 'required'
 
-      = render layout: 'components/form_input_row' do
-        = render layout: 'components/form_input_wrapper' do
-          = render layout: 'components/form_field' do
-            = f.label :extra_directions
-            = f.text_area :extra_directions, data: { bindable: 'text_area_autosize' }
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :standing_capacity
+              = f.text_field :standing_capacity, placholder: '(beyond seated capacity)'
 
-      .VenueEdit-availabilities
-        h4 Availablility
-        - if @venue_availabilities
-          h5 = "(disabled checkboxes indicates that a timeslot has already been assigned to a submission)"
-        table
-          - VenueAvailability::DAYS.each do |day_key, day_value|
-            tr
-              td = day_value
-              - VenueAvailability::TIME_BLOCK.each do |time_key, time_value|
-                td
-                  = hidden_field_tag "venue_availability[#{day_key}][#{time_key}]", @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key and avail.submission_id} : false
-                  = check_box_tag "venue_availability[#{day_key}][#{time_key}]", true, @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key} : false, class: "code-of-conduct", disabled: @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key and avail.submission_id} : false
-                  = label_tag "availability[#{day_key}][#{time_key}]", time_value, class: "code-of-conduct"
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :av_capabilities
+              = f.text_area :av_capabilities, data: { bindable: 'text_area_autosize' }, placeholder: 'A/V Available (Projector & Screen, Microphone if necessary)'
 
-      = render partial: 'components/form_errors', locals: { error_resource: @venue }
-      = f.submit 'Submit', class: "VenueEdit-submit"
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :extra_directions
+              = f.text_area :extra_directions, data: { bindable: 'text_area_autosize' }
+
+        .VenueEdit-availabilities
+          h4 Availablility
+          - if @venue_availabilities
+            h5 = "(disabled checkboxes indicates that a timeslot has already been assigned to a submission)"
+          table.VenueEdit-table
+            - VenueAvailability::DAYS.each do |day_key, day_value|
+              tr
+                td = day_value
+                - VenueAvailability::TIME_BLOCK.each do |time_key, time_value|
+                  td
+                    = hidden_field_tag "venue_availability[#{day_key}][#{time_key}]", @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key and avail.submission_id} : false
+                    = check_box_tag "venue_availability[#{day_key}][#{time_key}]", true, @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key} : false, class: "code-of-conduct", disabled: @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key and avail.submission_id} : false
+                    = label_tag "availability[#{day_key}][#{time_key}]", time_value, class: "code-of-conduct"
+
+        = render partial: 'components/form_errors', locals: { error_resource: @venue }
+        = f.submit 'Submit', class: "VenueEdit-submit"

@@ -16,21 +16,19 @@
   margin: 40px auto 0
   width: 315px
 
-table 
+.VenueEdit-table
   width: 100%
   border-collapse: collapse
-
-tr:nth-of-type(odd) 
-  background: #eee
-
-td, th
-  padding: 6px
-  border: 1px solid $primary-border-light
-  text-align: center
-  & input
-    width: 15px
-    display: block
-    margin: 0 auto 5px
+  & tr:nth-of-type(odd) 
+      background: #eee
+  & td, th
+      padding: 6px
+      border: 1px solid $primary-border-light
+      text-align: center
+      & input
+        width: 15px
+        display: block
+        margin: 0 auto 5px
 
 @media(max-width: 350px)
   .VenueEdit-submit
