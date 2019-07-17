@@ -14,11 +14,11 @@
 .Article
   .Article-inner
     .Article-back
-      a(href="#{articles_path}" aria-label="Back to Articles" class="Article-back-link")
+      a(href="#{back_to_path('articles', articles_path)}" aria-label="Back to previous page" class="Article-back-link")
         = render partial: 'icons/arrow_in_circle_left'
-        span.Article-back-text back to articles
+        span.Article-back-text back to #{back_to_label('articles')}
     - if @article.header_image.present?
-      img.Article-image(src="#{@article.header_image.url(:article_page)}" title="#{@article[:title]}" alt="Hero Image")
+      div.Article-image(style="background-image: url(#{image_url @article.header_image.url(:article_page)})")
     .Article-tracks
       - @article.tracks.each do |track|
         =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }

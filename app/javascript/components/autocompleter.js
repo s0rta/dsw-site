@@ -42,10 +42,10 @@ export default class Autocompleter {
   }
 
   addListeners() {
-    this.el.on('keyup', () => {
+    this.el.on('keyup', (e) => {
       $.ajax({
         url: this.data.source,
-        data: { term: this.value },
+        data: { term: e.target.value },
         type: 'GET',
         dataType: 'json'
       }).done(data => {

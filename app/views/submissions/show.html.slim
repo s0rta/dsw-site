@@ -5,11 +5,12 @@
   meta(property="og:site_name" content="Denver Startup Week")
   meta(property="og:url" content="#{submission_url(@submission)}")
   meta(property="og:description" content="#{truncate(@submission.description, length: 300, separator: ' ')}")
+- back_to_link = request.referer.include?('schedule') ? schedule_path : request.referer
 
 
 = render layout: 'layouts/shared/layout_wrapper' do
   section.SubmissionDetail-back-section
-      = link_to (request.referer || submissions_path), class: 'SubmissionDetail-back-link' do
+      = link_to back_to_link, class: 'SubmissionDetail-back-link' do
         .SubmissionDetail-back-icon
           = render partial: 'icons/arrow_in_circle_left'
         = 'Back to Sessions'

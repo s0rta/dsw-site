@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
     :atom
   skip_before_action :store_location, only: %i[new edit feedback_closed submissions_closed]
   before_action :check_cfp_open, only: %i[new create]
-  before_action :authenticate_user!, only: %i[new create mine submissions_closed]
+  before_action :authenticate_user!, only: %i[new create edit update mine submissions_closed]
   before_action :check_voting_open, only: %i[index show]
   before_action :set_submissions, only: %i[edit update]
   before_action :set_random_seed, only: %i[index track]

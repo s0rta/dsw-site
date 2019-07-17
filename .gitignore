@@ -19,15 +19,15 @@
 /public/uploads
 /public/assets
 MK-TODO.md
-/public/packs
-/public/packs-test
-/node_modules
 vendor/firefox
 /public/packs
 /public/packs-test
 /node_modules
+/yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+.rubocop-*
 
 # Ignore local dev files
 .env
