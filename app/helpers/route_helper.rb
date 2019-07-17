@@ -260,6 +260,7 @@ module RouteHelper
 
   def back_to_path(path_check, default_path)
     return default_path unless request.referer.present?
+    return default_path if !URI(request.referer).host.include?(request.host)
     return default_path if request.referer.include?(path_check)
     request.referer
   end
