@@ -66,9 +66,9 @@
             = f.text_area :extra_directions, rows: 8
 
       .VenueEdit-availabilities
-        h4 = "Availablility"
+        h4 Availablility
         - if @venue_availabilities
-          h5 = "(disabled checkboxes indicates that a timeslot has already been assigned to a submission)"
+          h5 (disabled checkboxes indicates that a timeslot has already been assigned to a submission)
         table
           - VenueAvailability::DAYS.each do |day_key, day_value|
             tr
