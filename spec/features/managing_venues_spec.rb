@@ -17,41 +17,18 @@ feature "Managing My Venue" do
     allow(ListSubscriptionJob).to receive(:perform_async)
   end
 
-  scenario "a user who is not a venue host should not see the 'My Venues' tab" do
-    Flipper[:venue_admin].disable
+  scenario "a user who does not have any venues assigned should not see anything in the list" do
     login_as user, scope: :user
     visit "/dashboard"
-
-    expect(page).to_not have_link("My Venues")
+    expect(page).to have_content("You do not have any venues assigned.")
   end
 
-  scenario "a user who is a venue host should be able to create new venues" do
+  scenario "a user who has venues assigned should be able to edit their availability" do
     pending("refactor")
-
-    Flipper[:venue_admin].enable
     login_as venue_host_user, scope: :user
+    create(:venue, company: company, name: "Example Theatre")
 
     visit "/dashboard"
-
-    expect(page).to have_link("My Venues")
-    click_on "My Venues"
-
-    click_on "New Venue"
-
-    fill_in "Venue Name", with: "test venue"
-
-    # Use the autocompleter to select
-    fill_in "venue_company_name", with: "Exa"
-    find(".awesomplete li", text: "ExampleCo").click
-
-    fill_in "Description", with: "some description"
-    fill_in "Address", with: "111"
-    fill_in "City", with: "Denver"
-    fill_in "State", with: "Colorado"
-
-    click_button "Submit"
-
-    expect(page).to have_content("Venue was successfully created.")
-    expect(page).to have_content("test venue")
+    find(".ArticleCard").click
   end
 end

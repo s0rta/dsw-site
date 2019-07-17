@@ -83,3 +83,14 @@
         - @previous_submissions.each do |submission|
           li.Dashboard-card-list-item
             = render partial: 'components/session_card', locals: { session: submission,  hide_link: true }
+
+  section.Dashboard-section
+    .Dashboard-header-wrapper
+      h1.Dashboard-header#my-content My Venues
+    - if @venues.any?
+      ul.Dashboard-card-list(aria-labelledby="my-venues")
+        - @venues.each do |venue|
+          li.Dashboard-card-list-item
+            = render partial: 'components/venue_card', locals: { venue: venue }
+    - if @venues.blank?
+      .Dashboard-empty-message You do not have any venues assigned.

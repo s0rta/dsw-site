@@ -1,0 +1,10 @@
+= render 'components/card' do
+  .VenueCard
+    .VenueCard-link
+      = link_to edit_venue_path(venue)  do
+        = render partial: 'icons/pencil'
+    h2.VenueCard-title #{venue.name}
+    .VenueCard-address
+      . #{venue.address}
+      . #{venue.city}, #{venue.state}
+    p.VenueCard-description #{venue.description}
