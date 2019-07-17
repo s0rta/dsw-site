@@ -15,7 +15,7 @@
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
             = f.label :description
-            = f.text_area :description, required: 'required', rows: 8, placeholder: 'Venue Description is for organizers only.'
+            = f.text_area :description, required: 'required', data: { bindable: 'text_area_autosize' }, placeholder: 'Venue Description is for organizers only.'
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
@@ -57,18 +57,18 @@
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
             = f.label :av_capabilities
-            = f.text_area :av_capabilities, rows: 8, placeholder: 'A/V Available (Projector & Screen, Microphone if necessary)'
+            = f.text_area :av_capabilities, data: { bindable: 'text_area_autosize' }, placeholder: 'A/V Available (Projector & Screen, Microphone if necessary)'
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
             = f.label :extra_directions
-            = f.text_area :extra_directions, rows: 8
+            = f.text_area :extra_directions, data: { bindable: 'text_area_autosize' }
 
       .VenueEdit-availabilities
         h4 Availablility
         - if @venue_availabilities
-          h5 (disabled checkboxes indicates that a timeslot has already been assigned to a submission)
+          h5 = "(disabled checkboxes indicates that a timeslot has already been assigned to a submission)"
         table
           - VenueAvailability::DAYS.each do |day_key, day_value|
             tr
