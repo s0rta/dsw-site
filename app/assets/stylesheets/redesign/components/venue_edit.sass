@@ -1,0 +1,39 @@
+@import ../config
+
+.VenueEdit-instructions
+  color: $primary-font-medium
+  font-size: 14px
+  line-height: 24px
+
+.VenueEdit-form
+  margin-top: 50px
+
+.VenueEdit-availabilities
+  margin-top: 25px
+
+.VenueEdit-submit
+  +white-button(315px, 56px)
+  margin: 40px auto 0
+  width: 315px
+
+.VenueEdit-table
+  width: 100%
+  border-collapse: collapse
+  & tr:nth-of-type(odd) 
+      background: #eee
+  & td, th
+      padding: 6px
+      border: 1px solid $primary-border-light
+      text-align: center
+      & input
+        width: 15px
+        display: block
+        margin: 0 auto 5px
+
+@media(max-width: 350px)
+  .VenueEdit-submit
+    +white-button(0px, 56px)
+
+@media(max-width: 500px)
+  .VenueEdit-availabilities
+    overflow-x: auto

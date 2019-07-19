@@ -28,7 +28,7 @@ feature "Submitting an article" do
     article_body_el.send_keys "Please read me."
 
     # Use the autocompleter to select
-    fill_in "Author", with: "New"
+    fill_in "Author", with: "New G"
     find(".awesomplete li", text: "New Guy").click
 
     click_button "Submit"

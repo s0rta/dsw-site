@@ -1,13 +1,8 @@
 class VenuesController < ApplicationController
   before_action :authenticate_user!
-
+  skip_before_action :store_location, only: %i[new edit]
   before_action :set_venue, only: %i[show edit update destroy]
   before_action :set_venue_availabilities, only: %i[create edit update]
-
-  # GET /venues
-  def index
-    @venues = Venue.joins(company: :users).where(users: {id: current_user})
-  end
 
   # GET /venues/1
   def show
@@ -48,7 +43,8 @@ class VenuesController < ApplicationController
         end
       end
 
-      respond_with @venue, notice: "Venue was successfully updated."
+      flash[:notice] = "Venue was successfully updated."
+      redirect_to dashboard_path
     else
       render :edit
     end

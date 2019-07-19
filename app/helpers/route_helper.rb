@@ -250,10 +250,29 @@ module RouteHelper
     request.referer.include?("program/tracks")
   end
 
+  def back_to_label(default)
+    return default unless request.referer
+    return default if different_referer_host?
+    return default if request.referer.include?(default)
+    matched_path = request.referer.match(/([^\/]+$)/)
+    return 'home' if matched_path.nil?
+    URI.decode(matched_path[1].split('?').first)
+  end
+
+  def back_to_path(path_check, default_path)
+    return default_path unless request.referer.present?
+    return default_path if different_referer_host?
+    return default_path if request.referer.include?(path_check)
+    request.referer
+  end
+
   private
 
   def current_path?(route)
     request.path == route[:path]
   end
 
+  def different_referer_host?
+    !URI(request.referer).host.include?(request.host)
+  end
 end

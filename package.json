@@ -1,15 +1,38 @@
 {
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@babel/polyfill": "^7.2.5",
+    "@rails/webpacker": "^4.0.7",
     "awesomplete": "^1.1.2",
     "coffeescript": "1.12.7",
     "jquery": "~> 3.3.1",
     "jquery-ujs": "^1.2.2",
-    "lodash.throttle": "^4.1.1"
+    "lodash": ">=4.17.13"
   },
   "devDependencies": {
     "eslint": "^4.9.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "webpack-dev-server": "^2.11.1"
+    "eslint-config-airbnb": "^16.1.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb",
+      "plugin:jsx-a11y/strict",
+      "plugin:flowtype/recommended"
+    ],
+    "plugins": [
+      "flowtype",
+      "import"
+    ],
+    "env": {
+      "browser": "true"
+    },
+    "rules": {
+      "import/no-cycle": "off",
+      "object-curly-newline": "off",
+      "react/jsx-filename-extension": "off",
+      "semi": [
+        "error",
+        "never"
+      ]
+    }
   }
 }
