@@ -17,4 +17,7 @@ class ApplicationUploader < CarrierWave::Uploader::Base
 
   # Set up CarrierWave Backgrounder
   include ::CarrierWave::Backgrounder::Delay
+
+  # Include Piet extensions
+  include Piet::CarrierWaveExtension
 end
