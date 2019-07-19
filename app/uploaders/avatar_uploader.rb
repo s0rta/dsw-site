@@ -16,5 +16,6 @@ class AvatarUploader < ApplicationUploader
   # Create different versions of your uploaded files:
   version :thumb do
     process resize_to_fill: [100, 100]
+    process :optimize
   end
 end

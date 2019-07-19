@@ -34,6 +34,8 @@ gem "honeypot-captcha", git: "https://github.com/RandieM/honeypot-captcha", bran
 gem "html-pipeline", require: "html/pipeline"
 gem "liquid"
 gem "mini_magick"
+gem "piet"
+gem "piet-binary"
 gem "rinku"
 gem "sanitize"
 gem "truncato"
