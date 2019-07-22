@@ -6,6 +6,6 @@ class LogoUploader < ApplicationUploader
   end
 
   version :optimized do
-    process :optimize
+    process optimize: [{quality: 90, level: 7}]
   end
 end
