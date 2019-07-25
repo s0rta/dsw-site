@@ -44,4 +44,22 @@ feature "Managing My Venue" do
     expect(find("tr", text: "Thursday")).to have_checked_field("4 - 6pm")
     expect(find("tr", text: "Friday")).to have_checked_field("6 - 10pm")
   end
+
+  scenario "a user should see venues with availability that has been taken as non-editable" do
+    login_as venue_host_user, scope: :user
+    create(:venue, company: company, name: "Example Theatre").tap do |v|
+      v.admins << venue_host_user
+    end
+
+    visit "/dashboard"
+    find(".VenueCard", text: "EXAMPLE THEATRE").click_link("Edit")
+    fill_in "Venue Name", with: "Test Theatre"
+    find("tr", text: "Tuesday").check "12 - 2pm"
+    click_button "Submit"
+    expect(page).to have_content("Venue was successfully updated")
+    VenueAvailability.first.assign! create(:submission)
+
+    find(".VenueCard", text: "TEST THEATRE").click_link("Edit")
+    expect(find("tr", text: "Tuesday")).to have_checked_field("12 - 2pm", disabled: true)
+  end
 end
