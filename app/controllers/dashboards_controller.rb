@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
     @submissions = current_user.submissions.includes(:track).for_current_year
     @articles = current_user.articles.includes(:tracks, :publishing)
     @previous_submissions = current_user.submissions.for_previous_years.order("submissions.created_at DESC")
-    @venues = Venue.joins(company: :users).where(users: {id: current_user})
+    @venues = current_user.administered_venues
     @my_schedule = Submission
       .for_year(Date.today.year)
       .for_schedule
