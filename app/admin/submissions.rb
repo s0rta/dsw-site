@@ -53,7 +53,8 @@ ActiveAdmin.register Submission do
       @submission = Submission.find(params[:id])
       @versions = @submission.versions
       @submission = @submission.versions[params[:version].to_i].reify if params[:version]
-      @venue_availabilities = VenueAvailability.where(year: @submission.year).joins(:venue)
+      @venue_availabilities = VenueAvailability.where(year: @submission.year,
+                                                      day: @submission.start_day).joins(:venue)
       show!
     end
   end
@@ -322,7 +323,7 @@ ActiveAdmin.register Submission do
             end
             column "Action" do |v|
               link_to "Assign",
-                venue_availability_path(v, submission_id: submission.id),
+                assign_venue_availability_path(v, submission_id: submission.id),
                 method: :put
             end
           end

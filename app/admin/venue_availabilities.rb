@@ -2,17 +2,17 @@ ActiveAdmin.register VenueAvailability do
   belongs_to :venue, optional: true
   # belongs_to :annual_schedule
 
-  menu parent: 'Sessions'
+  menu parent: "Sessions"
 
   permit_params :venue_id, :submission_id, :year, :day, :time_block
 
-  scope('Current', default: true, &:for_current_year)
-  scope('Previous Year', &:for_previous_years)
+  scope("Current", default: true, &:for_current_year)
+  scope("Previous Year", &:for_previous_years)
 
   controller do
     def scoped_collection
       resource_class.includes(:venue,
-                              :submission)
+        :submission)
     end
   end
 
@@ -39,8 +39,8 @@ ActiveAdmin.register VenueAvailability do
   form do |f|
     f.object.year ||= Date.today.year
     f.inputs do
-      f.input :venue_id, as: :select, collection: Venue.alphabetical.map { |v| [ v.name, v.id ] }, include_blank: true
-      f.input :submission_id, as: :select, collection: Submission.all.map { |v| [ v.title, v.id ] }, include_blank: true
+      f.input :venue_id, as: :select, collection: Venue.alphabetical.map { |v| [v.name, v.id] }, include_blank: true
+      f.input :submission_id, as: :select, collection: Submission.all.map { |v| [v.title, v.id] }, include_blank: true
       f.input :year
       f.input :day, as: :select, collection: VenueAvailability::DAYS.invert, include_blank: false
       f.input :time_block, as: :select, collection: VenueAvailability::TIME_BLOCK.invert, include_blank: false
@@ -48,4 +48,12 @@ ActiveAdmin.register VenueAvailability do
     f.actions
   end
 
+  member_action :assign do
+    flash[:notice] = if resource.assign!(Submission.find(params[:submission_id]))
+      "Venue was successfully assigned!"
+    else
+      "Unable to assign venue. It may no longer be available."
+    end
+    redirect :back
+  end
 end
