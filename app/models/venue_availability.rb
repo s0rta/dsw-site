@@ -32,4 +32,20 @@ class VenueAvailability < ApplicationRecord
   def human_date_time
     "#{DAYS[day]} #{TIME_BLOCK[time_block]}"
   end
+
+  def assign!(to_submission)
+    unless submission.present?
+      transaction do
+        update(submission: to_submission)
+        to_submission.update(venue: venue)
+      end
+    end
+  end
+
+  def unassign!
+    transaction do
+      update(submission: nil)
+      submission.update(venue: nil)
+    end
+  end
 end

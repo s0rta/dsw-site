@@ -323,7 +323,7 @@ ActiveAdmin.register Submission do
             end
             column "Action" do |v|
               link_to "Assign",
-                venue_availability_path(v, submission_id: submission.id),
+                assign_venue_availability_path(v, submission_id: submission.id),
                 method: :put
             end
           end
