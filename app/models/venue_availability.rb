@@ -33,6 +33,10 @@ class VenueAvailability < ApplicationRecord
     "#{DAYS[day]} #{TIME_BLOCK[time_block]}"
   end
 
+  def assigned?
+    submission.present?
+  end
+
   def assign!(to_submission)
     unless submission.present?
       transaction do

@@ -48,12 +48,22 @@ ActiveAdmin.register VenueAvailability do
     f.actions
   end
 
-  member_action :assign do
-    flash[:notice] = if resource.assign!(Submission.find(params[:submission_id]))
+  member_action :assign, method: :put do
+    flash[:notice] = if resource.assign!(Submission.find(params[:submission_id].to_i))
       "Venue was successfully assigned!"
     else
       "Unable to assign venue. It may no longer be available."
     end
-    redirect :back
+    redirect_back fallback_location: admin_submission_path(resource.submission)
+  end
+
+  member_action :unassign, method: :put do
+    submission = resource.submission
+    flash[:notice] = if resource.unassign!
+      "Venue was successfully unassigned!"
+    else
+      "Unable to unassign venue."
+    end
+    redirect_back fallback_location: admin_submission_path(submission)
   end
 end

@@ -310,7 +310,7 @@ ActiveAdmin.register Submission do
         panel "Venu Selector" do
           table_for venue_availabilities do
             column "Venue" do |v|
-              Venue.find(v.venue_id)
+              v.venue
             end
             column "Day" do |v|
               VenueAvailability::DAYS[v.day]
@@ -319,12 +319,25 @@ ActiveAdmin.register Submission do
               VenueAvailability::TIME_BLOCK[v.time_block]
             end
             column "Currently Assigned Submission" do |v|
-              Submission.find_by(id: v.submission_id)
+              v.submission
             end
             column "Action" do |v|
-              link_to "Assign",
-                assign_venue_availability_path(v, submission_id: submission.id),
-                method: :put
+              if v.assigned?
+                link_to "Unassign",
+                  unassign_admin_venue_venue_availability_path(
+                    id: v.id,
+                    venue_id: v.venue.id
+                  ),
+                  method: :put
+              else
+                link_to "Assign",
+                  assign_admin_venue_venue_availability_path(
+                    id: v.id,
+                    venue_id: v.venue.id,
+                    submission_id: submission.id
+                  ),
+                  method: :put
+              end
             end
           end
         end
