@@ -28,7 +28,7 @@
           = render layout: 'components/form_input_wrapper' do
             = render layout: 'components/form_field' do
               = f.label :description
-              = f.text_area :description, required: 'required', data: { bindable: 'text_area_autosize' }, placeholder: 'Venue Description is for organizers only.'
+              = f.text_area :description, data: { bindable: 'text_area_autosize' }, placeholder: 'Description is displayed to organizers only.'
 
         = render layout: 'components/form_input_row' do
           = render layout: 'components/form_input_wrapper' do
@@ -46,7 +46,7 @@
           = render layout: 'components/form_input_wrapper' do
             = render layout: 'components/form_field' do
               = f.label :city
-              = f.text_field :city, required: 'required' 
+              = f.text_field :city, required: 'required'
 
         = render layout: 'components/form_input_row' do
           = render layout: 'components/form_input_wrapper' do
@@ -90,7 +90,7 @@
                   td
                     = hidden_field_tag "venue_availability[#{day_key}][#{time_key}]", @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key and avail.submission_id} : false
                     = check_box_tag "venue_availability[#{day_key}][#{time_key}]", true, @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key} : false, class: "code-of-conduct", disabled: @venue_availabilities ? @venue_availabilities.find{|avail| avail.day == day_key and avail.time_block == time_key and avail.submission_id} : false
-                    = label_tag "availability[#{day_key}][#{time_key}]", time_value, class: "code-of-conduct"
+                    = label_tag "venue_availability[#{day_key}][#{time_key}]", time_value, class: "code-of-conduct"
 
         = render partial: 'components/form_errors', locals: { error_resource: @venue }
         = f.submit 'Submit', class: "VenueEdit-submit"

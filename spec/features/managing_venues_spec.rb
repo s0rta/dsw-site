@@ -23,12 +23,23 @@ feature "Managing My Venue" do
     expect(page).to have_content("You do not have any venues assigned.")
   end
 
-  scenario "a user who has venues assigned should be able to edit their availability" do
-    pending("refactor")
+  scenario "a user who has venues assigned should be able to edit their details and availability" do
     login_as venue_host_user, scope: :user
     create(:venue, company: company, name: "Example Theatre")
 
     visit "/dashboard"
-    find(".ArticleCard").click
+    find(".VenueCard", text: "EXAMPLE THEATRE").click_link("Edit")
+    fill_in "Venue Name", with: "Test Theatre"
+    find("tr", text: "Tuesday").check "12 - 2pm"
+    find("tr", text: "Thursday").check "2 - 4pm"
+    find("tr", text: "Thursday").check "4 - 6pm"
+    find("tr", text: "Friday").check "6 - 10pm"
+    click_button "Submit"
+    expect(page).to have_content("Venue was successfully updated")
+    find(".VenueCard", text: "TEST THEATRE").click_link("Edit")
+    expect(find("tr", text: "Tuesday")).to have_checked_field("12 - 2pm")
+    expect(find("tr", text: "Thursday")).to have_checked_field("2 - 4pm")
+    expect(find("tr", text: "Thursday")).to have_checked_field("4 - 6pm")
+    expect(find("tr", text: "Friday")).to have_checked_field("6 - 10pm")
   end
 end
