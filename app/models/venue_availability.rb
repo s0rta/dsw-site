@@ -44,8 +44,8 @@ class VenueAvailability < ApplicationRecord
 
   def unassign!
     transaction do
-      update(submission: nil)
       submission.update(venue: nil)
+      update(submission: nil)
     end
   end
 end

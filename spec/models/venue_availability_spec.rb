@@ -37,7 +37,7 @@ describe VenueAvailability, type: :model do
     describe "when unassigning" do
       it "updates the local relationships and the submission venue" do
         expect(venue_availability.assign!(submission)).to be_truthy
-        expect(venue_availability.unassign!(submission)).to be_truthy
+        expect(venue_availability.unassign!).to be_truthy
         expect(venue_availability.submission).to be_nil
         expect(submission.venue).to be_nil
       end
