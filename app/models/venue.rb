@@ -9,7 +9,11 @@ class Venue < ApplicationRecord
 
   has_many :submissions, dependent: :restrict_with_error
   has_many :venue_availabilities, dependent: :restrict_with_error
+  has_many :venue_adminships, dependent: :destroy
+  has_many :admins, through: :venue_adminships, class_name: "User", source: :user
+
   accepts_nested_attributes_for :venue_availabilities
+  accepts_nested_attributes_for :venue_adminships, allow_destroy: true
 
   DEFAULT_CAPACITY = 75
 

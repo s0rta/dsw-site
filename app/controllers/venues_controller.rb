@@ -85,12 +85,12 @@ class VenuesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_venue
-    @venue = Venue.find(params[:id])
+    @venue = current_user.administered_venues.find(params[:id])
   end
 
   def set_venue_availabilities
     @venue_availabilities = if params[:id]
-      current_user.venues.find(params[:id]).venue_availabilities
+      current_user.administered_venues.find(params[:id]).venue_availabilities
     else
       []
     end

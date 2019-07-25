@@ -14,7 +14,12 @@ ActiveAdmin.register Venue do
     :standing_capacity,
     :av_capabilities,
     :extra_directions,
-    :company_id
+    :company_id,
+    venue_adminships_attributes: [
+      :id,
+      :user_id,
+      :_destroy,
+    ]
 
   index do
     selectable_column
@@ -24,6 +29,9 @@ ActiveAdmin.register Venue do
     column :seated_capacity
     column :standing_capacity
     column :company
+    column "Admins" do |venue|
+      venue&.admins
+    end
     actions
   end
 
@@ -55,6 +63,13 @@ ActiveAdmin.register Venue do
           search_fields: [:name],
           ajax_search_fields: [:company_id],
         }
+
+      f.has_many :venue_adminships, allow_destroy: true do |adminship|
+        adminship.input :user_id,
+          as: :ajax_select,
+          collection: [],
+          data: {url: filter_admin_users_path, search_fields: %i[name email]}
+      end
     end
     f.actions
   end
