@@ -19,7 +19,7 @@ class User < ApplicationRecord
       allow_nil: true,
     }
 
-  validates :email_is_valid
+  validate :email_is_valid
 
   has_many :submissions, foreign_key: "submitter_id", dependent: :restrict_with_error
   has_many :votes, dependent: :destroy
