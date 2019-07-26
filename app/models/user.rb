@@ -19,7 +19,7 @@ class User < ApplicationRecord
       allow_nil: true,
     }
 
-  validate :email_is_valid
+  include ValidateEmail
 
   has_many :submissions, foreign_key: "submitter_id", dependent: :restrict_with_error
   has_many :votes, dependent: :destroy
@@ -58,14 +58,5 @@ class User < ApplicationRecord
 
   def initials
     name.split(" ").map { |n| n[0, 1] }.join
-  end
-
-  def email_is_valid
-    result = EmailInquire.validate(email)
-    if result.hint?
-      errors.add(:email, "Did you mean #{result.replacement}?")
-    elsif result.invalid?
-      errors.add(:email, "is not valid")
-    end
   end
 end
