@@ -151,6 +151,7 @@ GEM
     css_parser (1.6.0)
       addressable
     dalli (2.7.6)
+    damerau-levenshtein (1.3.1)
     database_cleaner (1.6.1)
     debug_inspector (0.0.3)
     devise (4.6.1)
@@ -164,6 +165,8 @@ GEM
     dotenv-rails (2.5.0)
       dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
+    email_inquire (0.10.0)
+      damerau-levenshtein (~> 1.2)
     email_spec (2.1.1)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
@@ -563,6 +566,7 @@ DEPENDENCIES
   database_cleaner
   devise
   dotenv-rails
+  email_inquire
   email_spec
   factory_bot_rails
   flipper

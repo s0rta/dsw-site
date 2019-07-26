@@ -22,7 +22,7 @@
       p Thank you for sharing your wisdom, knowledge, and creativity with the Denver Startup Week community!
 
 
-    = form_for @article do |f|
+    = form_for @article, honeypot: true do |f|
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do

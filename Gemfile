@@ -27,6 +27,7 @@ gem "carrierwave"
 gem "carrierwave_backgrounder", github: "hyp3rventures/carrierwave_backgrounder" # Forked version for mime-types dependency upgrade
 gem "commonmarker"
 gem "devise"
+gem "email_inquire"
 gem "fog-aws"
 gem "gemoji"
 gem "gravatarify"
