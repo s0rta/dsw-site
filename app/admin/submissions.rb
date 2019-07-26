@@ -34,7 +34,8 @@ ActiveAdmin.register Submission do
     :video_url,
     :volunteers_needed,
     :year,
-    publishing_attributes: [:id, :effective_at, :featured_on_homepage]
+    publishing_attributes: [:id, :effective_at, :featured_on_homepage],
+    presenterships_attributes: [:id, :user_id, :_delete]
 
   controller do
     def scoped_collection
@@ -205,6 +206,13 @@ ActiveAdmin.register Submission do
       f.input :budget_needed
       f.input :volunteers_needed
       f.input :internal_notes
+    end
+
+    f.has_many :presenterships do |p|
+      p.input :user_id,
+        as: :ajax_select,
+        collection: [],
+        data: {url: filter_admin_users_path, search_fields: %i[name email]}
     end
 
     f.has_many :publishing, allow_destroy: false, add_new: false do |pub|
