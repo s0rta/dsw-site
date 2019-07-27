@@ -198,7 +198,7 @@ ActiveAdmin.register Submission do
       f.input :live_stream_url
       f.input :header_image,
         as: :file,
-        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try.url(:thumb)) : nil
+        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try(:url, :thumb)) : nil
     end
     f.inputs "Additional Information" do
       f.input :estimated_size
