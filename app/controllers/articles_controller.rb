@@ -17,11 +17,11 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id].to_i)
+    @article = Article.published.find(params[:id].to_i)
   end
 
   def new
-    @article = Article.new
+    @article = current_user.articles.new
   end
 
   def create
@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = Article.find(params[:id])
+    @article = current_user.articles.find(params[:id])
     if @article.submitter_id != current_user.id
       redirect_to dashboard_path
     else
@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
+    @article = current_user.articles.find(params[:id])
     @article.update(article_params)
     if @article.save
       flash[:notice] = "Thanks! Your article update has been received."
