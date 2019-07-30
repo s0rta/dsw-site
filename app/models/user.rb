@@ -28,7 +28,7 @@ class User < ApplicationRecord
   has_many :registrations, dependent: :destroy
   has_many :pitch_contest_votes, class_name: "PitchContest::Vote", dependent: :destroy
   has_many :authorships, dependent: :restrict_with_error
-  has_many :articles, foreign_key: "submitter_id"
+  has_many :articles, foreign_key: "submitter_id", dependent: :restrict_with_error
   has_many :venue_adminships, dependent: :destroy
   has_many :administered_venues, through: :venue_adminships, class_name: "Venue", source: :venue
 
