@@ -87,7 +87,7 @@ Track.reset_column_information
     is_voteable: false,
     email_alias: "info@denverstartupweek.org",
     description: <<-DESCRIPTION.strip_heredoc.squish,
-    From our pitch competitions to the Startup Crawl to the Physical Products Showcase, there are unique opportunities each year for companies of all sizes to get involved in Denver Startup Week’s Headline Events. 
+    From our pitch competitions to the Startup Crawl to the Physical Products Showcase, there are unique opportunities each year for companies of all sizes to get involved in Denver Startup Week’s Headline Events.
     DESCRIPTION
   },
   "Basecamp" => {
@@ -118,60 +118,62 @@ Track.reset_column_information
 end
 
 Cluster.reset_column_information
-{
-  "IoT" => {
-    description: <<-DESCRIPTION.strip_heredoc.squish,
-    From smart devices to integrated homes to intelligent vehicles, the Internet of Things is rapidly transforming the
-    way that we interact with the world around us. Check out the latest technologies and trends in the IoT realm, and
-    take a look behind the scenes at what it takes to concept, design and build a connected product.
-    DESCRIPTION
-  },
-  "Diversity & Inclusion" => {
-    description: <<-DESCRIPTION.strip_heredoc.squish,
-    Building an inclusive organization and culture is a critical part of any early-stage company, particularly in a
-    world of increasingly global and diverse customer bases. Explore the what, how and why of building a diverse team,
-    and hear firsthand the experiences of those on the front lines enabling diversity in the startup realm.
-    DESCRIPTION
-  },
-  "Cannabis" => {
-    description: <<-DESCRIPTION.strip_heredoc.squish,
-    Colorado is at the forefront not only of entrepreneurship and technology, but also in the emerging cannabis industry.
-    Beyond just the leaf, explore the intersection of technology and cannabis, how these two seemingly different fields
-    interoperate, and the challenges of building a company at the intersection of emerging markets and regulatory frameworks.
-    DESCRIPTION
-  },
-  "Healthtech" => {
-    description: <<-DESCRIPTION.strip_heredoc.squish,
-    As healthcare costs continue to rise, individuals and companies find themselves in an increasingly unstable economic
-    situation. Enter digital health technologies, exploding on the scene with engaging, low-cost, and convenient tools
-    that will have a lasting impact on large populations both here in Colorado and throughout the country.\n\nExplore the
-    significant transformations coming to, and already being implemented in, the healthcare industry from both technologists
-    and healthcare professionals. Plus, see the technological innovations that could be making a real difference in your
-    own health care in the near future
-    DESCRIPTION
-  },
-  "Social Impact" => {
-    description: <<-DESCRIPTION.strip_heredoc.squish,
-    Many companies are beginning to understand that the impact they have on the world around them isn't just measured in dollars
-    and cents, but also the lasting effects they have on the people and communities around them. Learn about how these
-    companies are both thinking and acting differently, and how you can start to build social good into your company as well.
-    DESCRIPTION
-  },
-  "Business Basics" => {
-    description: <<-DESCRIPTION.strip_heredoc.squish,
-    Having the fundamental skills required to run a successful company are key to getting your startup off the ground. From
-    accounting and finance to operations to marketing to accessing capital, come learn the ins and outs of running your company
-    from the people in the community who have done it most sucessfully.
-    DESCRIPTION
-  },
-}.each do |cluster_name, attrs|
-  c = Cluster.where(name: cluster_name).first_or_initialize
+unless Cluster.any?
+  {
+    "IoT" => {
+      description: <<-DESCRIPTION.strip_heredoc.squish,
+      From smart devices to integrated homes to intelligent vehicles, the Internet of Things is rapidly transforming the
+      way that we interact with the world around us. Check out the latest technologies and trends in the IoT realm, and
+      take a look behind the scenes at what it takes to concept, design and build a connected product.
+      DESCRIPTION
+    },
+    "Diversity & Inclusion" => {
+      description: <<-DESCRIPTION.strip_heredoc.squish,
+      Building an inclusive organization and culture is a critical part of any early-stage company, particularly in a
+      world of increasingly global and diverse customer bases. Explore the what, how and why of building a diverse team,
+      and hear firsthand the experiences of those on the front lines enabling diversity in the startup realm.
+      DESCRIPTION
+    },
+    "Cannabis" => {
+      description: <<-DESCRIPTION.strip_heredoc.squish,
+      Colorado is at the forefront not only of entrepreneurship and technology, but also in the emerging cannabis industry.
+      Beyond just the leaf, explore the intersection of technology and cannabis, how these two seemingly different fields
+      interoperate, and the challenges of building a company at the intersection of emerging markets and regulatory frameworks.
+      DESCRIPTION
+    },
+    "Healthtech" => {
+      description: <<-DESCRIPTION.strip_heredoc.squish,
+      As healthcare costs continue to rise, individuals and companies find themselves in an increasingly unstable economic
+      situation. Enter digital health technologies, exploding on the scene with engaging, low-cost, and convenient tools
+      that will have a lasting impact on large populations both here in Colorado and throughout the country.\n\nExplore the
+      significant transformations coming to, and already being implemented in, the healthcare industry from both technologists
+      and healthcare professionals. Plus, see the technological innovations that could be making a real difference in your
+      own health care in the near future
+      DESCRIPTION
+    },
+    "Social Impact" => {
+      description: <<-DESCRIPTION.strip_heredoc.squish,
+      Many companies are beginning to understand that the impact they have on the world around them isn't just measured in dollars
+      and cents, but also the lasting effects they have on the people and communities around them. Learn about how these
+      companies are both thinking and acting differently, and how you can start to build social good into your company as well.
+      DESCRIPTION
+    },
+    "Business Basics" => {
+      description: <<-DESCRIPTION.strip_heredoc.squish,
+      Having the fundamental skills required to run a successful company are key to getting your startup off the ground. From
+      accounting and finance to operations to marketing to accessing capital, come learn the ins and outs of running your company
+      from the people in the community who have done it most sucessfully.
+      DESCRIPTION
+    },
+  }.each do |cluster_name, attrs|
+    c = Cluster.where(name: cluster_name).first_or_initialize
 
-  # Skip if the record has been updated since it was populated
-  next if c.updated_at && c.updated_at > c.created_at
+    # Skip if the record has been updated since it was populated
+    next if c.updated_at && c.updated_at > c.created_at
 
-  c.assign_attributes(attrs)
-  c.save!
+    c.assign_attributes(attrs)
+    c.save!
+  end
 end
 
 HomepageCta.reset_column_information
