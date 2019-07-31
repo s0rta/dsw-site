@@ -69,7 +69,7 @@
         - if user_signed_in?
           - @session.public_registrants(current_user).each do |user|
             .SessionDetail-attendee
-              = render partial: 'components/name_with_avatar', locals: { user: user, align: 'right', color: 'gray' }
+              = render partial: 'components/name_with_avatar', locals: { user: user, name: user.abbreviated_name, align: 'right', color: 'gray' }
               - if user[:linkedin_url].present?
                 = render partial: 'components/user_linkedin', locals: { user: user }
 
