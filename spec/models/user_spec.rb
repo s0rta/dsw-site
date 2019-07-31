@@ -24,4 +24,48 @@ RSpec.describe User, type: :model do
 
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
   end
+
+  describe "deriving initials" do
+    it "works when a first and last name are specified" do
+      u = build(:user, name: "Jay Zeschin")
+      expect(u.initials).to eq("JZ")
+    end
+
+    it "doesn't explode when a name is empty" do
+      u = build(:user, name: "")
+      expect(u.initials).to be_blank
+    end
+
+    it "works when only a first name is specified" do
+      u = build(:user, name: "Jay")
+      expect(u.initials).to eq("J")
+    end
+
+    it "works when multiple last names are specified" do
+      u = build(:user, name: "Jay Zeschin Smith")
+      expect(u.initials).to eq("JZS")
+    end
+  end
+
+  describe "deriving an abbreviated name" do
+    it "works when a first and last name are specified" do
+      u = build(:user, name: "Jay Zeschin")
+      expect(u.abbreviated_name).to eq("Jay Z.")
+    end
+
+    it "works when only a first name is specified" do
+      u = build(:user, name: "Jay")
+      expect(u.abbreviated_name).to eq("Jay")
+    end
+
+    it "works when multiple last names are specified" do
+      u = build(:user, name: "Jay Zeschin Smith")
+      expect(u.abbreviated_name).to eq("Jay S.")
+    end
+
+    it "doesn't explode when a name is empty" do
+      u = build(:user, name: "")
+      expect(u.abbreviated_name).to be_blank
+    end
+  end
 end

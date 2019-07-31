@@ -59,4 +59,13 @@ class User < ApplicationRecord
   def initials
     name.split(" ").map { |n| n[0, 1] }.join
   end
+
+  def abbreviated_name
+    parts = name.split
+    if parts.size > 1
+      [parts.first, parts.last[0]].compact.join(" ") + "."
+    else
+      name
+    end
+  end
 end
