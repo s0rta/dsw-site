@@ -26,6 +26,7 @@ class Cluster < ApplicationRecord
 
   def self.dropdown_options
     select("name as label, name as value, id")
+      .active
       .in_display_order
   end
 end
