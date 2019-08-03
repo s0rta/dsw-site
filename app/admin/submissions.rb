@@ -140,9 +140,9 @@ ActiveAdmin.register Submission do
   filter :description
   filter :track
   filter :venue, as: :select, collection: -> { Venue.alphabetical }
-  filter :company, as: :select, collection: -> { Company.all }
+  filter :company_name, as: :string
   filter :format
-  filter :submitter_name_cont, as: :string, label: "Submitter Name"
+  filter :submitter_name, as: :string, label: "Submitter Name"
   filter :start_day, as: :select, collection: Submission::DAYS.invert
   filter :end_day, as: :select, collection: Submission::DAYS.invert
   filter :time_range, as: :select, collection: Submission::TIME_RANGES
