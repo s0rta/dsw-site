@@ -76,7 +76,6 @@ ActiveAdmin.register Article do
                 "unorderedlist",
                 "strikethrough",
                 "pre",
-                "html",
               ],
             },
           }.to_json,

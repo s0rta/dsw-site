@@ -13,8 +13,9 @@
         .ArticleCard-date Not Yet Published
       h2.ArticleCard-title #{article.title}
       - unless article.header_image.present?
-        .ArticleCard-body-preview #{truncate_html(article.body, 175).html_safe}
+        .ArticleCard-body-preview
+          = truncate_html(sanitize_article_body_for_display(article), 175)
       .ArticleCard-tracks
         - article.tracks.limit(3).each do |track|
-          =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
+          = render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }
 
