@@ -484,3 +484,19 @@ Venue.reset_column_information
   v.assign_attributes(attrs)
   v.save!
 end
+
+Ethnicity.reset_column_information
+unless Ethnicity.any?
+  [
+    "White",
+    "Black / African-American",
+    "Latino",
+    "Asian",
+    "American Indian",
+    "Middle Eastern",
+    "Pacific Islander",
+    "Other",
+  ].each do |name|
+    Ethnicity.create!(name: name)
+  end
+end

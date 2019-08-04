@@ -19,17 +19,37 @@ FactoryBot.define do
     ambassador_application_close_at { Date.parse("2017-08-11").freeze }
   end
 
+  factory :article do
+    title { "This is a good article" }
+    body { "Please read me!" }
+    association :submitter, factory: :user
+  end
+
+  factory :attendee_goal
+
+  factory :attendee_message do
+    association :submission
+    subject { "Important" }
+    body { "I am a message!" }
+  end
+
   factory :company do
     sequence(:name) { |n| "Company #{n}" }
   end
 
-  factory :user do
-    name { "Erlich Bachmann" }
-    password { "password" }
-    password_confirmation { password }
-    sequence(:email) { |n| "user#{n}@example.com" }
-    file_path = Rails.root.join("spec", "support", "avatar_examples", "less_than_2_mb.png")
-    avatar { Rack::Test::UploadedFile.new(file_path, "image/png") }
+  factory :ethnicity
+
+  factory :general_inquiry do
+    sequence(:contact_email) { |n| "#{n}@example.com" }
+  end
+
+  factory :newsroom_item do
+    title { "Good news!" }
+    release_date { 1.day.ago }
+  end
+
+  factory :publishing do
+    effective_at { Time.zone.now }
   end
 
   factory :registration do
@@ -38,13 +58,6 @@ FactoryBot.define do
     age_range { Registration::AGE_RANGES.first }
     primary_role { "Founder" }
     coc_acknowledgement { true }
-  end
-
-  factory :track do
-    sequence(:name) { |n| "Track #{n}" }
-    email_alias { "#{name.parameterize}@example.com" }
-    color { "teal" }
-    icon { "eyeball" }
   end
 
   factory :submission do
@@ -56,37 +69,26 @@ FactoryBot.define do
     association :submitter, factory: :user
   end
 
+  factory :track do
+    sequence(:name) { |n| "Track #{n}" }
+    email_alias { "#{name.parameterize}@example.com" }
+    color { "teal" }
+    icon { "eyeball" }
+  end
+
+  factory :user do
+    name { "Erlich Bachmann" }
+    password { "password" }
+    password_confirmation { password }
+    sequence(:email) { |n| "user#{n}@example.com" }
+    file_path = Rails.root.join("spec", "support", "avatar_examples", "less_than_2_mb.png")
+    avatar { Rack::Test::UploadedFile.new(file_path, "image/png") }
+  end
+
   factory :venue do
     sequence(:name) { |n| "Venue #{n}" }
     address { "1060 W Addison St" }
     city { "Chicago" }
     state { "IL" }
-  end
-
-  factory :attendee_message do
-    association :submission
-    subject { "Important" }
-    body { "I am a message!" }
-  end
-
-  factory :newsroom_item do
-    title { "Good news!" }
-    release_date { 1.day.ago }
-  end
-
-  factory :general_inquiry do
-    sequence(:contact_email) { |n| "#{n}@example.com" }
-  end
-
-  factory :attendee_goal
-
-  factory :article do
-    title { "This is a good article" }
-    body { "Please read me!" }
-    association :submitter, factory: :user
-  end
-
-  factory :publishing do
-    effective_at { Time.zone.now }
   end
 end

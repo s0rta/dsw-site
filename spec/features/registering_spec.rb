@@ -39,6 +39,8 @@ feature "Registering to attend" do
       create(:company, name: "Example.com")
       create(:attendee_goal, name: "inspiration", description: "Be inspired")
       create(:attendee_goal, name: "skills", description: "Improve my skills")
+      create(:ethnicity, name: "Black / African American")
+      create(:ethnicity, name: "Latino")
     end
 
     scenario "Registering to attend from the schedule page" do
@@ -54,6 +56,10 @@ feature "Registering to attend" do
 
       select "he/him/his", from: "registration_gender"
       select "25-34 years old", from: "registration_age_range"
+
+      check "Black / African American"
+      check "Latino"
+
       select "Founder", from: "registration_track_id"
 
       # Use the autocompleter to select
@@ -75,6 +81,8 @@ feature "Registering to attend" do
       expect(reg.age_range).to eq("25-34 years old")
       expect(reg.track.name).to eq("Founder")
       expect(reg.gender).to eq("he/him/his")
+      expect(reg.ethnicities.map(&:description)).to include("Black / African American")
+      expect(reg.ethnicities.map(&:description)).to include("Latino")
       expect(reg.company.name).to eq("Example.com")
       expect(reg.attendee_goals.map(&:description)).to include("Improve my skills")
       expect(reg.attendee_goals.map(&:description)).to include("Be inspired")
@@ -99,6 +107,10 @@ feature "Registering to attend" do
 
       select "he/him/his", from: "registration_gender"
       select "25-34 years old", from: "registration_age_range"
+
+      check "Black / African American"
+      check "Latino"
+
       select "Founder", from: "registration_track_id"
 
       # Use the autocompleter to select
@@ -120,6 +132,8 @@ feature "Registering to attend" do
       expect(reg.age_range).to eq("25-34 years old")
       expect(reg.track.name).to eq("Founder")
       expect(reg.gender).to eq("he/him/his")
+      expect(reg.ethnicities.map(&:description)).to include("Black / African American")
+      expect(reg.ethnicities.map(&:description)).to include("Latino")
       expect(reg.company.name).to eq("Example.com")
       expect(reg.attendee_goals.map(&:description)).to include("Improve my skills")
       expect(reg.attendee_goals.map(&:description)).to include("Be inspired")

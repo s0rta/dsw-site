@@ -46,6 +46,8 @@ class Registration < ApplicationRecord
   has_many :submissions, through: :session_registrations
   has_many :registration_attendee_goals, dependent: :destroy
   has_many :attendee_goals, through: :registration_attendee_goals
+  has_many :registration_ethnicities, dependent: :destroy
+  has_many :ethnicities, through: :registration_ethnicities
 
   validates :user,
     :age_range,
