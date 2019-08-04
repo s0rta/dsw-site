@@ -171,4 +171,8 @@ module ApplicationHelper
   def truncate_html(content, max_length)
     Truncato.truncate(content, max_length: max_length, count_tags: false)
   end
+
+  def sanitize_article_body_for_display(article)
+    sanitize article.body, tags: %w[h2 a ul li ol pre b u strong em blockquote strike s], attributes: %w[href]
+  end
 end
