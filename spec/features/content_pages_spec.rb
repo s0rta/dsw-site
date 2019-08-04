@@ -2,16 +2,14 @@ require "spec_helper"
 
 feature "Content-only pages" do
   scenario "the sponsors page" do
-    pending("refactor")
     visit "/"
     click_link "Sponsors"
     expect(page).to have_content("OUR #{Date.today.year} SPONSORS")
   end
 
   scenario "the program page" do
-    pending("refactor")
     visit "/program"
-    expect(page).to have_content("Program")
+    expect(page).to have_content("ENTREPRENEURIAL SPIRIT")
   end
 
   describe "the get involved section" do
@@ -21,7 +19,6 @@ feature "Content-only pages" do
     end
 
     scenario "the FAQ page" do
-      pending("refactor")
       allow(Helpscout::Article).to receive(:for_category)
         .and_return([Helpscout::Article.new("name" => "What is 2 + 2?", "text" => "4")])
       visit "/get-involved"
@@ -32,7 +29,6 @@ feature "Content-only pages" do
     end
 
     scenario "the team page" do
-      pending("refactor")
       visit "/get-involved"
       click_link "Team"
       expect(page).to have_content("TEAM")
@@ -47,7 +43,6 @@ feature "Content-only pages" do
   end
 
   scenario "the assets page" do
-    pending("refactor")
     visit "/"
     click_link "Press"
     click_link "Assets"
