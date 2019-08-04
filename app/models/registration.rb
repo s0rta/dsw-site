@@ -1,36 +1,42 @@
 class Registration < ApplicationRecord
-
   AGE_RANGES = [
-    'Under 18 years old',
-    '18-24 years old',
-    '25-34 years old',
-    '35-44 years old',
-    '45-54 years old',
-    '55-64 years old',
-    '65-74 years old',
-    '75 years or older'
+    "Under 18 years old",
+    "18-24 years old",
+    "25-34 years old",
+    "35-44 years old",
+    "45-54 years old",
+    "55-64 years old",
+    "65-74 years old",
+    "75 years or older",
   ].freeze
 
   PRIMARY_ROLES = [
-    'Accounting & Finance',
-    'Contract & Freelance',
-    'Customer Service/Success',
-    'Data/Analytics',
-    'Design',
-    'Developer/Engineer',
-    'Founder/Executive',
-    'Government',
-    'Health Care',
-    'Hospitality',
-    'Information Technology',
-    'Manufacturing',
-    'Non-profit',
-    'Operations',
-    'Product',
-    'Recruiting & Human Resources',
-    'Sales & Marketing',
-    'Writing & Content',
-    'Other'
+    "Accounting",
+    "Administrative",
+    "Arts and Design",
+    "Business Development",
+    "Community & Social Services",
+    "Consulting",
+    "Education",
+    "Engineering",
+    "Entrepreneurship",
+    "Finance",
+    "Healthcare Services",
+    "Human Resources",
+    "Information Technology",
+    "Legal",
+    "Marketing",
+    "Media & Communications",
+    "Military & Protective Services",
+    "Operations",
+    "Program & Product Management",
+    "Purchasing",
+    "Quality Assurance",
+    "Real Estate",
+    "Research",
+    "Sales",
+    "Support",
+    "Other",
   ].freeze
 
   belongs_to :user
@@ -42,10 +48,10 @@ class Registration < ApplicationRecord
   has_many :attendee_goals, through: :registration_attendee_goals
 
   validates :user,
-            :age_range,
-            :primary_role, presence: true
+    :age_range,
+    :primary_role, presence: true
 
-  validates :user_id, uniqueness: { scope: :year, message: 'may only register once per year' }
+  validates :user_id, uniqueness: {scope: :year, message: "may only register once per year"}
   validates :coc_acknowledgement, acceptance: true
 
   after_initialize do
@@ -58,7 +64,7 @@ class Registration < ApplicationRecord
   def subscribe_to_list
     registered_years = user.registrations.reload.map(&:year).sort.map(&:to_s)
     ListSubscriptionJob.perform_async(user.email,
-                                registered_years: registered_years)
+      registered_years: registered_years)
   end
 
   after_create :send_confirmation_email
@@ -76,6 +82,6 @@ class Registration < ApplicationRecord
   end
 
   def company_name=(value)
-    self.company = Company.where('LOWER(name) = LOWER(?)', value).first_or_initialize(name: value)
+    self.company = Company.where("LOWER(name) = LOWER(?)", value).first_or_initialize(name: value)
   end
 end

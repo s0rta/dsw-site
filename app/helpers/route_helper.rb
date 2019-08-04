@@ -1,9 +1,8 @@
 module RouteHelper
-
   def admin_root_path
     {
       path: "/admin",
-      label: "Admin"
+      label: "Admin",
     }
   end
 
@@ -29,10 +28,10 @@ module RouteHelper
 
   def social_media_routes
     [
-      { icon: "fa-twitter", label: "twitter", link: "https://twitter.com/denstartupweek" },
-      { icon: "fa-facebook-f", label: "facebook", link: "https://www.facebook.com/DenverStartupWeek" },
-      { icon: "fa-linkedin-in", label: "linkedin", link: "https://www.linkedin.com/company/denver-startup-week/" },
-      { icon: "fa-youtube", label: "youtube", link: "https://www.youtube.com/c/denverstartupweek" }
+      {icon: "fa-twitter", label: "twitter", link: "https://twitter.com/denstartupweek"},
+      {icon: "fa-facebook-f", label: "facebook", link: "https://www.facebook.com/DenverStartupWeek"},
+      {icon: "fa-linkedin-in", label: "linkedin", link: "https://www.linkedin.com/company/denver-startup-week/"},
+      {icon: "fa-youtube", label: "youtube", link: "https://www.youtube.com/c/denverstartupweek"},
     ]
   end
 
@@ -45,21 +44,21 @@ module RouteHelper
   def contact_us_route
     {
       path: new_general_inquiry_path,
-      label: "Contact Us"
+      label: "Contact Us",
     }
   end
 
   def code_of_conduct_route
     {
       path: "/code-of-conduct",
-      label: "Code of Conduct"
+      label: "Code of Conduct",
     }
   end
 
   def home_route
     {
       path: "/",
-      label: "home"
+      label: "home",
     }
   end
 
@@ -67,49 +66,49 @@ module RouteHelper
     {
       path: "/about",
       label: "about",
-      nested_routes: about_routes
+      nested_routes: about_routes,
     }
   end
 
   def about_route
     {
       path: "/about",
-      label: "overview"
+      label: "overview",
     }
   end
 
   def team_route
     {
       path: "/about/team",
-      label: "team"
+      label: "team",
     }
   end
 
   def faq_route
     {
       path: "/about/faq",
-      label: "faq"
+      label: "faq",
     }
   end
 
   def assets_route
     {
       path: "/about/assets",
-      label: "assets"
+      label: "assets",
     }
   end
 
   def sponsor_route
     {
       path: "/get-involved/sponsor",
-      label: "sponsor"
+      label: "sponsor",
     }
   end
 
   def sponsors_route
     {
       path: "/sponsors",
-      label: "sponsors"
+      label: "sponsors",
     }
   end
 
@@ -123,56 +122,56 @@ module RouteHelper
   def get_involved_route
     {
       path: "/get-involved",
-      label: "overview"
+      label: "overview",
     }
   end
 
   def volunteer_route
     {
       path: "https://www.cervistech.com/acts/console.php?console_id=0282&console_type=event&ht=1",
-      label: "volunteer"
+      label: "volunteer",
     }
   end
 
   def present_route
     {
       path: new_submission_path,
-      label: "present"
+      label: "present",
     }
   end
 
   def content_route
     {
       path: "/get-involved/content",
-      label: "content"
+      label: "content",
     }
   end
 
   def schedule_route
     {
       path: schedules_path,
-      label: "schedule"
+      label: "schedule",
     }
   end
 
   def submissions_route
     {
       path: new_submission_path,
-      label: "Submit a Talk"
+      label: "Submit a Talk",
     }
   end
 
   def voting_route
     {
       path: submissions_path,
-      label: "Vote"
+      label: "Vote",
     }
   end
 
   def register_route
     {
       path: new_registration_path,
-      label: "Register To Attend"
+      label: "Register to Attend",
     }
   end
 
@@ -180,49 +179,49 @@ module RouteHelper
     {
       path: "/program",
       label: "program",
-      nested_routes: program_routes
+      nested_routes: program_routes,
     }
   end
 
   def articles_route
     {
       path: articles_path,
-      label: "Articles"
+      label: "Articles",
     }
   end
 
   def program_route
     {
       path: "/program",
-      label: "overview"
+      label: "overview",
     }
   end
 
   def tracks_route
     {
       path: "/program/tracks",
-      label: "tracks"
+      label: "tracks",
     }
   end
 
   def track_detail_route(name)
     {
-       path: "/program/tracks/#{name}",
-       label: name
+      path: "/program/tracks/#{name}",
+      label: name,
     }
   end
 
   def clusters_route
     {
       path: "/program/clusters",
-      label: "clusters"
+      label: "clusters",
     }
   end
 
   def basecamp_route
     {
       path: "/program/tracks/Basecamp",
-      label: "basecamp"
+      label: "basecamp",
     }
   end
 
@@ -255,8 +254,8 @@ module RouteHelper
     return default if different_referer_host?
     return default if request.referer.include?(default)
     matched_path = request.referer.match(/([^\/]+$)/)
-    return 'home' if matched_path.nil?
-    URI.decode(matched_path[1].split('?').first)
+    return "home" if matched_path.nil?
+    URI.decode(matched_path[1].split("?").first)
   end
 
   def back_to_path(path_check, default_path)
