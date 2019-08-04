@@ -42,16 +42,16 @@ feature "Registering to attend" do
     end
 
     scenario "Registering to attend from the schedule page" do
-      pending("refactor")
       visit "/schedule"
       click_link "I am a session"
       click_link "Add to Schedule"
-      click_link "Create an account"
-      fill_in "Name", with: "Test Registrant"
+
+      fill_in "First and Last Name", with: "Test Registrant"
       fill_in "E-mail Address", with: "test2@example.com"
       fill_in "Password", with: "password"
       fill_in "Confirm Password", with: "password"
-      click_button "Sign Up"
+      click_button "Next"
+
       select "he/him/his", from: "registration_gender"
       select "25-34 years old", from: "registration_age_range"
       select "Founder", from: "registration_track_id"
@@ -60,24 +60,24 @@ feature "Registering to attend" do
       fill_in "registration_company_name", with: "Exa"
       find(".awesomplete li", text: "Example.com").click
 
-      select "Design", from: "registration_primary_role"
+      select "Arts and Design", from: "registration_primary_role"
       fill_in "registration_zip", with: "12345"
 
-      select "Be inspired", from: "registration_attendee_goal_ids"
-      select "Improve my skills", from: "registration_attendee_goal_ids"
+      check "Be inspired"
+      check "Improve my skills"
 
       check "registration_coc_acknowledgement"
-      click_button "Register"
+      click_button "Submit"
       expect(page).to have_content("Thanks for registering!")
 
       reg = Registration.last
-      expect(reg.primary_role).to eq("Design")
+      expect(reg.primary_role).to eq("Arts and Design")
       expect(reg.age_range).to eq("25-34 years old")
       expect(reg.track.name).to eq("Founder")
       expect(reg.gender).to eq("he/him/his")
       expect(reg.company.name).to eq("Example.com")
-      expect(reg.attendee_goals.map(&:name)).to include("Improve my skills")
-      expect(reg.attendee_goals.map(&:name)).to include("Be inspired")
+      expect(reg.attendee_goals.map(&:description)).to include("Improve my skills")
+      expect(reg.attendee_goals.map(&:description)).to include("Be inspired")
 
       # Confirmation e-mail
       email = ActionMailer::Base.deliveries.detect { |e| e.to.include?("test2@example.com") }
