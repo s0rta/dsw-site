@@ -55,10 +55,12 @@ class Submission < ApplicationRecord
   has_many :sent_notifications, dependent: :destroy
   has_many :attendee_messages, dependent: :restrict_with_error
   has_many :feedback, dependent: :destroy
-
   has_one :sponsorship, dependent: :restrict_with_error
+  has_many :presenterships, dependent: :destroy
+  has_many :presenters, through: :presenterships, source: :user
 
-  accepts_nested_attributes_for :publishing, allow_destroy: true
+  accepts_nested_attributes_for :publishing, allow_destroy: false
+  accepts_nested_attributes_for :presenterships, allow_destroy: true
 
   validates :title, presence: true
   validates :description, presence: true

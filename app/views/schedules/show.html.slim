@@ -33,6 +33,11 @@
       .SessionDetail-column--left
         h1.SessionDetail-title = @session.full_title
         .SessionDetail-description = process_with_pipeline(@session.description)
+        - if @session.presenters.any?
+          .SessionDetail-presenters
+            - @session.presenters.each do |presenter|
+              .SessionDetail-presenter
+                = render partial: 'components/name_with_avatar', locals: { user: presenter, name: presenter.name, align: 'right', color: 'grey' }
 
         - if @session.live_stream_url.present?
           a.SessionDetail-stream href='#'

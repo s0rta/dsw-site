@@ -736,6 +736,38 @@ ALTER SEQUENCE public.pitch_contest_votes_id_seq OWNED BY public.pitch_contest_v
 
 
 --
+-- Name: presenterships; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.presenterships (
+    id bigint NOT NULL,
+    submission_id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: presenterships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.presenterships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: presenterships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.presenterships_id_seq OWNED BY public.presenterships.id;
+
+
+--
 -- Name: publishings; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1615,6 +1647,13 @@ ALTER TABLE ONLY public.pitch_contest_votes ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
+-- Name: presenterships id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.presenterships ALTER COLUMN id SET DEFAULT nextval('public.presenterships_id_seq'::regclass);
+
+
+--
 -- Name: publishings id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1905,6 +1944,14 @@ ALTER TABLE ONLY public.pitch_contest_entries
 
 ALTER TABLE ONLY public.pitch_contest_votes
     ADD CONSTRAINT pitch_contest_votes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: presenterships presenterships_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.presenterships
+    ADD CONSTRAINT presenterships_pkey PRIMARY KEY (id);
 
 
 --
@@ -2291,6 +2338,20 @@ CREATE INDEX index_pitch_contest_votes_on_user_id ON public.pitch_contest_votes 
 
 
 --
+-- Name: index_presenterships_on_submission_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_presenterships_on_submission_id ON public.presenterships USING btree (submission_id);
+
+
+--
+-- Name: index_presenterships_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_presenterships_on_user_id ON public.presenterships USING btree (user_id);
+
+
+--
 -- Name: index_publishings_on_effective_at; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2548,6 +2609,14 @@ ALTER TABLE ONLY public.sponsorships
 
 
 --
+-- Name: presenterships fk_rails_193171f9e9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.presenterships
+    ADD CONSTRAINT fk_rails_193171f9e9 FOREIGN KEY (submission_id) REFERENCES public.submissions(id);
+
+
+--
 -- Name: registration_ethnicities fk_rails_1e411f9fdf; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2724,6 +2793,14 @@ ALTER TABLE ONLY public.articles_tracks
 
 
 --
+-- Name: presenterships fk_rails_f0f487c2cd; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.presenterships
+    ADD CONSTRAINT fk_rails_f0f487c2cd FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: articles fk_rails_f23b81b642; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2840,6 +2917,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20170828225639'),
 ('20170830195828'),
 ('20170906024523'),
+('20170907044328'),
 ('20170908145727'),
 ('20170911231704'),
 ('20170912152330'),

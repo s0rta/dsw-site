@@ -44,6 +44,9 @@ class User < ApplicationRecord
       .where("team_position IS NOT NULL AND team_position <> ''")
   end
 
+  has_many :presenterships, dependent: :restrict_with_error
+  has_many :presented_sessions, through: :presenterships, source: :submission
+
   def current_registration
     registrations.for_current_year.first
   end
