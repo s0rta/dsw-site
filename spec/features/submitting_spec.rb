@@ -38,7 +38,7 @@ feature "Creating a submission" do
       check "submission_coc_acknowledgement"
 
       # Use the autocompleter to select
-      fill_in "submission_company_name", with: "Exa"
+      fill_in "submission_company_name", with: "Exam"
       find(".awesomplete li", text: "Example.com").click
 
       click_button "Submit"
