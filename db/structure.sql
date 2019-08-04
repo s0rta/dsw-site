@@ -462,6 +462,38 @@ ALTER SEQUENCE public.companies_users_id_seq OWNED BY public.companies_users.id;
 
 
 --
+-- Name: ethnicities; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.ethnicities (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    is_active boolean DEFAULT true NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: ethnicities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.ethnicities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: ethnicities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.ethnicities_id_seq OWNED BY public.ethnicities.id;
+
+
+--
 -- Name: feedback; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -768,6 +800,38 @@ CREATE SEQUENCE public.registration_attendee_goals_id_seq
 --
 
 ALTER SEQUENCE public.registration_attendee_goals_id_seq OWNED BY public.registration_attendee_goals.id;
+
+
+--
+-- Name: registration_ethnicities; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.registration_ethnicities (
+    id bigint NOT NULL,
+    registration_id bigint,
+    ethnicity_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: registration_ethnicities_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.registration_ethnicities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: registration_ethnicities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.registration_ethnicities_id_seq OWNED BY public.registration_ethnicities.id;
 
 
 --
@@ -1495,6 +1559,13 @@ ALTER TABLE ONLY public.companies_users ALTER COLUMN id SET DEFAULT nextval('pub
 
 
 --
+-- Name: ethnicities id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ethnicities ALTER COLUMN id SET DEFAULT nextval('public.ethnicities_id_seq'::regclass);
+
+
+--
 -- Name: feedback id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1555,6 +1626,13 @@ ALTER TABLE ONLY public.publishings ALTER COLUMN id SET DEFAULT nextval('public.
 --
 
 ALTER TABLE ONLY public.registration_attendee_goals ALTER COLUMN id SET DEFAULT nextval('public.registration_attendee_goals_id_seq'::regclass);
+
+
+--
+-- Name: registration_ethnicities id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.registration_ethnicities ALTER COLUMN id SET DEFAULT nextval('public.registration_ethnicities_id_seq'::regclass);
 
 
 --
@@ -1766,6 +1844,14 @@ ALTER TABLE ONLY public.companies_users
 
 
 --
+-- Name: ethnicities ethnicities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.ethnicities
+    ADD CONSTRAINT ethnicities_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: feedback feedback_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -1835,6 +1921,14 @@ ALTER TABLE ONLY public.publishings
 
 ALTER TABLE ONLY public.registration_attendee_goals
     ADD CONSTRAINT registration_attendee_goals_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: registration_ethnicities registration_ethnicities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.registration_ethnicities
+    ADD CONSTRAINT registration_ethnicities_pkey PRIMARY KEY (id);
 
 
 --
@@ -2225,6 +2319,20 @@ CREATE INDEX index_registration_attendee_goals_on_registration_id ON public.regi
 
 
 --
+-- Name: index_registration_ethnicities_on_ethnicity_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_registration_ethnicities_on_ethnicity_id ON public.registration_ethnicities USING btree (ethnicity_id);
+
+
+--
+-- Name: index_registration_ethnicities_on_registration_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_registration_ethnicities_on_registration_id ON public.registration_ethnicities USING btree (registration_id);
+
+
+--
 -- Name: index_registrations_on_calendar_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2440,6 +2548,14 @@ ALTER TABLE ONLY public.sponsorships
 
 
 --
+-- Name: registration_ethnicities fk_rails_1e411f9fdf; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.registration_ethnicities
+    ADD CONSTRAINT fk_rails_1e411f9fdf FOREIGN KEY (ethnicity_id) REFERENCES public.ethnicities(id);
+
+
+--
 -- Name: volunteerships fk_rails_26e12c935b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2469,6 +2585,14 @@ ALTER TABLE ONLY public.feedback
 
 ALTER TABLE ONLY public.authorships
     ADD CONSTRAINT fk_rails_414ad6261a FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: registration_ethnicities fk_rails_42dcd02c65; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.registration_ethnicities
+    ADD CONSTRAINT fk_rails_42dcd02c65 FOREIGN KEY (registration_id) REFERENCES public.registrations(id);
 
 
 --
@@ -2780,6 +2904,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190711041549'),
 ('20190714202606'),
 ('20190715223850'),
-('20190725031523');
+('20190725031523'),
+('20190804191816'),
+('20190804192339');
 
 

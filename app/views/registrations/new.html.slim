@@ -16,6 +16,13 @@
           = render layout: 'components/floating_input' do
             = f.select :age_range, age_ranges_for_select, { :include_blank => '' }, :required => true
             = f.label :age_range, 'How old are you?'
+      .Register-native-field
+        .Register-custom-label With which ethnicity/ethnicities do you identify? (select all that apply)
+        = render layout: 'components/form_checkbox_collection' do
+          = f.collection_check_boxes :ethnicity_ids, Ethnicity.active, :id, :description, include_hidden: false do |b|
+            = b.label do
+              = b.check_box
+              = b.text
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
