@@ -86,6 +86,48 @@ feature "Registering to attend" do
       click_link "Add to Schedule"
       expect(page).to have_link("Remove from Schedule")
     end
+
+    scenario "Registering to attend from the homepage" do
+      visit "/"
+      click_link "Register to Attend"
+
+      fill_in "First and Last Name", with: "Test Registrant"
+      fill_in "E-mail Address", with: "test2@example.com"
+      fill_in "Password", with: "password"
+      fill_in "Confirm Password", with: "password"
+      click_button "Next"
+
+      select "he/him/his", from: "registration_gender"
+      select "25-34 years old", from: "registration_age_range"
+      select "Founder", from: "registration_track_id"
+
+      # Use the autocompleter to select
+      fill_in "registration_company_name", with: "Exa"
+      find(".awesomplete li", text: "Example.com").click
+
+      select "Arts and Design", from: "registration_primary_role"
+      fill_in "registration_zip", with: "12345"
+
+      check "Be inspired"
+      check "Improve my skills"
+
+      check "registration_coc_acknowledgement"
+      click_button "Submit"
+      expect(page).to have_content("Thanks for registering!")
+
+      reg = Registration.last
+      expect(reg.primary_role).to eq("Arts and Design")
+      expect(reg.age_range).to eq("25-34 years old")
+      expect(reg.track.name).to eq("Founder")
+      expect(reg.gender).to eq("he/him/his")
+      expect(reg.company.name).to eq("Example.com")
+      expect(reg.attendee_goals.map(&:description)).to include("Improve my skills")
+      expect(reg.attendee_goals.map(&:description)).to include("Be inspired")
+
+      # Confirmation e-mail
+      email = ActionMailer::Base.deliveries.detect { |e| e.to.include?("test2@example.com") }
+      expect(email.subject).to eq("You are registered for Denver Startup Week #{Date.today.year}")
+    end
   end
 
   describe "when registration is closed" do
