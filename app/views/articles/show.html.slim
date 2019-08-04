@@ -31,6 +31,8 @@
       - @article.authors.each do |author|
         .Article-author
           = render partial: 'components/name_with_avatar', locals: { user: author, name: author.name, align: 'right', color: 'grey' }
+          - if author[:linkedin_url].present?
+            = render partial: 'components/user_linkedin', locals: { user: author }
     - if @article.video_url.present?
       .Article-video
         iframe id="ytplayer-#{@article.id}" type="text/html" width="100%" class="Article-video-iframe" src="#{@article.embed_video_url}" frameborder="0"
