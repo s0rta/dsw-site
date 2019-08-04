@@ -83,16 +83,8 @@ feature "Registering to attend" do
       email = ActionMailer::Base.deliveries.detect { |e| e.to.include?("test2@example.com") }
       expect(email.subject).to eq("You are registered for Denver Startup Week #{Date.today.year}")
 
-      select("Founder Track", from: "filter")
-
-      click_link "I am a session"
       click_link "Add to Schedule"
-      visit "/schedule"
-      select "View My Schedule", from: "filter"
-      ical = URI.open(find(:link, "Add to Outlook/iCal")[:href].gsub("webcal://", "http://"))
-      calendars = Icalendar.parse(ical)
-      expect(calendars.first.events.size).to eq(1)
-      expect(calendars.first.events.first.summary).to eq("I am a session")
+      expect(page).to have_link("Remove from Schedule")
     end
   end
 
