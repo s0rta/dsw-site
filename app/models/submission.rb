@@ -365,9 +365,9 @@ class Submission < ApplicationRecord
                                recipient_email: message.to.join(", ")
   end
 
-  def notify_track_chairs_of_update!
+  def notify_track_chairs_of_update!(reminder = false)
     track.chairs.each do |chair|
-      NotificationsMailer.notify_of_submission_update(chair, self).deliver_now
+      NotificationsMailer.notify_of_submission_update(chair, self, reminder).deliver_now
     end
   end
 
