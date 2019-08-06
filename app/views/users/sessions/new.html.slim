@@ -1,6 +1,6 @@
 - content_for(:fullscreen_takeover, true)
-- title = came_from_registration? ? 'register to attend' : 'sign in'
-- button_text = came_from_registration? ? 'next' : 'submit'
+- title = came_from_registration? ? 'Register to Attend' : 'Sign In'
+- button_text = came_from_registration? ? 'Next' : 'Submit'
 - content_for(:title, 'Sign In')
 
 = render 'layouts/shared/fullscreen_takeover_header', title: title, background: 'light'
