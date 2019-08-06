@@ -11,11 +11,12 @@ class NotificationsMailer < ApplicationMailer
     mail to: chair.email, subject: "A new DSW submission has been received for the #{@track.name} track"
   end
 
-  def notify_of_submission_update(chair, submission)
+  def notify_of_submission_update(chair, submission, reminder = false)
     @chair = chair
     @submission = submission
     @track = @submission.track
-    mail to: chair.email, subject: "#{@submission.submitter.name} has proposed an update needing your approval for the #{@track.name} track."
+    subject = "#{reminder ? "REMINDER: " : ""}#{@submission.submitter.name} has proposed an update needing your approval for the #{@track.name} track."
+    mail to: chair.email, subject: subject
   end
 
   def notify_of_update_acceptance(submission)
