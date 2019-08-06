@@ -12,19 +12,19 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'info@denverstartupweek.org'
+  config.mailer_sender = "info@denverstartupweek.org"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
-  config.parent_mailer = 'ApplicationMailer'
+  config.parent_mailer = "ApplicationMailer"
 
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  require 'devise/orm/active_record'
+  require "devise/orm/active_record"
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -279,9 +279,9 @@ end
 
 # Override default layouts
 Rails.application.config.to_prepare do
-  Devise::SessionsController.layout 'application'
-  Devise::RegistrationsController.layout 'application'
-  Devise::ConfirmationsController.layout 'application'
-  Devise::UnlocksController.layout 'application'
-  Devise::PasswordsController.layout 'application'
+  Devise::SessionsController.layout "application"
+  Devise::RegistrationsController.layout "application"
+  Devise::ConfirmationsController.layout "application"
+  Devise::UnlocksController.layout "application"
+  Devise::PasswordsController.layout "application"
 end

@@ -45,8 +45,9 @@ Rails.application.routes.draw do
   get "/live", to: redirect("https://dswlive.intelivideo.com/")
   get "/publishme", to: redirect("/get-involved/content")
 
-  devise_for :users, controllers: { registrations: "users/registrations",
-                                    sessions: "users/sessions", passwords: "users/passwords" }
+  devise_for :users, controllers: {registrations: "users/registrations",
+                                   sessions: "users/sessions",
+                                   passwords: "users/passwords",}
 
   resource :registration, only: %i[new create] do
     collection do
@@ -77,7 +78,7 @@ Rails.application.routes.draw do
   resources :general_inquiries, only: [:create, :new]
   resources :sponsor_signups, only: :create
 
-  resources :articles,  except: [:destroy]
+  resources :articles, except: [:destroy]
 
   scope :program do
     resources :clusters, only: :show, param: :name

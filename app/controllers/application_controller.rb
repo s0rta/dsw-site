@@ -1,7 +1,7 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  prepend_before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_paper_trail_whodunnit
   before_action :set_honeybager_context
 

@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :check_captcha, only: [:create]
+  before_action :check_captcha, only: [:create]
 
   protected
 
