@@ -21,8 +21,8 @@ class Venue < ApplicationRecord
     order(:name)
   end
 
-  def address_for_google_maps
-    CGI.escape([address, city, state].map(&:presence).compact * ", ")
+  def address_for_maps
+    [address, city, state].map(&:presence).compact * ", "
   end
 
   def combined_address

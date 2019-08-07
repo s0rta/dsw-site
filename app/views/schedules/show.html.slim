@@ -62,7 +62,7 @@
 
 
         - if @session.venue_confirmed?
-          .SessionDetail-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.combined_address}")
+          .SessionDetail-map(id="location_map" data-bindable="mapquest-map" data-name="#{@session.venue.name}" data-address="#{@session.venue.address_for_maps}")
 
         - if @related_sessions.any?
           h2.SessionDetail-title You may also be interested in
