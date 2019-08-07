@@ -327,7 +327,7 @@ ActiveAdmin.register Submission do
               VenueAvailability::TIME_BLOCK[v.time_block]
             end
             column "Capacity" do |v|
-              "#{v.seated_capacity} seated, #{v.standing_capacity} standing"
+              "#{v.venue.seated_capacity} seated, #{v.venue.standing_capacity} standing"
             end
             column "Currently Assigned Submission" do |v|
               v.submission
