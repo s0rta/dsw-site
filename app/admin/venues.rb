@@ -80,7 +80,7 @@ ActiveAdmin.register Venue do
     end
 
     def show
-      @venue_availabilities = VenueAvailability.for_current_year.joins(:venue)
+      @venue_availabilities = resource.venue_availabilities.for_current_year
       show!
     end
   end
