@@ -2150,6 +2150,13 @@ CREATE INDEX fulltext_users_name_english ON public.users USING gin (to_tsvector(
 
 
 --
+-- Name: fulltext_venues_name_english; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX fulltext_venues_name_english ON public.venues USING gin (to_tsvector('english'::regconfig, (name)::text));
+
+
+--
 -- Name: idx_companies_name_contains; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2986,6 +2993,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190725031523'),
 ('20190804191816'),
 ('20190804192339'),
-('20190807021143');
+('20190807021143'),
+('20190807170839');
 
 
