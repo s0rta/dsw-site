@@ -173,6 +173,6 @@ module ApplicationHelper
   end
 
   def sanitize_article_body_for_display(article)
-    sanitize article.body, tags: %w[h2 a ul li ol pre b u strong em blockquote strike s], attributes: %w[href]
+    sanitize article.body, tags: %w[h2 a ul li ol pre b u strong em blockquote strike s p br], attributes: %w[href]
   end
 end
