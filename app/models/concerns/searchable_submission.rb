@@ -3,7 +3,7 @@ module SearchableSubmission
 
   class_methods do
     def searchable_language
-      'english'
+      "english"
     end
 
     def fulltext_search(terms)
@@ -11,16 +11,16 @@ module SearchableSubmission
         predicate = {
           title: terms,
           description: terms,
-          users: { name: terms },
-          companies_for_search: { name: terms }
+          users: {name: terms},
+          companies: {name: terms},
+          venues: {name: terms},
         }
         joins(:submitter)
-          .joins('LEFT OUTER JOIN companies companies_for_search ON companies_for_search.id = submissions.company_id')
+          .left_outer_joins(:company, :venue)
           .basic_search(predicate, false)
       else
         all
       end
     end
   end
-
 end
