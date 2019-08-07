@@ -1,6 +1,7 @@
 title: 'Program'
 sub_title: 'Entrepreneurial Spirit'
-description: 'The community plays a critical role in creating Denver Startup Week’s programming. Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more. Throughout the event’s sessions, headline events, and Basecamp programming, the Denver Startup Week program is made to educate, celebrate, and inspire.'
+description:
+  "The community plays a critical role in creating Denver Startup Week’s programming. Bringing Denver Startup Week to life takes the support, skills, and drive of an entire community: entrepreneurs, investors, civic leaders, educators, business pioneers, and more. Throughout the event’s sessions, headline events, and Basecamp programming, the Denver Startup Week program is made to educate, celebrate, and inspire."
 programs:
   - title: 'EIGHT FUNCTIONAL TRACKS'
     description: 'The sessions and events throughout the annual event are organized into eight tracks that are oriented around key functional roles within a business. Through the track programming, every member of a team, in every industry, can come to learn, grow, and prepare for their next challenge. Whether a company founder, marketer, artist, sales specialist, coder, manufacturer, or anything in between - Denver Startup Week has something for you.'
@@ -12,3 +13,13 @@ programs:
     header_image: 'redesign/program/clusters.jpg'
     button_title: 'Explore the clusters'
     button_page_url: 'program/clusters'
+  - title: 'BASECAMP LAUNCHED BY CHASE'
+    description: 'Basecamp Powered by Chase Ink serves as the epicenter and soul of Denver Startup Week. The activities at Basecamp represent the very best of Denver Startup Week – keynote speakers, can’t miss parties and celebrations, on-site mentoring with prominent startup leaders, networking and meetups, and access to exclusive learning opportunities and resources. '
+    header_image: 'redesign/program/basecamp.jpg'
+    button_title: 'Explore basecamp'
+    button_page_url: 'program/tracks/Basecamp'
+  - title: 'DAILY HEADLINE EVENTS'
+    description: 'From our pitch competitions to the Startup Crawl to the Physical Products Showcase, there are unique opportunities each year for companies of all sizes to get involved in Denver Startup Week’s Headline Events.'
+    header_image: 'redesign/program/headline-events.jpg'
+    button_title: 'Explore the headline events'
+    button_page_url: 'program/tracks/Headline Events'
