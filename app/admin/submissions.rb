@@ -416,6 +416,11 @@ ActiveAdmin.register Submission do
     redirect_to admin_submission_path(submission)
   end
 
+  batch_action :accept_updates do |submission_ids|
+    Submission.find(submission_ids).each(&:promote_updates!)
+    redirect_to admin_submissions_path
+  end
+
   # State machine actions
   action_item :place_on_hold, only: :show do
     unless submission.on_hold?
