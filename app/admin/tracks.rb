@@ -1,15 +1,16 @@
 ActiveAdmin.register Track do
   menu parent: "Sessions", priority: 1
 
-  permit_params :name,
+  permit_params :color,
     :description,
     :email_alias,
+    :has_detail_page,
+    :header_image,
     :icon,
-    :color,
     :is_submittable,
     :is_voteable,
-    :video_url,
-    :header_image
+    :name,
+    :video_url
 
   index do
     selectable_column
@@ -35,6 +36,7 @@ ActiveAdmin.register Track do
         hint: f.object.header_image.present? ? image_tag(f.object.header_image.url(:thumb)) : nil
       f.input :is_submittable, hint: "Make this track an option for CFP submissions"
       f.input :is_voteable, hint: "Show submissions in this track during the voting process"
+      f.input :has_detail_page
     end
 
     f.actions

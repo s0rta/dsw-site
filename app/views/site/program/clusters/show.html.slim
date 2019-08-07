@@ -1,4 +1,4 @@
 - content_for(:title, 'Clusters')
 - content_for(:subtitle, "#{@cluster[:name]}")
-= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@cluster[:name]}", sub_program: "Clusters", back_url: "/program/clusters", btn_sessions: "Cluster", color: "cluster" }
+= render partial: 'layouts/shared/sub_program_details_hero', locals: { title: "#{@cluster[:name]}", sub_program: "Clusters", back_url: "/program/clusters", color: "cluster" }
 = render partial: 'layouts/shared/articles_and_sessions_list', locals: { list: @publishings, title: "#{@cluster[:name].downcase}", is_overlapped: true }
