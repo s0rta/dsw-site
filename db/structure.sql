@@ -1140,7 +1140,8 @@ CREATE TABLE public.tracks (
     color character varying,
     is_voteable boolean DEFAULT true NOT NULL,
     video_url character varying,
-    header_image character varying
+    header_image character varying,
+    has_detail_page boolean DEFAULT true NOT NULL
 );
 
 
@@ -2984,6 +2985,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190715223850'),
 ('20190725031523'),
 ('20190804191816'),
-('20190804192339');
+('20190804192339'),
+('20190807021143');
 
 

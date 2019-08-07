@@ -1,7 +1,11 @@
 class TracksController < ApplicationController
   def show
-    @track = Track.where('lower(name) = ?', params[:name].downcase).first
-    @publishings = Publishing.for_track(params[:name]).page(params[:page]).per(12)
+    track_name = params[:name].titleize.downcase
+    @track = Track
+      .where(has_detail_page: true)
+      .where("lower(name) = ?", track_name)
+      .first!
+    @publishings = Publishing.for_track(track_name).page(params[:page]).per(12)
 
     respond_to do |format|
       format.html do
