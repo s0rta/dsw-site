@@ -19,6 +19,11 @@ class User < ApplicationRecord
       allow_nil: true,
     }
 
+  validates :linkedin_url, format: {
+    with: /(.*)linkedin.com\/in\/(.*)/,
+    allow_blank: true,
+  }
+
   include ValidateEmail
 
   has_many :submissions, foreign_key: "submitter_id", dependent: :restrict_with_error

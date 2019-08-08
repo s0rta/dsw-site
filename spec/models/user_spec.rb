@@ -22,6 +22,12 @@ RSpec.describe User, type: :model do
   it { is_expected.not_to allow_value(-1).for(:team_priority) }
   it { is_expected.not_to allow_value(100).for(:team_priority) }
 
+  it { is_expected.to allow_value(nil).for(:linkedin_url) }
+  it { is_expected.to allow_value("https://www.linkedin.com/in/jayzes").for(:linkedin_url) }
+  it { is_expected.to allow_value("http://www.linkedin.com/in/jayzes").for(:linkedin_url) }
+  it { is_expected.to allow_value("linkedin.com/in/jayzes").for(:linkedin_url) }
+  it { is_expected.not_to allow_value("http://www.google.com/").for(:linkedin_url) }
+
   describe "with a subject record present" do
     subject { create(:user) }
 
