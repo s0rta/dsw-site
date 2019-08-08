@@ -71,4 +71,11 @@ class User < ApplicationRecord
       name
     end
   end
+
+  before_save :normalize_linkedin_url!
+  def normalize_linkedin_url!
+    if linkedin_url.present?
+      self.linkedin_url = Addressable::URI.heuristic_parse(linkedin_url).normalize.to_s
+    end
+  end
 end

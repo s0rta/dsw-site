@@ -28,6 +28,23 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
   end
 
+  describe "normalizing linkedin URLs" do
+    it "turns a URL with no scheme into an absolute URL" do
+      u = create(:user, linkedin_url: "linkedin.com/in/jayzes/")
+      expect(u.linkedin_url).to eq("http://linkedin.com/in/jayzes/")
+    end
+
+    it "deals sanely with empty URLs" do
+      u = create(:user, linkedin_url: nil)
+      expect(u.linkedin_url).to be_nil
+    end
+
+    it "leaves a URL with a scheme alone" do
+      u = create(:user, linkedin_url: "https://www.linkedin.com/in/jayzes/")
+      expect(u.linkedin_url).to eq("https://www.linkedin.com/in/jayzes/")
+    end
+  end
+
   describe "deriving initials" do
     it "works when a first and last name are specified" do
       u = build(:user, name: "Jay Zeschin")
