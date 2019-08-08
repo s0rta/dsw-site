@@ -22,10 +22,33 @@ RSpec.describe User, type: :model do
   it { is_expected.not_to allow_value(-1).for(:team_priority) }
   it { is_expected.not_to allow_value(100).for(:team_priority) }
 
+  it { is_expected.to allow_value(nil).for(:linkedin_url) }
+  it { is_expected.to allow_value("https://www.linkedin.com/in/jayzes").for(:linkedin_url) }
+  it { is_expected.to allow_value("http://www.linkedin.com/in/jayzes").for(:linkedin_url) }
+  it { is_expected.to allow_value("linkedin.com/in/jayzes").for(:linkedin_url) }
+  it { is_expected.not_to allow_value("http://www.google.com/").for(:linkedin_url) }
+
   describe "with a subject record present" do
     subject { create(:user) }
 
     it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+  end
+
+  describe "normalizing linkedin URLs" do
+    it "turns a URL with no scheme into an absolute URL" do
+      u = create(:user, linkedin_url: "linkedin.com/in/jayzes/")
+      expect(u.linkedin_url).to eq("http://linkedin.com/in/jayzes/")
+    end
+
+    it "deals sanely with empty URLs" do
+      u = create(:user, linkedin_url: nil)
+      expect(u.linkedin_url).to be_nil
+    end
+
+    it "leaves a URL with a scheme alone" do
+      u = create(:user, linkedin_url: "https://www.linkedin.com/in/jayzes/")
+      expect(u.linkedin_url).to eq("https://www.linkedin.com/in/jayzes/")
+    end
   end
 
   describe "deriving initials" do

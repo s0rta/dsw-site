@@ -19,6 +19,11 @@ class User < ApplicationRecord
       allow_nil: true,
     }
 
+  validates :linkedin_url, format: {
+    with: /(.*)linkedin.com\/in\/(.*)/,
+    allow_blank: true,
+  }
+
   include ValidateEmail
 
   has_many :submissions, foreign_key: "submitter_id", dependent: :restrict_with_error
@@ -69,6 +74,13 @@ class User < ApplicationRecord
       [parts.first, parts.last[0]].compact.join(" ") + "."
     else
       name
+    end
+  end
+
+  before_save :normalize_linkedin_url!
+  def normalize_linkedin_url!
+    if linkedin_url.present?
+      self.linkedin_url = Addressable::URI.heuristic_parse(linkedin_url).normalize.to_s
     end
   end
 end
