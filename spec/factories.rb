@@ -33,6 +33,8 @@ FactoryBot.define do
     body { "I am a message!" }
   end
 
+  factory :cluster
+
   factory :company do
     sequence(:name) { |n| "Company #{n}" }
   end
@@ -74,6 +76,8 @@ FactoryBot.define do
     email_alias { "#{name.parameterize}@example.com" }
     color { "teal" }
     icon { "eyeball" }
+    has_detail_page { true }
+    is_submittable { true }
   end
 
   factory :user do
