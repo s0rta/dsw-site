@@ -60,7 +60,7 @@ gem "skylight"
 gem "utf8-cleaner"
 
 # Admin interface
-gem "activeadmin", git: "https://github.com/activeadmin/activeadmin.git", ref: "eb1ee20"
+gem "activeadmin"
 gem "activeadmin-ajax_filter"
 gem "activeadmin_medium_editor", git: "https://github.com/nyrf/activeadmin_medium_editor", ref: "8c60d49"
 gem "flipper"
