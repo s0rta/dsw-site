@@ -1,6 +1,8 @@
 require "capybara/rails"
 require "capybara/rspec"
 
+Capybara.enable_aria_label = true
+
 Capybara.register_driver :chrome do |app|
   args = %w[no-sandbox disable-gpu]
   unless ENV["NO_HEADLESS"]

@@ -58,14 +58,14 @@ module RouteHelper
   def home_route
     {
       path: "/",
-      label: "home",
+      label: "Home",
     }
   end
 
   def main_about_route
     {
       path: "/about",
-      label: "about",
+      label: "About",
       nested_routes: about_routes,
     }
   end
@@ -73,84 +73,84 @@ module RouteHelper
   def about_route
     {
       path: "/about",
-      label: "overview",
+      label: "Overview",
     }
   end
 
   def team_route
     {
       path: "/about/team",
-      label: "team",
+      label: "Team",
     }
   end
 
   def faq_route
     {
       path: "/about/faq",
-      label: "faq",
+      label: "FAQ",
     }
   end
 
   def assets_route
     {
       path: "/about/assets",
-      label: "assets",
+      label: "Assets",
     }
   end
 
   def sponsor_route
     {
       path: "/get-involved/sponsor",
-      label: "sponsor",
+      label: "Sponsor",
     }
   end
 
   def sponsors_route
     {
       path: "/sponsors",
-      label: "sponsors",
+      label: "Sponsors",
     }
   end
 
   def main_get_involved_route
     {
       path: "/get-involved",
-      label: "get involved",
+      label: "Get Involved",
     }
   end
 
   def get_involved_route
     {
       path: "/get-involved",
-      label: "overview",
+      label: "Overview",
     }
   end
 
   def volunteer_route
     {
       path: "https://www.cervistech.com/acts/console.php?console_id=0282&console_type=event&ht=1",
-      label: "volunteer",
+      label: "Volunteer",
     }
   end
 
   def present_route
     {
       path: new_submission_path,
-      label: "present",
+      label: "Present",
     }
   end
 
   def content_route
     {
       path: "/get-involved/content",
-      label: "content",
+      label: "Content",
     }
   end
 
   def schedule_route
     {
       path: schedules_path,
-      label: "schedule",
+      label: "Schedule",
     }
   end
 
@@ -178,7 +178,7 @@ module RouteHelper
   def main_program_route
     {
       path: "/program",
-      label: "program",
+      label: "Program",
       nested_routes: program_routes,
     }
   end
@@ -193,14 +193,14 @@ module RouteHelper
   def program_route
     {
       path: "/program",
-      label: "overview",
+      label: "Overview",
     }
   end
 
   def tracks_route
     {
       path: "/program/tracks",
-      label: "tracks",
+      label: "Tracks",
     }
   end
 
@@ -214,14 +214,14 @@ module RouteHelper
   def clusters_route
     {
       path: "/program/clusters",
-      label: "clusters",
+      label: "Clusters",
     }
   end
 
   def basecamp_route
     {
       path: "/program/tracks/Basecamp",
-      label: "basecamp",
+      label: "Basecamp",
     }
   end
 
