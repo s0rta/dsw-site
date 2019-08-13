@@ -1,6 +1,5 @@
 ActiveAdmin.register VenueAvailability do
   belongs_to :venue, optional: true
-  # belongs_to :annual_schedule
 
   menu parent: "Sessions"
 
