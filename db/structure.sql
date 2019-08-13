@@ -10,20 +10,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
-
-
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
-
-
---
 -- Name: intarray; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -35,20 +21,6 @@ CREATE EXTENSION IF NOT EXISTS intarray WITH SCHEMA public;
 --
 
 COMMENT ON EXTENSION intarray IS 'functions, operators, and index support for 1-D arrays of integers';
-
-
---
--- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
-
-
---
--- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
 
 
 --
@@ -75,14 +47,14 @@ SET default_with_oids = false;
 
 CREATE TABLE public.active_admin_comments (
     id integer NOT NULL,
-    resource_id character varying(255) NOT NULL,
-    resource_type character varying(255) NOT NULL,
+    resource_id character varying NOT NULL,
+    resource_type character varying NOT NULL,
     author_id integer,
-    author_type character varying(255),
+    author_type character varying,
     body text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    namespace character varying(255)
+    namespace character varying
 );
 
 
@@ -533,8 +505,8 @@ ALTER SEQUENCE public.feedback_id_seq OWNED BY public.feedback.id;
 
 CREATE TABLE public.general_inquiries (
     id integer NOT NULL,
-    contact_name character varying(255),
-    contact_email character varying(255),
+    contact_name character varying,
+    contact_email character varying,
     interest text,
     notes text,
     created_at timestamp without time zone NOT NULL,
@@ -607,9 +579,9 @@ ALTER SEQUENCE public.homepage_ctas_id_seq OWNED BY public.homepage_ctas.id;
 
 CREATE TABLE public.newsletter_signups (
     id integer NOT NULL,
-    email character varying(255),
-    first_name character varying(255),
-    last_name character varying(255),
+    email character varying,
+    first_name character varying,
+    last_name character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -874,15 +846,15 @@ CREATE TABLE public.registrations (
     id integer NOT NULL,
     user_id integer,
     year integer,
-    contact_email character varying(255),
-    zip character varying(255),
-    original_company_name character varying(255),
-    gender character varying(255),
-    primary_role character varying(255),
+    contact_email character varying,
+    zip character varying,
+    original_company_name character varying,
+    gender character varying,
+    primary_role character varying,
     track_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    calendar_token character varying(255),
+    calendar_token character varying,
     age_range character varying,
     learn_more_pledge_1p boolean DEFAULT false NOT NULL,
     company_id bigint,
@@ -914,7 +886,7 @@ ALTER SEQUENCE public.registrations_id_seq OWNED BY public.registrations.id;
 --
 
 CREATE TABLE public.schema_migrations (
-    version character varying(255) NOT NULL
+    version character varying NOT NULL
 );
 
 
@@ -989,9 +961,9 @@ ALTER SEQUENCE public.session_registrations_id_seq OWNED BY public.session_regis
 
 CREATE TABLE public.sponsor_signups (
     id integer NOT NULL,
-    contact_name character varying(255),
-    contact_email character varying(255),
-    company character varying(255),
+    contact_name character varying,
+    contact_email character varying,
+    company character varying,
     interest text,
     notes text,
     created_at timestamp without time zone NOT NULL,
@@ -1064,25 +1036,25 @@ CREATE TABLE public.submissions (
     id integer NOT NULL,
     submitter_id integer,
     track_id integer,
-    format character varying(255),
-    location character varying(255),
-    time_range character varying(255),
+    format character varying,
+    location character varying,
+    time_range character varying,
     title text,
     description text,
     notes text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    contact_email character varying(255),
-    estimated_size character varying(255),
+    contact_email character varying,
+    estimated_size character varying,
     is_confirmed boolean DEFAULT false NOT NULL,
     is_public boolean DEFAULT true NOT NULL,
     venue_id integer,
     volunteers_needed integer,
     budget_needed integer,
-    start_hour double precision DEFAULT 0 NOT NULL,
-    end_hour double precision DEFAULT 0 NOT NULL,
+    start_hour double precision DEFAULT 0.0 NOT NULL,
+    end_hour double precision DEFAULT 0.0 NOT NULL,
     year integer,
-    state character varying(255),
+    state character varying,
     start_day integer,
     end_day integer,
     internal_notes text,
@@ -1100,7 +1072,8 @@ CREATE TABLE public.submissions (
     coc_acknowledgement boolean DEFAULT false NOT NULL,
     pitch_qualifying boolean DEFAULT false NOT NULL,
     registrant_count integer DEFAULT 0 NOT NULL,
-    header_image character varying
+    header_image character varying,
+    speakers character varying
 );
 
 
@@ -1129,11 +1102,11 @@ ALTER SEQUENCE public.submissions_id_seq OWNED BY public.submissions.id;
 
 CREATE TABLE public.tracks (
     id integer NOT NULL,
-    name character varying(255),
+    name character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    icon character varying(255),
-    email_alias character varying(255),
+    icon character varying,
+    email_alias character varying,
     display_order integer DEFAULT 0 NOT NULL,
     is_submittable boolean DEFAULT false NOT NULL,
     description text,
@@ -1180,23 +1153,23 @@ CREATE TABLE public.tracks_users (
 
 CREATE TABLE public.users (
     id integer NOT NULL,
-    uid character varying(255),
-    name character varying(255),
-    email character varying(255),
+    uid character varying,
+    name character varying,
+    email character varying,
     description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     is_admin boolean DEFAULT false NOT NULL,
-    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
-    reset_password_token character varying(255),
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
     reset_password_sent_at timestamp without time zone,
     remember_created_at timestamp without time zone,
     sign_in_count integer DEFAULT 0 NOT NULL,
     current_sign_in_at timestamp without time zone,
     last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying(255),
-    last_sign_in_ip character varying(255),
-    provider character varying(255),
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
+    provider character varying,
     team_position character varying,
     avatar character varying,
     team_priority integer,
@@ -1295,22 +1268,23 @@ ALTER SEQUENCE public.venue_availabilities_id_seq OWNED BY public.venue_availabi
 
 CREATE TABLE public.venues (
     id integer NOT NULL,
-    name character varying(255),
+    name character varying,
     description text,
-    contact_name character varying(255),
-    contact_email character varying(255),
-    contact_phone character varying(255),
+    contact_name character varying,
+    contact_email character varying,
+    contact_phone character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    address character varying(255),
-    city character varying(255),
-    state character varying(255),
+    address character varying,
+    city character varying,
+    state character varying,
     suite_or_unit character varying,
     seated_capacity integer DEFAULT 0,
     extra_directions text,
     company_id integer,
     standing_capacity integer DEFAULT 0,
-    av_capabilities character varying
+    av_capabilities character varying,
+    availability_preference character varying
 );
 
 
@@ -1339,10 +1313,10 @@ ALTER SEQUENCE public.venues_id_seq OWNED BY public.venues.id;
 
 CREATE TABLE public.versions (
     id integer NOT NULL,
-    item_type character varying(255) NOT NULL,
+    item_type character varying NOT NULL,
     item_id integer NOT NULL,
-    event character varying(255) NOT NULL,
-    whodunnit character varying(255),
+    event character varying NOT NULL,
+    whodunnit character varying,
     object text,
     created_at timestamp without time zone
 );
@@ -1499,19 +1473,6 @@ CREATE SEQUENCE public.votes_id_seq
 --
 
 ALTER SEQUENCE public.votes_id_seq OWNED BY public.votes.id;
-
-
---
--- Name: zip_decoding; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.zip_decoding (
-    zip character varying,
-    city character varying,
-    state character varying,
-    lat numeric,
-    long numeric
-);
 
 
 --
@@ -1788,11 +1749,11 @@ ALTER TABLE ONLY public.votes ALTER COLUMN id SET DEFAULT nextval('public.votes_
 
 
 --
--- Name: active_admin_comments admin_notes_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: active_admin_comments active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.active_admin_comments
-    ADD CONSTRAINT admin_notes_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -2971,6 +2932,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20180923214023'),
 ('20180924163222'),
 ('20180925205310'),
+('20181011233536'),
 ('20190221040025'),
 ('20190221064154'),
 ('20190529192917'),
@@ -2993,6 +2955,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190725031523'),
 ('20190804191816'),
 ('20190804192339'),
+('20190806235214'),
 ('20190807021143'),
 ('20190807170839');
 

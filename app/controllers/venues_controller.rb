@@ -108,7 +108,8 @@ class VenuesController < ApplicationController
       :standing_capacity,
       :av_capabilities,
       :extra_directions,
-      :company_name
+      :company_name,
+      :availability_preference
     )
   end
 end

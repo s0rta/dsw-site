@@ -78,6 +78,12 @@
               = f.label :extra_directions
               = f.text_area :extra_directions, data: { bindable: 'text_area_autosize' }
 
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/form_field' do
+              = f.label :availability_preference
+              = f.text_area :availability_preference, data: { bindable: 'text_area_autosize' }, placeholder: 'Additional availability notes (e.g. prefer to only host one session per day, one session total, etc.)'
+
         .VenueEdit-availabilities
           h4 Availablility
           - if @venue_availabilities
