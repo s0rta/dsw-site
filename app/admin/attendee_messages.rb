@@ -1,15 +1,17 @@
 ActiveAdmin.register AttendeeMessage do
   belongs_to :submission, optional: true
 
-  permit_params :submission_id,
-    :subject,
-    :body
-
   menu parent: "Sessions", priority: 3
 
   controller do
     def scoped_collection
       end_of_association_chain.includes(:submission)
+    end
+
+    define_method :permitted_params do
+      params.permit *active_admin_namespace.permitted_params,
+        :submission_id,
+        attendee_message: [:subject, :body, :submission_id]
     end
   end
 
