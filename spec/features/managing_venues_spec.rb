@@ -32,6 +32,7 @@ feature "Managing My Venue" do
     visit "/dashboard"
     find(".VenueCard", text: "EXAMPLE THEATRE").click_link("Edit")
     fill_in "Venue Name", with: "Test Theatre"
+    fill_in "Availability preference", with: "No special preference"
     find("tr", text: "Tuesday").check "12 - 2pm"
     find("tr", text: "Thursday").check "2 - 4pm"
     find("tr", text: "Thursday").check "4 - 6pm"
@@ -43,6 +44,7 @@ feature "Managing My Venue" do
     expect(find("tr", text: "Thursday")).to have_checked_field("2 - 4pm")
     expect(find("tr", text: "Thursday")).to have_checked_field("4 - 6pm")
     expect(find("tr", text: "Friday")).to have_checked_field("6 - 10pm")
+    expect(page).to have_content("No special preference")
   end
 
   scenario "a user should see venues with availability that has been taken as non-editable" do
