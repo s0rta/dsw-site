@@ -75,6 +75,7 @@ gem "sidekiq"
 gem "sidekiq-throttled"
 
 group :development do
+  gem "derailed_benchmarks"
   gem "better_errors"
   gem "binding_of_caller"
   gem "listen"
@@ -87,6 +88,7 @@ group :development, :test do
   gem "dotenv-rails"
   gem "pry-rails"
   gem "rspec-rails"
+  gem "jemalloc"
 end
 
 group :test do
