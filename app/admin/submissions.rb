@@ -41,8 +41,6 @@ ActiveAdmin.register Submission do
     def scoped_collection
       resource_class.includes(:track,
         :submitter,
-        :votes,
-        :user_registrations,
         :venue,
         :cluster,
         :company,
@@ -77,8 +75,6 @@ ActiveAdmin.register Submission do
       status_tag s.state.to_s.titleize, class: status_for_submission(s)
     end
     column :submitter, sortable: "users.name"
-    column(:votes, sortable: false) { |s| s.votes.size }
-    column(:attendees, sortable: false) { |s| s.user_registrations.size }
     column(:pending_updates, sortable: false) { |s| s.proposed_updates.present? ? "Yes" : "No" }
     column "Published" do |submission|
       submission.published? ? submission&.publishing&.effective_at : "No"
