@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   # Admin tools
   authenticate :user, ->(u) { u.is_admin? } do
     mount Sidekiq::Web => "/sidekiq"
-    mount Flipper::UI.app(Flipper) => "/flipper"
   end
 
   ActiveAdmin.routes(self)
