@@ -43,6 +43,18 @@ feature "Registering to attend" do
       create(:ethnicity, name: "Latino")
     end
 
+    scenario "Attempting to register but failing the captcha check" do
+      allow(Recaptcha).to receive(:skip_env?).and_return(false)
+      visit "/"
+      click_on "Sign Up / Sign In"
+      fill_in "First and Last Name", with: "Test Registrant"
+      fill_in "E-mail Address", with: "test2@example.com"
+      fill_in "Password", with: "password"
+      fill_in "Confirm Password", with: "password"
+      click_button "Submit"
+      expect(page).to have_content("reCAPTCHA verification failed, please try again.")
+    end
+
     scenario "Registering to attend with a new account from the schedule page" do
       visit "/schedule"
       click_link "I am a session"
