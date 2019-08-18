@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
     "@rails/webpacker": "^4.0.7",
     "awesomplete": "^1.1.2",
     "coffeescript": "1.12.7",
