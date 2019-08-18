@@ -12,7 +12,7 @@ class Publishing < ApplicationRecord
   end
 
   def self.for_homepage
-    where(featured_on_homepage: true).includes(:subject).limit(12)
+    where(featured_on_homepage: true).includes(:subject).order(effective_at: :desc).limit(12)
   end
 
   def self.for_track(track_name)
