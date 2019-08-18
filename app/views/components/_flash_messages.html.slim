@@ -1,6 +1,7 @@
 .FlashMessage-wrapper
   - flash.each_with_index do |(key, message), index|
     .FlashMessage
+      - key = "alert" unless lookup_context.template_exists?(key, "icons", true)
       .FlashMessage-body(class="is-#{key}")
         .FlashMessage-rail(class="is-#{key}")
           = render "icons/#{key}"
