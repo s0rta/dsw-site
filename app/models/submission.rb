@@ -106,12 +106,17 @@ class Submission < ApplicationRecord
 
   def self.for_track(name)
     return all if name == "all" || name.blank?
-    joins(:track).where("LOWER(tracks.name) = LOWER(?)", name)
+    left_outer_joins(:track).where("LOWER(tracks.name) = LOWER(?)", name)
   end
 
   def self.for_cluster(name)
     return all if name == "all" || name.blank?
-    joins(:cluster).where("LOWER(clusters.name) = LOWER(?)", name)
+    left_outer_joins(:cluster).where("LOWER(clusters.name) = LOWER(?)", name)
+  end
+
+  def self.for_venue(name)
+    return all if name == "all" || name.blank?
+    left_outer_joins(:venue).where("LOWER(venues.name) = LOWER(?)", name)
   end
 
   def self.for_publishings_filter(filters)
@@ -120,6 +125,7 @@ class Submission < ApplicationRecord
     published
       .for_track(filters[:track])
       .for_cluster(filters[:cluster])
+      .for_venue(filters[:venue])
       .fulltext_search(filters[:terms])
   end
 
@@ -129,8 +135,8 @@ class Submission < ApplicationRecord
     elsif filter == "mine" && user
       my_schedule(user)
     elsif filter.present?
-      references(:tracks, :clusters)
-        .where("LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name)", name: filter)
+      left_outer_joins(:track, :cluster, :venue)
+        .where("LOWER(clusters.name) = LOWER(:name) OR LOWER(tracks.name) = LOWER(:name) OR LOWER(venues.name) = LOWER(:name)", name: filter)
     else
       all
     end
