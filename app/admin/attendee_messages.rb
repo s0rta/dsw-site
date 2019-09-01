@@ -48,7 +48,6 @@ ActiveAdmin.register AttendeeMessage do
         as: :select,
         collection: Submission
           .for_current_year
-          .where(state: %w[confirmed venue_confirmed withdrawn])
           .order(:title),
         include_blank: false
       f.input :subject, hint: "Must not exceed 100 characters"
