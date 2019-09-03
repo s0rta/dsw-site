@@ -53,6 +53,8 @@
         - else
           .SessionDetail-location
             p = @session.human_location_name
+        - if @session.has_childcare?
+          a(href="https://www.nanno.com/event_forms/dsw-registration" class="SessionDetail-childcare-button" target="_blank")
 
         - if AnnualSchedule.registration_open? && @session.current_year?
           - if !registered? || !registered_for_session?(@session)
