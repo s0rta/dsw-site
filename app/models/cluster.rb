@@ -2,6 +2,8 @@ class Cluster < ApplicationRecord
   validates :name, presence: true
   has_many :submissions, dependent: :nullify
 
+  before_save :populate_slug!, on: :create
+
   mount_uploader :header_image, HeaderImageUploader
   process_in_background :header_image
 
@@ -28,5 +30,9 @@ class Cluster < ApplicationRecord
     select("name as label, name as value, id")
       .active
       .in_display_order
+  end
+
+  def populate_slug!
+    self.slug = name.parameterize if slug.blank?
   end
 end

@@ -1,7 +1,7 @@
 class ClustersController < ApplicationController
   def show
-    @cluster = Cluster.where("lower(name) = ?", params[:name].titleize.downcase).first
-    @publishings = Publishing.filtered_results(cluster: params[:name]).page(params[:page]).per(12)
+    @cluster = Cluster.where(slug: params[:name]).first!
+    @publishings = Publishing.filtered_results(cluster: @cluster.name).page(params[:page]).per(12)
 
     respond_to do |format|
       format.html do
