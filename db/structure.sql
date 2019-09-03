@@ -344,7 +344,8 @@ CREATE TABLE public.clusters (
     updated_at timestamp without time zone NOT NULL,
     description text,
     is_active boolean DEFAULT true NOT NULL,
-    header_image character varying
+    header_image character varying,
+    slug character varying
 );
 
 
@@ -2998,6 +2999,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190806235214'),
 ('20190807021143'),
 ('20190807170839'),
-('20190826014104');
+('20190826014104'),
+('20190903170552');
 
 

@@ -4,7 +4,8 @@ ActiveAdmin.register Cluster do
   permit_params :name,
     :description,
     :is_active,
-    :header_image
+    :header_image,
+    :slug
 
   index do
     selectable_column
@@ -18,6 +19,7 @@ ActiveAdmin.register Cluster do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :slug
       f.input :description
       f.input :header_image,
         as: :file,
