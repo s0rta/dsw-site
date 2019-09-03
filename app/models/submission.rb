@@ -95,7 +95,7 @@ class Submission < ApplicationRecord
     contact_email.split(%r{(\s|;|,)}).map(&:strip)
   end
 
-  def self.public
+  def self.for_public
     where(state: PUBLIC_STATES)
   end
 
@@ -271,7 +271,11 @@ class Submission < ApplicationRecord
   end
 
   def tags
-    [cluster.try(:name), (popular? ? "Popular" : nil)].compact * ", "
+    {}.tap do |t|
+      t[cluster.name] = cluster.description if cluster
+      t["Popular"] = I18n.t("tag_descriptions.popular") if popular?
+      t["Childcare"] = I18n.t("tag_descriptions.childcare") if has_childcare?
+    end
   end
 
   def popular?

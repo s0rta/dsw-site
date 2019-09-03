@@ -34,3 +34,6 @@ en:
     errors:
       messages:
         liquid_syntax: "is not proper Liquid syntax"
+  tag_descriptions:
+    popular: "The event has many more RSVPs than will fit in the venue. Attendees should plan to arrive early to get a seat."
+    childcare: "The event has childcare (provided by Nanno) available onsite. Advance reservation required. Click for more details."

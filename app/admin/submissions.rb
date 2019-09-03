@@ -14,6 +14,7 @@ ActiveAdmin.register Submission do
     :estimated_size,
     :format,
     :from_underrepresented_group,
+    :has_childcare,
     :header_image,
     :internal_notes,
     :live_stream_url,
@@ -138,7 +139,6 @@ ActiveAdmin.register Submission do
   filter :track
   filter :venue, as: :select, collection: -> { Venue.alphabetical }
   filter :company_name, as: :string
-  filter :format
   filter :submitter_name, as: :string, label: "Submitter Name"
   filter :start_day, as: :select, collection: Submission::DAYS.invert
   filter :end_day, as: :select, collection: Submission::DAYS.invert
@@ -176,6 +176,7 @@ ActiveAdmin.register Submission do
       f.input :end_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :venue_id, as: :select, collection: Venue.alphabetical.map { |v| [v.name, v.id] }, include_blank: true
+      f.input :has_childcare
     end
     f.inputs "Submitter" do
       f.input :contact_email, hint: "Multiple addresses are allowed; separate them with commas"

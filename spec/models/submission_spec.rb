@@ -219,4 +219,24 @@ RSpec.describe Submission, type: :model do
       expect(submission.public_registrants(current_user)).to eq([current_user])
     end
   end
+
+  describe "listing tags" do
+    let(:submission) { create(:submission) }
+
+    it "is empty by default" do
+      expect(submission.tags).to be_empty
+    end
+
+    it "includes the cluster as a tag when one is assigned" do
+      submission.cluster = create(:cluster, name: "Sports", description: "...")
+      expect(submission.tags.size).to eq(1)
+      expect(submission.tags["Sports"]).to eq("...")
+    end
+
+    it "includes the popular tag when popular? is true" do
+      allow(submission).to receive(:popular?).and_return(true)
+      expect(submission.tags.size).to eq(1)
+      expect(submission.tags["Popular"]).to eq("The event has many more RSVPs than will fit in the venue. Attendees should plan to arrive early to get a seat.")
+    end
+  end
 end
