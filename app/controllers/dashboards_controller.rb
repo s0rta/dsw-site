@@ -10,7 +10,7 @@ class DashboardsController < ApplicationController
       .for_year(Date.today.year)
       .for_schedule
       .my_schedule(current_user)
-      .order(:start_hour)
+      .order(start_day: :asc, start_hour: :asc)
       .includes(:venue,
         :submitter,
         :track,
