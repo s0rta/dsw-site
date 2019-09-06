@@ -1,11 +1,25 @@
-= render partial: 'voting_header'
+- content_for(:title, 'Pitch Competition')
+- content_for(:subtitle, 'Voting')
+= render layout: 'layouts/shared/secondary_hero', locals: { title: "Pitch Competition", sub_title: "Help us pick the finalists!", description: "We want your help selecting the finalists who will compete in the live pitch event on September 19. You may vote on as many entries as you would like, but only one vote per user per entry is counted. Spread the word and enlist all your friends to pick the very best." } do
 
-.icon-outer-container
-  .icon-flex-container(data-bindable='ajax-voter')
-    = render partial: 'entry', collection: @entries, cached: lambda { |e| [ e, user_signed_in? ] }
+- color = 'teal'
 
 .Voting-list-wrapper
   = render 'components/three_card_list', attributes: { 'aria-label': "Votable Sessions", id: 'loader-target' } do
-  - @entries.each do |entry|
-    = render 'components/three_card_list_item' do
-      = render 'components/session_card', session: submission, votable: true
+    - @entries.each do |entry|
+      = render 'components/three_card_list_item' do
+        = render 'components/card' do
+          div.SessionCard(class="#{color}-background #{color}-font-on-#{color} #{color}-fill-on-#{color}-background")
+            a.SessionCard-link(href="#{entry.embed_video_url}")
+            h3.SessionCard-title #{entry.name}
+            p.SessionCard-description
+              iframe id="ytplayer-#{entry.id}" type="text/html" width="100%" src="#{entry.embed_video_url}" frameborder="0"
+            .SessionCard-vote
+              .SessionCard-vote-wrapper(data-bindable='ajax-voter')
+                - if current_user
+                  = link_to pitch_contest_entry_votes_path(entry), remote: true, method: :post, class: "#{color}-font-on-#{color} register-vote-js", title: "Vote for '#{entry.name}'" do
+                    = render partial: 'icons/thumbsup'
+                - else
+                  = link_to new_user_session_path, class: "#{color}-font-on-#{color}", title: "Vote for '#{entry.name}'" do
+                    = render partial: 'icons/thumbsup'
+                span.SessionCard-vote-count.vote-count-js #{pluralize(entry.votes.size, 'vote')}
