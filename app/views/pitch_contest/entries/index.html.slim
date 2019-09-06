@@ -3,3 +3,9 @@
 .icon-outer-container
   .icon-flex-container(data-bindable='ajax-voter')
     = render partial: 'entry', collection: @entries, cached: lambda { |e| [ e, user_signed_in? ] }
+
+.Voting-list-wrapper
+  = render 'components/three_card_list', attributes: { 'aria-label': "Votable Sessions", id: 'loader-target' } do
+  - @entries.each do |entry|
+    = render 'components/three_card_list_item' do
+      = render 'components/session_card', session: submission, votable: true
