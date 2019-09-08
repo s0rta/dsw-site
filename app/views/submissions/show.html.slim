@@ -5,7 +5,7 @@
   meta(property="og:site_name" content="Denver Startup Week")
   meta(property="og:url" content="#{submission_url(@submission)}")
   meta(property="og:description" content="#{truncate(@submission.description, length: 300, separator: ' ')}")
-- back_to_link = request.referer.include?('schedule') ? schedule_path : request.referer
+- back_to_link = request.referer&.include?('schedule') ? schedule_path : request.referer
 
 
 = render layout: 'layouts/shared/layout_wrapper' do

@@ -42,14 +42,6 @@ feature "Content-only pages" do
       click_link "Team"
       expect(page).to have_content("TEAM")
     end
-
-    xscenario "the content page" do
-      visit "/"
-      click_button "Open Main Menu"
-      click_link "Get Involved"
-      click_link "Content"
-      expect(page).to have_content("SUBMIT & PROMOTE CONTENT")
-    end
   end
 
   scenario "the assets page" do

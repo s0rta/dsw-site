@@ -27,51 +27,45 @@ feature "Voting for session submissions" do
     end
 
     scenario "User votes for a session when already signed in" do
-      pending('refactor')
       login_as user, scope: :user
       visit "/voting"
-      click_link "View Topics"
-      expect(page).to have_content("I am a session")
+      expect(page).to have_content("I AM A SESSION")
 
       click_link "Vote for 'I am a session'"
-      expect(page).to have_css(".vote-count", text: "1 vote")
+      expect(page).to have_css(".SessionCard-vote-count", text: "1 VOTE")
 
       # Clicking twice should have no effect
       click_link "Vote for 'I am a session'"
-      expect(page).to have_css(".vote-count", text: "1 vote")
+      expect(page).to have_css(".SessionCard-vote-count", text: "1 VOTE")
     end
 
     scenario "User votes for a session after being prompted to sign in" do
-      pending('refactor')
       visit "/voting"
-      click_link "View Topics"
-      expect(page).to have_content("I am a session")
+      expect(page).to have_content("I AM A SESSION")
 
       click_link "Vote for 'I am a session'"
       fill_in "E-mail Address", with: "test@example.com"
       fill_in "Password", with: "password", match: :prefer_exact
-      click_button "Sign In"
+      click_button "Submit"
       click_link "Vote for 'I am a session'"
-      expect(page).to have_css(".vote-count", text: "1 vote")
+      expect(page).to have_css(".SessionCard-vote-count", text: "1 VOTE")
 
       # Clicking twice should have no effect
       click_link "Vote for 'I am a session'"
-      expect(page).to have_css(".vote-count", text: "1 vote")
+      expect(page).to have_css(".SessionCard-vote-count", text: "1 VOTE")
     end
 
     scenario "User votes for a session from the session detail page" do
-      pending('refactor')
       login_as user, scope: :user
       visit "/voting"
-      click_link "View Topics"
-      expect(page).to have_content("I am a session")
-      click_link "interesting stuff"
-      click_link "Vote for 'I am a session'"
-      expect(page).to have_css(".vote-count", text: "1 vote")
+      expect(page).to have_content("I AM A SESSION")
+      visit find(".SessionCard", text: "I AM A SESSION").find(".SessionCard-link")["href"]
+      click_link "Vote for this session"
+      expect(page).to have_css(".SubmissionDetail-vote-count", text: "1 VOTE")
 
       # Clicking twice should have no effect
-      click_link "Vote for 'I am a session'"
-      expect(page).to have_css(".vote-count", text: "1 vote")
+      click_link "Vote for this session"
+      expect(page).to have_css(".SubmissionDetail-vote-count", text: "1 VOTE")
     end
   end
 
