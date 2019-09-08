@@ -5,9 +5,7 @@
 
 = render 'layouts/shared/fullscreen_takeover_header', title: content_for(:article_page_title), background: 'light'
 = render layout: 'layouts/shared/layout_wrapper' do
-
   = render layout: 'components/form_wrapper' do
-
     .ArticlesForm-instructions
       p We invite you - yes, you! - to submit articles to the Denver Startup Week website. We look to you for unique insights, inspiring stories, thought leadership, founder profiles, can’t-miss news, and much more.
       p Before you submit, here are a few of our guidelines. Please no company sales/promotion — your expertise is the best promotion!
@@ -21,8 +19,12 @@
       p After you submit your article, it will be reviewed by the Denver Startup Week team before it is published. All articles are expected to follow the  #{link_to "Denver Startup Week Code of Conduct", page_path(page: "code-of-conduct")} and Denver Startup Week reserves the right to not publish submissions for any reason.
       p Thank you for sharing your wisdom, knowledge, and creativity with the Denver Startup Week community!
 
-
     = form_for @article, honeypot: true do |f|
+      - unless @article.persisted?
+        - if @show_checkbox_recaptcha
+          = recaptcha_tags
+        - else
+          = recaptcha_v3(action: 'create_article')
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
