@@ -71,6 +71,26 @@ feature "Submitting an article" do
     expect(Article.count).to eq(0)
   end
 
+  scenario "User submits a new article but fails the captcha check" do
+    allow(Recaptcha).to receive(:skip_env?).and_return(false)
+    visit "/"
+    click_on "Sign Up / Sign In"
+    fill_in "Name", with: "New Guy"
+    fill_in "E-mail Address", with: "test@example.com"
+    fill_in "Password", with: "password", match: :prefer_exact
+    fill_in "Confirm Password", with: "password", match: :prefer_exact
+
+    click_on "Submit"
+    visit "/dashboard" # More straightforward than waiting for the flash to disappear
+
+    click_on "Submit Article"
+    fill_in "Article Title", with: "I am an article"
+
+    click_button "Submit"
+
+    expect(page).to have_content("reCAPTCHA verification failed, please try again.")
+  end
+
   # scenario "User edits an existing article" do
   #   visit "/"
   #   click_on "Sign Up / Sign In"

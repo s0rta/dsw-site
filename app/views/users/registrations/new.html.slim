@@ -9,7 +9,6 @@
     .SignUp-register-text In order to Register to Attend you need to have an account. Sign up below.
   = render layout: 'components/form_wrapper' do
     = form_for(resource, as: resource_name, url: user_registration_path, honeypot: true) do |f|
-      = recaptcha_v3(action: 'registration')
 
       = render 'components/profile_avatar_upload', locals = { f: f }
 
