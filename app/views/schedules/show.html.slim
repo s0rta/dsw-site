@@ -21,6 +21,8 @@
       = "Back to #{back_to_label('schedule')}"
 
   section.SessionDetail
+    - if @article.header_image.present?
+      div.SessionDetail-image(style="background-image: url(#{image_url @session.header_image.url(:article_page)})")
     header(class="SessionDetail-track #{@session.track.color}-font #{@session.track.color}-fill")
       - if @session.track.icon
         = render partial: "icons/#{@session.track.icon}"
