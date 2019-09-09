@@ -6,6 +6,8 @@
   meta(property="og:url" content="#{schedule_url(@session)}")
   meta(property="og:description" content="#{truncate(@session.description, length: 300, separator: ' ')}")
   meta(name="date" content="#{@session.start_datetime.iso8601}")
+  - if @session.noindex?
+    meta(name="robots" content="noindex")
   script(type="application/ld+json") = session_ld_json(@session).html_safe
 
 = render layout: 'layouts/shared/layout_wrapper' do
