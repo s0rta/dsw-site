@@ -1102,7 +1102,8 @@ CREATE TABLE public.submissions (
     pitch_qualifying boolean DEFAULT false NOT NULL,
     registrant_count integer DEFAULT 0 NOT NULL,
     header_image character varying,
-    has_childcare boolean DEFAULT false NOT NULL
+    has_childcare boolean DEFAULT false NOT NULL,
+    noindex boolean DEFAULT false NOT NULL
 );
 
 
@@ -3000,6 +3001,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190807021143'),
 ('20190807170839'),
 ('20190826014104'),
-('20190903170552');
+('20190903170552'),
+('20190909204737');
 
 

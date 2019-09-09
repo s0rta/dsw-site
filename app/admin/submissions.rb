@@ -19,6 +19,7 @@ ActiveAdmin.register Submission do
     :internal_notes,
     :live_stream_url,
     :location,
+    :noindex,
     :notes,
     :open_to_collaborators,
     :pitch_qualifying,
@@ -177,6 +178,7 @@ ActiveAdmin.register Submission do
       f.input :end_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :venue_id, as: :select, collection: Venue.alphabetical.map { |v| [v.name, v.id] }, include_blank: true
       f.input :has_childcare
+      f.input :noindex, label: "Hide from search engines?"
     end
     f.inputs "Submitter" do
       f.input :contact_email, hint: "Multiple addresses are allowed; separate them with commas"
