@@ -36,7 +36,7 @@
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.select :primary_role, primary_roles_for_select, { :include_blank => '' }, :required => true
-            = f.label :primary_role, 'What is your job title?'
+            = f.label :primary_role, 'In what industry is your current job?'
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
             = f.text_field :zip, required: 'required'
