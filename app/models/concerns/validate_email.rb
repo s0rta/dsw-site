@@ -9,9 +9,7 @@ module ValidateEmail
 
   def email_is_valid
     result = EmailInquire.validate(email)
-    if result.hint?
-      errors.add(:email, "Did you mean #{result.replacement}?")
-    elsif result.invalid?
+    if result.invalid?
       errors.add(:email, "is not valid")
     end
   end
