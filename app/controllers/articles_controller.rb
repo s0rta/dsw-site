@@ -26,22 +26,15 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.new(article_params.merge(author_ids: [article_params[:author_ids]]))
-    noninteractive_success = verify_recaptcha(action: "create_article", model: @article)
-    checkbox_success = verify_recaptcha(model: @article) unless noninteractive_success
-    if noninteractive_success || checkbox_success
-      # Perform action
-      if @article.save
-        flash[:notice] = "Thanks! Your article has been received."
-        NotificationsMailer.notify_of_new_article(@article).deliver_now
-        redirect_to dashboard_path
-      else
-        respond_with @article
-      end
+    min_score = Float(ENV["RECAPTCHA_MIN_SCORE"] || 0.5)
+    if verify_recaptcha(action: "create_article",
+                        model: @article,
+                        minimum_score: min_score) && @article.save
+      flash[:notice] = "Thanks! Your article has been received."
+      NotificationsMailer.notify_of_new_article(@article).deliver_now
+      redirect_to dashboard_path
     else
-      unless noninteractive_success
-        @show_checkbox_recaptcha = true
-      end
-      render "new"
+      respond_with @article
     end
   end
 
