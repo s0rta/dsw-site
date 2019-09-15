@@ -7,6 +7,16 @@
 = render layout: 'layouts/shared/layout_wrapper' do
   = render layout: 'components/form_wrapper' do
     = form_for(@registration, method: :post, url: registration_path, honeypot: true) do |f|
+      - if simple_registration?
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/floating_input' do
+              = f.label :name, 'First and Last Name'
+              = f.text_field :name, value: '', required: true
+          = render layout: 'components/form_input_wrapper' do
+            = render layout: 'components/floating_input' do
+              = f.label :email, 'E-mail Address'
+              = f.text_field :email, value: '', required: true
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do

@@ -14,12 +14,13 @@ class RegistrationsController < ApplicationController
 
   def create
     if simple_registration?
+      user_params = registration_params.extract!(:email, :name)
       password = SecureRandom.hex
       @registration = Registration.new(registration_params)
-      @registration.user = User.where(email: registration_user_params[:email]).first_or_initialize do |u|
+      @registration.user = User.where(email: user_params[:email]).first_or_initialize do |u|
         u.assign_attributes(password: password,
                             password_confirmation: password,
-                            name: registration_user_params[:name])
+                            name: user_params[:name])
       end
     else
       @registration = current_user.registrations.build(registration_params)
@@ -35,7 +36,10 @@ class RegistrationsController < ApplicationController
   private
 
   def registration_params
-    params.fetch(:registration, {}).permit(:year,
+    @_registration_parms ||= params.fetch(:registration, {}).permit(
+      :name,
+      :email,
+      :year,
       :zip,
       :company_name,
       :gender,
@@ -45,12 +49,8 @@ class RegistrationsController < ApplicationController
       :track_id,
       :coc_acknowledgement,
       attendee_goal_ids: [],
-      ethnicity_ids: [])
-  end
-
-  def registration_user_params
-    params.fetch(:registration, {}).permit(:name,
-      :email)
+      ethnicity_ids: []
+    )
   end
 
   def check_registration_open
