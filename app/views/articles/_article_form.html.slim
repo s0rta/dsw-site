@@ -21,10 +21,7 @@
 
     = form_for @article, honeypot: true do |f|
       - unless @article.persisted?
-        - if @show_checkbox_recaptcha
-          = recaptcha_tags
-        - else
-          = recaptcha_v3(action: 'create_article')
+        = recaptcha_v3(action: 'create_article')
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/floating_input' do
