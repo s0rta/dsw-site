@@ -50,6 +50,10 @@ feature "Viewing the schedule" do
       travel_to AnnualSchedule.current.registration_open_at.to_datetime + 1.day
     end
 
+    after do
+      travel_back
+    end
+
     scenario "Registering to attend from the schedule page" do
       visit "/schedule"
       expect(current_path).to eq("/schedule/2017/monday")

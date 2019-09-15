@@ -16,6 +16,7 @@ feature "Registering to attend (via kiosk)" do
 
   after do
     visit "/disable-simple-reg"
+    travel_back
   end
 
   let!(:track) do
