@@ -14,6 +14,6 @@ class CompanySearchesController < ApplicationController
   private
 
   def set_minimum_match_threshold
-    ActiveRecord::Base.connection.execute("SELECT set_limit(0.1);")
+    ActiveRecord::Base.connection.execute("SELECT set_limit(0.05);")
   end
 end
