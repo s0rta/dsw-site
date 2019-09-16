@@ -77,7 +77,7 @@
       .SessionDetail-column--right
         - if user_signed_in?
           - registrants = @session.public_registrants(current_user)
-          - cache [registrants.size, registrants.max(:updated_at)] do
+          - cache [registrants.size, registrants.maximum(:updated_at)] do
             - registrants.each do |user|
               .SessionDetail-attendee
                 = render partial: 'components/name_with_avatar', locals: { user: user, name: user.abbreviated_name, align: 'right', color: 'gray' }
