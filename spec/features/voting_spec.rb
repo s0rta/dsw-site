@@ -26,6 +26,10 @@ feature "Voting for session submissions" do
       travel_to AnnualSchedule.current.voting_open_at.to_datetime + 2.days
     end
 
+    after do
+      travel_back
+    end
+
     scenario "User votes for a session when already signed in" do
       login_as user, scope: :user
       visit "/voting"
@@ -72,6 +76,10 @@ feature "Voting for session submissions" do
   describe "when voting is closed" do
     before do
       travel_to AnnualSchedule.current.voting_close_at.to_datetime + 2.days
+    end
+
+    after do
+      travel_back
     end
 
     scenario "User tries to access voting when voting is closed" do

@@ -35,6 +35,10 @@ feature "Registering to attend" do
       travel_to AnnualSchedule.current.registration_open_at.to_datetime + 1.day
     end
 
+    after do
+      travel_back
+    end
+
     before do
       create(:company, name: "Example.com")
       create(:attendee_goal, name: "inspiration", description: "Be inspired")
@@ -200,6 +204,10 @@ feature "Registering to attend" do
   describe "when registration is closed" do
     before do
       travel_to AnnualSchedule.current.registration_open_at.to_datetime - 1.day
+    end
+
+    after do
+      travel_back
     end
 
     scenario "User tries to register when registrations are closed" do

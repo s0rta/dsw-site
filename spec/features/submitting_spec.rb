@@ -13,6 +13,10 @@ feature "Creating a submission" do
       travel_to AnnualSchedule.current.cfp_open_at.to_datetime + 1.day
     end
 
+    after do
+      travel_back
+    end
+
     scenario "User submits a new idea" do
       visit "/"
       click_on "Sign Up / Sign In"
@@ -111,6 +115,10 @@ feature "Creating a submission" do
   describe "when submissions are closed" do
     before do
       travel_to AnnualSchedule.current.cfp_close_at.to_datetime + 2.days
+    end
+
+    after do
+      travel_back
     end
 
     scenario "User tries to submit a new idea" do

@@ -37,6 +37,10 @@ feature "Giving feedback on a session" do
       travel_to AnnualSchedule.current.week_start_at + 1.day
     end
 
+    after do
+      travel_back
+    end
+
     scenario "a user provides feedback for a session when already signed in and registered" do
       login_as user, scope: :user
 
@@ -64,10 +68,6 @@ feature "Giving feedback on a session" do
       expect(page).to_not have_content "Please rate this session"
       # add something here to ensure 1 feedback/session
     end
-
-    after do
-      travel_back
-    end
   end
 
   describe "in years after the current one" do
@@ -78,6 +78,10 @@ feature "Giving feedback on a session" do
 
     before do
       travel_to AnnualSchedule.current.week_start_at + 1.day + 1.year
+    end
+
+    after do
+      travel_back
     end
 
     scenario "A user can still provide feedback for a session" do
@@ -100,6 +104,10 @@ feature "Giving feedback on a session" do
       travel_to AnnualSchedule.current.registration_open_at + 1.day
     end
 
+    after do
+      travel_back
+    end
+
     scenario "User cannot provide feedback before week start" do
       login_as user, scope: :user
 
@@ -109,10 +117,6 @@ feature "Giving feedback on a session" do
       click_on(class: "ScheduledSession")
 
       expect(page).not_to have_content "Please rate this session"
-    end
-
-    after do
-      travel_back
     end
   end
 end
