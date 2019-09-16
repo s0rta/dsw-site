@@ -272,6 +272,6 @@ module RouteHelper
   end
 
   def different_referer_host?
-    !URI(request.referer).host.include?(request.host)
+    request.referer.present? && !URI(request.referer).host.include?(request.host)
   end
 end
