@@ -76,11 +76,13 @@
                 = render partial: 'components/scheduled_session', locals: { submission: submission, include_day: true }
       .SessionDetail-column--right
         - if user_signed_in?
-          - @session.public_registrants(current_user).each do |user|
-            .SessionDetail-attendee
-              = render partial: 'components/name_with_avatar', locals: { user: user, name: user.abbreviated_name, align: 'right', color: 'gray' }
-              - if user[:linkedin_url].present?
-                = render partial: 'components/user_linkedin', locals: { user: user }
+          - registrants = @session.public_registrants(current_user)
+          - cache [registrants.size, registrants.max(:updated_at)] do
+            - registrants.each do |user|
+              .SessionDetail-attendee
+                = render partial: 'components/name_with_avatar', locals: { user: user, name: user.abbreviated_name, align: 'right', color: 'gray' }
+                - if user[:linkedin_url].present?
+                  = render partial: 'components/user_linkedin', locals: { user: user }
 
   - if user_signed_in? && @session.open_for_feedback?
     = render partial: 'feedback_form'
