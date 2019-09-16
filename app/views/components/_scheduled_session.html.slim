@@ -8,8 +8,12 @@ a.ScheduledSession(href="#{schedule_path(submission)}")
     .ScheduledSession-time-container
       .ScheduledSession--time #{local_assigns[:include_day] ? submission.human_short_start_day : ''} #{submission.human_time_range}
       .ScheduledSession-cluster-name
-        - submission.tags.each do |name, desc|
+        - submission.tags.each_with_index do |(name, desc), index|
           abbr(title="#{desc}") = name
+          - if (index + 1) < submission.tags.size
+            | , &nbsp;
+
+
     div
       .ScheduledSession-title = submission.full_title
       .ScheduledSession-location = submission.human_location_name
