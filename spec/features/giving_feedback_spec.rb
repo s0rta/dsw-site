@@ -6,12 +6,18 @@ feature "Giving feedback on a session" do
                   password: "password")
   end
 
-  let(:track) do
-    create(:track, name: "Founder",
-                   is_submittable: true)
+  let(:chair) do
+    create(:user, email: "chair@example.com",
+                  password: "password")
   end
 
-  let(:submission) do
+  let(:track) do
+    create(:track, name: "Founder",
+                   is_submittable: true,
+                   chair_ids: [chair.id])
+  end
+
+  let!(:submission) do
     create(:submission,
       submitter: user,
       title: "I am a session",
@@ -44,8 +50,6 @@ feature "Giving feedback on a session" do
     scenario "a user provides feedback for a session when already signed in and registered" do
       login_as user, scope: :user
 
-      submission
-
       visit "/schedule/monday"
       click_on(class: "ScheduledSession")
 
@@ -57,6 +61,10 @@ feature "Giving feedback on a session" do
       expect(submission.feedback.count).to eq 1
       expect(submission.feedback.first.rating).to eq 3
       expect(submission.feedback.first.comments).to eq "here are my comments"
+
+      # Notice to track chair
+      email = ActionMailer::Base.deliveries.reverse.detect { |e| e.to.include?("chair@example.com") }
+      expect(email.subject).to eq("Feedback has been submitted for \"I am a session\"")
     end
 
     scenario "a user cannot provide feedback if not signed in" do
