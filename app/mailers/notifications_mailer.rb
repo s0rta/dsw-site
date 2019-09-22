@@ -25,6 +25,12 @@ class NotificationsMailer < ApplicationMailer
          subject: "Your proposed session updates have been accepted"
   end
 
+  def notify_of_feedback(feedback, chair)
+    @chair = chair
+    @feedback = feedback
+    mail to: chair.email, subject: "Feedback has been submitted for \"#{@feedback.submission.title}\""
+  end
+
   def confirm_new_submission(submission)
     @submission = submission
     mail to: @submission.contact_emails, subject: "Thanks for submitting a session proposal for Denver Startup Week!"
