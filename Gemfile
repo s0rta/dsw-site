@@ -47,7 +47,7 @@ gem "textacular"
 gem "truncato"
 
 # State machines
-gem "simple_states"
+gem "simple_states", github: "svenfuchs/simple_states", branch: "v1.1.0.rc11"
 
 # API
 gem "active_model_serializers", "~> 0.8.0"

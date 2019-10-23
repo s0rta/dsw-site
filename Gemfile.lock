@@ -7,6 +7,14 @@ GIT
       mime-types (~> 3.1)
 
 GIT
+  remote: git://github.com/svenfuchs/simple_states.git
+  revision: 294d31319b1289bf6aeec67c183d71535046a073
+  branch: v1.1.0.rc11
+  specs:
+    simple_states (1.1.0.rc11)
+      activesupport
+
+GIT
   remote: https://github.com/RandieM/honeypot-captcha
   revision: 10c0ad1874ca75a99be93efec3bd0129894c7fea
   branch: master
@@ -492,7 +500,6 @@ GEM
       concurrent-ruby
       redis-prescription
       sidekiq
-    simple_states (2.0.1)
     skylight (4.1.2)
       skylight-core (= 4.1.2)
     skylight-core (4.1.2)
@@ -628,7 +635,7 @@ DEPENDENCIES
   sidecloq
   sidekiq
   sidekiq-throttled
-  simple_states
+  simple_states!
   skylight
   slim-rails
   standardrb
