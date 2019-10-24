@@ -16,7 +16,7 @@ class Publishing < ApplicationRecord
   end
 
   def self.for_track(track_name)
-    filtered_results(track: track_name).reorder(<<-SQL)
+    filtered_results(track: track_name).reorder(Arel.sql(<<-SQL))
       (CASE WHEN publishings.pinned_to_track THEN 1 ELSE 0 END) DESC,
       effective_at DESC
     SQL
