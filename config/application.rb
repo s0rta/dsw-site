@@ -16,7 +16,7 @@ Bundler.require(*Rails.groups)
 module Denverstartupweek
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.1
+    config.load_defaults 6.0
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -46,5 +46,8 @@ module Denverstartupweek
 
     # Raise on unpermitted parameters so we find out about them early
     config.action_controller.action_on_unpermitted_parameters = :raise
+
+    # Return only MIME type
+    config.action_dispatch.return_only_media_type_on_content_type = false
   end
 end
