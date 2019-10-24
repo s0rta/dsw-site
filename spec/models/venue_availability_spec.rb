@@ -9,7 +9,7 @@ describe VenueAvailability, type: :model do
   it { is_expected.to validate_presence_of(:day) }
   it { is_expected.to validate_presence_of(:time_block) }
   it { is_expected.to validate_uniqueness_of(:submission_id) }
-  it { is_expected.to belong_to(:submission) }
+  it { is_expected.to belong_to(:submission).optional }
   it { is_expected.to belong_to(:venue) }
 
   describe "assigning/unassigning submissions" do
