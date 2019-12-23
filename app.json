@@ -24,9 +24,6 @@
       "url": "https://github.com/gaffneyc/heroku-buildpack-jemalloc.git"
     },
     {
-      "url": "https://github.com/ello/heroku-buildpack-cmake.git"
-    },
-    {
       "url": "heroku/ruby"
     }
   ],
