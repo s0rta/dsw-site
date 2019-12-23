@@ -2,7 +2,7 @@ class Cluster < ApplicationRecord
   validates :name, presence: true
   has_many :submissions, dependent: :nullify
 
-  before_save :populate_slug!, on: :create
+  before_create :populate_slug!
 
   mount_uploader :header_image, HeaderImageUploader
   process_in_background :header_image

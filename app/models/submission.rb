@@ -313,7 +313,7 @@ class Submission < ApplicationRecord
   def public_registrants(current_user)
     registrants
       .where(show_attendance_publicly: true)
-      .reorder([<<-SQL, current_user.id])
+      .reorder([Arel.sql(<<-SQL), current_user.id])
         (CASE WHEN users.id = ? THEN 1 ELSE 2 END) ASC,
         "session_registrations"."created_at" DESC
       SQL

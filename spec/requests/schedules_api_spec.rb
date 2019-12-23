@@ -14,7 +14,7 @@ describe 'Schedule API', type: :request do
 
 
   before do
-    submission.update_attributes(start_day: 1, end_day: 1)
+    submission.update(start_day: 1, end_day: 1)
     submission.update_column(:state, 'confirmed')
   end
 

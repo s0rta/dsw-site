@@ -79,7 +79,7 @@ class SchedulesController < ApplicationController
     if stale?(@sessions)
       respond_to do |format|
         format.ics do
-          render body: to_calendar(registration, @sessions).to_ical, content_type: "text/calendar"
+          render body: to_calendar(registration, @sessions).to_ical, media_type: "text/calendar"
         end
       end
     end
