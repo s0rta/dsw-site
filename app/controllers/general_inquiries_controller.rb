@@ -7,10 +7,15 @@ class GeneralInquiriesController < ApplicationController
 
   def create
     @general_inquiry = GeneralInquiry.new(general_inquiry_params)
-    if @general_inquiry.save
+
+    if verify_recaptcha(action: "contact",
+                        model: @general_inquiry,
+                        minimum_score: recaptcha_min_score) && @general_inquiry.save
       flash[:notice] = "Thanks! We will be in touch shortly."
+      redirect_to root_path
+    else
+      render action: :new
     end
-    redirect_to root_path
   end
 
   private

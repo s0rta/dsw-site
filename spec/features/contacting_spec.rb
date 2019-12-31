@@ -29,4 +29,18 @@ feature "Filling out the contact form" do
     expect(last_email_sent).to deliver_to("volunteer@example.com")
     expect(last_email_sent).to reply_to("test@example.com")
   end
+
+  scenario "User submits a contact request but fails the captcha check" do
+    allow(Recaptcha).to receive(:skip_env?).and_return(false)
+    visit "/"
+    click_link "Contact Us"
+    fill_in "Name", with: "Some person"
+    fill_in "Company or Organization (optional)", with: "Acme Corp"
+    fill_in "E-mail Address", with: "test@example.com"
+    select "Sponsorship", from: "What are you interested in?"
+    fill_in "Any additional notes?", with: "Nope"
+    click_button "Submit"
+
+    expect(page).to have_content("reCAPTCHA verification failed, please try again.")
+  end
 end

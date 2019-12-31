@@ -106,4 +106,8 @@ class ApplicationController < ActionController::Base
       main_app.root_path
     end
   end
+
+  def recaptcha_min_score
+    @_recaptcha_min_score ||= Float(ENV["RECAPTCHA_MIN_SCORE"] || 0.5)
+  end
 end
