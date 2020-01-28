@@ -96,6 +96,7 @@ group :test do
   gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "vcr"
+  gem "webdrivers", require: "webdrivers/chromedriver"
   gem "webmock", require: false
 end
 

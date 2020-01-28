@@ -13,15 +13,11 @@ addons:
   apt:
     sources:
       - kalakris-cmake
-      - google-chrome
     packages:
       - cmake
-      - google-chrome-stable
-      - chromium-chromedriver
 before_install:
 - nvm install --lts
 - npm install -g yarn
-- ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
 before_script:
 - cp config/database.travis.yml config/database.yml
 - cp .env.example .env
