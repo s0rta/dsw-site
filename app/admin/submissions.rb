@@ -62,7 +62,7 @@ ActiveAdmin.register Submission do
 
   # Set a default year filter
   scope("Current", default: true, &:for_current_year)
-  scope("Previous Year", &:for_previous_years)
+  scope("Previous Years", &:for_previous_years)
 
   index do
     selectable_column
@@ -138,6 +138,7 @@ ActiveAdmin.register Submission do
   filter :title
   filter :description
   filter :track
+  filter :year, as: :select, collection: -> { Submission.distinct.pluck(:year).sort }
   filter :venue, as: :select, collection: -> { Venue.alphabetical }
   filter :company_name, as: :string
   filter :submitter_name, as: :string, label: "Submitter Name"
