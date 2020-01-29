@@ -1109,10 +1109,10 @@ autoprefixer@^9.6.1:
     postcss "^7.0.17"
     postcss-value-parser "^4.0.0"
 
-awesomplete@^1.1.2:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/awesomplete/-/awesomplete-1.1.4.tgz#cdfcbbb2391857ff3a3340b5b1ebde7701b355e6"
-  integrity sha512-AgYrODNlVD3ZJ6Em54YesLnOSusuVCjoRAt0l5bi3L1Oiv5r5dkPdxVPJaG3/wnPlxRUmGcpGnK02VK7N02kCg==
+awesomplete@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/awesomplete/-/awesomplete-1.1.5.tgz#1b2b5dd106d3955595619c03da472a1dc0faf0af"
+  integrity sha512-UFw1mPW8NaSECDSTC36HbAOTpF9JK2wBUJcNn4MSvlNtK7SZ9N72gB+ajHtA6D1abYXRcszZnBA4nHBwvFwzHw==
 
 aws-sign2@~0.7.0:
   version "0.7.0"
