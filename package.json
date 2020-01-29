@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@rails/webpacker": "^4.0.7",
-    "awesomplete": "^1.1.2",
+    "awesomplete": "^1.1.5",
     "coffeescript": "1.12.7",
     "jquery": "~> 3.4.0",
     "jquery-ujs": "^1.2.2",
