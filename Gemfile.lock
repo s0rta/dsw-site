@@ -462,7 +462,6 @@ GEM
     ruby-statistics (2.1.1)
     ruby_http_client (3.3.0)
     rubyzip (2.1.0)
-    rufo (0.10.0)
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
     safe_yaml (1.0.5)
@@ -629,7 +628,6 @@ DEPENDENCIES
   rinku
   rspec-rails
   rspec-rails-time-metadata
-  rufo
   sanitize
   sassc-rails
   selenium-webdriver

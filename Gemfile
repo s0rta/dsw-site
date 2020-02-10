@@ -77,7 +77,6 @@ group :development do
   gem "binding_of_caller"
   gem "listen"
 
-  gem "rufo", require: false
   gem "standardrb", require: false
 end
 
