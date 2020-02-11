@@ -72,11 +72,10 @@ gem "sidekiq"
 gem "sidekiq-throttled"
 
 group :development do
-  gem "derailed_benchmarks"
   gem "better_errors"
   gem "binding_of_caller"
+  gem "derailed_benchmarks"
   gem "listen"
-
   gem "standardrb", require: false
 end
 
