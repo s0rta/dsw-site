@@ -2,7 +2,8 @@ items:
   - title: 'Present'
     description:
       - 'The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during Denver Startup Week.'
-      - 'Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!'
+      - 'Our call for presentations will reopen in the spring. Stay tuned for more information on how to submit your ideas for consideration in our 2020 program!'
+      # - 'Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!'
     header_image: 'redesign/get_involved/get_involved_present.jpg'
     button_title: 'Learn more'
     button_page_url: 'voting/submit'
@@ -36,7 +37,7 @@ items:
   - title: 'Event Promotion'
     description:
       - 'Have an event that fits the Denver Startup Week spirit by being free, educational, and inclusive? We can publish the details in our email newsletter to spread the word to the DSW community.'
-      - 'Here is what we will need from you:'
+      - 'Click below to learn more about what we will need from you:'
     event_items:
       - 'Event Title, Date, Time, and Location'
       - 'Event Description (less than 100 words, written in the third person)'
@@ -62,7 +63,7 @@ items:
   - title: 'Special Announcements'
     description:
       - 'Have something extra special that you want to share with the Denver Startup Week community? Let us know! This can include big awards that your company wins, major funding rounds, can’t-miss happenings or stories - or something else that you can’t help but want to share with the DSW community. We will do our best to pass along the exciting news.'
-      - 'Here is what we will need from you:'
+      - 'Click below to learn more about what we will need from you:'
     event_items:
       - 'Special Announcement "Title"'
       - 'Description and overview as to what this special happening is and why it matters to the Denver Startup Week community (less than 300 words)'
