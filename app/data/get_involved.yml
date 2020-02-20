@@ -2,7 +2,8 @@ items:
   - title: 'Present'
     description:
       - 'The community plays a critical role in creating the event’s programming. Each spring, the community is asked to submit session ideas that they would like to put on during Denver Startup Week.'
-      - 'Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!'
+      - 'Our call for presentations will reopen in the spring. Stay tuned for more information on how to submit your ideas for consideration in our 2020 program!'
+      # - 'Our call for presentations is currently closed. We hope that you will join us at some of the exciting sessions we have planned for this year!'
     header_image: 'redesign/get_involved/get_involved_present.jpg'
     button_title: 'Learn more'
     button_page_url: 'voting/submit'
