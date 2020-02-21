@@ -1,6 +1,6 @@
 nav.PrimaryCalloutsNav(aria-label="Primary Callouts")
   ul.PrimaryCalloutsNav-list
-    - cache primary_callout_ctas do
+    - cache primary_callout_ctas.to_a do
       - primary_callout_ctas.each do |cta|
         - cycle('purple', 'green', 'teal', name: 'colors')
         li.PrimaryCalloutsNav-list-item
