@@ -47,19 +47,6 @@ items:
     button_title: 'Submit an Event'
     button_page_url: 'https://docs.google.com/forms/d/e/1FAIpQLScxgRj-lbkZRYD6iWBesI8ZIhFxLmdqjgDMBfzy26ovdy7t9Q/viewform'
     target: '_blank'
-  # - title: 'Instagram Takeover'
-  #   description:
-  #     - 'DSW’s <a href="https://www.instagram.com/denstartupweek" target="_blank">Instagram account</a> highlights the people, places, and energy of Denver’s entrepreneurial community. As we look to highlight the best of our city, we want you to show us a day-in-your-hustle!'
-  #     - 'Come take over our Instagram account for a day, show us your <a href="https://www.instagram.com/denstartupweek" target="_blank">#MileHighHustle</a>, and highlight the amazing work that you do for the Denver Startup Week community.'
-  #     - 'Here is what we will need from you:'
-  #   event_items:
-  #     - 'Your Name, Company, and Location'
-  #     - 'Short description of who you are, what you do, and why you are a compelling person to take over the DSW Instagram (less than 250 words)'
-  #     - 'Link to your social media profiles: Instagram, LinkedIn, Twitter, etc. (as is applicable)'
-  #   header_image: 'redesign/get_involved/get_involved_insta_takeover.jpg'
-  #   button_title: 'Apply for Takeover'
-  #   button_page_url: 'mailto:info@denverstartupweek.org?subject=Instagram Takeover'
-  #   target: '_blank'
   - title: 'Special Announcements'
     description:
       - 'Have something extra special that you want to share with the Denver Startup Week community? Let us know! This can include big awards that your company wins, major funding rounds, can’t-miss happenings or stories - or something else that you can’t help but want to share with the DSW community. We will do our best to pass along the exciting news.'
@@ -72,3 +59,10 @@ items:
     button_title: 'Submit Announcement'
     button_page_url: 'https://docs.google.com/forms/d/e/1FAIpQLSdKJ2pY-Qjt-yjQO78NGQmfD-9kxS8P-q4NQOPXwax5Zbe1QQ/viewform'
     target: '_blank'
+  - title: 'Hire Great Talent'
+    description:
+      - 'The annual Denver Startup Week Job Fair & Showcase has grown to be the largest free hiring event in Colorado and is one of the most-anticipated events during DSW.'
+      - 'Company applications to participate in the Job Fair and Showcase will open later this summer. In the meantime, you can check out details from last year!'
+    header_image: 'redesign/get_involved/job_fair.jpg'
+    button_title: 'Learn more'
+    button_page_url: 'https://www.denverstartupweek.org/schedule/6045-denver-startup-week-job-fair-and-showcase-sponsored-by-dice-com'
