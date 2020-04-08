@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@rails/webpacker": "^4.2.2",
+    "@rails/webpacker": "5.0.1",
     "awesomplete": "^1.1.5",
     "coffeescript": "1.12.7",
     "jquery": "~> 3.4.1",
@@ -9,7 +9,8 @@
   },
   "devDependencies": {
     "eslint": "^4.9.0",
-    "eslint-config-airbnb": "^16.1.0"
+    "eslint-config-airbnb": "^16.1.0",
+    "webpack-dev-server": "^3.10.3"
   },
   "eslintConfig": {
     "extends": [
