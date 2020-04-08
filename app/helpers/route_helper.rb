@@ -7,7 +7,15 @@ module RouteHelper
   end
 
   def main_menu
-    menu = [home_route, main_program_route, main_about_route, sponsors_route, main_get_involved_route, articles_route]
+    menu = [
+      home_route,
+      givetoo_route,
+      main_program_route,
+      main_about_route,
+      sponsors_route,
+      main_get_involved_route,
+      articles_route,
+    ]
 
     menu.push schedule_route if registration_open? || AnnualSchedule.post_week?
     menu.push register_route if registration_open? && !registered?
@@ -57,8 +65,15 @@ module RouteHelper
 
   def home_route
     {
-      path: "/",
+      path: root_path,
       label: "Home",
+    }
+  end
+
+  def givetoo_route
+    {
+      path: page_path("givetoo"),
+      label: "#GiveToo",
     }
   end
 
