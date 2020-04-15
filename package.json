@@ -3,7 +3,7 @@
     "@rails/webpacker": "^4.2.2",
     "awesomplete": "^1.1.5",
     "coffeescript": "1.12.7",
-    "jquery": "~> 3.4.1",
+    "jquery": "~> 3.5.0",
     "jquery-ujs": "^1.2.2",
     "lodash": ">=4.17.15"
   },
