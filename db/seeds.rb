@@ -1,6 +1,8 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
+require 'date'
+
 Track.reset_column_information
 {
   "Founder" => {
@@ -425,25 +427,18 @@ AnnualSchedule.where(year: 2017).first_or_create!(
   ambassador_application_close_at: Date.parse("2017-08-11").freeze,
 )
 
-AnnualSchedule.where(year: 2018).first_or_create!(
-  cfp_open_at: Date.parse("2018-04-04").freeze,
-  cfp_close_at: Date.parse("2018-04-30").freeze,
-  voting_open_at: Date.parse("2018-05-02").freeze,
-  voting_close_at: Date.parse("2018-05-18").freeze,
-  registration_open_at: Date.parse("2018-07-15").freeze,
-  week_start_at: Date.parse("2018-09-24").freeze,
-  week_end_at: Date.parse("2018-09-28").freeze,
-)
+(2018..Date.today.year).each do |year|
+  AnnualSchedule.where(year: year).first_or_create!(
+    cfp_open_at: Date.parse("#{year}-04-04").freeze,
+    cfp_close_at: Date.parse("#{year}-04-30").freeze,
+    voting_open_at: Date.parse("#{year}-05-02").freeze,
+    voting_close_at: Date.parse("#{year}-05-18").freeze,
+    registration_open_at: Date.parse("#{year}-07-15").freeze,
+    week_start_at: Date.parse("#{year}-09-24").freeze,
+    week_end_at: Date.parse("#{year}-09-28").freeze,
+  )
+end
 
-AnnualSchedule.where(year: 2019).first_or_create!(
-  cfp_open_at: Date.parse("2019-04-03").freeze,
-  cfp_close_at: Date.parse("2019-04-29").freeze,
-  voting_open_at: Date.parse("2019-05-06").freeze,
-  voting_close_at: Date.parse("2019-05-20").freeze,
-  registration_open_at: Date.parse("2019-07-17").freeze,
-  week_start_at: Date.parse("2019-09-16").freeze,
-  week_end_at: Date.parse("2019-09-20").freeze,
-)
 
 AttendeeGoal.reset_column_information
 {
