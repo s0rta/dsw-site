@@ -564,6 +564,42 @@ ALTER SEQUENCE public.general_inquiries_id_seq OWNED BY public.general_inquiries
 
 
 --
+-- Name: givetoo_ideas; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.givetoo_ideas (
+    id bigint NOT NULL,
+    expires_at timestamp without time zone,
+    user_id bigint,
+    description text,
+    kind text,
+    title text,
+    website_url text,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: givetoo_ideas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.givetoo_ideas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: givetoo_ideas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.givetoo_ideas_id_seq OWNED BY public.givetoo_ideas.id;
+
+
+--
 -- Name: homepage_ctas; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1617,6 +1653,13 @@ ALTER TABLE ONLY public.general_inquiries ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
+-- Name: givetoo_ideas id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.givetoo_ideas ALTER COLUMN id SET DEFAULT nextval('public.givetoo_ideas_id_seq'::regclass);
+
+
+--
 -- Name: homepage_ctas id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1909,6 +1952,14 @@ ALTER TABLE ONLY public.feedback
 
 ALTER TABLE ONLY public.general_inquiries
     ADD CONSTRAINT general_inquiries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: givetoo_ideas givetoo_ideas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.givetoo_ideas
+    ADD CONSTRAINT givetoo_ideas_pkey PRIMARY KEY (id);
 
 
 --
@@ -2326,6 +2377,13 @@ CREATE INDEX index_feedback_on_submission_id ON public.feedback USING btree (sub
 --
 
 CREATE INDEX index_feedback_on_user_id ON public.feedback USING btree (user_id);
+
+
+--
+-- Name: index_givetoo_ideas_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_givetoo_ideas_on_user_id ON public.givetoo_ideas USING btree (user_id);
 
 
 --
@@ -3002,6 +3060,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190807170839'),
 ('20190826014104'),
 ('20190903170552'),
-('20190909204737');
+('20190909204737'),
+('20200414032806');
 
 

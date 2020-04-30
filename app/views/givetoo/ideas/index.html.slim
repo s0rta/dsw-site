@@ -1,0 +1,22 @@
+- @submissions = []
+- content_for(:title, '#GiveToo')
+= render layout: 'layouts/shared/secondary_hero', locals: { title: '#GiveToo', sub_title: 'CONNECTING NEEDS AND RESOURCES IN THE DENVER STARTUP COMMUNITY ', description: 'The Denver startup community always gives first.' } do
+  = link_to 'Submit an idea', new_givetoo_idea_path, class: 'ArticlesForm-submit'
+  form.Voting-form
+    .Voting-search
+      = render partial: 'components/search', locals: { placeholder: ''}
+    .Voting-filters
+      .Voting-filter
+        = render layout: 'components/dropdown', locals: { name: "track_name", onchange: "this.form.submit();", value: params[:track_name] } do
+          option(value="all" selected=("selected" if params[:track_name] == 'all')) View All Tracks
+          - Track.dropdown_options.each do |opt|
+            option(value="#{opt[:value]}" selected=("selected" if params[:track_name] == opt[:value] )) #{opt[:label]}
+
+
+.Voting-list-wrapper
+  = render 'components/three_card_list', attributes: { 'aria-label': "Votable Sessions", id: 'loader-target' } do
+    = render 'submissions/submissions_list_items'
+
+- unless @submissions.empty?
+  div.Voting-load-more(data-bindable="ajax-load-more" data-target="loader-target")
+    = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms], track_name: params[:track_name], seed: @seed), remote: true, method: :get, id: 'load-more', class: 'Voting-load-more-button', data: { type: 'json' }

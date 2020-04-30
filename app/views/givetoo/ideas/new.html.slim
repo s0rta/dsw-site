@@ -1,0 +1,55 @@
+- content_for(:fullscreen_takeover, true)
+- content_for(:title, 'Submit a Resource')
+- content_for :extra_body_tags do
+  = stylesheet_pack_tag 'application'
+
+= render 'layouts/shared/fullscreen_takeover_header', title: 'Submit a Resource', background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+
+  = render layout: 'components/form_wrapper' do
+    .Submissions-instructions
+      | Before submitting an idea or resource, please take a minute to read through
+      = link_to 'our FAQs', page_path(page: 'givetoo/faqs'), target: '_blank', class: 'Submissions-link'
+      | for more information about the submission and selection process.
+
+    = form_for @idea do |f|
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/form_field' do
+            = f.label :kind, 'Which category best described your offering?'
+            = f.select :kind, Givetoo::Idea::KINDS.map { |k| [ k.to_str.titleize, k ]}, { include_blank: false }
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/form_field' do
+            = f.label :title, "What is your offering's title?"
+            = f.text_field :title
+
+      / = render layout: 'components/form_input_row' do
+      /   = render layout: 'components/form_input_wrapper' do
+      /     = render layout: 'components/form_field' do
+      /       = f.label :company_name, 'Are you submitting this proposal on behalf of a company or group? If so please provide the name of it here.'
+      /       = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
+
+      / = render layout: 'components/form_input_row' do
+      /   = render layout: 'components/form_input_wrapper' do
+      /     = render layout: 'components/form_field' do
+      /       = f.label :open_to_collaborators, 'We periodically receive inquiries from potential panelists or session organizers who are interested in collaborating with others to put on a session on a particular topic. Are you open to collaborating with others on this proposal?'
+      /       = f.select :open_to_collaborators, [ [ 'Yes', true ], [ 'No', false ] ], selected: true
+
+      / = render layout: 'components/form_input_row' do
+      /   = render layout: 'components/form_input_wrapper' do
+      /     = render layout: 'components/form_field' do
+      /       = f.label :contact_email, 'Please confirm your e-mail address. Once your idea is submitted, you will receive a confirmation email. We may also reach out if we have any questions.'
+      /       = f.text_field :contact_email
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/form_field' do
+            = f.label :description, 'Please provide a concise description (limited 600 characters or less). This will be displayed publicly.'
+            = f.text_area :description, data: { bindable: 'text_area_autosize' }, placeholder: 'Description (public facing)'
+
+      = render partial: 'components/form_errors', locals: { error_resource: @idea }
+
+      .Submissions-actions
+        = f.submit 'Submit', class: 'ArticlesForm-submit'

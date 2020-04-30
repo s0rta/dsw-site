@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   get "/panel-picker", to: redirect("/voting")
   get "/panel-picker/search", to: redirect("/voting")
   get "/panel-picker/track", to: redirect("/voting")
+  get "/givetoo", to: redirect("/givetoo/ideas")
 
   # Vanity redirects
   get "/live", to: redirect("https://dswlive.intelivideo.com/")
@@ -117,6 +118,10 @@ Rails.application.routes.draw do
     collection do
       get :mine
     end
+  end
+
+  namespace :givetoo do
+    resources :ideas
   end
 
   resource :user_search, only: %i[show]
