@@ -9,18 +9,18 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---
--- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
---
+--		
+ -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -		
+ --		
 
-CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+  CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;		
 
+ 
+  --		
+ -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -		
+ --		
 
---
--- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+  COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';		
 
 
 --
@@ -603,6 +603,37 @@ ALTER SEQUENCE public.homepage_ctas_id_seq OWNED BY public.homepage_ctas.id;
 
 
 --
+-- Name: industry_types; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.industry_types (
+    id bigint NOT NULL,
+    name character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: industry_types_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.industry_types_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: industry_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.industry_types_id_seq OWNED BY public.industry_types.id;
+
+
+--
 -- Name: newsletter_signups; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1127,6 +1158,37 @@ ALTER SEQUENCE public.submissions_id_seq OWNED BY public.submissions.id;
 
 
 --
+-- Name: support_areas; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.support_areas (
+    id bigint NOT NULL,
+    name character varying,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: support_areas_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.support_areas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: support_areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.support_areas_id_seq OWNED BY public.support_areas.id;
+
+
+--
 -- Name: tracks; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1624,6 +1686,13 @@ ALTER TABLE ONLY public.homepage_ctas ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: industry_types id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.industry_types ALTER COLUMN id SET DEFAULT nextval('public.industry_types_id_seq'::regclass);
+
+
+--
 -- Name: newsletter_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1719,6 +1788,13 @@ ALTER TABLE ONLY public.sponsorships ALTER COLUMN id SET DEFAULT nextval('public
 --
 
 ALTER TABLE ONLY public.submissions ALTER COLUMN id SET DEFAULT nextval('public.submissions_id_seq'::regclass);
+
+
+--
+-- Name: support_areas id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.support_areas ALTER COLUMN id SET DEFAULT nextval('public.support_areas_id_seq'::regclass);
 
 
 --
@@ -1920,6 +1996,14 @@ ALTER TABLE ONLY public.homepage_ctas
 
 
 --
+-- Name: industry_types industry_types_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.industry_types
+    ADD CONSTRAINT industry_types_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: newsletter_signups newsletter_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2029,6 +2113,14 @@ ALTER TABLE ONLY public.sponsorships
 
 ALTER TABLE ONLY public.submissions
     ADD CONSTRAINT submissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: support_areas support_areas_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.support_areas
+    ADD CONSTRAINT support_areas_pkey PRIMARY KEY (id);
 
 
 --
@@ -3002,6 +3094,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190807170839'),
 ('20190826014104'),
 ('20190903170552'),
-('20190909204737');
+('20190909204737'),
+('20200501114353'),
+('20200501114543');
 
 
