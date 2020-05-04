@@ -1,4 +1,6 @@
 ActiveAdmin.register IndustryType do
+  menu parent: "GiveToo"
+  
   permit_params :name
 
   index do
