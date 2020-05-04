@@ -178,6 +178,27 @@ unless Cluster.any?
   end
 end
 
+["Tech",
+ "Healthcare",
+ "Cannabis ",
+ "Physical Products ",
+ "Restaurant + Hospitality ",
+ "Retail",
+ "Volunteer",
+ "Professional Services ",
+ "Other"].each do |industry_type|
+  IndustryType.where(name: industry_type).first_or_create!
+end
+
+["Entrepreneurship - Early Stage & High Growth Business",
+  "Small Business (Rural and Urban) ",
+  "Women / Minority-Led Business",
+  "Nonprofit Business",
+  "Main Street Business + Restaurant + Hospitality",
+  "Community Organizations + Community Support"].each do | support_area |
+  SupportArea.where(name: support_area).first_or_create!
+end
+
 HomepageCta.reset_column_information
 [
   {
