@@ -7,8 +7,6 @@ class User < ApplicationRecord
     :trackable,
     :validatable
 
-  default_scope { order(Arel.sql("LOWER(name) ASC")) }
-
   validates :name, presence: true
 
   validates :team_priority,

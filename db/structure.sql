@@ -9,18 +9,18 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
---		
- -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -		
- --		
+--				
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -				
+--				
 
-  CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;		
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;				
 
- 
-  --		
- -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -		
- --		
 
-  COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';		
+--				
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: -				
+--				
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';				
 
 
 --
@@ -942,6 +942,55 @@ ALTER SEQUENCE public.registrations_id_seq OWNED BY public.registrations.id;
 
 
 --
+-- Name: resources; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.resources (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    image character varying,
+    company_id bigint NOT NULL,
+    description character varying NOT NULL,
+    contact_information character varying NOT NULL,
+    website character varying,
+    expiration_date date,
+    industry_type_id bigint,
+    user_id bigint NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: resources_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.resources_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: resources_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.resources_id_seq OWNED BY public.resources.id;
+
+
+--
+-- Name: resources_support_areas; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.resources_support_areas (
+    resource_id bigint NOT NULL,
+    support_area_id bigint NOT NULL
+);
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1756,6 +1805,13 @@ ALTER TABLE ONLY public.registrations ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
+-- Name: resources id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.resources ALTER COLUMN id SET DEFAULT nextval('public.resources_id_seq'::regclass);
+
+
+--
 -- Name: sent_notifications id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2076,6 +2132,14 @@ ALTER TABLE ONLY public.registrations
 
 
 --
+-- Name: resources resources_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.resources
+    ADD CONSTRAINT resources_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sent_notifications sent_notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2257,6 +2321,13 @@ CREATE INDEX fulltext_venues_name_english ON public.venues USING gin (to_tsvecto
 --
 
 CREATE INDEX idx_companies_name_contains ON public.companies USING gin (name public.gin_trgm_ops);
+
+
+--
+-- Name: idx_resource_support_area; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX idx_resource_support_area ON public.resources_support_areas USING btree (resource_id, support_area_id);
 
 
 --
@@ -2516,6 +2587,27 @@ CREATE INDEX index_registrations_on_company_id ON public.registrations USING btr
 --
 
 CREATE INDEX index_registrations_on_user_id ON public.registrations USING btree (user_id);
+
+
+--
+-- Name: index_resources_on_company_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_resources_on_company_id ON public.resources USING btree (company_id);
+
+
+--
+-- Name: index_resources_on_industry_type_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_resources_on_industry_type_id ON public.resources USING btree (industry_type_id);
+
+
+--
+-- Name: index_resources_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_resources_on_user_id ON public.resources USING btree (user_id);
 
 
 --
@@ -2841,6 +2933,14 @@ ALTER TABLE ONLY public.volunteer_shifts
 
 
 --
+-- Name: resources_support_areas fk_rails_a176c1f834; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.resources_support_areas
+    ADD CONSTRAINT fk_rails_a176c1f834 FOREIGN KEY (resource_id) REFERENCES public.resources(id);
+
+
+--
 -- Name: articles_tracks fk_rails_a51247846b; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2894,6 +2994,14 @@ ALTER TABLE ONLY public.venue_adminships
 
 ALTER TABLE ONLY public.articles_tracks
     ADD CONSTRAINT fk_rails_dfa37c8829 FOREIGN KEY (article_id) REFERENCES public.articles(id);
+
+
+--
+-- Name: resources_support_areas fk_rails_e8cb2b2a9e; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.resources_support_areas
+    ADD CONSTRAINT fk_rails_e8cb2b2a9e FOREIGN KEY (support_area_id) REFERENCES public.support_areas(id);
 
 
 --
@@ -3096,6 +3204,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190903170552'),
 ('20190909204737'),
 ('20200501114353'),
-('20200501114543');
+('20200501114543'),
+('20200501144503');
 
 

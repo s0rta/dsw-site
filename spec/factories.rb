@@ -25,6 +25,22 @@ FactoryBot.define do
     association :submitter, factory: :user
   end
 
+  factory :resource do
+    name { "This is a good resource" }
+    description { "Please take me!" }
+    association :user
+    association :company
+    contact_information { "test@test.com" }
+  end
+
+  factory :industry_type do
+    sequence(:name) { |n| "Industry Type #{n}" }
+  end
+
+  factory :support_area do
+    sequence(:name) { |n| "Support Area #{n}" }
+  end
+
   factory :attendee_goal
 
   factory :attendee_message do
