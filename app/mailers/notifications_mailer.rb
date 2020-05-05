@@ -58,6 +58,11 @@ class NotificationsMailer < ApplicationMailer
     mail to: ENV["NEW_ARTICLE_EMAIL_RECIPIENTS"].split(","), subject: "A new article has been submitted for DSW"
   end
 
+  def notify_of_new_resource(resource)
+    @resource = resource
+    mail to: "info@denverstartupweek.org", subject: "A new resource has been submitted for DSW"
+  end
+
   def notify_of_submission_acceptance(submission)
     @submission = submission
     mail to: notification_emails(@submission),
