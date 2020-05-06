@@ -1,0 +1,7 @@
+section.ResourcesList-wrapper(class="#{is_overlapped ? 'is-overlapped' : ''}")
+  .ResourcesList
+    = render 'components/three_card_list', attributes: { 'aria-label': "#{title} sessions and atricles", id: 'loader-target' } do
+      = render 'give_too/resources/list', resources: resources
+  - unless resources.last_page? || resources.total_pages == 0
+    .ResourcesList-btn-wrapper(data-bindable="ajax-load-more" data-target="loader-target")
+      = link_to 'Load More', url_for(page: Integer(params[:page] || 1) + 1, terms: params[:terms], support_area: params[:support_area], industry_type: params[:industry_type]), remote: true, method: :get, id: 'load-more', class: 'ResourcesList-load-more-button', data: { type: 'json' }

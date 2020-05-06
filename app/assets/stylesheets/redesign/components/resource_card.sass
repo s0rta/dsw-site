@@ -1,0 +1,52 @@
+@import ../config
+
+.ResourceCard
+  position: relative
+  height: 100%
+
+.ResourceCard-link
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  z-index: 1
+  cursor: pointer
+
+.ResourceCard-image
+  height: 205px
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+
+.ResourceCard-content
+  padding: 13px 20px
+
+.ResourceCard-date
+  font-size: 11px
+  color: $primary-font-light
+  text-transform: uppercase
+
+.ResourceCard-name
+  font-size: 18px
+  color: $primary-font-medium
+  line-height: 21px
+  margin-top: 5px
+
+.ResourceCard-description-preview
+  @include font-family-mixin(Montserrat-Light)
+  margin-top: 22px
+  color: $primary-font-medium
+  font-size: 14px
+
+.ResourceCard-support_areas
+  display: flex
+  position: absolute
+  left: 20px
+  bottom: 10px
+
+.ResourceCard-edit
+  position: absolute
+  top: 15px
+  right: 15px
+  z-index: 2

@@ -1,0 +1,7 @@
+.SimilarResourcesList
+  h2.SimilarResourcesList-title You may also be interested in
+  .SimilarResourcesList-list
+    = render 'components/three_card_list', attributes: { 'aria-label': "similar resources" } do
+      - resources.each do |resource|
+        = render 'components/three_card_list_item' do
+          = render 'components/resource_card', resource: resource

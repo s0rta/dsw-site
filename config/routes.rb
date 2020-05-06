@@ -79,6 +79,10 @@ Rails.application.routes.draw do
 
   resources :articles, except: [:destroy]
 
+  namespace :give_too do
+    resources :resources, except: [:destroy]
+  end
+
   scope :program do
     resources :clusters, only: :show, param: :name
     resources :tracks, only: :show, param: :name

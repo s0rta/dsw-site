@@ -39,6 +39,7 @@ FactoryBot.define do
 
   factory :support_area do
     sequence(:name) { |n| "Support Area #{n}" }
+    color { "purple" }
   end
 
   factory :attendee_goal

@@ -1,12 +1,11 @@
 class Resource < ApplicationRecord
 
-  validates :name,
-    length: {maximum: 150},
-    presence: true
-
-  validates :description,
-    presence: true
-
+  validates :name, length: {maximum: 150}, presence: true
+  validates :description, presence: true
+  validates :contact_information, presence: true
+  validates :company_id, presence: true
+  validates :user_id, presence: true
+  
   has_and_belongs_to_many :support_areas, validate: false
 
   belongs_to :user
@@ -18,6 +17,15 @@ class Resource < ApplicationRecord
 
   def to_param
     "#{id}-#{name.try(:parameterize)}"
+  end
+
+  def self.filtered_results(filters)
+    return all if filters.blank?
+
+    all
+      .for_support_area(filters[:support_area])
+      .for_industry_type(filters[:industry_type])
+      .fulltext_search(filters[:terms])
   end
 
   def active?

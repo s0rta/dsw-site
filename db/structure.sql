@@ -1214,7 +1214,8 @@ CREATE TABLE public.support_areas (
     id bigint NOT NULL,
     name character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    color character varying
 );
 
 
@@ -3205,6 +3206,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190909204737'),
 ('20200501114353'),
 ('20200501114543'),
-('20200501144503');
+('20200501144503'),
+('20200505174657');
 
 

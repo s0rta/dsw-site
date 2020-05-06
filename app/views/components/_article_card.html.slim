@@ -15,7 +15,7 @@
       - unless article.header_image.present?
         .ArticleCard-body-preview
           - cache [ article, 'preview'] do
-            = truncate_html(sanitize_article_body_for_display(article), 175).html_safe
+            = truncate_html(sanitize_text_for_display(article.body), 175).html_safe
       .ArticleCard-tracks
         - article.tracks.limit(3).each do |track|
           = render partial: 'components/track_indicator', locals: { size: 'small', color: "#{track[:color]}", name: "#{track[:name]}" }

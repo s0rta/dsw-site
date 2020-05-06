@@ -1,0 +1,104 @@
+@import ../config
+
+.Resource
+  max-width: 1252px
+  margin: 0 auto
+  padding: 0 5%
+  box-sizing: content-box
+
+.Resource-inner
+  max-width: 1092px
+
+.Resource-back
+  display: flex
+
+.Resource-back-link
+  display: flex
+  align-items: center
+  color: $teal-light
+  margin-top: 20px
+  margin-bottom: 37px
+  text-transform: uppercase
+
+.Resource-back-text
+  margin-left: 20px
+
+.Resource-image
+  width: 100%
+  height: 493px
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+
+.Resource-support_areas
+  display: flex
+  flex-wrap: wrap
+  margin-top: 22px
+  margin-bottom: 40px
+
+.Resource-date
+  @include font-family-mixin(Montserrat-Medium)
+  color: $primary-font-medium
+  font-size: 16px
+  text-transform: uppercase
+  margin-bottom: 16px
+
+.Resource-name
+  @include font-family-mixin(Montserrat-Light)
+  color: $primary-font-dark
+  font-size: 28px
+  line-height: 32px
+  text-transform: uppercase
+  margin-bottom: 20px
+
+.Resource-description
+  margin-top: 34px
+  margin-bottom: 80px
+
+.Resource-user
+  margin-bottom: 13px
+
+  &:last-child
+    margin-bottom: 0
+
+.ResourceDescription
+  +font-family-mixin(Montserrat-Light)
+  color: $primary-font-medium
+  font-size: 14px
+
+  h2
+    font-size: 24px
+    +font-family-mixin(Montserrat-Regular)
+    color: $primary-font-medium
+    margin: 0
+
+  ul
+    padding-left: 0px
+    li
+      list-style: inside
+
+  ol
+    padding-left: 16px
+    li
+      list-style: decimal
+
+  b
+    +font-family-mixin(Montserrat-Bold)
+
+  blockquote
+    +font-family-mixin(Montserrat-Regular)
+    margin: 0
+    padding-left: 20px
+    margin-left: -20px
+    font-size: 22px
+    line-height: 1.58
+    border-left: 3px solid $primary-font-dark
+    font-style: normal
+
+  a
+    color: $teal-light
+
+  pre
+    margin: 0
+    white-space: pre-wrap
+

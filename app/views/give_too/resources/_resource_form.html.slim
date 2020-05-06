@@ -1,0 +1,103 @@
+- content_for(:fullscreen_takeover, true)
+- content_for :extra_body_tags do
+  = stylesheet_pack_tag 'application'
+- upload_label = @resource.image.present? ? 'Change Image +' : 'Add Image +'
+
+= render 'layouts/shared/fullscreen_takeover_header', title: content_for(:resource_page_title), background: 'light'
+= render layout: 'layouts/shared/layout_wrapper' do
+  = render layout: 'components/form_wrapper' do
+    .ResourcesForm-instructions
+      p We invite you - yes, you! - to submit resources to the Denver Startup Week website. We look to you for unique insights, inspiring stories, thought leadership, founder profiles, can’t-miss news, and much more.
+      p Before you submit, here are a few of our guidelines. Please no company sales/promotion — your expertise is the best promotion!
+      ul aria-label="Resource guidelines"
+        li Remember the cardinal rule: don’t self-promote; teach us something!
+        li Make it entertaining! Remember, we like spicy but not crude.
+        li Please include an image. Your featured image will be the first image in your resource so make sure it is the one you want to use as a preview.
+        li Write a compelling title that describes the content of the resource as these will get more clicks and do better in search
+        li Please ensure there are no copyright or plagiarism conflicts as we will not be verifying this and will not assume any responsibility should there be an issue. By submitting your resource, you are agreeing to these terms.
+        li You can submit an resource on behalf of someone else. In order to add their name as the author, that person must have a Denver Startup Week account and have granted permission to use their name. If they do not already have an account, please direct them to create one before you submit the resource.
+      p After you submit your resource, it will be reviewed by the Denver Startup Week team before it is published. All resources are expected to follow the  #{link_to "Denver Startup Week Code of Conduct", page_path(page: "code-of-conduct")} and Denver Startup Week reserves the right to not publish submissions for any reason.
+      p Thank you for sharing your wisdom, knowledge, and creativity with the Denver Startup Week community!
+
+    = form_for @resource, url: @url, honeypot: true do |f|
+      - unless @resource.persisted?
+        = recaptcha_v3(action: 'create_resource')
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/floating_input' do
+            = f.text_field :name, required: 'required', autofocus: 'autofocus'
+            = f.label :name, 'Resource Name*'
+        end
+
+
+      .ResourcesForm-header Related Area(s) of Support
+      .ResourcesForm-support_areas
+        = render layout: 'components/form_checkbox_collection' do
+          = f.collection_check_boxes :support_area_ids, SupportArea.all, :id, :name, include_hidden: false do |b|
+            = b.label do
+              = b.check_box
+              = b.text
+      .ResourcesForm-industry_types
+        = render layout: 'components/floating_input' do
+          = f.select :industry_type_id, IndustryType.all.collect { |it| [ it.name, it.id ] }, { include_blank: '' }
+          = f.label :industry_type_id, 'Industry Type'
+      .ResourcesForm-companies
+        = render layout: 'components/floating_input' do
+          = f.select :company_id, Company.all.collect { |it| [ it.name, it.id ] }, required: 'required'
+          = f.label :company_id, 'Company*'
+      .ResourcesForm-upload
+        = f.label :image, upload_label, class: 'ResourcesForm-upload-label'
+        = f.file_field :image, data: { bindable: 'showfilesize' }, class: 'ResourcesForm-upload-input'
+        .ResourcesForm-upload-name#file-select-name-js
+        .ResourcesForm-hint Image should be in a horizontal format with no important content near edges. Images will scale and crop according to users browser size.
+
+      .ResourcesForm-expiration_date
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = f.label :expiration_date, 'Expiration Date', class: 'ResourcesForm-label'
+            = f.date_field(:expiration_date, min: Date.today, class: 'ResourcesForm-textarea')
+        .ResourcesForm-hint Enter date in form of YYYY-MM-DD
+
+      .ResourcesForm-contact_information
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = f.label :contact_information, 'Contact Information*', class: 'ResourcesForm-label'
+            = f.text_field :contact_information, required: 'required', class: 'ResourcesForm-textarea'
+
+      .ResourceDescription
+        = render layout: 'components/form_input_row' do
+          = render layout: 'components/form_input_wrapper' do
+            = f.label :description, 'Resource Description*', class: 'ResourcesForm-label'
+            = f.text_area :description, class: 'ResourcesForm-textarea', id: 'resource_description_editable'
+      .ResourcesForm-hint Highlight the text to add formatting
+
+      .ResourcesForm-required-text
+        | *Required
+
+      = render partial: 'components/form_errors', locals: { error_resource: @resource }
+
+      .ResourcesForm-actions
+        = f.submit 'Submit', class: 'ResourcesForm-submit'
+
+
+      javascript:
+        var editor = new MediumEditor('#resource_description_editable', {
+          "spellcheck": false,
+          "toolbar": {
+            "buttons": [
+              "bold",
+              "italic",
+              "underline",
+              "h2",
+              "quote",
+              "anchor",
+              "orderedlist",
+              "unorderedlist",
+              "strikethrough",
+              "subscript",
+              "superscript",
+              "pre",
+              "html"
+            ]
+          },
+        });

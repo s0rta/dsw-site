@@ -172,7 +172,7 @@ module ApplicationHelper
     Truncato.truncate(content, max_length: max_length, count_tags: false)
   end
 
-  def sanitize_article_body_for_display(article)
-    sanitize article.body, tags: %w[h2 a ul li ol pre b u strong em blockquote strike s p br], attributes: %w[href]
+  def sanitize_text_for_display(text)
+    sanitize text, tags: %w[h2 a ul li ol pre b u strong em blockquote strike s p br], attributes: %w[href]
   end
 end

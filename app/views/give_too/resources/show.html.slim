@@ -1,0 +1,44 @@
+- content_for(:title, 'Resources')
+- content_for(:subtitle, "#{@resource[:name]}")
+- related_resources = @resource.related.limit(3)
+- content_for(:extra_meta_tags) do
+  - cache [ @resource, 'meta'] do
+    meta(property="og:name" content="Denver Startup Week | #{@resource.name}")
+    meta(property="og:image" content="#{@resource.image.url(:article_card)}")
+    meta(property="og:site_name" content="Denver Startup Week")
+    meta(property="og:url" content="#{give_too_resource_url(@resource)}")
+    meta(property="og:description" content="#{strip_tags(truncate_html(sanitize_text_for_display(@resource.description), 300))}")
+    meta(property="og:type" content="article")
+  - if @resource.expiration_date.present?
+    meta(property="resource:expiration_date" content="#{@resource.expiration_date.iso8601}")
+
+.Article
+  .Resource-inner
+    .Resource-back
+      a(href="#{back_to_path('resources', give_too_resources_path)}" aria-label="Back to previous page" class="Resource-back-link")
+        = render partial: 'icons/arrow_in_circle_left'
+        span.Resource-back-text back to #{back_to_label('resources')}
+    - if @resource.image.present?
+      div.Resource-image(style="background-image: url(#{image_url @resource.image.url(:resource_page)})")
+    .Resource-support_areas
+      - @resource.support_areas.each do |support_area|
+        =render partial: 'components/track_indicator', locals: { size: 'small', color: "#{support_area[:color]}", name: "#{support_area[:name]}" }
+    - if @resource.expiration_date.present?
+      .Resource-date #{@resource.expiration_date.strftime("%b %e, %Y")}
+    - else
+      .Resource-date No Expiration Date
+    h1.Resource-name #{@resource.name}
+    .Resource-user
+        = render partial: 'components/name_with_avatar', locals: { user: @resource.user, name: @resource.user.name, align: 'right', color: 'grey' }
+        - if @resource.user[:linkedin_url].present?
+          = render partial: 'components/user_linkedin', locals: { user: @resource.user }
+    / TODO: need a style for this
+    .Resource-industry_type
+      = @resource.industry_type&.name
+    - cache [ @resource, 'description'] do
+      section.Resource-description
+        .ResourceDescription
+          = sanitize_text_for_display(@resource.description)
+
+    - unless related_resources.empty?
+      = render 'layouts/shared/similar_resources_list', resources: related_resources

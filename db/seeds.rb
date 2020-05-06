@@ -196,7 +196,7 @@ end
   "Nonprofit Business",
   "Main Street Business + Restaurant + Hospitality",
   "Community Organizations + Community Support"].each do | support_area |
-  SupportArea.where(name: support_area).first_or_create!
+  SupportArea.where(name: support_area, color: SupportArea::COLORS.sample).first_or_create!
 end
 
 HomepageCta.reset_column_information

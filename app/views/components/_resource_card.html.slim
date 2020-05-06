@@ -1,0 +1,22 @@
+= render 'components/card' do
+  .ResourceCard
+    a.ResourceCard-link(href="#{give_too_resource_path(resource.to_param)}")
+    - if local_assigns[:editable?].present?
+      = link_to edit_give_too_resource_path(resource), title: 'Propose Updates', class: "ResourceCard-edit" do
+        = render partial: 'icons/pencil'
+    - if resource.image.present?
+      .ResourceCard-image(style="background-image: url(#{image_url resource.image.url(:resource_card)})")
+    .ResourceCard-content
+      - if resource.expiration_date.present?
+        .ResourceCard-date #{resource.expiration_date.strftime("%b %e, %Y")}
+      - else
+        .ResourceCard-date No expiration date
+      h2.ResourceCard-name #{resource.name}
+      - unless resource.image.present?
+        .ResourceCard-description-preview
+          - cache [ resource, 'preview'] do
+            = truncate_html(sanitize_text_for_display(resource.description), 175).html_safe
+      .ResourceCard-support-areas
+        - resource.support_areas.limit(3).each do |support_area|
+          = render partial: 'components/track_indicator', locals: { size: 'small', color: "#{support_area[:color]}", name: "#{support_area[:name]}" }
+

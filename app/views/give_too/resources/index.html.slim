@@ -1,0 +1,20 @@
+- content_for(:title, 'Resources')
+= render layout: 'layouts/shared/secondary_hero', locals: { title: 'Resources', sub_title: 'RESOURCES FROM THE DENVER STARTUP WEEK COMMUNITY ', description: 'this needs copy TODO' } do
+  form.Resources-form
+    .Resources-search
+      = render partial: 'components/search', locals: { placeholder: ''}
+    .Resources-filters
+      .Resources-filter
+        = render layout: 'components/dropdown', locals: { name: "support_area", onchange: "this.form.submit();", value: params[:support_area] } do
+          option(value="all" selected=("selected" if params[:support_area] == 'all')) Filter by Area of Support
+          - SupportArea.dropdown_options.each do |opt|
+            option(value="#{opt[:value]}" selected=("selected" if params[:support_area] == opt[:value] )) #{opt[:label]}
+      - unless IndustryType.count > 0
+        .Resources-filter
+          = render layout: 'components/dropdown', locals: { name: "industry_type", onchange: "this.form.submit();", value: params[:industry_type] } do
+            option(value="all" selected=("selected" if params[:industry_type] == 'all')) Filter by industry_type
+            - industry_type.dropdown_options.each do |opt|
+              option(value="#{opt[:value]}" selected=("selected" if params[:industry_type] == opt[:value] )) #{opt[:label]}
+
+.Resources-list-wrapper
+  = render partial: 'layouts/shared/resources_list', locals: { resources: @resources, title: "Resources", is_overlapped: false }
