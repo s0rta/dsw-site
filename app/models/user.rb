@@ -7,7 +7,7 @@ class User < ApplicationRecord
     :trackable,
     :validatable
 
-  default_scope { order(Arel.sql("LOWER(name) ASC")) }
+  default_scope { order(name: :asc) }
 
   validates :name, presence: true
 
@@ -16,12 +16,12 @@ class User < ApplicationRecord
       only_integer: true,
       greater_than_or_equal_to: 0,
       less_than_or_equal_to: 10,
-      allow_nil: true,
+      allow_nil: true
     }
 
   validates :linkedin_url, format: {
     with: /(.*)linkedin.com\/in\/(.*)/,
-    allow_blank: true,
+    allow_blank: true
   }
 
   include ValidateEmail
