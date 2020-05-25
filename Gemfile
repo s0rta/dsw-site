@@ -7,7 +7,7 @@ gem "mime-types", ">= 2.6.1", require: "mime/types/columnar"
 gem "pg"
 gem "puma"
 gem "puma_worker_killer"
-gem "rails", "~> 6.0.2"
+gem "rails", "~> 6.0.3"
 gem "rake"
 
 gem "autoprefixer-rails"
