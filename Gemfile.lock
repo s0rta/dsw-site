@@ -541,7 +541,7 @@ GEM
       enumerable-statistics (>= 2.0.1)
     utf8-cleaner (1.0.0)
       activesupport
-    validate_url (1.0.8)
+    validate_url (1.0.11)
       activemodel (>= 3.0.0)
       public_suffix
     vcr (5.1.0)
