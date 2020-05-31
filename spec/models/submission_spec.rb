@@ -28,7 +28,8 @@ RSpec.describe Submission, type: :model do
   # it { is_expected.to ensure_inclusion_of(:start_day).in_array(Submission::DAYS) }
   # it { is_expected.to ensure_inclusion_of(:end_day).in_array(Submission::DAYS) }
   # it { is_expected.to ensure_inclusion_of(:time_range).in_array(Submission::TIME_RANGES) }
-  it { is_expected.to validate_acceptance_of(:coc_acknowledgement) }
+  it { is_expected.to validate_acceptance_of(:coc_acknowledgement).on(:create) }
+  it { is_expected.to validate_acceptance_of(:dei_acknowledgement).on(:create) }
   it { is_expected.to allow_value("test@example.com").for(:contact_email) }
   it { is_expected.to validate_length_of(:location).is_at_most(255) }
 
@@ -42,24 +43,20 @@ RSpec.describe Submission, type: :model do
     let(:year) { Date.today.year.to_s }
 
     it "subscribes after creation" do
-      user.submissions.create! contact_email: "test@example.com",
-                               title: "Test",
-                               description: "Test",
-                               track: track,
-                               coc_acknowledgement: true
+      create(:submission,
+        submitter: user,
+        contact_email: "test@example.com")
       expect(ListSubscriptionJob).to have_received(:perform_async)
         .with("test@example.com", submitted_years: [year], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async)
         .with(user.email, submitted_years: [year], confirmed_years: [])
     end
 
-    it "subscribes multiple e-mails after creation" do
-      user.submissions.create! contact_email: "test1@example.com, test2@example.com",
-                               title: "Test",
-                               description: "Test",
-                               track: track,
-                               coc_acknowledgement: true
-
+    it "subscribes multiple e-mails after creation when separated with commas" do
+      create(:submission,
+        submitter: user,
+        track: track,
+        contact_email: "test1@example.com, test2@example.com")
       expect(ListSubscriptionJob).to have_received(:perform_async)
         .with("test1@example.com", submitted_years: [year], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async)
@@ -69,12 +66,10 @@ RSpec.describe Submission, type: :model do
     end
 
     it "subscribes multiple e-mails after creation when separated with semicolons" do
-      user.submissions.create! contact_email: "test1@example.com, test2@example.com",
-                               title: "Test",
-                               description: "Test",
-                               track: track,
-                               coc_acknowledgement: true
-
+      create(:submission,
+        submitter: user,
+        track: track,
+        contact_email: "test1@example.com; test2@example.com")
       expect(ListSubscriptionJob).to have_received(:perform_async)
         .with("test1@example.com", submitted_years: [year], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async)
@@ -84,12 +79,10 @@ RSpec.describe Submission, type: :model do
     end
 
     it "subscribes multiple e-mails after creation when separated with spaces" do
-      user.submissions.create! contact_email: "test1@example.com test2@example.com",
-                               title: "Test",
-                               description: "Test",
-                               track: track,
-                               coc_acknowledgement: true
-
+      create(:submission,
+        submitter: user,
+        track: track,
+        contact_email: "test1@example.com test2@example.com")
       expect(ListSubscriptionJob).to have_received(:perform_async)
         .with("test1@example.com", submitted_years: [year], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async)
@@ -99,11 +92,12 @@ RSpec.describe Submission, type: :model do
     end
 
     it "resubscribes with new data after update" do
-      submission = user.submissions.create! contact_email: user.email,
-                                            title: "Test",
-                                            description: "Test",
-                                            track: track,
-                                            coc_acknowledgement: true
+      submission = create(:submission,
+        submitter: user,
+        contact_email: user.email,
+        title: "Test",
+        description: "Test",
+        track: track)
       expect(ListSubscriptionJob).to have_received(:perform_async)
         .with(user.email, submitted_years: [year], confirmed_years: [])
       submission.update!(state: "confirmed")
@@ -112,11 +106,12 @@ RSpec.describe Submission, type: :model do
     end
 
     it "resubscribes multiple e-mails with new data after update" do
-      submission = user.submissions.create! contact_email: "test1@example.com, test2@example.com",
-                                            title: "Test",
-                                            description: "Test",
-                                            track: track,
-                                            coc_acknowledgement: true
+      submission = create(:submission,
+        submitter: user,
+        contact_email: "test1@example.com, test2@example.com",
+        title: "Test",
+        description: "Test",
+        track: track)
       expect(ListSubscriptionJob).to have_received(:perform_async)
         .with(user.email, submitted_years: [year], confirmed_years: [])
       expect(ListSubscriptionJob).to have_received(:perform_async)

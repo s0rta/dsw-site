@@ -6,19 +6,19 @@ class Submission < ApplicationRecord
   FORMATS = ["Presentation",
              "Panel",
              "Workshop",
-             "Social event",].freeze
+             "Social event"].freeze
 
   DAYS = {2 => "Monday",
           3 => "Tuesday",
           4 => "Wednesday",
           5 => "Thursday",
-          6 => "Friday",}.freeze
+          6 => "Friday"}.freeze
 
   SHORT_DAYS = {2 => "Mon",
                 3 => "Tue",
                 4 => "Wed",
                 5 => "Thu",
-                6 => "Fri",}.freeze
+                6 => "Fri"}.freeze
 
   TIME_RANGES = ["Early morning",
                  "Breakfast",
@@ -28,7 +28,7 @@ class Submission < ApplicationRecord
                  "Afternoon",
                  "Happy hour",
                  "Evening",
-                 "Late night",].freeze
+                 "Late night"].freeze
 
   include SearchableSubmission
   include YearScoped
@@ -66,7 +66,7 @@ class Submission < ApplicationRecord
   validates :description, presence: true
   validates :contact_email, presence: true
   validates :format, inclusion: {in: FORMATS,
-                                 allow_blank: true,}
+                                 allow_blank: true}
   # validates :start_day, inclusion: {  in: DAYS,
   # allow_blank: true }
   # validates :end_day, inclusion: {  in: DAYS,
@@ -76,7 +76,9 @@ class Submission < ApplicationRecord
   # validates :start_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
   # validates :end_hour, numericality: { greater_than_or_equal_to: 0, less_than: 24 }
   validates :track_id, presence: true
-  validates :coc_acknowledgement, acceptance: true
+  validates :coc_acknowledgement,
+    :dei_acknowledgement,
+    acceptance: true, on: :create
   validates :location, length: {maximum: 255}
 
   after_create :notify_track_chairs_of_new_submission!

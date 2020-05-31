@@ -8,6 +8,7 @@ ActiveAdmin.register Submission do
     :coc_acknowledgement,
     :company_id,
     :contact_email,
+    :dei_acknowledgement,
     :description,
     :end_day,
     :end_hour,
@@ -192,6 +193,10 @@ ActiveAdmin.register Submission do
                                     hint: <<-HINT.strip
                                     If submitting this session on behalf of someone else, you acknowledge that you have informed them of our Code of Conduct
                                     HINT
+      f.input :dei_acknowledgement, label: "DE&I Acknowledgement",
+                                    hint: <<-HINT.strip
+                                    If submitting this session on behalf of someone else, you acknowledge that you have informed them of our Diversity, Equity & Inclusion policy
+                                    HINT
       f.input :notes, label: "Pitch"
       f.input :target_audience_description
       f.input :slides_url
@@ -286,7 +291,7 @@ ActiveAdmin.register Submission do
                   registration.primary_role,
                   registration.user.email,
                   registration.zip,
-                  registration.gender,].to_csv
+                  registration.gender].to_csv
       end
     }
     response.headers["Content-Type"] ||= "text/csv"

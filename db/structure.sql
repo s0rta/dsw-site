@@ -1134,7 +1134,8 @@ CREATE TABLE public.submissions (
     registrant_count integer DEFAULT 0 NOT NULL,
     header_image character varying,
     has_childcare boolean DEFAULT false NOT NULL,
-    noindex boolean DEFAULT false NOT NULL
+    noindex boolean DEFAULT false NOT NULL,
+    dei_acknowledgement boolean DEFAULT false NOT NULL
 );
 
 
@@ -3096,6 +3097,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190903170552'),
 ('20190909204737'),
 ('20200501114353'),
-('20200501114543');
+('20200501114543'),
+('20200531215058');
 
 

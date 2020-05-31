@@ -36,6 +36,7 @@ feature "Creating a submission" do
       fill_in "submission_notes", with: "Please pick my talk."
       fill_in "submission_contact_email", with: "test2@example.com"
       check "submission_coc_acknowledgement"
+      check "submission_dei_acknowledgement"
 
       # Use the autocompleter to select
       fill_in "submission_company_name", with: "Exa"
@@ -89,6 +90,7 @@ feature "Creating a submission" do
       fill_in "submission_target_audience_description", with: "People who like talks."
       fill_in "submission_contact_email", with: "test2@example.com"
       check "submission_coc_acknowledgement"
+      check "submission_dei_acknowledgement"
       click_button "Submit"
 
       click_on "Propose Updates"

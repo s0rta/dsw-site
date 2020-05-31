@@ -1,11 +1,10 @@
 class SubmissionsController < ApplicationController
-  respond_to :html,
-    :atom
+  respond_to :html, :atom
   skip_before_action :store_location, only: %i[new edit feedback_closed submissions_closed]
   before_action :check_cfp_open, only: %i[new create]
   before_action :authenticate_user!, only: %i[new create edit update mine submissions_closed]
   before_action :check_voting_open, only: %i[index show]
-  before_action :set_submissions, only: %i[edit update]
+  before_action :set_submission, only: %i[edit update]
   before_action :set_random_seed, only: %i[index track]
 
   def index
@@ -27,7 +26,7 @@ class SubmissionsController < ApplicationController
       format.html
       format.js do
         render json: {fragment: render_to_string(partial: "submissions_list_items", formats: [:html]),
-                      next_url: url_for(page: Integer(params[:page] || 1) + 1, seed: @seed),}
+                      next_url: url_for(page: Integer(params[:page] || 1) + 1, seed: @seed)}
       end
     end
   end
@@ -70,23 +69,30 @@ class SubmissionsController < ApplicationController
   private
 
   def submission_params
-    params.require(:submission).permit(:start_day,
-      :description,
-      :format,
-      :location,
-      :notes,
-      :time_range,
-      :title,
-      :track_id,
-      :contact_email,
-      :estimated_size,
-      :venue_id,
-      :cluster_id,
-      :open_to_collaborators,
-      :from_underrepresented_group,
-      :company_name,
-      :target_audience_description,
-      :coc_acknowledgement)
+    params
+      .require(:submission)
+      .permit(
+        :cluster_id,
+        :coc_acknowledgement,
+        :company_name,
+        :contact_email,
+        :dei_acknowledgement,
+        :description,
+        :estimated_size,
+        :format,
+        :from_underrepresented_group,
+        :location,
+        :notes,
+        :open_to_collaborators,
+        :preferred_length,
+        :proposal_video_url,
+        :start_day,
+        :target_audience_description,
+        :time_range,
+        :title,
+        :track_id,
+        :venue_id
+      )
   end
 
   def check_cfp_open
@@ -97,7 +103,7 @@ class SubmissionsController < ApplicationController
     redirect_to feedback_closed_submissions_path unless AnnualSchedule.voting_open?
   end
 
-  def set_submissions
+  def set_submission
     @submission = current_user.submissions.find(params[:id])
   end
 

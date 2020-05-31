@@ -65,6 +65,7 @@
             = f.text_area :target_audience_description, data: { bindable: 'text_area_autosize' }, placeholder: 'Target audience (for reviewers only)'
 
       = render partial: 'layouts/shared/coc_acknowledgement', locals: { f: f }
+      = render partial: 'layouts/shared/dei_acknowledgement', locals: { f: f }
 
       = render partial: 'components/form_errors', locals: { error_resource: @submission }
 
