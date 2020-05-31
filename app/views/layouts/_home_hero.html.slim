@@ -5,7 +5,7 @@ header.HomeHero
       div.HomeHero-date #{AnnualSchedule.next.week_start_at.try(:strftime, '%B %e')}-#{AnnualSchedule.next.week_end_at.try(:strftime, "%e, %Y")}
     - else
       div.HomeHero-date #{AnnualSchedule.current.week_start_at.try(:strftime, '%B %e')}-#{AnnualSchedule.current.week_end_at.try(:strftime, "%e, %Y")}
-    p.HomeHero-description Built by the community, for the community Denver Startup Week is a celebration of everything entrepreneurial in Denver and is the largest free event of its kind. In 2019, the eighth annual event brought over 20,000 people together for 350+ programs and events to celebrate a thriving entrepreneurial ecosystem in Denver and beyond, and showcase and build the city’s culture of innovation. Save the date for Denver Startup Week 2020!
+    p.HomeHero-description Built by the community, for the community Denver Startup Week is a celebration of everything entrepreneurial in Denver and is the largest free event of its kind. In 2020, we will host the first ever virtual Denver Startup Week to come together, celebrate a thriving entrepreneurial ecosystem in Denver and beyond, and showcase and build the city’s culture of innovation. Now is the time to get involved as we look forward to Denver Startup Week 2020!
     - if registration_open? && !registered?
       a.HomeHero-link(href="#{register_path}")
         | Register to Attend
