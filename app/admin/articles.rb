@@ -14,13 +14,13 @@ ActiveAdmin.register Article do
       :id,
       :effective_at,
       :featured_on_homepage,
-      :pinned_to_track,
+      :pinned_to_track
     ],
     authorships_attributes: [
       :id,
       :_destroy,
       :user_id,
-      :is_displayed,
+      :is_displayed
     ],
     track_ids: []
 
@@ -75,11 +75,11 @@ ActiveAdmin.register Article do
                 "orderedlist",
                 "unorderedlist",
                 "strikethrough",
-                "pre",
-              ],
-            },
-          }.to_json,
-        },
+                "pre"
+              ]
+            }
+          }.to_json
+        }
       }
       f.input :submitter_id,
         as: :ajax_select,
@@ -96,7 +96,7 @@ ActiveAdmin.register Article do
       f.input :track_ids, as: :check_boxes, collection: Track.all, label: "Related Track(s)"
       f.input :header_image,
         as: :file,
-        hint: f.object.header_image.present? ? image_tag(f.object.header_image.url(:thumb)) : nil
+        hint: f.object.header_image.present? ? image_tag(f.object.header_image.try(:url, :thumb)) : nil
       f.input :video_url, as: :string
     end
 
