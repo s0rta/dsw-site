@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {registrations: "users/registrations",
                                    sessions: "users/sessions",
-                                   passwords: "users/passwords",}
+                                   passwords: "users/passwords"}
 
   resource :registration, only: %i[new create] do
     collection do
@@ -59,7 +59,6 @@ Rails.application.routes.draw do
     collection do
       get :thanks
       get :by_day
-      get :submissions_closed
       get :feedback_closed
       get :faq
     end

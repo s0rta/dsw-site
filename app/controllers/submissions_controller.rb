@@ -1,9 +1,9 @@
 class SubmissionsController < ApplicationController
   respond_to :html, :atom
-  skip_before_action :store_location, only: %i[new edit feedback_closed submissions_closed]
+  skip_before_action :store_location, only: %i[new edit feedback_closed]
   before_action :check_cfp_open, only: %i[new create]
-  before_action :authenticate_user!, only: %i[new create edit update mine submissions_closed]
   before_action :check_voting_open, only: %i[index show]
+  before_action :authenticate_user!, only: %i[new create edit update mine]
   before_action :set_submission, only: %i[edit update]
   before_action :set_random_seed, only: %i[index track]
 
@@ -98,7 +98,7 @@ class SubmissionsController < ApplicationController
   end
 
   def check_cfp_open
-    unless AnnualSchedule.cfp_open? || current_user.is_admin?
+    unless AnnualSchedule.cfp_open? || user_signed_in? && current_user.is_admin?
       redirect_back notice: "Session submissions for #{Date.today.year} are currently closed",
                     fallback_location: dashboard_path
     end
