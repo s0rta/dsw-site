@@ -16,6 +16,7 @@
       | for more information about the submission and selection process.
 
     = form_for @submission do |f|
+      = render partial: 'components/form_errors', locals: { error_resource: @submission }
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
@@ -27,6 +28,18 @@
           = render layout: 'components/form_field' do
             = f.label :title, "What is your session's title? Please limit your title to 60 characters or less."
             = f.text_field :title
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/form_field' do
+            = f.label :preferred_length, "What length of time slot would best fit the session you're proposing?"
+            = f.select :preferred_length, Submission::PREFERRED_LENGTHS, include_blank: "I don't know"
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/form_field' do
+            = f.label :format, "What format are you proposing for your session?"
+            = f.select :format, Submission::FORMATS, include_blank: "I don't know"
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
@@ -61,13 +74,17 @@
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
+            = f.label :proposal_video_url, "Optional but highly encouraged - please give us a 60-second video pitching your submission. Show us how you'll come across using a virtual medium! Link to an unlisted Youtube (or similar) video."
+            = f.text_area :proposal_video_url, data: { bindable: 'text_area_autosize' }, placeholder: 'Video URL'
+
+      = render layout: 'components/form_input_row' do
+        = render layout: 'components/form_input_wrapper' do
+          = render layout: 'components/form_field' do
             = f.label :target_audience_description, 'Tell us about the ideal audience for your session. Is the content oriented towards beginners or experts? Specific to an industry or broadly applicable? Well-suited for a large room or limited to just a few attendees?  This content will only be visible to the review committee.'
             = f.text_area :target_audience_description, data: { bindable: 'text_area_autosize' }, placeholder: 'Target audience (for reviewers only)'
 
       = render partial: 'layouts/shared/coc_acknowledgement', locals: { f: f }
       = render partial: 'layouts/shared/dei_acknowledgement', locals: { f: f }
-
-      = render partial: 'components/form_errors', locals: { error_resource: @submission }
 
       .Submissions-actions
         = f.submit 'Submit', class: 'ArticlesForm-submit'

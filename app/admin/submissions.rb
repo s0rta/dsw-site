@@ -24,6 +24,8 @@ ActiveAdmin.register Submission do
     :notes,
     :open_to_collaborators,
     :pitch_qualifying,
+    :preferred_length,
+    :proposal_video_url,
     :slides_url,
     :start_day,
     :start_hour,
@@ -171,9 +173,11 @@ ActiveAdmin.register Submission do
         include_blank: false
       f.input :title
       f.input :description, hint: "This is processed with Markdown, and can include additional formatting"
+      f.input :format, as: :select, collection: Submission::FORMATS, include_blank: true
       f.input :pitch_qualifying, hint: "Is this a qualifying event for the pitch competition?"
     end
     f.inputs "Time and Location" do
+      f.input :preferred_length, as: :select, collection: Submission::PREFERRED_LENGTHS, include_blank: true
       f.input :start_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
       f.input :start_hour, as: :select, collection: collection_for_hour_select, include_blank: false
       f.input :end_day, as: :select, collection: Submission::DAYS.invert, include_blank: true
@@ -197,7 +201,8 @@ ActiveAdmin.register Submission do
                                     hint: <<-HINT.strip
                                     If submitting this session on behalf of someone else, you acknowledge that you have informed them of our Diversity, Equity & Inclusion policy
                                     HINT
-      f.input :notes, label: "Pitch"
+      f.input :notes, label: "Submitter Pitch"
+      f.input :proposal_video_url
       f.input :target_audience_description
       f.input :slides_url
       f.input :video_url

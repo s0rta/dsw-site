@@ -3,32 +3,47 @@ class Submission < ApplicationRecord
 
   SHOW_RATE = 0.3
 
-  FORMATS = ["Presentation",
-             "Panel",
-             "Workshop",
-             "Social event"].freeze
+  FORMATS = [
+    "Individual Presentation",
+    "Panel",
+    "Workshop",
+    "Social event"
+  ].freeze
 
-  DAYS = {2 => "Monday",
-          3 => "Tuesday",
-          4 => "Wednesday",
-          5 => "Thursday",
-          6 => "Friday"}.freeze
+  PREFERRED_LENGTHS = [
+    "10 minutes",
+    "30 minutes",
+    "60 minutes",
+    "90 minutes"
+  ].freeze
 
-  SHORT_DAYS = {2 => "Mon",
-                3 => "Tue",
-                4 => "Wed",
-                5 => "Thu",
-                6 => "Fri"}.freeze
+  DAYS = {
+    2 => "Monday",
+    3 => "Tuesday",
+    4 => "Wednesday",
+    5 => "Thursday",
+    6 => "Friday"
+  }.freeze
 
-  TIME_RANGES = ["Early morning",
-                 "Breakfast",
-                 "Morning",
-                 "Lunch",
-                 "Early afternoon",
-                 "Afternoon",
-                 "Happy hour",
-                 "Evening",
-                 "Late night"].freeze
+  SHORT_DAYS = {
+    2 => "Mon",
+    3 => "Tue",
+    4 => "Wed",
+    5 => "Thu",
+    6 => "Fri"
+  }.freeze
+
+  TIME_RANGES = [
+    "Early morning",
+    "Breakfast",
+    "Morning",
+    "Lunch",
+    "Early afternoon",
+    "Afternoon",
+    "Happy hour",
+    "Evening",
+    "Late night"
+  ].freeze
 
   include SearchableSubmission
   include YearScoped
@@ -67,6 +82,8 @@ class Submission < ApplicationRecord
   validates :contact_email, presence: true
   validates :format, inclusion: {in: FORMATS,
                                  allow_blank: true}
+  validates :preferred_length, inclusion: {in: PREFERRED_LENGTHS,
+                                           allow_blank: true}
   # validates :start_day, inclusion: {  in: DAYS,
   # allow_blank: true }
   # validates :end_day, inclusion: {  in: DAYS,

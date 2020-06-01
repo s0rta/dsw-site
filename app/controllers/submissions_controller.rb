@@ -42,6 +42,7 @@ class SubmissionsController < ApplicationController
       flash[:notice] = "Thanks! Your proposal has been received and you will receive an e-mail confirmation shortly"
       redirect_to dashboard_path
     else
+      flash[:error] = "Sorry, we could not save your proposal: #{@submission.errors.full_messages.to_sentence}"
       respond_with @submission
     end
   end
@@ -53,6 +54,7 @@ class SubmissionsController < ApplicationController
       @submission.notify_track_chairs_of_update!
       redirect_to dashboard_path
     else
+      flash[:error] = "Sorry, we could not save your changes: #{@submission.errors.full_messages.to_sentence}"
       respond_with @submission
     end
   end

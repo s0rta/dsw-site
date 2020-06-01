@@ -32,6 +32,8 @@ RSpec.describe Submission, type: :model do
   it { is_expected.to validate_acceptance_of(:dei_acknowledgement).on(:create) }
   it { is_expected.to allow_value("test@example.com").for(:contact_email) }
   it { is_expected.to validate_length_of(:location).is_at_most(255) }
+  it { is_expected.to validate_inclusion_of(:preferred_length).in_array(Submission::PREFERRED_LENGTHS) }
+  it { is_expected.to validate_inclusion_of(:format).in_array(Submission::FORMATS) }
 
   it "defaults its year to the current year" do
     expect(Submission.new.year).to eq(Date.today.year)
