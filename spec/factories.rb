@@ -67,6 +67,7 @@ FactoryBot.define do
     description { "I am a session" }
     contact_email { "test@example.com" }
     coc_acknowledgement { true }
+    dei_acknowledgement { true }
     association :track
     association :submitter, factory: :user
   end

@@ -30,12 +30,16 @@ feature "Creating a submission" do
 
       click_on "Submit New Proposal"
       select "Bizness", from: "submission_track_id"
+      select "10 minutes", from: "submission_preferred_length"
+      select "Workshop", from: "submission_format"
       fill_in "submission_title", with: "Some talk"
       fill_in "submission_description", with: "I am going to give a talk."
       fill_in "submission_target_audience_description", with: "People who like talks."
       fill_in "submission_notes", with: "Please pick my talk."
       fill_in "submission_contact_email", with: "test2@example.com"
+      fill_in "submission_proposal_video_url", with: "https://www.youtube.com/watch?v=Us6jaZoXgdU&t=26s"
       check "submission_coc_acknowledgement"
+      check "submission_dei_acknowledgement"
 
       # Use the autocompleter to select
       fill_in "submission_company_name", with: "Exa"
@@ -56,6 +60,31 @@ feature "Creating a submission" do
       # Confirmation to submitter
       email = ActionMailer::Base.deliveries.detect { |e| e.to.include?("test2@example.com") }
       expect(email.subject).to eq("Thanks for submitting a session proposal for Denver Startup Week!")
+    end
+
+    scenario "User submits a new idea but fails to include required fields" do
+      visit "/"
+      click_on "Sign Up / Sign In"
+      fill_in "Name", with: "New Guy"
+      fill_in "E-mail Address", with: "test@example.com"
+      fill_in "Password", with: "password", match: :prefer_exact
+      fill_in "Confirm Password", with: "password", match: :prefer_exact
+
+      click_on "Submit"
+      visit "/dashboard" # More straightforward than waiting for the flash to disappear
+
+      click_on "Submit New Proposal"
+      select "Bizness", from: "submission_track_id"
+      fill_in "submission_title", with: "Some talk"
+      check "submission_coc_acknowledgement"
+      check "submission_dei_acknowledgement"
+      click_button "Submit"
+
+      expect(page).not_to have_content("Thanks!")
+      expect(page).to have_content("Please correct the following errors:")
+
+      expect(Submission.count).to eq(0)
+      expect(ActionMailer::Base.deliveries).to be_empty
     end
 
     scenario "User tries to submit a new idea but fails to create an account" do
@@ -89,6 +118,7 @@ feature "Creating a submission" do
       fill_in "submission_target_audience_description", with: "People who like talks."
       fill_in "submission_contact_email", with: "test2@example.com"
       check "submission_coc_acknowledgement"
+      check "submission_dei_acknowledgement"
       click_button "Submit"
 
       click_on "Propose Updates"
@@ -121,7 +151,7 @@ feature "Creating a submission" do
       travel_back
     end
 
-    scenario "User tries to submit a new idea" do
+    scenario "User tries to submit a new idea when the CFP is closed" do
       visit "/"
       click_on "Sign Up / Sign In"
       fill_in "Name", with: "New Guy"
@@ -138,7 +168,7 @@ feature "Creating a submission" do
       visit "/voting/submit"
 
       expect(page).to have_content("Session submissions for #{Date.today.year} are currently closed")
-      expect(current_path).to eq("/voting/submissions_closed")
+      expect(current_path).to eq("/dashboard")
     end
   end
 end
