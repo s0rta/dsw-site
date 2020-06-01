@@ -98,7 +98,10 @@ class SubmissionsController < ApplicationController
   end
 
   def check_cfp_open
-    redirect_to submissions_closed_submissions_path unless AnnualSchedule.cfp_open?
+    unless AnnualSchedule.cfp_open? || current_user.is_admin?
+      redirect_back notice: "Session submissions for #{Date.today.year} are currently closed",
+                    fallback_location: dashboard_path
+    end
   end
 
   def check_voting_open

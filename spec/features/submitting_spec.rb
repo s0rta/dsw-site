@@ -168,7 +168,7 @@ feature "Creating a submission" do
       visit "/voting/submit"
 
       expect(page).to have_content("Session submissions for #{Date.today.year} are currently closed")
-      expect(current_path).to eq("/voting/submissions_closed")
+      expect(current_path).to eq("/dashboard")
     end
   end
 end
