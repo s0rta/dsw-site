@@ -71,12 +71,12 @@
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
             = f.label :notes, 'Pitch us on your session: show the reviewers why you should be organizing this session at Denver Startup Week. Here is the place to focus on how your session will help the program, or fill a specific need. Explain your qualifications (and/or those of your panelists) and why you\'re passionate about this topic. This content will only be visible to the review committee.'
-            = f.text_area :notes, data: { bindable: 'text_area_autosize' }, placeholder: 'Session pitch (for reviewers only)'
+            = f.text_area :notes, data: { bindable: 'text_area_autosize' }, placeholder: 'Session pitch (for reviewers only). Include details, panelists, and qualifications.'
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
-            = f.label :proposal_video_url, "Optional but highly encouraged - please give us a 60-second video pitching your submission. Show us how you'll come across using a virtual medium! Link to an unlisted Youtube (or similar) video."
+            = f.label :proposal_video_url, "Please give us a 60-second video pitching your submission. Show us how you'll make use of a virtual medium! Link to an unlisted Youtube (or similar) video."
             = f.text_area :proposal_video_url, data: { bindable: 'text_area_autosize' }, placeholder: 'Video URL'
 
       = render layout: 'components/form_input_row' do
