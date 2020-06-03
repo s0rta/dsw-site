@@ -243,7 +243,7 @@ GEM
     heapy (0.1.4)
     heroku-deflater (0.6.3)
       rack (>= 1.4.5)
-    honeybadger (4.6.0)
+    honeybadger (4.7.0)
     html-pipeline (2.13.0)
       activesupport (>= 2)
       nokogiri (>= 1.4)
