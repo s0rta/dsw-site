@@ -77,9 +77,12 @@ class Submission < ApplicationRecord
   accepts_nested_attributes_for :publishing, allow_destroy: false
   accepts_nested_attributes_for :presenterships, allow_destroy: true
 
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :contact_email, presence: true
+  delegate :video_required_for_submission?, to: :track, allow_nil: true, prefix: true
+
+  validates :title,
+    :description,
+    :contact_email, presence: true
+  validates :proposal_video_url, presence: true, if: :track_video_required_for_submission?
   validates :format, inclusion: {in: FORMATS,
                                  allow_blank: true}
   validates :preferred_length, inclusion: {in: PREFERRED_LENGTHS,

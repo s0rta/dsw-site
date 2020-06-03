@@ -10,6 +10,7 @@ ActiveAdmin.register Track do
     :is_submittable,
     :is_voteable,
     :name,
+    :video_required_for_submission,
     :video_url
 
   index do
@@ -35,6 +36,7 @@ ActiveAdmin.register Track do
         as: :file,
         hint: f.object.header_image.present? ? image_tag(f.object.header_image.url(:thumb)) : nil
       f.input :is_submittable, hint: "Make this track an option for CFP submissions"
+      f.input :video_required_for_submission, hint: "Require that a video is supplied for CFP submission to this track"
       f.input :is_voteable, hint: "Show submissions in this track during the voting process"
       f.input :has_detail_page
     end
