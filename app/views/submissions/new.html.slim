@@ -46,7 +46,7 @@
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
-            = f.label :company_name, 'Are you submitting this proposal on behalf of a company or group? If so please provide the name of it here.'
+            = f.label :company_name, 'What company/group are you submitting on behalf of? Leave blank if none.'
             = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
 
       = render layout: 'components/form_input_row' do
