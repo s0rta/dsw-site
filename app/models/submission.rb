@@ -82,7 +82,10 @@ class Submission < ApplicationRecord
   validates :title,
     :description,
     :contact_email, presence: true
-  validates :proposal_video_url, presence: true, if: :track_video_required_for_submission?
+  validates :proposal_video_url,
+    presence: true,
+    on: :create,
+    if: :track_video_required_for_submission?
   validates :format, inclusion: {in: FORMATS,
                                  allow_blank: true}
   validates :preferred_length, inclusion: {in: PREFERRED_LENGTHS,
