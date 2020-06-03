@@ -46,7 +46,7 @@
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
-            = f.label :company_name, 'Are you submitting this proposal on behalf of a company or group? If so please provide the name of it here.'
+            = f.label :company_name, 'What company/group are you submitting on behalf of? Leave blank if none.'
             = f.text_field :company_name, data: { bindable: 'autocompleter', source: company_search_url }
 
       = render layout: 'components/form_input_row' do
@@ -64,19 +64,19 @@
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
-            = f.label :description, 'Provide a concise description for the session (limited to 600 characters or less). The description field is where you write a short paragraph to quickly tell us what you\'re going to talk about. This will be published in the program along with the title, so it’s the public face of your session. It should be compelling and to the point. Tell a story. Why should attendees come to your session and what will they get out of it?'
+            = f.label :description, 'Provide a concise public-facing description for the session (limited to 600 characters or less). This will be published in the program along with the title, so it’s the public face of your session. It should tell a story, be compelling, and get to the point. Why should attendees come to your session and what will they get out of it?'
             = f.text_area :description, data: { bindable: 'text_area_autosize' }, placeholder: 'Session Description (public facing)'
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
-            = f.label :notes, 'Pitch us on your session: show the reviewers why you should be organizing this session at Denver Startup Week. Here is the place to focus on how your session will help the program, or fill a specific need. Explain your qualifications (and/or those of your panelists) and why you\'re passionate about this topic. This content will only be visible to the review committee.'
-            = f.text_area :notes, data: { bindable: 'text_area_autosize' }, placeholder: 'Session pitch (for reviewers only)'
+            = f.label :notes, 'Pitch us on your session: demonstrate to the reviewers why you should be presenting this session. How will this address a compelling need? Who are your panelists and what are their qualifications (if applicable)? Why are you passionate about this topic? This content will only be visible to the review committee.'
+            = f.text_area :notes, data: { bindable: 'text_area_autosize' }, placeholder: 'Session pitch (for reviewers only). Include details, panelists, and qualifications.'
 
       = render layout: 'components/form_input_row' do
         = render layout: 'components/form_input_wrapper' do
           = render layout: 'components/form_field' do
-            = f.label :proposal_video_url, "Optional but highly encouraged - please give us a 60-second video pitching your submission. Show us how you'll come across using a virtual medium! Link to an unlisted Youtube (or similar) video."
+            = f.label :proposal_video_url, "Please give us a 60-second video pitching your submission. Show us how you'll make use of a virtual medium! Link to an unlisted Youtube (or similar) video."
             = f.text_area :proposal_video_url, data: { bindable: 'text_area_autosize' }, placeholder: 'Video URL'
 
       = render layout: 'components/form_input_row' do

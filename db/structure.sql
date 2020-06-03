@@ -1209,7 +1209,8 @@ CREATE TABLE public.tracks (
     is_voteable boolean DEFAULT true NOT NULL,
     video_url character varying,
     header_image character varying,
-    has_detail_page boolean DEFAULT true NOT NULL
+    has_detail_page boolean DEFAULT true NOT NULL,
+    video_required_for_submission boolean DEFAULT false NOT NULL
 );
 
 
@@ -3101,6 +3102,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200501114353'),
 ('20200501114543'),
 ('20200531215058'),
-('20200531225500');
+('20200531225500'),
+('20200603142652');
 
 

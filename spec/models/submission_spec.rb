@@ -39,6 +39,46 @@ RSpec.describe Submission, type: :model do
     expect(Submission.new.year).to eq(Date.today.year)
   end
 
+  describe "validating video depending on a track setting" do
+    describe "when linked to a track that requires video for submissions" do
+      let(:track) { create(:track, video_required_for_submission: true) }
+      let(:submission) do
+        build(:submission,
+          track: track,
+          proposal_video_url: nil)
+      end
+
+      it "is invalid when no video is provided" do
+        expect(submission.valid?).to be_falsy
+        expect(submission.errors[:proposal_video_url]).to include("can't be blank")
+      end
+    end
+
+    describe "when linked to a track that does not require video for submissions" do
+      let(:track) { create(:track, video_required_for_submission: false) }
+      let(:submission) do
+        build(:submission,
+          track: track,
+          proposal_video_url: nil)
+      end
+
+      it "is valid when no video is provided" do
+        expect(submission.valid?).to be_truthy
+      end
+    end
+
+    describe "when not yet linked to a track" do
+      let(:submission) do
+        build(:submission,
+          track: nil)
+      end
+
+      it "does not blow up" do
+        expect { submission.valid? }.not_to raise_error
+      end
+    end
+  end
+
   describe "subscribing to e-mail lists" do
     let(:user) { create(:user) }
     let(:track) { create(:track, name: "Test") }
