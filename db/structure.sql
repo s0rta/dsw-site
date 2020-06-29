@@ -334,6 +334,38 @@ ALTER SEQUENCE public.authorships_id_seq OWNED BY public.authorships.id;
 
 
 --
+-- Name: cfp_extensions; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.cfp_extensions (
+    id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    expires_at date NOT NULL,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: cfp_extensions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.cfp_extensions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: cfp_extensions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.cfp_extensions_id_seq OWNED BY public.cfp_extensions.id;
+
+
+--
 -- Name: clusters; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1634,6 +1666,13 @@ ALTER TABLE ONLY public.authorships ALTER COLUMN id SET DEFAULT nextval('public.
 
 
 --
+-- Name: cfp_extensions id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cfp_extensions ALTER COLUMN id SET DEFAULT nextval('public.cfp_extensions_id_seq'::regclass);
+
+
+--
 -- Name: clusters id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1933,6 +1972,14 @@ ALTER TABLE ONLY public.attendee_messages
 
 ALTER TABLE ONLY public.authorships
     ADD CONSTRAINT authorships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cfp_extensions cfp_extensions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cfp_extensions
+    ADD CONSTRAINT cfp_extensions_pkey PRIMARY KEY (id);
 
 
 --
@@ -2369,6 +2416,13 @@ CREATE INDEX index_authorships_on_user_id ON public.authorships USING btree (use
 
 
 --
+-- Name: index_cfp_extensions_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_cfp_extensions_on_user_id ON public.cfp_extensions USING btree (user_id);
+
+
+--
 -- Name: index_comments_on_submission_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -2773,6 +2827,14 @@ ALTER TABLE ONLY public.registration_ethnicities
 
 
 --
+-- Name: cfp_extensions fk_rails_4475ebeea9; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.cfp_extensions
+    ADD CONSTRAINT fk_rails_4475ebeea9 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
 -- Name: pitch_contest_votes fk_rails_4daa05456f; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -3103,6 +3165,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200501114543'),
 ('20200531215058'),
 ('20200531225500'),
-('20200603142652');
+('20200603142652'),
+('20200629164627');
 
 
