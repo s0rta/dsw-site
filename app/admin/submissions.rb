@@ -94,7 +94,14 @@ ActiveAdmin.register Submission do
     column :id
     column :title
     column :description
-    column :notes
+    column :format
+    column :preferred_length
+    column :pitch do |submission|
+      submission.notes
+    end
+    column :submission_video_url
+    column :target_audience_description
+    column :open_to_collaborators
     column :internal_notes
     column :track do |submission|
       submission.track.try(:name)
@@ -105,13 +112,15 @@ ActiveAdmin.register Submission do
     column :venue do |submission|
       submission.venue.try(:name)
     end
-    column :format
     column(:start_day, &:human_start_day)
     column(:start_time, &:human_start_time)
     column(:end_day, &:human_end_day)
     column(:end_time, &:human_end_time)
     column :submitter_name do |submission|
       submission.submitter.try(:name)
+    end
+    column :company_name do |submission|
+      submission.company.try(:name)
     end
     column :created_at
     column :updated_at
@@ -293,10 +302,10 @@ ActiveAdmin.register Submission do
     csv_text = Enumerator.new { |lines|
       registrations.find_each do |registration|
         lines << [registration.user.name,
-                  registration.primary_role,
-                  registration.user.email,
-                  registration.zip,
-                  registration.gender].to_csv
+          registration.primary_role,
+          registration.user.email,
+          registration.zip,
+          registration.gender].to_csv
       end
     }
     response.headers["Content-Type"] ||= "text/csv"
