@@ -12,7 +12,8 @@ ActiveAdmin.register User do
     :team_position,
     :team_priority,
     :email,
-    chaired_track_ids: []
+    chaired_track_ids: [],
+    cfp_extension_attributes: [:id, :expires_at, :_destroy]
 
   index do
     selectable_column
@@ -42,6 +43,9 @@ ActiveAdmin.register User do
       f.input :password_confirmation
       f.input :is_admin
       f.input :chaired_tracks, as: :check_boxes, collection: Track.in_display_order
+      f.has_many :cfp_extension, heading: "CFP Extension", new_record: false do |a|
+        a.input :expires_at, as: :datepicker
+      end
     end
 
     f.actions
@@ -63,6 +67,30 @@ ActiveAdmin.register User do
       end
       super
     end
+  end
+
+  action_item :grant_cfp_extension, only: %i[show] do
+    unless resource.has_valid_cfp_extension?
+      link_to "Grant CFP extension", grant_cfp_extension_admin_user_path(resource), method: :post
+    end
+  end
+
+  member_action :grant_cfp_extension, method: :post do
+    user = User.find(params[:id])
+    user.create_cfp_extension!(expires_at: 7.days.from_now)
+    redirect_to admin_user_path(user)
+  end
+
+  action_item :revoke_cfp_extension, only: %i[show] do
+    if resource.has_valid_cfp_extension?
+      link_to "Revoke CFP extension", revoke_cfp_extension_admin_user_path(resource), method: :post
+    end
+  end
+
+  member_action :revoke_cfp_extension, method: :post do
+    user = User.find(params[:id])
+    user.cfp_extension.destroy!
+    redirect_to admin_user_path(user)
   end
 
   show do

@@ -41,6 +41,14 @@ class User < ApplicationRecord
   has_and_belongs_to_many :companies
   has_many :venues, through: :companies
 
+  has_one :cfp_extension, dependent: :destroy
+  accepts_nested_attributes_for :cfp_extension
+
+  def has_valid_cfp_extension?
+    cfp_extension.present? &&
+      (cfp_extension.expires_at.at_end_of_day > Time.zone.now)
+  end
+
   mount_uploader :avatar, AvatarUploader
   process_in_background :avatar
 

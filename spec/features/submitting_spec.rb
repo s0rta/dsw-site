@@ -170,5 +170,22 @@ feature "Creating a submission" do
       expect(page).to have_content("Session submissions for #{Date.today.year} are currently closed")
       expect(current_path).to eq("/dashboard")
     end
+
+    scenario "User tries to submit a new idea when they have a CFP extension in place" do
+      visit "/"
+      click_on "Sign Up / Sign In"
+      fill_in "Name", with: "New Guy"
+      fill_in "E-mail Address", with: "test@example.com"
+      fill_in "Password", with: "password", match: :prefer_exact
+      fill_in "Confirm Password", with: "password", match: :prefer_exact
+
+      click_on "Submit"
+
+      User.last.create_cfp_extension!(expires_at: 3.days.from_now)
+
+      visit "/dashboard"
+
+      expect(page).to have_link("Submit New Proposal")
+    end
   end
 end

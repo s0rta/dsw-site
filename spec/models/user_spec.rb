@@ -12,6 +12,8 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_many(:presenterships).dependent(:restrict_with_error) }
   it { is_expected.to have_many(:presented_sessions) }
 
+  it { is_expected.to have_one(:cfp_extension) }
+
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:email) }
 
