@@ -99,7 +99,7 @@ ActiveAdmin.register Submission do
     column :pitch do |submission|
       submission.notes
     end
-    column :submission_video_url
+    column :proposal_video_url
     column :target_audience_description
     column :open_to_collaborators
     column :internal_notes
