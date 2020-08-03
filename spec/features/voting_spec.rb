@@ -64,12 +64,12 @@ feature "Voting for session submissions" do
       visit "/voting"
       expect(page).to have_content("I AM A SESSION")
       visit find(".SessionCard", text: "I AM A SESSION").find(".SessionCard-link")["href"]
-      click_link "Vote for this session"
-      expect(page).to have_css(".SubmissionDetail-vote-count", text: "1 VOTE")
+      click_link "Vote for this session (0 so far)"
+      expect(page).to have_css(".SubmissionDetail-vote-text", text: "1 vote")
 
       # Clicking twice should have no effect
       click_link "Vote for this session"
-      expect(page).to have_css(".SubmissionDetail-vote-count", text: "1 VOTE")
+      expect(page).to have_css(".SubmissionDetail-vote-text", text: "1 vote")
     end
   end
 

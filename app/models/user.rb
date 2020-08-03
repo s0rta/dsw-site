@@ -68,6 +68,10 @@ class User < ApplicationRecord
     current_registration.present?
   end
 
+  def has_voted_for?(submission)
+    votes.where(submission_id: submission.id).any?
+  end
+
   def initials
     name.split(" ").map { |n| n[0, 1] }.join
   end
