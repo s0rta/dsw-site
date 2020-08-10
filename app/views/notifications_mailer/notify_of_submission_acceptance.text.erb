@@ -2,7 +2,13 @@ Hello!
 
 Congratulations! Your session "<%= @submission.title %>" has been selected to be part of the <%= @submission.track.name %> Track program during Denver Startup Week <%= Date.today.year %>.
 
-<%- if @submission.time_assigned? %>
+This year will be filled with fewer, shorter, and more concentrated sessions that keep online audiences tuned in and engaged.
+
+<%- if @submission.preferred_length.present? -%>
+With both the opportunities and considerations of this year’s virtual event, we have assigned you a slot of <%= @submission.preferred_length %>.
+<%- end %>
+
+<%- if @submission.time_assigned? -%>
 We’ve scheduled it for <%= @submission.start_datetime.strftime('%A %B %e') %> at <%= @submission.human_start_time %>.
 <%- else %>
 We have not scheduled it for a timeslot yet but will be doing so shortly.
@@ -10,41 +16,43 @@ We have not scheduled it for a timeslot yet but will be doing so shortly.
 
 We know this is a lengthy email but please read all of the following information as there are important, mandatory steps and dates which will require action from you.
 
-Please reply to this email to let us know (as soon as you are able, but no later than EOD <%= (Date.today + 4.days).strftime('%A %B %-e') %>) that you’re willing and able to present this session at the time indicated above. If you are not able to present at that time, please let us know at least two different times that will work for you. Due to the size of the event, we have very limited ability to accommodate requests for time slot changes. If we don’t receive confirmation from you by that time, we will cede your slot to another session.
+Please reply to this email to let us know (as soon as you are able, but no later than EOD <%= (Date.today + 4.days).strftime('%A %B %-e') %>) that you’re willing and able to present this session for the time allotted above. If you are not able to present for that time, please let us know. Due to the nature of the virtual event, we have very limited ability to accommodate requests for time changes. If we don’t receive confirmation from you by the date above, we will cede your slot to another session.
 
 
 SESSION LOGISTICS
 
-As session organizer, you will have a 90 minute slot available to fill as you see fit. You are not required to fill the entire allotted time. For example, many presenters elect to do a 60-75 minute session followed by 15-30 minutes of Q&A. Others opt to do a shorter session followed by a longer discussion, or a 90-minute workshop sessions.
+More information about your session date and time will be provided over the next week or two as we finalize the schedule. DSW will be handling online streaming capabilities so you do not need to provide your own virtual platform.
 
+Please note that all 10 minute and 30 minute sessions will be pre-recorded while 60 minute sessions will be streamed live.
 
-VENUES
+Stay tuned for more information!
 
-We are currently working on booking venues for each session based on schedule availability, track locality, and expected attendance. If you have already secured a venue on your own, please let us know. Otherwise, we will reach out with additional logistics on your assigned venue in the next few weeks.
 
 TITLE & DESCRIPTION UPDATES
 
-We have created a section of the site where you can submit updates to the title and description for your session, should you wish to do so. For more information, visit https://www.denverstartupweek.org/voting/mine and follow the instructions there. Over the course of the next few weeks, we’ll be rolling out a function to indicate individual speakers for your sessions as well - stay tuned for that!
+We have created a section of the site where you can submit updates to the title and description for your session. Make sure your title is short and intuitive. Double check that your description is succinct and communicates what your audience will take away. Also, check that panelists are listed in the "description" field (visible), versus the "notes" field (not visible). For more information, visit https://www.denverstartupweek.org/voting/mine and follow the instructions there.
 
-We will be announcing the full schedule and opening registration for attendees in mid-July, so we encourage you to get your updates in as soon as possible. You can preview what your session detail page will look like at <%= schedule_url(@submission) %> (though please note that registration and schedule building are not yet active).
+We will be announcing the full schedule and opening registration for attendees in mid-August, so we encourage you to get your updates in as soon as possible. You can preview what your session detail page will look like at <%= schedule_url(@submission) %> (though please note that registration and schedule building are not yet active).
 
-MANDATORY PRESENTER ORIENTATION
+
+VIRTUAL MANDATORY PRESENTER ORIENTATION
 
 To help ensure consistency and ease logistics for all our sessions, we ask that all session organizers attend one of our orientation sessions. The sessions cover event logistics, volunteer coordination, session promotion, branding, and more. We’re offering the session at two different times (once during the business day and once in the evening) to try to accommodate as many schedules as possible.
 
-We are still finalizing locations and dates for these sessions, and will be in touch as soon as we have them dialed in.
+We are still finalizing dates for these sessions, and will be in touch as soon as we have them dialed in.
 
 
 OTHER EVENTS
 
-We will have 300+ other events throughout the week and would love to see you take part in some of them. The full schedule will be publicized and registration will open the week of July 18th.
+We will have other virtual events throughout the week and would love to see you take part in some of them. The full schedule will be publicized and registration will open in just a few weeks.
+
 
 GET FURTHER INVOLVED
 
-For information on how you can get further involved in Denver Startup Week, head over to our website (www.denverstartupweek.org) and go to the Get Involved page to sign up to receive specific updates on happenings like the Job Fair & Showcase, venue hosting, volunteering, and sponsorship opportunities.
+For information on how you can get further involved in Denver Startup Week, head over to our website (www.denverstartupweek.org) and go to the Get Involved page to sign up to receive specific updates on happenings like the Job Fair & Showcase, volunteering, and sponsorship opportunities.
 
 
-Per the above, please reply back as soon as possible to confirm you are still willing and able to host this session. We will be in touch with you over the next couple of weeks with additional details.
+Per the above, please reply back as soon as possible to confirm you are still willing and able to host this virtual session. We will be in touch with you over the next week or so with additional details.
 
 Please feel free to reply to this e-mail with any questions as well - we’re here to help!
 
