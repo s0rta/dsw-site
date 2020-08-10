@@ -14,6 +14,7 @@ class GeneralInquiriesController < ApplicationController
       flash[:notice] = "Thanks! We will be in touch shortly."
       redirect_to root_path
     else
+      flash[:error] = "We were unable to process your response. Please correct it and try again."
       render action: :new
     end
   end
