@@ -171,7 +171,7 @@ class Submission < ApplicationRecord
   end
 
   def editable?
-    created? || open_for_voting? || accepted? || confirmed? || venue_confirmed?
+    !(rejected? || withdrawn?)
   end
 
   def open_for_feedback?
