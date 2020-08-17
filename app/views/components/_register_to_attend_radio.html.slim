@@ -3,9 +3,9 @@
     input(type="radio" value="true" name="register_to_attend" id="register_to_attend_true" checked="checked")
     label(for="register_to_attend_true")
       span.RegisterToAttendRadio-text YES
-      | I will be attending Denver Startup Week 2019
+      | I will be attending Denver Startup Week #{Date.today.year}
   = render layout: 'components/form_field' do
     input(type="radio" value="false" name="register_to_attend" id="register_to_attend_false")
     label(for="register_to_attend_false")
       span.RegisterToAttendRadio-text NO
-      | I will not be attending Denver Startup Week 2019
+      | I will not be attending Denver Startup Week #{Date.today.year}
