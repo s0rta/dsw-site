@@ -51,6 +51,9 @@ class Submission < ApplicationRecord
 
   has_paper_trail
 
+  mount_uploader :header_image, HeaderImageUploader
+  process_in_background :header_image
+
   belongs_to :submitter, class_name: "User"
   belongs_to :track
   belongs_to :venue, optional: true
