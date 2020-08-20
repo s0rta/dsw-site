@@ -458,7 +458,7 @@ GEM
       i18n
     ruby-progressbar (1.10.1)
     ruby-statistics (2.1.2)
-    ruby_http_client (3.5.0)
+    ruby_http_client (3.5.1)
     rubyzip (2.3.0)
     rufus-scheduler (3.6.0)
       fugit (~> 1.1, >= 1.1.6)
@@ -480,7 +480,7 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.0)
-    sendgrid-ruby (6.2.1)
+    sendgrid-ruby (6.3.4)
       ruby_http_client (~> 3.4)
     shoulda-matchers (4.3.0)
       activesupport (>= 4.2.0)
