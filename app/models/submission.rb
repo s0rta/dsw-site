@@ -1,4 +1,5 @@
 class Submission < ApplicationRecord
+  EMAILS_SPLIT_REGEX = %r{(\s|;|,)}.freeze
   PUBLIC_STATES = %w[open_for_voting accepted confirmed venue_confirmed].freeze
 
   SHOW_RATE = 0.3
@@ -120,7 +121,7 @@ class Submission < ApplicationRecord
   end
 
   def contact_emails
-    contact_email.split(%r{(\s|;|,)}).map(&:strip)
+    contact_email.split(EMAILS_SPLIT_REGEX).map(&:strip)
   end
 
   def self.for_public

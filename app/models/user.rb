@@ -36,6 +36,7 @@ class User < ApplicationRecord
   has_many :articles, foreign_key: "submitter_id", dependent: :restrict_with_error
   has_many :venue_adminships, dependent: :destroy
   has_many :administered_venues, through: :venue_adminships, class_name: "Venue", source: :venue
+  has_many :job_fair_signups, dependent: :restrict_with_error
 
   has_and_belongs_to_many :chaired_tracks, class_name: "Track"
   has_and_belongs_to_many :companies

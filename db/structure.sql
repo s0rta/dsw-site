@@ -666,6 +666,47 @@ ALTER SEQUENCE public.industry_types_id_seq OWNED BY public.industry_types.id;
 
 
 --
+-- Name: job_fair_signups; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.job_fair_signups (
+    id bigint NOT NULL,
+    company_id bigint NOT NULL,
+    user_id bigint NOT NULL,
+    actively_hiring boolean DEFAULT true NOT NULL,
+    number_open_positions integer,
+    number_hiring_next_12_months integer,
+    industry_category text,
+    organization_size text,
+    covid_impact text,
+    contact_email text,
+    notes text,
+    year integer,
+    created_at timestamp(6) without time zone NOT NULL,
+    updated_at timestamp(6) without time zone NOT NULL
+);
+
+
+--
+-- Name: job_fair_signups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.job_fair_signups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: job_fair_signups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.job_fair_signups_id_seq OWNED BY public.job_fair_signups.id;
+
+
+--
 -- Name: newsletter_signups; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1736,6 +1777,13 @@ ALTER TABLE ONLY public.industry_types ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
+-- Name: job_fair_signups id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.job_fair_signups ALTER COLUMN id SET DEFAULT nextval('public.job_fair_signups_id_seq'::regclass);
+
+
+--
 -- Name: newsletter_signups id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -2052,6 +2100,14 @@ ALTER TABLE ONLY public.homepage_ctas
 
 ALTER TABLE ONLY public.industry_types
     ADD CONSTRAINT industry_types_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: job_fair_signups job_fair_signups_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.job_fair_signups
+    ADD CONSTRAINT job_fair_signups_pkey PRIMARY KEY (id);
 
 
 --
@@ -2483,6 +2539,20 @@ CREATE INDEX index_feedback_on_user_id ON public.feedback USING btree (user_id);
 --
 
 CREATE INDEX index_homepage_ctas_on_track_id ON public.homepage_ctas USING btree (track_id);
+
+
+--
+-- Name: index_job_fair_signups_on_company_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_job_fair_signups_on_company_id ON public.job_fair_signups USING btree (company_id);
+
+
+--
+-- Name: index_job_fair_signups_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_job_fair_signups_on_user_id ON public.job_fair_signups USING btree (user_id);
 
 
 --
@@ -2923,6 +2993,14 @@ ALTER TABLE ONLY public.articles
 
 
 --
+-- Name: job_fair_signups fk_rails_b389018500; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.job_fair_signups
+    ADD CONSTRAINT fk_rails_b389018500 FOREIGN KEY (company_id) REFERENCES public.companies(id);
+
+
+--
 -- Name: authorships fk_rails_c386d1f71d; Type: FK CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2960,6 +3038,14 @@ ALTER TABLE ONLY public.venue_adminships
 
 ALTER TABLE ONLY public.articles_tracks
     ADD CONSTRAINT fk_rails_dfa37c8829 FOREIGN KEY (article_id) REFERENCES public.articles(id);
+
+
+--
+-- Name: job_fair_signups fk_rails_e4308ede1c; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.job_fair_signups
+    ADD CONSTRAINT fk_rails_e4308ede1c FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -3166,6 +3252,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20200531215058'),
 ('20200531225500'),
 ('20200603142652'),
-('20200629164627');
+('20200629164627'),
+('20200805034833');
 
 

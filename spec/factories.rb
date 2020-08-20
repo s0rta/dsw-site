@@ -96,4 +96,13 @@ FactoryBot.define do
     city { "Chicago" }
     state { "IL" }
   end
+
+  factory :job_fair_signup do
+    association :user
+    association :company
+    number_open_positions { 10 }
+    number_hiring_next_12_months { 20 }
+    organization_size { JobFairSignup::ORGANIZATION_SIZES.sample }
+    industry_category { JobFairSignup::INDUSTRY_CATEGORIES.sample }
+  end
 end
